@@ -1,0 +1,32 @@
+{
+    "devDependencies": {
+        "@hotwired/stimulus": "^3.0.0",
+        "@symfony/stimulus-bridge": "^3.2.0",
+        "@symfony/ux-turbo": "file:vendor/symfony/ux-turbo/assets",
+        "@symfony/webpack-encore": "^5.0.0",
+        "autoprefixer": "^10.4.21",
+        "core-js": "^3.38.0",
+        "postcss": "^8.5.3",
+        "postcss-loader": "^8.1.1",
+        "regenerator-runtime": "^0.13.9",
+        "sass": "^1.86.1",
+        "sass-loader": "^16.0.5",
+        "tailwindcss": "^3.4.17",
+        "ts-loader": "^9.5.2",
+        "typescript": "^5.8.2",
+        "webpack": "^5.74.0",
+        "webpack-cli": "^5.1.0",
+        "webpack-notifier": "^1.15.0"
+    },
+    "license": "UNLICENSED",
+    "private": true,
+    "scripts": {
+        "dev-server": "encore dev-server",
+        "dev": "encore dev",
+        "watch": "encore dev --watch",
+        "build": "encore production --progress"
+    },
+    "dependencies": {
+        "@tailwindcss/postcss": "^4.1.0"
+    }
+}
