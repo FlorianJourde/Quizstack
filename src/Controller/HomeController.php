@@ -11,8 +11,10 @@ class HomeController extends AbstractController
     #[Route('/', name: 'home')]
     public function list(): Response
     {
-        return new Response(
-            '<html><body>Home</body></html>'
-        );
+//        return new Response(
+//            '<html><body>Home</body></html>'
+//        );
+
+        return $this->render('base.html.twig');
     }
 }

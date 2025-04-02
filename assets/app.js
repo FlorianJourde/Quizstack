@@ -1,14 +1,54 @@
-// import { registerReactControllerComponents } from '@symfony/ux-react';
-// import './bootstrap.js';
-// import './react/Stacks.js';
-/*
- * Welcome to your app's main JavaScript file!
- *
- * We recommend including the built version of this JavaScript file
- * (and its CSS file) in your base layout (base.html.twig).
- */
+import React from 'react';
+import {createRoot} from "react-dom/client";
+import App from "./components/App";
 
-// any CSS you import will output into a single css file (app.css in this case)
-import './styles/app.css';
-// registerReactControllerComponents(require.context('./react/controllers', true, /\.(j|t)sx?$/));
-// registerReactControllerComponents();
+const container = document.getElementById('app');
+const root = createRoot(container);
+
+root.render(
+    <React.StrictMode>
+        <App />
+    </React.StrictMode>
+)
+
+// console.log('Test')
+
+/*import React from "react";
+import ReactDOM from "react-dom";
+
+const App = ({ name }) => <h1>Hello, {name}!</h1>;
+
+document.addEventListener("DOMContentLoaded", () => {
+    const element = document.getElementById("react-root");
+    if (element) {
+        ReactDOM.render(<App name="Symfony" />, element);
+    }
+});*/
+
+/*import React from 'react'
+
+export default function (props) {
+    return <div>Hello {props.fullName}</div>
+}*/
+
+/*
+import render from 'react-dom'
+import React from 'react'
+
+// import React from 'react';
+import ReactDOM from 'react-dom';
+
+function Stacks() {
+    console.log("Hello !")
+    return <div>bonjour tout le monde</div>
+}
+
+class StacksElement extends HTMLElement {
+
+    connectedCallback() {
+        // this.innerHTML = "React enabled"
+        render(<Stacks/>, this)
+    }
+}
+
+customElements.define('post-stacks', StacksElement)*/

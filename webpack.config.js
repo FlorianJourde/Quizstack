@@ -18,9 +18,10 @@ Encore
      * ENTRY CONFIG
      *
      * Each entry will result in one JavaScript file (e.g. app.js)
-     * and one CSS file (e.g. app.css) if your JavaScript imports CSS.
+     * and one CSS file (e.g. app.scss) if your JavaScript imports CSS.
      */
     .addEntry('app', './assets/app.js')
+    .addStyleEntry('styles', './assets/styles/app.scss')
 
     // When enabled, Webpack "splits" your files into smaller pieces for greater optimization.
     .splitEntryChunks()
@@ -46,9 +47,9 @@ Encore
     .enableVersioning(Encore.isProduction())
 
     // configure Babel
-    // .configureBabel((config) => {
-    //     config.plugins.push('@babel/a-babel-plugin');
-    // })
+    .configureBabel((config) => {
+        // config.presets.push('@babel/preset-react');
+    })
 
     // enables and configure @babel/preset-env polyfills
     .configureBabelPresetEnv((config) => {
@@ -58,14 +59,12 @@ Encore
 
     // enables Sass/SCSS support
     .enableSassLoader()
-    // .addStyleEntry('app', './assets/styles/app.scss')
-    // .addStyleEntry('app', './assets/styles/app.css') // Remplace .css par .scss
 
     // uncomment if you use TypeScript
     .enableTypeScriptLoader()
 
     // uncomment if you use React
-    // .enableReactPreset()
+    .enableReactPreset()
 
     // uncomment to get integrity="..." attributes on your script & link tags
     // requires WebpackEncoreBundle 1.4 or higher
@@ -75,7 +74,6 @@ Encore
     //.autoProvidejQuery()
 
     .enablePostCssLoader()
-
 ;
 
 module.exports = Encore.getWebpackConfig();
