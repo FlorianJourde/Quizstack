@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\QuestionsRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -21,13 +23,30 @@ class Questions
     private ?string $image = null;
 
     #[ORM\Column]
-    private ?\DateTimeImmutable $creadtion_date = null;
+    private ?\DateTimeImmutable $creation_date = null;
 
     #[ORM\Column]
     private ?\DateTimeImmutable $update_date = null;
 
     #[ORM\Column]
     private ?bool $status = null;
+
+    #[ORM\Column]
+    private ?bool $correct = null;
+
+    /**
+     * @var Collection<int, Answers>
+     */
+    #[ORM\OneToMany(targetEntity: Answers::class, mappedBy: 'question')]
+    private Collection $answer_id;
+
+    #[ORM\Column]
+    private ?int $difficulty = null;
+
+    public function __construct()
+    {
+        $this->answer_id = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -65,14 +84,14 @@ class Questions
         return $this;
     }
 
-    public function getCreadtionDate(): ?\DateTimeImmutable
+    public function getCreationDate(): ?\DateTimeImmutable
     {
-        return $this->creadtion_date;
+        return $this->creation_date;
     }
 
-    public function setCreadtionDate(\DateTimeImmutable $creadtion_date): static
+    public function setCreationDate(\DateTimeImmutable $creation_date): static
     {
-        $this->creadtion_date = $creadtion_date;
+        $this->creation_date = $creation_date;
 
         return $this;
     }
@@ -97,6 +116,60 @@ class Questions
     public function setStatus(bool $status): static
     {
         $this->status = $status;
+
+        return $this;
+    }
+
+    public function isCorrect(): ?bool
+    {
+        return $this->correct;
+    }
+
+    public function setCorrect(bool $correct): static
+    {
+        $this->correct = $correct;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Answers>
+     */
+    public function getAnswerId(): Collection
+    {
+        return $this->answer_id;
+    }
+
+    public function addAnswerId(Answers $answerId): static
+    {
+        if (!$this->answer_id->contains($answerId)) {
+            $this->answer_id->add($answerId);
+            $answerId->setQuestionId($this);
+        }
+
+        return $this;
+    }
+
+    public function removeAnswerId(Answers $answerId): static
+    {
+        if ($this->answer_id->removeElement($answerId)) {
+            // set the owning side to null (unless already changed)
+            if ($answerId->getQuestionId() === $this) {
+                $answerId->setQuestionId(null);
+            }
+        }
+
+        return $this;
+    }
+
+    public function getDifficulty(): ?int
+    {
+        return $this->difficulty;
+    }
+
+    public function setDifficulty(int $difficulty): static
+    {
+        $this->difficulty = $difficulty;
 
         return $this;
     }

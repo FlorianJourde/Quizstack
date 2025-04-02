@@ -2,6 +2,7 @@
 
 namespace App\DataFixtures;
 
+use App\Entity\Users;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
 
@@ -9,8 +10,37 @@ class UsersFixtures extends Fixture
 {
     public function load(ObjectManager $manager): void
     {
-        // $product = new Product();
-        // $manager->persist($product);
+        $date = new \DateTimeImmutable();
+
+        $user = new Users();
+        $user->setId(1);
+        $user->setUsername('Admin');
+        $user->setEmail('admin@email.com');
+        $user->setPassword('password');
+        $user->setRole(3);
+        $user->setInscriptionDate($date);
+        $user->setLastAuthenticationDate($date);
+        $manager->persist($user);
+
+        $user = new Users();
+        $user->setId(2);
+        $user->setUsername('Editor');
+        $user->setEmail('editor@email.com');
+        $user->setPassword('password');
+        $user->setRole(2);
+        $user->setInscriptionDate($date);
+        $user->setLastAuthenticationDate($date);
+        $manager->persist($user);
+
+        $user = new Users();
+        $user->setId(3);
+        $user->setUsername('User');
+        $user->setEmail('user@email.com');
+        $user->setPassword('password');
+        $user->setRole(1);
+        $user->setInscriptionDate($date);
+        $user->setLastAuthenticationDate($date);
+        $manager->persist($user);
 
         $manager->flush();
     }
