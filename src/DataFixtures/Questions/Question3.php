@@ -4,36 +4,36 @@ namespace App\DataFixtures\Questions;
 
 use Doctrine\Persistence\ObjectManager;
 
-class Question2
+class Question3
 {
     public function createQuestionWithAnswers(ObjectManager $manager, \DateTimeImmutable $date)
     {
 
         $question = createQuestion(
-            'Which of the following methods can be used to prevent SQL injection in PHP ?',
-            '',
+            'What will be logged in the console when executing the following JavaScript snippet?\n```js\nconsole.log(0.1 + 0.2 === 0.3);\n```',
+            '/pattern-js.png',
             $date,
             true,
-            3,
+            2,
             $manager
         );
 
         createAnswer($question, <<<'EOT'
-            `Using prepared statements with PDO`
-            EOT,
-            true,
-            $manager);
-
-        createAnswer($question, <<<'EOT'
-            `Escaping user input with `addslashes()`
+            `true`
             EOT,
             false,
             $manager);
 
         createAnswer($question, <<<'EOT'
-            `Validating and sanitizing input properly`
+            `false`
             EOT,
             true,
+            $manager);
+
+        createAnswer($question, <<<'EOT'
+            `undefined`
+            EOT,
+            false,
             $manager);
 
         $manager->flush();

@@ -12,7 +12,7 @@ function createQuestion($content, $image, $date, $status, $difficulty, $manager)
     $question->setDifficulty($difficulty);
 
     $manager->persist($question);
-    $manager->flush();
+//    $manager->flush();
 
     return $question;
 }

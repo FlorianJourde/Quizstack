@@ -3,8 +3,6 @@
 namespace App\DataFixtures\Questions;
 
 use Doctrine\Persistence\ObjectManager;
-use App\Entity\Answers;
-use App\Entity\Questions;
 
 class Question1
 {
