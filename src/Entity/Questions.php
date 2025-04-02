@@ -43,9 +43,16 @@ class Questions
     #[ORM\Column]
     private ?int $difficulty = null;
 
+    /**
+     * @var Collection<int, Categories>
+     */
+    #[ORM\ManyToMany(targetEntity: Categories::class, inversedBy: 'questions')]
+    private Collection $categories;
+
     public function __construct()
     {
         $this->answer_id = new ArrayCollection();
+        $this->categories = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -170,6 +177,30 @@ class Questions
     public function setDifficulty(int $difficulty): static
     {
         $this->difficulty = $difficulty;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Categories>
+     */
+    public function getCategories(): Collection
+    {
+        return $this->categories;
+    }
+
+    public function addCategory(Categories $category): static
+    {
+        if (!$this->categories->contains($category)) {
+            $this->categories->add($category);
+        }
+
+        return $this;
+    }
+
+    public function removeCategory(Categories $category): static
+    {
+        $this->categories->removeElement($category);
 
         return $this;
     }
