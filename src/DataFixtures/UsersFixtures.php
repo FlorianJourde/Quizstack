@@ -13,7 +13,6 @@ class UsersFixtures extends Fixture
         $date = new \DateTimeImmutable();
 
         $user = new Users();
-        $user->setId(1);
         $user->setUsername('Admin');
         $user->setEmail('admin@email.com');
         $user->setPassword('password');
@@ -23,7 +22,6 @@ class UsersFixtures extends Fixture
         $manager->persist($user);
 
         $user = new Users();
-        $user->setId(2);
         $user->setUsername('Editor');
         $user->setEmail('editor@email.com');
         $user->setPassword('password');
@@ -33,7 +31,6 @@ class UsersFixtures extends Fixture
         $manager->persist($user);
 
         $user = new Users();
-        $user->setId(3);
         $user->setUsername('User');
         $user->setEmail('user@email.com');
         $user->setPassword('password');

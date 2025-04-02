@@ -29,7 +29,7 @@ class Questions
     private ?\DateTimeImmutable $update_date = null;
 
     #[ORM\Column]
-    private ?bool $status = null;
+    private ?bool $status = false;
 
     /**
      * @var Collection<int, Answers>
@@ -45,6 +45,9 @@ class Questions
      */
     #[ORM\ManyToMany(targetEntity: Categories::class, inversedBy: 'questions')]
     private Collection $categories;
+
+    #[ORM\Column(type: Types::TEXT, nullable: true)]
+    private ?string $explanation = null;
 
     public function __construct()
     {
@@ -186,6 +189,18 @@ class Questions
     public function removeCategory(Categories $category): static
     {
         $this->categories->removeElement($category);
+
+        return $this;
+    }
+
+    public function getExplanation(): ?string
+    {
+        return $this->explanation;
+    }
+
+    public function setExplanation(?string $explanation): static
+    {
+        $this->explanation = $explanation;
 
         return $this;
     }

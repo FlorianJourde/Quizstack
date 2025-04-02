@@ -13,25 +13,25 @@ class Question2
             'Which of the following methods can be used to prevent SQL injection in PHP ?',
             '',
             $date,
-            true,
             3,
+            'Prepared statements with PDO bind parameters to SQL queries, ensuring that user input is treated as data and not executable code.',
             $manager
         );
 
         createAnswer($question, <<<'EOT'
-            `Using prepared statements with PDO`
+            Using prepared statements with PDO.
             EOT,
             true,
             $manager);
 
         createAnswer($question, <<<'EOT'
-            `Escaping user input with `addslashes()`
+            Escaping user input with `addslashes()`.
             EOT,
             false,
             $manager);
 
         createAnswer($question, <<<'EOT'
-            `Validating and sanitizing input properly`
+            Validating and sanitizing input properly.
             EOT,
             true,
             $manager);

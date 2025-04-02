@@ -4,6 +4,7 @@ namespace App\DataFixtures;
 
 use App\DataFixtures\Questions\Question1;
 use App\DataFixtures\Questions\Question2;
+use App\DataFixtures\Questions\Question3;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
 
@@ -17,6 +18,9 @@ class QuestionsFixtures extends Fixture
         $question1->createQuestionWithAnswers($manager, $date);
 
         $question1 = new Question2();
+        $question1->createQuestionWithAnswers($manager, $date);
+
+        $question1 = new Question3();
         $question1->createQuestionWithAnswers($manager, $date);
     }
 }

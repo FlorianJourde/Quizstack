@@ -19,7 +19,7 @@ class Categories
     private ?string $name = null;
 
     #[ORM\Column]
-    private ?bool $status = null;
+    private ?bool $status = false;
 
     /**
      * @var Collection<int, Questions>

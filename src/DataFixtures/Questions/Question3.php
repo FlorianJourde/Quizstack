@@ -13,25 +13,25 @@ class Question3
             'What will be logged in the console when executing the following JavaScript snippet?\n```js\nconsole.log(0.1 + 0.2 === 0.3);\n```',
             '/pattern-js.png',
             $date,
-            true,
             2,
+            'Due to floating point precision issues in JavaScript, `0.1 + 0.2` does not exactly equal `0.3`. The result is `false`.',
             $manager
         );
 
         createAnswer($question, <<<'EOT'
-            `true`
+            true
             EOT,
             false,
             $manager);
 
         createAnswer($question, <<<'EOT'
-            `false`
+            false
             EOT,
             true,
             $manager);
 
         createAnswer($question, <<<'EOT'
-            `undefined`
+            undefined
             EOT,
             false,
             $manager);

@@ -2,14 +2,14 @@
 
 use App\Entity\Answers;
 use App\Entity\Questions;
-function createQuestion($content, $image, $date, $status, $difficulty, $manager) {
+function createQuestion($content, $image, $date, $difficulty, $explanation, $manager) {
     $question = new Questions();
     $question->setContent($content);
     $question->setImage($image);
     $question->setCreationDate($date);
     $question->setUpdateDate($date);
-    $question->setStatus($status);
     $question->setDifficulty($difficulty);
+    $question->setExplanation($explanation);
 
     $manager->persist($question);
 //    $manager->flush();
