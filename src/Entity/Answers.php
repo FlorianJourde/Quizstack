@@ -14,7 +14,7 @@ class Answers
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\ManyToOne(inversedBy: 'answer_id')]
+    #[ORM\ManyToOne(inversedBy: 'answer')]
     #[ORM\JoinColumn(nullable: false)]
     private ?Questions $question = null;
 
@@ -41,9 +41,9 @@ class Answers
         return $this->question;
     }
 
-    public function setQuestionId(?Questions $question_id): static
+    public function setQuestionId(?Questions $question): static
     {
-        $this->question_id = $question_id;
+        $this->question = $question;
 
         return $this;
     }

@@ -31,9 +31,6 @@ class Questions
     #[ORM\Column]
     private ?bool $status = null;
 
-    #[ORM\Column]
-    private ?bool $correct = null;
-
     /**
      * @var Collection<int, Answers>
      */
@@ -123,18 +120,6 @@ class Questions
     public function setStatus(bool $status): static
     {
         $this->status = $status;
-
-        return $this;
-    }
-
-    public function isCorrect(): ?bool
-    {
-        return $this->correct;
-    }
-
-    public function setCorrect(bool $correct): static
-    {
-        $this->correct = $correct;
 
         return $this;
     }

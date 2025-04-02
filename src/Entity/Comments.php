@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use App\Repository\CommentsRepository;
+use App\Repository\QuestionsRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -16,10 +17,12 @@ class Comments
 
     #[ORM\ManyToOne(inversedBy: 'comments')]
     #[ORM\JoinColumn(nullable: false)]
-    private ?Users $user_id = null;
+    private ?Users $user = null;
 
-    #[ORM\Column]
-    private ?int $question_id = null;
+//    #[ORM\Column]
+    #[ORM\ManyToOne(inversedBy: 'comments')]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?Questions $question = null;
 
     #[ORM\Column(type: Types::TEXT)]
     private ?string $content = null;
@@ -47,24 +50,24 @@ class Comments
 
     public function getUserId(): ?Users
     {
-        return $this->user_id;
+        return $this->user;
     }
 
-    public function setUserId(?Users $user_id): static
+    public function setUserId(?Users $user): static
     {
-        $this->user_id = $user_id;
+        $this->user = $user;
 
         return $this;
     }
 
     public function getQuestionId(): ?int
     {
-        return $this->question_id;
+        return $this->question;
     }
 
-    public function setQuestionId(int $question_id): static
+    public function setQuestionId(?Questions $question): static
     {
-        $this->question_id = $question_id;
+        $this->question = $question;
 
         return $this;
     }
