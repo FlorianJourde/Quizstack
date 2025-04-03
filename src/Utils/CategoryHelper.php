@@ -1,6 +1,6 @@
 <?php
 
-namespace App\DataFixtures;
+namespace App\Helper;
 
 use Doctrine\Persistence\ObjectManager;
 use App\Entity\Categories;

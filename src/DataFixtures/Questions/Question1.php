@@ -3,9 +3,10 @@
 namespace App\DataFixtures\Questions;
 
 //use App\DataFixtures\Helper\CategoryHelper;
-use App\DataFixtures\CategoryHelper;
+//use App\DataFixtures\CategoryHelper;
 use App\DataFixtures\QuestionsCategoriesFixtures;
 use App\Entity\Categories;
+use App\Helper\CategoryHelper;
 use Doctrine\Persistence\ObjectManager;
 
 class Question1

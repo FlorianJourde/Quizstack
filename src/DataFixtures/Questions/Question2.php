@@ -2,7 +2,8 @@
 
 namespace App\DataFixtures\Questions;
 
-use App\DataFixtures\CategoryHelper;
+//use App\DataFixtures\CategoryHelper;
+use App\Helper\CategoryHelper;
 use Doctrine\Persistence\ObjectManager;
 
 class Question2

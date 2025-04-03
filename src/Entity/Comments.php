@@ -28,7 +28,7 @@ class Comments
     private ?string $content = null;
 
     #[ORM\Column]
-    private ?bool $status = null;
+    private ?bool $status = true;
 
     #[ORM\Column]
     private ?\DateTimeImmutable $creation_date = null;
