@@ -3,41 +3,70 @@
 namespace App\DataFixtures\Questions;
 
 //use App\DataFixtures\CategoryHelper;
+use App\Entity\Answers;
+use App\Entity\Questions;
 use App\Helper\CategoryHelper;
 use Doctrine\Persistence\ObjectManager;
 
 class Question2
 {
-    public function createQuestionWithAnswers(ObjectManager $manager, \DateTimeImmutable $date, CategoryHelper $categoryHelper)
+    public function createQuestionWithAnswers(ObjectManager $manager, \DateTimeImmutable $date, CategoryHelper $categories)
     {
-
-        $question = createQuestion(
-            'Which of the following methods can be used to prevent SQL injection in PHP ?',
-            '',
-            $date,
-            3,
-            'Prepared statements with PDO bind parameters to SQL queries, ensuring that user input is treated as data and not executable code.',
-            $categoryHelper->getCategoriesByNames(['PHP', 'SQL']),
-            $manager
+        $question = new Questions();
+        $question->setContent(
+            <<<'EOT'
+            Which of the following methods can be used to prevent SQL injection in PHP ?
+            EOT
         );
+        $question->setImage('');
+        $question->setCreationDate($date);
+        $question->setUpdateDate($date);
+        $question->setDifficulty(3);
+        $question->setExplanation(
+            <<<'EOT'
+            Prepared statements with PDO bind parameters to SQL queries, ensuring that user input is treated as data and not executable code.
+            EOT
+        );
+//        $categories->getCategoriesByNames(['PHP', 'SQL']);
 
-        createAnswer($question, <<<'EOT'
+//        $categories = new CategoryHelper($manager);
+        $categories = $categories->getCategoriesByNames(['PHP', 'SQL']);
+
+        foreach ($categories as $category) {
+            $question->addCategory($category);
+        }
+
+        $manager->persist($question);
+
+        $answer1 = new Answers();
+        $answer1->setQuestionId($question);
+        $answer1->setContent(
+            <<<'EOT'
             Using prepared statements with PDO.
-            EOT,
-            true,
-            $manager);
+            EOT
+        );
+        $answer1->setCorrect(true);
+        $manager->persist($answer1);
 
-        createAnswer($question, <<<'EOT'
+        $answer2 = new Answers();
+        $answer2->setQuestionId($question);
+        $answer2->setContent(
+            <<<'EOT'
             Escaping user input with `addslashes()`.
-            EOT,
-            false,
-            $manager);
+            EOT
+        );
+        $answer2->setCorrect(false);
+        $manager->persist($answer2);
 
-        createAnswer($question, <<<'EOT'
+        $answer3 = new Answers();
+        $answer3->setQuestionId($question);
+        $answer3->setContent(
+            <<<'EOT'
             Validating and sanitizing input properly.
-            EOT,
-            true,
-            $manager);
+            EOT
+        );
+        $answer3->setCorrect(true);
+        $manager->persist($answer3);
 
         $manager->flush();
     }
