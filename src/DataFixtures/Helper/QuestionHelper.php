@@ -2,7 +2,7 @@
 
 use App\Entity\Answers;
 use App\Entity\Questions;
-function createQuestion($content, $image, $date, $difficulty, $explanation, $manager) {
+function createQuestion($content, $image, $date, $difficulty, $explanation, array $categories, $manager) {
     $question = new Questions();
     $question->setContent($content);
     $question->setImage($image);
@@ -11,8 +11,11 @@ function createQuestion($content, $image, $date, $difficulty, $explanation, $man
     $question->setDifficulty($difficulty);
     $question->setExplanation($explanation);
 
+    foreach ($categories as $category) {
+        $question->addCategory($category);
+    }
+
     $manager->persist($question);
-//    $manager->flush();
 
     return $question;
 }

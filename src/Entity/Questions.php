@@ -49,6 +49,10 @@ class Questions
     #[ORM\Column(type: Types::TEXT, nullable: true)]
     private ?string $explanation = null;
 
+    #[ORM\ManyToOne(inversedBy: 'questions')]
+//    #[ORM\JoinTable(name: 'questions_categories')]
+    private ?Users $user = null;
+
     public function __construct()
     {
         $this->answer_id = new ArrayCollection();
@@ -201,6 +205,18 @@ class Questions
     public function setExplanation(?string $explanation): static
     {
         $this->explanation = $explanation;
+
+        return $this;
+    }
+
+    public function getUser(): ?Users
+    {
+        return $this->user;
+    }
+
+    public function setUser(?Users $user): static
+    {
+        $this->user = $user;
 
         return $this;
     }

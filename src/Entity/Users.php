@@ -39,9 +39,16 @@ class Users
     #[ORM\OneToMany(targetEntity: Comments::class, mappedBy: 'user')]
     private Collection $comments;
 
+    /**
+     * @var Collection<int, Questions>
+     */
+    #[ORM\OneToMany(targetEntity: Questions::class, mappedBy: 'user')]
+    private Collection $questions;
+
     public function __construct()
     {
         $this->comments = new ArrayCollection();
+        $this->questions = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -152,6 +159,36 @@ class Users
             // set the owning side to null (unless already changed)
             if ($comment->getUserId() === $this) {
                 $comment->setUserId(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Questions>
+     */
+    public function getQuestions(): Collection
+    {
+        return $this->questions;
+    }
+
+    public function addQuestion(Questions $question): static
+    {
+        if (!$this->questions->contains($question)) {
+            $this->questions->add($question);
+            $question->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeQuestion(Questions $question): static
+    {
+        if ($this->questions->removeElement($question)) {
+            // set the owning side to null (unless already changed)
+            if ($question->getUser() === $this) {
+                $question->setUser(null);
             }
         }
 

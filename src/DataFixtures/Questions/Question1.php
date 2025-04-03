@@ -2,11 +2,15 @@
 
 namespace App\DataFixtures\Questions;
 
+//use App\DataFixtures\Helper\CategoryHelper;
+use App\DataFixtures\CategoryHelper;
+use App\DataFixtures\QuestionsCategoriesFixtures;
+use App\Entity\Categories;
 use Doctrine\Persistence\ObjectManager;
 
 class Question1
 {
-    public function createQuestionWithAnswers(ObjectManager $manager, \DateTimeImmutable $date)
+    public function createQuestionWithAnswers(ObjectManager $manager, \DateTimeImmutable $date, CategoryHelper $categoryHelper)
     {
 
         $question = createQuestion(
@@ -15,6 +19,7 @@ class Question1
             $date,
             2,
             'Using PDO is a secure and flexible way to interact with databases. It supports prepared statements, which help prevent SQL injection.',
+            $categoryHelper->getCategoriesByNames(['PHP', 'SQL']),
             $manager
         );
 

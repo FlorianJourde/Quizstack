@@ -2,11 +2,12 @@
 
 namespace App\DataFixtures\Questions;
 
+use App\DataFixtures\CategoryHelper;
 use Doctrine\Persistence\ObjectManager;
 
 class Question2
 {
-    public function createQuestionWithAnswers(ObjectManager $manager, \DateTimeImmutable $date)
+    public function createQuestionWithAnswers(ObjectManager $manager, \DateTimeImmutable $date, CategoryHelper $categoryHelper)
     {
 
         $question = createQuestion(
@@ -15,6 +16,7 @@ class Question2
             $date,
             3,
             'Prepared statements with PDO bind parameters to SQL queries, ensuring that user input is treated as data and not executable code.',
+            $categoryHelper->getCategoriesByNames(['PHP', 'SQL']),
             $manager
         );
 

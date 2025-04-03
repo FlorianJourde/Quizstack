@@ -13,14 +13,22 @@ class QuestionsFixtures extends Fixture
     public function load(ObjectManager $manager): void
     {
         $date = new \DateTimeImmutable();
+        $categories = new CategoryHelper($manager);
 
         $question1 = new Question1();
-        $question1->createQuestionWithAnswers($manager, $date);
+        $question1->createQuestionWithAnswers($manager, $date, $categories);
 
         $question1 = new Question2();
-        $question1->createQuestionWithAnswers($manager, $date);
+        $question1->createQuestionWithAnswers($manager, $date, $categories);
 
         $question1 = new Question3();
-        $question1->createQuestionWithAnswers($manager, $date);
+        $question1->createQuestionWithAnswers($manager, $date, $categories);
+    }
+
+    public function getDependencies(): array
+    {
+        return [
+            CategoriesFixtures::class,
+        ];
     }
 }
