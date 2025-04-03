@@ -2,15 +2,11 @@
 
 namespace App\DataFixtures\Questions;
 
-//use App\DataFixtures\Helper\CategoryHelper;
-//use App\DataFixtures\CategoryHelper;
 use App\DataFixtures\QuestionsCategoriesFixtures;
 use App\Entity\Answers;
-use App\Entity\Categories;
 use App\Entity\Questions;
 use App\Entity\Users;
 use App\Helper\CategoryHelper;
-use ContainerF76famF\getCategoriesRepositoryService;
 use Doctrine\Persistence\ObjectManager;
 
 class Question1
@@ -33,14 +29,13 @@ class Question1
             EOT
         );
 
-//        $categories = new CategoryHelper($manager);
         $categories = $categories->getCategoriesByNames(['PHP', 'SQL']);
-
         foreach ($categories as $category) {
             $question->addCategory($category);
         }
-//
-//        $categories->getCategoriesByNames(['PHP', 'SQL']);
+
+        $user = $manager->getRepository(Users::class)->findOneBy(['username' => 'Admin']);
+        $question->setUser($user);
 
         $manager->persist($question);
 

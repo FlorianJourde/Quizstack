@@ -2,9 +2,9 @@
 
 namespace App\DataFixtures\Questions;
 
-//use App\DataFixtures\CategoryHelper;
 use App\Entity\Answers;
 use App\Entity\Questions;
+use App\Entity\Users;
 use App\Helper\CategoryHelper;
 use Doctrine\Persistence\ObjectManager;
 
@@ -27,14 +27,14 @@ class Question2
             Prepared statements with PDO bind parameters to SQL queries, ensuring that user input is treated as data and not executable code.
             EOT
         );
-//        $categories->getCategoriesByNames(['PHP', 'SQL']);
 
-//        $categories = new CategoryHelper($manager);
         $categories = $categories->getCategoriesByNames(['PHP', 'SQL']);
-
         foreach ($categories as $category) {
             $question->addCategory($category);
         }
+
+        $user = $manager->getRepository(Users::class)->findOneBy(['username' => 'Editor']);
+        $question->setUser($user);
 
         $manager->persist($question);
 

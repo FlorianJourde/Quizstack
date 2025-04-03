@@ -2,16 +2,12 @@
 
 namespace App\DataFixtures;
 
-use App\Entity\Categories;
 use App\Entity\Comments;
 use App\Entity\Questions;
 use App\Entity\Users;
-use App\Repository\CommentsRepository;
-use App\Repository\UsersRepository;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 
-//use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 use Doctrine\Persistence\ObjectManager;
 
 class CommentsFixtures extends Fixture implements DependentFixtureInterface

@@ -2,9 +2,9 @@
 
 namespace App\DataFixtures\Questions;
 
-//use App\DataFixtures\CategoryHelper;
 use App\Entity\Answers;
 use App\Entity\Questions;
+use App\Entity\Users;
 use App\Helper\CategoryHelper;
 use Doctrine\Persistence\ObjectManager;
 
@@ -27,14 +27,14 @@ class Question3
             Due to floating point precision issues in JavaScript, `0.1 + 0.2` does not exactly equal `0.3`. The result is `false`.
             EOT
         );
-//        $categories->getCategoriesByNames(['JavaScript']);
 
-//        $categories = new CategoryHelper($manager);
         $categories = $categories->getCategoriesByNames(['JavaScript']);
-
         foreach ($categories as $category) {
             $question->addCategory($category);
         }
+
+        $user = $manager->getRepository(Users::class)->findOneBy(['username' => 'User']);
+        $question->setUser($user);
 
         $manager->persist($question);
 

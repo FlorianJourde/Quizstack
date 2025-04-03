@@ -16,12 +16,8 @@ class QuestionsFixtures extends Fixture implements DependentFixtureInterface
     {
         $date = new \DateTimeImmutable();
         $categories = new CategoryHelper($manager);
-//        $categories->getCategoriesByNames(['PHP', 'SQL']);
-//        var_dump($categories);
-//        die();
 
         $question1 = new Question1();
-//        $question1->createQuestionWithAnswers($manager, $date, $categories);
         $question1->createQuestionWithAnswers($manager, $date, $categories);
 
         $question2 = new Question2();
