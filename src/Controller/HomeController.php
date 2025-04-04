@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Repository\CategoriesRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
@@ -9,12 +10,16 @@ use Symfony\Component\Routing\Attribute\Route;
 class HomeController extends AbstractController
 {
     #[Route('/', name: 'home')]
-    public function list(): Response
+    public function index(CategoriesRepository $categoriesRepository): Response
     {
+        $categories = $categoriesRepository->findAll();
+
 //        return new Response(
 //            '<html><body>Home</body></html>'
 //        );
 
-        return $this->render('base.html.twig');
+        return $this->render('index.html.twig', [
+            'categories' => $categories,
+        ]);
     }
 }

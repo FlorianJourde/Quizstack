@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Question aléatoire{% endblock %}
+
+{% block body %}
+    <h1>Question</h1>
+
+    <p>{{ question.content }}</p>
+    <br>
+    <h2>Answers</h2>
+    <ul>
+        {% for answer in answers %}
+            <li>{{ answer.content }}</li>
+        {% endfor %}
+    </ul>
+    {#    <p>{{ question }}</p> #}
+    {#    {{ dump(question.content) }} #}
+
+{% endblock %}

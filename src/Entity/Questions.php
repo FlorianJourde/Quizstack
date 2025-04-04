@@ -35,7 +35,7 @@ class Questions
      * @var Collection<int, Answers>
      */
     #[ORM\OneToMany(targetEntity: Answers::class, mappedBy: 'question')]
-    private Collection $answer_id;
+    private Collection $answers;
 
     #[ORM\Column]
     private ?int $difficulty = null;
@@ -50,12 +50,12 @@ class Questions
     private ?string $explanation = null;
 
     #[ORM\ManyToOne(inversedBy: 'questions')]
-//    #[ORM\JoinTable(name: 'questions_categories')]
+    #[ORM\JoinColumn(nullable: false)]
     private ?Users $user = null;
 
     public function __construct()
     {
-        $this->answer_id = new ArrayCollection();
+        $this->answers = new ArrayCollection();
         $this->categories = new ArrayCollection();
     }
 
@@ -134,15 +134,15 @@ class Questions
     /**
      * @return Collection<int, Answers>
      */
-    public function getAnswerId(): Collection
+    public function getAnswers(): Collection
     {
-        return $this->answer_id;
+        return $this->answers;
     }
 
     public function addAnswerId(Answers $answerId): static
     {
-        if (!$this->answer_id->contains($answerId)) {
-            $this->answer_id->add($answerId);
+        if (!$this->answers->contains($answerId)) {
+            $this->answers->add($answerId);
             $answerId->setQuestionId($this);
         }
 
@@ -151,7 +151,7 @@ class Questions
 
     public function removeAnswerId(Answers $answerId): static
     {
-        if ($this->answer_id->removeElement($answerId)) {
+        if ($this->answers->removeElement($answerId)) {
             // set the owning side to null (unless already changed)
             if ($answerId->getQuestionId() === $this) {
                 $answerId->setQuestionId(null);

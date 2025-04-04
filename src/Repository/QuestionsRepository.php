@@ -11,9 +11,55 @@ use Doctrine\Persistence\ManagerRegistry;
  */
 class QuestionsRepository extends ServiceEntityRepository
 {
+//    private Connection $connection;
     public function __construct(ManagerRegistry $registry)
     {
         parent::__construct($registry, Questions::class);
+    }
+
+    public function findRandomQuestion(): ?Questions
+    {
+        return $this->createQueryBuilder('q')
+            ->orderBy('RAND()')
+            ->setMaxResults(1)
+            ->getQuery()
+            ->getOneOrNullResult();
+    }
+
+    public function findQuestionsByFilters(?string $difficulty, array $categories): ?Questions
+    {
+        $qb = $this->createQueryBuilder('q')
+            ->leftJoin('q.categories', 'c')
+            ->leftJoin('q.answers', 'a');
+
+        if (!empty($categories)) {
+            $qb->andWhere('c.name IN (:categories)')
+                ->setParameter('categories', $categories);
+        }
+
+        if ($difficulty) {
+            $qb->andWhere('q.difficulty = :difficulty')
+                ->setParameter('difficulty', $difficulty);
+        }
+
+        $qb->orderBy('RAND()');
+
+        return $qb->setMaxResults(1)
+            ->getQuery()
+            ->getOneOrNullResult();
+    }
+
+    public function findRandomQuestionByCategories(array $categories): ?Questions
+    {
+        return $this->createQueryBuilder('q')
+            ->leftJoin('q.categories', 'c')
+            ->leftJoin('q.answers', 'a')
+            ->where('c.name IN (:categories)')
+            ->setParameter('categories', $categories)
+            ->orderBy('RAND()')
+            ->setMaxResults(1)
+            ->getQuery()
+            ->getOneOrNullResult();
     }
 
     //    /**

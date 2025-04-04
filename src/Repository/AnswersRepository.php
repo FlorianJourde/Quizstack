@@ -16,6 +16,16 @@ class AnswersRepository extends ServiceEntityRepository
         parent::__construct($registry, Answers::class);
     }
 
+//        public function findOneBySomeField($value): ?Answers
+//        {
+//            return $this->createQueryBuilder('a')
+//                ->andWhere('a.exampleField = :val')
+//                ->setParameter('val', $value)
+//                ->getQuery()
+//                ->getOneOrNullResult()
+//            ;
+//        }
+
     //    /**
     //     * @return Answers[] Returns an array of Answers objects
     //     */

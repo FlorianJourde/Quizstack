@@ -14,7 +14,7 @@ class Answers
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\ManyToOne(inversedBy: 'answer')]
+    #[ORM\ManyToOne(targetEntity: Questions::class, inversedBy: 'answers')]
     #[ORM\JoinColumn(nullable: false)]
     private ?Questions $question = null;
 
