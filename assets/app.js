@@ -1,16 +1,78 @@
 import React from 'react';
 import {createRoot} from "react-dom/client";
+// import AppComponent from "./components/AppComponent";
 import App from "./components/App";
+import Question from "./components/Question";
+// javascriptCopier// Dans votre point d'entrée React (question_app.js ou similaire)
+import './styles/app.css';  // Ajustez le chemin selon votre structure
 
-const container = document.getElementById('app');
-const root = createRoot(container);
 
-root.render(
-    <React.StrictMode>
-        <App />
-    </React.StrictMode>
-)
+// const container = document.getElementById('app');
+// const root = createRoot(container);
 
+document.addEventListener('DOMContentLoaded', () => {
+    const questionContainer = document.getElementById('question-container');
+    if (questionContainer) {
+        const productRoot = createRoot(questionContainer);
+        productRoot.render(
+            <React.StrictMode>
+                <Question/>
+            </React.StrictMode>
+        );
+    }
+});
+
+
+
+// root.render(
+//     <React.StrictMode>
+//         <AppComponent/>
+//         {/*<h1>Test React</h1>*/}
+//     </React.StrictMode>
+// )
+
+//
+// class App extends React.Component {
+//     constructor() {
+//         super();
+//
+//         this.state = {
+//             entries: []
+//         };
+//     }
+//
+//     componentDidMount() {
+//         fetch('https://jsonplaceholder.typicode.com/posts/')
+//             .then(response => response.json())
+//             .then(entries => {
+//                 this.setState({
+//                     entries
+//                 });
+//             });
+//     }
+//
+//     render() {
+//         return (
+//             <div className="row">
+//                 {this.state.entries.map(
+//                     ({ id, title, body }) => (
+//                         <Items
+//                             key={id}
+//                             title={title}
+//                             body={body}
+//                         >
+//                         </Items>
+//                     )
+//                 )}
+//             </div>
+//         );
+//     }
+// }
+//
+// ReactDOM.render(<App />, document.getElementById('root'));
+//
+
+// console.log('test');
 // console.log('Test')
 
 /*import React from "react";

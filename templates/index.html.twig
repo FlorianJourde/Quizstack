@@ -7,13 +7,12 @@
 {#    <div class="example-wrapper">#}
         <div>
             <p class="font-bold text-6xl text-center">Home</p>
-            <ul>
-                {% for category in categories %}
-                    <li>{{ category.name }}</li>
-                {% else %}
-                    <li>Aucune catégorie trouvée.</li>
-                {% endfor %}
-            </ul>
+
+{#            {% include ('partials/filters.html.twig'), _context %}#}
+{#            {{ include 'partials/filters.html.twig', _context }}#}
+            {{ include('partials/filters.html.twig', _context) }}
+
         </div>
 {#    </div>#}
 {% endblock %}
+

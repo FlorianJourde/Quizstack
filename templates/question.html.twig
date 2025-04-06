@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+{#{% extends 'base.html.twig' %}#}
+
+
+{% block title %}Question{% endblock %}
+
+{% block body %}
+    <h1 class="text-3xl">Question</h1>
+
+    <div id="question-container"></div>
+
+    <p>{{ question.content }}</p>
+    <br>
+    <h2>Answers</h2>
+    <ul>
+        {% for answer in answers %}
+            <li>{{ answer.content }}</li>
+        {% endfor %}
+    </ul>
+    {#    <p>{{ question }}</p> #}
+    {#    {{ dump(question.content) }} #}
+
+{% endblock %}
+
+{#{% block javascripts %}#}
+{#    {{ encore_entry_script_tags('question_app') }}#}
+{#        {{ encore_entry_script_tags('app') }}#}
+{#{% endblock %}#}
+
+
+{#{% block javascripts %}#}
+{#    {{ encore_entry_script_tags('app') }}#}
+{#    {{ encore_entry_script_tags('question_app') }}#}
+{#{% endblock %}#}

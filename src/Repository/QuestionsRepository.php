@@ -28,6 +28,9 @@ class QuestionsRepository extends ServiceEntityRepository
 
     public function findQuestionsByFilters(?string $difficulty, array $categories): ?Questions
     {
+//        dump($difficulty);
+//        die();
+
         $qb = $this->createQueryBuilder('q')
             ->leftJoin('q.categories', 'c')
             ->leftJoin('q.answers', 'a');
@@ -47,6 +50,18 @@ class QuestionsRepository extends ServiceEntityRepository
         return $qb->setMaxResults(1)
             ->getQuery()
             ->getOneOrNullResult();
+    }
+
+    public function findQuestionsDifficulties(): ?array
+    {
+        return $this->createQueryBuilder('q')
+            ->select('DISTINCT q.difficulty')
+            ->orderBy('q.difficulty', 'ASC')
+            ->getQuery()
+            ->getResult();
+//            ->setMaxResults(1)
+//            ->getQuery()
+//            ->getOneOrNullResult();
     }
 
     public function findRandomQuestionByCategories(array $categories): ?Questions

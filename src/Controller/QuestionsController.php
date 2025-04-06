@@ -11,12 +11,15 @@ use Symfony\Component\Routing\Attribute\Route;
 
 final class QuestionsController extends AbstractController
 {
-    #[Route('/questions', name: 'questions')]
+    #[Route('/question', name: 'question')]
     public function index(Request $request, QuestionsRepository $questionsRepository): Response
     {
 
-        $difficultyLevel = EnumUtility::DIFFICULTY[$request->query->get('difficulty')] ?? null;
+        $difficultyLevel = $request->query->get('difficulty') ?? null;
         $categories = $request->query->all('category');
+//        $categories = $categoriesString ? explode(',', $categoriesString) : [];
+//        dump($difficultyLevel);
+//        die();
 
         $question = $questionsRepository->findQuestionsByFilters($difficultyLevel, $categories);
 
@@ -34,7 +37,7 @@ final class QuestionsController extends AbstractController
             return new Response('No answers found.', 404);
         }
 
-        return $this->render('partials/question.html.twig', [
+        return $this->render('question.html.twig', [
             'question' => $question,
             'answers' => $answers
         ]);

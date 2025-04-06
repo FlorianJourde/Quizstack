@@ -1,8 +1,13 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 
 function App(props) {
+
+    useEffect(() => {
+        console.log('test');
+    }, []);
+    // console.log('Test')
     return (
-        <div className={'text-5xl'}>React controller</div>
+        <div className={'text-5xl'}>React Component</div>
     );
 }
 

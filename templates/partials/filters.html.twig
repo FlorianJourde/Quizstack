@@ -1,0 +1,34 @@
+{% block body %}
+
+    {#    <h1>Filters</h1> #}
+
+    <form action="{{ path('question') }}" method="GET">
+
+        <h2 class="text-3xl">Levels</h2>
+        <ul>
+            <li>
+                <input type="radio" value="1"  name="difficulty">Easy</button>
+                <input type="radio" value="2"  name="difficulty">Medium</button>
+                <input type="radio" value="2"  name="difficulty">Hard</button>
+            </li>
+        </ul>
+
+        <h2 class="text-3xl">Categories</h2>
+        <ul>
+{#            {% set categories = categoriesString ? categoriesString|split(',') : [] %}#}
+            {% for category in categories %}
+                <li>
+                    <input type="checkbox" id="category-{{ category.name }}" value="{{ category.name }}" name="category[]">
+                    <label for="category-{{ category.name }}">{{ category.name }}</label>
+{#                    {{ category.name }}#}
+                </li>
+            {% else %}
+                <li>No categories.</li>
+            {% endfor %}
+        </ul>
+        <button type="submit">
+            Play
+        </button>
+    </form>
+
+{% endblock %}
