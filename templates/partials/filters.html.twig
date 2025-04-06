@@ -2,6 +2,7 @@
 
     {#    <h1>Filters</h1> #}
 
+{#    <form action="{{ path('question') }}" method="GET">#}
     <form action="{{ path('question') }}" method="GET">
 
         <h2 class="text-3xl">Levels</h2>
@@ -9,13 +10,12 @@
             <li>
                 <input type="radio" value="1"  name="difficulty">Easy</button>
                 <input type="radio" value="2"  name="difficulty">Medium</button>
-                <input type="radio" value="2"  name="difficulty">Hard</button>
+                <input type="radio" value="3"  name="difficulty">Hard</button>
             </li>
         </ul>
 
         <h2 class="text-3xl">Categories</h2>
         <ul>
-{#            {% set categories = categoriesString ? categoriesString|split(',') : [] %}#}
             {% for category in categories %}
                 <li>
                     <input type="checkbox" id="category-{{ category.name }}" value="{{ category.name }}" name="category[]">

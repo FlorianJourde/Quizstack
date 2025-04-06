@@ -14,32 +14,27 @@ final class QuestionsController extends AbstractController
     #[Route('/question', name: 'question')]
     public function index(Request $request, QuestionsRepository $questionsRepository): Response
     {
+//
+//        $difficultyLevel = $request->query->get('difficulty') ?? null;
+//        $categories = $request->query->all('category');
+//        $question = $questionsRepository->findRandomQuestionByFilters($difficultyLevel, $categories);
+//
+//        $answers = $question->getAnswers();
+//        $answers->initialize();
+//
+//        if (!$question) {
+//            return new Response('No question found.', 404);
+//        }
+//
+//        if (!$answers) {
+//            return new Response('No answers found.', 404);
+//        }
 
-        $difficultyLevel = $request->query->get('difficulty') ?? null;
-        $categories = $request->query->all('category');
-//        $categories = $categoriesString ? explode(',', $categoriesString) : [];
-//        dump($difficultyLevel);
-//        die();
+        return $this->render('question.html.twig');
 
-        $question = $questionsRepository->findRandomQuestionByFilters($difficultyLevel, $categories);
-
-        $answers = $question->getAnswers();
-        $answers->initialize();
-
-//        dump($question);
-//        dump($answers);
-
-        if (!$question) {
-            return new Response('No question found.', 404);
-        }
-
-        if (!$answers) {
-            return new Response('No answers found.', 404);
-        }
-
-        return $this->render('question.html.twig', [
-            'question' => $question,
-            'answers' => $answers
-        ]);
+//        return $this->render('question.html.twig', [
+//            'question' => $question,
+//            'answers' => $answers
+//        ]);
     }
 }

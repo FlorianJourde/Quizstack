@@ -1,7 +1,7 @@
 import React from 'react';
 import {createRoot} from "react-dom/client";
 // import AppComponent from "./components/AppComponent";
-import App from "./components/App";
+// import App from "./components/App";
 import Question from "./components/Question";
 // javascriptCopier// Dans votre point d'entrée React (question_app.js ou similaire)
 import './styles/app.css';  // Ajustez le chemin selon votre structure
@@ -18,12 +18,13 @@ document.addEventListener('DOMContentLoaded', () => {
         const productRoot = createRoot(questionContainer);
         productRoot.render(
             <React.StrictMode>
-                <Question questionId={questionId}/>
+                <Question/>
+                {/*<Question questionId={questionId}/>*/}
+                {/*<Question filters={filters} onNewQuestion={handleNewQuestion} />*/}
             </React.StrictMode>
         );
     }
 });
-
 
 
 // root.render(

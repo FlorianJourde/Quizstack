@@ -1,39 +1,77 @@
 import React, {useEffect, useState} from 'react';
 import {getQuestion} from "../services/questionsApi";
 
-function Question({questionId}) {
+function Question() {
     const [question, setQuestion] = useState(null);
     const [selectedAnswer, setSelectedAnswer] = useState('');
     const [result, setResult] = useState(null);
     const [loading, setLoading] = useState(true);
+    const [filters, setFilters] = useState({});
 
-    useEffect(() => {
-        async function loadQuestion() {
-            try {
-                const data = await getQuestion(questionId);
-                setQuestion(data);
-                // console.log(data);
-                // console.log(data.id);
-                // console.log(data.content);
-                // console.log(data.answers);
-            } catch (error) {
-                console.error('Error loading question:', error);
-            } finally {
-                setLoading(false);
-                // console.log(question);
-            }
+    const loadQuestion = async () => {
+        setLoading(true);
+
+        const searchParams = new URLSearchParams(window.location.search);
+        const urlFilters = {};
+
+        if (searchParams.has('difficulty')) {
+            urlFilters.difficulty = searchParams.get('difficulty');
         }
 
-        loadQuestion();
+        if (searchParams.has('category[]')) {
+            const categories = searchParams.getAll('category[]');
+            urlFilters.categories = categories;
+        }
 
-    }, [questionId]);
+        setFilters(urlFilters);
+
+        try {
+            // console.log(filters);
+            const data = await getQuestion(urlFilters);
+            setQuestion(data);
+        } catch (error) {
+            console.error('Error loading question:', error);
+        } finally {
+            setLoading(false);
+        }
+    }
+
+    // function searchForParams() {
+    //     const searchParams = new URLSearchParams(window.location.search);
+    //     const urlFilters = {};
+    //
+    //     if (searchParams.has('difficulty')) {
+    //         urlFilters.difficulty = searchParams.get('difficulty');
+    //     }
+    //
+    //     if (searchParams.has('category[]')) {
+    //         const categories = searchParams.getAll('category[]');
+    //         urlFilters.categories = categories;
+    //
+    //     }
+    //
+    //     setFilters(urlFilters);
+    // }
 
     useEffect(() => {
-        // console.log(question);
-        console.log(question);
-        // console.log("Question mise à jour:", question.answers);
-        // console.log("Question mise à jour:", question.answer);
-    }, [question]);
+        // console.log(filters);
+    }, [filters]);
+
+    useEffect(() => {
+        loadQuestion();
+    }, []);
+
+    const handleNextQuestion = () => {
+        loadQuestion();
+        if (onNewQuestion) onNewQuestion();
+    };
+
+    // useEffect(() => {
+    //     // console.log(question);
+    //     console.log(question);
+    //     // console.log("Question mise à jour:", question.answers);
+    //     // console.log("Question mise à jour:", question.answer);
+    // }, [question]);
 
     const handleSubmit = async () => {
         if (!selectedAnswer) return;
@@ -51,6 +89,12 @@ function Question({questionId}) {
 
     return (
         <>
+            <button onClick={handleNextQuestion}>
+                Question suivante
+            </button>
+
+            <br/>
+
             <h2>Question component</h2>
             <p>ID : {question.id}</p>
             <p>Content : {question.content}</p>
