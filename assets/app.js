@@ -13,10 +13,12 @@ import './styles/app.css';  // Ajustez le chemin selon votre structure
 document.addEventListener('DOMContentLoaded', () => {
     const questionContainer = document.getElementById('question-container');
     if (questionContainer) {
+        const questionId = questionContainer.dataset.questionId;
+        // console.log(questionId)
         const productRoot = createRoot(questionContainer);
         productRoot.render(
             <React.StrictMode>
-                <Question/>
+                <Question questionId={questionId}/>
             </React.StrictMode>
         );
     }

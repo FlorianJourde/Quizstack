@@ -21,13 +21,13 @@ final class QuestionsController extends AbstractController
 //        dump($difficultyLevel);
 //        die();
 
-        $question = $questionsRepository->findQuestionsByFilters($difficultyLevel, $categories);
+        $question = $questionsRepository->findRandomQuestionByFilters($difficultyLevel, $categories);
 
         $answers = $question->getAnswers();
         $answers->initialize();
 
-        dump($question);
-        dump($answers);
+//        dump($question);
+//        dump($answers);
 
         if (!$question) {
             return new Response('No question found.', 404);

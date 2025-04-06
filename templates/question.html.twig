@@ -7,16 +7,16 @@
 {% block body %}
     <h1 class="text-3xl">Question</h1>
 
-    <div id="question-container"></div>
+    <div id="question-container" data-question-id="{{ question.id }}"></div>
 
-    <p>{{ question.content }}</p>
-    <br>
-    <h2>Answers</h2>
-    <ul>
-        {% for answer in answers %}
-            <li>{{ answer.content }}</li>
-        {% endfor %}
-    </ul>
+{#    <p>{{ question.content }}</p>#}
+{#    <br>#}
+{#    <h2>Answers</h2>#}
+{#    <ul>#}
+{#        {% for answer in answers %}#}
+{#            <li>{{ answer.content }}</li>#}
+{#        {% endfor %}#}
+{#    </ul>#}
     {#    <p>{{ question }}</p> #}
     {#    {{ dump(question.content) }} #}
 

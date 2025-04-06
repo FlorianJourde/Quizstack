@@ -26,7 +26,7 @@ class QuestionsRepository extends ServiceEntityRepository
             ->getOneOrNullResult();
     }
 
-    public function findQuestionsByFilters(?string $difficulty, array $categories): ?Questions
+    public function findRandomQuestionByFilters(?string $difficulty, array $categories): ?Questions
     {
 //        dump($difficulty);
 //        die();

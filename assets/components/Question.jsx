@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import {getQuestion} from "../services/questionsApi";
 
-function Question(props) {
+function Question({questionId}) {
     const [question, setQuestion] = useState(null);
     const [selectedAnswer, setSelectedAnswer] = useState('');
     const [result, setResult] = useState(null);
@@ -12,15 +12,28 @@ function Question(props) {
             try {
                 const data = await getQuestion(questionId);
                 setQuestion(data);
+                // console.log(data);
+                // console.log(data.id);
+                // console.log(data.content);
+                // console.log(data.answers);
             } catch (error) {
                 console.error('Error loading question:', error);
             } finally {
                 setLoading(false);
+                // console.log(question);
             }
         }
 
         loadQuestion();
+
     }, [questionId]);
+
+    useEffect(() => {
+        // console.log(question);
+        console.log(question);
+        // console.log("Question mise à jour:", question.answers);
+        // console.log("Question mise à jour:", question.answer);
+    }, [question]);
 
     const handleSubmit = async () => {
         if (!selectedAnswer) return;
@@ -37,6 +50,21 @@ function Question(props) {
     if (!question) return <div>Question non trouvée</div>;
 
     return (
+        <>
+            <h2>Question component</h2>
+            <p>ID : {question.id}</p>
+            <p>Content : {question.content}</p>
+            <p>Difficulty : {question.difficulty}</p>
+
+            <ul>
+                {question.answers.map((answer) => (
+                    <li key={`answer-${answer.id}`}>{answer.content}</li>
+                ))}
+            </ul>
+        </>
+    )
+
+    /*return (
         <>
             <h2 className={'text-3xl'}>Question Component</h2>
             <div className="question">
@@ -77,7 +105,7 @@ function Question(props) {
             </div>
             );
         </>
-    );
+    );*/
 }
 
 export default Question;

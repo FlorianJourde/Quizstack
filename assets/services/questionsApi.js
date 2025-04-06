@@ -1,4 +1,4 @@
-const BASE_URL = '/api/questions';
+const BASE_URL = '/api/question';
 
 export const getQuestions = async (filters = {}) => {
     const params = new URLSearchParams(filters);
@@ -7,7 +7,9 @@ export const getQuestions = async (filters = {}) => {
 };
 
 export const getQuestion = async (id) => {
+    // const response = await fetch(`${BASE_URL}/${id}`);
     const response = await fetch(`${BASE_URL}/${id}`);
+    // console.log(response.json())
     return response.json();
 };
 

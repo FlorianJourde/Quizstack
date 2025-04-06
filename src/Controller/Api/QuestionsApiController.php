@@ -5,14 +5,49 @@ namespace App\Controller\Api;
 //use App\Entity\Question;
 use App\Entity\Questions;
 use App\Repository\QuestionRepository;
+use App\Repository\QuestionsRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 #[Route('/api/question', name: 'api_question_')]
 class QuestionsApiController extends AbstractController
 {
+
+//    #[\Symfony\Component\Routing\Attribute\Route('/{id}', name: 'question')]
+//    public function index(Request $request, QuestionsRepository $questionsRepository): Response
+//    {
+//
+//        $difficultyLevel = $request->query->get('difficulty') ?? null;
+//        $categories = $request->query->all('category');
+////        $categories = $categoriesString ? explode(',', $categoriesString) : [];
+////        dump($difficultyLevel);
+////        die();
+//
+//        $question = $questionsRepository->findRandomQuestionByFilters($difficultyLevel, $categories);
+//
+//        $answers = $question->getAnswers();
+//        $answers->initialize();
+//
+////        dump($question);
+////        dump($answers);
+//
+//        if (!$question) {
+//            return new Response('No question found.', 404);
+//        }
+//
+//        if (!$answers) {
+//            return new Response('No answers found.', 404);
+//        }
+//
+//        return $this->render('question.html.twig', [
+//            'question' => $question,
+//            'answers' => $answers
+//        ]);
+//    }
+
     #[Route('/{id}/check', name: 'check_answer', methods: ['POST'])]
     public function checkAnswer(Questions $question, Request $request): JsonResponse
     {
@@ -35,18 +70,28 @@ class QuestionsApiController extends AbstractController
     }
 
     #[Route('/{id}', name: 'get', methods: ['GET'])]
-    public function getQuestion(Question $question): JsonResponse
+    public function getQuestion(Questions $question): JsonResponse
     {
+        $answers = $question->getAnswers();
+//        $answers->initialize();
+
+        $answerArray = [];
+        foreach ($answers as $answer) {
+            $answerArray[] = [
+                'id' => $answer->getId(),
+                'content' => $answer->getContent()
+            ];
+        }
+
         return $this->json([
             'id' => $question->getId(),
-            'title' => $question->getTitle(),
             'content' => $question->getContent(),
             'difficulty' => $question->getDifficulty(),
-            'categories' => array_map(function ($category) {
-                return $category->getName();
-            }, $question->getCategories()->toArray()),
-            'answers' => $question->getAnswers(),
-// Ne pas inclure l'explication ici
+//            'categories' => array_map(function ($category) {
+//                return $category->getName();
+//            }, $question->getCategories()->toArray()),
+//            'answers' => $answers,
+            'answers' => $answerArray,
         ]);
     }
 }
