@@ -1,0 +1,51 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Questions{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <h1>Questions listes</h1>
+
+        <div class="questions-list">
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Content</th>
+                    <th>Image</th>
+                    <th>Creation date</th>
+                    <th>Update date</th>
+                    <th>Status</th>
+                    <th>Author</th>
+                    <th>Actions</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for question in questions %}
+                    <tr>
+                        <td>{{ question.id }}</td>
+                        <td>{{ question.content }}</td>
+                        <td>{{ question.image }}</td>
+                        <td>{{ question.creationDate|date('d/m/Y') }}</td>
+                        <td>{{ question.updateDate|date('d/m/Y') }}</td>
+                        <td>{{ question.status }}</td>
+                        <td>{{ question.user.username }}</td>
+                        <td>
+                            <a href="{{ path('question', {'id': question.id}) }}" class="btn btn-sm btn-primary">See question</a>
+                        </td>
+
+                        {#                        <td>{{ question.userId }}</td> #}
+                        {#                        <td> #}
+                        {#                            <a href="{{ path('question', {'id': user.id}) }}" class="btn btn-sm btn-primary">Voir la question</a> #}
+                        {#                        </td> #}
+                    </tr>
+                {% else %}
+                    <tr>
+                        <td colspan="5" class="text-center">Aucun utilisateur trouvé</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+{% endblock %}

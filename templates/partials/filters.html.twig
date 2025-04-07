@@ -2,15 +2,15 @@
 
     {#    <h1>Filters</h1> #}
 
-{#    <form action="{{ path('question') }}" method="GET">#}
-    <form action="{{ path('question') }}" method="GET">
+    {#    <form action="{{ path('question') }}" method="GET"> #}
+    <form action="{{ path('quiz') }}" method="GET" id="questionForm">
 
         <h2 class="text-3xl">Levels</h2>
         <ul>
             <li>
-                <input type="radio" value="1"  name="difficulty">Easy</button>
-                <input type="radio" value="2"  name="difficulty">Medium</button>
-                <input type="radio" value="3"  name="difficulty">Hard</button>
+                <input type="radio" value="1" name="difficulty">Easy</button>
+                <input type="radio" value="2" name="difficulty">Medium</button>
+                <input type="radio" value="3" name="difficulty">Hard</button>
             </li>
         </ul>
 
@@ -18,9 +18,10 @@
         <ul>
             {% for category in categories %}
                 <li>
-                    <input type="checkbox" id="category-{{ category.name }}" value="{{ category.name }}" name="category[]">
+                    <input type="checkbox" id="category-{{ category.name }}" value="{{ category.name }}"
+                           name="category[]">
                     <label for="category-{{ category.name }}">{{ category.name }}</label>
-{#                    {{ category.name }}#}
+                    {#                    {{ category.name }} #}
                 </li>
             {% else %}
                 <li>No categories.</li>
@@ -29,6 +30,14 @@
         <button type="submit">
             Play
         </button>
+{#        <button type="button" id="resetFilters">Reset Filters</button>#}
+        <a href="{{ path('quiz') }}">Play without filters</a>
     </form>
+{% endblock %}
+
+{% block javascripts %}
+{#    {{ parent() }}#}
+{#    <script src={{ asset('scripts/filters.js') }}></script>#}
+{#    {{ encore_entry_script_tags('filters') }}#}
 
 {% endblock %}

@@ -1,6 +1,19 @@
-<header>
+<header class="flex justify-between items-center">
     <a href="{{ path('home') }}" class="flex gap-5 items-center">
         <img src="{{ asset('images/logos/quizstack-logo.png') }}" alt="Quizstack logo" class="h-12">
         Quizstack
     </a>
+
+    <ul>
+        {#        <a href="{{ path('user') }}"> #}
+        <a href="{{ path('users')}}">
+            Users
+        </a>
+        <a href="{{ path('questions')}}">
+            Questions
+        </a>
+{#        <a href="{{ path('user', {'id': user.id}) }}">#}
+{#            Profile#}
+{#        </a>#}
+    </ul>
 </header>

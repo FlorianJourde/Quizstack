@@ -11,7 +11,7 @@ import './styles/app.css';  // Ajustez le chemin selon votre structure
 // const root = createRoot(container);
 
 document.addEventListener('DOMContentLoaded', () => {
-    const questionContainer = document.getElementById('question-container');
+    const questionContainer = document.getElementById('quiz-container');
     if (questionContainer) {
         const questionId = questionContainer.dataset.questionId;
         // console.log(questionId)

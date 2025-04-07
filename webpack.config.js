@@ -26,6 +26,7 @@ Encore
     // .addEntry('question_app', './assets/question_app.js')
     // .addEntry('js/app', './assets/js/app.js')
     .addStyleEntry('styles', './assets/styles/app.scss')
+    .addEntry('filters', './assets/scripts/filters.js')
 
     // When enabled, Webpack "splits" your files into smaller pieces for greater optimization.
     .splitEntryChunks()
