@@ -8,6 +8,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
+use Symfony\Component\Security\Http\Attribute\IsGranted;
 
 final class QuestionsController extends AbstractController
 {
@@ -47,6 +48,7 @@ final class QuestionsController extends AbstractController
 //            'users' => $users
 //        ]);
 //    }
+    #[IsGranted('ROLE_EDITOR')]
     #[Route('/questions', name: 'questions')]
     public function questions(Request $request, QuestionsRepository $questionsRepository): Response
     {
@@ -78,7 +80,7 @@ final class QuestionsController extends AbstractController
 //        ]);
     }
 
-
+    #[IsGranted('ROLE_EDITOR')]
     #[Route('/question/{id}', name: 'question')]
     public function user(int $id, QuestionsRepository $questionsRepository): Response
     {

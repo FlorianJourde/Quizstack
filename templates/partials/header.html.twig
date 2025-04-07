@@ -6,14 +6,25 @@
 
     <ul>
         {#        <a href="{{ path('user') }}"> #}
-        <a href="{{ path('users')}}">
-            Users
+        {% if is_granted('ROLE_ADMIN') %}
+            <a href="{{ path('users')}}">
+                Users
+            </a>
+        {% endif %}
+
+        {% if is_granted('ROLE_EDITOR') %}
+            <a href="{{ path('questions')}}">
+                Questions
+            </a>
+        {% endif %}
+
+        <a href="{{ path('login')}}">
+            Login
         </a>
-        <a href="{{ path('questions')}}">
-            Questions
+
+        <a href="{{ path('register')}}">
+            Register
         </a>
-{#        <a href="{{ path('user', {'id': user.id}) }}">#}
-{#            Profile#}
-{#        </a>#}
+
     </ul>
 </header>
