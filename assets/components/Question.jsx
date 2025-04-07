@@ -1,16 +1,38 @@
 import React, {useEffect, useState} from 'react';
 import {getQuestion, submitAnswer} from "../services/questionsApi";
+import Answer from "./Answer";
+import Explanation from "./Explanation";
 
 function Question() {
     const [question, setQuestion] = useState(null);
     const [selectedAnswer, setSelectedAnswer] = useState([]);
     const [result, setResult] = useState(null);
     const [loading, setLoading] = useState(true);
-    const [filters, setFilters] = useState({});
+    // const [filters, setFilters] = useState({});
 
-    const loadQuestion = async () => {
+    useEffect(() => {
+        console.log('question', question);
+    }, [question]);
+
+    useEffect(() => {
+        if (result !== null) {
+            console.log('result', result);
+        }
+
+    }, [result]);
+
+    useEffect(() => {
+        // console.log('selectedAnswer', selectedAnswer);
+    }, [selectedAnswer]);
+
+    useEffect(() => {
+        loadQuestion();
+    }, []);
+
+    async function loadQuestion() {
         setLoading(true);
         setSelectedAnswer([]);
+        setResult(null);
 
         const urlFilters = searchForParams();
 
@@ -36,35 +58,16 @@ function Question() {
             urlFilters.categories = searchParams.getAll('category[]');
         }
 
-        setFilters(urlFilters);
+        // setFilters(urlFilters);
 
         return urlFilters;
     }
 
-    const handleAnswerChange = (answerId) => {
-        setSelectedAnswer(prevSelected => {
-            if (prevSelected.includes(answerId)) {
-                return prevSelected.filter(id => id !== answerId);
-            } else {
-                return [...prevSelected, answerId];
-            }
-        });
-    };
-
-
-    useEffect(() => {
-        // console.log(selectedAnswer);
-    }, [selectedAnswer]);
-
-    useEffect(() => {
-        loadQuestion();
-    }, []);
-
-    const handleNextQuestion = () => {
+    function handleNextQuestion() {
         loadQuestion();
     };
 
-    const handleSubmit = async () => {
+    async function handleSubmit() {
         // if (!selectedAnswer) return;
 
         try {
@@ -81,10 +84,6 @@ function Question() {
     return (
         <>
             <br/>
-            <button onClick={handleNextQuestion}>
-                Next question
-            </button>
-            <br/>
             <br/>
 
             <h2 className={'text-3xl'}>Question</h2>
@@ -93,49 +92,110 @@ function Question() {
             <p>Difficulty : {question.difficulty}</p>
 
             <br/>
-            {/*<form action="/question" method="POST">*/}
+
             <ul>
                 {question.answers.map((answer, index) => (
-                    // <li key={`answer-${answer.id}`}>
-                    //     <input type="checkbox" id={`answer-${answer.id}`}/>
-                    //     <label htmlFor={`answer-${answer.id}`}>{answer.content}</label>
-                    // </li>
-                    <li key={`answer-${answer.id}`} className="answer-option">
-                        <input
-                            type="checkbox"
-                            id={`answer-${index}`}
-                            name="answer"
-                            value={answer.id}
-                            // checked={selectedAnswer === answer.id}
-                            // onChange={() => setSelectedAnswer([answer.id])}
-                            checked={selectedAnswer.includes(answer.id)}
-                            onChange={() => handleAnswerChange(answer.id)}
-                            // disabled={result !== null}
-                        />
-                        <label htmlFor={`answer-${index}`}>{answer.content}</label>
-                    </li>
+                    <Answer key={`answer-${answer.id}`} result={result} answer={answer} index={index} selectedAnswer={selectedAnswer}
+                            setSelectedAnswer={setSelectedAnswer}/>
                 ))}
             </ul>
 
             <br/>
+            <button onClick={handleSubmit}>
+                Validate
+            </button>
 
-            {/*<input type="">Send</input>*/}
-
-            {/*{!result && (*/}
-                <button
-                    onClick={handleSubmit}
-                    // disabled={!selectedAnswer}
-                >
-                    Validate
-                </button>
-            {/*// )}*/}
             {/*</form>*/}
+
+            <br/>
+            <br/>
+
+
+            {result !== null && (
+                <>
+                    <Explanation explanation={result.explanation}/>
+
+                    <button onClick={handleNextQuestion}>
+                        Next question
+                    </button>
+                </>
+            )}
+
         </>
     )
 }
 
 export default Question;
 
+/*{/!*<form onSubmit={(e) => {
+                e.preventDefault();
+                handleSubmit();
+            }}>*!/}
+<ul>
+    {question.answers.map((answer, index) => (
+        <li key={`answer-${answer.id}`} className="answer-option">
+            <input
+                type="checkbox"
+                id={`answer-${index}`}
+                name="answer"
+                value={answer.id}
+                checked={selectedAnswer.includes(answer.id)}
+                onChange={() => handleAnswerChange(answer.id)}
+            />
+            <label htmlFor={`answer-${index}`}>{answer.content}</label>
+        </li>
+    ))}
+</ul>
+
+{/!*<button type="submit">*!/}
+{/!*    Validate*!/}
+{/!*</button>*!/}
+<button
+    onClick={handleSubmit}
+    // disabled={!selectedAnswer}
+>
+    Validate
+</button>
+
+{/!*</form>*!/}*/
+
+/*{/!*<form action="/question" method="POST">*!/}
+<ul>
+    {question.answers.map((answer, index) => (
+        // <li key={`answer-${answer.id}`}>
+        //     <input type="checkbox" id={`answer-${answer.id}`}/>
+        //     <label htmlFor={`answer-${answer.id}`}>{answer.content}</label>
+        // </li>
+        <li key={`answer-${answer.id}`} className="answer-option">
+            <input
+                type="checkbox"
+                id={`answer-${index}`}
+                name="answer"
+                value={answer.id}
+                // checked={selectedAnswer === answer.id}
+                // onChange={() => setSelectedAnswer([answer.id])}
+                checked={selectedAnswer.includes(answer.id)}
+                onChange={() => handleAnswerChange(answer.id)}
+                // disabled={result !== null}
+            />
+            <label htmlFor={`answer-${index}`}>{answer.content}</label>
+        </li>
+    ))}
+</ul>
+
+<br/>
+
+{/!*<input type="">Send</input>*!/}
+
+{/!*{!result && (*!/}
+<button
+    onClick={handleSubmit}
+    // disabled={!selectedAnswer}
+>
+    Validate
+</button>
+{/!*!// )}*!/}
+{/!*</form>*!/}*/
 
 /*return (
     <>

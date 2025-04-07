@@ -81,8 +81,8 @@ class QuestionsApiController extends AbstractController
 //        $isCorrect = $userAnswer === $correctAnswer;
 //        $correctAnswer = $questionsRepository->findAnswersByQuestionId($questionId);
         $correctAnswer = $answersRepository->findCorrectAnswerIdsByQuestionId($questionId);
-        dump($correctAnswer);
-        dump($userAnswer);
+//        dump($correctAnswer);
+//        dump($userAnswer);
 //        $match = ($correctAnswer == $userAnswer);
 //        dump($match);
 
@@ -92,16 +92,13 @@ class QuestionsApiController extends AbstractController
         $match = (empty($diff1) && empty($diff2));
         $explanation = $questionsRepository->findExplanationByQuestionId($questionId);
 
-        dump($match);
-        dump($explanation);
-        die();
-
-
+//        dump($match);
+//        dump($explanation);
+//        die();
 
 //        dump($diff1);
 //        dump($diff2);
 //        dump($match);
-//
 //
 //        die();
 

@@ -26,8 +26,8 @@ export const getQuestion = async (filters = {}) => {
 };
 
 export const submitAnswer = async (questionId, answer) => {
-    console.log(questionId);
-    console.log(answer);
+    // console.log(questionId);
+    // console.log(answer);
 
     const response = await fetch(`${BASE_URL}/${questionId}/check`, {
         method: 'POST',
