@@ -1,20 +1,20 @@
 import React, {useEffect, useState} from 'react';
-import {getQuestion} from "../services/questionsApi";
+import {getQuestion, submitAnswer} from "../services/questionsApi";
 
 function Question() {
     const [question, setQuestion] = useState(null);
-    const [selectedAnswer, setSelectedAnswer] = useState('');
+    const [selectedAnswer, setSelectedAnswer] = useState([]);
     const [result, setResult] = useState(null);
     const [loading, setLoading] = useState(true);
     const [filters, setFilters] = useState({});
 
     const loadQuestion = async () => {
         setLoading(true);
+        setSelectedAnswer([]);
 
         const urlFilters = searchForParams();
 
         try {
-            // console.log(filters);
             const data = await getQuestion(urlFilters);
             setQuestion(data);
         } catch (error) {
@@ -41,26 +41,20 @@ function Question() {
         return urlFilters;
     }
 
-    // function searchForParams() {
-    //     const searchParams = new URLSearchParams(window.location.search);
-    //     const urlFilters = {};
-    //
-    //     if (searchParams.has('difficulty')) {
-    //         urlFilters.difficulty = searchParams.get('difficulty');
-    //     }
-    //
-    //     if (searchParams.has('category[]')) {
-    //         const categories = searchParams.getAll('category[]');
-    //         urlFilters.categories = categories;
-    //
-    //     }
-    //
-    //     setFilters(urlFilters);
-    // }
+    const handleAnswerChange = (answerId) => {
+        setSelectedAnswer(prevSelected => {
+            if (prevSelected.includes(answerId)) {
+                return prevSelected.filter(id => id !== answerId);
+            } else {
+                return [...prevSelected, answerId];
+            }
+        });
+    };
+
 
     useEffect(() => {
-        // console.log(filters);
-    }, [filters]);
+        // console.log(selectedAnswer);
+    }, [selectedAnswer]);
 
     useEffect(() => {
         loadQuestion();
@@ -68,21 +62,13 @@ function Question() {
 
     const handleNextQuestion = () => {
         loadQuestion();
-        // if (onNewQuestion) onNewQuestion();
     };
 
-    // useEffect(() => {
-    //     // console.log(question);
-    //     console.log(question);
-    //     // console.log("Question mise à jour:", question.answers);
-    //     // console.log("Question mise à jour:", question.answer);
-    // }, [question]);
-
     const handleSubmit = async () => {
-        if (!selectedAnswer) return;
+        // if (!selectedAnswer) return;
 
         try {
-            const result = await submitAnswer(questionId, selectedAnswer);
+            const result = await submitAnswer(question.id, selectedAnswer);
             setResult(result);
         } catch (error) {
             console.error('Error submitting answer:', error);
@@ -94,70 +80,105 @@ function Question() {
 
     return (
         <>
+            <br/>
             <button onClick={handleNextQuestion}>
-                Question suivante
+                Next question
             </button>
-
+            <br/>
             <br/>
 
-            <h2>Question component</h2>
+            <h2 className={'text-3xl'}>Question</h2>
             <p>ID : {question.id}</p>
             <p>Content : {question.content}</p>
             <p>Difficulty : {question.difficulty}</p>
 
+            <br/>
+            {/*<form action="/question" method="POST">*/}
             <ul>
-                {question.answers.map((answer) => (
-                    <li key={`answer-${answer.id}`}>{answer.content}</li>
+                {question.answers.map((answer, index) => (
+                    // <li key={`answer-${answer.id}`}>
+                    //     <input type="checkbox" id={`answer-${answer.id}`}/>
+                    //     <label htmlFor={`answer-${answer.id}`}>{answer.content}</label>
+                    // </li>
+                    <li key={`answer-${answer.id}`} className="answer-option">
+                        <input
+                            type="checkbox"
+                            id={`answer-${index}`}
+                            name="answer"
+                            value={answer.id}
+                            // checked={selectedAnswer === answer.id}
+                            // onChange={() => setSelectedAnswer([answer.id])}
+                            checked={selectedAnswer.includes(answer.id)}
+                            onChange={() => handleAnswerChange(answer.id)}
+                            // disabled={result !== null}
+                        />
+                        <label htmlFor={`answer-${index}`}>{answer.content}</label>
+                    </li>
                 ))}
             </ul>
+
+            <br/>
+
+            {/*<input type="">Send</input>*/}
+
+            {/*{!result && (*/}
+                <button
+                    onClick={handleSubmit}
+                    // disabled={!selectedAnswer}
+                >
+                    Validate
+                </button>
+            {/*// )}*/}
+            {/*</form>*/}
         </>
     )
-
-    /*return (
-        <>
-            <h2 className={'text-3xl'}>Question Component</h2>
-            <div className="question">
-                <h2>{question.title}</h2>
-                <p>{question.content}</p>
-                <div className="answers">
-                    {question.answers.map((answer, index) => (
-                        <div key={index} className="answer-option">
-                            <input
-                                type="radio"
-                                id={`answer-${index}`}
-                                name="answer"
-                                value={answer}
-                                checked={selectedAnswer === answer}
-                                onChange={() => setSelectedAnswer(answer)}
-                                disabled={result !== null}
-                            />
-                            <label htmlFor={`answer-${index}`}>{answer}</label>
-                        </div>
-                    ))}
-                </div>
-
-                {!result && (
-                    <button
-                        onClick={handleSubmit}
-                        disabled={!selectedAnswer}
-                    >
-                        Valider
-                    </button>
-                )}
-
-                {result && (
-                    <div className={`result ${result.correct ? 'correct' : 'incorrect'}`}>
-                        <p>{result.correct ? 'Bonne réponse!' : 'Réponse incorrecte'}</p>
-                        {result.explanation && <p>{result.explanation}</p>}
-                    </div>
-                )}
-            </div>
-            );
-        </>
-    );*/
 }
 
 export default Question;
+
+
+/*return (
+    <>
+        <h2 className={'text-3xl'}>Question Component</h2>
+        <div className="question">
+            <h2>{question.title}</h2>
+            <p>{question.content}</p>
+            <div className="answers">
+                {question.answers.map((answer, index) => (
+                    <div key={index} className="answer-option">
+                        <input
+                            type="radio"
+                            id={`answer-${index}`}
+                            name="answer"
+                            value={answer}
+                            checked={selectedAnswer === answer}
+                            onChange={() => setSelectedAnswer(answer)}
+                            disabled={result !== null}
+                        />
+                        <label htmlFor={`answer-${index}`}>{answer}</label>
+                    </div>
+                ))}
+            </div>
+
+            {!result && (
+                <button
+                    onClick={handleSubmit}
+                    disabled={!selectedAnswer}
+                >
+                    Valider
+                </button>
+            )}
+
+            {result && (
+                <div className={`result ${result.correct ? 'correct' : 'incorrect'}`}>
+                    <p>{result.correct ? 'Bonne réponse!' : 'Réponse incorrecte'}</p>
+                    {result.explanation && <p>{result.explanation}</p>}
+                </div>
+            )}
+        </div>
+        );
+    </>
+);*/
 
 //     const [question, setQuestion] = useState(null);
 //     const [loading, setLoading] = useState(true);

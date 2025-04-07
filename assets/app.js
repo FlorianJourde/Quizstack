@@ -16,13 +16,14 @@ document.addEventListener('DOMContentLoaded', () => {
         const questionId = questionContainer.dataset.questionId;
         // console.log(questionId)
         const productRoot = createRoot(questionContainer);
-        productRoot.render(
-            <React.StrictMode>
-                <Question/>
-                {/*<Question questionId={questionId}/>*/}
-                {/*<Question filters={filters} onNewQuestion={handleNewQuestion} />*/}
-            </React.StrictMode>
-        );
+        productRoot.render(<Question/>);
+        // productRoot.render(
+        //     <React.StrictMode>
+        //         <Question/>
+        //         {/*<Question questionId={questionId}/>*/}
+        //         {/*<Question filters={filters} onNewQuestion={handleNewQuestion} />*/}
+        //     </React.StrictMode>
+        // );
     }
 });
 

@@ -16,6 +16,22 @@ class AnswersRepository extends ServiceEntityRepository
         parent::__construct($registry, Answers::class);
     }
 
+    public function findCorrectAnswerIdsByQuestionId(int $questionId): ?array
+    {
+        $results = $this->createQueryBuilder('a')
+            ->select('a.id')
+            ->innerJoin('a.question', 'q')
+            ->where('a.question = :questionId')
+            ->andWhere('a.correct = true')
+            ->setParameter('questionId', $questionId)
+            ->getQuery()
+            ->getResult();
+//            ->getScalarResult();
+
+        return array_column($results, 'id');
+    }
+
+
 //        public function findOneBySomeField($value): ?Answers
 //        {
 //            return $this->createQueryBuilder('a')
