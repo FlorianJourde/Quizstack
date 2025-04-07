@@ -7,24 +7,46 @@
     <ul>
         {#        <a href="{{ path('user') }}"> #}
         {% if is_granted('ROLE_ADMIN') %}
-            <a href="{{ path('users')}}">
+            <a href="{{ path('users') }}">
                 Users
             </a>
         {% endif %}
 
         {% if is_granted('ROLE_EDITOR') %}
-            <a href="{{ path('questions')}}">
+            <a href="{{ path('questions') }}">
                 Questions
             </a>
         {% endif %}
 
-        <a href="{{ path('login')}}">
-            Login
-        </a>
 
-        <a href="{{ path('register')}}">
-            Register
-        </a>
+        {% if is_granted('ROLE_USER') %}
+            <a href="{{ path('app_logout') }}">
+                Logout
+            </a>
+        {% else %}
+            <a href="{{ path('app_login') }}">
+                Login
+            </a>
+            <a href="{{ path('app_register') }}">
+                Register
+            </a>
+        {% endif %}
+
+
+        {#        {% if is_granted('ROLE_USER') %} #}
+        {#            <a href="{{ path('app_logout') }}"> #}
+        {#                Logout #}
+        {#            </a> #}
+        {#        {% else %} #}
+
+        {#        {% endif %} #}
+        {#        <a href="{{ path('app_login')}}"> #}
+        {#            Login #}
+        {#        </a> #}
+
+        {#        <a href="{{ path('app_register')}}"> #}
+        {#            Register #}
+        {#        </a> #}
 
     </ul>
 </header>

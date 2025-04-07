@@ -2,7 +2,11 @@
 @tailwind components;
 @tailwind utilities;
 body {
-  background-color: tan !important;
+  background-color: tan;
+}
+
+input {
+  background-color: inherit;
 }
 
 /*# sourceMappingURL=app.css.map */
