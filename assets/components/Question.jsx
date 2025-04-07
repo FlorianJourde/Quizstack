@@ -11,19 +11,7 @@ function Question() {
     const loadQuestion = async () => {
         setLoading(true);
 
-        const searchParams = new URLSearchParams(window.location.search);
-        const urlFilters = {};
-
-        if (searchParams.has('difficulty')) {
-            urlFilters.difficulty = searchParams.get('difficulty');
-        }
-
-        if (searchParams.has('category[]')) {
-            const categories = searchParams.getAll('category[]');
-            urlFilters.categories = categories;
-        }
-
-        setFilters(urlFilters);
+        const urlFilters = searchForParams();
 
         try {
             // console.log(filters);
@@ -34,6 +22,23 @@ function Question() {
         } finally {
             setLoading(false);
         }
+    }
+
+    function searchForParams() {
+        const searchParams = new URLSearchParams(window.location.search);
+        const urlFilters = {};
+
+        if (searchParams.has('difficulty')) {
+            urlFilters.difficulty = searchParams.get('difficulty');
+        }
+
+        if (searchParams.has('category[]')) {
+            urlFilters.categories = searchParams.getAll('category[]');
+        }
+
+        setFilters(urlFilters);
+
+        return urlFilters;
     }
 
     // function searchForParams() {
@@ -63,7 +68,7 @@ function Question() {
 
     const handleNextQuestion = () => {
         loadQuestion();
-        if (onNewQuestion) onNewQuestion();
+        // if (onNewQuestion) onNewQuestion();
     };
 
     // useEffect(() => {

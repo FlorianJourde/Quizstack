@@ -25,11 +25,13 @@ class QuestionsApiController extends AbstractController
     {
 
         $difficultyLevel = $request->query->get('difficulty') ?? null;
+//        $difficultyLevel = 'TEST';
         $categories = $request->query->all('category');
         $question = $questionsRepository->findRandomQuestionByFilters($difficultyLevel, $categories);
 
 //        dump($difficultyLevel);
 //        dump($categories);
+//        dump('TEST');
 //        die();
 
         if (!$question) {

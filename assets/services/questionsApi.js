@@ -7,11 +7,27 @@ export const getQuestions = async (filters = {}) => {
 };
 
 export const getQuestion = async (filters = {}) => {
+    const params = new URLSearchParams();
+
+    if (filters.difficulty) {
+        params.append('difficulty', filters.difficulty);
+    }
+
+    if (filters.categories && filters.categories.length > 0) {
+        filters.categories.forEach(category => {
+            params.append('category[]', category);
+        });
+    }
+
+
     // const params = new URLSearchParams(filters);
     console.log(filters)
-
-    const params = new URLSearchParams(filters);
-    // console.log(params);
+    // // const params = filters
+    // // console.log(params)
+    //
+    // const params = new URLSearchParams(filters);
+    console.log(filters.categories);
+    console.log(params.toString());
 
     // const searchParams = new URLSearchParams(window.location.search);
     //
@@ -30,7 +46,7 @@ export const getQuestion = async (filters = {}) => {
     // }
     //
     // console.log(URLSearchParams);
-    const response = await fetch(`${BASE_URL}/${params}`);
+    const response = await fetch(`${BASE_URL}?${params}`);
     return response.json();
 };
 
