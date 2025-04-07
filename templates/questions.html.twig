@@ -29,7 +29,7 @@
                         <td>{{ question.creationDate|date('d/m/Y') }}</td>
                         <td>{{ question.updateDate|date('d/m/Y') }}</td>
                         <td>{{ question.status }}</td>
-                        <td>{{ question.user.username }}</td>
+{#                        <td>{{ question.user.username }}</td>#}
                         <td>
                             <a href="{{ path('question', {'id': question.id}) }}" class="btn btn-sm btn-primary">See question</a>
                         </td>

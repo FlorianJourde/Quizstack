@@ -1,0 +1,40 @@
+<?php
+
+namespace App\Controller;
+
+use App\Repository\QuestionsRepository;
+use App\Utils\EnumUtility;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Routing\Attribute\Route;
+
+final class QuizController extends AbstractController
+{
+    #[Route('/quiz', name: 'quiz')]
+    public function question(Request $request, QuestionsRepository $questionsRepository): Response
+    {
+//
+//        $difficultyLevel = $request->query->get('difficulty') ?? null;
+//        $categories = $request->query->all('category');
+//        $question = $questionsRepository->findRandomQuestionByFilters($difficultyLevel, $categories);
+//
+//        $answers = $question->getAnswers();
+//        $answers->initialize();
+//
+//        if (!$question) {
+//            return new Response('No question found.', 404);
+//        }
+//
+//        if (!$answers) {
+//            return new Response('No answers found.', 404);
+//        }
+
+        return $this->render('quiz.html.twig');
+
+//        return $this->render('question.html.twig', [
+//            'question' => $question,
+//            'answers' => $answers
+//        ]);
+    }
+}

@@ -11,32 +11,32 @@ use Symfony\Component\Routing\Attribute\Route;
 
 final class QuestionsController extends AbstractController
 {
-    #[Route('/quiz', name: 'quiz')]
-    public function question(Request $request, QuestionsRepository $questionsRepository): Response
-    {
+//    #[Route('/quiz', name: 'quiz')]
+//    public function question(Request $request, QuestionsRepository $questionsRepository): Response
+//    {
+////
+////        $difficultyLevel = $request->query->get('difficulty') ?? null;
+////        $categories = $request->query->all('category');
+////        $question = $questionsRepository->findRandomQuestionByFilters($difficultyLevel, $categories);
+////
+////        $answers = $question->getAnswers();
+////        $answers->initialize();
+////
+////        if (!$question) {
+////            return new Response('No question found.', 404);
+////        }
+////
+////        if (!$answers) {
+////            return new Response('No answers found.', 404);
+////        }
 //
-//        $difficultyLevel = $request->query->get('difficulty') ?? null;
-//        $categories = $request->query->all('category');
-//        $question = $questionsRepository->findRandomQuestionByFilters($difficultyLevel, $categories);
+//        return $this->render('quiz.html.twig');
 //
-//        $answers = $question->getAnswers();
-//        $answers->initialize();
-//
-//        if (!$question) {
-//            return new Response('No question found.', 404);
-//        }
-//
-//        if (!$answers) {
-//            return new Response('No answers found.', 404);
-//        }
-
-        return $this->render('quiz.html.twig');
-
-//        return $this->render('question.html.twig', [
-//            'question' => $question,
-//            'answers' => $answers
-//        ]);
-    }
+////        return $this->render('question.html.twig', [
+////            'question' => $question,
+////            'answers' => $answers
+////        ]);
+//    }
 
 //    #[Route('/users', name: 'users')]
 //    public function users(UsersRepository $usersRepository): Response

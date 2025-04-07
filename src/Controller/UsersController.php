@@ -29,6 +29,9 @@ class UsersController extends AbstractController
     {
         $users = $usersRepository->findAll();
 
+//        dump($users);
+//        die();
+
         return $this->render('users.html.twig', [
             'users' => $users
         ]);

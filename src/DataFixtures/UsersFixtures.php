@@ -11,32 +11,36 @@ class UsersFixtures extends Fixture
     public function load(ObjectManager $manager): void
     {
         $date = new \DateTimeImmutable();
+        $role = [];
 
         $user = new Users();
         $user->setUsername('Admin');
         $user->setEmail('admin@email.com');
         $user->setPassword('password');
-        $user->setRole(3);
+//        $user->setRole(3);
         $user->setInscriptionDate($date);
         $user->setLastAuthenticationDate($date);
+        $user->setRoles($role);
         $manager->persist($user);
 
         $user = new Users();
         $user->setUsername('Editor');
         $user->setEmail('editor@email.com');
         $user->setPassword('password');
-        $user->setRole(2);
+//        $user->setRole(2);
         $user->setInscriptionDate($date);
         $user->setLastAuthenticationDate($date);
+        $user->setRoles($role);
         $manager->persist($user);
 
         $user = new Users();
         $user->setUsername('User');
         $user->setEmail('user@email.com');
         $user->setPassword('password');
-        $user->setRole(1);
+//        $user->setRole(1);
         $user->setInscriptionDate($date);
         $user->setLastAuthenticationDate($date);
+        $user->setRoles($role);
         $manager->persist($user);
 
         $manager->flush();
