@@ -12,16 +12,19 @@
 
     {% block javascripts %}
         {{ encore_entry_script_tags('app') }}
-{#        {{ encore_entry_script_tags('app') }}#}
+        {#        {{ encore_entry_script_tags('app') }} #}
 
-        {#        {{ encore_entry_script_tags }}#}
+        {#        {{ encore_entry_script_tags }} #}
     {% endblock %}
 
 </head>
+
+{{ include('partials/header.html.twig') }}
+
 <body class="bg-gray-800 text-white">
 
-{#<div id="app"></div>#}
-{#<h1>Layout</h1>#}
+{# <div id="app"></div> #}
+{# <h1>Layout</h1> #}
 
 {% block body %}
 {% endblock %}

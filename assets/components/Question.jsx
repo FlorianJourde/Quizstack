@@ -4,10 +4,10 @@ import Answer from "./Answer";
 import Explanation from "./Explanation";
 
 function Question() {
-    const [question, setQuestion] = useState(null);
+    const [loading, setLoading] = useState(true);
     const [selectedAnswer, setSelectedAnswer] = useState([]);
     const [result, setResult] = useState(null);
-    const [loading, setLoading] = useState(true);
+    const [question, setQuestion] = useState(null);
     // const [filters, setFilters] = useState({});
 
     useEffect(() => {
@@ -57,8 +57,6 @@ function Question() {
         if (searchParams.has('category[]')) {
             urlFilters.categories = searchParams.getAll('category[]');
         }
-
-        // setFilters(urlFilters);
 
         return urlFilters;
     }

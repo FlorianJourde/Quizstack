@@ -45,6 +45,9 @@ class Users
     #[ORM\OneToMany(targetEntity: Questions::class, mappedBy: 'user')]
     private Collection $questions;
 
+    #[ORM\OneToOne(mappedBy: 'users', cascade: ['persist', 'remove'])]
+    private ?Scores $scores = null;
+
     public function __construct()
     {
         $this->comments = new ArrayCollection();
@@ -191,6 +194,23 @@ class Users
                 $question->setUser(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getScores(): ?Scores
+    {
+        return $this->scores;
+    }
+
+    public function setScores(Scores $scores): static
+    {
+        // set the owning side of the relation if necessary
+        if ($scores->getUsers() !== $this) {
+            $scores->setUsers($this);
+        }
+
+        $this->scores = $scores;
 
         return $this;
     }
