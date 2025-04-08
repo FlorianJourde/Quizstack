@@ -26,12 +26,8 @@ class AuthenticationSuccessListener implements EventSubscriberInterface
     {
         $user = $event->getUser();
 
-        // Vérifier si l'utilisateur est une instance de notre entité User
         if ($user instanceof Users) {
-            // Mettre à jour la date de dernière connexion
             $user->setLastAuthenticationDate(new \DateTimeImmutable());
-
-            // Enregistrer les modifications
             $this->entityManager->persist($user);
             $this->entityManager->flush();
         }

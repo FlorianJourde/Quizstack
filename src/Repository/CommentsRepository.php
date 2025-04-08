@@ -16,6 +16,16 @@ class CommentsRepository extends ServiceEntityRepository
         parent::__construct($registry, Comments::class);
     }
 
+    public function findCommentsByQuestionId(int $questionId): ?array
+    {
+        return $this->createQueryBuilder('c')
+            ->where('c.question = :questionId')
+            ->setParameter('questionId', $questionId)
+            ->orderBy('c.creation_date', 'ASC')
+            ->getQuery()
+            ->getResult();
+    }
+
     //    /**
     //     * @return Comments[] Returns an array of Comments objects
     //     */

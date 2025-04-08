@@ -1,25 +1,35 @@
 import React, {useEffect, useState} from 'react';
 import {getQuestion, submitAnswer} from "../services/questionsApi";
+import {getComments} from "../services/commentsApi";
 import Answer from "./Answer";
 import Explanation from "./Explanation";
+import Comments from "./Comments";
 
 function Question() {
     const [loading, setLoading] = useState(true);
     const [selectedAnswer, setSelectedAnswer] = useState([]);
     const [result, setResult] = useState(null);
+    const [comments, setComments] = useState([]);
     const [question, setQuestion] = useState(null);
     // const [filters, setFilters] = useState({});
 
     useEffect(() => {
-        console.log('question', question);
+        // console.log('question', question);
     }, [question]);
 
     useEffect(() => {
         if (result !== null) {
-            console.log('result', result);
+            // console.log('result', result);
         }
 
     }, [result]);
+
+    useEffect(() => {
+        if (comments !== null) {
+            console.log('comments', comments);
+        }
+
+    }, [comments]);
 
     useEffect(() => {
         // console.log('selectedAnswer', selectedAnswer);
@@ -66,13 +76,13 @@ function Question() {
     };
 
     async function handleSubmit() {
-        // if (!selectedAnswer) return;
-
         try {
             const result = await submitAnswer(question.id, selectedAnswer);
+            const comments = await getComments(question.id);
             setResult(result);
+            setComments(comments);
         } catch (error) {
-            console.error('Error submitting answer:', error);
+            console.error('Error submitting answer : ', error);
         }
     };
 
@@ -116,6 +126,8 @@ function Question() {
                     <button onClick={handleNextQuestion}>
                         Next question
                     </button>
+
+                    <Comments comments={comments}/>
                 </>
             )}
 

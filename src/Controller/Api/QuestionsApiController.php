@@ -34,6 +34,7 @@ class QuestionsApiController extends AbstractController
         }
 
         $answers = $question->getAnswers();
+//        $comments = $question->getC
         $answers->initialize();
 
         if (!$answers) {

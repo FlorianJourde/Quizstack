@@ -38,3 +38,24 @@ export const submitAnswer = async (questionId, answer) => {
     });
     return response.json();
 };
+
+
+// export const getComments = async (questionId) => {
+//     // console.log('questionId : ', questionId);
+//     // console.log(answer);
+//
+//
+//
+//     const response = await fetch(`${BASE_URL}/${questionId}/comments`);
+//     return response.json();
+//
+//
+//     // const response = await fetch(`${BASE_URL}/${questionId}/comments`, {
+//     //     method: 'POST',
+//     //     headers: {
+//     //         'Content-Type': 'application/json',
+//     //     },
+//     //     body: JSON.stringify({ questionId, answer }),
+//     // });
+//     // return response.json();
+// };

@@ -62,7 +62,7 @@ class Comments
 
     public function getQuestionId(): ?int
     {
-        return $this->question;
+        return $this->question = null;
     }
 
     public function setQuestionId(?Questions $question): static
