@@ -22,11 +22,11 @@ class QuestionsRepository extends ServiceEntityRepository
     public function findRandomQuestionByFilters(?string $difficulty, array $categories): ?Questions
     {
         $qb = $this->createQueryBuilder('q')
-            ->leftJoin('q.categories', 'c')
-            ->leftJoin('q.answers', 'a');
+            ->leftJoin('q.categories', 'ca')
+            ->leftJoin('q.choices', 'ch');
 
         if (!empty($categories)) {
-            $qb->andWhere('c.name IN (:categories)')
+            $qb->andWhere('ca.name IN (:categories)')
                 ->setParameter('categories', $categories);
         }
 

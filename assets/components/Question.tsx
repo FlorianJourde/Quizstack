@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
-import {getQuestion, submitAnswer} from "../services/questionsApi";
+import {getQuestion, submitAnswers} from "../services/questionsApi";
 import {getComments} from "../services/commentsApi";
-import Answer from "./Answer";
+import Choice from "./Choice";
 import Explanation from "./Explanation";
 import Comments from "./Comments";
 // import {Question} from "../types";
@@ -26,12 +26,13 @@ function Question() {
 // const QuestionComponent: React.FC<QuestionProps> = ({ question }) => {
 
     const [loading, setLoading] = useState(true);
-    const [selectedAnswers, setSelectedAnswers] = useState([]);
+    const [answers, setAnswers] = useState([]);
     const [result, setResult] = useState<ResultInterface | null>(null);
-    const [comments, setComments] = useState<CommentInterface | []>([]);
+    // const [comments, setComments] = useState<CommentInterface | []>([]);
     const [question, setQuestion] = useState<QuestionInterface | null>(null);
 
     useEffect(() => {
+        console.log(question)
     }, [question]);
 
     useEffect(() => {
@@ -40,14 +41,14 @@ function Question() {
     }, [result]);
 
     useEffect(() => {
-        if (comments !== null) {
+        if (question?.comments !== null) {
             // console.log('comments', comments);
         }
 
-    }, [comments]);
+    }, [question?.comments]);
 
     useEffect(() => {
-    }, [selectedAnswers]);
+    }, [answers]);
 
     useEffect(() => {
         loadQuestion();
@@ -55,7 +56,7 @@ function Question() {
 
     async function loadQuestion() {
         setLoading(true);
-        setSelectedAnswers([]);
+        setAnswers([]);
         setResult(null);
 
         const urlFilters = searchForParams();
@@ -64,10 +65,10 @@ function Question() {
             const data = await getQuestion(urlFilters);
             setQuestion(data);
 
-            if (data?.id) {
-                const comments = await getComments(data.id);
-                setComments(comments);
-            }
+            // if (data?.id) {
+            //     const comments = await getComments(data.id);
+            //     setComments(comments);
+            // }
 
         } catch (error) {
             console.error('Error loading question:', error);
@@ -97,10 +98,11 @@ function Question() {
 
     async function handleSubmit() {
         try {
-            const result = await submitAnswer(question?.id, selectedAnswers);
+            const result = await submitAnswers(question?.id, answers);
+            console.log('TEST')
             setResult(result);
         } catch (error) {
-            console.error('Error submitting answer : ', error);
+            console.error('Error submitting answers : ', error);
         }
     };
 
@@ -120,10 +122,10 @@ function Question() {
             <br/>
 
             <ul>
-                {question.answers.map((answer, index) => (
-                    <Answer key={`answer-${answer.id}`} result={result} answer={answer} index={index}
-                            selectedAnswers={selectedAnswers}
-                            setSelectedAnswers={setSelectedAnswers}/>
+                {question.choices.map((choice, index) => (
+                    <Choice key={`choice-${choice.id}`} result={result} choice={choice} index={index}
+                            answers={answers}
+                            setAnswers={setAnswers}/>
                 ))}
             </ul>
 
@@ -140,14 +142,14 @@ function Question() {
 
             {result !== null && (
                 <>
-                    {result?.explanation && <Explanation explanation={result.explanation}/>}
+                    {result && <Explanation explanation={question.explanation}/>}
                         {/*<Explanation explanation={result.explanation}/>*/}
 
                     <button onClick={handleNextQuestion}>
                         Next question
                     </button>
 
-                    <Comments comments={comments}/>
+                    <Comments comments={question.comments}/>
                 </>
             )}
 

@@ -3,7 +3,7 @@
 namespace App\DataFixtures\Questions;
 
 use App\DataFixtures\QuestionsCategoriesFixtures;
-use App\Entity\Answers;
+use App\Entity\Choices;
 use App\Entity\Questions;
 use App\Entity\Users;
 use App\Utils\CategoryHelper;
@@ -11,7 +11,7 @@ use Doctrine\Persistence\ObjectManager;
 
 class Question1
 {
-    public function createQuestionWithAnswers(ObjectManager $manager, \DateTimeImmutable $date, CategoryHelper $categories)
+    public function createQuestionWithChoices(ObjectManager $manager, \DateTimeImmutable $date, CategoryHelper $categories)
     {
         $question = new Questions();
         $question->setContent(
@@ -39,36 +39,36 @@ class Question1
 
         $manager->persist($question);
 
-        $answer1 = new Answers();
-        $answer1->setQuestionId($question);
-        $answer1->setContent(
+        $choice1 = new Choices();
+        $choice1->setQuestionId($question);
+        $choice1->setContent(
             <<<'EOT'
             `$pdo = new PDO('mysql:host=localhost;dbname=test', 'user', 'password');`
             EOT
         );
-        $answer1->setCorrect(true);
-        $manager->persist($answer1);
+        $choice1->setCorrect(true);
+        $manager->persist($choice1);
 
-        $answer2 = new Answers();
-        $answer2->setQuestionId($question);
-        $answer2->setContent(
+        $choice2 = new Choices();
+        $choice2->setQuestionId($question);
+        $choice2->setContent(
             <<<'EOT'
             `$pdo = mysqli_connect('localhost', 'user', 'password', 'test');`
             EOT
         );
-        $answer2->setCorrect(false);
-        $manager->persist($answer2);
+        $choice2->setCorrect(false);
+        $manager->persist($choice2);
 
 
-        $answer2 = new Answers();
-        $answer2->setQuestionId($question);
-        $answer2->setContent(
+        $choice2 = new Choices();
+        $choice2->setQuestionId($question);
+        $choice2->setContent(
             <<<'EOT'
             `$pdo = new MySQLi('localhost', 'user', 'password', 'test');`
             EOT
         );
-        $answer2->setCorrect(false);
-        $manager->persist($answer2);
+        $choice2->setCorrect(false);
+        $manager->persist($choice2);
 
         $manager->flush();
     }

@@ -2,8 +2,11 @@
 
 namespace App\Controller\Api;
 
-use App\Repository\AnswersRepository;
+use App\Entity\Choices;
+use App\Repository\ChoicesRepository;
+use App\Repository\CommentsRepository;
 use App\Repository\QuestionsRepository;
+use App\Repository\UsersRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -13,7 +16,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class QuestionsApiController extends AbstractController
 {
     #[Route('/question', name: 'get', methods: ['GET'])]
-    public function getQuestion(Request $request, QuestionsRepository $questionsRepository): JsonResponse
+    public function getQuestion(Request $request, QuestionsRepository $questionsRepository, ChoicesRepository $choicesRepository, CommentsRepository $commentsRepository, UsersRepository $usersRepository): JsonResponse
     {
         $difficultyLevel = $request->query->get('difficulty') ?? null;
         $categories = $request->query->all('category');
@@ -23,17 +26,33 @@ class QuestionsApiController extends AbstractController
             return new JsonResponse('No question found.', 404);
         }
 
-        $answers = $question->getAnswers();
-
-        if (!$answers) {
-            return new JsonResponse('No answers found.', 404);
+        $choices = $question->getChoices();
+        $choiceArray = [];
+        foreach ($choices as $choice) {
+            $choiceArray[] = [
+                'id' => $choice->getId(),
+                'content' => $choice->getContent()
+            ];
         }
 
-        $answerArray = [];
-        foreach ($answers as $answer) {
-            $answerArray[] = [
-                'id' => $answer->getId(),
-                'content' => $answer->getContent()
+//        $comments = $commentsRepository->findCommentsByQuestionId($question->getId());
+        $comments = $question->getComments();
+        $commentArray = [];
+        foreach ($comments as $comment) {
+            $userId = $comment->getUserId();
+            $user = $userId ? $usersRepository->find($userId) : null;
+
+            $commentArray[] = [
+                'id' => $comment->getId(),
+                'content' => $comment->getContent(),
+                'creation_date' => $comment->getCreationDate(),
+                'author' => $user ? [
+                    'id' => $user->getId(),
+                    'email' => $user->getEmail(),
+                    'username' => $user->getUsername(),
+                ] : [
+                    'username' => 'Anonyme',
+                ],
             ];
         }
 
@@ -41,32 +60,32 @@ class QuestionsApiController extends AbstractController
             'id' => $question->getId(),
             'content' => $question->getContent(),
             'difficulty' => $question->getDifficulty(),
-            'answers' => $answerArray,
+            'choices' => $choiceArray,
+            'explanation' => $questionsRepository->findExplanationByQuestionId($question->getId()),
+            'comments' => $commentArray
         ]);
     }
 
-    #[Route('/question/{id}/check', name: 'check_answer', methods: ['POST'])]
-    public function checkAnswer(AnswersRepository $answersRepository, QuestionsRepository $questionsRepository, Request $request): JsonResponse
+    #[Route('/question/{id}/check', name: 'check_answers', methods: ['POST'])]
+    public function checkAnswers(ChoicesRepository $choicesRepository, QuestionsRepository $questionsRepository, Request $request): JsonResponse
     {
         $data = json_decode($request->getContent(), true);
         $questionId = $data['questionId'] ?? null;
-        $userAnswer = $data['answer'] ?? null;
+        $answers = $data['answers'] ?? null;
 
-        if ($userAnswer === null) {
+        if ($answers === null) {
             return $this->json(['error' => 'No answer provided'], 400);
         }
 
-        $correctAnswer = $answersRepository->findCorrectAnswerIdsByQuestionId($questionId);
-        $diff1 = array_diff($correctAnswer, $userAnswer);
-        $diff2 = array_diff($userAnswer, $correctAnswer);
+        $correctChoices = $choicesRepository->findCorrectAnswerIdsByQuestionId($questionId);
+        $diff1 = array_diff($correctChoices, $answers);
+        $diff2 = array_diff($answers, $correctChoices);
 
         $match = (empty($diff1) && empty($diff2));
-        $explanation = $questionsRepository->findExplanationByQuestionId($questionId);
 
         return $this->json([
             'correct' => $match,
-            'explanation' => $explanation,
-            'correctAnswer' => $correctAnswer
+            'correctChoices' => $correctChoices
         ]);
     }
 }

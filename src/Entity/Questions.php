@@ -32,10 +32,16 @@ class Questions
     private ?bool $status = false;
 
     /**
-     * @var Collection<int, Answers>
+     * @var Collection<int, Choices>
      */
-    #[ORM\OneToMany(targetEntity: Answers::class, mappedBy: 'question')]
-    private Collection $answers;
+    #[ORM\OneToMany(targetEntity: Choices::class, mappedBy: 'question')]
+    private Collection $choices;
+
+    /**
+     * @var Collection<int, Comments>
+     */
+    #[ORM\OneToMany(targetEntity: Comments::class, mappedBy: 'question')]
+    private Collection $comments;
 
     #[ORM\Column]
     private ?int $difficulty = null;
@@ -55,8 +61,9 @@ class Questions
 
     public function __construct()
     {
-        $this->answers = new ArrayCollection();
+        $this->choices = new ArrayCollection();
         $this->categories = new ArrayCollection();
+        $this->comments = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -132,29 +139,60 @@ class Questions
     }
 
     /**
-     * @return Collection<int, Answers>
+     * @return Collection<int, Choices>
      */
-    public function getAnswers(): Collection
+    public function getChoices(): Collection
     {
-        return $this->answers;
+        return $this->choices;
     }
 
-    public function addAnswerId(Answers $answerId): static
+    public function addChoice(Choices $choice): static
     {
-        if (!$this->answers->contains($answerId)) {
-            $this->answers->add($answerId);
-            $answerId->setQuestionId($this);
+        if (!$this->choices->contains($choice)) {
+            $this->choices->add($choice);
+            $choice->setQuestionId($this);
         }
 
         return $this;
     }
 
-    public function removeAnswerId(Answers $answerId): static
+    public function removeChoice(Choices $choice): static
     {
-        if ($this->answers->removeElement($answerId)) {
+        if ($this->choices->removeElement($choice)) {
             // set the owning side to null (unless already changed)
-            if ($answerId->getQuestionId() === $this) {
-                $answerId->setQuestionId(null);
+            if ($choice->getQuestionId() === $this) {
+                $choice->setQuestionId(null);
+            }
+        }
+
+        return $this;
+    }
+
+
+    /**
+     * @return Collection<int, Comments>
+     */
+    public function getComments(): Collection
+    {
+        return $this->comments;
+    }
+
+    public function addComment(Comments $comment): static
+    {
+        if (!$this->comments->contains($comment)) {
+            $this->comments->add($comment);
+            $comment->setQuestionId($this);
+        }
+
+        return $this;
+    }
+
+    public function removeComment(Comments $comment): static
+    {
+        if ($this->comments->removeElement($comment)) {
+            // set the owning side to null (unless already changed)
+            if ($comment->getQuestionId() === $this) {
+                $comment->setQuestionId(null);
             }
         }
 

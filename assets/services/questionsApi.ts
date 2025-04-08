@@ -26,13 +26,14 @@ export const getQuestion = async (filters: UrlFiltersInterface = {}) => {
     return response.json();
 };
 
-export const submitAnswer = async (questionId, selectedAnswers) => {
+// export const submitAnswers = async (questionId, selectedAnswers) => {
+export async function submitAnswers(questionId, answers) {
     const response = await fetch(`${BASE_URL}/${questionId}/check`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ questionId, selectedAnswers }),
+        body: JSON.stringify({ questionId, answers: answers }),
     });
     return response.json();
 };

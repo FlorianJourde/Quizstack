@@ -2,19 +2,19 @@
 
 namespace App\Entity;
 
-use App\Repository\AnswersRepository;
+use App\Repository\ChoicesRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
-#[ORM\Entity(repositoryClass: AnswersRepository::class)]
-class Answers
+#[ORM\Entity(repositoryClass: ChoicesRepository::class)]
+class Choices
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\ManyToOne(targetEntity: Questions::class, inversedBy: 'answers')]
+    #[ORM\ManyToOne(targetEntity: Questions::class, inversedBy: 'choices')]
     #[ORM\JoinColumn(nullable: false)]
     private ?Questions $question = null;
 

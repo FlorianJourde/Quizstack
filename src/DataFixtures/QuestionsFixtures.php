@@ -18,13 +18,13 @@ class QuestionsFixtures extends Fixture implements DependentFixtureInterface
         $categories = new CategoryHelper($manager);
 
         $question1 = new Question1();
-        $question1->createQuestionWithAnswers($manager, $date, $categories);
+        $question1->createQuestionWithChoices($manager, $date, $categories);
 
         $question2 = new Question2();
-        $question2->createQuestionWithAnswers($manager, $date, $categories);
+        $question2->createQuestionWithChoices($manager, $date, $categories);
 
         $question3 = new Question3();
-        $question3->createQuestionWithAnswers($manager, $date, $categories);
+        $question3->createQuestionWithChoices($manager, $date, $categories);
     }
 
     public function getDependencies(): array

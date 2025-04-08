@@ -1,13 +1,15 @@
 import {CategoriesInterface} from "./categories";
-import {AnswersInterface} from "./answers";
+import {ChoicesInterface} from "./choices";
+import {CommentInterface} from "./comment";
 
 export interface QuestionInterface {
     id: number;
     content: string;
     difficulty: number;
+    explanation: string;
     categories: CategoriesInterface[];
-    // answers: Ans
-    answers: AnswersInterface[];
+    choices: ChoicesInterface[];
+    comments: CommentInterface[];
 }
 
 // export interface QuestionProps {

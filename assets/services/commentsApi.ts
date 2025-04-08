@@ -2,7 +2,6 @@ import question from "../components/Question";
 
 const BASE_URL = '/api';
 
-
 export const getComments = async (questionId) => {
     // console.log('questionId : ', questionId);
 

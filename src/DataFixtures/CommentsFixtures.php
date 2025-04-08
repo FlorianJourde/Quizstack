@@ -60,7 +60,7 @@ class CommentsFixtures extends Fixture implements DependentFixtureInterface
             $comment3 = new Comments();
             $comment3->setQuestionId($question3);
             $comment3->setUserId($user);
-            $comment3->setContent("This is the answer number {$i} !");
+            $comment3->setContent("This is the comment number {$i} !");
             $comment3->setCreationDate($date);
             $comment3->setUpdateDate($date);
             $manager->persist($comment3);

@@ -1,4 +1,5 @@
 export interface ResultInterface {
-    explanation?: string;
-    isCorrect: boolean;
+    // explanation?: string;
+    correct: boolean;
+    correctChoices: Array<number>;
 }
