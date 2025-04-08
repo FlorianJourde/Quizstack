@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Categories{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <h1 class="text-3xl">Scores</h1>
+
+        {% for score in scores %}
+            <h2>{{ score.users.username }}</h2>
+            <p>Week : {{ score.week }}</p>
+            <p>Month : {{ score.month }}</p>
+            <p>All Time : {{ score.allTime }}</p>
+            <br/>
+        {% else %}
+            <p>No scores.</p>
+        {% endfor %}
+
+    </div>
+    </div>
+{% endblock %}

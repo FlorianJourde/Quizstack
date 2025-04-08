@@ -6,9 +6,22 @@
 
     <ul>
         {#        <a href="{{ path('user') }}"> #}
+
+{#        {% if is_granted('ROLE_ADMIN') %}#}
+            <a href="{{ path('scores') }}">
+                Scores
+            </a>
+{#        {% endif %}#}
+
         {% if is_granted('ROLE_ADMIN') %}
             <a href="{{ path('users') }}">
                 Users
+            </a>
+        {% endif %}
+
+        {% if is_granted('ROLE_ADMIN') %}
+            <a href="{{ path('categories') }}">
+                Categories
             </a>
         {% endif %}
 

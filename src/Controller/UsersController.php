@@ -10,6 +10,7 @@ use Symfony\Component\Security\Http\Attribute\IsGranted;
 
 class UsersController extends AbstractController
 {
+    #[IsGranted('ROLE_USER')]
     #[Route('/user/{id}', name: 'user', requirements: ['id' => '\d+'])]
     public function user(int $id, UsersRepository $usersRepository): Response
     {

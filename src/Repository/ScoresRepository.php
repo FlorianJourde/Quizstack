@@ -15,4 +15,15 @@ class ScoresRepository extends ServiceEntityRepository
     {
         parent::__construct($registry, Scores::class);
     }
+
+    public function findScoreWithLimit(int $limit): ?array
+    {
+        return $this->createQueryBuilder('s')
+            ->leftJoin('s.users', 'u')
+            ->addSelect('u')
+            ->orderBy('s.week', 'DESC')
+            ->setMaxResults($limit)
+            ->getQuery()
+            ->getResult();
+    }
 }

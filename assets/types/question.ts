@@ -11,7 +11,3 @@ export interface QuestionInterface {
     choices: ChoicesInterface[];
     comments: CommentInterface[];
 }
-
-// export interface QuestionProps {
-//     questionProps: QuestionInterface;
-// }
