@@ -20,11 +20,7 @@ Encore
      * Each entry will result in one JavaScript file (e.g. app.js)
      * and one CSS file (e.g. app.scss) if your JavaScript imports CSS.
      */
-    .addEntry('app', './assets/app.js')
-    // .addEntry('question_app', './assets/question_app.js')
-    // .addEntry('question_app', './assets/question_app.js')
-    // .addEntry('question_app', './assets/question_app.js')
-    // .addEntry('js/app', './assets/js/app.js')
+    .addEntry('app', './assets/app.ts')
     .addStyleEntry('styles', './assets/styles/app.scss')
     .addEntry('filters', './assets/scripts/filters.js')
 

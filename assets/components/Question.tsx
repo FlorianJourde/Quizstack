@@ -4,13 +4,32 @@ import {getComments} from "../services/commentsApi";
 import Answer from "./Answer";
 import Explanation from "./Explanation";
 import Comments from "./Comments";
+// import {Question} from "../types";
+import {QuestionInterface, ResultInterface} from '../types';
+// import {QuestionInterface} from '../types';
+import {UrlFiltersInterface} from "../types/urlFilters";
+import {CommentInterface} from "../types/comment";
 
+// interface QuestionProps {
+//     question: Question;
+// }
+
+// function Question: React.FC<QuestionProps> = ({ question }) => {
+// function Question({question: questionProp}): JSX.Element {
+// function Question({QuestionProps}): JSX.Element {
+//     function Question(props: QuestionInterface): JSX.Element {
+
+// function Question({ content, difficulty, categories }: QuestionInterface): React.ReactNode {
 function Question() {
+// const Question: React.FC<QuestionProps> = ({question: questionProp}) => {
+
+// const QuestionComponent: React.FC<QuestionProps> = ({ question }) => {
+
     const [loading, setLoading] = useState(true);
-    const [selectedAnswer, setSelectedAnswer] = useState([]);
-    const [result, setResult] = useState(null);
-    const [comments, setComments] = useState([]);
-    const [question, setQuestion] = useState(null);
+    const [selectedAnswers, setSelectedAnswers] = useState([]);
+    const [result, setResult] = useState<ResultInterface | null>(null);
+    const [comments, setComments] = useState<CommentInterface | []>([]);
+    const [question, setQuestion] = useState<QuestionInterface | null>(null);
 
     useEffect(() => {
     }, [question]);
@@ -18,18 +37,17 @@ function Question() {
     useEffect(() => {
         if (result !== null) {
         }
-
     }, [result]);
 
     useEffect(() => {
         if (comments !== null) {
-            console.log('comments', comments);
+            // console.log('comments', comments);
         }
 
     }, [comments]);
 
     useEffect(() => {
-    }, [selectedAnswer]);
+    }, [selectedAnswers]);
 
     useEffect(() => {
         loadQuestion();
@@ -37,7 +55,7 @@ function Question() {
 
     async function loadQuestion() {
         setLoading(true);
-        setSelectedAnswer([]);
+        setSelectedAnswers([]);
         setResult(null);
 
         const urlFilters = searchForParams();
@@ -45,6 +63,12 @@ function Question() {
         try {
             const data = await getQuestion(urlFilters);
             setQuestion(data);
+
+            if (data?.id) {
+                const comments = await getComments(data.id);
+                setComments(comments);
+            }
+
         } catch (error) {
             console.error('Error loading question:', error);
         } finally {
@@ -54,7 +78,7 @@ function Question() {
 
     function searchForParams() {
         const searchParams = new URLSearchParams(window.location.search);
-        const urlFilters = {};
+        const urlFilters: UrlFiltersInterface = {};
 
         if (searchParams.has('difficulty')) {
             urlFilters.difficulty = searchParams.get('difficulty');
@@ -73,10 +97,8 @@ function Question() {
 
     async function handleSubmit() {
         try {
-            const result = await submitAnswer(question.id, selectedAnswer);
-            const comments = await getComments(question.id);
+            const result = await submitAnswer(question?.id, selectedAnswers);
             setResult(result);
-            setComments(comments);
         } catch (error) {
             console.error('Error submitting answer : ', error);
         }
@@ -100,8 +122,8 @@ function Question() {
             <ul>
                 {question.answers.map((answer, index) => (
                     <Answer key={`answer-${answer.id}`} result={result} answer={answer} index={index}
-                            selectedAnswer={selectedAnswer}
-                            setSelectedAnswer={setSelectedAnswer}/>
+                            selectedAnswers={selectedAnswers}
+                            setSelectedAnswers={setSelectedAnswers}/>
                 ))}
             </ul>
 
@@ -118,7 +140,8 @@ function Question() {
 
             {result !== null && (
                 <>
-                    <Explanation explanation={result.explanation}/>
+                    {result?.explanation && <Explanation explanation={result.explanation}/>}
+                        {/*<Explanation explanation={result.explanation}/>*/}
 
                     <button onClick={handleNextQuestion}>
                         Next question

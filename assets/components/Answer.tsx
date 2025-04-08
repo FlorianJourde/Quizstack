@@ -1,10 +1,10 @@
 import React from 'react';
 
-function Answer({result, answer, index, selectedAnswer, setSelectedAnswer}) {
+function Answer({result, answer, index, selectedAnswers, setSelectedAnswers}) {
     const handleAnswerChange = (answerId) => {
         if (result !== null) return false;
 
-        setSelectedAnswer(prevSelected => {
+        setSelectedAnswers(prevSelected => {
             if (prevSelected.includes(answerId)) {
                 return prevSelected.filter(id => id !== answerId);
             } else {
@@ -17,11 +17,10 @@ function Answer({result, answer, index, selectedAnswer, setSelectedAnswer}) {
         if (result === null) return false;
 
         const isCorrect = result.correctAnswer.includes(answerId);
-        const wasSelected = selectedAnswer.includes(answerId);
+        const wasSelected = selectedAnswers.includes(answerId);
 
         return isCorrect === wasSelected;
     }
-
 
     return (
         <li className="answer-option">
@@ -30,7 +29,7 @@ function Answer({result, answer, index, selectedAnswer, setSelectedAnswer}) {
                 id={`answer-${index}`}
                 name="answer"
                 value={answer.id}
-                checked={selectedAnswer.includes(answer.id)}
+                checked={selectedAnswers.includes(answer.id)}
                 onChange={() => handleAnswerChange(answer.id)}
             />
             <label htmlFor={`answer-${index}`}>

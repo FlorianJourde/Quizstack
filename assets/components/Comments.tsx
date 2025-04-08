@@ -10,7 +10,11 @@ function Comments({comments}) {
             <div>
                 {comments.map((comment, index) => (
                     <div key={`comment-${index}`}>
-                        <pre>{JSON.stringify(comment, null, 2)}</pre>
+                        <p>{comment.id}</p>
+                        <p>{comment.content}</p>
+                        {/*<p>{comment.author}</p>*/}
+                        <pre>{JSON.stringify(comment.author, null, 2)}</pre>
+                        {/*<pre>{JSON.stringify(comment, null, 2)}</pre>*/}
                     </div>
                 ))}
             </div>
