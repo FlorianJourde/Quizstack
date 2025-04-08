@@ -1,4 +1,5 @@
 import React, {useEffect} from 'react';
+import {MarkdownRenderer} from "./MarkdownRenderer";
 
 function Choice({result, choice, index, answers, setAnswers}) {
     const handleAnswersChange = (answerId) => {
@@ -32,8 +33,7 @@ function Choice({result, choice, index, answers, setAnswers}) {
                 checked={answers.includes(choice.id)}
                 onChange={() => handleAnswersChange(choice.id)}
             />
-            <label htmlFor={`choice-${index}`}>
-                {choice.content}
+                <MarkdownRenderer content={choice.content} />
 
                 {result !== null && (
                     <>
@@ -44,7 +44,7 @@ function Choice({result, choice, index, answers, setAnswers}) {
                         )}
                     </>
                 )}
-            </label>
+            {/*</label>*/}
         </li>
     );
 }

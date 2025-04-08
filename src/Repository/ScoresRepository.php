@@ -26,4 +26,22 @@ class ScoresRepository extends ServiceEntityRepository
             ->getQuery()
             ->getResult();
     }
+
+    public function resetWeeklyScores(): int
+    {
+        return $this->createQueryBuilder('s')
+            ->update()
+            ->set('s.week', 0)
+            ->getQuery()
+            ->execute();
+    }
+
+    public function resetMonthlyScores(): int
+    {
+        return $this->createQueryBuilder('s')
+            ->update()
+            ->set('s.month', 0)
+            ->getQuery()
+            ->execute();
+    }
 }

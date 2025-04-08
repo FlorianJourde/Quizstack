@@ -3,10 +3,14 @@
 @tailwind utilities;
 
 body {
-    background-color: tan;
-    //background-color: silver;
+  background-color: tan;
+  //background-color: silver;
 }
 
 input {
-background-color: inherit;
+  background-color: inherit;
+}
+
+div[style*="background: rgb(39, 40, 34);"] {
+  background: #171717 !important;
 }

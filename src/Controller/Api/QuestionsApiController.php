@@ -3,10 +3,12 @@
 namespace App\Controller\Api;
 
 use App\Entity\Choices;
+use App\Entity\Users;
 use App\Repository\ChoicesRepository;
 use App\Repository\CommentsRepository;
 use App\Repository\QuestionsRepository;
 use App\Repository\UsersRepository;
+use App\Service\ScoresService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -35,7 +37,6 @@ class QuestionsApiController extends AbstractController
             ];
         }
 
-//        $comments = $commentsRepository->findCommentsByQuestionId($question->getId());
         $comments = $question->getComments();
         $commentArray = [];
         foreach ($comments as $comment) {
@@ -67,11 +68,12 @@ class QuestionsApiController extends AbstractController
     }
 
     #[Route('/question/{id}/check', name: 'check_answers', methods: ['POST'])]
-    public function checkAnswers(ChoicesRepository $choicesRepository, QuestionsRepository $questionsRepository, Request $request): JsonResponse
+    public function checkAnswers(ScoresService $scoresService, ChoicesRepository $choicesRepository, QuestionsRepository $questionsRepository, Request $request): JsonResponse
     {
         $data = json_decode($request->getContent(), true);
         $questionId = $data['questionId'] ?? null;
         $answers = $data['answers'] ?? null;
+        $user = $this->getUser();
 
         if ($answers === null) {
             return $this->json(['error' => 'No answer provided'], 400);
@@ -82,6 +84,12 @@ class QuestionsApiController extends AbstractController
         $diff2 = array_diff($answers, $correctChoices);
 
         $match = (empty($diff1) && empty($diff2));
+
+        $question = $questionsRepository->find($questionId);
+
+        if ($user) {
+            $scoresService->setScores($user, $question->getDifficulty());
+        }
 
         return $this->json([
             'correct' => $match,

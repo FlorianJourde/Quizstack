@@ -15,7 +15,10 @@ class Question3
         $question = new Questions();
         $question->setContent(
             <<<'EOT'
-            What will be logged in the console when executing the following JavaScript snippet?\n```js\nconsole.log(0.1 + 0.2 === 0.3);\n```
+            What will be logged in the console when executing the following JavaScript snippet ?
+            ```js
+            console.log(0.1 + 0.2 === 0.3);
+            ```
             EOT
         );
         $question->setImage('/pattern-js.png');
