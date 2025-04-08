@@ -24,6 +24,16 @@
         <p class="font-bold text-6xl text-center">Question</p>
     </div>
 
+{#    <a href=""></a>#}
+
+    <a href="{{ path('question_edit', {'id': question.id}) }}">
+        {#        question_edit#}
+        {#        Questions#}
+        Edit
+    </a>
+
+    <br>
+
     <div class="user-info">
         <h1>ID : {{ question.id }}</h1>
         <p>Question : {{ question.content }}</p>

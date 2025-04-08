@@ -10,7 +10,7 @@ use Symfony\Component\Security\Http\Attribute\IsGranted;
 
 class UsersController extends AbstractController
 {
-    #[Route('/user/{id}', name: 'user')]
+    #[Route('/user/{id}', name: 'user', requirements: ['id' => '\d+'])]
     public function user(int $id, UsersRepository $usersRepository): Response
     {
 //        $id = 232;
@@ -20,7 +20,7 @@ class UsersController extends AbstractController
             throw $this->createNotFoundException('Utilisateur non trouvé');
         }
 
-        return $this->render('user.html.twig', [
+        return $this->render('users/user.html.twig', [
             'user' => $user,
         ]);
     }
@@ -34,7 +34,7 @@ class UsersController extends AbstractController
 //        dump($users);
 //        die();
 
-        return $this->render('users.html.twig', [
+        return $this->render('users/index.html.twig', [
             'users' => $users
         ]);
     }

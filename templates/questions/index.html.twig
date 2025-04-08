@@ -1,3 +1,4 @@
+{#{% extends '../base.html.twig' %}#}
 {% extends 'base.html.twig' %}
 
 {% block title %}Questions{% endblock %}
@@ -5,6 +6,12 @@
 {% block body %}
     <div class="container">
         <h1>Questions listes</h1>
+<br>
+        <a href="{{ path('question_new') }}">
+            New
+        </a>
+        <br>
+
 
         <div class="questions-list">
             <table class="table table-striped">
@@ -31,7 +38,12 @@
                         <td>{{ question.status }}</td>
 {#                        <td>{{ question.user.username }}</td>#}
                         <td>
-                            <a href="{{ path('question', {'id': question.id}) }}" class="btn btn-sm btn-primary">See question</a>
+                            <a href="{{ path('question', {'id': question.id}) }}">
+                            See
+                            </a>
+                            <a href="{{ path('question_edit', {'id': question.id}) }}">
+                                Edit
+                            </a>
                         </td>
 
                         {#                        <td>{{ question.userId }}</td> #}

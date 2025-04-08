@@ -6,7 +6,7 @@ use App\DataFixtures\QuestionsCategoriesFixtures;
 use App\Entity\Answers;
 use App\Entity\Questions;
 use App\Entity\Users;
-use App\Helper\CategoryHelper;
+use App\Utils\CategoryHelper;
 use Doctrine\Persistence\ObjectManager;
 
 class Question1

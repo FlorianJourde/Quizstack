@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Helper;
+namespace App\Utils;
 
 use Doctrine\Persistence\ObjectManager;
 use App\Entity\Categories;

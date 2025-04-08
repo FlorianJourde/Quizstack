@@ -2,8 +2,11 @@
 
 namespace App\Controller;
 
+use App\Entity\Questions;
+use App\Form\QuestionsFormType;
 use App\Repository\QuestionsRepository;
 use App\Utils\EnumUtility;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -48,6 +51,22 @@ final class QuestionsController extends AbstractController
 //            'users' => $users
 //        ]);
 //    }
+
+    #[IsGranted('ROLE_EDITOR')]
+    #[Route('/question/{id}', name: 'question', requirements: ['id' => '\d+'])]
+    public function question(int $id, QuestionsRepository $questionsRepository): Response
+    {
+//        $id = 232;
+        $question = $questionsRepository->find($id);
+
+        if (!$question) {
+            throw $this->createNotFoundException('No question found !');
+        }
+
+        return $this->render('questions/question.html.twig', [
+            'question' => $question,
+        ]);
+    }
     #[IsGranted('ROLE_EDITOR')]
     #[Route('/questions', name: 'questions')]
     public function questions(Request $request, QuestionsRepository $questionsRepository): Response
@@ -70,7 +89,7 @@ final class QuestionsController extends AbstractController
 //        }
 //        dump($questions);
 
-        return $this->render('questions.html.twig', [
+        return $this->render('questions/index.html.twig', [
             'questions' => $questions
         ]);
 
@@ -81,18 +100,47 @@ final class QuestionsController extends AbstractController
     }
 
     #[IsGranted('ROLE_EDITOR')]
-    #[Route('/question/{id}', name: 'question')]
-    public function user(int $id, QuestionsRepository $questionsRepository): Response
+//    #[Route('/question/{id}/edit', name: 'question_edit')]
+    #[Route('/question/{id}/edit', name: 'question_edit', requirements: ['id' => '\d+'])]
+    public function edit(Request $request, Questions $question, EntityManagerInterface $entityManager): Response
     {
-//        $id = 232;
-        $question = $questionsRepository->find($id);
+        $form = $this->createForm(QuestionsFormType::class, $question);
+        $form->handleRequest($request);
 
-        if (!$question) {
-            throw $this->createNotFoundException('No question found !');
+        if ($form->isSubmitted() && $form->isValid()) {
+            $entityManager->flush();
+
+            $this->addFlash('success', 'La question a été modifiée avec succès.');
+
+            return $this->redirectToRoute('question_show', ['id' => $question->getId()]);
         }
 
-        return $this->render('question.html.twig', [
+        return $this->render('questions/edit.html.twig', [
             'question' => $question,
+            'form' => $form->createView(),
+        ]);
+    }
+
+    #[Route('/question/new', name: 'question_new')]
+    #[IsGranted('ROLE_USER')]
+    public function new(Request $request, EntityManagerInterface $entityManager): Response
+    {
+        $question = new Questions();
+        $form = $this->createForm(QuestionsFormType::class, $question);
+//        $form->handleRequest($request);
+//
+//        if ($form->isSubmitted() && $form->isValid()) {
+//            $entityManager->persist($question);
+//            $entityManager->flush();
+//
+//            $this->addFlash('success', 'La question a été créée avec succès.');
+//
+//            return $this->redirectToRoute('question_show', ['id' => $question->getId()]);
+//        }
+//
+        return $this->render('questions/new.html.twig', [
+            'question' => $question,
+            'form' => $form->createView(),
         ]);
     }
 }

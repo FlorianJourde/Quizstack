@@ -5,7 +5,7 @@ namespace App\DataFixtures;
 use App\DataFixtures\Questions\Question1;
 use App\DataFixtures\Questions\Question2;
 use App\DataFixtures\Questions\Question3;
-use App\Helper\CategoryHelper;
+use App\Utils\CategoryHelper;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 use Doctrine\Persistence\ObjectManager;

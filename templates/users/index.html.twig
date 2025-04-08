@@ -1,4 +1,6 @@
 {% extends 'base.html.twig' %}
+{#{% extends '../base.html.twig' %}#}
+
 
 {% block title %}Users{% endblock %}
 
@@ -14,7 +16,8 @@
                     <th>Email</th>
                     <th>Username</th>
                     <th>Rôle</th>
-                    <th>Date d'inscription</th>
+                    <th>Last authentication</th>
+                    <th>Inscription</th>
                     <th>Actions</th>
                 </tr>
                 </thead>
@@ -25,6 +28,7 @@
                         <td>{{ user.email }}</td>
                         <td>{{ user.username }}</td>
 {#                        <td>{{ user.role }}</td>#}
+                        <td>{{ user.lastAuthenticationDate|date('d/m/Y') }}</td>
                         <td>{{ user.inscriptionDate|date('d/m/Y') }}</td>
                         <td>
                             <a href="{{ path('user', {'id': user.id}) }}" class="btn btn-sm btn-primary">See profile</a>
