@@ -19,16 +19,6 @@ function Answer({result, answer, index, selectedAnswer, setSelectedAnswer}) {
         const isCorrect = result.correctAnswer.includes(answerId);
         const wasSelected = selectedAnswer.includes(answerId);
 
-        // console.log('selectedAnswer : ', selectedAnswer);
-        // console.log('correctAnswer : ', result.correctAnswer);
-        // console.log('isCorrect : ', isCorrect);
-        // console.log('wasSelected : ', wasSelected);
-        // console.lo
-
-        // const isCorrect = result.correctAnswer.includes(answer.id);
-        // const wasSelected = selectedAnswer.includes(answer.id);
-
-        // return isCorrect && wasSelected;
         return isCorrect === wasSelected;
     }
 
@@ -41,7 +31,6 @@ function Answer({result, answer, index, selectedAnswer, setSelectedAnswer}) {
                 name="answer"
                 value={answer.id}
                 checked={selectedAnswer.includes(answer.id)}
-                // onChange={() => handleAnswerChange(answer.id)}
                 onChange={() => handleAnswerChange(answer.id)}
             />
             <label htmlFor={`answer-${index}`}>
@@ -49,14 +38,11 @@ function Answer({result, answer, index, selectedAnswer, setSelectedAnswer}) {
 
                 {result !== null && (
                     <>
-                        {/*{isCorrect && <span className="correct-icon"> ✓</span>}*/}
-                        {/*{wasSelected && !isCorrect && <span className="incorrect-icon"> ✗</span>}*/}
                         {checkAnswerValidity(answer.id) ? (
                             <span className="correct-icon"> ✓</span>
                         ) : (
                             <span className="correct-icon"> ✗</span>
                         )}
-                        {/*{!checkAnswerValidity(answer.id) && <span className="incorrect-icon"> ✗</span>}*/}
                     </>
                 )}
 

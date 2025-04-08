@@ -13,7 +13,6 @@ class UsersController extends AbstractController
     #[Route('/user/{id}', name: 'user', requirements: ['id' => '\d+'])]
     public function user(int $id, UsersRepository $usersRepository): Response
     {
-//        $id = 232;
         $user = $usersRepository->find($id);
 
         if (!$user) {
@@ -30,9 +29,6 @@ class UsersController extends AbstractController
     public function users(UsersRepository $usersRepository): Response
     {
         $users = $usersRepository->findAll();
-
-//        dump($users);
-//        die();
 
         return $this->render('users/index.html.twig', [
             'users' => $users

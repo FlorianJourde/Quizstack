@@ -15,18 +15,10 @@ use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 class SecurityController extends AbstractController
 {
     #[Route(path: '/login', name: 'app_login')]
-    public function login(AuthenticationUtils $authenticationUtils, EntityManagerInterface $entityManager): Response
+    public function login(AuthenticationUtils $authenticationUtils): Response
     {
-//        if ($this->getUser()) {
-//            $user = $this->getUser();
-//            $user->setLastAuthenticationDate(new \DateTimeImmutable());
-//            $entityManager->flush();
-//        }
-
-        // get the login error if there is one
         $error = $authenticationUtils->getLastAuthenticationError();
 
-        // last username entered by the user
         $lastUsername = $authenticationUtils->getLastUsername();
 
         return $this->render('security/login.html.twig', [
@@ -49,7 +41,6 @@ class SecurityController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            // Encoder le mot de passe
             $user->setPassword(
                 $userPasswordHasher->hashPassword(
                     $user,
@@ -57,20 +48,16 @@ class SecurityController extends AbstractController
                 )
             );
 
-            // Par défaut, donner ROLE_USER
             $user->setRoles(['ROLE_USER']);
 
             $entityManager->persist($user);
             $entityManager->flush();
 
-            // Vous pouvez ajouter un message flash
             $this->addFlash('success', 'Votre compte a été créé avec succès.');
 
-            // Rediriger vers la page de connexion
             return $this->redirectToRoute('app_login');
         }
 
-        // Ajout du mot-clé "return" ici
         return $this->render('security/register.html.twig', [
             'registrationForm' => $form->createView(),
         ]);
