@@ -4,47 +4,21 @@ import {submitAnswers} from "../services/questionsApi";
 import {addComment} from "../services/commentsApi";
 
 function Comments({question, setQuestion}) {
-    const [comment, setComment] = useState<string>('')
-    // const handleSubmit = async (e) => {
-    //     e.preventDefault();
-    //     setIsSubmitting(true);
-    //     setError(null);
-    //
-    //     try {
-    //         const response = await axios.post('/api/questions/' + questionId + '/comments', {
-    //             content: comment
-    //         }, {
-    //             headers: {
-    //                 'Content-Type': 'application/json'
-    //             }
-    //         });
-    //
-    //         setSuccess(true);
-    //         setComment('');
-    //         // Éventuellement, mettre à jour la liste des commentaires
-    //     } catch (err) {
-    //         setError(err.response?.data?.message || 'Une erreur est survenue');
-    //     } finally {
-    //         setIsSubmitting(false);
-    //     }
-    // };
+    const [comment, setComment] = useState<string>('');
+    const [isSubmitting, setIsSubmitting] = useState(false);
+    const [success, setSuccess] = useState(false);
+    const [error, setError] = useState(null);
 
     async function handleSubmit(e) {
         e.preventDefault();
-
-        console.log(question.id);
-        console.log(comment);
-        console.log(question.comments);
-        // console.log
+        setIsSubmitting(true);
+        setError(null);
 
         try {
             const newComment = await addComment(question.id, comment);
-            // setResult(result);
-            console.log(newComment);
-            // setQuestion()
 
             if (newComment && newComment.id) {
-                const updatedQuestion = { ...question };
+                const updatedQuestion = {...question};
 
                 if (!updatedQuestion.comments) {
                     updatedQuestion.comments = [];
@@ -53,43 +27,16 @@ function Comments({question, setQuestion}) {
                 updatedQuestion.comments.push(newComment);
 
                 setQuestion(updatedQuestion);
+                setSuccess(true);
+                setComment('');
             }
 
         } catch (error) {
             console.error('Error submitting answers : ', error);
+        } finally {
+            setIsSubmitting(false);
         }
     };
-    // const handleSubmit = async (e) => {
-    //     e.preventDefault();
-    //     // setIsSubmitting(true);
-    //     // setError(null);
-    //
-    //
-    //     // try {
-    //     //     const result = await submitAnswers(question?.id, answers);
-    //     //     setResult(result);
-    //     // } catch (error) {
-    //     //     console.error('Error submitting answers : ', error);
-    //     // }
-    //
-    //     try {
-    //         const response = await axios.post('/api/questions/' + questionId + '/comments', {
-    //             content: comment
-    //         }, {
-    //             headers: {
-    //                 'Content-Type': 'application/json'
-    //             }
-    //         });
-    //
-    //         // setSuccess(true);
-    //         // setComment('');
-    //         // Éventuellement, mettre à jour la liste des commentaires
-    //     } catch (err) {
-    //         // setError(err.response?.data?.message || 'Une erreur est survenue');
-    //     } finally {
-    //         // setIsSubmitting(false);
-    //     }
-    // };
 
     return (
         <>
@@ -113,18 +60,15 @@ function Comments({question, setQuestion}) {
                             Comment :
                         </p>
                         <MarkdownRenderer content={comment.content}/>
-                        {/*{comment.content}*/}
-                        {/*</p>*/}
-                        {/*<pre>{JSON.stringify(comment, null, 2)}</pre>*/}
-
                         <br/>
                     </div>
                 ))}
             </div>
             <div className="comment-form">
                 <h3>Ajouter un commentaire</h3>
-                {/*{success && <div className="alert alert-success">Comment add with success !</div>}*/}
-                {/*{error && <div className="alert alert-danger">{error}</div>}*/}
+
+                {success && <div className="alert alert-success">Comment add with success !</div>}
+                {error && <div className="alert alert-danger">{error}</div>}
 
                 <form onSubmit={handleSubmit}>
                     <div className="form-group">
@@ -140,10 +84,9 @@ function Comments({question, setQuestion}) {
                     <button
                         type="submit"
                         className="btn btn-primary"
-                        // disabled={isSubmitting}
+                        disabled={isSubmitting}
                     >
-                        Send
-                        {/*{isSubmitting ? 'Envoi en cours...' : 'Envoyer'}*/}
+                        {isSubmitting ? 'Sending...' : 'Send'}
                     </button>
                 </form>
             </div>

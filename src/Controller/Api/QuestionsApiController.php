@@ -2,8 +2,6 @@
 
 namespace App\Controller\Api;
 
-use App\Entity\Choices;
-use App\Entity\Users;
 use App\Repository\ChoicesRepository;
 use App\Repository\CommentsRepository;
 use App\Repository\QuestionsRepository;
