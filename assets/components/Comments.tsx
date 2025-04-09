@@ -1,7 +1,8 @@
 import React, {useState} from 'react';
 import {MarkdownRenderer} from "./MarkdownRenderer";
 import {submitAnswers} from "../services/questionsApi";
-import {addComment} from "../services/commentsApi";
+import {addComment, updateComment} from "../services/commentsApi";
+import Comment from "./Comment";
 
 function Comments({question, setQuestion}) {
     const [comment, setComment] = useState<string>('');
@@ -46,23 +47,11 @@ function Comments({question, setQuestion}) {
                 Comments
             </h1>
             <div>
+
                 {question.comments.map((comment, index) => (
-                    <div key={`comment-${index}`}>
-                        <p>
-                            Author : {comment.author.username}
-                        </p>
-                        <p>
-                            {/*Creation date : {comment.creation_date}*/}
-                        </p>
-                        <pre>{JSON.stringify(comment.creationDate, null, 2)}</pre>
-                        {/*<p>*/}
-                        <p>
-                            Comment :
-                        </p>
-                        <MarkdownRenderer content={comment.content}/>
-                        <br/>
-                    </div>
+                    <Comment question={question} setQuestion={setQuestion} comment={comment} setComment={setComment} index={index} key={`comment-${index}`}/>
                 ))}
+
             </div>
             <div className="comment-form">
                 <h3>Ajouter un commentaire</h3>

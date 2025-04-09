@@ -6,6 +6,7 @@ use App\Entity\Comments;
 use App\Repository\QuestionsRepository;
 use DateTimeImmutable;
 use Doctrine\ORM\EntityManagerInterface;
+use DoctrineExtensions\Query\Mysql\Date;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -25,8 +26,8 @@ class CommentsApiController extends AbstractController
     {
         $data = json_decode($request->getContent(), true);
         $questionId = $data['questionId'] ?? null;
+        $commentText = $data['content'];
         $user = $this->getUser();
-        $commentText = $data['comment'];
         $question = $questionsRepository->find($questionId);
 
         if (!$question) {
@@ -41,6 +42,48 @@ class CommentsApiController extends AbstractController
         $question->addComment($comment);
         $entityManager->persist($comment);
         $entityManager->flush();
+
+        return $this->json([
+            'id' => $comment->getId(),
+            'content' => $comment->getContent(),
+            'creationDate' => $comment->getCreationDate(),
+            'updateDate' => $comment->getUpdateDate(),
+            'author' => [
+                'id' => $user->getId(),
+                'username' => $user->getUsername()
+            ]
+        ]);
+    }
+
+    #[Route('/comment/{id}/edit', name: 'edit_comment', methods: ['PUT'])]
+    public function editComment(QuestionsRepository $questionsRepository, Request $request, EntityManagerInterface $entityManager, Comments $comment): JsonResponse
+    {
+        $user = $this->getUser();
+        $data = json_decode($request->getContent(), true);
+        $commentId = $data['commentId'] ?? null;
+        $content = $data['content'];
+//        if (!$user || $comment->getUser()->getId() !== $user->getId()) {
+        if (!$user || $comment->getUserId()->getId() !== $user->getId()) {
+            return $this->json(['error' => 'You cannot edit this comment.'], 403);
+        }
+
+//        $data = json_decode($request->getContent(), true);
+//        $newContent = $data['content'] ?? null;
+
+        if (!$content || trim($content) === '') {
+            return $this->json(['error' => 'Comment cannot be empty.'], 400);
+        }
+
+
+        $comment->setContent($content);
+        $comment->setUpdateDate(new $this->currentDate);
+
+        $entityManager->flush();
+
+//        dump($comment);
+//        dump($commentId);
+//        dump($content);
+//        die();
 
         return $this->json([
             'id' => $comment->getId(),
