@@ -8,6 +8,7 @@ use App\Repository\QuestionsRepository;
 use App\Repository\UsersRepository;
 use App\Service\ScoresService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Cookie;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\Routing\Annotation\Route;
@@ -57,7 +58,7 @@ class QuestionsApiController extends AbstractController
 
         $numberOfCorrectChoices = count($choicesRepository->findCorrectAnswerIdsByQuestionId($question->getId()));
 
-        return $this->json([
+        $questionData =[
             'id' => $question->getId(),
             'content' => $question->getContent(),
             'difficulty' => $question->getDifficulty(),
@@ -65,7 +66,30 @@ class QuestionsApiController extends AbstractController
             'explanation' => $questionsRepository->findExplanationByQuestionId($question->getId()),
             'comments' => $commentArray,
             'numberOfCorrectChoices' => $numberOfCorrectChoices
-        ]);
+        ];
+
+        $user = $this->getUser();
+
+        if ($user === null) {
+            $viewedQuestions = (int)$request->cookies->get('viewed_questions_count', 0);
+
+            if ($viewedQuestions >= 10) {
+                return $this->json([
+                    'error' => 'You\'ve reach the question limit per day..',
+                    'requiresAuth' => true
+                ], 403);
+            }
+
+            $response = new JsonResponse($questionData);
+
+            $response->headers->setCookie(
+                new Cookie('viewed_questions_count', $viewedQuestions + 1, time() + (30 * 24 * 60 * 60))
+            );
+
+            return $response;
+        }
+
+        return $this->json($questionData);
     }
 
     #[Route('/question/{id}/check', name: 'check_answers', methods: ['POST'])]

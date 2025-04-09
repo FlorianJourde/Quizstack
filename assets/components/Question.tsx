@@ -7,7 +7,6 @@ import {MarkdownRenderer} from "./MarkdownRenderer";
 import {QuestionInterface, ResultInterface} from '../types';
 import {UrlFiltersInterface} from "../types/urlFilters";
 
-
 function Question() {
     const [loading, setLoading] = useState(true);
     const [answers, setAnswers] = useState([]);
