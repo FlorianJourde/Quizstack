@@ -46,7 +46,7 @@ class QuestionsApiController extends AbstractController
             $commentArray[] = [
                 'id' => $comment->getId(),
                 'content' => $comment->getContent(),
-                'creation_date' => $comment->getCreationDate(),
+                'creationDate' => $comment->getCreationDate(),
                 'author' => $user ? [
                     'id' => $user->getId(),
                     'email' => $user->getEmail(),
@@ -57,13 +57,16 @@ class QuestionsApiController extends AbstractController
             ];
         }
 
+        $numberOfCorrectChoices = count($choicesRepository->findCorrectAnswerIdsByQuestionId($question->getId()));
+
         return $this->json([
             'id' => $question->getId(),
             'content' => $question->getContent(),
             'difficulty' => $question->getDifficulty(),
             'choices' => $choiceArray,
             'explanation' => $questionsRepository->findExplanationByQuestionId($question->getId()),
-            'comments' => $commentArray
+            'comments' => $commentArray,
+            'numberOfCorrectChoices' => $numberOfCorrectChoices
         ]);
     }
 

@@ -10,4 +10,5 @@ export interface QuestionInterface {
     categories: CategoriesInterface[];
     choices: ChoicesInterface[];
     comments: CommentInterface[];
+    numberOfCorrectChoices : number;
 }

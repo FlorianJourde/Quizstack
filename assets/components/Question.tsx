@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import {getQuestion, submitAnswers} from "../services/questionsApi";
-import Choice from "./Choice";
+import Choices from "./Choices";
 import Explanation from "./Explanation";
 import Comments from "./Comments";
 import {MarkdownRenderer} from "./MarkdownRenderer";
@@ -61,7 +61,6 @@ function Question() {
     async function handleSubmit() {
         try {
             const result = await submitAnswers(question?.id, answers);
-            console.log('TEST')
             setResult(result);
         } catch (error) {
             console.error('Error submitting answers : ', error);
@@ -80,13 +79,11 @@ function Question() {
             <p>ID : {question.id}</p>
             <MarkdownRenderer content={question.content}/>
             <p>Difficulty : {question.difficulty}</p>
+            <p>Number of choices : {question.numberOfCorrectChoices}</p>
+            {question.numberOfCorrectChoices > 1  && <p>Multiple choices possible.</p>}
             <br/>
             <ul>
-                {question.choices.map((choice, index) => (
-                    <Choice key={`choice-${choice.id}`} result={result} choice={choice} index={index}
-                            answers={answers}
-                            setAnswers={setAnswers}/>
-                ))}
+                <Choices result={result} question={question} answers={answers} setAnswers={setAnswers}/>
             </ul>
 
             <br/>
