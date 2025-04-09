@@ -102,7 +102,7 @@ function Question() {
                         Next question
                     </button>
 
-                    <Comments comments={question.comments}/>
+                    <Comments question={question} setQuestion={setQuestion}/>
                 </>
             )}
 

@@ -5,8 +5,9 @@ body {
   background-color: tan;
 }
 
-input {
+input, textarea {
   background-color: inherit;
+  border: 1px solid white;
 }
 
 div[style*="background: rgb(39, 40, 34);"] {

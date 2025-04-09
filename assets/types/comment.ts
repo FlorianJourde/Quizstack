@@ -4,5 +4,6 @@ export interface CommentInterface {
     id: number;
     content: string;
     creationDate: Date;
+    updateDate: Date;
     author: User;
 }
