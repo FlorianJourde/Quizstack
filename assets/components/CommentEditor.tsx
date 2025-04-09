@@ -1,19 +1,18 @@
 import React, {useState} from 'react';
 import {updateComment} from "../services/commentsApi";
 
-function CommentEditor({question, setQuestion, comment, setComment, onCommentUpdated, onCancel}) {
+function CommentEditor({question, setQuestion, comment, onCommentUpdated, onCancel}) {
     const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
     const [error, setError] = useState<string | null>(null);
     const [newComment, setNewComment] = useState<string>(comment.content);
 
-    const handleSubmit = async (e) => {
+    async function handleSubmit(e) {
         e.preventDefault();
         setIsSubmitting(true);
         setError(null);
 
         try {
             const updatedComment = await updateComment(comment.id, newComment);
-            // console.log(updatedComment);
 
             if (updatedComment && updatedComment.id) {
                 const updatedQuestion = {...question};
@@ -31,26 +30,7 @@ function CommentEditor({question, setQuestion, comment, setComment, onCommentUpd
                 }
 
                 setQuestion(updatedQuestion);
-
-                // setSuccess(true);
-                // setIsEditing(false);
             }
-
-            // if (updatedComment && updatedComment.id) {
-            //     const updatedQuestion = {...question};
-            //
-            //     if (!updatedQuestion.comments) {
-            //         updatedQuestion.comments = [];
-            //     }
-            //
-            //     updatedQuestion.comments.push(newComment);
-            //
-            //     setQuestion(updatedQuestion);
-            //     setSuccess(true);
-            //     setComment('');
-            // }
-
-            // setComment(updatedComment.content)
 
             onCommentUpdated(updatedComment);
         } catch (err: unknown) {

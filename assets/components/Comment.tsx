@@ -1,42 +1,13 @@
 import React, {useState} from 'react';
 import {MarkdownRenderer} from "./MarkdownRenderer";
-import {updateComment} from "../services/commentsApi";
 import CommentEditor from "./CommentEditor";
 
 function Comment({question, setQuestion, comment, setComment, index}) {
     const [isEditing, setIsEditing] = useState(false);
 
-    // const isOwner = currentUserId === comment.user.id;
-
-    const handleCommentUpdated = (updatedComment) => {
-        // onCommentUpdated(updatedComment);
+    const handleCommentUpdated = () => {
         setIsEditing(false);
     };
-
-    // if (isEditing) {
-    //     return (
-    //         <CommentEditor
-    //             comment={comment}
-    //             onCommentUpdated={handleCommentUpdated}
-    //             onCancel={() => setIsEditing(false)}
-    //         />
-    //     );
-    // }
-
-    async function handleEdition() {
-        try {
-            // const response = await updateComment(commentId, comment);
-
-        } catch (error) {
-            console.error('Erreur:', error);
-            throw error;
-        }
-    };
-
-    // const handleCommentUpdated = (updatedComment) => {
-    //     onCommentUpdated(updatedComment);
-    //     setIsEditing(false);
-    // };
 
     return (
         <div>
@@ -62,7 +33,6 @@ function Comment({question, setQuestion, comment, setComment, index}) {
                     question={question}
                     setQuestion={setQuestion}
                     comment={comment}
-                    setComment={setComment}
                     onCommentUpdated={handleCommentUpdated}
                     onCancel={() => setIsEditing(false)}
                 />
