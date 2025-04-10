@@ -15,7 +15,6 @@ export function AuthProvider({children}: { children: ReactNode }) {
     const [error, setError] = useState<string | null>(null);
 
     useEffect(() => {
-        // const fetchCurrentUser = async () => {
         async function fetchCurrentUser() {
             try {
                 const response = await fetch('/api/user/current');
@@ -55,5 +54,3 @@ export function AuthProvider({children}: { children: ReactNode }) {
 export function useAuth() {
     return React.useContext(AuthContext);
 }
-
-// export default AuthContext;

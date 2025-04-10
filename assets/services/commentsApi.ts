@@ -2,7 +2,7 @@ import question from "../components/Question";
 
 const BASE_URL = '/api';
 
-export const getComments = async (questionId) => {
+export async function getComments(questionId) {
     const response = await fetch(`${BASE_URL}/question/${questionId}/comments`);
     return response.json();
 };
@@ -13,7 +13,7 @@ export async function addComment(questionId, content) {
         headers: {
             'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ questionId: questionId, content: content }),
+        body: JSON.stringify({questionId: questionId, content: content}),
     });
     return response.json();
 };
@@ -24,7 +24,7 @@ export async function updateComment(commentId, content) {
         headers: {
             'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ commentId: commentId, content: content }),
+        body: JSON.stringify({commentId: commentId, content: content}),
         credentials: 'include'
     });
 
@@ -43,7 +43,6 @@ export async function deleteComment(commentId) {
         headers: {
             'Content-Type': 'application/json',
         },
-        // body: JSON.stringify({ commentId: commentId }),
         credentials: 'include'
     });
 

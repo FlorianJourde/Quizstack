@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {addComment, updateComment} from "../../services/commentsApi";
+import {addComment} from "../../services/commentsApi";
 import CommentItem from "./CommentItem";
 
 function CommentList({question, setQuestion}) {

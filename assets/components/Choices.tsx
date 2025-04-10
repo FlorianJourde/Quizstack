@@ -1,8 +1,8 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import {MarkdownRenderer} from "./MarkdownRenderer";
 
 function Choices({result, question, answers, setAnswers}) {
-    const handleAnswersChange = (answerId) => {
+    function handleAnswersChange(answerId) {
         if (result !== null) return false;
 
         setAnswers(prevSelected => {
@@ -26,7 +26,7 @@ function Choices({result, question, answers, setAnswers}) {
     return (
         <>
             {question.choices.map((choice, index) => (
-                <li key={`choice-${choice.id}`} /*choice={choice} index={index}*/ className="choice-option">
+                <li key={`choice-${choice.id}`} className="choice-option">
                     <input
                         type="checkbox"
                         id={`choice-${index}`}
@@ -35,6 +35,7 @@ function Choices({result, question, answers, setAnswers}) {
                         checked={answers.includes(choice.id)}
                         onChange={() => handleAnswersChange(choice.id)}
                     />
+
                     <MarkdownRenderer content={choice.content}/>
 
                     {result !== null && (
@@ -46,7 +47,6 @@ function Choices({result, question, answers, setAnswers}) {
                             )}
                         </>
                     )}
-                    {/*</label>*/}
 
                 </li>
             ))}

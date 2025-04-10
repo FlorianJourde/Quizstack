@@ -14,9 +14,4 @@ export interface QuestionInterface {
     numberOfCorrectChoices : number;
 }
 
-// export interface LimitReachedInterface {
-//     limitReached: true,
-//     message?: string
-// }
-
 export type QuestionOrLimitReached = QuestionInterface | LimitReachedInterface;

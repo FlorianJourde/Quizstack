@@ -21,10 +21,10 @@ class QuestionsApiController extends AbstractController
 {
     #[Route('/question', name: 'get', methods: ['GET'])]
     public function getQuestion(
-        Request $request,
-        QuestionFinderService $finderService,
+        Request                  $request,
+        QuestionFinderService    $finderService,
         QuestionFormatterService $formatterService,
-        QuestionLimitService $limitService
+        QuestionLimitService     $limitService
     ): JsonResponse
     {
         $difficultyLevel = $request->query->get('difficulty') ?? null;
@@ -50,7 +50,12 @@ class QuestionsApiController extends AbstractController
     }
 
     #[Route('/question/{id}/check', name: 'check_answers', methods: ['POST'])]
-    public function checkAnswers(ScoresService $scoresService, ChoicesRepository $choicesRepository, QuestionsRepository $questionsRepository, Request $request): JsonResponse
+    public function checkAnswers(
+        ScoresService       $scoresService,
+        ChoicesRepository   $choicesRepository,
+        QuestionsRepository $questionsRepository,
+        Request             $request
+    ): JsonResponse
     {
         $data = json_decode($request->getContent(), true);
         $questionId = $data['questionId'] ?? null;
@@ -64,12 +69,11 @@ class QuestionsApiController extends AbstractController
         $correctChoices = $choicesRepository->findCorrectAnswerIdsByQuestionId($questionId);
         $diff1 = array_diff($correctChoices, $answers);
         $diff2 = array_diff($answers, $correctChoices);
-
         $match = (empty($diff1) && empty($diff2));
 
         $question = $questionsRepository->find($questionId);
 
-        if ($user) {
+        if ($user && $match) {
             $scoresService->setScores($user, $question->getDifficulty());
         }
 

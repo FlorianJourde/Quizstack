@@ -3,7 +3,7 @@ import ReactMarkdown from "react-markdown";
 import {Prism as SyntaxHighlighter} from "react-syntax-highlighter";
 import {okaidia} from "react-syntax-highlighter/dist/cjs/styles/prism";
 
-export const MarkdownRenderer = ({content}: { content: string }) => {
+export function MarkdownRenderer({content}: { content: string }) {
     return (
         <ReactMarkdown
             components={{

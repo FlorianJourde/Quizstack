@@ -10,16 +10,11 @@ function CommentItem({question, setQuestion, comment, setComment, index}) {
     const {isAuthor} = useAuth();
     const userIsAuthor = isAuthor(comment.author.id);
 
-    console.log(comment.author.id)
-    // const { currentUser } = useContext(AuthContext);
-    //
-    // const isAuthor = currentUser && comment.author.id === currentUser.id;
-
-    const handleCommentUpdated = () => {
+    function handleCommentUpdated() {
         setIsEditing(false);
     };
 
-    const handleCommentDeleted = () => {
+    function handleCommentDeleted() {
         setIsDeleting(false);
     };
 

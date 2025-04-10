@@ -15,13 +15,3 @@ document.addEventListener('DOMContentLoaded', () => {
         );
     }
 });
-
-// document.addEventListener('DOMContentLoaded', () => {
-//     const questionContainer = document.getElementById('quiz-container');
-//     if (questionContainer) {
-//         const productRoot = createRoot(questionContainer);
-//         // productRoot.render(<Question/>);
-//         productRoot.render(
-//             React.createElement(Question));
-//     }
-// });

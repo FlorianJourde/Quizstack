@@ -3,12 +3,6 @@ import {UrlFiltersInterface} from "../types/urlFilters";
 
 const BASE_URL = '/api/question';
 
-export async function getQuestions(filters = {}) {
-    const params = new URLSearchParams(filters);
-    const response = await fetch(`${BASE_URL}?${params}`);
-    return response.json();
-};
-
 export async function getQuestion(filters: UrlFiltersInterface = {}) {
     const params = new URLSearchParams();
 

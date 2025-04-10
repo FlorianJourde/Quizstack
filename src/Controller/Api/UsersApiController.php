@@ -21,35 +21,18 @@ class UsersApiController extends AbstractController
 {
     #[Route('/user/current', name: 'get', methods: ['GET'])]
     public function getCurrentUser(
-        Request                  $request,
-//        QuestionFinderService    $finderService,
-//        QuestionFormatterService $formatterService,
-//        QuestionLimitService     $limitService
+        Request                  $request
     ): JsonResponse
     {
         $user = $this->getUser();
-//        $user->getId();
-
-//        if (!$user || $comment->getUserId()->getId() !== $user->getId()) {
-//            return $this->json(['error' => 'You cannot delete this comment.'], 403);
-//        }
 
         if (!$user) {
-            return $this->json(['error' => 'No logged user.'], 403);
+            return $this->json(['error' => 'No logged user.']);
         }
-
-//        dump($user);
-//        dump($user->getId());
-//        die();
-
-//        $entityManager->remove($comment);
-//        $entityManager->flush();
 
         return $this->json([
             'success' => true,
             'id' => $user->getId()
-//            'message' => 'Comment deleted successfully',
-//            'commentId' => $comment->getId()
         ]);
 
 //        return $this->json($user);
