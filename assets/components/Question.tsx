@@ -6,7 +6,6 @@ import Comments from "./Comments";
 import {MarkdownRenderer} from "./MarkdownRenderer";
 import {QuestionInterface, ResultInterface} from '../types';
 import {UrlFiltersInterface} from "../types/urlFilters";
-import {getCookie} from "../utils/cookies";
 import LimitReachedComponent from "./LimitReachedComponent";
 
 function Question() {
@@ -24,53 +23,17 @@ function Question() {
         loadQuestion();
     }, []);
 
-    // useEffect(() => {
-    //     // Afficher tous les cookies
-    //     console.log('Tous les cookies:', document.cookie);
-    //
-    //     // Fonction utilitaire pour extraire un cookie spécifique
-    //     const getCookieValue = (name) => {
-    //         const value = `; ${document.cookie}`;
-    //         const parts = value.split(`; ${name}=`);
-    //         if (parts.length === 2) return parts.pop().split(';').shift();
-    //         return null;
-    //     };
-    //
-    //     // Vérifier votre cookie spécifique
-    //     const viewedCount = getCookieValue('viewed_questions_count');
-    //     console.log('Cookie viewed_questions_count:', viewedCount);
-    //
-    //     // Vérifier les en-têtes de la réponse
-    //     fetch('/api/question')
-    //         .then(response => {
-    //             console.log('Headers reçus:', response.headers);
-    //             console.log('Response:', response);
-    //             // Malheureusement, vous ne pouvez pas voir directement les Set-Cookie avec fetch
-    //             return response.json();
-    //         })
-    //         .catch(error => console.error('Erreur:', error));
-    // }, []);
-
     async function loadQuestion() {
         setLoading(true);
         setAnswers([]);
         setResult(null);
-
-        // const viewedCount = getCookie('viewed_questions_count');
-
-        // if (viewedCount && parseInt(viewedCount) >= 10) {
-        //     setLimitReached(true);
-        //     setLoading(false);
-        //     return;
-        // }
 
         const urlFilters = searchForParams();
 
         try {
             const data = await getQuestion(urlFilters);
 
-            console.log(data);
-            if (data.questionLimitReached) {
+            if (data.limitReached) {
                 setLimitReached(true);
                 return;
             }
@@ -78,10 +41,6 @@ function Question() {
             setQuestion(data);
         } catch (error) {
             console.error('Error loading question:', error);
-
-            // if (error.response && error.response.status === 403) {
-            //     setLimitReached(true);
-            // }
         } finally {
             setLoading(false);
         }

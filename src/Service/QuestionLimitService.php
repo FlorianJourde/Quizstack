@@ -11,8 +11,8 @@ class QuestionLimitService
 {
     private const MAX_QUESTIONS = 10;
     private const COOKIE_NAME = 'viewed_questions_count';
-//    private const COOKIE_DURATION = 24 * 60 * 60;
-    private const COOKIE_DURATION = 60;
+    private const COOKIE_DURATION = 24 * 60 * 60;
+//    private const COOKIE_DURATION = 60;
 
     public function __construct(
         private Security $security
@@ -31,7 +31,7 @@ class QuestionLimitService
     public function getLimitResponse(): JsonResponse
     {
         return new JsonResponse([
-            'questionLimitReached' => true,
+            'limitReached' => true,
 //            'message' => 'Vous avez atteint la limite de questions pour les utilisateurs non connectés.'
         ], 403);
     }
