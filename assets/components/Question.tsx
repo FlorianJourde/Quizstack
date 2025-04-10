@@ -35,7 +35,6 @@ function Question() {
             const data: QuestionOrLimitReached = await getQuestion(urlFilters);
 
             if ('limitReached' in data) {
-                // console.log(data)
                 setLimitReached(true);
                 return;
             } else if ('id' in data) {

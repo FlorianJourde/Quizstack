@@ -1,12 +1,18 @@
 import React, {useState} from 'react';
 import {MarkdownRenderer} from "./MarkdownRenderer";
 import CommentEditor from "./CommentEditor";
+import CommentDelete from "./CommentDelete";
 
 function Comment({question, setQuestion, comment, setComment, index}) {
     const [isEditing, setIsEditing] = useState(false);
+    const [isDeleting, setIsDeleting] = useState(false);
 
     const handleCommentUpdated = () => {
         setIsEditing(false);
+    };
+
+    const handleCommentDeleted = () => {
+        setIsDeleting(false);
     };
 
     return (
@@ -24,6 +30,13 @@ function Comment({question, setQuestion, comment, setComment, index}) {
                 >
                     Edit
                 </button>
+
+                <button
+                    className="btn btn-sm btn-outline-primary"
+                    onClick={() => setIsDeleting(true)}
+                >
+                    Delete
+                </button>
                 {/*)}*/}
                 <br/>
             </div>
@@ -35,6 +48,16 @@ function Comment({question, setQuestion, comment, setComment, index}) {
                     comment={comment}
                     onCommentUpdated={handleCommentUpdated}
                     onCancel={() => setIsEditing(false)}
+                />
+            }
+
+            {isDeleting &&
+                <CommentDelete
+                    question={question}
+                    setQuestion={setQuestion}
+                    comment={comment}
+                    onCommentDelete={handleCommentDeleted}
+                    onCancel={() => setIsDeleting(false)}
                 />
             }
 

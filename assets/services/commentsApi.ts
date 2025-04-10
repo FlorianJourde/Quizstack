@@ -36,3 +36,21 @@ export async function updateComment(commentId, content) {
 
     return response.json();
 };
+
+export async function deleteComment(commentId) {
+    const response = await fetch(`${BASE_URL}/comment/${commentId}/delete`, {
+        method: 'DELETE',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        // body: JSON.stringify({ commentId: commentId }),
+        credentials: 'include'
+    });
+
+    if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.error || 'Error while comment edition.');
+    }
+
+    return response.json();
+};

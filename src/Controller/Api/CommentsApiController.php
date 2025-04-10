@@ -56,34 +56,25 @@ class CommentsApiController extends AbstractController
     }
 
     #[Route('/comment/{id}/edit', name: 'edit_comment', methods: ['PUT'])]
-    public function editComment(QuestionsRepository $questionsRepository, Request $request, EntityManagerInterface $entityManager, Comments $comment): JsonResponse
+    public function editComment(Request $request, EntityManagerInterface $entityManager, Comments $comment): JsonResponse
     {
         $user = $this->getUser();
         $data = json_decode($request->getContent(), true);
         $commentId = $data['commentId'] ?? null;
         $content = $data['content'];
-//        if (!$user || $comment->getUser()->getId() !== $user->getId()) {
+
         if (!$user || $comment->getUserId()->getId() !== $user->getId()) {
             return $this->json(['error' => 'You cannot edit this comment.'], 403);
         }
-
-//        $data = json_decode($request->getContent(), true);
-//        $newContent = $data['content'] ?? null;
 
         if (!$content || trim($content) === '') {
             return $this->json(['error' => 'Comment cannot be empty.'], 400);
         }
 
-
         $comment->setContent($content);
         $comment->setUpdateDate(new $this->currentDate);
 
         $entityManager->flush();
-
-//        dump($comment);
-//        dump($commentId);
-//        dump($content);
-//        die();
 
         return $this->json([
             'id' => $comment->getId(),
@@ -94,6 +85,25 @@ class CommentsApiController extends AbstractController
                 'id' => $user->getId(),
                 'username' => $user->getUsername()
             ]
+        ]);
+    }
+
+    #[Route('/comment/{id}/delete', name: 'delete_comment', methods: ['DELETE'])]
+    public function deleteComment(Request $request, EntityManagerInterface $entityManager, Comments $comment): JsonResponse
+    {
+        $user = $this->getUser();
+
+        if (!$user || $comment->getUserId()->getId() !== $user->getId()) {
+            return $this->json(['error' => 'You cannot delete this comment.'], 403);
+        }
+
+        $entityManager->remove($comment);
+        $entityManager->flush();
+
+        return $this->json([
+            'success' => true,
+            'message' => 'Comment deleted successfully',
+            'commentId' => $comment->getId()
         ]);
     }
 }
