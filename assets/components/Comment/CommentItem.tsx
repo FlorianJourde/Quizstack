@@ -1,11 +1,19 @@
-import React, {useState} from 'react';
+import React, {useContext, useState} from 'react';
 import {MarkdownRenderer} from "../MarkdownRenderer";
 import CommentUpdate from "./CommentUpdate";
 import CommentDelete from "./CommentDelete";
+import {useAuth} from "../../context/AuthContext";
 
 function CommentItem({question, setQuestion, comment, setComment, index}) {
     const [isEditing, setIsEditing] = useState(false);
     const [isDeleting, setIsDeleting] = useState(false);
+    const {isAuthor} = useAuth();
+    const userIsAuthor = isAuthor(comment.author.id);
+
+    console.log(comment.author.id)
+    // const { currentUser } = useContext(AuthContext);
+    //
+    // const isAuthor = currentUser && comment.author.id === currentUser.id;
 
     const handleCommentUpdated = () => {
         setIsEditing(false);
@@ -23,21 +31,23 @@ function CommentItem({question, setQuestion, comment, setComment, index}) {
                 <pre>{JSON.stringify(comment.creationDate, null, 2)}</pre>
                 <p> Comment {index} :</p>
                 <MarkdownRenderer content={comment.content}/>
-                {/*{isOwner && (*/}
-                <button
-                    className="btn btn-sm btn-outline-primary"
-                    onClick={() => setIsEditing(true)}
-                >
-                    Edit
-                </button>
+                {userIsAuthor && (
+                    <>
+                        <button
+                            className="btn btn-sm btn-outline-primary"
+                            onClick={() => setIsEditing(true)}
+                        >
+                            Edit
+                        </button>
 
-                <button
-                    className="btn btn-sm btn-outline-primary"
-                    onClick={() => setIsDeleting(true)}
-                >
-                    Delete
-                </button>
-                {/*)}*/}
+                        <button
+                            className="btn btn-sm btn-outline-primary"
+                            onClick={() => setIsDeleting(true)}
+                        >
+                            Delete
+                        </button>
+                    </>
+                )}
                 <br/>
             </div>
 

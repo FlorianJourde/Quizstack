@@ -1,6 +1,4 @@
 import React, {useState} from 'react';
-import {MarkdownRenderer} from "../MarkdownRenderer";
-import {submitAnswers} from "../../services/questionsApi";
 import {addComment, updateComment} from "../../services/commentsApi";
 import CommentItem from "./CommentItem";
 
