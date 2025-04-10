@@ -6,6 +6,9 @@ use App\Repository\ChoicesRepository;
 use App\Repository\CommentsRepository;
 use App\Repository\QuestionsRepository;
 use App\Repository\UsersRepository;
+use App\Service\QuestionFinderService;
+use App\Service\QuestionFormatterService;
+use App\Service\QuestionLimitService;
 use App\Service\ScoresService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Cookie;
@@ -17,76 +20,30 @@ use Symfony\Component\Routing\Annotation\Route;
 class QuestionsApiController extends AbstractController
 {
     #[Route('/question', name: 'get', methods: ['GET'])]
-    public function getQuestion(Request $request, QuestionsRepository $questionsRepository, ChoicesRepository $choicesRepository, CommentsRepository $commentsRepository, UsersRepository $usersRepository): JsonResponse
+    public function getQuestion(
+        Request $request,
+        QuestionFinderService $finderService,
+        QuestionFormatterService $formatterService,
+        QuestionLimitService $limitService
+    ): JsonResponse
     {
         $difficultyLevel = $request->query->get('difficulty') ?? null;
         $categories = $request->query->all('category');
-        $question = $questionsRepository->findRandomQuestionByFilters($difficultyLevel, $categories);
+
+        $question = $finderService->findRandomQuestion($difficultyLevel, $categories);
 
         if (!$question) {
             return new JsonResponse('No question found.', 404);
         }
 
-        $choices = $question->getChoices();
-        $choiceArray = [];
-        foreach ($choices as $choice) {
-            $choiceArray[] = [
-                'id' => $choice->getId(),
-                'content' => $choice->getContent()
-            ];
-        }
+        $questionData = $formatterService->formatQuestionData($question);
 
-        $comments = $question->getComments();
-        $commentArray = [];
-        foreach ($comments as $comment) {
-            $userId = $comment->getUserId();
-            $user = $userId ? $usersRepository->find($userId) : null;
-
-            $commentArray[] = [
-                'id' => $comment->getId(),
-                'content' => $comment->getContent(),
-                'creationDate' => $comment->getCreationDate(),
-                'author' => $user ? [
-                    'id' => $user->getId(),
-                    'email' => $user->getEmail(),
-                    'username' => $user->getUsername(),
-                ] : [
-                    'username' => 'Anonyme',
-                ],
-            ];
-        }
-
-        $numberOfCorrectChoices = count($choicesRepository->findCorrectAnswerIdsByQuestionId($question->getId()));
-
-        $questionData =[
-            'id' => $question->getId(),
-            'content' => $question->getContent(),
-            'difficulty' => $question->getDifficulty(),
-            'choices' => $choiceArray,
-            'explanation' => $questionsRepository->findExplanationByQuestionId($question->getId()),
-            'comments' => $commentArray,
-            'numberOfCorrectChoices' => $numberOfCorrectChoices
-        ];
-
-        $user = $this->getUser();
-
-        if ($user === null) {
-            $viewedQuestions = (int)$request->cookies->get('viewed_questions_count', 0);
-
-            if ($viewedQuestions >= 10) {
-                return $this->json([
-                    'error' => 'You\'ve reach the question limit per day..',
-                    'requiresAuth' => true
-                ], 403);
+        if ($this->getUser() === null) {
+            if ($limitService->isLimitReached($request)) {
+                return $limitService->getLimitResponse();
             }
 
-            $response = new JsonResponse($questionData);
-
-            $response->headers->setCookie(
-                new Cookie('viewed_questions_count', $viewedQuestions + 1, time() + (30 * 24 * 60 * 60))
-            );
-
-            return $response;
+            return $limitService->createResponseWithCookie($questionData, $request);
         }
 
         return $this->json($questionData);
