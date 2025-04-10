@@ -4,16 +4,17 @@ import Choices from "./Choices";
 import Explanation from "./Explanation";
 import Comments from "./Comments";
 import {MarkdownRenderer} from "./MarkdownRenderer";
-import {QuestionInterface, ResultInterface} from '../types';
+import {QuestionInterface, QuestionOrLimitReached, ResultInterface} from '../types';
 import {UrlFiltersInterface} from "../types/urlFilters";
 import LimitReachedComponent from "./LimitReachedComponent";
+import Loading from "./Loading";
 
 function Question() {
-    const [loading, setLoading] = useState(true);
-    const [answers, setAnswers] = useState([]);
+    const [loading, setLoading] = useState<boolean>(true);
+    const [answers, setAnswers] = useState<number[]>([]);
     const [result, setResult] = useState<ResultInterface | null>(null);
     const [question, setQuestion] = useState<QuestionInterface | null>(null);
-    const [limitReached, setLimitReached] = useState(false);
+    const [limitReached, setLimitReached] = useState<boolean>(false);
 
     useEffect(() => {
         // console.log(question)
@@ -31,14 +32,15 @@ function Question() {
         const urlFilters = searchForParams();
 
         try {
-            const data = await getQuestion(urlFilters);
+            const data: QuestionOrLimitReached = await getQuestion(urlFilters);
 
-            if (data.limitReached) {
+            if ('limitReached' in data) {
+                // console.log(data)
                 setLimitReached(true);
                 return;
+            } else if ('id' in data) {
+                setQuestion(data);
             }
-
-            setQuestion(data);
         } catch (error) {
             console.error('Error loading question:', error);
         } finally {
@@ -75,7 +77,7 @@ function Question() {
     };
 
     if (limitReached) return <LimitReachedComponent/>;
-    if (loading) return <div>Loading...</div>;
+    if (loading) return <Loading/>;
     if (!question) return <div>Question not found..</div>;
 
     return (
@@ -88,7 +90,7 @@ function Question() {
             <MarkdownRenderer content={question.content}/>
             <p>Difficulty : {question.difficulty}</p>
             <p>Number of choices : {question.numberOfCorrectChoices}</p>
-            {question.numberOfCorrectChoices > 1  && <p>Multiple choices possible.</p>}
+            {question.numberOfCorrectChoices > 1 && <p>Multiple choices possible.</p>}
             <br/>
             <ul>
                 <Choices result={result} question={question} answers={answers} setAnswers={setAnswers}/>
