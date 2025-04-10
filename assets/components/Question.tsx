@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react';
 import {getQuestion, submitAnswers} from "../services/questionsApi";
 import Choices from "./Choices";
 import Explanation from "./Explanation";
-import Comments from "./Comments";
+import CommentList from "./Comment/CommentList";
 import {MarkdownRenderer} from "./MarkdownRenderer";
 import {QuestionInterface, QuestionOrLimitReached, ResultInterface} from '../types';
 import {UrlFiltersInterface} from "../types/urlFilters";
@@ -111,7 +111,7 @@ function Question() {
                         Next question
                     </button>
 
-                    <Comments question={question} setQuestion={setQuestion}/>
+                    <CommentList question={question} setQuestion={setQuestion}/>
                 </>
             )}
 

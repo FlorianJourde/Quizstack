@@ -1,10 +1,10 @@
 import React, {useState} from 'react';
-import {MarkdownRenderer} from "./MarkdownRenderer";
-import {submitAnswers} from "../services/questionsApi";
-import {addComment, updateComment} from "../services/commentsApi";
-import Comment from "./Comment";
+import {MarkdownRenderer} from "../MarkdownRenderer";
+import {submitAnswers} from "../../services/questionsApi";
+import {addComment, updateComment} from "../../services/commentsApi";
+import CommentItem from "./CommentItem";
 
-function Comments({question, setQuestion}) {
+function CommentList({question, setQuestion}) {
     const [comment, setComment] = useState<string>('');
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [success, setSuccess] = useState(false);
@@ -49,7 +49,7 @@ function Comments({question, setQuestion}) {
             <div>
 
                 {question.comments.map((comment, index) => (
-                    <Comment question={question} setQuestion={setQuestion} comment={comment} setComment={setComment} index={index} key={`comment-${index}`}/>
+                    <CommentItem question={question} setQuestion={setQuestion} comment={comment} setComment={setComment} index={index} key={`comment-${index}`}/>
                 ))}
 
             </div>
@@ -83,4 +83,4 @@ function Comments({question, setQuestion}) {
     );
 }
 
-export default Comments;
+export default CommentList;

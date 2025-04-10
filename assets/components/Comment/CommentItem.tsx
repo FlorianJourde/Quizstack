@@ -1,9 +1,9 @@
 import React, {useState} from 'react';
-import {MarkdownRenderer} from "./MarkdownRenderer";
-import CommentEditor from "./CommentEditor";
+import {MarkdownRenderer} from "../MarkdownRenderer";
+import CommentUpdate from "./CommentUpdate";
 import CommentDelete from "./CommentDelete";
 
-function Comment({question, setQuestion, comment, setComment, index}) {
+function CommentItem({question, setQuestion, comment, setComment, index}) {
     const [isEditing, setIsEditing] = useState(false);
     const [isDeleting, setIsDeleting] = useState(false);
 
@@ -42,7 +42,7 @@ function Comment({question, setQuestion, comment, setComment, index}) {
             </div>
 
             {isEditing &&
-                <CommentEditor
+                <CommentUpdate
                     question={question}
                     setQuestion={setQuestion}
                     comment={comment}
@@ -67,4 +67,4 @@ function Comment({question, setQuestion, comment, setComment, index}) {
     );
 }
 
-export default Comment;
+export default CommentItem;

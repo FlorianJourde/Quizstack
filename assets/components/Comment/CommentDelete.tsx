@@ -1,49 +1,58 @@
 import React, {useState} from 'react';
-import {updateComment} from "../services/commentsApi";
+import {deleteComment, updateComment} from "../../services/commentsApi";
 
-function CommentEditor({question, setQuestion, comment, onCommentUpdated, onCancel}) {
-    const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
+function CommentUpdate({question, setQuestion, comment, onCommentDelete, onCancel}) {
+    const [isDeleting, setIsDeleting] = useState<boolean>(false);
     const [error, setError] = useState<string | null>(null);
-    const [newComment, setNewComment] = useState<string>(comment.content);
+    // const [newComment, setNewComment] = useState<string>(comment.content);
 
     async function handleSubmit(e) {
         e.preventDefault();
-        setIsSubmitting(true);
+        setIsDeleting(true);
         setError(null);
 
         try {
-            const updatedComment = await updateComment(comment.id, newComment);
+            const deletedComment = await deleteComment(comment.id);
+            const updatedQuestion = {...question};
 
-            if (updatedComment && updatedComment.id) {
-                const updatedQuestion = {...question};
+            console.log(updatedQuestion);
 
-                if (!updatedQuestion.comments) {
-                    updatedQuestion.comments = [];
-                }
-
-                const commentIndex = updatedQuestion.comments.findIndex(c => c.id === updatedComment.id);
-
-                if (commentIndex !== -1) {
-                    updatedQuestion.comments[commentIndex] = updatedComment;
-                } else {
-                    updatedQuestion.comments.push(updatedComment);
-                }
-
+            if (updatedQuestion.comments) {
+                updatedQuestion.comments = updatedQuestion.comments.filter(c => c.id !== comment.id);
                 setQuestion(updatedQuestion);
             }
 
-            onCommentUpdated(updatedComment);
+            onCommentDelete(deletedComment);
         } catch (err: unknown) {
             if (err instanceof Error) {
                 setError(err.message);
             }
         } finally {
-            setIsSubmitting(false);
+            setIsDeleting(false);
         }
     };
 
     return (
-        <div className="comment-editor">
+        <>
+            <p>Do you want to remove this comment ?</p>
+            <button
+                type="submit"
+                className="btn btn-primary me-2"
+                disabled={isDeleting}
+                onClick={handleSubmit}
+            >
+                {isDeleting ? 'Deleting...' : 'Delete'}
+            </button>
+            <button
+                type="button"
+                className="btn btn-secondary"
+                onClick={onCancel}
+                disabled={isDeleting}
+            >
+                Cancel
+            </button>
+
+        {/*<div className="comment-editor">
             {error && <div className="alert alert-danger">{error}</div>}
 
             <form onSubmit={handleSubmit}>
@@ -74,8 +83,10 @@ function CommentEditor({question, setQuestion, comment, onCommentUpdated, onCanc
                     </button>
                 </div>
             </form>
-        </div>
+        </div>*/}
+        </>
+
     );
 };
 
-export default CommentEditor;
+export default CommentUpdate;
