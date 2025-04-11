@@ -1,10 +1,10 @@
-import React, {useContext, useState} from 'react';
+import React, {useState} from 'react';
 import {MarkdownRenderer} from "../MarkdownRenderer";
 import CommentUpdate from "./CommentUpdate";
 import CommentDelete from "./CommentDelete";
 import {useAuth} from "../../context/AuthContext";
 
-function CommentItem({question, setQuestion, comment, setComment, index}) {
+function CommentItem({question, setQuestion, comment, index}) {
     const [isEditing, setIsEditing] = useState(false);
     const [isDeleting, setIsDeleting] = useState(false);
     const {isAuthor} = useAuth();
@@ -12,11 +12,11 @@ function CommentItem({question, setQuestion, comment, setComment, index}) {
 
     function handleCommentUpdated() {
         setIsEditing(false);
-    };
+    }
 
     function handleCommentDeleted() {
         setIsDeleting(false);
-    };
+    }
 
     return (
         <div>

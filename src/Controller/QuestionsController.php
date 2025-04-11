@@ -52,7 +52,7 @@ final class QuestionsController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager->flush();
 
-            $this->addFlash('success', 'La question a été modifiée avec succès.');
+            $this->addFlash('success', 'Question updated.');
 
             return $this->redirectToRoute('question_show', ['id' => $question->getId()]);
         }

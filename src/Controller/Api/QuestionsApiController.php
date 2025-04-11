@@ -4,7 +4,6 @@ namespace App\Controller\Api;
 
 use App\Entity\Questions;
 use App\Repository\ChoicesRepository;
-use App\Repository\QuestionsRepository;
 use App\Service\QuestionFinderService;
 use App\Service\QuestionFormatterService;
 use App\Service\QuestionLimitService;
@@ -50,21 +49,12 @@ class QuestionsApiController extends AbstractController
     #[Route('/question/{id}', name: 'get_question', methods: ['GET'])]
     public function getQuestion(
         QuestionFormatterService $formatterService,
-        QuestionsRepository      $questionsRepository,
         ChoicesRepository        $choicesRepository,
-        int                      $id
+        Questions                $question
     ): JsonResponse
     {
-        $question = $questionsRepository->find($id);
-
-        if (!$question) {
-            return new JsonResponse('No question found.', 404);
-        }
-
-        assert($question instanceof Questions);
-
         $questionData = $formatterService->formatQuestionData($question);
-        $correctChoices = $choicesRepository->findCorrectAnswerIdsByQuestionId($id);
+        $correctChoices = $choicesRepository->findCorrectAnswerIdsByQuestionId($question->getId());
         $questionData['correctChoices'] = $correctChoices;
 
         return $this->json($questionData);
@@ -72,11 +62,10 @@ class QuestionsApiController extends AbstractController
 
     #[Route('/question/{id}/check', name: 'check_answers', methods: ['POST'])]
     public function checkAnswers(
-        ScoresService       $scoresService,
-        ChoicesRepository   $choicesRepository,
-        QuestionsRepository $questionsRepository,
-        Request             $request,
-        int                 $id
+        ScoresService     $scoresService,
+        ChoicesRepository $choicesRepository,
+        Request           $request,
+        Questions         $question
     ): JsonResponse
     {
         $data = json_decode($request->getContent(), true);
@@ -87,12 +76,10 @@ class QuestionsApiController extends AbstractController
             return $this->json(['error' => 'No answer provided'], 400);
         }
 
-        $correctChoices = $choicesRepository->findCorrectAnswerIdsByQuestionId($id);
+        $correctChoices = $choicesRepository->findCorrectAnswerIdsByQuestionId($question->getId());
         $diff1 = array_diff($correctChoices, $answers);
         $diff2 = array_diff($answers, $correctChoices);
         $match = (empty($diff1) && empty($diff2));
-
-        $question = $questionsRepository->find($id);
 
         if ($user && $match) {
             $scoresService->setScores($user, $question->getDifficulty());

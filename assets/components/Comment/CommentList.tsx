@@ -35,7 +35,7 @@ function CommentList({question, setQuestion}) {
         } finally {
             setIsSubmitting(false);
         }
-    };
+    }
 
     return (
         <>
@@ -47,7 +47,7 @@ function CommentList({question, setQuestion}) {
             <div>
 
                 {question.comments.map((comment, index) => (
-                    <CommentItem question={question} setQuestion={setQuestion} comment={comment} setComment={setComment} index={index} key={`comment-${index}`}/>
+                    <CommentItem question={question} setQuestion={setQuestion} comment={comment} index={index} key={`comment-${index}`}/>
                 ))}
 
             </div>

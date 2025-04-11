@@ -23,7 +23,7 @@ class ResetWeeklyScoresCommand extends Command
         $this->setDescription('Reset weekly users scores.');
     }
 
-    protected function execute(InputInterface $input, OutputInterface $output)
+    protected function execute(InputInterface $input, OutputInterface $output): int
     {
         $output->writeln('Resetting weekly users scores...');
 

@@ -68,7 +68,6 @@ class CommentsApiController extends AbstractController
     {
         $user = $this->getUser();
         $data = json_decode($request->getContent(), true);
-        $commentId = $data['commentId'] ?? null;
         $content = $data['content'];
 
         if (!$user || $comment->getUserId()->getId() !== $user->getId()) {

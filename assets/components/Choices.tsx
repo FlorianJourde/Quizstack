@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import {MarkdownRenderer} from "./MarkdownRenderer";
 
 function Choices({question, answers, setAnswers}) {
@@ -12,7 +12,7 @@ function Choices({question, answers, setAnswers}) {
                 return [...prevSelected, answerId];
             }
         });
-    };
+    }
 
     function checkAnswersValidity(answerId) {
         if (!question.correctChoices) return false;

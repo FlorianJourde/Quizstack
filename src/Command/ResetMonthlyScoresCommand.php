@@ -23,7 +23,7 @@ class ResetMonthlyScoresCommand extends Command
         $this->setDescription('Reset monthly users scores.');
     }
 
-    protected function execute(InputInterface $input, OutputInterface $output)
+    protected function execute(InputInterface $input, OutputInterface $output): int
     {
         $output->writeln('Resetting monthly users scores...');
 

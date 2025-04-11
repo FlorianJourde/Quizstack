@@ -1,4 +1,4 @@
-import React, {createContext, useState, useEffect, ReactNode, useContext} from 'react';
+import React, {createContext, useState, useEffect, ReactNode} from 'react';
 import {UserInterface} from "../types/user";
 import {AuthContextInterface} from "../types/authContext";
 
@@ -30,7 +30,7 @@ export function AuthProvider({children}: { children: ReactNode }) {
             } finally {
                 setLoading(false);
             }
-        };
+        }
 
         fetchCurrentUser();
     }, []);
@@ -39,7 +39,7 @@ export function AuthProvider({children}: { children: ReactNode }) {
         if (!currentUser) return false;
 
         return currentUser.id === contentAuthorId;
-    };
+    }
 
     const value: AuthContextInterface = {
         currentUser,
@@ -49,7 +49,7 @@ export function AuthProvider({children}: { children: ReactNode }) {
     };
 
     return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
-};
+}
 
 export function useAuth() {
     return React.useContext(AuthContext);

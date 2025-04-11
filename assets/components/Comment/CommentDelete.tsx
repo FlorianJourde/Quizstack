@@ -27,7 +27,7 @@ function CommentUpdate({question, setQuestion, comment, onCommentDelete, onCance
         } finally {
             setIsDeleting(false);
         }
-    };
+    }
 
     return (
         <>
@@ -50,6 +50,6 @@ function CommentUpdate({question, setQuestion, comment, onCommentDelete, onCance
             </button>
         </>
     );
-};
+}
 
 export default CommentUpdate;

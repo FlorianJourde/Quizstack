@@ -3,7 +3,7 @@ const BASE_URL = '/api';
 export async function getComments(questionId) {
     const response = await fetch(`${BASE_URL}/question/${questionId}/comments`);
     return response.json();
-};
+}
 
 export async function addComment(questionId, content) {
     const response = await fetch(`${BASE_URL}/question/${questionId}/comment/add`, {
@@ -14,7 +14,7 @@ export async function addComment(questionId, content) {
         body: JSON.stringify({questionId: questionId, content: content}),
     });
     return response.json();
-};
+}
 
 export async function updateComment(commentId, content) {
     const response = await fetch(`${BASE_URL}/comment/${commentId}/edit`, {
@@ -26,14 +26,13 @@ export async function updateComment(commentId, content) {
         credentials: 'include'
     });
 
-
     if (!response.ok) {
         const errorData = await response.json();
         throw new Error(errorData.error || 'Error while comment edition.');
     }
 
     return response.json();
-};
+}
 
 export async function deleteComment(commentId) {
     const response = await fetch(`${BASE_URL}/comment/${commentId}/delete`, {
@@ -50,4 +49,4 @@ export async function deleteComment(commentId) {
     }
 
     return response.json();
-};
+}

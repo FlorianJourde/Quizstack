@@ -40,7 +40,7 @@ function CommentUpdate({question, setQuestion, comment, onCommentUpdated, onCanc
         } finally {
             setIsSubmitting(false);
         }
-    };
+    }
 
     return (
         <div className="comment-editor">
@@ -76,6 +76,6 @@ function CommentUpdate({question, setQuestion, comment, onCommentUpdated, onCanc
             </form>
         </div>
     );
-};
+}
 
 export default CommentUpdate;

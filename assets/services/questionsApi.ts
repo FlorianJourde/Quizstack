@@ -17,13 +17,13 @@ export async function getRandomQuestion(filters: UrlFiltersInterface = {}) {
 
     const response = await fetch(`${BASE_URL}?${params}`);
     return response.json();
-};
+}
 
 export async function getQuestion(questionId: number) {
     const response = await fetch(`${BASE_URL}/${questionId}`);
 
     return response.json();
-};
+}
 
 export async function submitAnswers(questionId, answers) {
     const response = await fetch(`${BASE_URL}/${questionId}/check`, {
@@ -34,4 +34,4 @@ export async function submitAnswers(questionId, answers) {
         body: JSON.stringify({ answers: answers }),
     });
     return response.json();
-};
+}

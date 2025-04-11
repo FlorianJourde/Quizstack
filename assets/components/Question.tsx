@@ -72,7 +72,7 @@ function Question({mode, questionId, showComments}: { mode: string, questionId: 
 
     function handleNextQuestion() {
         loadQuestion();
-    };
+    }
 
     async function handleSubmit() {
         try {
@@ -86,7 +86,7 @@ function Question({mode, questionId, showComments}: { mode: string, questionId: 
         } catch (error) {
             console.error('Error submitting answers : ', error);
         }
-    };
+    }
 
     if (limitReached) return <LimitReachedComponent/>;
     if (loading) return <Loading/>;
