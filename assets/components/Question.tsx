@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {getQuestion, submitAnswers} from "../services/questionsApi";
+import {getRandomQuestion, getQuestion, submitAnswers} from "../services/questionsApi";
 import Choices from "./Choices";
 import Explanation from "./Explanation";
 import CommentList from "./Comment/CommentList";
@@ -9,10 +9,10 @@ import {UrlFiltersInterface} from "../types/urlFilters";
 import LimitReachedComponent from "./LimitReachedComponent";
 import Loading from "./Loading";
 
-function Question() {
+function Question({mode, questionId}: {mode: string, questionId: number}) {
     const [loading, setLoading] = useState<boolean>(true);
-    const [answers, setAnswers] = useState<number[]>([]);
     const [question, setQuestion] = useState<QuestionInterface | null>(null);
+    const [answers, setAnswers] = useState<number[]>([]);
     const [limitReached, setLimitReached] = useState<boolean>(false);
 
     useEffect(() => {
@@ -30,7 +30,13 @@ function Question() {
         const urlFilters = searchForParams();
 
         try {
-            const data: QuestionOrLimitReached = await getQuestion(urlFilters);
+            let data: QuestionInterface | QuestionOrLimitReached;
+
+            if (mode === 'display' && questionId > 0) {
+                data = await getQuestion(questionId);
+            } else {
+                data = await getRandomQuestion(urlFilters);
+            }
 
             if ('limitReached' in data) {
                 setLimitReached(true);

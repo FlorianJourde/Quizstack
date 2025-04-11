@@ -6,12 +6,19 @@ import {AuthProvider} from "./context/AuthContext";
 
 document.addEventListener('DOMContentLoaded', () => {
     const questionContainer = document.getElementById('quiz-container');
-    if (questionContainer) {
-        const root = createRoot(questionContainer);
-        root.render(
-            <AuthProvider>
-                <Question/>
-            </AuthProvider>
-        );
-    }
+
+
+    if (!questionContainer) return;
+
+    const mode = questionContainer.dataset.mode || 'quiz';
+    const questionId = parseInt(questionContainer.dataset.questionId || '0');
+
+    // if (questionContainer) {
+    const root = createRoot(questionContainer);
+    root.render(
+        <AuthProvider>
+            <Question mode={mode} questionId={questionId}/>
+        </AuthProvider>
+    );
+    // }
 });

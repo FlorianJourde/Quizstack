@@ -16,8 +16,8 @@ use Symfony\Component\Routing\Annotation\Route;
 #[Route('/api', name: 'api_question_')]
 class QuestionsApiController extends AbstractController
 {
-    #[Route('/question', name: 'get', methods: ['GET'])]
-    public function getQuestion(
+    #[Route('/question', name: 'get_random_question', methods: ['GET'])]
+    public function getRandomQuestion(
         Request                  $request,
         QuestionFinderService    $finderService,
         QuestionFormatterService $formatterService,
@@ -42,6 +42,44 @@ class QuestionsApiController extends AbstractController
 
             return $limitService->createResponseWithCookie($questionData, $request);
         }
+
+        return $this->json($questionData);
+    }
+
+
+    #[Route('/question/{id}', name: 'get_question', methods: ['GET'])]
+    public function getQuestion(
+        Request                  $request,
+        QuestionFinderService    $finderService,
+        QuestionFormatterService $formatterService,
+        QuestionLimitService     $limitService,
+        QuestionsRepository      $questionsRepository,
+        ChoicesRepository        $choicesRepository,
+        int                      $id
+    ): JsonResponse
+    {
+        $question = $questionsRepository->find($id);
+
+        if (!$question) {
+            return new JsonResponse('No question found.', 404);
+        }
+
+
+        $questionData = $formatterService->formatQuestionData($question);
+        $correctChoices = $choicesRepository->findCorrectAnswerIdsByQuestionId($id);
+        $questionData['correctChoices'] = $correctChoices;
+//        if ($this->getUser() === null) {
+//            if ($limitService->isLimitReached($request)) {
+//                return $limitService->getLimitResponse();
+//            }
+
+//            return $limitService->createResponseWithCookie($questionData, $request);
+//        }
+//
+//        dump($questionData);
+//        dump($correctChoices);
+//        die();
+
 
         return $this->json($questionData);
     }
@@ -75,7 +113,6 @@ class QuestionsApiController extends AbstractController
         }
 
         return $this->json([
-//            'correct' => $match,
             'correctChoices' => $correctChoices
         ]);
     }

@@ -24,6 +24,8 @@
         <p class="font-bold text-6xl text-center">Question</p>
     </div>
 
+    <div id="quiz-container" data-mode="{{ mode }}" data-question-id="{{ questionId }}"></div>
+
 {#    <a href=""></a>#}
 
     <a href="{{ path('question_edit', {'id': question.id}) }}">

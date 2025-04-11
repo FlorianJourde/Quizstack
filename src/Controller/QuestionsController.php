@@ -26,6 +26,8 @@ final class QuestionsController extends AbstractController
 
         return $this->render('questions/question.html.twig', [
             'question' => $question,
+            'mode' => 'display',
+            'questionId' => $question->getId(),
         ]);
     }
     #[IsGranted('ROLE_EDITOR')]
