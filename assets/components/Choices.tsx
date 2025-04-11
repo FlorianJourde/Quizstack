@@ -1,9 +1,13 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {MarkdownRenderer} from "./MarkdownRenderer";
 
-function Choices({result, question, answers, setAnswers}) {
+function Choices({question, answers, setAnswers}) {
+    useEffect(() => {
+        console.log(answers)
+    }, [answers]);
+
     function handleAnswersChange(answerId) {
-        if (result !== null) return false;
+        if (question.correctChoices) return false;
 
         setAnswers(prevSelected => {
             if (prevSelected.includes(answerId)) {
@@ -15,9 +19,9 @@ function Choices({result, question, answers, setAnswers}) {
     };
 
     function checkAnswersValidity(answerId) {
-        if (result === null) return false;
+        if (!question.correctChoices) return false;
 
-        const isCorrect = result.correctChoices.includes(answerId);
+        const isCorrect = question.correctChoices.includes(answerId);
         const wasSelected = answers.includes(answerId);
 
         return isCorrect === wasSelected;
@@ -38,7 +42,7 @@ function Choices({result, question, answers, setAnswers}) {
 
                     <MarkdownRenderer content={choice.content}/>
 
-                    {result !== null && (
+                    {question.correctChoices && (
                         <>
                             {checkAnswersValidity(choice.id) ? (
                                 <span className="correct-icon"> ✓</span>

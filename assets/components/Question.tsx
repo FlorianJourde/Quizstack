@@ -4,7 +4,7 @@ import Choices from "./Choices";
 import Explanation from "./Explanation";
 import CommentList from "./Comment/CommentList";
 import {MarkdownRenderer} from "./MarkdownRenderer";
-import {QuestionInterface, QuestionOrLimitReached, ResultInterface} from '../types';
+import {QuestionInterface, QuestionOrLimitReached} from '../types';
 import {UrlFiltersInterface} from "../types/urlFilters";
 import LimitReachedComponent from "./LimitReachedComponent";
 import Loading from "./Loading";
@@ -12,12 +12,11 @@ import Loading from "./Loading";
 function Question() {
     const [loading, setLoading] = useState<boolean>(true);
     const [answers, setAnswers] = useState<number[]>([]);
-    const [result, setResult] = useState<ResultInterface | null>(null);
     const [question, setQuestion] = useState<QuestionInterface | null>(null);
     const [limitReached, setLimitReached] = useState<boolean>(false);
 
     useEffect(() => {
-        // console.log(question)
+        console.log(question)
     }, [question]);
 
     useEffect(() => {
@@ -27,7 +26,6 @@ function Question() {
     async function loadQuestion() {
         setLoading(true);
         setAnswers([]);
-        setResult(null);
 
         const urlFilters = searchForParams();
 
@@ -68,8 +66,13 @@ function Question() {
 
     async function handleSubmit() {
         try {
-            const result = await submitAnswers(question?.id, answers);
-            setResult(result);
+            const result: QuestionInterface = await submitAnswers(question?.id, answers);
+            if (question) {
+                setQuestion({
+                    ...question,
+                    correctChoices: result.correctChoices
+                });
+            }
         } catch (error) {
             console.error('Error submitting answers : ', error);
         }
@@ -92,7 +95,7 @@ function Question() {
             {question.numberOfCorrectChoices > 1 && <p>Multiple choices possible.</p>}
             <br/>
             <ul>
-                <Choices result={result} question={question} answers={answers} setAnswers={setAnswers}/>
+                <Choices question={question} answers={answers} setAnswers={setAnswers}/>
             </ul>
 
             <br/>
@@ -103,9 +106,9 @@ function Question() {
             <br/>
             <br/>
 
-            {result !== null && (
+            {question.correctChoices && (
                 <>
-                    {result && <Explanation explanation={question.explanation}/>}
+                    <Explanation question={question}/>
 
                     <button onClick={handleNextQuestion}>
                         Next question

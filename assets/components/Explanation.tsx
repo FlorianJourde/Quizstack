@@ -2,11 +2,11 @@ import React from 'react';
 
 Explanation.propTypes = {};
 
-function Explanation({explanation}) {
+function Explanation({question}) {
     return (
         <div>
             <h2>
-                {explanation}
+                {question.explanation}
             </h2>
             <br/>
         </div>

@@ -12,6 +12,7 @@ export interface QuestionInterface {
     choices: ChoicesInterface[];
     comments: CommentInterface[];
     numberOfCorrectChoices : number;
+    correctChoices?: number[];
 }
 
 export type QuestionOrLimitReached = QuestionInterface | LimitReachedInterface;
