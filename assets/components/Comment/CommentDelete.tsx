@@ -14,8 +14,6 @@ function CommentUpdate({question, setQuestion, comment, onCommentDelete, onCance
             const deletedComment = await deleteComment(comment.id);
             const updatedQuestion = {...question};
 
-            console.log(updatedQuestion);
-
             if (updatedQuestion.comments) {
                 updatedQuestion.comments = updatedQuestion.comments.filter(c => c.id !== comment.id);
                 setQuestion(updatedQuestion);

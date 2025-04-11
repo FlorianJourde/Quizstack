@@ -20,6 +20,10 @@ function Question({mode, questionId, showComments}: { mode: string, questionId: 
     }, [question]);
 
     useEffect(() => {
+        console.log(answers)
+    }, [answers]);
+
+    useEffect(() => {
         loadQuestion();
     }, []);
 
@@ -102,7 +106,7 @@ function Question({mode, questionId, showComments}: { mode: string, questionId: 
             <br/>
 
             <ul>
-                <Choices mode={mode} question={question} answers={answers} setAnswers={setAnswers}/>
+                <Choices question={question} answers={answers} setAnswers={setAnswers}/>
             </ul>
 
             <br/>
@@ -111,7 +115,6 @@ function Question({mode, questionId, showComments}: { mode: string, questionId: 
                     Validate
                 </button>
             )}
-
 
             <br/>
             <br/>

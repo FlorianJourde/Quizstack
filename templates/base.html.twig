@@ -12,9 +12,6 @@
 
     {% block javascripts %}
         {{ encore_entry_script_tags('app') }}
-        {#        {{ encore_entry_script_tags('app') }} #}
-
-        {#        {{ encore_entry_script_tags }} #}
     {% endblock %}
 
 </head>
@@ -23,17 +20,7 @@
 
 <body class="bg-[#262626] text-white">
 
-{# <div id="app"></div> #}
-{# <h1>Layout</h1> #}
-
-{% block body %}
-{% endblock %}
-{#    {% block javascripts %} #}
-
-<!-- Include the compiled script-->
-{#        <script type="text/javascript" src="{{ asset('assets/app.js') }}"></script> #}
-
-{#    {% endblock %} #}
+{% block body %}{% endblock %}
 
 </body>
 </html>

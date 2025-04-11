@@ -6,12 +6,10 @@
 {% block body %}
     <div class="container">
         <h1>Questions listes</h1>
-<br>
-        <a href="{{ path('question_new') }}">
-            New
-        </a>
         <br>
+        <a href="{{ path('question_new') }}">New</a>
 
+        <br>
 
         <div class="questions-list">
             <table class="table table-striped">
@@ -36,7 +34,6 @@
                         <td>{{ question.creationDate|date('d/m/Y') }}</td>
                         <td>{{ question.updateDate|date('d/m/Y') }}</td>
                         <td>{{ question.status }}</td>
-{#                        <td>{{ question.user.username }}</td>#}
                         <td>
                             <a href="{{ path('question', {'id': question.id}) }}">
                             See
@@ -45,11 +42,6 @@
                                 Edit
                             </a>
                         </td>
-
-                        {#                        <td>{{ question.userId }}</td> #}
-                        {#                        <td> #}
-                        {#                            <a href="{{ path('question', {'id': user.id}) }}" class="btn btn-sm btn-primary">Voir la question</a> #}
-                        {#                        </td> #}
                     </tr>
                 {% else %}
                     <tr>

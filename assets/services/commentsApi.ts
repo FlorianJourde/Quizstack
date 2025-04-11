@@ -1,5 +1,3 @@
-import question from "../components/Question";
-
 const BASE_URL = '/api';
 
 export async function getComments(questionId) {

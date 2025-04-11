@@ -7,9 +7,6 @@ use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use App\Repository\ScoresRepository;
 
-//use App\Repository\ScoreRepository;
-use Doctrine\ORM\EntityManagerInterface;
-
 class ResetMonthlyScoresCommand extends Command
 {
     protected static $defaultName = 'app:reset-monthly-scores';

@@ -3,36 +3,13 @@
 {% block title %}Question{% endblock %}
 
 {% block body %}
-{#    <h1 class="text-3xl">Question</h1>#}
-
-{#    <div id="question-container" data-question-id="{{ question.id }}"></div>#}
-{#    <div id="question-container" ></div>#}
-
-{#    <p>{{ question.content }}</p>#}
-{#    <br>#}
-{#    <h2>Answers</h2>#}
-{#    <ul>#}
-{#        {% for answer in answers %}#}
-{#            <li>{{ answer.content }}</li>#}
-{#        {% endfor %}#}
-{#    </ul>#}
-    {#    <p>{{ question }}</p> #}
-    {#    {{ dump(question.content) }} #}
-
-
     <div>
         <p class="font-bold text-6xl text-center">Question</p>
     </div>
 
     <div id="quiz-container" data-mode="{{ mode }}" data-question-id="{{ questionId }}"></div>
 
-{#    <a href=""></a>#}
-
-    <a href="{{ path('question_edit', {'id': question.id}) }}">
-        {#        question_edit#}
-        {#        Questions#}
-        Edit
-    </a>
+    <a href="{{ path('question_edit', {'id': question.id}) }}"> Edit </a>
 
     <br>
 
@@ -43,18 +20,5 @@
         <p>Creation date : {{ question.creationDate|date('d/m/Y') }}</p>
         <p>Update date : {{ question.updateDate|date('d/m/Y') }}</p>
         <p>Status : {{ question.status }}</p>
-{#        <p>Author : {{ question.user.username }}</p>#}
     </div>
-
 {% endblock %}
-
-{#{% block javascripts %}#}
-{#    {{ encore_entry_script_tags('question_app') }}#}
-{#        {{ encore_entry_script_tags('app') }}#}
-{#{% endblock %}#}
-
-
-{#{% block javascripts %}#}
-{#    {{ encore_entry_script_tags('app') }}#}
-{#    {{ encore_entry_script_tags('question_app') }}#}
-{#{% endblock %}#}

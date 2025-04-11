@@ -1,4 +1,3 @@
-import question from "../components/Question";
 import {UrlFiltersInterface} from "../types/urlFilters";
 
 const BASE_URL = '/api/question';
@@ -22,7 +21,7 @@ export async function getRandomQuestion(filters: UrlFiltersInterface = {}) {
 
 export async function getQuestion(questionId: number) {
     const response = await fetch(`${BASE_URL}/${questionId}`);
-    console.log(response);
+
     return response.json();
 };
 
@@ -32,7 +31,7 @@ export async function submitAnswers(questionId, answers) {
         headers: {
             'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ questionId, answers: answers }),
+        body: JSON.stringify({ answers: answers }),
     });
     return response.json();
 };

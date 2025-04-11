@@ -2,6 +2,7 @@
 
 namespace App\Controller\Api;
 
+use App\Entity\Questions;
 use App\Repository\ChoicesRepository;
 use App\Repository\QuestionsRepository;
 use App\Service\QuestionFinderService;
@@ -59,6 +60,8 @@ class QuestionsApiController extends AbstractController
         if (!$question) {
             return new JsonResponse('No question found.', 404);
         }
+
+        assert($question instanceof Questions);
 
         $questionData = $formatterService->formatQuestionData($question);
         $correctChoices = $choicesRepository->findCorrectAnswerIdsByQuestionId($id);

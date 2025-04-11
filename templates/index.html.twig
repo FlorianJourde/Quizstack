@@ -4,15 +4,12 @@
 
 {% block body %}
 
-{#    <div class="example-wrapper">#}
         <div>
             <p class="font-bold text-6xl text-center">Home</p>
 
-{#            {% include ('partials/filters.html.twig'), _context %}#}
-{#            {{ include 'partials/filters.html.twig', _context }}#}
             {{ include('partials/filters.html.twig', _context) }}
 
         </div>
-{#    </div>#}
+
 {% endblock %}
 

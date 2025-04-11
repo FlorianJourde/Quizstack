@@ -1,8 +1,5 @@
 {% block body %}
 
-    {#    <h1>Filters</h1> #}
-
-    {#    <form action="{{ path('question') }}" method="GET"> #}
     <form action="{{ path('quiz') }}" method="GET" id="questionForm">
 
         <h2 class="text-3xl">Levels</h2>
@@ -21,23 +18,19 @@
                     <input type="checkbox" id="category-{{ category.name }}" value="{{ category.name }}"
                            name="category[]">
                     <label for="category-{{ category.name }}">{{ category.name }}</label>
-                    {#                    {{ category.name }} #}
                 </li>
             {% else %}
                 <li>No categories.</li>
             {% endfor %}
         </ul>
+
         <button type="submit">
             Play
         </button>
-{#        <button type="button" id="resetFilters">Reset Filters</button>#}
+
         <a href="{{ path('quiz') }}">Play without filters</a>
     </form>
-{% endblock %}
-
-{% block javascripts %}
-{#    {{ parent() }}#}
-{#    <script src={{ asset('scripts/filters.js') }}></script>#}
-{#    {{ encore_entry_script_tags('filters') }}#}
 
 {% endblock %}
+
+{% block javascripts %}{% endblock %}

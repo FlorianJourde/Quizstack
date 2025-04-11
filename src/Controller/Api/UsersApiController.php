@@ -20,9 +20,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class UsersApiController extends AbstractController
 {
     #[Route('/user/current', name: 'get', methods: ['GET'])]
-    public function getCurrentUser(
-        Request                  $request
-    ): JsonResponse
+    public function getCurrentUser(): JsonResponse
     {
         $user = $this->getUser();
 
@@ -34,7 +32,5 @@ class UsersApiController extends AbstractController
             'success' => true,
             'id' => $user->getId()
         ]);
-
-//        return $this->json($user);
     }
 }

@@ -5,13 +5,9 @@
     </a>
 
     <ul>
-        {#        <a href="{{ path('user') }}"> #}
-
-{#        {% if is_granted('ROLE_ADMIN') %}#}
-            <a href="{{ path('scores') }}">
-                Scores
-            </a>
-{#        {% endif %}#}
+        <a href="{{ path('scores') }}">
+            Scores
+        </a>
 
         {% if is_granted('ROLE_ADMIN') %}
             <a href="{{ path('users') }}">
@@ -31,7 +27,6 @@
             </a>
         {% endif %}
 
-
         {% if is_granted('ROLE_USER') %}
             <a href="{{ path('app_logout') }}">
                 Logout
@@ -44,22 +39,6 @@
                 Register
             </a>
         {% endif %}
-
-
-        {#        {% if is_granted('ROLE_USER') %} #}
-        {#            <a href="{{ path('app_logout') }}"> #}
-        {#                Logout #}
-        {#            </a> #}
-        {#        {% else %} #}
-
-        {#        {% endif %} #}
-        {#        <a href="{{ path('app_login')}}"> #}
-        {#            Login #}
-        {#        </a> #}
-
-        {#        <a href="{{ path('app_register')}}"> #}
-        {#            Register #}
-        {#        </a> #}
 
     </ul>
 </header>

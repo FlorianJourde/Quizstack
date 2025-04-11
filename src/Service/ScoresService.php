@@ -2,10 +2,6 @@
 
 namespace App\Service;
 
-//use App\Entity\Users;
-//use App\Entity\Scores;
-use App\Entity\Scores;
-//use App\Entity\Users;
 use App\Entity\Users;
 use http\Exception\InvalidArgumentException;
 use Symfony\Component\Security\Core\User\UserInterface;

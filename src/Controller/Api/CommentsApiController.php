@@ -6,7 +6,6 @@ use App\Entity\Comments;
 use App\Repository\QuestionsRepository;
 use DateTimeImmutable;
 use Doctrine\ORM\EntityManagerInterface;
-use DoctrineExtensions\Query\Mysql\Date;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -21,8 +20,13 @@ class CommentsApiController extends AbstractController
     {
         $this->currentDate = new DateTimeImmutable();
     }
+
     #[Route('/question/{id}/comment/add', name: 'add_comment', methods: ['POST'])]
-    public function addComment(QuestionsRepository $questionsRepository, Request $request, EntityManagerInterface $entityManager): JsonResponse
+    public function addComment(
+        QuestionsRepository    $questionsRepository,
+        Request                $request,
+        EntityManagerInterface $entityManager
+    ): JsonResponse
     {
         $data = json_decode($request->getContent(), true);
         $questionId = $data['questionId'] ?? null;
@@ -56,7 +60,11 @@ class CommentsApiController extends AbstractController
     }
 
     #[Route('/comment/{id}/edit', name: 'edit_comment', methods: ['PUT'])]
-    public function editComment(Request $request, EntityManagerInterface $entityManager, Comments $comment): JsonResponse
+    public function editComment(
+        Request                $request,
+        EntityManagerInterface $entityManager,
+        Comments               $comment
+    ): JsonResponse
     {
         $user = $this->getUser();
         $data = json_decode($request->getContent(), true);
