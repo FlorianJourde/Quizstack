@@ -46,13 +46,9 @@ class QuestionsApiController extends AbstractController
         return $this->json($questionData);
     }
 
-
     #[Route('/question/{id}', name: 'get_question', methods: ['GET'])]
     public function getQuestion(
-        Request                  $request,
-        QuestionFinderService    $finderService,
         QuestionFormatterService $formatterService,
-        QuestionLimitService     $limitService,
         QuestionsRepository      $questionsRepository,
         ChoicesRepository        $choicesRepository,
         int                      $id
@@ -64,22 +60,9 @@ class QuestionsApiController extends AbstractController
             return new JsonResponse('No question found.', 404);
         }
 
-
         $questionData = $formatterService->formatQuestionData($question);
         $correctChoices = $choicesRepository->findCorrectAnswerIdsByQuestionId($id);
         $questionData['correctChoices'] = $correctChoices;
-//        if ($this->getUser() === null) {
-//            if ($limitService->isLimitReached($request)) {
-//                return $limitService->getLimitResponse();
-//            }
-
-//            return $limitService->createResponseWithCookie($questionData, $request);
-//        }
-//
-//        dump($questionData);
-//        dump($correctChoices);
-//        die();
-
 
         return $this->json($questionData);
     }
@@ -89,11 +72,11 @@ class QuestionsApiController extends AbstractController
         ScoresService       $scoresService,
         ChoicesRepository   $choicesRepository,
         QuestionsRepository $questionsRepository,
-        Request             $request
+        Request             $request,
+        int                 $id
     ): JsonResponse
     {
         $data = json_decode($request->getContent(), true);
-        $questionId = $data['questionId'] ?? null;
         $answers = $data['answers'] ?? null;
         $user = $this->getUser();
 
@@ -101,12 +84,12 @@ class QuestionsApiController extends AbstractController
             return $this->json(['error' => 'No answer provided'], 400);
         }
 
-        $correctChoices = $choicesRepository->findCorrectAnswerIdsByQuestionId($questionId);
+        $correctChoices = $choicesRepository->findCorrectAnswerIdsByQuestionId($id);
         $diff1 = array_diff($correctChoices, $answers);
         $diff2 = array_diff($answers, $correctChoices);
         $match = (empty($diff1) && empty($diff2));
 
-        $question = $questionsRepository->find($questionId);
+        $question = $questionsRepository->find($id);
 
         if ($user && $match) {
             $scoresService->setScores($user, $question->getDifficulty());

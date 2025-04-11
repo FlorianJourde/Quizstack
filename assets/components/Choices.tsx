@@ -1,7 +1,7 @@
 import React, {useEffect} from 'react';
 import {MarkdownRenderer} from "./MarkdownRenderer";
 
-function Choices({question, answers, setAnswers}) {
+function Choices({mode, question, answers, setAnswers}) {
     useEffect(() => {
         console.log(answers)
     }, [answers]);
@@ -20,6 +20,10 @@ function Choices({question, answers, setAnswers}) {
 
     function checkAnswersValidity(answerId) {
         if (!question.correctChoices) return false;
+
+        if (answers.length === 0) {
+            return question.correctChoices.includes(answerId);
+        }
 
         const isCorrect = question.correctChoices.includes(answerId);
         const wasSelected = answers.includes(answerId);

@@ -100,8 +100,9 @@ function Question({mode, questionId}: {mode: string, questionId: number}) {
             <p>Number of choices : {question.numberOfCorrectChoices}</p>
             {question.numberOfCorrectChoices > 1 && <p>Multiple choices possible.</p>}
             <br/>
+
             <ul>
-                <Choices question={question} answers={answers} setAnswers={setAnswers}/>
+                <Choices mode={mode} question={question} answers={answers} setAnswers={setAnswers}/>
             </ul>
 
             <br/>
