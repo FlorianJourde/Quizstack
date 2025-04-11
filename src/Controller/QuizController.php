@@ -13,6 +13,8 @@ final class QuizController extends AbstractController
     #[Route('/quiz', name: 'quiz')]
     public function question(Request $request, QuestionsRepository $questionsRepository): Response
     {
-        return $this->render('quiz.html.twig');
+        return $this->render('quiz.html.twig', [
+            'mode' => 'game',
+        ]);
     }
 }

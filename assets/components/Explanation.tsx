@@ -1,12 +1,12 @@
 import React from 'react';
+import {MarkdownRenderer} from "./MarkdownRenderer";
 
-Explanation.propTypes = {};
 
 function Explanation({question}) {
     return (
         <div>
             <h2>
-                {question.explanation}
+                <MarkdownRenderer content={question.explanation}/>
             </h2>
             <br/>
         </div>

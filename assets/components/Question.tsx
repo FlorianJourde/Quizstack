@@ -9,7 +9,7 @@ import {UrlFiltersInterface} from "../types/urlFilters";
 import LimitReachedComponent from "./LimitReachedComponent";
 import Loading from "./Loading";
 
-function Question({mode, questionId}: {mode: string, questionId: number}) {
+function Question({mode, questionId, showComments}: { mode: string, questionId: number, showComments: boolean }) {
     const [loading, setLoading] = useState<boolean>(true);
     const [question, setQuestion] = useState<QuestionInterface | null>(null);
     const [answers, setAnswers] = useState<number[]>([]);
@@ -106,9 +106,12 @@ function Question({mode, questionId}: {mode: string, questionId: number}) {
             </ul>
 
             <br/>
-            <button onClick={handleSubmit}>
-                Validate
-            </button>
+            {mode === 'game' && (
+                <button onClick={handleSubmit}>
+                    Validate
+                </button>
+            )}
+
 
             <br/>
             <br/>
@@ -117,11 +120,16 @@ function Question({mode, questionId}: {mode: string, questionId: number}) {
                 <>
                     <Explanation question={question}/>
 
-                    <button onClick={handleNextQuestion}>
-                        Next question
-                    </button>
+                    {mode === 'game' && (
+                        <button onClick={handleNextQuestion}>
+                            Next question
+                        </button>
+                    )}
 
-                    <CommentList question={question} setQuestion={setQuestion}/>
+                    {showComments && (
+                        <CommentList question={question} setQuestion={setQuestion}/>
+                    )}
+
                 </>
             )}
 

@@ -15,6 +15,17 @@ use Symfony\Component\Security\Http\Attribute\IsGranted;
 final class QuestionsController extends AbstractController
 {
     #[IsGranted('ROLE_EDITOR')]
+    #[Route('/questions', name: 'questions')]
+    public function questions(QuestionsRepository $questionsRepository): Response
+    {
+        $questions = $questionsRepository->findAll();
+
+        return $this->render('questions/index.html.twig', [
+            'questions' => $questions
+        ]);
+    }
+
+    #[IsGranted('ROLE_EDITOR')]
     #[Route('/question/{id}', name: 'question', requirements: ['id' => '\d+'])]
     public function question(int $id, QuestionsRepository $questionsRepository): Response
     {
@@ -28,16 +39,6 @@ final class QuestionsController extends AbstractController
             'question' => $question,
             'mode' => 'display',
             'questionId' => $question->getId(),
-        ]);
-    }
-    #[IsGranted('ROLE_EDITOR')]
-    #[Route('/questions', name: 'questions')]
-    public function questions(QuestionsRepository $questionsRepository): Response
-    {
-        $questions = $questionsRepository->findAll();
-
-        return $this->render('questions/index.html.twig', [
-            'questions' => $questions
         ]);
     }
 
@@ -59,6 +60,9 @@ final class QuestionsController extends AbstractController
         return $this->render('questions/edit.html.twig', [
             'question' => $question,
             'form' => $form->createView(),
+            'mode' => 'display',
+            'questionId' => $question->getId(),
+            'showComments' => 'false'
         ]);
     }
 
