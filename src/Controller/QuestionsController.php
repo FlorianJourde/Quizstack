@@ -7,6 +7,7 @@ use App\Form\QuestionsFormType;
 use App\Repository\QuestionsRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Bundle\SecurityBundle\Security;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
@@ -27,7 +28,10 @@ final class QuestionsController extends AbstractController
 
     #[IsGranted('ROLE_EDITOR')]
     #[Route('/question/{id}', name: 'question', requirements: ['id' => '\d+'])]
-    public function question(int $id, QuestionsRepository $questionsRepository): Response
+    public function question(
+        int                 $id,
+        QuestionsRepository $questionsRepository
+    ): Response
     {
         $question = $questionsRepository->find($id);
 
@@ -44,7 +48,11 @@ final class QuestionsController extends AbstractController
 
     #[IsGranted('ROLE_EDITOR')]
     #[Route('/question/{id}/edit', name: 'question_edit', requirements: ['id' => '\d+'])]
-    public function edit(Request $request, Questions $question, EntityManagerInterface $entityManager): Response
+    public function edit(
+        Request                $request,
+        Questions              $question,
+        EntityManagerInterface $entityManager
+    ): Response
     {
         $form = $this->createForm(QuestionsFormType::class, $question);
         $form->handleRequest($request);
@@ -54,7 +62,7 @@ final class QuestionsController extends AbstractController
 
             $this->addFlash('success', 'Question updated.');
 
-            return $this->redirectToRoute('question_show', ['id' => $question->getId()]);
+//            return $this->redirectToRoute('question', ['id' => $question->getId()]);
         }
 
         return $this->render('questions/edit.html.twig', [
@@ -68,10 +76,27 @@ final class QuestionsController extends AbstractController
 
     #[Route('/question/new', name: 'question_new')]
     #[IsGranted('ROLE_USER')]
-    public function new(): Response
+    public function new(
+        Request                $request,
+        Security               $security,
+        EntityManagerInterface $entityManager
+    ): Response
     {
         $question = new Questions();
-        $form = $this->createForm(QuestionsFormType::class, $question);
+        $question->setUser($security->getUser());
+        $isAdmin = $security->isGranted('ROLE_ADMIN');
+
+        $form = $this->createForm(QuestionsFormType::class, $question, [
+            'is_admin' => $isAdmin,
+        ]);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $entityManager->persist($question);
+            $entityManager->flush();
+
+            return $this->redirectToRoute('questions');
+        }
 
         return $this->render('questions/new.html.twig', [
             'question' => $question,

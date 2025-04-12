@@ -7,19 +7,18 @@
         <h1>Add new question</h1>
 
         {{ form_start(form) }}
-        <div class="row">
-            <div class="col-md-8">
-                {{ form_row(form.content) }}
-                {{ form_row(form.explanation) }}
-            </div>
-            <div class="col-md-4">
-                {{ form_row(form.difficulty) }}
-                {{ form_row(form.categories) }}
-            </div>
-        </div>
+        {{ form_row(form.content) }}
+        {{ form_row(form.explanation) }}
+        {{ form_row(form.difficulty) }}
+        {{ form_row(form.categories) }}
+        {{ form_row(form.image) }}
+
+        {% if form.status is defined %}
+            {{ form_row(form.status) }}
+        {% endif %}
 
         <div class="d-flex justify-content-between mt-3">
-            <button type="submit" class="btn btn-success">Créer</button>
+            <button type="submit" class="btn btn-success">Add</button>
         </div>
         {{ form_end(form) }}
     </div>

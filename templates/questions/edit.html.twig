@@ -6,24 +6,27 @@
     <div class="container mt-4">
         <h1>Edit question</h1>
 
-        <div id="quiz-container" data-mode="{{ mode }}" data-question-id="{{ questionId }}" data-show-comments="{{ showComments }}"></div>
+        <div id="quiz-container" data-mode="{{ mode }}" data-question-id="{{ questionId }}"
+             data-show-comments="{{ showComments }}"></div>
 
         {{ form_start(form) }}
-        <div class="row">
-            <div class="col-md-8">
-                {{ form_row(form.content) }}
-                {{ form_row(form.explanation) }}
-            </div>
-            <div class="col-md-4">
-                {{ form_row(form.difficulty) }}
-                {{ form_row(form.categories) }}
-            </div>
+        {{ form_row(form.content) }}
+        {{ form_row(form.explanation) }}
+        {{ form_row(form.difficulty) }}
+        {{ form_row(form.categories) }}
+        {{ form_row(form.image) }}
+        {{ form_row(form.choices) }}
+
+        {% if form.status is defined %}
+            {{ form_row(form.status) }}
+        {% endif %}
+
+        <br/>
+        
+        <div class="d-flex justify-content-between mt-3">
+            <button type="submit" class="btn btn-success">Update</button>
         </div>
 
-        <div class="d-flex justify-content-between mt-3">
-{#            <a href="{{ path('question_index') }}" class="btn btn-secondary">Annuler</a>#}
-            <button type="submit" class="btn btn-success">Créer</button>
-        </div>
         {{ form_end(form) }}
     </div>
 {% endblock %}

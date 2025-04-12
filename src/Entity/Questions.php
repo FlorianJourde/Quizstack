@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use App\Repository\QuestionsRepository;
+use DateTimeImmutable;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
@@ -23,10 +24,23 @@ class Questions
     private ?string $image = null;
 
     #[ORM\Column]
-    private ?\DateTimeImmutable $creation_date = null;
+    private ?DateTimeImmutable $creation_date = null;
 
     #[ORM\Column]
-    private ?\DateTimeImmutable $update_date = null;
+    private ?DateTimeImmutable $update_date = null;
+
+    #[ORM\PrePersist]
+    public function setCreationDateValue()
+    {
+        $this->creation_date = new DateTimeImmutable();
+        $this->update_date = new DateTimeImmutable();
+    }
+
+    #[ORM\PreUpdate]
+    public function setUpdateDateValue()
+    {
+        $this->update_date = new DateTimeImmutable();
+    }
 
     #[ORM\Column]
     private ?bool $status = false;
@@ -102,24 +116,24 @@ class Questions
         return $this;
     }
 
-    public function getCreationDate(): ?\DateTimeImmutable
+    public function getCreationDate(): ?DateTimeImmutable
     {
         return $this->creation_date;
     }
 
-    public function setCreationDate(\DateTimeImmutable $creation_date): static
+    public function setCreationDate(DateTimeImmutable $creation_date): static
     {
         $this->creation_date = $creation_date;
 
         return $this;
     }
 
-    public function getUpdateDate(): ?\DateTimeImmutable
+    public function getUpdateDate(): ?DateTimeImmutable
     {
         return $this->update_date;
     }
 
-    public function setUpdateDate(\DateTimeImmutable $update_date): static
+    public function setUpdateDate(DateTimeImmutable $update_date): static
     {
         $this->update_date = $update_date;
 
