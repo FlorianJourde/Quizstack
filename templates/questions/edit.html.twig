@@ -15,18 +15,74 @@
         {{ form_row(form.difficulty) }}
         {{ form_row(form.categories) }}
         {{ form_row(form.image) }}
-        {{ form_row(form.choices) }}
+
+        {{ include('partials/choices.html.twig', _context) }}
+
 
         {% if form.status is defined %}
             {{ form_row(form.status) }}
         {% endif %}
 
         <br/>
-        
+
         <div class="d-flex justify-content-between mt-3">
             <button type="submit" class="btn btn-success">Update</button>
         </div>
 
         {{ form_end(form) }}
+
+        <a href="{{ path('questions') }}">Cancel</a>
+
     </div>
+
 {% endblock %}
+
+{# {% block javascripts %}#}
+{#     {{ parent() }}#}
+
+{#     {{ encore_entry_script_tags('question-form') }}#}
+
+     {#     <script>#}
+{#         document.querySelectorAll('.delete-choice').forEach((button) => {#}
+{#             button.addEventListener('click', function () {#}
+{#                 this.closest('.choice-item').remove();#}
+{#             });#}
+{#         });#}
+
+{#         document.querySelectorAll('.add_item_link').forEach(btn => {#}
+{#             btn.addEventListener("click", addFormToCollection);#}
+{#         });#}
+
+{#         function addFormToCollection(e) {#}
+{#             const collectionHolder = document.querySelector('.' + e.currentTarget.dataset.collectionHolderClass);#}
+
+{#             if (!collectionHolder || !collectionHolder.dataset.prototype) {#}
+{#                 console.error('Collection holder or prototype not found', collectionHolder);#}
+{#                 return;#}
+{#             }#}
+
+{#             const item = document.createElement('li');#}
+{#             item.classList.add('choice-item');#}
+
+{#             item.innerHTML = collectionHolder.dataset.prototype.replace(#}
+{#                 /__name__/g,#}
+{#                 collectionHolder.dataset.index#}
+{#             );#}
+
+{#             const removeButton = document.createElement('button');#}
+{#             removeButton.type = 'button';#}
+{#             removeButton.classList.add('btn', 'btn-danger', 'btn-sm', 'delete-choice');#}
+{#             removeButton.innerText = 'Delete';#}
+
+{#             removeButton.addEventListener('click', function () {#}
+{#                 item.remove();#}
+{#             });#}
+
+{#             item.appendChild(removeButton);#}
+{#             collectionHolder.appendChild(item);#}
+
+{#             collectionHolder.dataset.index++;#}
+{#         }#}
+{#     </script>#}
+
+{# {% endblock %}#}

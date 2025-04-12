@@ -29,26 +29,13 @@ class Questions
     #[ORM\Column]
     private ?DateTimeImmutable $update_date = null;
 
-    #[ORM\PrePersist]
-    public function setCreationDateValue()
-    {
-        $this->creation_date = new DateTimeImmutable();
-        $this->update_date = new DateTimeImmutable();
-    }
-
-    #[ORM\PreUpdate]
-    public function setUpdateDateValue()
-    {
-        $this->update_date = new DateTimeImmutable();
-    }
-
     #[ORM\Column]
     private ?bool $status = false;
 
     /**
      * @var Collection<int, Choices>
      */
-    #[ORM\OneToMany(targetEntity: Choices::class, mappedBy: 'question')]
+    #[ORM\OneToMany(targetEntity: Choices::class, mappedBy: 'question', cascade: ['persist'], orphanRemoval: true)]
     private Collection $choices;
 
     /**

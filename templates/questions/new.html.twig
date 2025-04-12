@@ -12,6 +12,37 @@
         {{ form_row(form.difficulty) }}
         {{ form_row(form.categories) }}
         {{ form_row(form.image) }}
+{#        {{ form_row(form.choices) }}#}
+
+{#        <div class="choices-section">#}
+{#            <h3>Answer choices</h3>#}
+
+{#            {% for i, choiceField in form.choices %}#}
+{#                <div class="choice-item">#}
+{#                    {{ form_widget(choiceField) }}#}
+
+{#                    #}{# Bouton de suppression avec l'index du choix #}
+{#                    {% if form.choices|length > 1 %}#}
+{#                        <button type="submit" name="remove_choice" value="{{ i }}" class="btn btn-sm btn-danger">#}
+{#                            Delete#}
+{#                        </button>#}
+{#                    {% endif %}#}
+{#                </div>#}
+{#            {% endfor %}#}
+
+{#            #}{# Bouton pour ajouter un choix si moins de 6 #}
+{#            {% if form.choices|length < 6 %}#}
+{#                <button type="submit" name="add_choice" value="1" class="btn btn-primary">#}
+{#                    Add answer choice#}
+{#                </button>#}
+{#            {% endif %}#}
+
+{#            <div class="choices-counter">#}
+{#                {{ form.choices|length }}/6 choices#}
+{#            </div>#}
+{#        </div>#}
+
+        {{ include('partials/choices.html.twig', _context) }}
 
         {% if form.status is defined %}
             {{ form_row(form.status) }}
@@ -20,6 +51,11 @@
         <div class="d-flex justify-content-between mt-3">
             <button type="submit" class="btn btn-success">Add</button>
         </div>
+
+
         {{ form_end(form) }}
+
+        <a href="{{ path('questions') }}">Cancel</a>
+
     </div>
 {% endblock %}

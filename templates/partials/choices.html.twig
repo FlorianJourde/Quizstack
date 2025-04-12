@@ -1,0 +1,19 @@
+
+<h3>Choices</h3>
+<ul class="choices-list">
+    {% for choice in form.choices %}
+        <li class="choice-item">
+            {{ form_row(choice) }}
+            <button type="button" class="btn btn-danger btn-sm delete-choice">Delete</button>
+        </li>
+    {% endfor %}
+</ul>
+
+<ul class="choices-collection"
+    data-index="{{ form.choices|length > 0 ? form.choices|last.vars.name + 1 : 0 }}"
+    data-prototype="{{ form_widget(form.choices.vars.prototype)|e('html_attr') }}"
+></ul>
+
+<button type="button" class="add_item_link btn btn-primary" data-collection-holder-class="choices-collection">
+    Add a choice
+</button>

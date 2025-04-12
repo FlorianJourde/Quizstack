@@ -51,6 +51,19 @@ class QuestionsRepository extends ServiceEntityRepository
             ->getOneOrNullResult(AbstractQuery::HYDRATE_SINGLE_SCALAR);
     }
 
+    public function findAllByUpdateDate(): ?array
+    {
+        return $this->createQueryBuilder('q')
+//            ->select('q.explanation')
+//            ->where('q.id = :questionId')
+//            ->setParameter('questionId', $questionId)
+//                ->orderBy('q.update_date')
+            ->orderBy('q.update_date', 'DESC')
+            ->getQuery()
+            ->getResult();
+//            ->getOneOrNullResult(AbstractQuery::HYDRATE_SINGLE_SCALAR);
+    }
+
     //    /**
     //     * @return Questions[] Returns an array of Questions objects
     //     */

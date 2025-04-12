@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Questions;
 use App\Form\QuestionsFormType;
 use App\Repository\QuestionsRepository;
+use DateTimeImmutable;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Bundle\SecurityBundle\Security;
@@ -15,11 +16,19 @@ use Symfony\Component\Security\Http\Attribute\IsGranted;
 
 final class QuestionsController extends AbstractController
 {
+    private DateTimeImmutable $currentDate;
+
+    public function __construct()
+    {
+        $this->currentDate = new DateTimeImmutable();
+    }
+
     #[IsGranted('ROLE_EDITOR')]
     #[Route('/questions', name: 'questions')]
     public function questions(QuestionsRepository $questionsRepository): Response
     {
-        $questions = $questionsRepository->findAll();
+//        $questions = $questionsRepository->findAll();
+        $questions = $questionsRepository->findAllByUpdateDate();
 
         return $this->render('questions/index.html.twig', [
             'questions' => $questions
@@ -58,10 +67,10 @@ final class QuestionsController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $question->setUpdateDate($this->currentDate);
             $entityManager->flush();
 
             $this->addFlash('success', 'Question updated.');
-
 //            return $this->redirectToRoute('question', ['id' => $question->getId()]);
         }
 
@@ -92,6 +101,8 @@ final class QuestionsController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $question->setCreationDate($this->currentDate);
+            $question->setUpdateDate($this->currentDate);
             $entityManager->persist($question);
             $entityManager->flush();
 

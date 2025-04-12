@@ -16,11 +16,11 @@ function Question({mode, questionId, showComments}: { mode: string, questionId: 
     const [limitReached, setLimitReached] = useState<boolean>(false);
 
     useEffect(() => {
-        console.log(question)
+        // console.log(question)
     }, [question]);
 
     useEffect(() => {
-        console.log(answers)
+        // console.log(answers)
     }, [answers]);
 
     useEffect(() => {

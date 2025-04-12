@@ -3,6 +3,8 @@ import {createRoot} from "react-dom/client";
 import Question from "./components/Question";
 import './styles/app.css';
 import {AuthProvider} from "./context/AuthContext";
+import './scripts/filters'
+import './scripts/question-form'
 
 document.addEventListener('DOMContentLoaded', () => {
     const questionContainer = document.getElementById('quiz-container');
