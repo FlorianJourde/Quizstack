@@ -4,12 +4,27 @@
 
 {% block body %}
 
-        <div>
-            <p class="font-bold text-6xl text-center">Home</p>
+    <div>
+        <p class="font-bold text-6xl text-center">Home</p>
 
-            {{ include('partials/filters.html.twig', _context) }}
+        {#            <div class="particles" aria-hidden="true"></div> #}
 
-        </div>
+        <main>
+            <button aria-label="Say Hello">
+                <div>
+              <span class="inner">
+                <div class="particles" aria-hidden="true"></div>
+                <span class="text">Say hello</span>
+                <span class="halo" aria-hidden="true"></span>
+              </span>
+                </div>
+{#                <span class="shadow" aria-hidden="true"></span>#}
+            </button>
+        </main>
+
+        {{ include('partials/filters.html.twig', _context) }}
+
+    </div>
 
 {% endblock %}
 
