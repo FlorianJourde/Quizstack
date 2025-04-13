@@ -1,4 +1,6 @@
-@use "particles" as *;
+//@use "_particles";
+@use "_particles-2";
+@use "_rays";
 //@import url('particles.scss');
 
 @tailwind base;

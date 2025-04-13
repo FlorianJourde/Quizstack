@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <title>{% block title %}Welcome!{% endblock %}</title>
@@ -19,6 +19,18 @@
 {{ include('partials/header.html.twig') }}
 
 <body class="bg-[#262626] text-white">
+
+<section class='rays'>
+    <div class='hero'></div>
+</section>
+
+<div class="particles">
+    {% for i in 1..50 %}
+        <div class="circle-container">
+            <div class="circle"></div>
+        </div>
+    {% endfor %}
+</div>
 
 {% block body %}{% endblock %}
 
