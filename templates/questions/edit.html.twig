@@ -17,7 +17,6 @@
 
     {{ include('partials/choices.html.twig', _context) }}
 
-
     {% if form.status is defined %}
         {{ form_row(form.status) }}
     {% endif %}
@@ -25,11 +24,10 @@
     <br/>
 
     <div class="d-flex justify-content-between mt-3">
-        <button type="submit" class="btn btn-success">Update</button>
+        <button type="submit">Update</button>
     </div>
 
     {{ form_row(form.delete) }}
-
 
     {{ form_end(form) }}
 

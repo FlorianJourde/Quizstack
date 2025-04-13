@@ -1,5 +1,5 @@
 <h3>Choices</h3>
-<ul class="choices-list">
+<ul class="choices-list" data-max-choices="{{ form.choices.vars.attr['data-max-choices'] }}">
     {% for choice in form.choices %}
         <li class="choice-item">
             {{ form_row(choice) }}

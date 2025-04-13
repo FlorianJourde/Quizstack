@@ -19,8 +19,6 @@ class QuestionsFormType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
-        $question = $builder->getData();
-
         $builder
             ->add('content')
             ->add('image')
@@ -51,7 +49,8 @@ class QuestionsFormType extends AbstractType
                     'class' => 'choices-collection',
                     'data-max-choices' => 6
                 ],
-                'label' => 'Answer choices'
+//                'label' => 'Answer choices'
+                'label' => false
 //            ]);
             ]);
 //            ->add('delete', SubmitType::class, [
@@ -92,6 +91,9 @@ class QuestionsFormType extends AbstractType
 //                'label' => 'Answer choices'
 //            ]);
 
+        $question = $builder->getData();
+//        dump($question->getId());
+
         if ($question && $question->getId()) {
             $builder->add('delete', SubmitType::class, [
                 'label' => 'Delete Question',
@@ -102,7 +104,7 @@ class QuestionsFormType extends AbstractType
             ]);
         }
 
-        if ($options['is_admin']) {
+        if ($options['is_editor']) {
             $builder->add('status');
         }
     }
@@ -111,7 +113,7 @@ class QuestionsFormType extends AbstractType
     {
         $resolver->setDefaults([
             'data_class' => Questions::class,
-            'is_admin' => false,
+            'is_editor' => false,
         ]);
     }
 }

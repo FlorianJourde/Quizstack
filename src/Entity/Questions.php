@@ -8,6 +8,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints\Count;
 
 #[ORM\Entity(repositoryClass: QuestionsRepository::class)]
 class Questions
@@ -35,6 +36,7 @@ class Questions
     /**
      * @var Collection<int, Choices>
      */
+    #[Count(max: 6, maxMessage: "You cannot specify more than {{ limit }} choices")]
     #[ORM\OneToMany(targetEntity: Choices::class, mappedBy: 'question', cascade: ['persist'], orphanRemoval: true)]
     private Collection $choices;
 

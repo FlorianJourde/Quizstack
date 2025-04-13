@@ -17,6 +17,10 @@
         <h1>ID : {{ question.id }}</h1>
         <p>Question : {{ question.content }}</p>
         <p>Image : {{ question.image }}</p>
+        <p>Categories :</p>
+        {% for category in question.categories %}
+            {{ category.name }}
+        {% endfor %}
         <p>Creation date : {{ question.creationDate|date('d/m/Y') }}</p>
         <p>Update date : {{ question.updateDate|date('d/m/Y') }}</p>
         <p>Status : {{ question.status ? 'online' : 'offline' }}</p>

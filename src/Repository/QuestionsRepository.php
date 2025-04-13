@@ -56,14 +56,19 @@ class QuestionsRepository extends ServiceEntityRepository
     public function findAllByUpdateDate(): ?array
     {
         return $this->createQueryBuilder('q')
-//            ->select('q.explanation')
-//            ->where('q.id = :questionId')
-//            ->setParameter('questionId', $questionId)
-//                ->orderBy('q.update_date')
             ->orderBy('q.update_date', 'DESC')
             ->getQuery()
             ->getResult();
-//            ->getOneOrNullResult(AbstractQuery::HYDRATE_SINGLE_SCALAR);
+    }
+
+    public function findAllByUserIdAndUpdateDate($userId): ?array
+    {
+        return $this->createQueryBuilder('q')
+            ->where('q.user = :userId')
+            ->setParameter('userId', $userId)
+            ->orderBy('q.update_date', 'DESC')
+            ->getQuery()
+            ->getResult();
     }
 
     //    /**

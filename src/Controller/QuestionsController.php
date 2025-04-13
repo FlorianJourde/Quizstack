@@ -23,19 +23,31 @@ final class QuestionsController extends AbstractController
         $this->currentDate = new DateTimeImmutable();
     }
 
-    #[IsGranted('ROLE_EDITOR')]
+    #[IsGranted('ROLE_USER')]
     #[Route('/questions', name: 'questions')]
-    public function questions(QuestionsRepository $questionsRepository): Response
+    public function questions(
+        QuestionsRepository $questionsRepository,
+        Security            $security
+    ): Response
     {
-//        $questions = $questionsRepository->findAll();
-        $questions = $questionsRepository->findAllByUpdateDate();
+//        $user = $security->getUser();
+        $userId = $security->getUser();
+
+//        $questions = $questionsRepository->findAllByUserIdAndUpdateDate($userId);
+//        $questions = $questionsRepository->findAllByUpdateDate();
+
+        if ($security->isGranted('ROLE_EDITOR')) {
+            $questions = $questionsRepository->findAllByUpdateDate();
+        } else {
+            $questions = $questionsRepository->findAllByUserIdAndUpdateDate($userId);
+        }
 
         return $this->render('questions/index.html.twig', [
             'questions' => $questions
         ]);
     }
 
-    #[IsGranted('ROLE_EDITOR')]
+//    #[IsGranted('ROLE_EDITOR')]
     #[Route('/question/{id}', name: 'question', requirements: ['id' => '\d+'])]
     public function question(
         int                 $id,
@@ -55,7 +67,7 @@ final class QuestionsController extends AbstractController
         ]);
     }
 
-    #[IsGranted('ROLE_EDITOR')]
+//    #[IsGranted('ROLE_EDITOR')]
     #[Route('/question/{id}/edit', name: 'question_edit', requirements: ['id' => '\d+'])]
     public function edit(
         Request                $request,
@@ -64,13 +76,18 @@ final class QuestionsController extends AbstractController
         Security               $security
     ): Response
     {
-//        $form = $this->createForm(QuestionsFormType::class, $question);
+        $currentUser = $security->getUser();
+        $isAuthor = $question->getUser() === $currentUser;
+        $isEditor = $security->isGranted('ROLE_EDITOR');
 
-        $question->setUser($security->getUser());
-        $isAdmin = $security->isGranted('ROLE_ADMIN');
+        if (!$isAuthor && !$isEditor) {
+            throw $this->createAccessDeniedException('You cannot edit this question.');
+        }
+
+        $isEditor = $security->isGranted('ROLE_EDITOR');
 
         $form = $this->createForm(QuestionsFormType::class, $question, [
-            'is_admin' => $isAdmin,
+            'is_editor' => $isEditor,
         ]);
         $form->handleRequest($request);
 
@@ -109,16 +126,19 @@ final class QuestionsController extends AbstractController
     {
         $question = new Questions();
         $question->setUser($security->getUser());
-        $isAdmin = $security->isGranted('ROLE_ADMIN');
+        $isEditor = $security->isGranted('ROLE_EDITOR');
 
         $form = $this->createForm(QuestionsFormType::class, $question, [
-            'is_admin' => $isAdmin,
+            'is_editor' => $isEditor,
         ]);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
             $question->setCreationDate($this->currentDate);
             $question->setUpdateDate($this->currentDate);
+            if ($isEditor) {
+                $question->setStatus(true);
+            }
             $entityManager->persist($question);
             $entityManager->flush();
 

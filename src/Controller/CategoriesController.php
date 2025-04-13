@@ -49,7 +49,7 @@ class CategoriesController extends AbstractController
             $entityManager->flush();
 
             $this->addFlash('success', 'New category added successfully.');
-//            return $this->redirectToRoute('categories_edit');
+            return $this->redirectToRoute('categories_edit');
         }
 
         $formData = ['categories' => $categories];
@@ -57,10 +57,22 @@ class CategoriesController extends AbstractController
         $editForm->handleRequest($request);
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {
+            foreach ($editForm->get('categories') as $categoryForm) {
+                if ($categoryForm->get('delete')->isClicked()) {
+                    $category = $categoryForm->getData();
+
+                    $entityManager->remove($category);
+                    $entityManager->flush();
+
+                    $this->addFlash('success', "Category '{$category->getName()}' has been deleted.");
+                    return $this->redirectToRoute('categories_edit');
+                }
+            }
+
             $entityManager->flush();
 
             $this->addFlash('success', 'All categories updated successfully.');
-//            return $this->redirectToRoute('categories_edit');
+            return $this->redirectToRoute('categories_edit');
         }
 
         return $this->render('categories/edit.html.twig', [
@@ -71,7 +83,7 @@ class CategoriesController extends AbstractController
     }
 
     #[IsGranted('ROLE_ADMIN')]
-    #[Route('/categories/{id}/delete', name: 'category_delete', methods: ['POST'])]
+    #[Route('/category/{id}/delete', name: 'category_delete', methods: ['POST'])]
     public function delete(
         Request                $request,
         Categories             $category,
@@ -89,7 +101,7 @@ class CategoriesController extends AbstractController
 
 
     #[IsGranted('ROLE_ADMIN')]
-    #[Route('/categories/{id}/toggle', name: 'category_toggle', methods: ['GET'])]
+    #[Route('/category/{id}/toggle', name: 'category_toggle', methods: ['GET'])]
     public function toggle(
         Categories             $category,
         EntityManagerInterface $entityManager

@@ -18,6 +18,7 @@
                     <th>ID</th>
                     <th>Content</th>
                     <th>Image</th>
+                    <th>Categories</th>
                     <th>Creation date</th>
                     <th>Update date</th>
                     <th>Status</th>
@@ -31,6 +32,12 @@
                         <td>{{ question.id }}</td>
                         <td>{{ question.content }}</td>
                         <td>{{ question.image }}</td>
+{#                        <th>{{ question.categories }}</th>#}
+                        <th>
+                            {% for category in question.categories %}
+                                {{ category.name }}
+                            {% endfor %}
+                        </th>
                         <td>{{ question.creationDate|date('d/m/Y') }}</td>
                         <td>{{ question.updateDate|date('d/m/Y') }}</td>
                         <td>{{ question.status ? 'online' : 'offline' }}</td>

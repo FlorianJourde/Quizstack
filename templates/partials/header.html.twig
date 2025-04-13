@@ -21,7 +21,7 @@
             </a>
         {% endif %}
 
-        {% if is_granted('ROLE_EDITOR') %}
+        {% if is_granted('ROLE_USER') %}
             <a href="{{ path('questions') }}">
                 Questions
             </a>
