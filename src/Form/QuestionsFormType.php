@@ -6,6 +6,7 @@ use App\Entity\Categories;
 use App\Entity\Choices;
 use App\Entity\Questions;
 use App\Entity\Users;
+use Doctrine\ORM\EntityRepository;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ButtonType;
@@ -36,7 +37,13 @@ class QuestionsFormType extends AbstractType
                 'class' => Categories::class,
                 'choice_label' => 'name',
                 'multiple' => true,
-                'expanded' => true
+                'expanded' => true,
+                'query_builder' => function (EntityRepository $er) {
+                    return $er->createQueryBuilder('c')
+                        ->where('c.status = :status')
+                        ->setParameter('status', true)
+                        ->orderBy('c.name', 'ASC');
+                }
             ])
             ->add('choices', CollectionType::class, [
                 'entry_type' => ChoicesFormType::class,

@@ -4,6 +4,7 @@ namespace App\Repository;
 
 use App\Entity\Users;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\ORM\Query;
 use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Component\Security\Core\Exception\UnsupportedUserException;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
@@ -18,6 +19,15 @@ class UsersRepository extends ServiceEntityRepository implements PasswordUpgrade
     {
         parent::__construct($registry, Users::class);
     }
+
+
+    public function findAllByLastAuthenticationDate(): ?Query
+    {
+        return $this->createQueryBuilder('u')
+            ->orderBy('u.last_authentication_date', 'DESC')
+            ->getQuery();
+    }
+
 
     /**
      * Used to upgrade (rehash) the user's password automatically over time.

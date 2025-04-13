@@ -5,6 +5,7 @@ namespace App\Repository;
 use App\Entity\Questions;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\ORM\AbstractQuery;
+use Doctrine\ORM\Query;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
@@ -53,23 +54,39 @@ class QuestionsRepository extends ServiceEntityRepository
             ->getOneOrNullResult(AbstractQuery::HYDRATE_SINGLE_SCALAR);
     }
 
-    public function findAllByUpdateDate(): ?array
+    public function findAllByUpdateDateQuery(): ?Query
     {
         return $this->createQueryBuilder('q')
             ->orderBy('q.update_date', 'DESC')
-            ->getQuery()
-            ->getResult();
+            ->getQuery();
     }
 
-    public function findAllByUserIdAndUpdateDate($userId): ?array
+//    public function findAllByUpdateDate(): ?array
+//    {
+//        return $this->createQueryBuilder('q')
+//            ->orderBy('q.update_date', 'DESC')
+//            ->getQuery()
+//            ->getResult();
+//    }
+
+    public function findAllByUserIdAndUpdateDateQuery($user): ?Query
     {
         return $this->createQueryBuilder('q')
-            ->where('q.user = :userId')
-            ->setParameter('userId', $userId)
+            ->where('q.user = :user')
+            ->setParameter('user', $user)
             ->orderBy('q.update_date', 'DESC')
-            ->getQuery()
-            ->getResult();
+            ->getQuery();
     }
+
+//    public function findAllByUserIdAndUpdateDate($userId): ?array
+//    {
+//        return $this->createQueryBuilder('q')
+//            ->where('q.user = :userId')
+//            ->setParameter('userId', $userId)
+//            ->orderBy('q.update_date', 'DESC')
+//            ->getQuery()
+//            ->getResult();
+//    }
 
     //    /**
     //     * @return Questions[] Returns an array of Questions objects

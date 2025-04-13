@@ -7,6 +7,10 @@ use App\Form\QuestionsFormType;
 use App\Repository\QuestionsRepository;
 use DateTimeImmutable;
 use Doctrine\ORM\EntityManagerInterface;
+//use Knp\Component\Pager\Pagination\PaginationInterface;
+use Knp\Component\Pager\Pagination\PaginationInterface;
+//use Knp\Component\Pager\PaginatorInterface;
+use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Bundle\SecurityBundle\Security;
 use Symfony\Component\HttpFoundation\Request;
@@ -27,23 +31,25 @@ final class QuestionsController extends AbstractController
     #[Route('/questions', name: 'questions')]
     public function questions(
         QuestionsRepository $questionsRepository,
-        Security            $security
+        Security            $security,
+        Request             $request,
+        PaginatorInterface  $paginator
     ): Response
     {
-//        $user = $security->getUser();
         $user = $security->getUser();
-
-//        $questions = $questionsRepository->findAllByUserIdAndUpdateDate($user);
-//        $questions = $questionsRepository->findAllByUpdateDate();
+        $page = $request->query->getInt('page', 1);
+        $limit = 50;
 
         if ($security->isGranted('ROLE_EDITOR')) {
-            $questions = $questionsRepository->findAllByUpdateDate();
+            $query = $questionsRepository->findAllByUpdateDateQuery();
         } else {
-            $questions = $questionsRepository->findAllByUserIdAndUpdateDate($user);
+            $query = $questionsRepository->findAllByUserIdAndUpdateDateQuery($user);
         }
 
+        $pagination = $paginator->paginate($query, $page, $limit);
+
         return $this->render('questions/index.html.twig', [
-            'questions' => $questions
+            'questions' => $pagination
         ]);
     }
 
@@ -105,6 +111,7 @@ final class QuestionsController extends AbstractController
 
             $this->addFlash('success', 'Question updated.');
 //            return $this->redirectToRoute('question', ['id' => $question->getId()]);
+            return $this->redirectToRoute('questions');
         }
 
         return $this->render('questions/edit.html.twig', [
