@@ -1,21 +1,31 @@
-{#{% extends '../base.html.twig' %}#}
+{# {% extends '../base.html.twig' %} #}
 {% extends 'base.html.twig' %}
 
 {% block title %}User{% endblock %}
 
 {% block body %}
 
-{#    <div class="example-wrapper">#}
-        <div>
-            <p class="font-bold text-6xl text-center">User</p>
-        </div>
 
-        <div class="user-info">
-            <h1>Username :  {{ user.username }}</h1>
-            <h1>Email : {{ user.email }}</h1>
-{#            <p>Rôle : {{ user.role }}</p>#}
-            <p>Dernière connexion : {{ user.lastAuthenticationDate|date('d/m/Y H:i') }}</p>
-            <p>Inscription : {{ user.inscriptionDate|date('d/m/Y') }}</p>
-        </div>
-{#    </div>#}
+
+
+
+{#    <a href="{{ path('user_edit') }}">Edit</a>#}
+
+    {#    <div class="example-wrapper"> #}
+    <div>
+        <p class="font-bold text-6xl text-center">User</p>
+    </div>
+
+    <a href="{{ path('user_edit', {'id': user.id}) }}">
+        Edit
+    </a>
+
+    <div class="user-info">
+        <h1>Username : {{ user.username }}</h1>
+        <h1>Email : {{ user.email }}</h1>
+        {#            <p>Rôle : {{ user.role }}</p> #}
+        <p>Dernière connexion : {{ user.lastAuthenticationDate|date('d/m/Y H:i') }}</p>
+        <p>Inscription : {{ user.inscriptionDate|date('d/m/Y') }}</p>
+    </div>
+    {#    </div> #}
 {% endblock %}

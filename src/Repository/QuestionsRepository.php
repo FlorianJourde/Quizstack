@@ -61,14 +61,6 @@ class QuestionsRepository extends ServiceEntityRepository
             ->getQuery();
     }
 
-//    public function findAllByUpdateDate(): ?array
-//    {
-//        return $this->createQueryBuilder('q')
-//            ->orderBy('q.update_date', 'DESC')
-//            ->getQuery()
-//            ->getResult();
-//    }
-
     public function findAllByUserIdAndUpdateDateQuery($user): ?Query
     {
         return $this->createQueryBuilder('q')
@@ -77,6 +69,14 @@ class QuestionsRepository extends ServiceEntityRepository
             ->orderBy('q.update_date', 'DESC')
             ->getQuery();
     }
+
+//    public function findAllByUpdateDate(): ?array
+//    {
+//        return $this->createQueryBuilder('q')
+//            ->orderBy('q.update_date', 'DESC')
+//            ->getQuery()
+//            ->getResult();
+//    }
 
 //    public function findAllByUserIdAndUpdateDate($userId): ?array
 //    {

@@ -25,11 +25,27 @@
                         <td>{{ user.id }}</td>
                         <td>{{ user.email }}</td>
                         <td>{{ user.username }}</td>
-{#                        <td>{{ user.role }}</td>#}
+                        {#                        <td>{{ dump(user.roles) }}</td> #}
+                        <td>
+                            {% for role in user.roles %}
+                                {% if "ROLE_ADMIN" in role %}
+                                    admin
+                                {% elseif "ROLE_EDITOR" in role %}
+                                    editor
+                                {% elseif "ROLE_USER" in role %}
+                                    user
+                                {% else %}
+                                    {{ role }}
+                                {% endif %}
+                            {% endfor %}
+                        </td>
                         <td>{{ user.lastAuthenticationDate|date('d/m/Y') }}</td>
                         <td>{{ user.inscriptionDate|date('d/m/Y') }}</td>
                         <td>
-                            <a href="{{ path('user', {'id': user.id}) }}" class="btn btn-sm btn-primary">See profile</a>
+                            <a href="{{ path('user', {'id': user.id}) }}" class="btn btn-sm btn-primary">See</a>
+{#                        </td>#}
+{#                        <td>#}
+                            <a href="{{ path('user_edit', {'id': user.id}) }}" class="btn btn-sm btn-primary">Edit</a>
                         </td>
                     </tr>
                 {% else %}

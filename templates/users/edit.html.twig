@@ -1,0 +1,56 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}User edit{% endblock %}
+
+{% block body %}
+
+    {#    <div class="example-wrapper"> #}
+    <div>
+        <p class="font-bold text-6xl text-center">User edit</p>
+    </div>
+
+    <div class="user-info">
+        <h1>Username : {{ user.username }}</h1>
+        <h1>Email : {{ user.email }}</h1>
+        {#            <p>Rôle : {{ user.role }}</p> #}
+        {#        <p>Dernière connexion : {{ user.lastAuthenticationDate|date('d/m/Y H:i') }}</p> #}
+        {#        <p>Inscription : {{ user.inscriptionDate|date('d/m/Y') }}</p> #}
+    </div>
+    {#    </div> #}
+
+    {{ form_start(form) }}
+    {#    <div class="card"> #}
+    {#        <div class="card-header"> #}
+    {#            <h5>Personal Information</h5> #}
+    {#        </div> #}
+    <div class="card-body">
+        <div class="mb-3">
+            {{ form_label(form.email) }}
+            {{ form_widget(form.email) }}
+            {{ form_errors(form.email) }}
+        </div>
+        <div class="mb-3">
+            {{ form_label(form.username, 'Username') }}
+            {{ form_widget(form.username) }}
+            {{ form_errors(form.username) }}
+        </div>
+        <p>Last authentication : {{ user.lastAuthenticationDate|date('d/m/Y H:i') }}</p>
+        <p>Inscription : {{ user.inscriptionDate|date('d/m/Y') }}</p>
+        {#        {{ form_label(form.roles) }} #}
+        <p>Roles : {{ form_row(form.roles) }}</p>
+
+        {#        <p>Role : {{ user.roles }}</p> #}
+        {#            <div class="mb-3"> #}
+        {#                {{ form_label(form.lastName, 'Last Name') }} #}
+        {#                {{ form_widget(form.lastName) }} #}
+        {#                {{ form_errors(form.lastName) }} #}
+        {#            </div> #}
+        {# Add other fields from your form #}
+    </div>
+    <div class="card-footer d-flex justify-content-between">
+        <a href="{{ path('users') }}" class="btn btn-secondary">Cancel</a>
+        <button type="submit" class="btn btn-primary">Save Changes</button>
+    </div>
+    {#    </div> #}
+    {{ form_end(form) }}
+{% endblock %}
