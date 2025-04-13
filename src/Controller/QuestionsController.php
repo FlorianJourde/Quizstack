@@ -31,15 +31,15 @@ final class QuestionsController extends AbstractController
     ): Response
     {
 //        $user = $security->getUser();
-        $userId = $security->getUser();
+        $user = $security->getUser();
 
-//        $questions = $questionsRepository->findAllByUserIdAndUpdateDate($userId);
+//        $questions = $questionsRepository->findAllByUserIdAndUpdateDate($user);
 //        $questions = $questionsRepository->findAllByUpdateDate();
 
         if ($security->isGranted('ROLE_EDITOR')) {
             $questions = $questionsRepository->findAllByUpdateDate();
         } else {
-            $questions = $questionsRepository->findAllByUserIdAndUpdateDate($userId);
+            $questions = $questionsRepository->findAllByUserIdAndUpdateDate($user);
         }
 
         return $this->render('questions/index.html.twig', [

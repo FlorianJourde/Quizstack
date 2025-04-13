@@ -1,0 +1,88 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Profile{% endblock %}
+
+{% block body %}
+
+    <div>
+        <p class="font-bold text-6xl text-center">Edit informations</p>
+    </div>
+
+    {% for message in app.flashes('success') %}
+        <div class="alert alert-success">
+            {{ message }}
+        </div>
+    {% endfor %}
+
+    {{ form_start(form, {'attr': {'class': 'needs-validation'}}) }}
+    <div class="card">
+        <div class="card-header">
+            <h5>Personal Information</h5>
+        </div>
+        <div class="card-body">
+            <div class="mb-3">
+                {{ form_label(form.email, 'Email Address') }}
+                {{ form_widget(form.email) }}
+                {{ form_errors(form.email) }}
+            </div>
+            <div class="mb-3">
+                {{ form_label(form.username, 'Username') }}
+                {{ form_widget(form.username) }}
+                {{ form_errors(form.username) }}
+            </div>
+            {#            <div class="mb-3"> #}
+            {#                {{ form_label(form.lastName, 'Last Name') }} #}
+            {#                {{ form_widget(form.lastName) }} #}
+            {#                {{ form_errors(form.lastName) }} #}
+            {#            </div> #}
+            {# Add other fields from your form #}
+        </div>
+        <div class="card-footer d-flex justify-content-between">
+            <a href="{{ path('profile') }}" class="btn btn-secondary">Cancel</a>
+            <button type="submit" class="btn btn-primary">Save Changes</button>
+        </div>
+    </div>
+    {{ form_end(form) }}
+
+    {#    <div class="user-info"> #}
+    {#        <h1>Username : {{ user.username }}</h1> #}
+    {#        <h1>Email : {{ user.email }}</h1> #}
+    {#        #}{#            <p>Rôle : {{ user.role }}</p> #}
+    {#        <p>Dernière connexion : {{ user.lastAuthenticationDate|date('d/m/Y H:i') }}</p> #}
+    {#        <p>Inscription : {{ user.inscriptionDate|date('d/m/Y') }}</p> #}
+    {#    </div> #}
+
+    <div class="card-body">
+        {{ form_start(passwordForm) }}
+        <div class="mb-3">
+            {{ form_label(passwordForm.currentPassword) }}
+            {{ form_widget(passwordForm.currentPassword) }}
+            {{ form_errors(passwordForm.currentPassword) }}
+            <small class="form-text text-muted">Enter your current password to confirm your identity.</small>
+        </div>
+
+        <div class="mb-3">
+            {{ form_label(passwordForm.plainPassword.first) }}
+            {{ form_widget(passwordForm.plainPassword.first) }}
+            {{ form_errors(passwordForm.plainPassword.first) }}
+{#            <small class="form-text text-muted">Your password must be at least 8 characters long.</small>#}
+        </div>
+
+        <div class="mb-3">
+            {{ form_label(passwordForm.plainPassword.second) }}
+            {{ form_widget(passwordForm.plainPassword.second) }}
+            {{ form_errors(passwordForm.plainPassword.second) }}
+        </div>
+
+        <div class="d-flex justify-content-between">
+            <a href="{{ path('profile') }}" class="btn btn-secondary">Cancel</a>
+            <button type="submit" class="btn btn-primary">Change Password</button>
+        </div>
+        {{ form_end(passwordForm) }}
+    </div>
+
+{#    <a href="{{ path('profile') }}">#}
+{#        Cancel#}
+{#    </a>#}
+    {#    </div> #}
+{% endblock %}

@@ -9,6 +9,12 @@
             Scores
         </a>
 
+        {% if is_granted('ROLE_USER') %}
+            <a href="{{ path('profile') }}">
+                Profile
+            </a>
+        {% endif %}
+
         {% if is_granted('ROLE_ADMIN') %}
             <a href="{{ path('users') }}">
                 Users

@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Profile{% endblock %}
+
+{% block body %}
+
+    <div>
+        <p class="font-bold text-6xl text-center">Profile</p>
+    </div>
+
+    <a href="{{ path('profile_edit') }}">
+        Edit
+    </a>
+
+    <div class="user-info">
+        <h1>Username :  {{ user.username }}</h1>
+        <h1>Email : {{ user.email }}</h1>
+        {#            <p>Rôle : {{ user.role }}</p>#}
+        <p>Dernière connexion : {{ user.lastAuthenticationDate|date('d/m/Y H:i') }}</p>
+        <p>Inscription : {{ user.inscriptionDate|date('d/m/Y') }}</p>
+    </div>
+    {#    </div>#}
+
+{% endblock %}
