@@ -22,7 +22,9 @@ class QuestionsRepository extends ServiceEntityRepository
     {
         $qb = $this->createQueryBuilder('q')
             ->leftJoin('q.categories', 'ca')
-            ->leftJoin('q.choices', 'ch');
+            ->leftJoin('q.choices', 'ch')
+            ->where('q.status = :status')
+            ->setParameter('status', true);
 
         if (!empty($categories)) {
             $qb->andWhere('ca.name IN (:categories)')

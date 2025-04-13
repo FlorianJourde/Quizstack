@@ -16,6 +16,12 @@ export function MarkdownRenderer({content}: { content: string }) {
                             language={match[1]}
                             PreTag="div"
                             style={okaidia}
+                            /*customStyle={{
+                                wordBreak: 'break-word',
+                                whiteSpace: 'pre-wrap',
+                                overflowWrap: 'break-word'
+                            }}*/
+                            className="code-wrapper"
                             {...rest}
                         >
                             {codeString.replace(/\n$/, "")}

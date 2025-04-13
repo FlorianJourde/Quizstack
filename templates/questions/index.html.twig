@@ -1,4 +1,4 @@
-{#{% extends '../base.html.twig' %}#}
+{# {% extends '../base.html.twig' %} #}
 {% extends 'base.html.twig' %}
 
 {% block title %}Questions{% endblock %}
@@ -33,16 +33,18 @@
                         <td>{{ question.image }}</td>
                         <td>{{ question.creationDate|date('d/m/Y') }}</td>
                         <td>{{ question.updateDate|date('d/m/Y') }}</td>
-                        <td>{{ question.status }}</td>
+                        <td>{{ question.status ? 'online' : 'offline' }}</td>
+                        <td>{{ question.user.username }}</td>
                         <td>
                             <a href="{{ path('question', {'id': question.id}) }}">
-                            See
+                                See
                             </a>
                             <a href="{{ path('question_edit', {'id': question.id}) }}">
                                 Edit
                             </a>
                         </td>
                     </tr>
+
                 {% else %}
                     <tr>
                         <td colspan="5" class="text-center">Aucun utilisateur trouvé</td>

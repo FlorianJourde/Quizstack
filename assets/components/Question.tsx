@@ -101,7 +101,7 @@ function Question({mode, questionId, showComments}: { mode: string, questionId: 
             <p>ID : {question.id}</p>
             <MarkdownRenderer content={question.content}/>
             <p>Difficulty : {question.difficulty}</p>
-            <p>Number of choices : {question.numberOfCorrectChoices}</p>
+            <p>Number of correct choices : {question.numberOfCorrectChoices}</p>
             {question.numberOfCorrectChoices > 1 && <p>Multiple choices possible.</p>}
             <br/>
 

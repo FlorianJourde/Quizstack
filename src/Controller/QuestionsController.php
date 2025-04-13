@@ -60,13 +60,29 @@ final class QuestionsController extends AbstractController
     public function edit(
         Request                $request,
         Questions              $question,
-        EntityManagerInterface $entityManager
+        EntityManagerInterface $entityManager,
+        Security               $security
     ): Response
     {
-        $form = $this->createForm(QuestionsFormType::class, $question);
+//        $form = $this->createForm(QuestionsFormType::class, $question);
+
+        $question->setUser($security->getUser());
+        $isAdmin = $security->isGranted('ROLE_ADMIN');
+
+        $form = $this->createForm(QuestionsFormType::class, $question, [
+            'is_admin' => $isAdmin,
+        ]);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            if ($form->get('delete')->isClicked()) {
+                $entityManager->remove($question);
+                $entityManager->flush();
+
+                $this->addFlash('success', 'Question has been deleted');
+                return $this->redirectToRoute('questions');
+            }
+
             $question->setUpdateDate($this->currentDate);
             $entityManager->flush();
 

@@ -19,6 +19,7 @@
         <p>Image : {{ question.image }}</p>
         <p>Creation date : {{ question.creationDate|date('d/m/Y') }}</p>
         <p>Update date : {{ question.updateDate|date('d/m/Y') }}</p>
-        <p>Status : {{ question.status }}</p>
+        <p>Status : {{ question.status ? 'online' : 'offline' }}</p>
+
     </div>
 {% endblock %}

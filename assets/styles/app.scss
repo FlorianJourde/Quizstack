@@ -15,3 +15,7 @@ input, textarea {
 div[style*="background: rgb(39, 40, 34);"] {
   background: #171717 !important;
 }
+
+.code-wrapper > code {
+  white-space: pre-wrap !important;
+}

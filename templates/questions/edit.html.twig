@@ -3,86 +3,87 @@
 {% block title %}New question{% endblock %}
 
 {% block body %}
-    <div class="container mt-4">
-        <h1>Edit question</h1>
+    <h1>Edit question</h1>
 
-        <div id="quiz-container" data-mode="{{ mode }}" data-question-id="{{ questionId }}"
-             data-show-comments="{{ showComments }}"></div>
+    <div id="quiz-container" data-mode="{{ mode }}" data-question-id="{{ questionId }}"
+         data-show-comments="{{ showComments }}"></div>
 
-        {{ form_start(form) }}
-        {{ form_row(form.content) }}
-        {{ form_row(form.explanation) }}
-        {{ form_row(form.difficulty) }}
-        {{ form_row(form.categories) }}
-        {{ form_row(form.image) }}
+    {{ form_start(form) }}
+    {{ form_row(form.content) }}
+    {{ form_row(form.explanation) }}
+    {{ form_row(form.difficulty) }}
+    {{ form_row(form.categories) }}
+    {{ form_row(form.image) }}
 
-        {{ include('partials/choices.html.twig', _context) }}
+    {{ include('partials/choices.html.twig', _context) }}
 
 
-        {% if form.status is defined %}
-            {{ form_row(form.status) }}
-        {% endif %}
+    {% if form.status is defined %}
+        {{ form_row(form.status) }}
+    {% endif %}
 
-        <br/>
+    <br/>
 
-        <div class="d-flex justify-content-between mt-3">
-            <button type="submit" class="btn btn-success">Update</button>
-        </div>
-
-        {{ form_end(form) }}
-
-        <a href="{{ path('questions') }}">Cancel</a>
-
+    <div class="d-flex justify-content-between mt-3">
+        <button type="submit" class="btn btn-success">Update</button>
     </div>
+
+    {{ form_row(form.delete) }}
+
+
+    {{ form_end(form) }}
+
+    <a href="{{ path('questions') }}">Cancel</a>
+
 
 {% endblock %}
 
-{# {% block javascripts %}#}
-{#     {{ parent() }}#}
+{# {% block javascripts %} #}
+{#     {{ parent() }} #}
 
-{#     {{ encore_entry_script_tags('question-form') }}#}
+{#     {{ encore_entry_script_tags('question-form') }} #}
 
-     {#     <script>#}
-{#         document.querySelectorAll('.delete-choice').forEach((button) => {#}
-{#             button.addEventListener('click', function () {#}
-{#                 this.closest('.choice-item').remove();#}
-{#             });#}
-{#         });#}
+     {#     <script> #}
+{#         document.querySelectorAll('.delete-choice').forEach((button) => { #}
+{#             button.addEventListener('click', function () { #}
+{#                 this.closest('.choice-item').remove(); #}
+{#             }); #}
+{#         }); #}
 
-{#         document.querySelectorAll('.add_item_link').forEach(btn => {#}
-{#             btn.addEventListener("click", addFormToCollection);#}
-{#         });#}
+{#         document.querySelectorAll('.add_item_link').forEach(btn => { #}
+{#             btn.addEventListener("click", addFormToCollection); #}
+{#         }); #}
 
-{#         function addFormToCollection(e) {#}
-{#             const collectionHolder = document.querySelector('.' + e.currentTarget.dataset.collectionHolderClass);#}
+{#         function addFormToCollection(e) { #}
+{#             const collectionHolder = document.querySelector('.' + e.currentTarget.dataset.collectionHolderClass); #}
 
-{#             if (!collectionHolder || !collectionHolder.dataset.prototype) {#}
-{#                 console.error('Collection holder or prototype not found', collectionHolder);#}
-{#                 return;#}
-{#             }#}
+{#             if (!collectionHolder || !collectionHolder.dataset.prototype) { #}
+{#                 console.error('Collection holder or prototype not found', collectionHolder); #}
+{#                 return; #}
+{#             } #}
 
-{#             const item = document.createElement('li');#}
-{#             item.classList.add('choice-item');#}
+{#             const item = document.createElement('li'); #}
+{#             item.classList.add('choice-item'); #}
 
-{#             item.innerHTML = collectionHolder.dataset.prototype.replace(#}
-{#                 /__name__/g,#}
-{#                 collectionHolder.dataset.index#}
-{#             );#}
+{#             item.innerHTML = collectionHolder.dataset.prototype.replace( #}
+{#                 /__name__/g, #}
+{#                 collectionHolder.dataset.index #}
+{#             ); #}
 
-{#             const removeButton = document.createElement('button');#}
-{#             removeButton.type = 'button';#}
-{#             removeButton.classList.add('btn', 'btn-danger', 'btn-sm', 'delete-choice');#}
-{#             removeButton.innerText = 'Delete';#}
+{#             const removeButton = document.createElement('button'); #}
+{#             removeButton.type = 'button'; #}
+{#             removeButton.classList.add('btn', 'btn-danger', 'btn-sm', 'delete-choice'); #}
+{#             removeButton.innerText = 'Delete'; #}
 
-{#             removeButton.addEventListener('click', function () {#}
-{#                 item.remove();#}
-{#             });#}
+{#             removeButton.addEventListener('click', function () { #}
+{#                 item.remove(); #}
+{#             }); #}
 
-{#             item.appendChild(removeButton);#}
-{#             collectionHolder.appendChild(item);#}
+{#             item.appendChild(removeButton); #}
+{#             collectionHolder.appendChild(item); #}
 
-{#             collectionHolder.dataset.index++;#}
-{#         }#}
-{#     </script>#}
+{#             collectionHolder.dataset.index++; #}
+{#         } #}
+{#     </script> #}
 
-{# {% endblock %}#}
+{# {% endblock %} #}
