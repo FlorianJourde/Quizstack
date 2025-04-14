@@ -39,31 +39,31 @@ function CommentList({question, setQuestion}) {
 
     return (
         <>
-            <br/>
-            <br/>
+            {/*<br/>*/}
+            {/*<br/>*/}
             <h1>
                 Comments
             </h1>
-            <div>
-
+            <ul className={'comments-container flex flex-col glass p-4 bg-dark-grey-secondary'}>
                 {question.comments.map((comment, index) => (
-                    <CommentItem question={question} setQuestion={setQuestion} comment={comment} index={index} key={`comment-${index}`}/>
+                    <CommentItem question={question} setQuestion={setQuestion} comment={comment} index={index}
+                                 key={`comment-${index}`}/>
                 ))}
+            </ul>
 
-            </div>
-            <div className="comment-form">
-                <h3>Ajouter un commentaire</h3>
+            <div className="comment-form flex flex-col gap-4 p-4 glass bg-dark-grey-secondary">
+                <h3>Add comment</h3>
 
                 {success && <div className="alert alert-success">Comment add with success !</div>}
                 {error && <div className="alert alert-danger">{error}</div>}
 
-                <form onSubmit={handleSubmit}>
-                    <div className="form-group">
+                <form onSubmit={handleSubmit} className={'flex flex-col gap-4 w-full items-end'}>
+                    <div className="form-group w-full">
                       <textarea
-                          className="form-control bg-black"
+                          className="form-control rounded-md p-4 w-full flex bg-grey-secondary border-2 border-solid border-white/10 self-stretch"
                           value={comment}
                           onChange={(e) => setComment(e.target.value)}
-                          placeholder="Votre commentaire..."
+                          placeholder="Your comment..."
                           rows={4}
                           required
                       />

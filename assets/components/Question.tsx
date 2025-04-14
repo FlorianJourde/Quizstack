@@ -78,7 +78,7 @@ function Question({mode, questionId, showComments}: { mode: string, questionId: 
     async function handleSubmit() {
         try {
             const result: QuestionInterface = await submitAnswers(question?.id, answers);
-            console.log(result);
+            // console.log(result);
             if (question) {
                 setQuestion({
                     ...question,
@@ -98,49 +98,69 @@ function Question({mode, questionId, showComments}: { mode: string, questionId: 
     return (
         <>
             <div className="wrapper">
+                <div className="flex flex-col gap-4">
 
-                {/*<Banner/>*/}
-                <br/>
-                <br/>
+                    <div className="glass p-4">
 
-                <h2 className={'text-3xl'}>Question</h2>
-                <p>ID : {question.id}</p>
-                <MarkdownRenderer content={question.content}/>
-                <p>Difficulty : {question.difficulty}</p>
-                <p>Number of correct choices : {question.numberOfCorrectChoices}</p>
-                {question.numberOfCorrectChoices > 1 && <p>Multiple choices possible.</p>}
-                <br/>
+                        {/*<h2 className={'text-3xl'}>Question</h2>*/}
+                        {/*<p>ID : {question.id}</p>*/}
 
-                <ul>
-                    <Choices question={question} answers={answers} setAnswers={setAnswers}/>
-                </ul>
+                        <p>Difficulty : {question.difficulty}</p>
 
-                <br/>
-                {mode === 'game' && (
-                    <button onClick={handleSubmit}>
-                        Validate
-                    </button>
-                )}
+                        <MarkdownRenderer content={question.content}/>
 
-                <br/>
-                <br/>
+                        {question.numberOfCorrectChoices > 1 && <p>Multiple choices possible.</p>}
 
-                {question.correctChoices && (
-                    <>
-                        <Explanation question={question}/>
+                        {/*<p>Number of correct choices : {question.numberOfCorrectChoices}</p>*/}
 
-                        {mode === 'game' && (
-                            <button onClick={handleNextQuestion}>
-                                Next question
-                            </button>
+                        {question.correctChoices && (
+                            // <>
+                            <Explanation question={question}/>
+
                         )}
 
-                        {showComments && (
-                            <CommentList question={question} setQuestion={setQuestion}/>
-                        )}
+                    </div>
 
-                    </>
-                )}
+                    <ul>
+                        <Choices question={question} answers={answers} setAnswers={setAnswers}/>
+                    </ul>
+
+                    {/*{mode === 'game' && (*/}
+                    {/*    <button onClick={handleSubmit}>*/}
+                    {/*        Validate*/}
+                    {/*    </button>*/}
+                    {/*)}*/}
+
+                    {mode === 'game' && (
+                        <div className={'buttons-container flex gap-4 justify-end'}>
+                            {question.correctChoices ? (
+                                <button onClick={handleNextQuestion}>
+                                    Next question
+                                    <span className="material-icons">arrow_forward</span>
+                                </button>
+                            ) : (
+                                <button className={'btn btn-primary'} onClick={handleSubmit}>
+                                    Validate
+                                    <span className="material-icons">done</span>
+                                    {/*<span className="material-symbols-outlined">arrow_forward</span>*/}
+                                    {/*<span className="material-icons md-24">face</span>*/}
+                                </button>
+                            )}
+                        </div>
+                    )}
+
+                    {question.correctChoices && (
+                        <>
+                            {/*<Explanation question={question}/>*/}
+
+
+                            {showComments && (
+                                <CommentList question={question} setQuestion={setQuestion}/>
+                            )}
+
+                        </>
+                    )}
+                </div>
 
             </div>
         </>

@@ -127,7 +127,8 @@ body {
   z-index: -1;
   position: absolute;
   pointer-events: none;
-  opacity: .5;
+  //opacity: .5;
+  opacity: .75;
   transition: opacity 1s;
 
   &.hide {

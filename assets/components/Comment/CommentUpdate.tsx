@@ -43,7 +43,7 @@ function CommentUpdate({question, setQuestion, comment, onCommentUpdated, onCanc
     }
 
     return (
-        <div className="comment-editor">
+        <div className="comment-editor glass flex flex-col">
             {error && <div className="alert alert-danger">{error}</div>}
 
             <form onSubmit={handleSubmit}>
@@ -66,7 +66,7 @@ function CommentUpdate({question, setQuestion, comment, onCommentUpdated, onCanc
                     </button>
                     <button
                         type="button"
-                        className="btn btn-secondary"
+                        className="btn"
                         onClick={onCancel}
                         disabled={isSubmitting}
                     >

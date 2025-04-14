@@ -1,33 +1,9 @@
 @use "_particles";
 @use "_rays";
-//@import url('particles.scss');
 @use "_noise-texture.scss";
 @use "_general";
+@use "_inputs";
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-
-body {
-  background-color: tan;
-  //background-color: silver;
-}
-
-input, textarea {
-  background-color: inherit;
-  border: 1px solid white;
-}
-
-div[style*="background: rgb(39, 40, 34);"] {
-  background: #171717 !important;
-}
-
-.code-wrapper > code {
-  white-space: pre-wrap !important;
-}
-
-//.particles {
-//  width: 500px;
-//  height: 500px;
-//}

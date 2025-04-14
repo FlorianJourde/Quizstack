@@ -86,8 +86,8 @@ function Choices({question, answers, setAnswers}) {
     useEffect(function () {
         const originalElement = document.querySelector('.rays');
 
-        console.log('correctChoices', question.correctChoices)
-        console.log('isMatch', question.isMatch)
+        // console.log('correctChoices', question.correctChoices)
+        // console.log('isMatch', question.isMatch)
 
         if (question.correctChoices) {
             const clonedElement = originalElement?.cloneNode(true) as HTMLElement;
@@ -135,32 +135,87 @@ function Choices({question, answers, setAnswers}) {
 
     return (
         <>
-            {question.choices.map((choice, index) => (
-                <li key={`choice-${choice.id}`} className="choice-option">
-                    <input
-                        type="checkbox"
-                        id={`choice-${index}`}
-                        name="choice"
-                        value={choice.id}
-                        checked={answers.includes(choice.id)}
-                        onChange={() => handleAnswersChange(choice.id)}
-                    />
+            <div className="choice-container flex flex-col gap-4">
 
-                    <MarkdownRenderer content={choice.content}/>
+                {/*    <fieldset className="checkbox-group">*/}
+                {/*        <div className="checkbox">*/}
+                {/*            <label className="checkbox-wrapper">*/}
+                {/*                <input type="checkbox" className="checkbox-input"/>*/}
+                {/*                <span className="checkbox-tile">*/}
+                {/*	<span className="checkbox-label">Discord</span>*/}
+                {/*</span>*/}
+                {/*            </label>*/}
+                {/*        </div>*/}
+                {/*    </fieldset>*/}
 
-                    {question.correctChoices && (
-                        <>
-                            {checkAnswerValidity(choice.id) ? (
-                                <span className="correct-icon"> ✓</span>
-                            ) : (
-                                <span className="correct-icon"> ✗</span>
-                            )}
-                        </>
-                    )}
+                {question.choices.map((choice, index) => (
 
-                </li>
-            ))}
+
+                    // {question.correctChoices && (
+                    //         <>
+                    //             {checkAnswerValidity(choice.id) ? (
+                    //                 <span className="correct-icon"> ✓</span>
+                    //             ) : (
+                    //                 <span className="correct-icon"> ✗</span>
+                    //             )}
+                    //         </>
+                    //     )}
+
+                    <li key={`choice-${choice.id}`} className={`choice-option glass`}>
+                        <fieldset className={`checkbox-group`}>
+                            {/*<div className="checkbox">*/}
+                            <label>
+                                {/*<input type="checkbox" />*/}
+                                <input
+                                    type="checkbox"
+                                    id={`choice-${index}`}
+                                    name="choice"
+                                    value={choice.id}
+                                    checked={answers.includes(choice.id)}
+                                    onChange={() => handleAnswersChange(choice.id)}
+                                    // className={"checkbox-input"}
+
+                                    className={`checkbox-input ${question.correctChoices && (
+                                        checkAnswerValidity(choice.id) ? "correct" : "incorrect")
+                                    }`}
+                                />
+                                <span className="checkbox-tile p-4">
+                                    	<span className="checkbox-label">
+                                        <MarkdownRenderer content={choice.content}/>
+                                        </span>
+                                    </span>
+                            </label>
+                            {/*</div>*/}
+                        </fieldset>
+
+
+                        {/*<input*/}
+                        {/*    type="checkbox"*/}
+                        {/*    id={`choice-${index}`}*/}
+                        {/*    name="choice"*/}
+                        {/*    value={choice.id}*/}
+                        {/*    checked={answers.includes(choice.id)}*/}
+                        {/*    onChange={() => handleAnswersChange(choice.id)}*/}
+                        {/*/>*/}
+
+                        {/*<MarkdownRenderer content={choice.content}/>*/}
+
+                        {/*{question.correctChoices && (*/}
+                        {/*    <>*/}
+                        {/*        {checkAnswerValidity(choice.id) ? (*/}
+                        {/*            <span className="correct-icon"> ✓</span>*/}
+                        {/*        ) : (*/}
+                        {/*            <span className="correct-icon"> ✗</span>*/}
+                        {/*        )}*/}
+                        {/*    </>*/}
+                        {/*)}*/}
+
+                    </li>
+                ))}
+
+            </div>
         </>
+
     );
 }
 
