@@ -1,7 +1,8 @@
-//@use "_particles";
-@use "_particles-2";
+@use "_particles";
 @use "_rays";
 //@import url('particles.scss');
+@use "_noise-texture.scss";
+@use "_general";
 
 @tailwind base;
 @tailwind components;

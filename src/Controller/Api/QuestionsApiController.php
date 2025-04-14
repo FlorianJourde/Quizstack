@@ -86,7 +86,8 @@ class QuestionsApiController extends AbstractController
         }
 
         return $this->json([
-            'correctChoices' => $correctChoices
+            'correctChoices' => $correctChoices,
+            'isMatch' => $match
         ]);
     }
 }

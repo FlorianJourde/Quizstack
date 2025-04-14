@@ -11,8 +11,9 @@ export interface QuestionInterface {
     categories: CategoriesInterface[];
     choices: ChoicesInterface[];
     comments: CommentInterface[];
-    numberOfCorrectChoices : number;
+    numberOfCorrectChoices: number;
     correctChoices?: number[];
+    isMatch?: boolean;
 }
 
 export type QuestionOrLimitReached = QuestionInterface | LimitReachedInterface;

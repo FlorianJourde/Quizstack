@@ -40,14 +40,14 @@
 //  );
 //}
 
-body.red, html.red {
-  --rainbow: repeating-linear-gradient(
-                  100deg,
-                  #de1f42 10%,
-                  #980d26 15%,
-                  #600618 20%
-  );
-}
+//body.red, html.red {
+//  --rainbow: repeating-linear-gradient(
+//                  100deg,
+//                  #de1f42 10%,
+//                  #980d26 15%,
+//                  #600618 20%
+//  );
+//}
 
 
 //body.green, html.green {
@@ -61,14 +61,14 @@ body.red, html.red {
 //  );
 //}
 
-body.green, html.green {
-  --rainbow: repeating-linear-gradient(
-                  100deg,
-                  #86c01d 10%,
-                  #25a107 15%,
-                  #008206 20%
-  );
-}
+//body.green, html.green {
+//  --rainbow: repeating-linear-gradient(
+//                  100deg,
+//                  #86c01d 10%,
+//                  #25a107 15%,
+//                  #008206 20%
+//  );
+//}
 
 :root {
   font-family: Inter, sans-serif;
@@ -92,6 +92,9 @@ body.green, html.green {
                   #282828 15%,
                   #181818 20%
   );
+
+  --glow-light: radial-gradient(circle at top, #ffffff20 0, transparent 75%, transparent 100%);
+
 }
 
 body {
@@ -118,13 +121,51 @@ body {
   //width: 100%;
   //height: auto;
   //position: relative;
-  height: 500px;
+  //height: 500px;
   width: 100%;
   top: 0;
   z-index: -1;
   position: absolute;
   pointer-events: none;
   opacity: .5;
+  transition: opacity 1s;
+
+  &.hide {
+    opacity: 0;
+  }
+
+  &.red {
+    --rainbow: repeating-linear-gradient(
+                    100deg,
+                    #de1f42 10%,
+                    #980d26 15%,
+                    #600618 20%
+    );
+    --glow-light: radial-gradient(circle at top, #9d1b12 0, transparent 75%, transparent 100%)
+  }
+
+  &.green {
+    --rainbow: repeating-linear-gradient(
+                    100deg,
+                    #86c01d 10%,
+                    #25a107 15%,
+                    #008206 20%
+    );
+    --glow-light: radial-gradient(circle at top, #469814 0, transparent 75%, transparent 100%)
+  }
+}
+
+.glow {
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  display: flex;
+  position: absolute;
+  place-content: center;
+  place-items: center;
+  z-index: 1;
+  background: var(--glow-light);
 }
 
 .hero {

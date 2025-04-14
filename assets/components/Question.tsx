@@ -8,6 +8,7 @@ import {QuestionInterface, QuestionOrLimitReached} from '../types';
 import {UrlFiltersInterface} from "../types/urlFilters";
 import LimitReachedComponent from "./LimitReachedComponent";
 import Loading from "./Loading";
+import Banner from "./Banner";
 
 function Question({mode, questionId, showComments}: { mode: string, questionId: number, showComments: boolean }) {
     const [loading, setLoading] = useState<boolean>(true);
@@ -16,7 +17,7 @@ function Question({mode, questionId, showComments}: { mode: string, questionId: 
     const [limitReached, setLimitReached] = useState<boolean>(false);
 
     useEffect(() => {
-        // console.log(question)
+        console.log(question)
     }, [question]);
 
     useEffect(() => {
@@ -77,10 +78,12 @@ function Question({mode, questionId, showComments}: { mode: string, questionId: 
     async function handleSubmit() {
         try {
             const result: QuestionInterface = await submitAnswers(question?.id, answers);
+            console.log(result);
             if (question) {
                 setQuestion({
                     ...question,
-                    correctChoices: result.correctChoices
+                    correctChoices: result.correctChoices,
+                    isMatch: result.isMatch
                 });
             }
         } catch (error) {
@@ -94,48 +97,52 @@ function Question({mode, questionId, showComments}: { mode: string, questionId: 
 
     return (
         <>
-            <br/>
-            <br/>
+            <div className="wrapper">
 
-            <h2 className={'text-3xl'}>Question</h2>
-            <p>ID : {question.id}</p>
-            <MarkdownRenderer content={question.content}/>
-            <p>Difficulty : {question.difficulty}</p>
-            <p>Number of correct choices : {question.numberOfCorrectChoices}</p>
-            {question.numberOfCorrectChoices > 1 && <p>Multiple choices possible.</p>}
-            <br/>
+                {/*<Banner/>*/}
+                <br/>
+                <br/>
 
-            <ul>
-                <Choices question={question} answers={answers} setAnswers={setAnswers}/>
-            </ul>
+                <h2 className={'text-3xl'}>Question</h2>
+                <p>ID : {question.id}</p>
+                <MarkdownRenderer content={question.content}/>
+                <p>Difficulty : {question.difficulty}</p>
+                <p>Number of correct choices : {question.numberOfCorrectChoices}</p>
+                {question.numberOfCorrectChoices > 1 && <p>Multiple choices possible.</p>}
+                <br/>
 
-            <br/>
-            {mode === 'game' && (
-                <button onClick={handleSubmit}>
-                    Validate
-                </button>
-            )}
+                <ul>
+                    <Choices question={question} answers={answers} setAnswers={setAnswers}/>
+                </ul>
 
-            <br/>
-            <br/>
+                <br/>
+                {mode === 'game' && (
+                    <button onClick={handleSubmit}>
+                        Validate
+                    </button>
+                )}
 
-            {question.correctChoices && (
-                <>
-                    <Explanation question={question}/>
+                <br/>
+                <br/>
 
-                    {mode === 'game' && (
-                        <button onClick={handleNextQuestion}>
-                            Next question
-                        </button>
-                    )}
+                {question.correctChoices && (
+                    <>
+                        <Explanation question={question}/>
 
-                    {showComments && (
-                        <CommentList question={question} setQuestion={setQuestion}/>
-                    )}
+                        {mode === 'game' && (
+                            <button onClick={handleNextQuestion}>
+                                Next question
+                            </button>
+                        )}
 
-                </>
-            )}
+                        {showComments && (
+                            <CommentList question={question} setQuestion={setQuestion}/>
+                        )}
 
+                    </>
+                )}
+
+            </div>
         </>
     )
 }
