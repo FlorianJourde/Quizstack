@@ -10,10 +10,12 @@ use App\Repository\UsersRepository;
 class QuestionFormatterService
 {
     public function __construct(
-        private UsersRepository $usersRepository,
-        private ChoicesRepository $choicesRepository,
+        private UsersRepository     $usersRepository,
+        private ChoicesRepository   $choicesRepository,
         private QuestionsRepository $questionsRepository
-    ) {}
+    )
+    {
+    }
 
     public function formatQuestionData(Questions $question): array
     {
@@ -44,17 +46,26 @@ class QuestionFormatterService
             ];
         }
 
+        $categoriesArray = [];
+        foreach ($question->getCategories() as $category) {
+            $categoriesArray[] = [
+                'id' => $category->getId(),
+                'name' => $category->getName()
+            ];
+        }
+
         $numberOfCorrectChoices = count(
             $this->choicesRepository->findCorrectAnswerIdsByQuestionId($question->getId())
         );
 
         return [
             'id' => $question->getId(),
+            'categories' => $categoriesArray,
+            'choices' => $choiceArray,
+            'comments' => $commentArray,
             'content' => $question->getContent(),
             'difficulty' => $question->getDifficulty(),
-            'choices' => $choiceArray,
             'explanation' => $this->questionsRepository->findExplanationByQuestionId($question->getId()),
-            'comments' => $commentArray,
             'numberOfCorrectChoices' => $numberOfCorrectChoices
         ];
     }

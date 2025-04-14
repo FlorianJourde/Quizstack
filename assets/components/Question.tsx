@@ -17,7 +17,8 @@ function Question({mode, questionId, showComments}: { mode: string, questionId: 
     const [limitReached, setLimitReached] = useState<boolean>(false);
 
     useEffect(() => {
-        console.log(question)
+        // console.log(question)
+        console.log(question?.categories)
     }, [question]);
 
     useEffect(() => {
@@ -105,11 +106,33 @@ function Question({mode, questionId, showComments}: { mode: string, questionId: 
                         {/*<h2 className={'text-3xl'}>Question</h2>*/}
                         {/*<p>ID : {question.id}</p>*/}
 
-                        <p>Difficulty : {question.difficulty}</p>
+                        <div className="question-header-container flex gap-4 justify-between items-center mb-4">
+                            <ul className={`categories-container flex gap-2`}>
+                                {question.categories.map((category, index) => (
+                                    <li key={`category-${index}`}>
+                                        <span
+                                            className={`text-xs rounded-sm px-2 py-1 bg-black/50`}>{category.name}</span>
+                                    </li>
+                                ))}
+                            </ul>
+
+                            {/*<p className={'opacity-50 text-xs'}>Difficulty : {question.difficulty}</p>*/}
+
+                            <div className={`flex gap-1`}>
+                                {Array(3).fill(null).map((_, index) => (
+                                    <span
+                                        className={`rounded-sm w-3 h-2 bg-black/50 ${index < question?.difficulty ? 'opacity-100' : 'opacity-50'}`}
+                                        key={index}
+                                    ></span>
+                                ))}
+                            </div>
+                        </div>
+
 
                         <MarkdownRenderer content={question.content}/>
 
-                        {question.numberOfCorrectChoices > 1 && <p>Multiple choices possible.</p>}
+                        {question.numberOfCorrectChoices > 1 &&
+                            <p className={'opacity-50 text-xs mt-4'}>Multiple choices possible.</p>}
 
                         {/*<p>Number of correct choices : {question.numberOfCorrectChoices}</p>*/}
 
@@ -122,7 +145,7 @@ function Question({mode, questionId, showComments}: { mode: string, questionId: 
                     </div>
 
                     <ul>
-                        <Choices question={question} answers={answers} setAnswers={setAnswers}/>
+                        <Choices mode={mode} question={question} answers={answers} setAnswers={setAnswers}/>
                     </ul>
 
                     {/*{mode === 'game' && (*/}
@@ -134,14 +157,14 @@ function Question({mode, questionId, showComments}: { mode: string, questionId: 
                     {mode === 'game' && (
                         <div className={'buttons-container flex gap-4 justify-end'}>
                             {question.correctChoices ? (
-                                <button onClick={handleNextQuestion}>
+                                <button className={`btn btn-tertiary`} onClick={handleNextQuestion}>
                                     Next question
-                                    <span className="material-icons">arrow_forward</span>
+                                    {/*<span className="material-icons">arrow_forward</span>*/}
                                 </button>
                             ) : (
                                 <button className={'btn btn-primary'} onClick={handleSubmit}>
                                     Validate
-                                    <span className="material-icons">done</span>
+                                    {/*<span className="material-icons">done</span>*/}
                                     {/*<span className="material-symbols-outlined">arrow_forward</span>*/}
                                     {/*<span className="material-icons md-24">face</span>*/}
                                 </button>

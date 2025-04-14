@@ -43,34 +43,37 @@ function CommentUpdate({question, setQuestion, comment, onCommentUpdated, onCanc
     }
 
     return (
-        <div className="comment-editor glass flex flex-col">
+        <div className="comment-editor flex flex-col">
             {error && <div className="alert alert-danger">{error}</div>}
 
-            <form onSubmit={handleSubmit}>
-                <div className="form-group">
-          <textarea
-              className="form-control"
-              value={newComment}
-              onChange={(e) => setNewComment(e.target.value)}
-              rows={3}
-              required
-          />
+            {/*<form onSubmit={handleSubmit} className={'flex flex-col gap-4 w-full items-end'}>*/}
+            {/*    <div className="form-group w-full">*/}
+
+            <form onSubmit={handleSubmit} className={'flex flex-col gap-4 w-full items-end'}>
+                <div className="form-group  w-full">
+                  <textarea
+                      className="form-control"
+                      value={newComment}
+                      onChange={(e) => setNewComment(e.target.value)}
+                      rows={3}
+                      required
+                  />
                 </div>
-                <div className="button-group mt-2">
-                    <button
-                        type="submit"
-                        className="btn btn-primary me-2"
-                        disabled={isSubmitting}
-                    >
-                        {isSubmitting ? 'Updating...' : 'Save'}
-                    </button>
+                <div className={'buttons-container flex gap-4 justify-end'}>
                     <button
                         type="button"
-                        className="btn"
+                        className="btn btn-tertiary"
                         onClick={onCancel}
                         disabled={isSubmitting}
                     >
                         Cancel
+                    </button>
+                    <button
+                        type="submit"
+                        className="btn btn-primary"
+                        disabled={isSubmitting}
+                    >
+                        {isSubmitting ? 'Updating...' : 'Save'}
                     </button>
                 </div>
             </form>

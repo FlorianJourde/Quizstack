@@ -4,12 +4,9 @@ import {MarkdownRenderer} from "./MarkdownRenderer";
 
 function Explanation({question}) {
     return (
-        <div>
-            <h2>
-                <MarkdownRenderer content={question.explanation}/>
-            </h2>
-            <br/>
-        </div>
+        <h3 className={'mt-4'}>
+            <MarkdownRenderer content={question.explanation}/>
+        </h3>
     );
 }
 

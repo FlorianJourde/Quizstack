@@ -4,20 +4,30 @@
 {% block title %}Questions{% endblock %}
 
 {% block body %}
-    <div class="container">
-        <h1>Questions list</h1>
-        <br>
-        <a href="{{ path('question_new') }}">New</a>
+    {#    <div class="container"> #}
 
-        <br>
+    {{ include('partials/banner.html.twig') }}
 
-        <div class="questions-list">
-            <table class="table table-striped">
+    <div class="wrapper">
+
+
+        {#        <div class="wrapper"> #}
+        <div class="buttons-container flex mb-4 gap-4 justify-end">
+            <a class="btn btn-primary" href="{{ path('question_new') }}">New</a>
+        </div>
+        {#        </div> #}
+
+        {#        <h1>Questions list</h1> #}
+
+        {#        <a href="{{ path('question_new') }}">New</a> #}
+
+        <div class="questions-list overflow-auto">
+            <table class="table glass">
                 <thead>
                 <tr>
                     <th>ID</th>
                     <th>Content</th>
-                    <th>Image</th>
+                    {#                        <th>Image</th> #}
                     <th>Categories</th>
                     <th>Creation date</th>
                     <th>Update date</th>
@@ -31,13 +41,13 @@
                     <tr>
                         <td>{{ question.id }}</td>
                         <td>{{ question.content }}</td>
-                        <td>{{ question.image }}</td>
-{#                        <th>{{ question.categories }}</th>#}
-                        <th>
+                        {#                            <td>{{ question.image }}</td> #}
+                        {#                        <th>{{ question.categories }}</th> #}
+                        <td>
                             {% for category in question.categories %}
                                 {{ category.name }}
                             {% endfor %}
-                        </th>
+                        </td>
                         <td>{{ question.creationDate|date('d/m/Y') }}</td>
                         <td>{{ question.updateDate|date('d/m/Y') }}</td>
                         <td>{{ question.status ? 'online' : 'offline' }}</td>
@@ -66,4 +76,6 @@
 
         </div>
     </div>
+
+    {#    </div> #}
 {% endblock %}

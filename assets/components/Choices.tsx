@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import {MarkdownRenderer} from "./MarkdownRenderer";
 
-function Choices({question, answers, setAnswers}) {
+function Choices({mode, question, answers, setAnswers}) {
     // const [isCorrect, setIsCorrect] = useState<boolean>(false);
     function handleAnswersChange(answerId) {
         if (question.correctChoices) return false;
@@ -86,8 +86,7 @@ function Choices({question, answers, setAnswers}) {
     useEffect(function () {
         const originalElement = document.querySelector('.rays');
 
-        // console.log('correctChoices', question.correctChoices)
-        // console.log('isMatch', question.isMatch)
+        if (mode === 'display') return;
 
         if (question.correctChoices) {
             const clonedElement = originalElement?.cloneNode(true) as HTMLElement;
@@ -108,11 +107,6 @@ function Choices({question, answers, setAnswers}) {
             }, 1000);
         } else {
             const clonedElement = originalElement?.cloneNode(true) as HTMLElement;
-            // clonedElement?.classList.add('hide');
-
-            // clonedElement.classList.add(colorClass);
-            // clonedElement.classList.remove('green');
-            // clonedElement.classList.remove('red');
             clonedElement.classList.add('hide');
 
             originalElement?.parentNode?.insertBefore(clonedElement, originalElement.nextSibling);
@@ -127,8 +121,6 @@ function Choices({question, answers, setAnswers}) {
             setTimeout(function () {
                 originalElement?.remove();
             }, 1000);
-
-
         }
 
     }, [question]);
@@ -149,7 +141,6 @@ function Choices({question, answers, setAnswers}) {
                 {/*    </fieldset>*/}
 
                 {question.choices.map((choice, index) => (
-
 
                     // {question.correctChoices && (
                     //         <>

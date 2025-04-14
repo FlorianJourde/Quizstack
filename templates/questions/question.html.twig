@@ -3,29 +3,40 @@
 {% block title %}Question{% endblock %}
 
 {% block body %}
-    <div>
-        <p class="font-bold text-6xl text-center">Question</p>
+    {#    <div> #}
+    {#        <p class="font-bold text-6xl text-center">Question</p> #}
+    {#    </div> #}
+
+
+    {{ include('partials/banner.html.twig') }}
+
+
+    <div class="wrapper">
+        <div class="buttons-container flex mb-4 gap-4 justify-end">
+            <a class="btn btn-primary" href="{{ path('question_edit', {'id': question.id}) }}"> Edit </a>
+        </div>
     </div>
 
-    <div id="quiz-container" data-mode="{{ mode }}" data-question-id="{{ questionId }}"></div>
+    <div id="quiz-container" class="mb-4" data-mode="{{ mode }}" data-question-id="{{ questionId }}"></div>
 
-    <a href="{{ path('question_edit', {'id': question.id}) }}"> Edit </a>
 
-    <br>
+    <div class="wrapper">
 
-    <div class="user-info">
-        <h1>ID : {{ question.id }}</h1>
-        <p>Question : {{ question.content }}</p>
-        <p>Image : {{ question.image }}</p>
-        <p>Categories :</p>
+        <div class="question-info">
+            <h1>ID : {{ question.id }}</h1>
+            {#            <p>Question : {{ question.content }}</p> #}
+            <p>Image : {{ question.image }}</p>
+            <p>Categories :</p>
 
-        {% for category in question.categories %}
-            {{ category.name }}
-        {% endfor %}
+            {% for category in question.categories %}
+                {{ category.name }}
+            {% endfor %}
 
-        <p>Creation date : {{ question.creationDate|date('d/m/Y') }}</p>
-        <p>Update date : {{ question.updateDate|date('d/m/Y') }}</p>
-        <p>Status : {{ question.status ? 'online' : 'offline' }}</p>
+            <p>Creation date : {{ question.creationDate|date('d/m/Y') }}</p>
+            <p>Update date : {{ question.updateDate|date('d/m/Y') }}</p>
+            <p>Status : {{ question.status ? 'online' : 'offline' }}</p>
 
+        </div>
     </div>
+
 {% endblock %}
