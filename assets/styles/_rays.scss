@@ -154,6 +154,16 @@ body {
     );
     --glow-light: radial-gradient(circle at top, #469814 0, transparent 75%, transparent 100%)
   }
+
+  &.gold {
+    --rainbow: repeating-linear-gradient(
+                    100deg,
+                    #c09f1d 10%,
+                    #a19407 15%,
+                    #826800 20%
+    );
+    --glow-light: radial-gradient(circle at top, #988614 0, transparent 75%, transparent 100%)
+  }
 }
 
 .glow {

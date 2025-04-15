@@ -3,7 +3,11 @@
 {% block title %}New question{% endblock %}
 
 {% block body %}
-    <div class="container mt-4">
+
+    {{ include('partials/banner.html.twig') }}
+
+
+    <div class="wrapper">
         <h1>Add new question</h1>
 
         {{ form_start(form) }}
@@ -12,35 +16,36 @@
         {{ form_row(form.difficulty) }}
         {{ form_row(form.categories) }}
         {{ form_row(form.image) }}
-{#        {{ form_row(form.choices) }}#}
 
-{#        <div class="choices-section">#}
-{#            <h3>Answer choices</h3>#}
+        {#        {{ form_row(form.choices) }} #}
 
-{#            {% for i, choiceField in form.choices %}#}
-{#                <div class="choice-item">#}
-{#                    {{ form_widget(choiceField) }}#}
+        {#        <div class="choices-section"> #}
+        {#            <h3>Answer choices</h3> #}
 
-{#                    #}{# Bouton de suppression avec l'index du choix #}
-{#                    {% if form.choices|length > 1 %}#}
-{#                        <button type="submit" name="remove_choice" value="{{ i }}" class="btn btn-sm btn-danger">#}
-{#                            Delete#}
-{#                        </button>#}
-{#                    {% endif %}#}
-{#                </div>#}
-{#            {% endfor %}#}
+        {#            {% for i, choiceField in form.choices %} #}
+        {#                <div class="choice-item"> #}
+        {#                    {{ form_widget(choiceField) }} #}
 
-{#            #}{# Bouton pour ajouter un choix si moins de 6 #}
-{#            {% if form.choices|length < 6 %}#}
-{#                <button type="submit" name="add_choice" value="1" class="btn btn-primary">#}
-{#                    Add answer choice#}
-{#                </button>#}
-{#            {% endif %}#}
+        {#                    #}{# Bouton de suppression avec l'index du choix #}
+        {#                    {% if form.choices|length > 1 %} #}
+        {#                        <button type="submit" name="remove_choice" value="{{ i }}" class="btn btn-sm btn-danger"> #}
+        {#                            Delete #}
+        {#                        </button> #}
+        {#                    {% endif %} #}
+        {#                </div> #}
+        {#            {% endfor %} #}
 
-{#            <div class="choices-counter">#}
-{#                {{ form.choices|length }}/6 choices#}
-{#            </div>#}
-{#        </div>#}
+        {#            #}{# Bouton pour ajouter un choix si moins de 6 #}
+        {#            {% if form.choices|length < 6 %} #}
+        {#                <button type="submit" name="add_choice" value="1" class="btn btn-primary"> #}
+        {#                    Add answer choice #}
+        {#                </button> #}
+        {#            {% endif %} #}
+
+        {#            <div class="choices-counter"> #}
+        {#                {{ form.choices|length }}/6 choices #}
+        {#            </div> #}
+        {#        </div> #}
 
         {{ include('partials/choices.html.twig', _context) }}
 

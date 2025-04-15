@@ -3,16 +3,19 @@
 {% block title %}Categories{% endblock %}
 
 {% block body %}
-    <div class="container">
-        <h1>Categories list</h1>
 
+    {{ include('partials/banner.html.twig') }}
 
-        <a href="{{ path('categories_edit') }}">
-            Edit
-        </a>
+    <div class="wrapper">
+        <h1 class="text-5xl">Categories</h1>
+        <div class="buttons-container flex mb-4 gap-4 justify-end">
+            <a class="btn btn-primary" href="{{ path('categories_edit') }}">Edit</a>
+        </div>
+    </div>
 
-        <div class="categories-list">
-            <table class="table table-striped">
+    <div class="wrapper wrapper-large">
+        <div class="overflow-auto">
+            <table class="table glass">
                 <thead>
                 <tr>
                     <th>ID</th>
@@ -20,11 +23,15 @@
                     <th>Name</th>
                 </tr>
                 </thead>
-                <tbody>
+                <tbody class="text-center">
                 {% for category in categories %}
                     <tr>
                         <td>{{ category.id }}</td>
-                        <td>{{ category.status ? 'online' : 'offline' }}</td>
+                        <td>
+                        <span class="text-xs rounded-sm px-2 py-1 {{ category.status ? 'bg-green-secondary/50' : 'bg-red-secondary/50' }}">
+                            {{ category.status ? 'online' : 'offline' }}
+                        </span>
+                        </td>
                         <td>{{ category.name }}</td>
                     </tr>
                 {% else %}
@@ -36,4 +43,5 @@
             </table>
         </div>
     </div>
+
 {% endblock %}

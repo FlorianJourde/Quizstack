@@ -93,11 +93,12 @@ function Question({mode, questionId, showComments}: { mode: string, questionId: 
     }
 
     if (limitReached) return <LimitReachedComponent/>;
-    if (loading) return <Loading/>;
+    // if (loading) return <Loading/>;
     if (!question) return <div>Question not found..</div>;
 
     return (
         <>
+            {/*<Loading/>*/}
             <div className="wrapper">
                 <div className="flex flex-col gap-4">
 
