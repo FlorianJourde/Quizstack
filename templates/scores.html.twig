@@ -6,9 +6,13 @@
 
     {{ include('partials/banner.html.twig', {'color': 'gold'}) }}
 
-    <div class="container">
-        <h1 class="text-3xl">Scores</h1>
+    <div class="wrapper">
+        <div class="page-header-container">
+            <h1 class="big-title grow">Hall of Fame</h1>
+        </div>
+    </div>
 
+    <div class="wrapper">
         {% for score in scores %}
             <h2>{{ score.users.username }}</h2>
             <p>Week : {{ score.week }}</p>
@@ -18,8 +22,6 @@
         {% else %}
             <p>No scores.</p>
         {% endfor %}
-
-    </div>
     </div>
 
 {% endblock %}

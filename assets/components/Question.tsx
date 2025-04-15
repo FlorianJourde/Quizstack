@@ -125,7 +125,7 @@ function Question({mode, questionId, showComments}: { mode: string, questionId: 
 
                                     return (
                                         <span
-                                            className={`rounded-sm w-2 bg-white/50 ${heightClass} ${opacityClass}`}
+                                            className={`rounded-sm w-2 bg-white/75 ${heightClass} ${opacityClass}`}
                                             key={index}
                                         ></span>
                                     );

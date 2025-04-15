@@ -7,10 +7,21 @@
     {{ include('partials/banner.html.twig') }}
 
     <div class="wrapper">
-        <h1 class="text-5xl">Categories</h1>
-        <div class="buttons-container flex mb-4 gap-4 justify-end">
-            <a class="button button-primary" href="{{ path('categories_edit') }}">Edit</a>
+{#        <h1 class="big-title">Categories</h1>#}
+{#        <div class="buttons-container flex mb-4 gap-4 justify-end">#}
+{#            <a class="button button-primary" href="{{ path('categories_edit') }}">Edit</a>#}
+{#        </div>#}
+
+        <div class="page-header-container">
+            <h1 class="big-title grow">Categories</h1>
+            <div class="buttons-container flex gap-2 justify-end">
+                <a class="button button-action" href="{{ path('categories_edit') }}">
+                    {#                    New#}
+                    <span class="material-icons">edit</span>
+                </a>
+            </div>
         </div>
+
     </div>
 
     <div class="wrapper wrapper-large">

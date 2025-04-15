@@ -142,7 +142,7 @@ body {
                     #980d26 15%,
                     #600618 20%
     );
-    --glow-light: radial-gradient(circle at top, #9d1b12 0, transparent 75%, transparent 100%)
+    --glow-light: radial-gradient(circle closest-corner at top, #9d1b12 0, transparent 100%)
   }
 
   &.green {
@@ -152,7 +152,7 @@ body {
                     #25a107 15%,
                     #008206 20%
     );
-    --glow-light: radial-gradient(circle at top, #469814 0, transparent 75%, transparent 100%)
+    --glow-light: radial-gradient(circle closest-corner at top, #469814 0, transparent 100%)
   }
 
   &.gold {
@@ -162,7 +162,17 @@ body {
                     #a19407 15%,
                     #826800 20%
     );
-    --glow-light: radial-gradient(circle at top, #988614 0, transparent 75%, transparent 100%)
+    --glow-light: radial-gradient(circle closest-corner at top, #988614 0, transparent 100%)
+  }
+
+  &.blue {
+    --rainbow: repeating-linear-gradient(
+                    100deg,
+                    #1d82c0 10%,
+                    #0754a1 15%,
+                    #003882 20%
+    );
+    --glow-light: radial-gradient(circle closest-corner at top, #145298 0, transparent 100%)
   }
 }
 

@@ -7,9 +7,18 @@
     {{ include('partials/banner.html.twig') }}
 
     <div class="wrapper">
-        <h1 class="text-5xl">Users</h1>
-        <div class="buttons-container flex mb-4 gap-4 justify-end">
-            <a class="button button-primary" href="{{ path('question_new') }}">New</a>
+{#        <h1 class="text-5xl">Users</h1>#}
+{#        <div class="buttons-container flex mb-4 gap-4 justify-end">#}
+{#            <a class="button button-primary" href="{{ path('question_new') }}">New</a>#}
+{#        </div>#}
+
+        <div class="page-header-container">
+            <h1 class="big-title grow">Users</h1>
+{#            <div class="buttons-container flex gap-2 justify-end">#}
+{#                <a class="button button-action" href="{{ path('question_new') }}">#}
+{#                    <span class="material-icons">add</span>#}
+{#                </a>#}
+{#            </div>#}
         </div>
     </div>
 
@@ -38,7 +47,7 @@
                         {#                        <td>{{ dump(user.roles) }}</td> #}
                         <td>
 
-                            <ul class="categories-container flex flex-wrap gap-2 justify-center">
+                            <ul class="tags-container justify-center">
                                 {% for role in user.roles %}
                                     <li>
                                         <span class="text-xs rounded-sm px-2 py-1 bg-black/50">{{ role }}</span>

@@ -10,11 +10,24 @@
 
     {{ include('partials/banner.html.twig') }}
 
-
     <div class="wrapper">
-        <div class="buttons-container flex mb-4 gap-4 justify-end">
-            <a class="button button-primary" href="{{ path('question_edit', {'id': question.id}) }}"> Edit </a>
+        <div class="page-header-container">
+            <h1 class="big-title grow">Questions {{ question.id }}</h1>
+            <div class="buttons-container flex gap-2 justify-end">
+                <a class="button button-action" href="{{ path('question_edit', {'id': question.id}) }}">
+                    {#                Edit #}
+                    <span class="material-icons">edit</span>
+
+                </a>
+            </div>
         </div>
+
+        {#        <div class="buttons-container flex gap-2 justify-end"> #}
+        {#            <a class="button button-action" href="{{ path('profile_edit') }}"> #}
+        {#                <span class="material-icons">edit</span> #}
+        {#            </a> #}
+        {#        </div> #}
+
     </div>
 
     <div id="quiz-container" class="mb-4" data-mode="{{ mode }}" data-question-id="{{ questionId }}"></div>
@@ -23,7 +36,7 @@
     <div class="wrapper">
 
         <div class="question-info">
-            <h1>ID : {{ question.id }}</h1>
+{#            <h1>ID : {{ question.id }}</h1>#}
             {#            <p>Question : {{ question.content }}</p> #}
             <p>Image : {{ question.image }}</p>
 

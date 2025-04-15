@@ -4,26 +4,57 @@
 
 {% block body %}
 
-    {{ include('partials/banner.html.twig') }}
+{#    {{ include('partials/banner.html.twig') }}#}
+    {{ include('partials/banner.html.twig', {'color': 'blue'}) }}
 
     <div class="wrapper">
-        
-        <div>
-            <p class="font-bold text-6xl text-center">Profile</p>
+        <div class="page-header-container">
+            <h1 class="big-title grow">Profile</h1>
+            <div class="buttons-container flex gap-2 justify-end">
+                <a class="button button-action" href="{{ path('profile_edit') }}">
+                    <span class="material-icons">edit</span>
+                </a>
+            </div>
         </div>
+    </div>
 
-        <a href="{{ path('profile_edit') }}">
-            Edit
-        </a>
 
-        <div class="user-info">
-            <h1>Username : {{ user.username }}</h1>
-            <h1>Email : {{ user.email }}</h1>
-            {#            <p>Rôle : {{ user.role }}</p> #}
-            <p>Dernière connexion : {{ user.lastAuthenticationDate|date('d/m/Y H:i') }}</p>
-            <p>Inscription : {{ user.inscriptionDate|date('d/m/y') }}</p>
+    <div class="wrapper">
+        <div class="form-container glass box bg-dark-grey-secondary">
+{#            <div>#}
+{#                <p class="font-bold text-6xl text-center">Profile</p>#}
+{#            </div>#}
+{#            <a href="{{ path('profile_edit') }}">#}
+{#                Edit#}
+{#            </a>#}
+            <div>
+                <h2 class="small-title">Username</h2>
+                <p>{{ user.username }}</p>
+            </div>
+            <div>
+                <h2 class="small-title">Email</h2>
+                <p>{{ user.email }}</p>
+            </div>
+            <div>
+                <h2 class="small-title">Role</h2>
+                <ul class="tags-container">
+                    {% for role in user.roles %}
+                        <li>
+                            <span class="tag">{{ role }}</span>
+                        </li>
+                    {% endfor %}
+                </ul>
+                {#                                    <p>{{ user.role }}</p> #}
+            </div>
+            <div>
+                <h2 class="small-title">Last authentication</h2>
+                <p>{{ user.lastAuthenticationDate|date('d/m/Y H:i') }}</p>
+            </div>
+            <div>
+                <h2 class="small-title">Inscription</h2>
+                <p>{{ user.inscriptionDate|date('d/m/y') }}</p>
+            </div>
         </div>
-        {#    </div> #}
     </div>
 
 

@@ -154,9 +154,7 @@ function Choices({mode, question, answers, setAnswers}) {
 
                     <li key={`choice-${choice.id}`} className={`choice-option glass`}>
                         <fieldset className={`checkbox-group`}>
-                            {/*<div className="checkbox">*/}
                             <label>
-                                {/*<input type="checkbox" />*/}
                                 <input
                                     type="checkbox"
                                     id={`choice-${index}`}
@@ -164,43 +162,17 @@ function Choices({mode, question, answers, setAnswers}) {
                                     value={choice.id}
                                     checked={answers.includes(choice.id)}
                                     onChange={() => handleAnswersChange(choice.id)}
-                                    // className={"checkbox-input"}
-
                                     className={`checkbox-input ${question.correctChoices && (
                                         checkAnswerValidity(choice.id) ? "correct" : "incorrect")
                                     }`}
                                 />
                                 <span className="checkbox-tile box">
-                                    	<span className="checkbox-label">
+                                    <span className="checkbox-label">
                                         <MarkdownRenderer content={choice.content}/>
-                                        </span>
                                     </span>
+                                </span>
                             </label>
-                            {/*</div>*/}
                         </fieldset>
-
-
-                        {/*<input*/}
-                        {/*    type="checkbox"*/}
-                        {/*    id={`choice-${index}`}*/}
-                        {/*    name="choice"*/}
-                        {/*    value={choice.id}*/}
-                        {/*    checked={answers.includes(choice.id)}*/}
-                        {/*    onChange={() => handleAnswersChange(choice.id)}*/}
-                        {/*/>*/}
-
-                        {/*<MarkdownRenderer content={choice.content}/>*/}
-
-                        {/*{question.correctChoices && (*/}
-                        {/*    <>*/}
-                        {/*        {checkAnswerValidity(choice.id) ? (*/}
-                        {/*            <span className="correct-icon"> ✓</span>*/}
-                        {/*        ) : (*/}
-                        {/*            <span className="correct-icon"> ✗</span>*/}
-                        {/*        )}*/}
-                        {/*    </>*/}
-                        {/*)}*/}
-
                     </li>
                 ))}
 

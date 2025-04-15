@@ -1,56 +1,57 @@
 <header class="flex justify-between items-center z-10">
+    <div class="overlay"></div>
     <div class="wrapper">
 
         <div class="py-4 flex items-center justify-between w-full">
 
-        <a href="{{ path('app_home') }}" class="flex gap-4 items-center">
-            <img src="{{ asset('images/logos/quizstack-logo.png') }}" alt="Quizstack logo" class="h-12">
-            Quizstack
-        </a>
-
-        <ul>
-            <a href="{{ path('scores') }}">
-                Scores
+            <a href="{{ path('app_home') }}" class="flex gap-4 items-center">
+                <img src="{{ asset('images/logos/quizstack-logo.png') }}" alt="Quizstack logo" class="h-12">
+                Quizstack
             </a>
 
-            {% if is_granted('ROLE_USER') %}
-                <a href="{{ path('profile') }}">
-                    Profile
+            <ul>
+                <a href="{{ path('scores') }}">
+                    Scores
                 </a>
-            {% endif %}
 
-            {% if is_granted('ROLE_ADMIN') %}
-                <a href="{{ path('users') }}">
-                    Users
-                </a>
-            {% endif %}
+                {% if is_granted('ROLE_USER') %}
+                    <a href="{{ path('profile') }}">
+                        Profile
+                    </a>
+                {% endif %}
 
-            {% if is_granted('ROLE_ADMIN') %}
-                <a href="{{ path('categories') }}">
-                    Categories
-                </a>
-            {% endif %}
+                {% if is_granted('ROLE_ADMIN') %}
+                    <a href="{{ path('users') }}">
+                        Users
+                    </a>
+                {% endif %}
 
-            {% if is_granted('ROLE_USER') %}
-                <a href="{{ path('questions') }}">
-                    Questions
-                </a>
-            {% endif %}
+                {% if is_granted('ROLE_ADMIN') %}
+                    <a href="{{ path('categories') }}">
+                        Categories
+                    </a>
+                {% endif %}
 
-            {% if is_granted('ROLE_USER') %}
-                <a href="{{ path('app_logout') }}">
-                    Logout
-                </a>
-            {% else %}
-                <a href="{{ path('app_login') }}">
-                    Login
-                </a>
-                <a href="{{ path('app_register') }}">
-                    Register
-                </a>
-            {% endif %}
+                {% if is_granted('ROLE_USER') %}
+                    <a href="{{ path('questions') }}">
+                        Questions
+                    </a>
+                {% endif %}
 
-        </ul>
+                {% if is_granted('ROLE_USER') %}
+                    <a href="{{ path('app_logout') }}">
+                        Logout
+                    </a>
+                {% else %}
+                    <a href="{{ path('app_login') }}">
+                        Login
+                    </a>
+                    <a href="{{ path('app_register') }}">
+                        Register
+                    </a>
+                {% endif %}
+
+            </ul>
         </div>
 
 

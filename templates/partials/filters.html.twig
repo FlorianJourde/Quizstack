@@ -11,18 +11,72 @@
             </li>
         </ul>
 
-        <h2 class="text-3xl">Categories</h2>
-        <ul>
+        <h2 class="title">Categories</h2>
+
+        {#        <ul> #}
+        {#            {% for category in categories %} #}
+        {#                <li> #}
+        {#                    <input type="checkbox" id="category-{{ category.name }}" value="{{ category.name }}" #}
+        {#                           name="category[]"> #}
+        {#                    <label for="category-{{ category.name }}">{{ category.name }}</label> #}
+        {#                </li> #}
+        {#            {% else %} #}
+        {#                <li>No categories.</li> #}
+        {#            {% endfor %} #}
+        {#        </ul> #}
+
+        <ul class="categories-container grid grid-cols-4 gap-8">
             {% for category in categories %}
-                <li>
-                    <input type="checkbox" id="category-{{ category.name }}" value="{{ category.name }}"
-                           name="category[]">
-                    <label for="category-{{ category.name }}">{{ category.name }}</label>
+                <li class="choice-option glass aspect-square">
+                    <img class="absolute w-full h-full top-0 left-0 object-contain opacity-10"
+                         src="{{ asset('images/categories/' ~ category.name ~ '-logo.png') }}"
+                         alt="">
+                    <fieldset class="checkbox-group"
+                            {#                              style="background-image: url('{{ asset('images/categories/background ' + {{ category.name }} + '.png') }}')" #}
+                            {#                              style="background-image: url('{{ asset('images/categories/background-' ~ category.name ~ '.png') }}')" #}
+                            {#                              style="background-image: url('{{ asset('images/categories/background-' ~ category.name ~ '.png') }}'), radial-gradient(circle closest-corner at top, #ffffff5c 0, #00800000 100%);" #}
+                    >
+                        <label for="category-{{ category.name }}">
+                            <input type="checkbox"
+                                   id="category-{{ category.name }}"
+                                   value="{{ category.name }}"
+                                   name="category[]"
+                                   class="checkbox-input"/>
+                            <span class="checkbox-tile box">
+                            <span class="checkbox-label text-center">
+                                {{ category.name }}
+                            </span>
+                        </span>
+                        </label>
+                    </fieldset>
                 </li>
             {% else %}
                 <li>No categories.</li>
             {% endfor %}
         </ul>
+
+        {#        <li key={`choice-${choice.id}`} className={`choice-option glass`}> #}
+        {#            <fieldset className={`checkbox-group`}> #}
+        {#                <label> #}
+        {#                    <input #}
+        {#                            type="checkbox" #}
+        {#                            id={`choice-${index}`} #}
+        {#                            name="choice" #}
+        {#                            value={choice.id} #}
+        {#                            checked={answers.includes(choice.id)} #}
+        {#                            onChange={() => handleAnswersChange(choice.id)} #}
+        {#                    className={`checkbox-input ${question.correctChoices && ( #}
+        {#                    checkAnswerValidity(choice.id) ? "correct" : "incorrect") #}
+        {#                    }`} #}
+        {#                    /> #}
+        {#                    <span className="checkbox-tile box"> #}
+        {#                <span className="checkbox-label"> #}
+        {#                    <MarkdownRenderer content={choice.content}/> #}
+        {#                </span> #}
+        {#            </span> #}
+        {#                </label> #}
+        {#            </fieldset> #}
+        {#        </li> #}
 
         <button type="submit">
             Play
