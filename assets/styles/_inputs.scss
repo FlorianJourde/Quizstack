@@ -69,12 +69,14 @@
       border: 2px solid #ffffff;
       background-color: theme('colors.grey-primary');
       border-radius: 50%;
-      top: 1.1rem;
-      left: 1.1rem;
       transition: 0.25s ease;
       background-size: 12px;
       background-repeat: no-repeat;
       background-position: 50% 50%;
+      //top: 1.1rem;
+      //left: 1.1rem;
+      top: 2rem;
+      left: 1.5rem;
     }
 
     .checkbox-label {

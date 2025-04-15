@@ -28,7 +28,7 @@ class ChoicesFormType extends AbstractType
                 'label' => 'Correct',
                 'required' => false,
                 'row_attr' => [
-                    'class' => 'absolute text-xs top-[10px] right-[10px] flex gap-2 rounded-sm px-2 py-1 bg-black/50'
+                    'class' => 'absolute text-xs top-[16px] right-[16px] flex gap-2 rounded-sm px-2 py-1 bg-black/50'
                 ]
             ]);
     }

@@ -39,7 +39,8 @@ function CommentItem({question, setQuestion, comment, index}) {
         // <div className={'glass p-4'}>
         <>
             {index !== 0 && <hr className="h-[2px] bg-white/10 border-0"/>}
-            <li className={`py-4 flex flex-col gap-4 ${index === 0 ? 'pt-0' : ''}`}>
+            {/*<li className={`py-8 flex flex-col gap-4 ${index === 0 ? 'pt-0' : ''}`}>*/}
+            <li className={`py-8 first:pt-0 last:pb-0 flex flex-col gap-4`}>
                 {/*<div>*/}
                 {/*<p>Author : {comment.author.username}</p>*/}
                 <div className="comment-header-container flex gap-4 items-center">
@@ -50,10 +51,10 @@ function CommentItem({question, setQuestion, comment, index}) {
                         {/*<pre>{JSON.stringify(comment.creationDate, null, 2)}</pre>*/}
                         <div className="date-container flex gap-4  items-center">
                             <p className={'flex items-center gap-2 opacity-50 text-xs'}><span
-                                className="material-icons md-18">calendar_today</span><span>{formattedDate}</span>
+                                className="material-icons md-14">calendar_today</span><span>{formattedDate}</span>
                             </p>
                             <p className={'flex items-center gap-2 opacity-50 text-xs'}><span
-                                className="material-icons md-18">schedule</span><span>{formattedTime}</span></p>
+                                className="material-icons md-14">schedule</span><span>{formattedTime}</span></p>
                         </div>
                     </div>
 

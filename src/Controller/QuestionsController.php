@@ -114,6 +114,9 @@ final class QuestionsController extends AbstractController
             return $this->redirectToRoute('questions');
         }
 
+//        dump($question);
+//        die();
+
         return $this->render('questions/edit.html.twig', [
             'question' => $question,
             'form' => $form->createView(),

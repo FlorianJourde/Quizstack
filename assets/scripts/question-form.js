@@ -35,7 +35,6 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
-
     function addFormToCollection(e) {
         const collectionHolder = document.querySelector('.' + e.currentTarget.dataset.collectionHolderClass);
 
@@ -45,7 +44,7 @@ document.addEventListener('DOMContentLoaded', function () {
         }
 
         const item = document.createElement('li');
-        item.classList.add('choice-item', 'flex', 'flex-col', 'mb-4', 'relative');
+        item.classList.add('choice-item', 'flex', 'flex-col', 'mb-8', 'relative');
 
         item.innerHTML = collectionHolder.dataset.prototype.replace(
             /__name__/g,
@@ -54,9 +53,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
         const removeButton = document.createElement('button');
         removeButton.type = 'button';
-        removeButton.classList.add('button', 'button-action', 'absolute', 'bottom-[10px]', 'right-[10px]', 'delete-choice');
-        // removeButton.innerText = 'Delete';
-        // removeButton.innerText = `<span class="material-icons">delete</span>`;
+        removeButton.classList.add('button', 'button-action', 'absolute', 'bottom-[16px]', 'right-[16px]', 'delete-choice');
         removeButton.innerHTML = `<span class="material-icons">delete</span>`;
 
         removeButton.addEventListener('click', function () {

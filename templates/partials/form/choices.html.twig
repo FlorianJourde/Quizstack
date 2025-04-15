@@ -2,15 +2,18 @@
     <div class="w-full flex flex-col">
         {#        <h2 class="small-title">Choices</h2> #}
         {#        <h2 class="small-title">{{ form.choices.vars.label }}</h2> #}
-                <h2 class="small-title">{{ form.choices.vars.label }}</h2>
-{#        <h2 class="small-title">{{ form_label(form.choices) }}</h2>#}
+        <h2 class="small-title">{{ form.choices.vars.label }}</h2>
+        {#        <h2 class="small-title">{{ form_label(form.choices) }}</h2> #}
 
         {#        <h3>Choices</h3> #}
         <ul class="choices-list" data-max-choices="{{ form.choices.vars.attr['data-max-choices'] }}">
             {% for choice in form.choices %}
-                <li class="choice-item flex flex-col gap-4 items-end">
+                <li class="choice-item flex flex-col mb-8 relative">
                     {{ form_row(choice) }}
-                    <button type="button" class="button button-primary delete-choice">Delete</button>
+                    <button type="button"
+                            class="button button-action absolute bottom-[16px] right-[16px] delete-choice">
+                        <span class="material-icons">delete</span>
+                    </button>
                 </li>
             {% endfor %}
         </ul>

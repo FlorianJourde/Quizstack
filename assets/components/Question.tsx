@@ -100,14 +100,14 @@ function Question({mode, questionId, showComments}: { mode: string, questionId: 
         <>
             {/*<Loading/>*/}
             <div className="wrapper">
-                <div className="flex flex-col gap-4">
+                <div className="flex flex-col gap-8">
 
                     <div className="glass box">
 
                         {/*<h2 className={'text-3xl'}>Question</h2>*/}
                         {/*<p>ID : {question.id}</p>*/}
 
-                        <div className="question-header-container flex gap-4 justify-between items-center mb-4">
+                        <div className="question-header-container flex gap-8 justify-between items-center mb-8">
                             <ul className={`tags-container grow-1`}>
                                 {question.categories.map((category, index) => (
                                     <li key={`category-${index}`}>
@@ -167,7 +167,7 @@ function Question({mode, questionId, showComments}: { mode: string, questionId: 
                                     {/*<span className="material-icons">arrow_forward</span>*/}
                                 </button>
                             ) : (
-                                <button className={'button button-primary'} onClick={handleSubmit}>
+                                <button className={'button button-tertiary'} onClick={handleSubmit}>
                                     Validate
                                     {/*<span className="material-icons">done</span>*/}
                                     {/*<span className="material-symbols-outlined">arrow_forward</span>*/}

@@ -125,10 +125,10 @@ class QuestionsFormType extends AbstractType
 
         if ($question && $question->getId()) {
             $builder->add('delete', SubmitType::class, [
-                'label' => 'Delete Question',
+                'label' => 'Delete',
                 'attr' => [
                     'class' => 'button button-primary button-red',
-                    'onclick' => 'return confirm("Are you sure you want to delete this question?")'
+                    'onclick' => 'return confirm("Are you sure you want to delete this question ?")'
                 ]
             ]);
         }

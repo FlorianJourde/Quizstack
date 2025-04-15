@@ -6,161 +6,26 @@
 
     {{ include('partials/banner.html.twig') }}
 
-
     <div class="wrapper">
-
         <div class="form-container glass box bg-dark-grey-secondary">
-
-            <h1 class="title">Propose new question</h1>
-
-            {#            {{ form_start(form, {'attr': {'class': 'flex flex-col gap-4 w-full items-end'}}) }} #}
-            {# {{ form_row(form.content, {
-                            'attr': {'class': 'my-content-class'},
-                            'label_attr': {'class': 'my-label-class'},
-                            'row_attr': {'class': 'my-row-class'}
-                        }) }} #}
+            <h1 class="title">Propose a new question</h1>
 
             {{ form_start(form) }}
 
-            <div>
-                <h2 class="small-title">{{ form.content.vars.label }}</h2>
-                {{ form_widget(form.content) }}
-            </div>
-
-
-            {#            {{ form_row(form.content) }} #}
-            {#            {{ form_row(form.explanation) }} #}
-
-            <div>
-                <h2 class="small-title">{{ form.explanation.vars.label }}</h2>
-                {{ form_widget(form.explanation) }}
-            </div>
-
-            {#            {{ form_row(form.difficulty) }} #}
-
-
-            <div>
-                {#                {{ form_label(form.difficulty) }} #}
-                <h2 class="small-title">{{ form.difficulty.vars.label }}</h2>
-                <ul class="tags-container">
-                    {% for level in form.difficulty %}
-                        <li class="flex">
-                        <span class="tag">
-                            {{ form_widget(level) }}
-                            {{ form_label(level) }}
-                        </span>
-                        </li>
-                    {% endfor %}
-                </ul>
-                {{ form_errors(form.difficulty) }}
-            </div>
-
-            {#            {{ form_row(form.categories) }} #}
-
-            <div>
-                {#                {{ form_label(form.categories) }} #}
-
-                <h2 class="small-title">{{ form.categories.vars.label }}</h2>
-                <ul class="tags-container">
-                    {% for category in form.categories %}
-                        <li class="flex">
-                        <span class="tag">
-                            {{ form_widget(category) }}
-                            {{ form_label(category) }}
-                        </span>
-                        </li>
-                    {% endfor %}
-                </ul>
-                {{ form_errors(form.categories) }}
-            </div>
-
-            {#            {{ form_row(form.image) }} #}
-
-            {% if form.status is defined %}
-                {#                                {{ form_row(form.status) }} #}
-
-                <div>
-                    {#                    <h2 class="small-title">Status</h2> #}
-                    <h2 class="small-title">{{ form.status.vars.label }}</h2>
-
-                    <ul class="tags-container">
-                        {#                                        {% for status in form.status %} #}
-                        <li class="flex">
-                        <span class="tag">
-                            {{ form_widget(form.status) }}
-                            {{ form_label(form.status) }}
-                        </span>
-                        </li>
-                        {#                                        {% endfor %} #}
-                    </ul>
-                </div>
-
-            {% endif %}
-
-            {#        {{ form_row(form.choices) }} #}
-
-            {#        <div class="choices-section"> #}
-            {#            <h3>Answer choices</h3> #}
-
-            {#            {% for i, choiceField in form.choices %} #}
-            {#                <div class="choice-item"> #}
-            {#                    {{ form_widget(choiceField) }} #}
-
-            {#                    #}{# Bouton de suppression avec l'index du choix #}
-            {#                    {% if form.choices|length > 1 %} #}
-            {#                        <button type="submit" name="remove_choice" value="{{ i }}" class="btn btn-sm btn-danger"> #}
-            {#                            Delete #}
-            {#                        </button> #}
-            {#                    {% endif %} #}
-            {#                </div> #}
-            {#            {% endfor %} #}
-
-            {#            #}{# Bouton pour ajouter un choix si moins de 6 #}
-            {#            {% if form.choices|length < 6 %} #}
-            {#                <button type="submit" name="add_choice" value="1" class="btn btn-primary"> #}
-            {#                    Add answer choice #}
-            {#                </button> #}
-            {#            {% endif %} #}
-
-            {#            <div class="choices-counter"> #}
-            {#                {{ form.choices|length }}/6 choices #}
-            {#            </div> #}
-            {#        </div> #}
-
-            {{ include('partials/choices.html.twig', _context) }}
-
-
-
-            {#            {{ form_label(form.categories) }} #}
-            {#            <ul class="tags-container"> #}
-            {#                {% for category in form.categories %} #}
-            {#                    <li class="flex"> #}
-            {#                        <span class="tag"> #}
-            {#                            {{ form_widget(category) }} #}
-            {#                            {{ form_label(category) }} #}
-            {#                        </span> #}
-            {#                    </li> #}
-            {#                {% endfor %} #}
-            {#            </ul> #}
-            {#            {{ form_errors(form.categories) }} #}
-
+            {{ include('partials/form/content.html.twig', _context) }}
+            {{ include('partials/form/explanation.html.twig', _context) }}
+            {{ include('partials/form/difficulty.html.twig', _context) }}
+            {{ include('partials/form/categories.html.twig', _context) }}
+            {{ include('partials/form/status.html.twig', _context) }}
+            {{ include('partials/form/choices.html.twig', _context) }}
 
             <div class="buttons-container flex mb-4 gap-4 justify-end">
-                {#                <a class="btn btn-primary" href="{{ path('question_edit', {'id': question.id}) }}"> Edit </a> #}
                 <a href="{{ path('questions') }}" class="button button-primary button-red">Cancel</a>
                 <button type="submit" class="button button-primary">Add</button>
             </div>
 
-            {#            <div class="d-flex justify-content-between mt-3"> #}
-            {#                <button type="submit" class="btn btn-success">Add</button> #}
-            {#            </div> #}
-
             {{ form_end(form, {'render_rest': false}) }}
 
-            {#            <a href="{{ path('questions') }}">Cancel</a> #}
-
         </div>
-
-
     </div>
 {% endblock %}

@@ -41,9 +41,7 @@ function CommentList({question, setQuestion}) {
         <>
             {/*<br/>*/}
             {/*<br/>*/}
-            <h1>
-                Comments
-            </h1>
+            <h2 className={'title'}>Comments</h2>
             <ul className={'comments-container flex flex-col glass box bg-dark-grey-secondary'}>
                 {question.comments.map((comment, index) => (
                     <CommentItem question={question} setQuestion={setQuestion} comment={comment} index={index}

@@ -1,0 +1,14 @@
+<div>
+    <h2 class="small-title">{{ form.difficulty.vars.label }}</h2>
+    <ul class="tags-container">
+        {% for level in form.difficulty %}
+            <li class="flex">
+                        <span class="tag">
+                            {{ form_widget(level) }}
+                            {{ form_label(level) }}
+                        </span>
+            </li>
+        {% endfor %}
+    </ul>
+    {{ form_errors(form.difficulty) }}
+</div>
