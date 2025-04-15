@@ -29,8 +29,8 @@ class CategoriesFormType extends AbstractType
 //                'show_delete_button' => false,
 //            ])
             ->add('save', SubmitType::class, [
-                'label' => 'Save all categories',
-                'attr' => ['class' => 'btn btn-primary mt-3']
+                'label' => 'Save',
+                'attr' => ['class' => 'button button-primary mt-3']
             ]);
 
 

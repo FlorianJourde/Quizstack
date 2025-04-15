@@ -93,7 +93,7 @@ function Question({mode, questionId, showComments}: { mode: string, questionId: 
     }
 
     if (limitReached) return <LimitReachedComponent/>;
-    // if (loading) return <Loading/>;
+    if (loading) return <Loading/>;
     if (!question) return <div>Question not found..</div>;
 
     return (
@@ -102,17 +102,16 @@ function Question({mode, questionId, showComments}: { mode: string, questionId: 
             <div className="wrapper">
                 <div className="flex flex-col gap-4">
 
-                    <div className="glass p-4">
+                    <div className="glass box">
 
                         {/*<h2 className={'text-3xl'}>Question</h2>*/}
                         {/*<p>ID : {question.id}</p>*/}
 
                         <div className="question-header-container flex gap-4 justify-between items-center mb-4">
-                            <ul className={`categories-container flex gap-2`}>
+                            <ul className={`tags-container grow-1`}>
                                 {question.categories.map((category, index) => (
                                     <li key={`category-${index}`}>
-                                        <span
-                                            className={`text-xs rounded-sm px-2 py-1 bg-black/50`}>{category.name}</span>
+                                        <span className={`tag`}>{category.name}</span>
                                     </li>
                                 ))}
                             </ul>
@@ -161,14 +160,14 @@ function Question({mode, questionId, showComments}: { mode: string, questionId: 
                     {/*)}*/}
 
                     {mode === 'game' && (
-                        <div className={'buttons-container flex gap-4 justify-end'}>
+                        <div className={'buttons-container'}>
                             {question.correctChoices ? (
-                                <button className={`btn btn-tertiary`} onClick={handleNextQuestion}>
+                                <button className={`button button-tertiary`} onClick={handleNextQuestion}>
                                     Next question
                                     {/*<span className="material-icons">arrow_forward</span>*/}
                                 </button>
                             ) : (
-                                <button className={'btn btn-primary'} onClick={handleSubmit}>
+                                <button className={'button button-primary'} onClick={handleSubmit}>
                                     Validate
                                     {/*<span className="material-icons">done</span>*/}
                                     {/*<span className="material-symbols-outlined">arrow_forward</span>*/}

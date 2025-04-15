@@ -1,18 +1,28 @@
-<h3>Choices</h3>
-<ul class="choices-list" data-max-choices="{{ form.choices.vars.attr['data-max-choices'] }}">
-    {% for choice in form.choices %}
-        <li class="choice-item">
-            {{ form_row(choice) }}
-            <button type="button" class="btn btn-danger btn-sm delete-choice">Delete</button>
-        </li>
-    {% endfor %}
-</ul>
+<div class="flex flex-col">
+    <div class="w-full flex flex-col">
+        {#        <h2 class="small-title">Choices</h2> #}
+        {#        <h2 class="small-title">{{ form.choices.vars.label }}</h2> #}
+                <h2 class="small-title">{{ form.choices.vars.label }}</h2>
+{#        <h2 class="small-title">{{ form_label(form.choices) }}</h2>#}
 
-<ul class="choices-collection"
-    data-index="{{ form.choices|length > 0 ? form.choices|last.vars.name + 1 : 0 }}"
-    data-prototype="{{ form_widget(form.choices.vars.prototype)|e('html_attr') }}"
-></ul>
+        {#        <h3>Choices</h3> #}
+        <ul class="choices-list" data-max-choices="{{ form.choices.vars.attr['data-max-choices'] }}">
+            {% for choice in form.choices %}
+                <li class="choice-item flex flex-col gap-4 items-end">
+                    {{ form_row(choice) }}
+                    <button type="button" class="button button-primary delete-choice">Delete</button>
+                </li>
+            {% endfor %}
+        </ul>
 
-<button type="button" class="add_item_link btn btn-primary" data-collection-holder-class="choices-collection">
-    Add a choice
-</button>
+        <ul class="choices-collection flex flex-col w-full"
+            data-index="{{ form.choices|length > 0 ? form.choices|last.vars.name + 1 : 0 }}"
+            data-prototype="{{ form_widget(form.choices.vars.prototype)|e('html_attr') }}"
+        ></ul>
+
+        <button type="button" class="add_item_link button button-primary self-start"
+                data-collection-holder-class="choices-collection">
+            Add a choice
+        </button>
+    </div>
+</div>

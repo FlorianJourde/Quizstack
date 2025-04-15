@@ -44,20 +44,21 @@ function CommentList({question, setQuestion}) {
             <h1>
                 Comments
             </h1>
-            <ul className={'comments-container flex flex-col glass p-4 bg-dark-grey-secondary'}>
+            <ul className={'comments-container flex flex-col glass box bg-dark-grey-secondary'}>
                 {question.comments.map((comment, index) => (
                     <CommentItem question={question} setQuestion={setQuestion} comment={comment} index={index}
                                  key={`comment-${index}`}/>
                 ))}
             </ul>
 
-            <div className="comment-form flex flex-col gap-4 p-4 glass bg-dark-grey-secondary">
+            <div className="form-container gap-4 glass box bg-dark-grey-secondary">
                 <h3>Add comment</h3>
 
                 {success && <div className="alert alert-success">Comment add with success !</div>}
                 {error && <div className="alert alert-danger">{error}</div>}
 
-                <form onSubmit={handleSubmit} className={'flex flex-col gap-4 w-full items-end'}>
+                {/*<form onSubmit={handleSubmit} className={'flex flex-col gap-4 w-full items-end'}>*/}
+                <form onSubmit={handleSubmit}>
                     <div className="form-group w-full">
                       <textarea
                           className="form"
@@ -68,13 +69,15 @@ function CommentList({question, setQuestion}) {
                           required
                       />
                     </div>
-                    <button
-                        type="submit"
-                        className="btn btn-primary"
-                        disabled={isSubmitting}
-                    >
-                        {isSubmitting ? 'Sending...' : 'Send'}
-                    </button>
+                    <div className="buttons-container">
+                        <button
+                            type="submit"
+                            className="button button-primary"
+                            disabled={isSubmitting}
+                        >
+                            {isSubmitting ? 'Sending...' : 'Send'}
+                        </button>
+                    </div>
                 </form>
             </div>
         </>

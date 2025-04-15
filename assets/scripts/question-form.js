@@ -25,10 +25,10 @@ document.addEventListener('DOMContentLoaded', function () {
             if (currentCount >= maxChoices) {
                 if (!messageElement) {
                     messageElement = document.createElement('div');
-                    messageElement.className = 'max-choices-message text-muted small mt-1';
+                    messageElement.className = 'max-choices-message text-sm opacity-50 mt-4';
                     btn.parentNode.appendChild(messageElement);
                 }
-                messageElement.textContent = `Maximum number of choices (${maxChoices}) reached.`;
+                messageElement.textContent = `Maximum number of choices reached.`;
             } else if (messageElement) {
                 messageElement.remove();
             }
@@ -45,7 +45,7 @@ document.addEventListener('DOMContentLoaded', function () {
         }
 
         const item = document.createElement('li');
-        item.classList.add('choice-item');
+        item.classList.add('choice-item', 'flex', 'flex-col', 'mb-4', 'relative');
 
         item.innerHTML = collectionHolder.dataset.prototype.replace(
             /__name__/g,
@@ -54,8 +54,10 @@ document.addEventListener('DOMContentLoaded', function () {
 
         const removeButton = document.createElement('button');
         removeButton.type = 'button';
-        removeButton.classList.add('btn', 'btn-danger', 'btn-sm', 'delete-choice');
-        removeButton.innerText = 'Delete';
+        removeButton.classList.add('button', 'button-action', 'absolute', 'bottom-[10px]', 'right-[10px]', 'delete-choice');
+        // removeButton.innerText = 'Delete';
+        // removeButton.innerText = `<span class="material-icons">delete</span>`;
+        removeButton.innerHTML = `<span class="material-icons">delete</span>`;
 
         removeButton.addEventListener('click', function () {
             item.remove();

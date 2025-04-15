@@ -10,7 +10,7 @@
     <div class="wrapper">
         <h1 class="text-5xl">Questions</h1>
         <div class="buttons-container flex mb-4 gap-4 justify-end">
-            <a class="btn btn-primary" href="{{ path('question_new') }}">New</a>
+            <a class="button button-primary" href="{{ path('question_new') }}">New</a>
         </div>
     </div>
 
@@ -35,10 +35,10 @@
                         <td>{{ question.id }}</td>
                         <td>{{ question.content|slice(0, 90) ~ (question.content|length > 90 ? '...' : '') }}</td>
                         <td>
-                            <ul class="categories-container flex flex-wrap gap-2 justify-center">
+                            <ul class="tags-container justify-center">
                                 {% for category in question.categories %}
                                     <li>
-                                        <span class="text-xs rounded-sm px-2 py-1 bg-black/50">{{ category.name }}</span>
+                                        <span class="tag">{{ category.name }}</span>
                                     </li>
                                 {% endfor %}
                             </ul>
@@ -52,10 +52,10 @@
                         <td>{{ question.user.username }}</td>
                         <td>
                             <div class="buttons-container flex gap-2 justify-center">
-                                <a href="{{ path('question', {'id': question.id}) }}" class="btn btn-action">
+                                <a href="{{ path('question', {'id': question.id}) }}" class="button button-action">
                                     <span class="material-icons">visibility</span>
                                 </a>
-                                <a href="{{ path('question_edit', {'id': question.id}) }}" class="btn btn-action">
+                                <a href="{{ path('question_edit', {'id': question.id}) }}" class="button button-action">
                                     <span class="material-icons">delete</span>
                                 </a>
                             </div>

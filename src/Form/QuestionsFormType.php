@@ -10,9 +10,11 @@ use Doctrine\ORM\EntityRepository;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ButtonType;
+use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -21,8 +23,13 @@ class QuestionsFormType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('content')
-            ->add('image')
+            ->add('content', TextareaType::class, [
+                'label' => 'Content'
+            ])
+//            ->add('image')
+            ->add('explanation', TextareaType::class, [
+                'label' => 'Explanation'
+            ])
             ->add('difficulty', ChoiceType::class, [
                 'choices' => [
                     'Easy' => 1,
@@ -31,8 +38,8 @@ class QuestionsFormType extends AbstractType
                 ],
                 'expanded' => true,
                 'multiple' => false,
+                'label' => 'Difficulty'
             ])
-            ->add('explanation')
             ->add('categories', EntityType::class, [
                 'class' => Categories::class,
                 'choice_label' => 'name',
@@ -43,11 +50,25 @@ class QuestionsFormType extends AbstractType
                         ->where('c.status = :status')
                         ->setParameter('status', true)
                         ->orderBy('c.name', 'ASC');
-                }
+                },
+                'label' => 'Categories'
+//                'choice_attr' => function() {
+//                    return ['class' => 'category-checkbox'];
+//                },
+//                'label_attr' => ['class' => 'category-label'],
+//                'row_attr' => ['class' => 'categories-container'],
+//                'choice_row_attr' => function() {
+//                    return ['class' => 'category-option-wrapper'];
+//                },
             ])
             ->add('choices', CollectionType::class, [
                 'entry_type' => ChoicesFormType::class,
-                'entry_options' => ['label' => false],
+                'entry_options' => [
+                    'label' => false,
+                    'attr' => [
+                        'class' => 'flex flex-col gap-4 items-start'
+                    ]
+                ],
                 'allow_add' => true,
                 'allow_delete' => true,
                 'by_reference' => false,
@@ -56,8 +77,9 @@ class QuestionsFormType extends AbstractType
                     'class' => 'choices-collection',
                     'data-max-choices' => 6
                 ],
+                'label' => 'Choices'
 //                'label' => 'Answer choices'
-                'label' => false
+//                'label' => false
 //            ]);
             ]);
 //            ->add('delete', SubmitType::class, [
@@ -105,14 +127,38 @@ class QuestionsFormType extends AbstractType
             $builder->add('delete', SubmitType::class, [
                 'label' => 'Delete Question',
                 'attr' => [
-                    'class' => 'btn btn-danger',
+                    'class' => 'button button-primary button-red',
                     'onclick' => 'return confirm("Are you sure you want to delete this question?")'
                 ]
             ]);
         }
 
         if ($options['is_editor']) {
-            $builder->add('status');
+//            $builder->add('status');
+
+//            $builder->add('status', ChoiceType::class, [
+//                'label' => 'Status',
+//                'choices' => [
+//                    'Published' => true,
+//                    'Draft' => false
+//                ]
+//            ]);
+
+            $builder->add('status', CheckboxType::class, [
+                'label' => 'Status',
+                'required' => false
+            ]);
+
+//            $builder->add('status', CheckboxType::class, [
+//                'label' => 'Publication status',
+//                'label_attr' => [
+//                    'class' => 'form-label status-label'
+//                ],
+//                'attr' => [
+//                    'class' => 'form-control status-field'
+//                ],
+//                'required' => false
+//            ]);
         }
     }
 

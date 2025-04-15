@@ -15,15 +15,21 @@ class ChoicesFormType extends AbstractType
     {
         $builder
             ->add('content', TextareaType::class, [
-                'label' => 'Content',
+                'label' => false,
                 'attr' => [
                     'placeholder' => 'New choice',
                     'rows' => 2
+                ],
+                'row_attr' => [
+                    'class' => 'w-full'
                 ]
             ])
             ->add('correct', CheckboxType::class, [
                 'label' => 'Correct',
-                'required' => false
+                'required' => false,
+                'row_attr' => [
+                    'class' => 'absolute text-xs top-[10px] right-[10px] flex gap-2 rounded-sm px-2 py-1 bg-black/50'
+                ]
             ]);
     }
 

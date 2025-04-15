@@ -43,13 +43,14 @@ function CommentUpdate({question, setQuestion, comment, onCommentUpdated, onCanc
     }
 
     return (
-        <div className="comment-editor flex flex-col">
+        <div className="form-container">
             {error && <div className="alert alert-danger">{error}</div>}
 
             {/*<form onSubmit={handleSubmit} className={'flex flex-col gap-4 w-full items-end'}>*/}
             {/*    <div className="form-group w-full">*/}
 
-            <form onSubmit={handleSubmit} className={'flex flex-col gap-4 w-full items-end'}>
+            {/*<form onSubmit={handleSubmit} className={'flex flex-col gap-4 w-full items-end'} >*/}
+            <form onSubmit={handleSubmit}>
                 <div className="form-group  w-full">
                   <textarea
                       className="form"
@@ -59,10 +60,10 @@ function CommentUpdate({question, setQuestion, comment, onCommentUpdated, onCanc
                       required
                   />
                 </div>
-                <div className={'buttons-container flex gap-4 justify-end'}>
+                <div className={'buttons-container'}>
                     <button
                         type="button"
-                        className="btn btn-tertiary"
+                        className="button btn-tertiary"
                         onClick={onCancel}
                         disabled={isSubmitting}
                     >
@@ -70,7 +71,7 @@ function CommentUpdate({question, setQuestion, comment, onCommentUpdated, onCanc
                     </button>
                     <button
                         type="submit"
-                        className="btn btn-primary"
+                        className="button button-primary"
                         disabled={isSubmitting}
                     >
                         {isSubmitting ? 'Updating...' : 'Save'}

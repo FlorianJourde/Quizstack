@@ -34,7 +34,7 @@ function CommentUpdate({question, setQuestion, comment, onCommentDelete, onCance
             <p>Do you want to remove this comment ?</p>
             <button
                 type="submit"
-                className="btn btn-primary me-2"
+                className="button button-primary me-2"
                 disabled={isDeleting}
                 onClick={handleSubmit}
             >
@@ -42,7 +42,7 @@ function CommentUpdate({question, setQuestion, comment, onCommentDelete, onCance
             </button>
             <button
                 type="button"
-                className="btn btn-secondary"
+                className="button button-secondary"
                 onClick={onCancel}
                 disabled={isDeleting}
             >

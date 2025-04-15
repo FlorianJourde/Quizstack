@@ -9,7 +9,7 @@
     <div class="wrapper">
         <h1 class="text-5xl">Users</h1>
         <div class="buttons-container flex mb-4 gap-4 justify-end">
-            <a class="btn btn-primary" href="{{ path('question_new') }}">New</a>
+            <a class="button button-primary" href="{{ path('question_new') }}">New</a>
         </div>
     </div>
 
@@ -65,10 +65,10 @@
 
 
                             <div class="buttons-container flex gap-2 justify-center">
-                                <a href="{{ path('user', {'id': user.id}) }}" class="btn btn-action">
+                                <a href="{{ path('user', {'id': user.id}) }}" class="button button-action">
                                     <span class="material-icons">visibility</span>
                                 </a>
-                                <a href="{{ path('user_edit', {'id': user.id}) }}" class="btn btn-action">
+                                <a href="{{ path('user_edit', {'id': user.id}) }}" class="button button-action">
                                     <span class="material-icons">edit</span>
                                 </a>
                             </div>

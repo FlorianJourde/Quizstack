@@ -32,7 +32,7 @@
                         </div>
                     </div>
                     <div class="col-md-2">
-                        <button type="submit" class="btn btn-success w-100">Add</button>
+                        <button type="submit" class="button button-success w-100">Add</button>
                     </div>
 {#                    {% if category.id %}#}
 {#                        {{ form_widget(categoryField.delete) }}#}
@@ -70,9 +70,9 @@
                                 </td>
                                 <td>{{ form_widget(categoryField.name) }}</td>
                                 <td>
-                                    <div class="btn-group">
+                                    <div class="button-group">
                                         <a href="{{ path('category_toggle', {'id': category.id}) }}"
-                                           class="btn btn-sm btn-outline-{{ category.status ? 'warning' : 'success' }}">
+                                           class="button button-sm button-outline-{{ category.status ? 'warning' : 'success' }}">
                                             {{ category.status ? 'Disable' : 'Enable' }}
                                         </a>
 

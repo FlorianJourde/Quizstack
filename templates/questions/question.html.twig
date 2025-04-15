@@ -13,7 +13,7 @@
 
     <div class="wrapper">
         <div class="buttons-container flex mb-4 gap-4 justify-end">
-            <a class="btn btn-primary" href="{{ path('question_edit', {'id': question.id}) }}"> Edit </a>
+            <a class="button button-primary" href="{{ path('question_edit', {'id': question.id}) }}"> Edit </a>
         </div>
     </div>
 
@@ -26,15 +26,21 @@
             <h1>ID : {{ question.id }}</h1>
             {#            <p>Question : {{ question.content }}</p> #}
             <p>Image : {{ question.image }}</p>
-            <p>Categories :</p>
 
-            {% for category in question.categories %}
-                {{ category.name }}
-            {% endfor %}
+            {#            <p>Categories :</p> #}
+
+            {#            {% for category in question.categories %} #}
+            {#                {{ category.name }} #}
+            {#            {% endfor %} #}
 
             <p>Creation date : {{ question.creationDate|date('d/m/y') }}</p>
             <p>Update date : {{ question.updateDate|date('d/m/y') }}</p>
-            <p>Status : {{ question.status ? 'online' : 'offline' }}</p>
+            <p>Status :
+                <span class="text-xs rounded-sm px-2 py-1 {{ question.status ? 'bg-green-secondary/50' : 'bg-red-secondary/50' }}">
+                    {{ question.status ? 'online' : 'offline' }}
+                </span>
+            </p>
+
 
         </div>
     </div>

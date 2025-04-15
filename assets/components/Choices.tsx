@@ -127,7 +127,7 @@ function Choices({mode, question, answers, setAnswers}) {
 
     return (
         <>
-            <div className="choice-container flex flex-col gap-4">
+            <div className="choice-container flex flex-col gap-8">
 
                 {/*    <fieldset className="checkbox-group">*/}
                 {/*        <div className="checkbox">*/}
@@ -170,7 +170,7 @@ function Choices({mode, question, answers, setAnswers}) {
                                         checkAnswerValidity(choice.id) ? "correct" : "incorrect")
                                     }`}
                                 />
-                                <span className="checkbox-tile p-4">
+                                <span className="checkbox-tile box">
                                     	<span className="checkbox-label">
                                         <MarkdownRenderer content={choice.content}/>
                                         </span>

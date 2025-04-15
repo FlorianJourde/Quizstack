@@ -60,13 +60,12 @@ function CommentItem({question, setQuestion, comment, index}) {
                     <div className="buttons-container flex gap-2">
                         {userIsAuthor && (
                             <>
-                                <button className="btn btn-action" onClick={() => setIsEditing(true)}>
+                                <button className="button button-action" onClick={() => setIsEditing(true)}>
                                     <span className="material-icons">edit</span>
 
                                 </button>
 
-                                <button
-                                    className="btn btn-action" onClick={() => setIsDeleting(true)}>
+                                <button className="button button-action" onClick={() => setIsDeleting(true)}>
                                     <span className="material-icons">delete</span>
 
                                     {/*<span className="material-symbols-outlined">delete</span>*/}
