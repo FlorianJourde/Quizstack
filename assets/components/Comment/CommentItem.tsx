@@ -57,7 +57,7 @@ function CommentItem({question, setQuestion, comment, index}) {
                         </div>
                     </div>
 
-                    <div className="buttons-container flex gap-4">
+                    <div className="buttons-container flex gap-2">
                         {userIsAuthor && (
                             <>
                                 <button className="btn btn-action" onClick={() => setIsEditing(true)}>

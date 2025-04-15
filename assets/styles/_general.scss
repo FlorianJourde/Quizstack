@@ -82,6 +82,10 @@ div[style*="background: rgb(39, 40, 34);"] {
   flex-wrap: inherit;
   gap: inherit;
   z-index: inherit;
+
+  &.wrapper-large {
+    max-width: 1200px;
+  }
 }
 
 .glass {
@@ -200,7 +204,7 @@ div[style*="background: rgb(39, 40, 34);"] {
   font-size: 48px;
 }
 
-.form-control {
+.form {
   //rounded-md p-4 w-full flex bg-grey-secondary border-2 border-solid border-white/10 self-stretch
   display: flex;
   width: 100%;
@@ -240,7 +244,8 @@ div[style*="background: rgb(39, 40, 34);"] {
   }
 
   th {
-    text-align: left;
+    text-align: center;
+    //text-align: left;
     font-weight: 700;
   }
 
@@ -249,20 +254,24 @@ div[style*="background: rgb(39, 40, 34);"] {
   }
 
   th, td {
-    white-space: nowrap;
-    overflow: hidden;
     //display: block;
     text-overflow: ellipsis;
-    max-width: 200px;
     //padding: 6px 10px;
     padding: 15px 30px;
+    //white-space: nowrap;
+    //overflow: hidden;
+    //max-width: 200px;
   }
 
   thead {
     th {
       //background-color: darken(#000, 6%);
-      color: #fff;
+      //color: #fff;
       //border: 1px solid darken(#000, 6%);
+    }
+
+    td {
+      //text-align: center;
     }
   }
 }

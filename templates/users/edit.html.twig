@@ -14,7 +14,7 @@
         <h1>Email : {{ user.email }}</h1>
         {#            <p>Rôle : {{ user.role }}</p> #}
         {#        <p>Dernière connexion : {{ user.lastAuthenticationDate|date('d/m/Y H:i') }}</p> #}
-        {#        <p>Inscription : {{ user.inscriptionDate|date('d/m/Y') }}</p> #}
+        {#        <p>Inscription : {{ user.inscriptionDate|date('d/m/y') }}</p> #}
     </div>
     {#    </div> #}
 
@@ -35,7 +35,7 @@
             {{ form_errors(form.username) }}
         </div>
         <p>Last authentication : {{ user.lastAuthenticationDate|date('d/m/Y H:i') }}</p>
-        <p>Inscription : {{ user.inscriptionDate|date('d/m/Y') }}</p>
+        <p>Inscription : {{ user.inscriptionDate|date('d/m/y') }}</p>
         {#        {{ form_label(form.roles) }} #}
         <p>Roles : {{ form_row(form.roles) }}</p>
 

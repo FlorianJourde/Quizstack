@@ -39,8 +39,8 @@
                                 {% endif %}
                             {% endfor %}
                         </td>
-                        <td>{{ user.lastAuthenticationDate|date('d/m/Y') }}</td>
-                        <td>{{ user.inscriptionDate|date('d/m/Y') }}</td>
+                        <td>{{ user.lastAuthenticationDate|date('d/m/y') }}</td>
+                        <td>{{ user.inscriptionDate|date('d/m/y') }}</td>
                         <td>
                             <a href="{{ path('user', {'id': user.id}) }}" class="btn btn-sm btn-primary">See</a>
 {#                        </td>#}

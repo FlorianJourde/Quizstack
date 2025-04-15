@@ -60,7 +60,7 @@ function CommentList({question, setQuestion}) {
                 <form onSubmit={handleSubmit} className={'flex flex-col gap-4 w-full items-end'}>
                     <div className="form-group w-full">
                       <textarea
-                          className="form-control"
+                          className="form"
                           value={comment}
                           onChange={(e) => setComment(e.target.value)}
                           placeholder="Your comment..."

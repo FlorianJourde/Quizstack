@@ -52,7 +52,7 @@ function CommentUpdate({question, setQuestion, comment, onCommentUpdated, onCanc
             <form onSubmit={handleSubmit} className={'flex flex-col gap-4 w-full items-end'}>
                 <div className="form-group  w-full">
                   <textarea
-                      className="form-control"
+                      className="form"
                       value={newComment}
                       onChange={(e) => setNewComment(e.target.value)}
                       rows={3}

@@ -118,13 +118,18 @@ function Question({mode, questionId, showComments}: { mode: string, questionId: 
 
                             {/*<p className={'opacity-50 text-xs'}>Difficulty : {question.difficulty}</p>*/}
 
-                            <div className={`flex gap-1`}>
-                                {Array(3).fill(null).map((_, index) => (
-                                    <span
-                                        className={`rounded-sm w-3 h-2 bg-black/50 ${index < question?.difficulty ? 'opacity-100' : 'opacity-50'}`}
-                                        key={index}
-                                    ></span>
-                                ))}
+                            <div className={`flex items-end gap-1`}>
+                                {Array(3).fill(null).map((_, index) => {
+                                    const heightClass = index === 0 ? 'h-3' : index === 1 ? 'h-4' : 'h-5';
+                                    const opacityClass = index < question?.difficulty ? 'opacity-100' : 'opacity-50';
+
+                                    return (
+                                        <span
+                                            className={`rounded-sm w-2 bg-white/50 ${heightClass} ${opacityClass}`}
+                                            key={index}
+                                        ></span>
+                                    );
+                                })}
                             </div>
                         </div>
 

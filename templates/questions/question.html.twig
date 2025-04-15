@@ -32,8 +32,8 @@
                 {{ category.name }}
             {% endfor %}
 
-            <p>Creation date : {{ question.creationDate|date('d/m/Y') }}</p>
-            <p>Update date : {{ question.updateDate|date('d/m/Y') }}</p>
+            <p>Creation date : {{ question.creationDate|date('d/m/y') }}</p>
+            <p>Update date : {{ question.updateDate|date('d/m/y') }}</p>
             <p>Status : {{ question.status ? 'online' : 'offline' }}</p>
 
         </div>
