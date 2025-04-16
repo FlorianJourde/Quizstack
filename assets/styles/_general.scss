@@ -19,6 +19,25 @@
 html body {
   line-height: initial;
   font-family: 'Manrope', sans-serif;
+
+  textarea, input {
+    width: 100%;
+    background-color: theme('colors.grey-secondary');
+    border-width: 2px;
+    border-radius: var(--radius-secondary);
+    border-color: rgba(255, 255, 255, 0.1);
+    border-style: solid;
+    padding: 16px;
+    display: flex;
+
+    [type="checkbox"], [type="radio"] {
+      width: unset;
+    }
+  }
+
+  textarea {
+    min-height: 120px;
+  }
 }
 
 header {
@@ -54,6 +73,7 @@ header {
 button, input, optgroup, select, textarea {
   accent-color: theme('colors.green-primary');
 }
+
 
 div[style*="background: rgb(39, 40, 34);"] {
   background: theme('colors.very-dark-grey-primary') !important;
@@ -119,8 +139,11 @@ div[style*="background: rgb(39, 40, 34);"] {
 
 .title {
   display: block;
-  font-size: 1.5rem;
-  font-weight: 600;
+  font-size: 1.2rem;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: .1em;
+  font-weight: bold;
 }
 
 .small-title {
@@ -220,6 +243,11 @@ div[style*="background: rgb(39, 40, 34);"] {
   gap: 4rem;
 }
 
+.page-separator-container {
+  padding-top: 50px;
+  padding-bottom: 50px;
+}
+
 .tags-container {
   display: flex;
   flex-wrap: wrap;
@@ -266,21 +294,6 @@ div[style*="background: rgb(39, 40, 34);"] {
       width: 100%;
     }
   }
-
-  textarea, input:not([type="checkbox"]):not([type="radio"]) {
-    width: 100%;
-    background-color: theme('colors.grey-secondary');
-    border-width: 2px;
-    border-radius: var(--radius-secondary);
-    border-color: rgba(255, 255, 255, 0.1);
-    border-style: solid;
-    padding: 16px;
-    display: flex;
-  }
-
-  textarea {
-    min-height: 120px;
-  }
 }
 
 .table {
@@ -311,6 +324,6 @@ div[style*="background: rgb(39, 40, 34);"] {
   }
 
   input {
-    width: unset;
+    //width: unset;
   }
 }

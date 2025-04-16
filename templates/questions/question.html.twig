@@ -17,18 +17,38 @@
         </div>
     </div>
 
-    <div id="quiz-container" class="mb-4" data-mode="{{ mode }}" data-question-id="{{ questionId }}"></div>
+    <div id="quiz-container" data-mode="{{ mode }}" data-question-id="{{ questionId }}"></div>
 
     <div class="wrapper">
-        <div class="question-info">
-            <p>Image : {{ question.image }}</p>
-            <p>Creation date : {{ question.creationDate|date('d/m/y') }}</p>
-            <p>Update date : {{ question.updateDate|date('d/m/y') }}</p>
-            <p>Status :
+        <div class="page-separator-container">
+            <h2 class="title">Informations</h2>
+        </div>
+    </div>
+
+    <div class="wrapper">
+        <div class="form-container glass box bg-dark-grey-secondary">
+            <div>
+                <h2 class="small-title">Image</h2>
+                {% if question.image %}
+                    <p>{{ question.image }}</p>
+                {% else %}
+                    <p>No image.</p>
+                {% endif %}
+            </div>
+            <div>
+                <h2 class="small-title">Creation date</h2>
+                <p>{{ question.creationDate|date('d/m/y') }}</p>
+            </div>
+            <div>
+                <h2 class="small-title">Update date</h2>
+                <p>{{ question.updateDate|date('d/m/y') }}</p>
+            </div>
+            <div>
+                <h2 class="small-title">Status</h2>
                 <span class="text-xs rounded-sm px-2 py-1 {{ question.status ? 'bg-green-secondary/50' : 'bg-red-secondary/50' }}">
                     {{ question.status ? 'online' : 'offline' }}
                 </span>
-            </p>
+            </div>
         </div>
     </div>
 

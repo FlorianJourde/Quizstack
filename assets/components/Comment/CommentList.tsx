@@ -39,7 +39,9 @@ function CommentList({question, setQuestion}) {
 
     return (
         <>
-            <h2 className={'title my-10'}>Comments</h2>
+            <div className="page-separator-container">
+                <h2 className={'title'}>Comments</h2>
+            </div>
             <ul className={'comments-container flex flex-col glass box bg-dark-grey-secondary'}>
                 {question.comments.length > 1 ? (
                     question.comments.map((comment, index) => (
@@ -52,7 +54,8 @@ function CommentList({question, setQuestion}) {
             </ul>
 
             <div className="form-container gap-4 glass box bg-dark-grey-secondary">
-                <h3>Add comment</h3>
+
+                <h2 className="small-title">Add comment</h2>
 
                 {success && <div className="alert alert-success">Comment add with success !</div>}
                 {error && <div className="alert alert-danger">{error}</div>}
