@@ -6,7 +6,7 @@ import CommentList from "./Comment/CommentList";
 import {MarkdownRenderer} from "./MarkdownRenderer";
 import {QuestionInterface, QuestionOrLimitReached} from '../types';
 import {UrlFiltersInterface} from "../types/urlFilters";
-import LimitReachedComponent from "./LimitReachedComponent";
+import LimitReached from "./LimitReached";
 import Loading from "./Loading";
 import Banner from "./Banner";
 import Sidebar from "./Sidebar";
@@ -94,7 +94,7 @@ function Question({mode, questionId, showComments}: { mode: string, questionId: 
         }
     }
 
-    if (limitReached) return <LimitReachedComponent/>;
+    if (limitReached) return <LimitReached/>;
     if (loading) return <Loading/>;
     if (!question) return <QuestionNotFound/>;
 

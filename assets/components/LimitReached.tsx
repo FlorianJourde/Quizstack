@@ -1,7 +1,7 @@
 import React from 'react';
 import {ROUTES} from "../utils/routes";
 
-function LimitReachedComponent() {
+function LimitReached() {
     return (
         <div className="wrapper">
             <div className="page-header-container">
@@ -15,7 +15,7 @@ function LimitReachedComponent() {
                 <p>You've reached the question limit without authentication for today !</p>
                 <p>Please login or register.</p>
 
-                <div className="buttons-container xl:flex-col gap-spacing-primary justify-center">
+                <div className="buttons-container gap-spacing-primary justify-center">
                     <a href={ROUTES.LOGIN} className="button button-secondary">
                         Login
                     </a>
@@ -28,4 +28,4 @@ function LimitReachedComponent() {
     );
 }
 
-export default LimitReachedComponent;
+export default LimitReached;
