@@ -2,7 +2,6 @@
 
 namespace App\DataFixtures\Questions;
 
-use App\DataFixtures\QuestionsCategoriesFixtures;
 use App\Entity\Choices;
 use App\Entity\Questions;
 use App\Entity\Users;

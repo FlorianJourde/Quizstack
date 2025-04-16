@@ -20,7 +20,6 @@ class CommentsFixtures extends Fixture implements DependentFixtureInterface
         $user = $manager->getRepository(Users::class)->findOneBy(['username' => 'User']);
 
         for ($i = 0; $i < 4; $i++) {
-
             $question1 = $manager->getRepository(Questions::class)->findOneBy(
                 ['content' => <<<'EOT'
             What is the correct way to connect to a MySQL database using PDO in PHP ?
@@ -68,7 +67,6 @@ class CommentsFixtures extends Fixture implements DependentFixtureInterface
 
             $manager->flush();
         }
-
     }
 
     public function getDependencies(): array

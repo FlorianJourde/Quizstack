@@ -4,8 +4,6 @@ namespace App\Form;
 
 use App\Entity\Categories;
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
-use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -26,32 +24,11 @@ class CategoryItemType extends AbstractType
             ])
             ->add('color', TextType::class, [
                 'label' => 'Color',
-//                'attr' => [
-//                    'class' => 'form-control'
             ]);
-
-//            ->add('delete', SubmitType::class, [
-//                'label' => 'Delete',
-//                'attr' => [
-//                    'class' => 'btn btn-sm btn-outline-danger',
-//                    'formnovalidate' => 'formnovalidate',
-//                    'onclick' => 'return confirm("Are you sure you want to delete this category?")'
-//                ],
-//            ]);
-//            ->add('status', CheckboxType::class, [
-//                'label' => false,
-//                'required' => false,
-//                'attr' => [
-//                    'class' => 'form-check-input'
-//                ]
-//            ]);
-
 
         $builder->addEventListener(FormEvents::POST_SET_DATA, function (FormEvent $event) {
             $category = $event->getData();
             $form = $event->getForm();
-
-//            dump($category);
 
             if ($category && $category->getId()) {
                 $form->add('delete', SubmitType::class, [
@@ -64,20 +41,6 @@ class CategoryItemType extends AbstractType
                 ]);
             }
         });
-//        die;
-
-//        if ($category && $category->getId()) {
-//            $builder->add('delete', SubmitType::class, [
-//                'label' => 'Delete',
-//                'attr' => [
-//                    'class' => 'btn btn-sm btn-outline-danger',
-//                    'formnovalidate' => 'formnovalidate',
-//                    'onclick' => 'return confirm("Are you sure you want to delete this category?")'
-//                ],
-//            ]);
-//        }
-
-        // ->add('id', HiddenType::class)
     }
 
     public function configureOptions(OptionsResolver $resolver)

@@ -38,12 +38,6 @@ class ProfileFormType extends AbstractType
                 ],
                 'label' => 'Username'
             ])
-//            ->add('', TextType::class, [
-//                'required' => false,
-//                'attr' => [
-//                    'class' => 'form-control'
-//                ]
-//            ])
             // Add other fields you want to be editable
             // Note: You probably don't want to allow password editing here
             // Password editing typically requires confirming the current password

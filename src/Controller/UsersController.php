@@ -15,7 +15,6 @@ use Symfony\Component\Security\Http\Attribute\IsGranted;
 
 class UsersController extends AbstractController
 {
-
     #[IsGranted('ROLE_ADMIN')]
     #[Route('/users', name: 'users')]
     public function users(
@@ -80,7 +79,6 @@ class UsersController extends AbstractController
 
             return $this->redirectToRoute('users');
         }
-
 
         return $this->render('users/edit.html.twig', [
             'user' => $user,

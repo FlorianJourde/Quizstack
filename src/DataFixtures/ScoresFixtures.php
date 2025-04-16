@@ -2,21 +2,15 @@
 
 namespace App\DataFixtures;
 
-//use App\DataFixtures\Questions\Question1;
-//use App\DataFixtures\Questions\Question2;
-//use App\DataFixtures\Questions\Question3;
-//use App\Utils\CategoryHelper;
 use App\Entity\Scores;
 use App\Entity\Users;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 use Doctrine\Persistence\ObjectManager;
 
-//use Doctrine\Persistence\ObjectManager;
 
 class ScoresFixtures extends Fixture implements DependentFixtureInterface
 {
-
     public function load(ObjectManager $manager): void
     {
         $admin = $manager->getRepository(Users::class)->findOneBy(['username' => 'Admin']);

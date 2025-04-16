@@ -73,7 +73,6 @@ final class QuestionsController extends AbstractController
         ]);
     }
 
-//    #[IsGranted('ROLE_EDITOR')]
     #[Route('/question/{id}/edit', name: 'question_edit', requirements: ['id' => '\d+'])]
     public function edit(
         Request                $request,
@@ -110,12 +109,8 @@ final class QuestionsController extends AbstractController
             $entityManager->flush();
 
             $this->addFlash('success', 'Question updated.');
-//            return $this->redirectToRoute('question', ['id' => $question->getId()]);
             return $this->redirectToRoute('questions');
         }
-
-//        dump($question);
-//        die();
 
         return $this->render('questions/edit.html.twig', [
             'question' => $question,

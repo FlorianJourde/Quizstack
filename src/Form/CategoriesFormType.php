@@ -17,42 +17,16 @@ class CategoriesFormType extends AbstractType
                 'entry_type' => CategoryItemType::class,
                 'entry_options' => [
                     'label' => false
-//                    'show_delete_button' => true
                 ],
                 'allow_add' => true,
                 'allow_delete' => true,
                 'by_reference' => false,
                 'label' => false
             ])
-//            ->add('new_category', CategoryItemType::class, [
-//                'mapped' => false,
-//                'show_delete_button' => false,
-//            ])
             ->add('save', SubmitType::class, [
                 'label' => 'Save',
                 'attr' => ['class' => 'button button-primary']
             ]);
-
-
-//        $categories = $builder->getData();
-//        dump($categories);
-//        die;
-
-//        foreach ($categories as $category) {
-//        dump($category->getId());
-
-//            if ($category && $category->getId()) {
-//                $builder->add('delete', SubmitType::class, [
-//                    'label' => 'Delete',
-//                    'attr' => [
-//                        'class' => 'btn btn-sm btn-outline-danger',
-//                        'formnovalidate' => 'formnovalidate',
-//                        'onclick' => 'return confirm("Are you sure you want to delete this category?")'
-//                    ],
-//                ]);
-//            }
-//        }
-
     }
 
     public function configureOptions(OptionsResolver $resolver)

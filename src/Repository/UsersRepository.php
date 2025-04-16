@@ -20,14 +20,12 @@ class UsersRepository extends ServiceEntityRepository implements PasswordUpgrade
         parent::__construct($registry, Users::class);
     }
 
-
     public function findAllByLastAuthenticationDate(): ?Query
     {
         return $this->createQueryBuilder('u')
             ->orderBy('u.last_authentication_date', 'DESC')
             ->getQuery();
     }
-
 
     /**
      * Used to upgrade (rehash) the user's password automatically over time.

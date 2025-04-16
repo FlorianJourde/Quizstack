@@ -2,11 +2,7 @@
 
 namespace App\Form;
 
-use App\Entity\Scores;
 use App\Entity\Users;
-
-//use Doctrine\DBAL\Types\StringType;
-use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;

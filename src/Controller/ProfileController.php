@@ -19,13 +19,6 @@ use Symfony\Component\Security\Http\Attribute\IsGranted;
 
 final class ProfileController extends AbstractController
 {
-//    private DateTimeImmutable $currentDate;
-
-    public function __construct()
-    {
-//        $this->currentDate = new DateTimeImmutable();
-    }
-
     #[IsGranted('ROLE_USER')]
     #[Route('/profile', name: 'profile')]
     public function profile(
@@ -35,7 +28,6 @@ final class ProfileController extends AbstractController
     {
         $user = $security->getUser();
 
-        // Check if user is logged in
         if (!$user) {
             throw $this->createAccessDeniedException('You need to be logged in to access this page.');
         }
@@ -48,7 +40,6 @@ final class ProfileController extends AbstractController
     #[IsGranted('ROLE_USER')]
     #[Route('/profile/edit', name: 'profile_edit')]
     public function edit(
-        QuestionsRepository         $questionsRepository,
         Security                    $security,
         Request                     $request,
         EntityManagerInterface      $entityManager,
