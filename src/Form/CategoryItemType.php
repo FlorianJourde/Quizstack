@@ -19,11 +19,17 @@ class CategoryItemType extends AbstractType
     {
         $builder
             ->add('name', TextType::class, [
-                'label' => false,
+                'label' => 'Name',
                 'attr' => [
                     'class' => 'form-control'
                 ]
+            ])
+            ->add('color', TextType::class, [
+                'label' => 'Color',
+//                'attr' => [
+//                    'class' => 'form-control'
             ]);
+
 //            ->add('delete', SubmitType::class, [
 //                'label' => 'Delete',
 //                'attr' => [

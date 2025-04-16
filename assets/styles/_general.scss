@@ -1,12 +1,19 @@
 :root {
   --border-radius-primary: 6px;
   --spacing-primary: 2rem;
+  --spacing-secondary: 1.2rem;
 }
 
 @media (max-width: 640px) {
   :root {
     --spacing-primary: 1rem;
+    --spacing-secondary: 0.8rem;
   }
+}
+
+* {
+  //scrollbar-color: theme('colors.light-grey-secondary') #1e1e1e;
+  scrollbar-color: theme('colors.light-grey-secondary') transparent;
 }
 
 html body {
@@ -236,13 +243,19 @@ div[style*="background: rgb(39, 40, 34);"] {
 .form-container {
   display: flex;
   flex-direction: column;
-  gap: 2rem;
+  //gap: 2rem;
+  gap: var(--spacing-secondary);
+
+  + .form-container {
+    margin-top: var(--spacing-primary);
+  }
 
   form {
     display: flex;
     flex-direction: column;
     width: 100%;
-    gap: 2rem;
+    //gap: 2rem;
+    gap: var(--spacing-secondary);
     align-items: flex-end;
 
     > * {
@@ -250,17 +263,39 @@ div[style*="background: rgb(39, 40, 34);"] {
     }
   }
 
-  textarea {
-    display: flex;
+  textarea, input {
     width: 100%;
-    padding: 16px;
-    align-self: stretch;
+    background-color: theme('colors.grey-secondary');
     border-width: 2px;
     border-radius: var(--border-radius-primary);
-    border-style: solid;
     border-color: rgba(255, 255, 255, 0.1);
-    background-color: theme('colors.grey-secondary');
-    min-height: 200px;
+    border-style: solid;
+    padding: 16px;
+    display: flex;
+
+  }
+
+  textarea {
+    //display: flex;
+    //width: 100%;
+    //padding: 16px;
+    //align-self: stretch;
+    //border-width: 2px;
+    //border-radius: var(--border-radius-primary);
+    //border-style: solid;
+    //border-color: rgba(255, 255, 255, 0.1);
+    //min-height: 200px;
+    min-height: 120px;
+  }
+
+  input {
+    //padding: 0.5rem;
+    //padding: 12px;
+    //background-color: theme('colors.very-dark-grey-primary');
+    //background-color: theme('colors.grey-secondary');
+
+    //border-radius: 5px;
+    //border-radius: 0.3em;
   }
 }
 
@@ -295,4 +330,8 @@ div[style*="background: rgb(39, 40, 34);"] {
     padding: 15px 30px;
   }
 
+  input {
+    width: unset;
+    //background-color: theme('colors.very-dark-grey-primary');
+  }
 }

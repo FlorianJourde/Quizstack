@@ -40,45 +40,52 @@ function CommentItem({question, setQuestion, comment, index}) {
         <>
             {index !== 0 && <hr className="h-[2px] bg-white/10 border-0"/>}
             {/*<li className={`py-8 flex flex-col gap-4 ${index === 0 ? 'pt-0' : ''}`}>*/}
-            <li className={`py-8 first:pt-0 last:pb-0 flex flex-col gap-4`}>
+            <li className={`py-8 first:pt-0 last:pb-0 flex flex-col gap-spacing-primary`}>
+                {/*<li className="py-8 first:pt-0 last:pb-0 flex flex-col gap-standard">*/}
+
+                {/*<ul className={'comments-container flex flex-col glass box bg-dark-grey-secondary'}>*/}
+
+                {/*<li className={`py-8 first:pt-0 last:pb-0 flex flex-col gap-standard`}>*/}
                 {/*<div>*/}
                 {/*<p>Author : {comment.author.username}</p>*/}
-                <div className="comment-header-container flex gap-4 items-center">
+                <div className="comment-container flex flex-col gap-spacing-secondary">
+                    <div className="comment-header-container flex gap-4 items-center">
 
-                    <div className="user-infos-container flex gap-8 items-center grow">
-                        <p>{comment.author.username}</p>
-                        {/*<p>ID : {comment.id}</p>*/}
-                        {/*<pre>{JSON.stringify(comment.creationDate, null, 2)}</pre>*/}
-                        <div className="date-container flex gap-4  items-center">
-                            <p className={'flex items-center gap-2 opacity-50 text-xs'}><span
-                                className="material-icons md-14">calendar_today</span><span>{formattedDate}</span>
-                            </p>
-                            <p className={'flex items-center gap-2 opacity-50 text-xs'}><span
-                                className="material-icons md-14">schedule</span><span>{formattedTime}</span></p>
+                        <div className="user-infos-container flex gap-8 items-center grow">
+                            <p>{comment.author.username}</p>
+                            {/*<p>ID : {comment.id}</p>*/}
+                            {/*<pre>{JSON.stringify(comment.creationDate, null, 2)}</pre>*/}
+                            <div className="date-container flex gap-4  items-center">
+                                <p className={'flex items-center gap-2 opacity-50 text-xs'}><span
+                                    className="material-icons md-14">calendar_today</span><span>{formattedDate}</span>
+                                </p>
+                                <p className={'flex items-center gap-2 opacity-50 text-xs'}><span
+                                    className="material-icons md-14">schedule</span><span>{formattedTime}</span></p>
+                            </div>
+                        </div>
+
+                        <div className="buttons-container flex gap-2">
+                            {userIsAuthor && (
+                                <>
+                                    <button className="button button-action" onClick={() => setIsEditing(true)}>
+                                        <span className="material-icons">edit</span>
+
+                                    </button>
+
+                                    <button className="button button-action" onClick={() => setIsDeleting(true)}>
+                                        <span className="material-icons">delete</span>
+
+                                        {/*<span className="material-symbols-outlined">delete</span>*/}
+                                    </button>
+                                </>
+                            )}
                         </div>
                     </div>
 
-                    <div className="buttons-container flex gap-2">
-                        {userIsAuthor && (
-                            <>
-                                <button className="button button-action" onClick={() => setIsEditing(true)}>
-                                    <span className="material-icons">edit</span>
 
-                                </button>
-
-                                <button className="button button-action" onClick={() => setIsDeleting(true)}>
-                                    <span className="material-icons">delete</span>
-
-                                    {/*<span className="material-symbols-outlined">delete</span>*/}
-                                </button>
-                            </>
-                        )}
-                    </div>
+                    {/*<p> Comment {index} :</p>*/}
+                    <MarkdownRenderer content={comment.content}/>
                 </div>
-
-
-                {/*<p> Comment {index} :</p>*/}
-                <MarkdownRenderer content={comment.content}/>
 
 
                 {isEditing &&

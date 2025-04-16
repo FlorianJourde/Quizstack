@@ -27,6 +27,9 @@ class Categories
     #[ORM\ManyToMany(targetEntity: Questions::class, mappedBy: 'categories')]
     private Collection $questions;
 
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $color = null;
+
     public function __construct()
     {
         $this->questions = new ArrayCollection();
@@ -91,6 +94,18 @@ class Categories
         if ($this->questions->removeElement($question)) {
             $question->removeCategory($this);
         }
+
+        return $this;
+    }
+
+    public function getColor(): ?string
+    {
+        return $this->color;
+    }
+
+    public function setColor(?string $color): static
+    {
+        $this->color = $color;
 
         return $this;
     }

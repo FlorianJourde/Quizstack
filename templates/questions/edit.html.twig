@@ -9,15 +9,15 @@
     <div class="wrapper">
         <div class="page-header-container">
             <h1 class="big-title grow">Edit question</h1>
-{#            <div class="buttons-container flex gap-4 justify-end">#}
-{#                <a class="button button-primary" href="{{ path('profile_edit') }}">Edit</a>#}
-{#            </div>#}
+            {#            <div class="buttons-container flex gap-4 justify-end"> #}
+            {#                <a class="button button-primary" href="{{ path('profile_edit') }}">Edit</a> #}
+            {#            </div> #}
         </div>
     </div>
 
     <div class="wrapper">
         <div class="form-container glass box bg-dark-grey-secondary">
-{#            <h1 class="title">Edit question</h1>#}
+            {#            <h1 class="title">Edit question</h1> #}
 
             {{ form_start(form) }}
 
@@ -45,7 +45,7 @@
             {#                <button type="submit">Update</button> #}
             {#            </div> #}
 
-            <div class="buttons-container flex mb-4 gap-4 justify-end">
+            <div class="buttons-container flex gap-4 justify-end">
                 <a href="{{ path('questions') }}" class="button button-tertiary">Cancel</a>
                 {{ form_row(form.delete) }}
                 <button class="button button-primary" type="submit">Update</button>

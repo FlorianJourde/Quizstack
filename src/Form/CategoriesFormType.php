@@ -30,7 +30,7 @@ class CategoriesFormType extends AbstractType
 //            ])
             ->add('save', SubmitType::class, [
                 'label' => 'Save',
-                'attr' => ['class' => 'button button-primary mt-3']
+                'attr' => ['class' => 'button button-primary']
             ]);
 
 

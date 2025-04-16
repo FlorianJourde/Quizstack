@@ -88,35 +88,87 @@
 
 
 .categories-container {
+  .choice-option {
 
-  .checkbox-group {
-    background-position: top;
-    background-size: cover;
-    height: 100%;
+    background-color: theme('colors.very-dark-grey-primary');
 
-    .checkbox-tile {
-      //padding-bottom: 16px;
-      //padding-left: 16px;
-      //padding-right: 16px;
-      //padding-top: 100px;
-      justify-content: flex-end;
 
-      .checkbox-label {
-        margin-left: unset;
-      }
+    .color-layer {
+      mask-size: cover;
+    }
 
-      &:before {
-        top: 0;
-        transform: translate(50%, -50%);
-        //right: 10px;
-        right: 0;
-        left: unset;
-        opacity: 0;
+
+    &.yellow {
+      border-color: #a48b2280;
+
+      .color-layer {
+        background: radial-gradient(circle at top, #ffe33840, transparent);
       }
     }
 
-    .checkbox-input:checked + .checkbox-tile:before {
-      opacity: 1;
+    &.purple {
+      border-color: #ed9ef480;
+
+      .color-layer {
+        background: radial-gradient(circle at top, #ed9ef440, transparent)
+      }
+    }
+
+    &.blue {
+      border-color: #557af080;
+
+      .color-layer {
+        background: radial-gradient(circle at top, #4f7aff40, transparent)
+      }
+    }
+
+    &.green {
+      border-color: #94f05580;
+
+      .color-layer {
+        background: radial-gradient(circle at top, #7aff4f40, transparent)
+      }
+    }
+
+    &.orange {
+      border-color: #ffa35480;
+
+      .color-layer {
+        background: radial-gradient(circle at top, #ff963d40, transparent)
+      }
+    }
+
+
+    .checkbox-group {
+      background-position: top;
+      background-size: cover;
+      height: 100%;
+
+      .checkbox-tile {
+        //padding-bottom: 16px;
+        //padding-left: 16px;
+        //padding-right: 16px;
+        //padding-top: 100px;
+        justify-content: flex-end;
+
+        .checkbox-label {
+          margin-left: unset;
+          word-break: break-word;
+        }
+
+        &:before {
+          top: 0;
+          transform: translate(50%, -50%);
+          //right: 10px;
+          right: 0;
+          left: unset;
+          opacity: 0;
+        }
+      }
+
+      .checkbox-input:checked + .checkbox-tile:before {
+        opacity: 1;
+      }
     }
   }
 }

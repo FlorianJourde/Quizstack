@@ -11,8 +11,14 @@
             </li>
         </ul>
 
+        <br>
+        <br>
+
         <h2 class="title">Categories</h2>
 
+
+        <br>
+        <br>
         {#        <ul> #}
         {#            {% for category in categories %} #}
         {#                <li> #}
@@ -25,13 +31,35 @@
         {#            {% endfor %} #}
         {#        </ul> #}
 
-        <ul class="categories-container grid grid-cols-4 gap-8">
+        <ul class="categories-container grid grid-cols-3 gap-spacing-primary">
             {% for category in categories %}
-                <li class="choice-option glass aspect-square">
-                    <img class="absolute w-full h-full top-0 left-0 object-contain opacity-10"
-                         src="{{ asset('images/categories/' ~ category.name ~ '-logo.png') }}"
-                         alt="">
-                    <fieldset class="checkbox-group"
+                <li class="choice-option glass font-bold {{ category.color }}">
+
+                    {#                    <div class="decoration-image-container absolute w-full h-full"> #}
+                    <div class="color-layer absolute top-0 left-0  w-full h-full z-10"
+                         style="mask-image: url({{ asset('images/categories/pattern.png') }});"></div>
+                    {#                    </div> #}
+
+
+                    {#                        <img class="absolute top-0 left-0 w-full h-full object-cover z-20 mix-blend-multiply" #}
+                    {#                                #}{#                         src="{{ asset('images/categories/' ~ category.name ~ '-logo.png') }}" #}
+                    {#                             src="{{ asset('images/categories/pattern.png') }}" #}
+                    {#                             alt=""> #}
+                    {#                        <img src="votre-image-nb.jpg" class="depth-map-image" alt="Depth map"> #}
+
+                    {#                    <div class="decoration-image-container absolute w-full h-full"> #}
+                    {#                        <div class="color-layer absolute top-0 left-0  w-full h-full z-10" #}
+                    {#                             style="background-color: {{ category.color }};" #}
+                    {#                        ></div> #}
+
+                    {#                        <img class="absolute top-0 left-0 w-full h-full object-cover z-20 mix-blend-multiply" #}
+                    {#                                #}{#                         src="{{ asset('images/categories/' ~ category.name ~ '-logo.png') }}" #}
+                    {#                             src="{{ asset('images/categories/pattern.png') }}" #}
+                    {#                             alt=""> #}
+                    {#                        #}{#                        <img src="votre-image-nb.jpg" class="depth-map-image" alt="Depth map"> #}
+                    {#                    </div> #}
+
+                    <fieldset class="checkbox-group z-20"
                             {#                              style="background-image: url('{{ asset('images/categories/background ' + {{ category.name }} + '.png') }}')" #}
                             {#                              style="background-image: url('{{ asset('images/categories/background-' ~ category.name ~ '.png') }}')" #}
                             {#                              style="background-image: url('{{ asset('images/categories/background-' ~ category.name ~ '.png') }}'), radial-gradient(circle closest-corner at top, #ffffff5c 0, #00800000 100%);" #}
@@ -77,6 +105,10 @@
         {#                </label> #}
         {#            </fieldset> #}
         {#        </li> #}
+
+
+        <br>
+        <br>
 
         <button type="submit">
             Play

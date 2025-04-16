@@ -26,6 +26,15 @@ module.exports = {
                 'white-primary': '#ffffff',
                 'white-secondary': '#eeeeee',
             },
+            spacing: {
+                'spacing-primary': 'var(--spacing-primary)',
+                'spacing-secondary': 'var(--spacing-secondary)'
+                // 'standard': {
+                //     'DEFAULT': '2rem',
+                //     'sm': '1rem',
+                //     'md': '2rem',
+                // },
+            },
         },
     },
     plugins: [],
