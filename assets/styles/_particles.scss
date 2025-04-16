@@ -82,13 +82,11 @@
 
   @for $i from 1 through $particleNum {
     &:nth-child(#{$i}) {
-      //$circleSize: random($particleBaseSize);
       $circleSize: math.random($particleBaseSize);
       width: $circleSize + px;
       height: $circleSize + px;
 
-      // Changez le point de départ en haut plutôt qu'en bas
-      $startPositionY: math.random(10); // Position de départ en haut
+      $startPositionY: math.random(10);
       $framesName: "move-frames-" + $i;
       $moveDuration: 28000 + math.random(9000) + ms;
 
@@ -100,7 +98,7 @@
         from {
           transform: translate3d(
                           #{math.random(100) + vw},
-                          #{- $startPositionY + vh}, // Départ depuis le haut (-y)
+                          #{- $startPositionY + vh},
                           0
           );
         }
@@ -108,7 +106,7 @@
         to {
           transform: translate3d(
                           #{math.random(100) + vw},
-                          #{$startPositionY + 100 + math.random(30) + vh}, // Arrivée en bas (+y)
+                          #{$startPositionY + 100 + math.random(30) + vh},
                           0
           );
         }
@@ -119,44 +117,6 @@
       }
     }
   }
-
-  //@for $i from 1 through $particleNum {
-  //  &:nth-child(#{$i}) {
-  //    $circleSize: random($particleBaseSize);
-  //    width: $circleSize + px;
-  //    height: $circleSize + px;
-  //
-  //    $startPositionY: random(10) + 100;
-  //    $framesName: "move-frames-" + $i;
-  //    $moveDuration: 28000 + random(9000) + ms;
-  //
-  //    animation-name: #{$framesName};
-  //    animation-duration: $moveDuration;
-  //    animation-delay: random(37000) + ms;
-  //
-  //    @keyframes #{$framesName} {
-  //      from {
-  //        transform: translate3d(
-  //                        #{random(100) + vw},
-  //                        #{$startPositionY + vh},
-  //                        0
-  //        );
-  //      }
-  //
-  //      to {
-  //        transform: translate3d(
-  //                        #{random(100) + vw},
-  //                        #{- $startPositionY - random(30) + vh},
-  //                        0
-  //        );
-  //      }
-  //    }
-  //
-  //    .circle {
-  //      animation-delay: random(4000) + ms;
-  //    }
-  //  }
-  //}
 }
 
 .message {

@@ -6,12 +6,9 @@
   height: 100vh;
   z-index: 1000;
   object-fit: cover;
-  /* mix-blend-mode: color-burn; */
   opacity: .05;
-  /* opacity: 1; */
   pointer-events: none;
   transition: unset;
-  /* background-image: url(/ressources/images/background/noise-texture.jpg); */
   background-image: url('/public/images/background/noise.png');
   background-repeat: repeat;
   background-size: 200px;

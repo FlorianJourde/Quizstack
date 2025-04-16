@@ -13,32 +13,17 @@
 }
 
 * {
-  //scrollbar-color: theme('colors.light-grey-secondary') #1e1e1e;
   scrollbar-color: theme('colors.light-grey-secondary') transparent;
 }
 
 html body {
-  //line-height: 1;
   line-height: initial;
   font-family: 'Manrope', sans-serif;
 }
 
 header {
-  //margin-bottom: 50px;
-  //border-style: solid;
-  //box-shadow: 0 0 40px rgba(8, 7, 16, 0.6);
-  //background-color: rgba(255, 255, 255, 0.1);
-  //border-bottom: 2px solid;
-  //border-color: rgba(255, 255, 255, 0.1);
-  //position: sticky;
-  //top: 0;
-  //left: 0;
-  //backdrop-filter: blur(50px);
   z-index: 2;
   transition: transform .4s, margin .4s;
-  //margin-bottom: 0;
-  //margin-bottom: 16px;
-
 
   .overlay {
     position: absolute;
@@ -52,13 +37,11 @@ header {
     border-color: rgba(255, 255, 255, 0.1);
     backdrop-filter: blur(50px);
     opacity: 0;
-    //transition: opacity .4s;
   }
 
   .header-container {
     padding-top: var(--spacing-primary);
     padding-bottom: var(--spacing-primary);
-    //transition: padding .4s;
 
     .header-bottom-container {
       height: 0;
@@ -66,26 +49,7 @@ header {
       transition: height .4s;
     }
   }
-
-  &.sticky {
-    //margin-bottom: 16px;
-
-    .overlay {
-      //opacity: 1;
-    }
-
-    .header-container {
-      //padding-top: 1rem;
-      //padding-bottom: 1rem;
-    }
-  }
-
-  &.hide {
-    //transform: translateY(-100%);
-  }
-
 }
-
 
 button, input, optgroup, select, textarea {
   accent-color: theme('colors.green-primary');
@@ -151,15 +115,11 @@ div[style*="background: rgb(39, 40, 34);"] {
 .big-title {
   display: block;
   font-size: 2.5rem;
-  //margin-bottom: 3rem;
 }
 
 .title {
   display: block;
-  //font-size: 2rem;
   font-size: 1.5rem;
-  //margin-bottom: 1.5rem;
-  //margin-bottom: 1rem;
   font-weight: 600;
 }
 
@@ -171,7 +131,6 @@ div[style*="background: rgb(39, 40, 34);"] {
 }
 
 .button {
-  //line-height: 1;
   font-weight: 600;
   border-radius: var(--radius-secondary);
   transition: .15s;
@@ -194,7 +153,6 @@ div[style*="background: rgb(39, 40, 34);"] {
 }
 
 .button-primary {
-  //padding: 12px 24px;
   padding: 0.6rem 1rem;
   background-color: theme('colors.green-secondary');
   border: 2px solid theme('colors.green-secondary');
@@ -203,7 +161,6 @@ div[style*="background: rgb(39, 40, 34);"] {
 
   &:hover:not(:disabled) {
     opacity: .75;
-    //transform: translateY(1px);
   }
 }
 
@@ -215,14 +172,11 @@ div[style*="background: rgb(39, 40, 34);"] {
 .button-secondary {
   border: 2px solid theme('colors.green-secondary');
   padding: 0.6rem 1rem;
-  //display: flex;
-  //align-items: center;
   opacity: 1;
 
 
   &:hover:not(:disabled) {
     opacity: .75;
-    //transform: translateY(1px);
   }
 }
 
@@ -231,7 +185,6 @@ div[style*="background: rgb(39, 40, 34);"] {
 
   &:hover {
     opacity: 1;
-    //transform: translateY(1px);
   }
 }
 
@@ -264,7 +217,6 @@ div[style*="background: rgb(39, 40, 34);"] {
   justify-content: space-between;
   padding-top: 50px;
   padding-bottom: 100px;
-  //margin-bottom: 50px;
   gap: 4rem;
 }
 
@@ -297,8 +249,6 @@ div[style*="background: rgb(39, 40, 34);"] {
 .form-container {
   display: flex;
   flex-direction: column;
-  //gap: 2rem;
-  //gap: var(--spacing-secondary);
   gap: var(--spacing-primary);
 
   + .form-container {
@@ -309,8 +259,6 @@ div[style*="background: rgb(39, 40, 34);"] {
     display: flex;
     flex-direction: column;
     width: 100%;
-    //gap: 2rem;
-    //gap: var(--spacing-secondary);
     gap: var(--spacing-primary);
     align-items: flex-end;
 
@@ -328,30 +276,10 @@ div[style*="background: rgb(39, 40, 34);"] {
     border-style: solid;
     padding: 16px;
     display: flex;
-
   }
 
   textarea {
-    //display: flex;
-    //width: 100%;
-    //padding: 16px;
-    //align-self: stretch;
-    //border-width: 2px;
-    //border-radius: var(--radius-primary);
-    //border-style: solid;
-    //border-color: rgba(255, 255, 255, 0.1);
-    //min-height: 200px;
     min-height: 120px;
-  }
-
-  input {
-    //padding: 0.5rem;
-    //padding: 12px;
-    //background-color: theme('colors.very-dark-grey-primary');
-    //background-color: theme('colors.grey-secondary');
-
-    //border-radius: 5px;
-    //border-radius: 0.3em;
   }
 }
 
@@ -377,10 +305,6 @@ div[style*="background: rgb(39, 40, 34);"] {
     font-weight: 700;
   }
 
-  //tr td:nth-child(2) {
-  //  //background-color: blue !important;
-  //  text-align: left;
-  //}
   th, td {
     text-overflow: ellipsis;
     padding: 15px 30px;
@@ -388,6 +312,5 @@ div[style*="background: rgb(39, 40, 34);"] {
 
   input {
     width: unset;
-    //background-color: theme('colors.very-dark-grey-primary');
   }
 }
