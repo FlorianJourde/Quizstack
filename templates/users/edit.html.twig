@@ -6,20 +6,11 @@
 
     {{ include('partials/banner.html.twig') }}
 
-    {#    <div class="example-wrapper"> #}
-
-
     <div class="wrapper">
         <div class="page-header-container">
             <h1 class="big-title grow">Edit user informations</h1>
-            {#            <div class="buttons-container"> #}
-            {#                <a class="button button-action" href="{{ path('profile_edit') }}"> #}
-            {#                    <span class="material-icons">edit</span> #}
-            {#                </a> #}
-            {#            </div> #}
         </div>
     </div>
-
 
     <div class="wrapper wrapper-small">
         <div class="form-container glass box bg-dark-grey-secondary">
@@ -29,48 +20,19 @@
             {{ include('partials/user/last-authentication.html.twig', _context) }}
             {{ include('partials/user/inscription.html.twig', _context) }}
 
-            {#            <div class="user-info"> #}
-            {#                <h1>Username : {{ user.username }}</h1> #}
-            {#                <h1>Email : {{ user.email }}</h1> #}
-            {#                #}{#            <p>Rôle : {{ user.role }}</p> #}
-            {#                #}{#        <p>Dernière connexion : {{ user.lastAuthenticationDate|date('d/m/Y H:i') }}</p> #}
-            {#                #}{#        <p>Inscription : {{ user.inscriptionDate|date('d/m/y') }}</p> #}
-            {#            </div> #}
-            {#    </div> #}
-
             {{ form_start(form) }}
-            {#    <div class="card"> #}
-            {#        <div class="card-header"> #}
-            {#            <h5>Personal Information</h5> #}
-            {#        </div> #}
-            {#            <div class="card-body"> #}
-            {#                <div class="mb-3"> #}
 
             <div>
                 <h2 class="small-title">{{ form.email.vars.label }}</h2>
-                {#                    {{ form_label(form.email) }} #}
                 {{ form_widget(form.email) }}
                 {{ form_errors(form.email) }}
             </div>
             <div>
                 <h2 class="small-title">{{ form.email.vars.label }}</h2>
-                {#                    {{ form_label(form.username, 'Username') }} #}
                 {{ form_widget(form.username) }}
                 {{ form_errors(form.username) }}
             </div>
-            {#                <p>Last authentication : {{ user.lastAuthenticationDate|date('d/m/Y H:i') }}</p> #}
-            {#                <p>Inscription : {{ user.inscriptionDate|date('d/m/y') }}</p> #}
-            {#        {{ form_label(form.roles) }} #}
-            {#                <p>Roles : {{ form_row(form.roles) }}</p> #}
-            {#                <div> #}
-            {#                    <h2 class="small-title">{{ form.roles.vars.label }}</h2> #}
-            {#                    {{ form_widget(form.roles) }} #}
-            {#                </div> #}
-
             <div>
-{#                <h2 class="small-title">{{ form.roles.vars.label }}</h2>#}
-                {#                {{ form_widget(form.roles) }} #}
-
                 <h2 class="small-title">{{ form.roles.vars.label }}</h2>
                 <ul class="tags-container">
                     {% for role in form.roles %}
@@ -83,41 +45,13 @@
                     {% endfor %}
                 </ul>
                 {{ form_errors(form.roles) }}
-
-                {#                <ul> #}
-                {#                    {% for role in form.roles %} #}
-                {#                        <li class="flex flex-col mb-8 relative"> #}
-                {#                            #}{#                            {{ form_row(role) }} #}
-                {#                            #}{#                        <button type="button" #}
-                {#                            #}{#                                class="button button-action absolute bottom-[16px] right-[16px] delete-choice"> #}
-                {#                            #}{#                            <span class="material-icons">delete</span> #}
-                {#                            #}{#                        </button> #}
-                {#                        </li> #}
-                {#                    {% endfor %} #}
-                {#                </ul> #}
-
             </div>
-
-
-            {#        <p>Role : {{ user.roles }}</p> #}
-            {#            <div class="mb-3"> #}
-            {#                {{ form_label(form.lastName, 'Last Name') }} #}
-            {#                {{ form_widget(form.lastName) }} #}
-            {#                {{ form_errors(form.lastName) }} #}
-            {#            </div> #}
-            {# Add other fields from your form #}
-            {#            </div> #}
-            {#            <div class="card-footer d-flex justify-content-between"> #}
-            {#                <a href="{{ path('users') }}" class="button button-secondary">Cancel</a> #}
-            {#                <button type="submit" class="button button-primary">Save</button> #}
 
             <div class="buttons-container gap-4">
                 <a href="{{ path('users') }}" class="button button-tertiary">Cancel</a>
                 <button type="submit" class="button button-primary">Save</button>
             </div>
 
-            {#            </div> #}
-            {#    </div> #}
             {{ form_end(form) }}
 
         </div>

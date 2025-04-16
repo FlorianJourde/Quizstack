@@ -7,24 +7,12 @@
     {{ include('partials/banner.html.twig') }}
 
     <div class="wrapper">
-{#        <h1 class="text-5xl">Users</h1>#}
-{#        <div class="buttons-container flex mb-4 gap-4 justify-end">#}
-{#            <a class="button button-primary" href="{{ path('question_new') }}">New</a>#}
-{#        </div>#}
-
         <div class="page-header-container">
             <h1 class="big-title grow">Users</h1>
-{#            <div class="buttons-container flex gap-2 justify-end">#}
-{#                <a class="button button-action" href="{{ path('question_new') }}">#}
-{#                    <span class="material-icons">add</span>#}
-{#                </a>#}
-{#            </div>#}
         </div>
     </div>
 
-
     <div class="wrapper wrapper-large">
-
         <div class="overflow-auto">
             <table class="table glass">
                 <thead>
@@ -44,9 +32,7 @@
                         <td>{{ user.id }}</td>
                         <td>{{ user.email }}</td>
                         <td>{{ user.username }}</td>
-                        {#                        <td>{{ dump(user.roles) }}</td> #}
                         <td>
-
                             <ul class="tags-container">
                                 {% for role in user.roles %}
                                     <li>
@@ -54,25 +40,10 @@
                                     </li>
                                 {% endfor %}
                             </ul>
-
-
-{#                            {% for role in user.roles %}#}
-{#                                {% if "ROLE_ADMIN" in role %}#}
-{#                                    admin#}
-{#                                {% elseif "ROLE_EDITOR" in role %}#}
-{#                                    editor#}
-{#                                {% elseif "ROLE_USER" in role %}#}
-{#                                    user#}
-{#                                {% else %}#}
-{#                                    {{ role }}#}
-{#                                {% endif %}#}
-{#                            {% endfor %}#}
                         </td>
                         <td>{{ user.lastAuthenticationDate|date('d/m/y') }}</td>
                         <td>{{ user.inscriptionDate|date('d/m/y') }}</td>
                         <td>
-
-
                             <div class="buttons-container">
                                 <a href="{{ path('user', {'id': user.id}) }}" class="button button-action">
                                     <span class="material-icons">visibility</span>
@@ -81,16 +52,10 @@
                                     <span class="material-icons">edit</span>
                                 </a>
                             </div>
-
-{#                            <a href="{{ path('user', {'id': user.id}) }}" class="btn btn-sm btn-primary">See</a>#}
-                            {#                        </td> #}
-                            {#                        <td> #}
-{#                            <a href="{{ path('user_edit', {'id': user.id}) }}" class="btn btn-sm btn-primary">Edit</a>#}
                         </td>
                     </tr>
                 {% endfor %}
                 </tbody>
-
             </table>
 
             <div class="navigation d-flex justify-content-center">
@@ -100,61 +65,4 @@
         </div>
     </div>
 
-
-    {#    <div class="users-list"> #}
-    {#    <table class="table table-striped"> #}
-    {#        <thead> #}
-    {#        <tr> #}
-    {#            <th>ID</th> #}
-    {#            <th>Email</th> #}
-    {#            <th>Username</th> #}
-    {#            <th>Rôle</th> #}
-    {#            <th>Last authentication</th> #}
-    {#            <th>Inscription</th> #}
-    {#            <th>Actions</th> #}
-    {#        </tr> #}
-    {#        </thead> #}
-    {#        <tbody> #}
-    {#        {% for user in users %} #}
-    {#            <tr> #}
-    {#                <td>{{ user.id }}</td> #}
-    {#                <td>{{ user.email }}</td> #}
-    {#                <td>{{ user.username }}</td> #}
-    {#                #}{#                        <td>{{ dump(user.roles) }}</td> #}
-    {#                <td> #}
-    {#                    {% for role in user.roles %} #}
-    {#                        {% if "ROLE_ADMIN" in role %} #}
-    {#                            admin #}
-    {#                        {% elseif "ROLE_EDITOR" in role %} #}
-    {#                            editor #}
-    {#                        {% elseif "ROLE_USER" in role %} #}
-    {#                            user #}
-    {#                        {% else %} #}
-    {#                            {{ role }} #}
-    {#                        {% endif %} #}
-    {#                    {% endfor %} #}
-    {#                </td> #}
-    {#                <td>{{ user.lastAuthenticationDate|date('d/m/y') }}</td> #}
-    {#                <td>{{ user.inscriptionDate|date('d/m/y') }}</td> #}
-    {#                <td> #}
-    {#                    <a href="{{ path('user', {'id': user.id}) }}" class="btn btn-sm btn-primary">See</a> #}
-    {#                    #}{#                        </td> #}
-    {#                    #}{#                        <td> #}
-    {#                    <a href="{{ path('user_edit', {'id': user.id}) }}" class="btn btn-sm btn-primary">Edit</a> #}
-    {#                </td> #}
-    {#            </tr> #}
-    {#        {% else %} #}
-    {#            <tr> #}
-    {#                <td colspan="5" class="text-center">Aucun utilisateur trouvé</td> #}
-    {#            </tr> #}
-    {#        {% endfor %} #}
-    {#        </tbody> #}
-    {#    </table> #}
-
-    {#            <div class="navigation d-flex justify-content-center"> #}
-    {#                {{ knp_pagination_render(users) }} #}
-    {#            </div> #}
-
-    {#        </div> #}
-    {#    </div> #}
 {% endblock %}

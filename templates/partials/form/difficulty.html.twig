@@ -3,10 +3,10 @@
     <ul class="tags-container">
         {% for level in form.difficulty %}
             <li class="flex">
-                        <span class="tag">
-                            {{ form_widget(level) }}
-                            {{ form_label(level) }}
-                        </span>
+                <span class="tag">
+                    {{ form_widget(level) }}
+                    {{ form_label(level) }}
+                </span>
             </li>
         {% endfor %}
     </ul>

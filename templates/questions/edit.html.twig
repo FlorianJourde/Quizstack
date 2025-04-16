@@ -9,41 +9,19 @@
     <div class="wrapper">
         <div class="page-header-container">
             <h1 class="big-title grow">Edit question</h1>
-            {#            <div class="buttons-container flex gap-4 justify-end"> #}
-            {#                <a class="button button-primary" href="{{ path('profile_edit') }}">Edit</a> #}
-            {#            </div> #}
         </div>
     </div>
 
     <div class="wrapper">
         <div class="form-container glass box bg-dark-grey-secondary">
-            {#            <h1 class="title">Edit question</h1> #}
 
             {{ form_start(form) }}
-
-            {#            {{ form_row(form.content) }} #}
             {{ include('partials/form/content.html.twig', _context) }}
-
-            {#            {{ form_row(form.explanation) }} #}
             {{ include('partials/form/explanation.html.twig', _context) }}
-
-            {#            {{ form_row(form.difficulty) }} #}
             {{ include('partials/form/difficulty.html.twig', _context) }}
-
-            {#            {{ form_row(form.categories) }} #}
             {{ include('partials/form/categories.html.twig', _context) }}
-
             {{ include('partials/form/choices.html.twig', _context) }}
-
             {{ include('partials/form/status.html.twig', _context) }}
-
-            {#            {% if form.status is defined %} #}
-            {#                {{ form_row(form.status) }} #}
-            {#            {% endif %} #}
-
-            {#            <div class="d-flex justify-content-between mt-3"> #}
-            {#                <button type="submit">Update</button> #}
-            {#            </div> #}
 
             <div class="buttons-container gap-4">
                 <a href="{{ path('questions') }}" class="button button-tertiary">Cancel</a>
@@ -63,55 +41,4 @@
     <div id="quiz-container" data-mode="{{ mode }}" data-question-id="{{ questionId }}"
          data-show-comments="{{ showComments }}"></div>
 
-
 {% endblock %}
-
-{# {% block javascripts %} #}
-{#     {{ parent() }} #}
-
-{#     {{ encore_entry_script_tags('question-form') }} #}
-
-     {#     <script> #}
-{#         document.querySelectorAll('.delete-choice').forEach((button) => { #}
-{#             button.addEventListener('click', function () { #}
-{#                 this.closest('.choice-item').remove(); #}
-{#             }); #}
-{#         }); #}
-
-{#         document.querySelectorAll('.add_item_link').forEach(btn => { #}
-{#             btn.addEventListener("click", addFormToCollection); #}
-{#         }); #}
-
-{#         function addFormToCollection(e) { #}
-{#             const collectionHolder = document.querySelector('.' + e.currentTarget.dataset.collectionHolderClass); #}
-
-{#             if (!collectionHolder || !collectionHolder.dataset.prototype) { #}
-{#                 console.error('Collection holder or prototype not found', collectionHolder); #}
-{#                 return; #}
-{#             } #}
-
-{#             const item = document.createElement('li'); #}
-{#             item.classList.add('choice-item'); #}
-
-{#             item.innerHTML = collectionHolder.dataset.prototype.replace( #}
-{#                 /__name__/g, #}
-{#                 collectionHolder.dataset.index #}
-{#             ); #}
-
-{#             const removeButton = document.createElement('button'); #}
-{#             removeButton.type = 'button'; #}
-{#             removeButton.classList.add('btn', 'btn-danger', 'btn-sm', 'delete-choice'); #}
-{#             removeButton.innerText = 'Delete'; #}
-
-{#             removeButton.addEventListener('click', function () { #}
-{#                 item.remove(); #}
-{#             }); #}
-
-{#             item.appendChild(removeButton); #}
-{#             collectionHolder.appendChild(item); #}
-
-{#             collectionHolder.dataset.index++; #}
-{#         } #}
-{#     </script> #}
-
-{# {% endblock %} #}

@@ -4,7 +4,6 @@
 
 {% block body %}
 
-{#    {{ include('partials/banner.html.twig') }}#}
     {{ include('partials/banner.html.twig', {'color': 'blue'}) }}
 
     <div class="wrapper">
@@ -26,10 +25,8 @@
             {{ include('partials/user/roles.html.twig', _context) }}
             {{ include('partials/user/last-authentication.html.twig', _context) }}
             {{ include('partials/user/inscription.html.twig', _context) }}
-{#            {{ include('partials/user/informations.html.twig', _context) }}#}
 
         </div>
     </div>
-
 
 {% endblock %}

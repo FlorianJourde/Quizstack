@@ -4,7 +4,6 @@
 
 {% block body %}
 
-
     {{ include('partials/banner.html.twig', {'color': 'blue'}) }}
 
     <div class="wrapper">
@@ -13,60 +12,24 @@
         </div>
     </div>
 
-    {#    <h1 class="text-5xl text-center">Register</h1> #}
-
     <div class="wrapper wrapper-small">
         <div class="form-container glass box bg-dark-grey-secondary">
 
-            {#            <div class="col-md-6"> #}
-            {#                <div class="card"> #}
-            {#                    <div class="card-header"> #}
-            {#                        Register #}
-            {#                    </div> #}
-            {#                    <div class="card-body"> #}
-
-            {#                        {{ dump(widget_attr) }} #}
-
-            {#                        {{ form_widget(registrationForm.email) }} #}
-            {#                        {{ form_widget(registrationForm.plainPassword) }} #}
-            {#                        {{ form_widget(registrationForm.username) }} #}
-            {#                        {{ form_widget(registrationForm.agreeTerms) }} #}
             {{ form_start(registrationForm) }}
-
-            {#            {{ form_row(registrationForm.email) }} #}
 
             <div>
                 <h2 class="small-title">{{ registrationForm.email.vars.label }}</h2>
                 {{ form_widget(registrationForm.email) }}
             </div>
-
-
             <div>
                 <h2 class="small-title">{{ registrationForm.username.vars.label }}</h2>
                 {{ form_widget(registrationForm.username) }}
             </div>
-
-
-            {#            {{ form_row(registrationForm.username) }} #}
-            {#            {{ form_row(registrationForm.plainPassword) }} #}
-
-
             <div>
                 <h2 class="small-title">{{ registrationForm.plainPassword.vars.label }}</h2>
                 {{ form_widget(registrationForm.plainPassword) }}
             </div>
-
-
-            {#            {{ form_row(registrationForm.agreeTerms) }} #}
-
-{#            <div>#}
-{#                <h2 class="small-title">{{ registrationForm.agreeTerms.vars.label }}</h2>#}
-{#                {{ form_widget(registrationForm.agreeTerms) }}#}
-{#            </div>#}
-
             <div>
-{#                <h2 class="small-title">{{ registrationForm.agreeTerms.vars.label }}</h2>#}
-
                 <ul class="tags-container">
                     <li class="flex">
                         <span class="tag">
@@ -77,39 +40,12 @@
                 </ul>
             </div>
 
-
             <div class="buttons-container flex-col">
-                {#                <button class="button button-primary" type="submit"> #}
-                {#                    Sign in #}
-                {#                </button> #}
                 <button class="button button-primary" type="submit">Register</button>
-
                 <a class="button button-tertiary" href="{{ path('app_login') }}">Already have an account ?</a>
-
-
             </div>
 
-            {#                        <button type="submit" class="button">Register</button> #}
             {{ form_end(registrationForm) }}
-
-            {# {{ form_start(registrationForm) }}
-                        {{ form_row(registrationForm.email) }}
-                        {{ form_row(registrationForm.plainPassword, {
-                            label: 'Password'
-                        }) }}
-                        {{ form_row(registrationForm.agreeTerms) }} #}
-
-            {#                        <button type="submit" class="button">Register</button> #}
-            {#                        {{ form_end(registrationForm) }} #}
-
-            {#                        <div class="mt-3 text-center"> #}
-            {#                            <a href="{{ path('app_login') }}">Déjà un compte? Se connecter</a> #}
-            {#                            <a href="{{ path('app_login') }}">Déjà un compte? Se connecter</a> #}
-            {#                        </div> #}
-
-            {#                    </div> #}
-            {#                </div> #}
-            {#            </div> #}
         </div>
     </div>
 {% endblock %}

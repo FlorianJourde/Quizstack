@@ -11,59 +11,15 @@
             </li>
         </ul>
 
-        <br>
-        <br>
-
         <h2 class="title">Categories</h2>
-
-
-        <br>
-        <br>
-        {#        <ul> #}
-        {#            {% for category in categories %} #}
-        {#                <li> #}
-        {#                    <input type="checkbox" id="category-{{ category.name }}" value="{{ category.name }}" #}
-        {#                           name="category[]"> #}
-        {#                    <label for="category-{{ category.name }}">{{ category.name }}</label> #}
-        {#                </li> #}
-        {#            {% else %} #}
-        {#                <li>No categories.</li> #}
-        {#            {% endfor %} #}
-        {#        </ul> #}
 
         <ul class="categories-container grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-spacing-primary">
             {% for category in categories %}
                 <li class="choice-option glass font-bold {{ category.color }}">
 
-                    {#                    <div class="decoration-image-container absolute w-full h-full"> #}
                     <div class="color-layer absolute top-0 left-0  w-full h-full z-10"
                          style="mask-image: url({{ asset('images/categories/pattern.png') }});"></div>
-                    {#                    </div> #}
-
-
-                    {#                        <img class="absolute top-0 left-0 w-full h-full object-cover z-20 mix-blend-multiply" #}
-                    {#                                #}{#                         src="{{ asset('images/categories/' ~ category.name ~ '-logo.png') }}" #}
-                    {#                             src="{{ asset('images/categories/pattern.png') }}" #}
-                    {#                             alt=""> #}
-                    {#                        <img src="votre-image-nb.jpg" class="depth-map-image" alt="Depth map"> #}
-
-                    {#                    <div class="decoration-image-container absolute w-full h-full"> #}
-                    {#                        <div class="color-layer absolute top-0 left-0  w-full h-full z-10" #}
-                    {#                             style="background-color: {{ category.color }};" #}
-                    {#                        ></div> #}
-
-                    {#                        <img class="absolute top-0 left-0 w-full h-full object-cover z-20 mix-blend-multiply" #}
-                    {#                                #}{#                         src="{{ asset('images/categories/' ~ category.name ~ '-logo.png') }}" #}
-                    {#                             src="{{ asset('images/categories/pattern.png') }}" #}
-                    {#                             alt=""> #}
-                    {#                        #}{#                        <img src="votre-image-nb.jpg" class="depth-map-image" alt="Depth map"> #}
-                    {#                    </div> #}
-
-                    <fieldset class="checkbox-group z-20"
-                            {#                              style="background-image: url('{{ asset('images/categories/background ' + {{ category.name }} + '.png') }}')" #}
-                            {#                              style="background-image: url('{{ asset('images/categories/background-' ~ category.name ~ '.png') }}')" #}
-                            {#                              style="background-image: url('{{ asset('images/categories/background-' ~ category.name ~ '.png') }}'), radial-gradient(circle closest-corner at top, #ffffff5c 0, #00800000 100%);" #}
-                    >
+                    <fieldset class="checkbox-group z-20">
                         <label for="category-{{ category.name }}">
                             <input type="checkbox"
                                    id="category-{{ category.name }}"
@@ -83,47 +39,9 @@
             {% endfor %}
         </ul>
 
-        {#        <li key={`choice-${choice.id}`} className={`choice-option glass`}> #}
-        {#            <fieldset className={`checkbox-group`}> #}
-        {#                <label> #}
-        {#                    <input #}
-        {#                            type="checkbox" #}
-        {#                            id={`choice-${index}`} #}
-        {#                            name="choice" #}
-        {#                            value={choice.id} #}
-        {#                            checked={answers.includes(choice.id)} #}
-        {#                            onChange={() => handleAnswersChange(choice.id)} #}
-        {#                    className={`checkbox-input ${question.correctChoices && ( #}
-        {#                    checkAnswerValidity(choice.id) ? "correct" : "incorrect") #}
-        {#                    }`} #}
-        {#                    /> #}
-        {#                    <span className="checkbox-tile box"> #}
-        {#                <span className="checkbox-label"> #}
-        {#                    <MarkdownRenderer content={choice.content}/> #}
-        {#                </span> #}
-        {#            </span> #}
-        {#                </label> #}
-        {#            </fieldset> #}
-        {#        </li> #}
-
-
-        <br>
-        <br>
-
-
-{#        <a href="{{ path('quiz') }}" class="button button-tertiary">Play without filters</a>#}
-{#        <button class="button button-primary" type="submit">Play</button>#}
-
-
         <div class="buttons-container justify-center gap-4">
-
-
             <a href="{{ path('quiz') }}" class="button button-tertiary">Play without filters</a>
             <button class="button button-primary" type="submit">Play</button>
-
-{#            <a href="{{ path('questions') }}" class="button button-tertiary">Cancel</a>#}
-{#            {{ form_row(form.delete) }}#}
-{#            <button class="button button-primary" type="submit">Update</button>#}
         </div>
 
     </form>

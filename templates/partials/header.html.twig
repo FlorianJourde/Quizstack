@@ -1,15 +1,12 @@
 <header class="flex justify-between items-center z-10">
-    {#    <div class="overlay"></div> #}
     <div class="wrapper">
         <div class="header-container flex flex-col w-full">
 
             <div class="header-top-container flex items-center justify-between w-full">
-
                 <a href="{{ path('app_home') }}" class="flex gap-4 items-center font-bold text-xl">
                     <img src="{{ asset('images/logos/quizstack-logo.png') }}" alt="Quizstack logo" class="h-12">
                     Quizstack
                 </a>
-
                 <div class="buttons-container flex-col gap-2">
                     <button id="button-menu" class="button button-action">
                         <span class="material-icons">menu</span>
@@ -19,51 +16,31 @@
 
             <nav class="header-bottom-container">
                 <ul class="dark-glass flex flex-col box rounded-radius-primary gap-spacing-primary mt-spacing-primary items-center text-center">
-
-                    <a href="{{ path('app_filters') }}" class="button button-tertiary">
-                        Filters
-                    </a>
-                    <a href="{{ path('scores') }}" class="button button-tertiary">
-                        Scores
-                    </a>
+                    <a href="{{ path('app_filters') }}" class="button button-tertiary">Filters </a>
+                    <a href="{{ path('scores') }}" class="button button-tertiary">Scores</a>
                     {% if is_granted('ROLE_USER') %}
-                        <a href="{{ path('profile') }}" class="button button-tertiary">
-                            Profile
-                        </a>
+                        <a href="{{ path('profile') }}" class="button button-tertiary">Profile</a>
                     {% endif %}
                     {% if is_granted('ROLE_ADMIN') %}
-                        <a href="{{ path('users') }}" class="button button-tertiary">
-                            Users
-                        </a>
+                        <a href="{{ path('users') }}" class="button button-tertiary">Users</a>
                     {% endif %}
                     {% if is_granted('ROLE_ADMIN') %}
-                        <a href="{{ path('categories') }}" class="button button-tertiary">
-                            Categories
-                        </a>
+                        <a href="{{ path('categories') }}" class="button button-tertiary">Categories</a>
                     {% endif %}
                     {% if is_granted('ROLE_USER') %}
-                        <a href="{{ path('questions') }}" class="button button-tertiary">
-                            Questions
-                        </a>
+                        <a href="{{ path('questions') }}" class="button button-tertiary">Questions</a>
                     {% endif %}
                     <div class="buttons-container gap-spacing-primary">
                         {% if is_granted('ROLE_USER') %}
-                            <a href="{{ path('app_logout') }}" class="button button-primary button-red">
-                                Logout
-                            </a>
+                            <a href="{{ path('app_logout') }}" class="button button-primary button-red">Logout</a>
                         {% else %}
-                            <a href="{{ path('app_login') }}" class="button button-secondary">
-                                Login
-                            </a>
-                            <a href="{{ path('app_register') }}" class="button button-primary">
-                                Register
-                            </a>
+                            <a href="{{ path('app_login') }}" class="button button-secondary">Login</a>
+                            <a href="{{ path('app_register') }}" class="button button-primary">Register</a>
                         {% endif %}
                     </div>
                 </ul>
             </nav>
+
         </div>
-
-
     </div>
 </header>

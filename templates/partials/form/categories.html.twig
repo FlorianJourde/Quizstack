@@ -3,10 +3,10 @@
     <ul class="tags-container">
         {% for category in form.categories %}
             <li class="flex">
-                        <span class="tag">
-                            {{ form_widget(category) }}
-                            {{ form_label(category) }}
-                        </span>
+                <span class="tag">
+                    {{ form_widget(category) }}
+                    {{ form_label(category) }}
+                </span>
             </li>
         {% endfor %}
     </ul>

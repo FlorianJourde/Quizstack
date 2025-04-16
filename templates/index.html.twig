@@ -1,20 +1,18 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Profile{% endblock %}
+{% block title %}Home {{ parent() }}{% endblock %}
 
 {% block body %}
 
     {{ include('partials/banner.html.twig') }}
 
     <div class="wrapper">
-
         <div>
             <p class="font-bold text-6xl text-center">Home</p>
         </div>
 
         {{ include('partials/filters.html.twig', _context) }}
     </div>
-
 
 {% endblock %}
 
