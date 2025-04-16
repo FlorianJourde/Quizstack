@@ -9,6 +9,8 @@ import {UrlFiltersInterface} from "../types/urlFilters";
 import LimitReachedComponent from "./LimitReachedComponent";
 import Loading from "./Loading";
 import Banner from "./Banner";
+import Sidebar from "./Sidebar";
+import QuestionNotFound from "./QuestionNotFound";
 
 function Question({mode, questionId, showComments}: { mode: string, questionId: number, showComments: boolean }) {
     const [loading, setLoading] = useState<boolean>(true);
@@ -22,8 +24,8 @@ function Question({mode, questionId, showComments}: { mode: string, questionId: 
     }, [question]);
 
     useEffect(() => {
-        // console.log(answers)
-    }, [answers]);
+        // console.log(mode)
+    }, [mode]);
 
     useEffect(() => {
         loadQuestion();
@@ -94,100 +96,108 @@ function Question({mode, questionId, showComments}: { mode: string, questionId: 
 
     if (limitReached) return <LimitReachedComponent/>;
     if (loading) return <Loading/>;
-    if (!question) return <div>Question not found..</div>;
+    if (!question) return <QuestionNotFound/>;
 
     return (
         <>
             {/*<Loading/>*/}
             <div className="wrapper">
+
+
                 <div className="flex flex-col gap-8">
+                    <div className="flex flex-col relative">
+                        {mode === 'game' && <Sidebar loadQuestion={loadQuestion} isLoading={loading}/>}
+                        <div className="flex flex-col gap-8">
 
-                    <div className="glass box">
+                            <div className="glass box">
 
-                        {/*<h2 className={'text-3xl'}>Question</h2>*/}
-                        {/*<p>ID : {question.id}</p>*/}
+                                {/*<h2 className={'text-3xl'}>Question</h2>*/}
+                                {/*<p>ID : {question.id}</p>*/}
 
-                        <div className="question-header-container flex gap-8 justify-between items-center mb-8">
-                            <ul className={`tags-container grow-1`}>
-                                {question.categories.map((category, index) => (
-                                    <li key={`category-${index}`}>
-                                        <span className={`tag`}>{category.name}</span>
-                                    </li>
-                                ))}
+                                <div
+                                    className="question-header-container flex gap-8 justify-between items-center mb-8">
+                                    <ul className={`tags-container grow-1`}>
+                                        {question.categories.map((category, index) => (
+                                            <li key={`category-${index}`}>
+                                                <span className={`tag tag-small`}>{category.name}</span>
+                                            </li>
+                                        ))}
+                                    </ul>
+
+                                    {/*<p className={'opacity-50 text-xs'}>Difficulty : {question.difficulty}</p>*/}
+
+                                    <div className={`flex items-end gap-1`}>
+                                        {Array(3).fill(null).map((_, index) => {
+                                            const heightClass = index === 0 ? 'h-3' : index === 1 ? 'h-4' : 'h-5';
+                                            const opacityClass = index < question?.difficulty ? 'opacity-100' : 'opacity-50';
+
+                                            return (
+                                                <span
+                                                    className={`rounded-sm w-1.5 bg-white/75 ${heightClass} ${opacityClass}`}
+                                                    key={index}
+                                                ></span>
+                                            );
+                                        })}
+                                    </div>
+                                </div>
+
+
+                                <MarkdownRenderer content={question.content}/>
+
+                                {question.numberOfCorrectChoices > 1 &&
+                                    <p className={'opacity-50 text-xs mt-4'}>Multiple choices possible.</p>}
+
+                                {/*<p>Number of correct choices : {question.numberOfCorrectChoices}</p>*/}
+
+                                {question.correctChoices && (
+                                    // <>
+                                    <Explanation question={question}/>
+
+                                )}
+
+                            </div>
+
+                            <ul>
+                                <Choices mode={mode} question={question} answers={answers} setAnswers={setAnswers}/>
                             </ul>
 
-                            {/*<p className={'opacity-50 text-xs'}>Difficulty : {question.difficulty}</p>*/}
+                            {/*{mode === 'game' && (*/}
+                            {/*    <button onClick={handleSubmit}>*/}
+                            {/*        Validate*/}
+                            {/*    </button>*/}
+                            {/*)}*/}
 
-                            <div className={`flex items-end gap-1`}>
-                                {Array(3).fill(null).map((_, index) => {
-                                    const heightClass = index === 0 ? 'h-3' : index === 1 ? 'h-4' : 'h-5';
-                                    const opacityClass = index < question?.difficulty ? 'opacity-100' : 'opacity-50';
-
-                                    return (
-                                        <span
-                                            className={`rounded-sm w-2 bg-white/75 ${heightClass} ${opacityClass}`}
-                                            key={index}
-                                        ></span>
-                                    );
-                                })}
-                            </div>
+                            {mode === 'game' && (
+                                <div className={'buttons-container'}>
+                                    {question.correctChoices ? (
+                                        <button className={`button button-tertiary`} onClick={handleNextQuestion}>
+                                            Next question
+                                            {/*<span className="material-icons">arrow_forward</span>*/}
+                                        </button>
+                                    ) : (
+                                        <button className={'button button-tertiary'} onClick={handleSubmit}>
+                                            Validate
+                                            {/*<span className="material-icons">done</span>*/}
+                                            {/*<span className="material-symbols-outlined">arrow_forward</span>*/}
+                                            {/*<span className="material-icons md-24">face</span>*/}
+                                        </button>
+                                    )}
+                                </div>
+                            )}
                         </div>
-
-
-                        <MarkdownRenderer content={question.content}/>
-
-                        {question.numberOfCorrectChoices > 1 &&
-                            <p className={'opacity-50 text-xs mt-4'}>Multiple choices possible.</p>}
-
-                        {/*<p>Number of correct choices : {question.numberOfCorrectChoices}</p>*/}
-
-                        {question.correctChoices && (
-                            // <>
-                            <Explanation question={question}/>
-
-                        )}
-
                     </div>
 
-                    <ul>
-                        <Choices mode={mode} question={question} answers={answers} setAnswers={setAnswers}/>
-                    </ul>
-
-                    {/*{mode === 'game' && (*/}
-                    {/*    <button onClick={handleSubmit}>*/}
-                    {/*        Validate*/}
-                    {/*    </button>*/}
-                    {/*)}*/}
-
-                    {mode === 'game' && (
-                        <div className={'buttons-container'}>
-                            {question.correctChoices ? (
-                                <button className={`button button-tertiary`} onClick={handleNextQuestion}>
-                                    Next question
-                                    {/*<span className="material-icons">arrow_forward</span>*/}
-                                </button>
-                            ) : (
-                                <button className={'button button-tertiary'} onClick={handleSubmit}>
-                                    Validate
-                                    {/*<span className="material-icons">done</span>*/}
-                                    {/*<span className="material-symbols-outlined">arrow_forward</span>*/}
-                                    {/*<span className="material-icons md-24">face</span>*/}
-                                </button>
-                            )}
-                        </div>
-                    )}
-
-                    {question.correctChoices && (
-                        <>
-                            {/*<Explanation question={question}/>*/}
+                        {question.correctChoices && (
+                            <>
+                                {/*<Explanation question={question}/>*/}
 
 
-                            {showComments && (
-                                <CommentList question={question} setQuestion={setQuestion}/>
-                            )}
+                                {showComments && (
+                                    <CommentList question={question} setQuestion={setQuestion}/>
+                                )}
 
-                        </>
-                    )}
+                            </>
+                        )}
                 </div>
 
             </div>

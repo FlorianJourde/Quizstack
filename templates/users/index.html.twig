@@ -47,7 +47,7 @@
                         {#                        <td>{{ dump(user.roles) }}</td> #}
                         <td>
 
-                            <ul class="tags-container justify-center">
+                            <ul class="tags-container">
                                 {% for role in user.roles %}
                                     <li>
                                         <span class="text-xs rounded-sm px-2 py-1 bg-black/50">{{ role }}</span>
@@ -73,7 +73,7 @@
                         <td>
 
 
-                            <div class="buttons-container flex gap-2 justify-center">
+                            <div class="buttons-container">
                                 <a href="{{ path('user', {'id': user.id}) }}" class="button button-action">
                                     <span class="material-icons">visibility</span>
                                 </a>

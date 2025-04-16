@@ -28,13 +28,11 @@ module.exports = {
             },
             spacing: {
                 'spacing-primary': 'var(--spacing-primary)',
-                'spacing-secondary': 'var(--spacing-secondary)'
-                // 'standard': {
-                //     'DEFAULT': '2rem',
-                //     'sm': '1rem',
-                //     'md': '2rem',
-                // },
+                'spacing-secondary': 'var(--spacing-secondary)',
             },
+            borderRadius: {
+                'radius-primary': 'var(--radius-primary)',
+            }
         },
     },
     plugins: [],

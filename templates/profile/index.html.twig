@@ -10,7 +10,7 @@
     <div class="wrapper">
         <div class="page-header-container">
             <h1 class="big-title grow">Profile</h1>
-            <div class="buttons-container flex gap-2 justify-end">
+            <div class="buttons-container">
                 <a class="button button-action" href="{{ path('profile_edit') }}">
                     <span class="material-icons">edit</span>
                 </a>
@@ -18,42 +18,16 @@
         </div>
     </div>
 
-
-    <div class="wrapper">
+    <div class="wrapper wrapper-small">
         <div class="form-container glass box bg-dark-grey-secondary">
-{#            <div>#}
-{#                <p class="font-bold text-6xl text-center">Profile</p>#}
-{#            </div>#}
-{#            <a href="{{ path('profile_edit') }}">#}
-{#                Edit#}
-{#            </a>#}
-            <div>
-                <h2 class="small-title">Username</h2>
-                <p>{{ user.username }}</p>
-            </div>
-            <div>
-                <h2 class="small-title">Email</h2>
-                <p>{{ user.email }}</p>
-            </div>
-            <div>
-                <h2 class="small-title">Role</h2>
-                <ul class="tags-container">
-                    {% for role in user.roles %}
-                        <li>
-                            <span class="tag">{{ role }}</span>
-                        </li>
-                    {% endfor %}
-                </ul>
-                {#                                    <p>{{ user.role }}</p> #}
-            </div>
-            <div>
-                <h2 class="small-title">Last authentication</h2>
-                <p>{{ user.lastAuthenticationDate|date('d/m/Y H:i') }}</p>
-            </div>
-            <div>
-                <h2 class="small-title">Inscription</h2>
-                <p>{{ user.inscriptionDate|date('d/m/y') }}</p>
-            </div>
+
+            {{ include('partials/user/username.html.twig', _context) }}
+            {{ include('partials/user/email.html.twig', _context) }}
+            {{ include('partials/user/roles.html.twig', _context) }}
+            {{ include('partials/user/last-authentication.html.twig', _context) }}
+            {{ include('partials/user/inscription.html.twig', _context) }}
+{#            {{ include('partials/user/informations.html.twig', _context) }}#}
+
         </div>
     </div>
 

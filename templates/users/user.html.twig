@@ -5,27 +5,49 @@
 
 {% block body %}
 
+    {{ include('partials/banner.html.twig') }}
+
+    <div class="wrapper">
+        <div class="page-header-container">
+            <h1 class="big-title grow">{{ user.username }}</h1>
+
+            <div class="buttons-container">
+                <a class="button button-action" href="{{ path('user_edit', {'id': user.id}) }}">
+                    {#                Edit #}
+                    <span class="material-icons">edit</span>
+
+                </a>
+            </div>
+            {#            <div class="buttons-container flex gap-4 justify-end"> #}
+            {#                <a class="button button-primary" href="{{ path('profile_edit') }}">Edit</a> #}
+            {#            </div> #}
+        </div>
+    </div>
+
+    <div class="wrapper  wrapper-small">
+        <div class="form-container glass box bg-dark-grey-secondary">
+
+{#            {{ include('partials/user/informations.html.twig', _context) }}#}
+
+            {{ include('partials/user/username.html.twig', _context) }}
+            {{ include('partials/user/email.html.twig', _context) }}
+            {{ include('partials/user/roles.html.twig', _context) }}
+            {{ include('partials/user/last-authentication.html.twig', _context) }}
+            {{ include('partials/user/inscription.html.twig', _context) }}
+
+        </div>
+    </div>
 
 
-
-
-{#    <a href="{{ path('user_edit') }}">Edit</a>#}
+    {#    <a href="{{ path('user_edit') }}">Edit</a> #}
 
     {#    <div class="example-wrapper"> #}
-    <div>
-        <p class="font-bold text-6xl text-center">User</p>
-    </div>
+    {#    <div> #}
+    {#        <p class="font-bold text-6xl text-center">User</p> #}
+    {#    </div> #}
 
-    <a href="{{ path('user_edit', {'id': user.id}) }}">
-        Edit
-    </a>
-
-    <div class="user-info">
-        <h1>Username : {{ user.username }}</h1>
-        <h1>Email : {{ user.email }}</h1>
-        {#            <p>Rôle : {{ user.role }}</p> #}
-        <p>Dernière connexion : {{ user.lastAuthenticationDate|date('d/m/Y H:i') }}</p>
-        <p>Inscription : {{ user.inscriptionDate|date('d/m/y') }}</p>
-    </div>
+    {#    <a href="{{ path('user_edit', {'id': user.id}) }}"> #}
+    {#        Edit #}
+    {#    </a> #}
     {#    </div> #}
 {% endblock %}

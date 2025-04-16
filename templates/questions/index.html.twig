@@ -10,7 +10,7 @@
     <div class="wrapper">
         <div class="page-header-container">
             <h1 class="big-title grow">Questions</h1>
-            <div class="buttons-container flex gap-2 justify-end">
+            <div class="buttons-container">
                 <a class="button button-action" href="{{ path('question_new') }}">
 {#                    New#}
                     <span class="material-icons">add</span>
@@ -56,7 +56,7 @@
                         </td>
                         <td>{{ question.user.username }}</td>
                         <td>
-                            <div class="buttons-container flex gap-2 justify-center">
+                            <div class="buttons-container">
                                 <a href="{{ path('question', {'id': question.id}) }}" class="button button-action">
                                     <span class="material-icons">visibility</span>
                                 </a>

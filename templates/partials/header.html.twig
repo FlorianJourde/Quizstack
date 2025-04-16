@@ -1,57 +1,67 @@
 <header class="flex justify-between items-center z-10">
-    <div class="overlay"></div>
+    {#    <div class="overlay"></div> #}
     <div class="wrapper">
+        <div class="header-container flex flex-col w-full">
 
-        <div class="py-4 flex items-center justify-between w-full">
+            <div class="header-top-container flex items-center justify-between w-full">
 
-            <a href="{{ path('app_home') }}" class="flex gap-4 items-center">
-                <img src="{{ asset('images/logos/quizstack-logo.png') }}" alt="Quizstack logo" class="h-12">
-                Quizstack
-            </a>
-
-            <ul>
-                <a href="{{ path('scores') }}">
-                    Scores
+                <a href="{{ path('app_home') }}" class="flex gap-4 items-center font-bold text-xl">
+                    <img src="{{ asset('images/logos/quizstack-logo.png') }}" alt="Quizstack logo" class="h-12">
+                    Quizstack
                 </a>
 
-                {% if is_granted('ROLE_USER') %}
-                    <a href="{{ path('profile') }}">
-                        Profile
-                    </a>
-                {% endif %}
+                <div class="buttons-container flex-col gap-2">
+                    <button id="button-menu" class="button button-action">
+                        <span class="material-icons">menu</span>
+                    </button>
+                </div>
+            </div>
 
-                {% if is_granted('ROLE_ADMIN') %}
-                    <a href="{{ path('users') }}">
-                        Users
-                    </a>
-                {% endif %}
+            <nav class="header-bottom-container">
+                <ul class="dark-glass flex flex-col box rounded-radius-primary gap-spacing-primary mt-spacing-primary items-center text-center">
 
-                {% if is_granted('ROLE_ADMIN') %}
-                    <a href="{{ path('categories') }}">
-                        Categories
+                    <a href="{{ path('app_filters') }}" class="button button-tertiary">
+                        Filters
                     </a>
-                {% endif %}
-
-                {% if is_granted('ROLE_USER') %}
-                    <a href="{{ path('questions') }}">
-                        Questions
+                    <a href="{{ path('scores') }}" class="button button-tertiary">
+                        Scores
                     </a>
-                {% endif %}
-
-                {% if is_granted('ROLE_USER') %}
-                    <a href="{{ path('app_logout') }}">
-                        Logout
-                    </a>
-                {% else %}
-                    <a href="{{ path('app_login') }}">
-                        Login
-                    </a>
-                    <a href="{{ path('app_register') }}">
-                        Register
-                    </a>
-                {% endif %}
-
-            </ul>
+                    {% if is_granted('ROLE_USER') %}
+                        <a href="{{ path('profile') }}" class="button button-tertiary">
+                            Profile
+                        </a>
+                    {% endif %}
+                    {% if is_granted('ROLE_ADMIN') %}
+                        <a href="{{ path('users') }}" class="button button-tertiary">
+                            Users
+                        </a>
+                    {% endif %}
+                    {% if is_granted('ROLE_ADMIN') %}
+                        <a href="{{ path('categories') }}" class="button button-tertiary">
+                            Categories
+                        </a>
+                    {% endif %}
+                    {% if is_granted('ROLE_USER') %}
+                        <a href="{{ path('questions') }}" class="button button-tertiary">
+                            Questions
+                        </a>
+                    {% endif %}
+                    <div class="buttons-container gap-spacing-primary">
+                        {% if is_granted('ROLE_USER') %}
+                            <a href="{{ path('app_logout') }}" class="button button-primary button-red">
+                                Logout
+                            </a>
+                        {% else %}
+                            <a href="{{ path('app_login') }}" class="button button-secondary">
+                                Login
+                            </a>
+                            <a href="{{ path('app_register') }}" class="button button-primary">
+                                Register
+                            </a>
+                        {% endif %}
+                    </div>
+                </ul>
+            </nav>
         </div>
 
 

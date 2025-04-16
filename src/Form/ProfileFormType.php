@@ -28,13 +28,15 @@ class ProfileFormType extends AbstractType
                 ],
                 'attr' => [
                     'class' => 'form-control'
-                ]
+                ],
+                'label' => 'Email'
             ])
             ->add('username', TextType::class, [
                 'required' => false,
                 'attr' => [
                     'class' => 'form-control'
-                ]
+                ],
+                'label' => 'Username'
             ])
 //            ->add('', TextType::class, [
 //                'required' => false,

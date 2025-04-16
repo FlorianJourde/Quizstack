@@ -91,6 +91,7 @@
   .choice-option {
 
     background-color: theme('colors.very-dark-grey-primary');
+    //background-color: theme('colors.dark-grey-primary');
 
 
     .color-layer {
@@ -102,7 +103,7 @@
       border-color: #a48b2280;
 
       .color-layer {
-        background: radial-gradient(circle at top, #ffe33840, transparent);
+        background: radial-gradient(circle closest-corner at top, #ffe33840, transparent);
       }
     }
 
@@ -110,7 +111,7 @@
       border-color: #ed9ef480;
 
       .color-layer {
-        background: radial-gradient(circle at top, #ed9ef440, transparent)
+        background: radial-gradient(circle closest-corner at top, #ed9ef440, transparent)
       }
     }
 
@@ -118,7 +119,7 @@
       border-color: #557af080;
 
       .color-layer {
-        background: radial-gradient(circle at top, #4f7aff40, transparent)
+        background: radial-gradient(circle closest-corner at top, #4f7aff40, transparent)
       }
     }
 
@@ -126,7 +127,7 @@
       border-color: #94f05580;
 
       .color-layer {
-        background: radial-gradient(circle at top, #7aff4f40, transparent)
+        background: radial-gradient(circle closest-corner at top, #7aff4f40, transparent)
       }
     }
 
@@ -134,7 +135,7 @@
       border-color: #ffa35480;
 
       .color-layer {
-        background: radial-gradient(circle at top, #ff963d40, transparent)
+        background: radial-gradient(circle closest-corner at top, #ff963d40, transparent)
       }
     }
 

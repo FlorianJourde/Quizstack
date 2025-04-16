@@ -29,13 +29,15 @@ class UsersFormType extends AbstractType
                 ],
                 'attr' => [
                     'class' => 'form-control'
-                ]
+                ],
+                'label' => 'Email'
             ])
             ->add('username', TextType::class, [
                 'required' => false,
                 'attr' => [
                     'class' => 'form-control'
-                ]
+                ],
+                'label' => 'Username'
             ])
             ->add('roles', ChoiceType::class, [
                 'choices' => [
@@ -45,7 +47,7 @@ class UsersFormType extends AbstractType
                 ],
                 'multiple' => true,
                 'expanded' => true,
-                'label' => false,
+                'label' => 'Roles',
                 'attr' => [
                     'class' => 'form-check-input'
                 ],

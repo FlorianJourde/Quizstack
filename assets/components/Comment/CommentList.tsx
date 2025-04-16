@@ -43,10 +43,16 @@ function CommentList({question, setQuestion}) {
             {/*<br/>*/}
             <h2 className={'title'}>Comments</h2>
             <ul className={'comments-container flex flex-col glass box bg-dark-grey-secondary'}>
-                {question.comments.map((comment, index) => (
-                    <CommentItem question={question} setQuestion={setQuestion} comment={comment} index={index}
-                                 key={`comment-${index}`}/>
-                ))}
+
+                {question.comments.length > 1 ? (
+                    question.comments.map((comment, index) => (
+                        <CommentItem question={question} setQuestion={setQuestion} comment={comment} index={index}
+                                     key={`comment-${index}`}/>
+                    ))
+                ) : (
+                    <p>There's no discussion about this question...</p>
+                )}
+
             </ul>
 
             <div className="form-container gap-4 glass box bg-dark-grey-secondary">

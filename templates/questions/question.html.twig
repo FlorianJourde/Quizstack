@@ -13,16 +13,14 @@
     <div class="wrapper">
         <div class="page-header-container">
             <h1 class="big-title grow">Questions {{ question.id }}</h1>
-            <div class="buttons-container flex gap-2 justify-end">
+            <div class="buttons-container">
                 <a class="button button-action" href="{{ path('question_edit', {'id': question.id}) }}">
-                    {#                Edit #}
                     <span class="material-icons">edit</span>
-
                 </a>
             </div>
         </div>
 
-        {#        <div class="buttons-container flex gap-2 justify-end"> #}
+        {#        <div class="buttons-container gap-2 justify-end"> #}
         {#            <a class="button button-action" href="{{ path('profile_edit') }}"> #}
         {#                <span class="material-icons">edit</span> #}
         {#            </a> #}

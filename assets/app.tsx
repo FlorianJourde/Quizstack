@@ -6,6 +6,7 @@ import {AuthProvider} from "./context/AuthContext";
 import './scripts/filters'
 import './scripts/question-form'
 import './scripts/header'
+import './scripts/menu'
 
 document.addEventListener('DOMContentLoaded', () => {
     const questionContainer = document.getElementById('quiz-container');

@@ -1,0 +1,10 @@
+<div>
+    <h2 class="small-title">Roles</h2>
+    <ul class="tags-container">
+        {% for role in user.roles %}
+            <li>
+                <span class="tag">{{ role }}</span>
+            </li>
+        {% endfor %}
+    </ul>
+</div>

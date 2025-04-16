@@ -4,6 +4,7 @@ namespace App\Form;
 
 use App\Entity\Scores;
 use App\Entity\Users;
+
 //use Doctrine\DBAL\Types\StringType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
@@ -21,15 +22,17 @@ class RegistrationFormType extends AbstractType
             ->add('email', EmailType::class, [
                 'label' => 'Email',
             ])
-            ->add('username')
+            ->add('username', null, [
+                'label' => 'Username',
+            ])
             ->add('plainPassword', PasswordType::class, [
                 'mapped' => false,
                 'label' => 'Password',
             ])
             ->add('agreeTerms', CheckboxType::class, [
                 'mapped' => false,
-            ])
-        ;
+                'label' => 'I agree the terms and conditions',
+            ]);
     }
 
     public function configureOptions(OptionsResolver $resolver): void
