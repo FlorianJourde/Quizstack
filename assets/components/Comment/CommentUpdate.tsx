@@ -45,11 +45,6 @@ function CommentUpdate({question, setQuestion, comment, onCommentUpdated, onCanc
     return (
         <div className="form-container">
             {error && <div className="alert alert-danger">{error}</div>}
-
-            {/*<form onSubmit={handleSubmit} className={'flex flex-col gap-4 w-full items-end'}>*/}
-            {/*    <div className="form-group w-full">*/}
-
-            {/*<form onSubmit={handleSubmit} className={'flex flex-col gap-4 w-full items-end'} >*/}
             <form onSubmit={handleSubmit}>
                 <div className="form-group  w-full">
                   <textarea

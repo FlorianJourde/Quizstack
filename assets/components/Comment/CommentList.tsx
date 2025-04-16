@@ -39,11 +39,8 @@ function CommentList({question, setQuestion}) {
 
     return (
         <>
-            {/*<br/>*/}
-            {/*<br/>*/}
-            <h2 className={'title'}>Comments</h2>
+            <h2 className={'title my-10'}>Comments</h2>
             <ul className={'comments-container flex flex-col glass box bg-dark-grey-secondary'}>
-
                 {question.comments.length > 1 ? (
                     question.comments.map((comment, index) => (
                         <CommentItem question={question} setQuestion={setQuestion} comment={comment} index={index}
@@ -52,7 +49,6 @@ function CommentList({question, setQuestion}) {
                 ) : (
                     <p>There's no discussion about this question...</p>
                 )}
-
             </ul>
 
             <div className="form-container gap-4 glass box bg-dark-grey-secondary">
@@ -61,7 +57,6 @@ function CommentList({question, setQuestion}) {
                 {success && <div className="alert alert-success">Comment add with success !</div>}
                 {error && <div className="alert alert-danger">{error}</div>}
 
-                {/*<form onSubmit={handleSubmit} className={'flex flex-col gap-4 w-full items-end'}>*/}
                 <form onSubmit={handleSubmit}>
                     <div className="form-group w-full">
                       <textarea

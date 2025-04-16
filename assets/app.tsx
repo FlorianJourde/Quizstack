@@ -1,11 +1,10 @@
 import React from 'react';
 import {createRoot} from "react-dom/client";
 import Question from "./components/Question";
-import './styles/app.css';
 import {AuthProvider} from "./context/AuthContext";
+import './styles/app.css';
 import './scripts/filters'
 import './scripts/question-form'
-import './scripts/header'
 import './scripts/menu'
 
 document.addEventListener('DOMContentLoaded', () => {

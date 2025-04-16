@@ -1,8 +1,8 @@
-import React, {ReactElement} from 'react';
+import React, {ReactNode} from 'react';
 
 function Banner() {
-    function renderCircles(): ReactElement[] {
-        const circles: ReactElement[] = [];
+    function renderCircles(): ReactNode[] {
+        const circles: ReactNode[] = [];
 
         for (let i = 1; i <= 50; i++) {
             circles.push(

@@ -13,8 +13,4 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         isMenuOpen = !isMenuOpen;
     });
-
-    // headerBottomContainer.style.height = '0';
-    // headerBottomContainer.style.overflow = 'hidden';
-    // headerBottomContainer.style.transition = 'height 0.3s ease-in-out';
 });

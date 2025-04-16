@@ -1,7 +1,6 @@
 import React from 'react';
 import {MarkdownRenderer} from "./MarkdownRenderer";
 
-
 function Explanation({question}) {
     return (
         <h3 className={'mt-4'}>
