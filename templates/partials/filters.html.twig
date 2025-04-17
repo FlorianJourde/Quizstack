@@ -11,7 +11,9 @@
             </li>
         </ul>
 
-        <h2 class="title">Categories</h2>
+        <div class="page-separator-container">
+            <h2 class=title>Categories</h2>
+        </div>
 
         <ul class="categories-container grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-spacing-primary">
             {% for category in categories %}
@@ -39,7 +41,7 @@
             {% endfor %}
         </ul>
 
-        <div class="buttons-container justify-center gap-4">
+        <div class="buttons-container justify-center gap-4 mt-12">
             <a href="{{ path('quiz') }}" class="button button-tertiary">Play without filters</a>
             <button class="button button-primary" type="submit">Play</button>
         </div>

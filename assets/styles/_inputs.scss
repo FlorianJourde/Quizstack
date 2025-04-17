@@ -75,6 +75,11 @@
       background-position: 50% 50%;
       top: 2.1rem;
       left: 2.1rem;
+
+      @media (max-width: 640px) {
+        top: 1.6rem;
+        left: 1.6rem;
+      }
     }
 
     .checkbox-label {

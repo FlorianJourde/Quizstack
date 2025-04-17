@@ -94,7 +94,7 @@ function Question({mode, questionId, showComments}: { mode: string, questionId: 
     if (!question) return <QuestionNotFound/>;
 
     return (
-        <div className="wrapper">
+        // <div className="wrapper">
             <div className="flex flex-col gap-8">
                 <div className="flex flex-col relative">
 
@@ -160,7 +160,7 @@ function Question({mode, questionId, showComments}: { mode: string, questionId: 
                 )}
 
             </div>
-        </div>
+        // </div>
     )
 }
 
