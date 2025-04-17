@@ -8,6 +8,7 @@ use App\Form\CategoryItemType;
 use App\Repository\CategoriesRepository;
 
 //use Doctrine\ORM\EntityManager;
+use App\Service\CategoriesService;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -21,7 +22,8 @@ class CategoriesController extends AbstractController
     #[Route('/categories', name: 'categories')]
     public function users(CategoriesRepository $categoriesRepository): Response
     {
-        $categories = $categoriesRepository->findAll();
+//        $categories = $categoriesRepository->findAll();
+        $categories = $categoriesRepository->findCategoriesByOrder();
 
         return $this->render('categories/index.html.twig', [
             'categories' => $categories
@@ -36,7 +38,8 @@ class CategoriesController extends AbstractController
         EntityManagerInterface $entityManager
     ): Response
     {
-        $categories = $categoriesRepository->findAll();
+//        $categories = $categoriesRepository->findAll();
+        $categories = $categoriesRepository->findCategoriesByOrder();
 
         $newCategory = new Categories();
         $newCategory->setStatus(true);
@@ -112,6 +115,64 @@ class CategoriesController extends AbstractController
 
         $status = $category->getStatus() ? 'enabled' : 'disabled';
         $this->addFlash('success', "Category '{$category->getName()}' has been {$status}.");
+
+        return $this->redirectToRoute('categories_edit');
+    }
+
+    #[IsGranted('ROLE_ADMIN')]
+    #[Route('/category/{id}/move-up', name: 'category_move_up')]
+    public function moveUp(Categories $category, EntityManagerInterface $entityManager, CategoriesService $categoriesService): Response
+    {
+        $categoriesService->initializeCategoryPositions($entityManager);
+        $currentPosition = $category->getPosition();
+
+//        dump($currentPosition);
+//        die();
+
+        if ($currentPosition <= 0) {
+            return $this->redirectToRoute('categories_edit');
+        }
+
+        $previousCategory = $entityManager->getRepository(Categories::class)
+            ->findOneBy(['position' => $currentPosition - 1]);
+
+        if ($previousCategory) {
+            $previousCategory->setPosition($currentPosition);
+            $category->setPosition($currentPosition - 1);
+
+            $entityManager->flush();
+        }
+
+//        dump($category->getPosition());
+//        die();
+
+        return $this->redirectToRoute('categories_edit');
+    }
+
+    #[IsGranted('ROLE_ADMIN')]
+    #[Route('/admin/category/{id}/move-down', name: 'category_move_down')]
+    public function moveDown(Categories $category, EntityManagerInterface $entityManager, CategoriesService $categoriesService): Response
+    {
+        $categoriesService->initializeCategoryPositions($entityManager);
+
+        $currentPosition = $category->getPosition();
+
+        $maxPosition = $entityManager->createQuery('SELECT MAX(c.position) FROM App\Entity\Categories c')
+            ->getSingleScalarResult();
+
+        if ($currentPosition >= $maxPosition) {
+            return $this->redirectToRoute('categories_edit');
+        }
+
+        $nextCategory = $entityManager->getRepository(Categories::class)
+            ->findOneBy(['position' => $currentPosition + 1]);
+
+        if ($nextCategory) {
+            $nextCategory->setPosition($currentPosition);
+            $category->setPosition($currentPosition + 1);
+
+            $entityManager->flush();
+        }
 
         return $this->redirectToRoute('categories_edit');
     }

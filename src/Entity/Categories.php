@@ -30,6 +30,9 @@ class Categories
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $color = null;
 
+    #[ORM\Column(nullable: true)]
+    private ?int $position = null;
+
     public function __construct()
     {
         $this->questions = new ArrayCollection();
@@ -106,6 +109,18 @@ class Categories
     public function setColor(?string $color): static
     {
         $this->color = $color;
+
+        return $this;
+    }
+
+    public function getPosition(): ?int
+    {
+        return $this->position;
+    }
+
+    public function setPosition(?int $position): static
+    {
+        $this->position = $position;
 
         return $this;
     }

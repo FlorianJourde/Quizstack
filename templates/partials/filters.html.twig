@@ -71,7 +71,7 @@
                 {% endfor %}
             </ul>
 
-            <div class="filters-bottom-container flex justify-between">
+            <div class="filters-bottom-container flex flex-wrap gap-spacing-primary justify-between">
 
                 <div class="radio-input-container flex grow">
                     <ul class="switch glass box">
@@ -95,7 +95,7 @@
                     </ul>
                 </div>
 
-                <div class="buttons-container justify-center gap-4">
+                <div class="buttons-container grow gap-4">
                     <a href="{{ path('quiz') }}" class="button button-tertiary">Play without filters</a>
                     <button class="button button-primary" type="submit">Play</button>
                 </div>

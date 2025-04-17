@@ -98,20 +98,35 @@
       mask-size: cover;
     }
 
-
-    &.yellow {
-      border-color: #a48b2280;
+    &.purple {
+      border-color: rgba(220, 158, 244, 0.5);
 
       .color-layer {
-        background: radial-gradient(circle closest-corner at top, #ffe33840, transparent);
+        background: radial-gradient(circle closest-corner at top, rgba(184, 86, 252, 0.25), transparent)
       }
     }
 
-    &.purple {
-      border-color: #ed9ef480;
+    &.pink {
+      border-color: rgba(250, 121, 222, 0.5);
 
       .color-layer {
-        background: radial-gradient(circle closest-corner at top, #ed9ef440, transparent)
+        background: radial-gradient(circle closest-corner at top, rgba(255, 103, 251, 0.25), transparent)
+      }
+    }
+
+    &.turquoise {
+      border-color: rgba(85, 240, 240, 0.5);
+
+      .color-layer {
+        background: radial-gradient(circle closest-corner at top, rgba(67, 253, 237, 0.25), transparent)
+      }
+    }
+
+    &.lightblue {
+      border-color: rgba(85, 181, 240, 0.5);
+
+      .color-layer {
+        background: radial-gradient(circle closest-corner at top, rgba(67, 197, 253, 0.25), transparent)
       }
     }
 
@@ -131,14 +146,37 @@
       }
     }
 
+    &.white {
+      border-color: rgba(185, 185, 185, 0.5);
+
+      .color-layer {
+        background: radial-gradient(circle closest-corner at top, rgba(159, 159, 159, 0.25), transparent)
+      }
+    }
+
+    &.red {
+      border-color: rgba(255, 90, 84, 0.5);
+
+      .color-layer {
+        background: radial-gradient(circle closest-corner at top, rgba(255, 77, 61, 0.25), transparent)
+      }
+    }
+
     &.orange {
-      border-color: #ffa35480;
+      border-color: rgba(255, 150, 84, 0.5);
 
       .color-layer {
         background: radial-gradient(circle closest-corner at top, #ff963d40, transparent)
       }
     }
 
+    &.yellow {
+      border-color: rgba(220, 187, 57, 0.5);
+
+      .color-layer {
+        background: radial-gradient(circle closest-corner at top, #ffe33840, transparent);
+      }
+    }
 
     .checkbox-group {
       background-position: top;

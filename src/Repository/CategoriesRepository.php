@@ -15,4 +15,16 @@ class CategoriesRepository extends ServiceEntityRepository
     {
         parent::__construct($registry, Categories::class);
     }
+
+    public function findCategoriesByOrder()
+    {
+        return $this->createQueryBuilder('c')
+            ->orderBy('CASE WHEN c.position IS NULL THEN 1 ELSE 0 END', 'ASC')
+            ->addOrderBy('c.position', 'ASC')
+            ->getQuery()
+            ->getResult();
+//            ->orderBy('c.position', 'ASC')
+//            ->getQuery()
+//            ->getResult();
+    }
 }

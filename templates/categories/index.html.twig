@@ -23,6 +23,7 @@
                 <thead>
                 <tr>
                     <th>ID</th>
+                    <th>Position</th>
                     <th>Status</th>
                     <th>Name</th>
                     <th>Color</th>
@@ -32,6 +33,7 @@
                 {% for category in categories %}
                     <tr>
                         <td>{{ category.id }}</td>
+                        <td>{{ category.position }}</td>
                         <td>
                         <span class="text-xs rounded-sm px-2 py-1 {{ category.status ? 'bg-green-secondary/50' : 'bg-red-secondary/50' }}">
                             {{ category.status ? 'online' : 'offline' }}

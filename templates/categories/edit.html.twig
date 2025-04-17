@@ -27,8 +27,19 @@
                 {{ form_widget(addForm.color) }}
             </div>
             <div class="buttons-container mb-4 gap-4">
-                <button type="submit" class="button button-primary">Add</button>
+                {#                <button type="submit" class="button button-primary">Add</button> #}
             </div>
+
+
+            <div class="buttons-container gap-4">
+                <a href="{{ path('categories') }}" class="button button-tertiary">Cancel</a>
+                {#                <button type="submit" class="button button-primary">Save</button> #}
+                {#                {{ form_widget(editForm.save) }} #}
+                <button type="submit" class="button button-primary">Add</button>
+
+
+            </div>
+
 
             {{ form_end(addForm) }}
 
@@ -41,10 +52,11 @@
             {{ form_start(editForm) }}
 
             <div class="overflow-auto">
-                <table class="table glass">
+                <table class="table glass text-center">
                     <thead>
                     <tr>
                         <th>ID</th>
+                        <th>Position</th>
                         <th>Name</th>
                         <th>Color</th>
                         <th>Status</th>
@@ -56,8 +68,11 @@
                         {% set category = categoryField.vars.data %}
                         <tr>
                             <td>{{ category.id }}</td>
+                            <td>{{ category.position }}</td>
                             <td>{{ form_widget(categoryField.name) }}</td>
                             <td>{{ form_widget(categoryField.color) }}</td>
+
+
                             <td>
                                 <span class="text-xs rounded-sm px-2 py-1 {{ category.status ? 'bg-green-secondary/50' : 'bg-red-secondary/50' }}">
                                     {{ category.status ? 'online' : 'offline' }}
@@ -70,7 +85,29 @@
                                 {#                                        <span class="material-icons">edit</span> #}
                                 {#                                    </a> #}
                                 {#                                </div> #}
-                                <div class="buttons-container">
+                                <div class="buttons-container justify-center">
+
+                                    {% if not loop.first %}
+                                        <a href="{{ path('category_move_up', {'id': category.id}) }}"
+                                           class="button button-action">
+                                            <span class="material-icons">arrow_upward</span>
+                                        </a>
+                                    {% endif %}
+
+                                    {% if not loop.last %}
+                                        <a href="{{ path('category_move_down', {'id': category.id}) }}"
+                                           class="button button-action">
+                                            <span class="material-icons">arrow_downward</span>
+                                        </a>
+                                    {% endif %}
+
+                                    {#                                    <a href="{{ path('category_move_up', {'id': category.id}) }}" class="button"> #}
+                                    {#                                        <span class="material-icons">arrow_upward</span> #}
+                                    {#                                    </a> #}
+                                    {#                                    <a href="{{ path('category_move_down', {'id': category.id}) }}" class="button"> #}
+                                    {#                                        <span class="material-icons">arrow_downward</span> #}
+                                    {#                                    </a> #}
+
                                     <a href="{{ path('category_toggle', {'id': category.id}) }}"
                                        class="button button-action">
                                         {#                                        {{ category.status ? 'Disable' : 'Enable' }} #}
@@ -98,8 +135,16 @@
                 </table>
             </div>
 
-            <div class="buttons-container mb-4 gap-4">
+            {#            <div class="buttons-container mb-4 gap-4"> #}
+            {#                {{ form_widget(editForm.save) }} #}
+            {#            </div> #}
+
+
+            <div class="buttons-container gap-4">
+                <a href="{{ path('categories') }}" class="button button-tertiary">Cancel</a>
+                {#                <button type="submit" class="button button-primary">Save</button> #}
                 {{ form_widget(editForm.save) }}
+
             </div>
 
             {{ form_end(editForm) }}

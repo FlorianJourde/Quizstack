@@ -15,7 +15,7 @@
             </div>
 
             <nav class="header-bottom-container">
-                <ul class="dark-glass grid grid-cols-2 box rounded-radius-primary gap-spacing-secondary mt-spacing-primary">
+                <ul class="dark-glass grid sm:grid-cols-2 box rounded-radius-primary gap-spacing-secondary mt-spacing-primary">
                     <li>
                         <a href="{{ path('app_filters') }}" class="button button-tertiary">Filters </a>
                     </li>
@@ -42,7 +42,7 @@
                             <a href="{{ path('questions') }}" class="button button-tertiary">Questions</a>
                         </li>
                     {% endif %}
-                    <div class="buttons-container col-span-2 gap-spacing-primary justify-center">
+                    <div class="buttons-container sm:col-span-2 gap-spacing-primary justify-center">
                         {% if is_granted('ROLE_USER') %}
                             <li>
                                 <a href="{{ path('app_logout') }}" class="button button-primary button-red">Logout</a>
