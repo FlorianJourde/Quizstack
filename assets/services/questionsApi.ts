@@ -5,7 +5,7 @@ const BASE_URL = '/api/question';
 export async function getRandomQuestion(filters: UrlFiltersInterface = {}) {
     const params = new URLSearchParams();
 
-    if (filters.difficulty) {
+    if (filters.difficulty && !isNaN(parseFloat(filters.difficulty))) {
         params.append('difficulty', filters.difficulty);
     }
 
@@ -31,7 +31,7 @@ export async function submitAnswers(questionId, answers) {
         headers: {
             'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ answers: answers }),
+        body: JSON.stringify({answers: answers}),
     });
     return response.json();
 }

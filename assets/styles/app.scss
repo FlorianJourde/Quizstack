@@ -2,7 +2,8 @@
 @use "_rays";
 @use "_noise-texture.scss";
 @use "_general";
-@use "_inputs";
+@use "_checkbox";
+@use "_radio";
 
 @tailwind base;
 @tailwind components;

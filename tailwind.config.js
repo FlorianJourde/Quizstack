@@ -33,6 +33,7 @@ module.exports = {
             },
             borderRadius: {
                 'radius-primary': 'var(--radius-primary)',
+                'radius-secondary': 'var(--radius-secondary)',
             },
             fontFamily: {
                 'primary': 'var(--ff-primary)',

@@ -38,7 +38,7 @@ function CommentUpdate({question, setQuestion, comment, onCommentDelete, onCance
                 disabled={isDeleting}
                 onClick={handleSubmit}
             >
-                {isDeleting ? 'Deleting...' : 'Delete'}
+                {isDeleting ? 'Deleting' : 'Delete'}
             </button>
             <button
                 type="button"

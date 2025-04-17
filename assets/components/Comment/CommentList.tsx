@@ -3,12 +3,14 @@ import {addComment} from "../../services/commentsApi";
 import CommentItem from "./CommentItem";
 import {useAuth} from "../../context/AuthContext";
 import {ROUTES} from "../../utils/routes";
+import MarkdownInfos from "../MarkdownInfos";
 
 function CommentList({question, setQuestion}) {
     const [comment, setComment] = useState<string>('');
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [success, setSuccess] = useState(false);
     const [error, setError] = useState(null);
+    const [markdownInfos, setMarkdownInfos] = useState<boolean>(false);
     const {isAuthenticated} = useAuth();
 
     async function handleSubmit(e) {
@@ -40,6 +42,11 @@ function CommentList({question, setQuestion}) {
         }
     }
 
+    function handleShowInfos(e) {
+        e.preventDefault();
+        setMarkdownInfos(prevState => !prevState);
+    };
+
     return (
         <>
             <div className="page-separator-container">
@@ -70,23 +77,35 @@ function CommentList({question, setQuestion}) {
 
                     <form onSubmit={handleSubmit}>
                         <div className="form-group w-full">
-                                <textarea
-                                    className="form"
-                                    value={comment}
-                                    onChange={(e) => setComment(e.target.value)}
-                                    placeholder="Your comment..."
-                                    rows={4}
-                                    required/>
+                            <textarea
+                                className="form"
+                                value={comment}
+                                onChange={(e) => setComment(e.target.value)}
+                                placeholder="Your comment..."
+                                rows={4}
+                                required/>
                         </div>
-                        <div className="buttons-container">
-                            <button
-                                type="submit"
-                                className="button button-primary"
-                                disabled={isSubmitting}>
-                                {isSubmitting ? 'Sending...' : 'Send'}
-                            </button>
+                        <div className="form-bottom-container justify-between flex gap-4">
+                            <div className="buttons-container">
+                                <button className={`flex items-center opacity-50`} onClick={handleShowInfos}>
+                                    <img src="/images/logos/markdown-logo.png" alt="Markdown logo"
+                                         className="h-5 mr-2"/>
+                                    Markdown infos
+                                </button>
+                            </div>
+                            <div className="buttons-container">
+                                <button
+                                    type="submit"
+                                    className="button button-primary"
+                                    disabled={isSubmitting}>
+                                    {isSubmitting ? 'Sending' : 'Send'}
+                                </button>
+                            </div>
                         </div>
                     </form>
+
+                    {markdownInfos && <MarkdownInfos/>}
+
                 </div>
             ) : (
                 <div className="glass box flex flex-col gap-spacing-primary">
