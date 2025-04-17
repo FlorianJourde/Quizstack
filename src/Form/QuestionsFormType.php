@@ -42,12 +42,12 @@ class QuestionsFormType extends AbstractType
                 'choice_label' => 'name',
                 'multiple' => true,
                 'expanded' => true,
-                'query_builder' => function (EntityRepository $er) {
-                    return $er->createQueryBuilder('c')
-                        ->where('c.status = :status')
-                        ->setParameter('status', true)
-                        ->orderBy('c.name', 'ASC');
-                },
+//                'query_builder' => function (EntityRepository $er) {
+//                    return $er->createQueryBuilder('c')
+//                        ->where('c.status = :status')
+//                        ->setParameter('status', true)
+//                        ->orderBy('c.name', 'ASC');
+//                },
                 'label' => 'Categories'
             ])
             ->add('choices', CollectionType::class, [

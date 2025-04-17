@@ -1,56 +1,106 @@
 {% block body %}
 
+    <div class="page-header-container">
+        <h1 class="big-title grow">Filters</h1>
+    </div>
+
     <form action="{{ path('quiz') }}" method="GET" id="questionForm">
 
-        <h2 class="text-3xl">Levels</h2>
-        <ul>
-            <li>
-                <input type="radio" value="all" name="difficulty" checked>All</button>
-            </li>
-            <li>
-                <input type="radio" value="1" name="difficulty">Easy</button>
-            </li>
-            <li>
-                <input type="radio" value="2" name="difficulty">Medium</button>
-            </li>
-            <li>
-                <input type="radio" value="3" name="difficulty">Hard</button>
-            </li>
-        </ul>
 
-        <div class="page-separator-container">
-            <h2 class=title>Categories</h2>
-        </div>
+        <div class="filters-container flex flex-col gap-spacing-primary">
 
-        <ul class="categories-container grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-spacing-primary">
-            {% for category in categories %}
-                <li class="choice-option glass font-bold {{ category.color }}">
 
-                    <div class="color-layer absolute top-0 left-0  w-full h-full z-10"
-                         style="mask-image: url({{ asset('images/categories/pattern.png') }});"></div>
-                    <fieldset class="checkbox-group z-20">
-                        <label for="category-{{ category.name }}">
-                            <input type="checkbox"
-                                   id="category-{{ category.name }}"
-                                   value="{{ category.name }}"
-                                   name="category[]"
-                                   class="checkbox-input"/>
-                            <span class="checkbox-tile box">
+            {#        <ul> #}
+            {#            <li> #}
+            {#                <input type="radio" value="all" name="difficulty" checked>All</button> #}
+            {#            </li> #}
+            {#            <li> #}
+            {#                <input type="radio" value="1" name="difficulty">Easy</button> #}
+            {#            </li> #}
+            {#            <li> #}
+            {#                <input type="radio" value="2" name="difficulty">Medium</button> #}
+            {#            </li> #}
+            {#            <li> #}
+            {#                <input type="radio" value="3" name="difficulty">Hard</button> #}
+            {#            </li> #}
+            {#        </ul> #}
+
+
+            {#        <ul> #}
+            {#            <li> #}
+            {#                <input type="radio" value="all" name="difficulty" checked>All</button> #}
+            {#            </li> #}
+            {#            <li> #}
+            {#                <input type="radio" value="1" name="difficulty">Easy</button> #}
+            {#            </li> #}
+            {#            <li> #}
+            {#                <input type="radio" value="2" name="difficulty">Medium</button> #}
+            {#            </li> #}
+            {#            <li> #}
+            {#                <input type="radio" value="3" name="difficulty">Hard</button> #}
+            {#            </li> #}
+            {#        </ul> #}
+
+            {#        <div class="page-separator-container"> #}
+            {#            <h2 class=title>Categories</h2> #}
+            {#        </div> #}
+
+            <ul class="categories-container w-full grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-spacing-primary">
+                {% for category in categories %}
+                    <li class="choice-option glass font-bold {{ category.color }}">
+
+                        <div class="color-layer absolute top-0 left-0  w-full h-full z-10"
+                             style="mask-image: url({{ asset('images/categories/pattern.png') }});"></div>
+                        <fieldset class="checkbox-group z-20">
+                            <label for="category-{{ category.name }}">
+                                <input type="checkbox"
+                                       id="category-{{ category.name }}"
+                                       value="{{ category.name }}"
+                                       name="category[]"
+                                       class="checkbox-input"/>
+                                <span class="checkbox-tile box">
                             <span class="checkbox-label text-center">
                                 {{ category.name }}
                             </span>
                         </span>
-                        </label>
-                    </fieldset>
-                </li>
-            {% else %}
-                <li>No categories found.</li>
-            {% endfor %}
-        </ul>
+                            </label>
+                        </fieldset>
+                    </li>
+                {% else %}
+                    <li>No categories found.</li>
+                {% endfor %}
+            </ul>
 
-        <div class="buttons-container justify-center gap-4 mt-12">
-            <a href="{{ path('quiz') }}" class="button button-tertiary">Play without filters</a>
-            <button class="button button-primary" type="submit">Play</button>
+            <div class="filters-bottom-container flex justify-between">
+
+                <div class="radio-input-container flex grow">
+                    <ul class="switch glass box">
+                        <li>
+                            <input id="switch-all" name="difficulty" type="radio" value="all" class="switch-input"
+                                   checked/>
+                            <label for="switch-all" class="switch-label switch-label-all">All</label>
+                        </li>
+                        <li>
+                            <input id="switch-easy" name="difficulty" type="radio" value="1" class="switch-input"/>
+                            <label for="switch-easy" class="switch-label switch-label-easy">Easy</label>
+                        </li>
+                        <li>
+                            <input id="switch-medium" name="difficulty" type="radio" value="2" class="switch-input"/>
+                            <label for="switch-medium" class="switch-label switch-label-medium">Medium</label>
+                        </li>
+                        <li>
+                            <input id="switch-hard" name="difficulty" type="radio" value="3" class="switch-input"/>
+                            <label for="switch-hard" class="switch-label switch-label-hard">Hard</label>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="buttons-container justify-center gap-4">
+                    <a href="{{ path('quiz') }}" class="button button-tertiary">Play without filters</a>
+                    <button class="button button-primary" type="submit">Play</button>
+                </div>
+            </div>
+
         </div>
 
     </form>

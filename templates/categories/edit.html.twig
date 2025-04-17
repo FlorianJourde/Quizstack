@@ -64,12 +64,28 @@
                                 </span>
                             </td>
                             <td>
-                                <div class="button-group">
+
+                                {#                                <div class="buttons-container"> #}
+                                {#                                    <a class="button button-action" href="{{ path('user_edit', {'id': user.id}) }}"> #}
+                                {#                                        <span class="material-icons">edit</span> #}
+                                {#                                    </a> #}
+                                {#                                </div> #}
+                                <div class="buttons-container">
                                     <a href="{{ path('category_toggle', {'id': category.id}) }}"
-                                       class="button button-sm button-outline-{{ category.status ? 'warning' : 'success' }}">
-                                        {{ category.status ? 'Disable' : 'Enable' }}
+                                       class="button button-action">
+                                        {#                                        {{ category.status ? 'Disable' : 'Enable' }} #}
+                                        {% if category.status %}
+                                            <span class="material-icons">toggle_on</span>
+                                        {% else %}
+                                            <span class="material-icons">toggle_off</span>
+                                        {% endif %}
                                     </a>
-                                    {{ form_widget(categoryField.delete) }}
+
+                                    {{ form_widget(categoryField.delete, {
+                                        'label': '<span class="material-icons">delete</span>',
+                                        'label_html': true
+                                    }) }}
+
                                 </div>
                             </td>
                         </tr>

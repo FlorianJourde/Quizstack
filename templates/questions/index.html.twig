@@ -24,6 +24,7 @@
                 <thead>
                 <tr>
                     <th>ID</th>
+                    <th>Difficulty</th>
                     <th>Content</th>
                     <th>Categories</th>
                     <th>Update date</th>
@@ -36,6 +37,7 @@
                 {% for question in questions %}
                     <tr>
                         <td>{{ question.id }}</td>
+                        <td>{{ question.difficulty }}</td>
                         <td class="text-left">{{ question.content|slice(0, 60) ~ (question.content|length > 60 ? '...' : '') }}</td>
                         <td>
                             <ul class="tags-container justify-center">

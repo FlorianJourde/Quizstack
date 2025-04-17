@@ -32,9 +32,9 @@ class CategoryItemType extends AbstractType
 
             if ($category && $category->getId()) {
                 $form->add('delete', SubmitType::class, [
-                    'label' => 'Delete',
+                    'label' => 'delete_icon',
                     'attr' => [
-                        'class' => 'btn btn-sm btn-outline-danger',
+                        'class' => 'button button-action',
                         'formnovalidate' => 'formnovalidate',
                         'onclick' => 'return confirm("Are you sure you want to delete this category?")'
                     ],
