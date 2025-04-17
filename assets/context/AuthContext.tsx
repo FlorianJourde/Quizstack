@@ -7,6 +7,7 @@ export const AuthContext = createContext<AuthContextInterface>({
     loading: true,
     error: null,
     isAuthor: () => false,
+    isAuthenticated: () => false
 });
 
 export function AuthProvider({children}: { children: ReactNode }) {
@@ -18,14 +19,17 @@ export function AuthProvider({children}: { children: ReactNode }) {
         async function fetchCurrentUser() {
             try {
                 const response = await fetch('/api/user/current');
+                const data = await response.json();
 
-                if (!response.ok) {
-                    throw new Error('Failed to fetch current user');
+                if (data.error) {
+                    setCurrentUser(null);
+                    setError(data.error);
+                } else {
+                    setCurrentUser(data);
+                    setError(null);
                 }
-
-                const userData = await response.json();
-                setCurrentUser(userData);
             } catch (err) {
+                setCurrentUser(null);
                 setError(err instanceof Error ? err.message : 'An unknown error occurred');
             } finally {
                 setLoading(false);
@@ -37,8 +41,11 @@ export function AuthProvider({children}: { children: ReactNode }) {
 
     function isAuthor(contentAuthorId: number): boolean {
         if (!currentUser) return false;
-
         return currentUser.id === contentAuthorId;
+    }
+
+    function isAuthenticated(): boolean {
+        return currentUser !== null;
     }
 
     const value: AuthContextInterface = {
@@ -46,6 +53,7 @@ export function AuthProvider({children}: { children: ReactNode }) {
         loading,
         error,
         isAuthor,
+        isAuthenticated,
     };
 
     return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;

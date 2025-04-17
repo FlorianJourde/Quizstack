@@ -5,4 +5,5 @@ export interface AuthContextInterface {
     loading: boolean;
     error: string | null;
     isAuthor: (contentAuthorId: number) => boolean;
+    isAuthenticated: () => boolean;
 }

@@ -14,6 +14,8 @@
     {#    <link href="https://fonts.googleapis.com/css2?family=Onest:wght@100..900&display=swap" rel="stylesheet"> #}
     {#    <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet"> #}
     {#    <link href="https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,200..1000;1,200..1000&display=swap" rel="stylesheet"> #}
+    <link href="https://fonts.googleapis.com/css2?family=Spline+Sans+Mono:ital,wght@0,300..700;1,300..700&display=swap"
+          rel="stylesheet">
 
     {% block stylesheets %}
         {{ encore_entry_link_tags('styles') }}
@@ -31,6 +33,7 @@
 
 {% block body %}{% endblock %}
 
+{{ include('partials/footer.html.twig') }}
 {{ include('partials/noise-texture.html.twig') }}
 
 </body>

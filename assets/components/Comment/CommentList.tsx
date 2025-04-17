@@ -1,12 +1,15 @@
 import React, {useState} from 'react';
 import {addComment} from "../../services/commentsApi";
 import CommentItem from "./CommentItem";
+import {useAuth} from "../../context/AuthContext";
+import {ROUTES} from "../../utils/routes";
 
 function CommentList({question, setQuestion}) {
     const [comment, setComment] = useState<string>('');
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [success, setSuccess] = useState(false);
     const [error, setError] = useState(null);
+    const {isAuthenticated} = useAuth();
 
     async function handleSubmit(e) {
         e.preventDefault();
@@ -53,35 +56,57 @@ function CommentList({question, setQuestion}) {
                 )}
             </ul>
 
-            <div className="form-container gap-4 glass box bg-dark-grey-secondary">
 
-                <h2 className="small-title">Add comment</h2>
+            {isAuthenticated() ? (
+                <div className="form-container gap-4 glass box bg-dark-grey-secondary">
 
-                {success && <div className="alert alert-success">Comment add with success !</div>}
-                {error && <div className="alert alert-danger">{error}</div>}
+                    <h2 className="small-title">
+                        <span className="material-icons mr-2">chat_bubble</span>
+                        Join the conversation
+                    </h2>
 
-                <form onSubmit={handleSubmit}>
-                    <div className="form-group w-full">
-                      <textarea
-                          className="form"
-                          value={comment}
-                          onChange={(e) => setComment(e.target.value)}
-                          placeholder="Your comment..."
-                          rows={4}
-                          required
-                      />
+                    {success && <div className="alert alert-success">Comment add with success !</div>}
+                    {error && <div className="alert alert-danger">{error}</div>}
+
+                    <form onSubmit={handleSubmit}>
+                        <div className="form-group w-full">
+                                <textarea
+                                    className="form"
+                                    value={comment}
+                                    onChange={(e) => setComment(e.target.value)}
+                                    placeholder="Your comment..."
+                                    rows={4}
+                                    required/>
+                        </div>
+                        <div className="buttons-container">
+                            <button
+                                type="submit"
+                                className="button button-primary"
+                                disabled={isSubmitting}>
+                                {isSubmitting ? 'Sending...' : 'Send'}
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            ) : (
+                <div className="glass box flex flex-col gap-spacing-primary">
+                    <div>
+                        <p className={'small-title'}>
+                            <span className="material-icons mr-2">chat_bubble</span>
+                            Wanna join the conversation ?
+                        </p>
+                        <p className={'text-very-light-grey-secondary'}>Please login or register !</p>
                     </div>
-                    <div className="buttons-container">
-                        <button
-                            type="submit"
-                            className="button button-primary"
-                            disabled={isSubmitting}
-                        >
-                            {isSubmitting ? 'Sending...' : 'Send'}
-                        </button>
+                    <div className="buttons-container gap-spacing-primary justify-center">
+                        <a href={ROUTES.LOGIN} className="button button-secondary">
+                            Login
+                        </a>
+                        <a href={ROUTES.REGISTER} className="button button-primary">
+                            Register
+                        </a>
                     </div>
-                </form>
-            </div>
+                </div>
+            )}
         </>
     );
 }

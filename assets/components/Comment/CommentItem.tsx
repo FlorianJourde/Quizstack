@@ -44,11 +44,12 @@ function CommentItem({question, setQuestion, comment, index}) {
                         <div className="user-infos-container flex gap-8 items-center grow">
                             <p>{comment.author.username}</p>
                             <div className="date-container flex gap-4  items-center">
-                                <p className={'flex items-center gap-2 opacity-50 text-xs'}><span
-                                    className="material-icons md-14">calendar_today</span><span>{formattedDate}</span>
+                                <p className={'flex items-center muted'}><span
+                                    className="material-icons mr-2 md-14">calendar_today</span><span>{formattedDate}</span>
                                 </p>
-                                <p className={'flex items-center gap-2 opacity-50 text-xs'}><span
-                                    className="material-icons md-14">schedule</span><span>{formattedTime}</span></p>
+                                <p className={'flex items-center muted'}><span
+                                    className="material-icons mr-2 md-14">schedule</span><span>{formattedTime}</span>
+                                </p>
                             </div>
                         </div>
                         <div className="buttons-container">

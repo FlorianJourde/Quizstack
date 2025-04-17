@@ -10,6 +10,8 @@ module.exports = {
     theme: {
         extend: {
             colors: {
+                'very-light-grey-primary': '#808080',
+                'very-light-grey-secondary': '#ababab',
                 'light-grey-primary': '#525252',
                 'light-grey-secondary': '#656565',
                 'grey-primary': '#262626',
@@ -17,7 +19,6 @@ module.exports = {
                 'dark-grey-primary': '#171717',
                 'dark-grey-secondary': '#1d1d1d',
                 'very-dark-grey-primary': '#0f0f0f',
-                // 'blue-primary': '#009de0',
                 'blue-primary': '#27a2ba',
                 'green-primary': '#b7cf3e',
                 'green-secondary': '#97b112',
@@ -32,6 +33,10 @@ module.exports = {
             },
             borderRadius: {
                 'radius-primary': 'var(--radius-primary)',
+            },
+            fontFamily: {
+                'primary': 'var(--ff-primary)',
+                'secondary': 'var(--ff-secondary)',
             }
         },
     },

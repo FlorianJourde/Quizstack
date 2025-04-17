@@ -19,7 +19,7 @@ function Question({mode, questionId, showComments}: { mode: string, questionId: 
     const [limitReached, setLimitReached] = useState<boolean>(false);
 
     useEffect(() => {
-        console.log(question?.categories)
+        // console.log(question?.categories)
     }, [question]);
 
     useEffect(() => {

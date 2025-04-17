@@ -1,0 +1,41 @@
+<footer class="flex flex-col pt-24 pb-12">
+    <hr class="h-[2px] bg-white/10 border-0 mb-12"/>
+    <div class="wrapper">
+        <div class="footer-container gap-spacing-primary flex flex-col w-full">
+
+            <div class="footer-top-container flex items-center justify-between w-full">
+                <div class="site-identity-container">
+                    <a href="{{ path('app_home') }}" class="flex gap-4 items-center">
+                        <img src="{{ asset('images/logos/quizstack-logo.png') }}" alt="Quizstack logo" class="h-10">
+                        <div class="flex flex-col gap-1">
+                            <p class="font-secondary">Quizstack</p>
+                            <p class="muted">
+                                Learn web development by answering questions
+                            </p>
+                        </div>
+                    </a>
+                </div>
+                <div class="networks-container">
+                    <a href="https://github.com/FlorianJourde/Quizstack" target="_blank">
+                        <img src="{{ asset('images/logos/github-logo.png') }}" alt="GitHub logo"
+                             class="h-5 button button-tertiary">
+                    </a>
+                </div>
+            </div>
+
+            <nav class="footer-bottom-container">
+                <ul class="grid gap-spacing-secondary">
+                    <li>
+                        <a href="{{ path('app_filters') }}" class="button button-tertiary">Filters </a>
+                    </li>
+                    <li>
+                        <a href="{{ path('scores') }}" class="button button-tertiary">Scores</a>
+                    </li>
+                </ul>
+            </nav>
+
+            <p class="muted">© {{ "now"|date("Y") }} Quizstack</p>
+
+        </div>
+    </div>
+</footer>

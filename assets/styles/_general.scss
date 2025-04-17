@@ -3,7 +3,10 @@
   --radius-secondary: 6px;
   --spacing-primary: 2rem;
   --spacing-secondary: 1.2rem;
+  --ff-primary: 'Manrope', sans-serif;
+  --ff-secondary: "Spline Sans Mono", monospace;
 }
+
 
 @media (max-width: 640px) {
   :root {
@@ -18,7 +21,7 @@
 
 html body {
   line-height: initial;
-  font-family: 'Manrope', sans-serif;
+  font-family: var(--ff-primary);
 
   textarea, input {
     width: 100%;
@@ -38,6 +41,16 @@ html body {
   textarea {
     min-height: 120px;
   }
+}
+
+.code-wrapper, code {
+  font-family: var(--ff-secondary) !important;
+  font-size: .875rem !important;
+}
+
+.code-wrapper {
+  margin-top: 1rem !important;
+  margin-bottom: 1rem !important;
 }
 
 header {
@@ -134,20 +147,24 @@ div[style*="background: rgb(39, 40, 34);"] {
 
 .big-title {
   display: block;
+  font-family: var(--ff-secondary);
   font-size: 2.5rem;
 }
 
 .title {
   display: block;
+  font-family: var(--ff-secondary);
   font-size: 1.2rem;
   text-align: center;
-  text-transform: uppercase;
-  letter-spacing: .1em;
-  font-weight: bold;
+  //text-transform: uppercase;
+  //letter-spacing: .1em;
+  //font-weight: bold;
 }
 
 .small-title {
-  display: block;
+  //display: block;
+  display: flex;
+  align-items: center;
   font-size: 1.2rem;
   margin-bottom: .6rem;
   font-weight: 600;
@@ -212,9 +229,12 @@ div[style*="background: rgb(39, 40, 34);"] {
 }
 
 .material-icons {
+  //.margin-right {
+  //  margin-right: .5em;
+  //}
+
   &.md-14 {
     font-size: 14px;
-
   }
 
   &.md-18 {
@@ -238,8 +258,10 @@ div[style*="background: rgb(39, 40, 34);"] {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding-top: 50px;
-  padding-bottom: 100px;
+  //padding-top: 50px;
+  //padding-bottom: 100px;
+  padding-top: 3rem;
+  padding-bottom: 6rem;
   gap: 4rem;
 }
 
@@ -326,4 +348,10 @@ div[style*="background: rgb(39, 40, 34);"] {
   input {
     //width: unset;
   }
+}
+
+.muted {
+  font-size: .875rem;
+  color: theme('colors.very-light-grey-primary');
+  font-weight: normal;
 }

@@ -3,8 +3,8 @@
         <div class="header-container flex flex-col w-full">
 
             <div class="header-top-container flex items-center justify-between w-full">
-                <a href="{{ path('app_home') }}" class="flex gap-4 items-center font-bold text-xl">
-                    <img src="{{ asset('images/logos/quizstack-logo.png') }}" alt="Quizstack logo" class="h-12">
+                <a href="{{ path('app_home') }}" class="flex gap-4 items-center font-secondary text-xl">
+                    <img src="{{ asset('images/logos/quizstack-logo.png') }}" alt="Quizstack logo" class="h-10">
                     Quizstack
                 </a>
                 <div class="buttons-container flex-col gap-2">
@@ -15,27 +15,45 @@
             </div>
 
             <nav class="header-bottom-container">
-                <ul class="dark-glass flex flex-col box rounded-radius-primary gap-spacing-primary mt-spacing-primary items-center text-center">
-                    <a href="{{ path('app_filters') }}" class="button button-tertiary">Filters </a>
-                    <a href="{{ path('scores') }}" class="button button-tertiary">Scores</a>
+                <ul class="dark-glass grid grid-cols-2 box rounded-radius-primary gap-spacing-secondary mt-spacing-primary">
+                    <li>
+                        <a href="{{ path('app_filters') }}" class="button button-tertiary">Filters </a>
+                    </li>
+                    <li>
+                        <a href="{{ path('scores') }}" class="button button-tertiary">Scores</a>
+                    </li>
                     {% if is_granted('ROLE_USER') %}
-                        <a href="{{ path('profile') }}" class="button button-tertiary">Profile</a>
+                        <li>
+                            <a href="{{ path('profile') }}" class="button button-tertiary">Profile</a>
+                        </li>
                     {% endif %}
                     {% if is_granted('ROLE_ADMIN') %}
-                        <a href="{{ path('users') }}" class="button button-tertiary">Users</a>
+                        <li>
+                            <a href="{{ path('users') }}" class="button button-tertiary">Users</a>
+                        </li>
                     {% endif %}
                     {% if is_granted('ROLE_ADMIN') %}
-                        <a href="{{ path('categories') }}" class="button button-tertiary">Categories</a>
+                        <li>
+                            <a href="{{ path('categories') }}" class="button button-tertiary">Categories</a>
+                        </li>
                     {% endif %}
                     {% if is_granted('ROLE_USER') %}
-                        <a href="{{ path('questions') }}" class="button button-tertiary">Questions</a>
+                        <li>
+                            <a href="{{ path('questions') }}" class="button button-tertiary">Questions</a>
+                        </li>
                     {% endif %}
-                    <div class="buttons-container gap-spacing-primary">
+                    <div class="buttons-container col-span-2 gap-spacing-primary justify-center">
                         {% if is_granted('ROLE_USER') %}
-                            <a href="{{ path('app_logout') }}" class="button button-primary button-red">Logout</a>
+                            <li>
+                                <a href="{{ path('app_logout') }}" class="button button-primary button-red">Logout</a>
+                            </li>
                         {% else %}
-                            <a href="{{ path('app_login') }}" class="button button-secondary">Login</a>
-                            <a href="{{ path('app_register') }}" class="button button-primary">Register</a>
+                            <li>
+                                <a href="{{ path('app_login') }}" class="button button-secondary">Login</a>
+                            </li>
+                            <li>
+                                <a href="{{ path('app_register') }}" class="button button-primary">Register</a>
+                            </li>
                         {% endif %}
                     </div>
                 </ul>
