@@ -1,0 +1,14 @@
+{% if (previous >= 0 or next < pagination|length) %}
+    <div class="buttons-container mt-8 relative">
+        {% if previous >= 0 %}
+            <a href="{{ path(page, { offset: previous }) }}" class="button button-action absolute left-0">
+                <span class="material-icons">arrow_back</span>
+            </a>
+        {% endif %}
+        {% if next < pagination|length %}
+            <a href="{{ path(page, { offset: next }) }}" class="button button-action absolute right-0">
+                <span class="material-icons">arrow_forward</span>
+            </a>
+        {% endif %}
+    </div>
+{% endif %}

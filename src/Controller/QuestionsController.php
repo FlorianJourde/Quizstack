@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Questions;
+use App\Entity\Users;
 use App\Form\QuestionsFormType;
 use App\Repository\QuestionsRepository;
 use DateTimeImmutable;
@@ -10,7 +11,7 @@ use Doctrine\ORM\EntityManagerInterface;
 //use Knp\Component\Pager\Pagination\PaginationInterface;
 use Knp\Component\Pager\Pagination\PaginationInterface;
 //use Knp\Component\Pager\PaginatorInterface;
-use Knp\Component\Pager\PaginatorInterface;
+//use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Bundle\SecurityBundle\Security;
 use Symfony\Component\HttpFoundation\Request;
@@ -30,26 +31,38 @@ final class QuestionsController extends AbstractController
     #[IsGranted('ROLE_USER')]
     #[Route('/questions', name: 'questions')]
     public function questions(
-        QuestionsRepository $questionsRepository,
-        Security            $security,
-        Request             $request,
-        PaginatorInterface  $paginator
+//        QuestionsRepository $questionsRepository,
+//        Security            $security,
+//        Request             $request
+        Security               $security,
+        Request                $request,
+        QuestionsRepository     $commentsRepository
     ): Response
     {
+        /* @var Users $user */
         $user = $security->getUser();
-        $page = $request->query->getInt('page', 1);
-        $limit = 5;
+//        $page = $request->query->getInt('page', 1);
+//        $limit = 5;
+
+        $offset = max(0, $request->query->getInt('offset', 0));
+//        $paginator = $commentsRepository->getQuestionsPaginator($user, $offset);
 
         if ($security->isGranted('ROLE_EDITOR')) {
-            $query = $questionsRepository->findAllByUpdateDateQuery();
+//            $query = $questionsRepository->findAllByUpdateDateQuery();
+            $paginator = $commentsRepository->getQuestionsPaginator($offset);
+
         } else {
-            $query = $questionsRepository->findAllByUserIdAndUpdateDateQuery($user);
+//            $query = $questionsRepository->findAllByUserIdAndUpdateDateQuery($user);
+            $paginator = $commentsRepository->getQuestionsByUserIdPaginator($user, $offset);
+
         }
 
-        $pagination = $paginator->paginate($query, $page, $limit);
+//        $pagination = $paginator->paginate($query, $page, $limit);
 
         return $this->render('questions/index.html.twig', [
-            'questions' => $pagination
+            'questions' => $paginator,
+            'previous' => $offset - QuestionsRepository::QUESTIONS_PER_PAGE,
+            'next' => min(count($paginator), $offset + QuestionsRepository::QUESTIONS_PER_PAGE),
         ]);
     }
 

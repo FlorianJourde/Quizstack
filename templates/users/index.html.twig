@@ -64,11 +64,30 @@
                 </tbody>
             </table>
 
-            <div class="navigation d-flex justify-content-center">
-                {{ knp_pagination_render(users) }}
-            </div>
+{#            <div class="navigation d-flex justify-content-center">#}
+{#                {{ knp_pagination_render(users) }}#}
+{#            </div>#}
 
         </div>
+
+{#        {% if (previous >= 0 or next < users|length) %}#}
+{#            <div class="buttons-container mt-8 relative">#}
+{#                {% if previous >= 0 %}#}
+{#                    <a href="{{ path('users', { offset: previous }) }}" class="button button-action absolute left-0">#}
+{#                        <span class="material-icons">arrow_back</span>#}
+{#                    </a>#}
+{#                {% endif %}#}
+{#                {% if next < users|length %}#}
+{#                    <a href="{{ path('users', { offset: next }) }}" class="button button-action absolute right-0">#}
+{#                        <span class="material-icons">arrow_forward</span>#}
+{#                    </a>#}
+{#                {% endif %}#}
+{#            </div>#}
+{#        {% endif %}#}
+
+        {{ include('partials/pagination.html.twig', {'page': 'users', 'pagination': users}) }}
+
+
     </div>
 
 {% endblock %}

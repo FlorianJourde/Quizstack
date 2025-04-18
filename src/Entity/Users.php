@@ -63,6 +63,9 @@ class Users implements UserInterface, PasswordAuthenticatedUserInterface
     {
         $this->inscription_date = new \DateTimeImmutable();
         $this->last_authentication_date = new \DateTimeImmutable();
+        $this->scores->setWeek(0);
+        $this->scores->setMonth(0);
+        $this->scores->setAllTime(0);
     }
 
     public function getId(): ?int

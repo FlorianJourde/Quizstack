@@ -34,7 +34,7 @@ html body {
     padding: 16px;
     display: flex;
 
-    [type="checkbox"], [type="radio"] {
+    &[type="checkbox"], &[type="radio"] {
       width: unset;
     }
   }
@@ -326,6 +326,7 @@ div[style*="background: rgb(39, 40, 34);"] {
   width: 100%;
   overflow: hidden;
   border-collapse: collapse;
+  text-align: center;
 
   .tags-container, .buttons-container {
     flex-wrap: unset;
@@ -353,7 +354,7 @@ div[style*="background: rgb(39, 40, 34);"] {
     //width: unset;
   }
 
-  .button-action {
+  .buttons-container {
     justify-content: center;
   }
 }

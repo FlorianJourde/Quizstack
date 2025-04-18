@@ -26,8 +26,8 @@
             <table class="table glass">
                 <thead>
                 <tr>
-{#                    <th>ID</th>#}
-{#                    <th>User</th>#}
+                    {#                    <th>ID</th> #}
+                    {#                    <th>User</th> #}
                     <th>Content</th>
                     <th>Creation date</th>
                     <th>Question</th>
@@ -37,9 +37,9 @@
 
                 {% for comment in comments %}
                     <tr>
-{#                        <td>{{ comment.id }}</td>#}
-{#                        <td>{{ comment.user.username }}</td>#}
-                        <td class="text-left">{{ comment.content|slice(0, 60) ~ (comment.content|length > 60 ? '...' : '') }}</td>
+                        {#                        <td>{{ comment.id }}</td> #}
+                        {#                        <td>{{ comment.user.username }}</td> #}
+                        <td class="text-left">{{ comment.content|slice(0, 120) ~ (comment.content|length > 120 ? '...' : '') }}</td>
                         <td>{{ comment.creationDate|date('d/m/y') }}</td>
                         <td>
                             <div class="buttons-container">
@@ -56,18 +56,7 @@
             </table>
         </div>
 
-        <div class="buttons-container pt-8 relative">
-            {% if previous >= 0 %}
-                <a href="{{ path('activity', { offset: previous }) }}" class="button button-action absolute left-0">
-                    <span class="material-icons">arrow_back</span>
-                </a>
-            {% endif %}
-            {% if next < comments|length %}
-                <a href="{{ path('activity', { offset: next }) }}" class="button button-action absolute right-0">
-                    <span class="material-icons">arrow_forward</span>
-                </a>
-            {% endif %}
-        </div>
+        {{ include('partials/pagination.html.twig', {'page': 'activity', 'pagination': comments}) }}
 
     </div>
 

@@ -6,7 +6,7 @@ use App\Form\ProfileFormType;
 use App\Form\UsersFormType;
 use App\Repository\UsersRepository;
 use Doctrine\ORM\EntityManagerInterface;
-use Knp\Component\Pager\PaginatorInterface;
+//use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -19,23 +19,24 @@ class UsersController extends AbstractController
     #[Route('/users', name: 'users')]
     public function users(
         Request            $request,
-        UsersRepository    $usersRepository,
-        PaginatorInterface $paginator
+        UsersRepository    $usersRepository
     ): Response
     {
-        $page = $request->query->getInt('page', 1);
-        $limit = 3;
+        $offset = max(0, $request->query->getInt('offset', 0));
+        $paginator = $usersRepository->getUserPaginator($offset);
 
-        $query = $usersRepository->findAllByLastAuthenticationDate();
-
-        $pagination = $paginator->paginate(
-            $query,
-            $page,
-            $limit
-        );
+//        $query = $usersRepository->findAllByLastAuthenticationDate();
+//
+//        $pagination = $paginator->paginate(
+//            $query,
+//            $page,
+//            $limit
+//        );
 
         return $this->render('users/index.html.twig', [
-            'users' => $pagination
+            'users' => $paginator,
+            'previous' => $offset - UsersRepository::USERS_PER_PAGE,
+            'next' => min(count($paginator), $offset + UsersRepository::USERS_PER_PAGE),
         ]);
     }
 

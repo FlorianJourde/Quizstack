@@ -3,9 +3,11 @@
 namespace App\Repository;
 
 use App\Entity\Questions;
+use App\Entity\Users;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\ORM\AbstractQuery;
 use Doctrine\ORM\Query;
+use Doctrine\ORM\Tools\Pagination\Paginator;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
@@ -13,6 +15,8 @@ use Doctrine\Persistence\ManagerRegistry;
  */
 class QuestionsRepository extends ServiceEntityRepository
 {
+    public const QUESTIONS_PER_PAGE = 5;
+    
     public function __construct(ManagerRegistry $registry)
     {
         parent::__construct($registry, Questions::class);
@@ -53,21 +57,60 @@ class QuestionsRepository extends ServiceEntityRepository
             ->getOneOrNullResult(AbstractQuery::HYDRATE_SINGLE_SCALAR);
     }
 
-    public function findAllByUpdateDateQuery(): ?Query
+//    public function findAllByUpdateDateQuery(): ?Query
+//    {
+//        return $this->createQueryBuilder('q')
+//            ->orderBy('q.update_date', 'DESC')
+//            ->getQuery();
+//    }
+
+    public function getQuestionsPaginator(int $offset): Paginator
     {
-        return $this->createQueryBuilder('q')
+        $query = $this->createQueryBuilder('q')
             ->orderBy('q.update_date', 'DESC')
+            ->setMaxResults(self::QUESTIONS_PER_PAGE)
+            ->setFirstResult($offset)
             ->getQuery();
+
+        return new Paginator($query);
     }
 
-    public function findAllByUserIdAndUpdateDateQuery($user): ?Query
+//    public function findAllByUserIdAndUpdateDateQuery($user): ?Query
+//    {
+//        return $this->createQueryBuilder('q')
+//            ->where('q.user = :user')
+//            ->setParameter('user', $user)
+//            ->orderBy('q.update_date', 'DESC')
+//            ->getQuery();
+//    }
+
+
+    public function getQuestionsByUserIdPaginator(Users $user, int $offset): Paginator
     {
-        return $this->createQueryBuilder('q')
-            ->where('q.user = :user')
+        $query = $this->createQueryBuilder('q')
+            ->andWhere('q.user = :user')
             ->setParameter('user', $user)
-            ->orderBy('q.update_date', 'DESC')
+            ->orderBy('q.creation_date', 'DESC')
+            ->setMaxResults(self::QUESTIONS_PER_PAGE)
+            ->setFirstResult($offset)
             ->getQuery();
+
+        return new Paginator($query);
     }
+
+    
+//    public function getCommentPaginator(Users $user, int $offset): Paginator
+//    {
+//        $query = $this->createQueryBuilder('c')
+//            ->andWhere('c.user = :user')
+//            ->setParameter('user', $user)
+//            ->orderBy('c.creation_date', 'DESC')
+//            ->setMaxResults(self::QUESTIONS_PER_PAGE)
+//            ->setFirstResult($offset)
+//            ->getQuery();
+//
+//        return new Paginator($query);
+//    }
 
 //    public function findAllByUpdateDate(): ?array
 //    {

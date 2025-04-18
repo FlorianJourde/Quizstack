@@ -20,7 +20,6 @@ class CommentsController extends AbstractController
     public function activity(
         Security               $security,
         Request                $request,
-        EntityManagerInterface $entityManager,
         CommentsRepository     $commentsRepository
     ): Response
     {
