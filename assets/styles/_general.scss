@@ -37,10 +37,15 @@ html body {
     &[type="checkbox"], &[type="radio"] {
       width: unset;
     }
+
   }
 
   textarea {
     min-height: 120px;
+  }
+
+  p {
+    //opacity: .75;
   }
 }
 

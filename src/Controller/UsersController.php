@@ -2,15 +2,18 @@
 
 namespace App\Controller;
 
+use App\Entity\Users;
 use App\Form\ProfileFormType;
 use App\Form\UsersFormType;
 use App\Repository\UsersRepository;
 use Doctrine\ORM\EntityManagerInterface;
+
 //use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 use Symfony\Component\Security\Http\Attribute\IsGranted;
 
 class UsersController extends AbstractController
@@ -18,8 +21,8 @@ class UsersController extends AbstractController
     #[IsGranted('ROLE_ADMIN')]
     #[Route('/users', name: 'users')]
     public function users(
-        Request            $request,
-        UsersRepository    $usersRepository
+        Request         $request,
+        UsersRepository $usersRepository
     ): Response
     {
         $offset = max(0, $request->query->getInt('offset', 0));
@@ -74,9 +77,40 @@ class UsersController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $entityManager->flush();
+            if ($form->get('delete')->isClicked()) {
+                if ($this->getUser() && $this->getUser()->getId() === $user->getId()) {
+                    $this->addFlash('error', 'You cannot delete your own account.');
+                    return $this->redirectToRoute('users');
+                }
 
-            $this->addFlash('success', 'User informations has been updated successfully.');
+                $anonymousUser = $usersRepository->findOneBy(['username' => 'Anonymous']);
+                if (!$anonymousUser) {
+                    $anonymousUser = new Users();
+                    $anonymousUser->setUsername('Anonymous');
+                    $anonymousUser->setEmail('anonymous@email.com');
+                    $anonymousUser->setPassword('!');
+                    $anonymousUser->setRoles(['ROLE_USER']);
+                    $entityManager->persist($anonymousUser);
+                    $entityManager->flush();
+                }
+
+                foreach ($user->getComments() as $comment) {
+                    $comment->setUser($anonymousUser);
+                }
+
+                foreach ($user->getQuestions() as $question) {
+                    $question->setUser($anonymousUser);
+                }
+
+                $entityManager->remove($user);
+                $entityManager->flush();
+
+                $this->addFlash('success', 'User has been deleted successfully.');
+                return $this->redirectToRoute('users');
+            }
+
+            $entityManager->flush();
+            $this->addFlash('success', 'User information has been updated successfully.');
 
             return $this->redirectToRoute('users');
         }
@@ -86,4 +120,28 @@ class UsersController extends AbstractController
             'form' => $form
         ]);
     }
+
+//    #[IsGranted('ROLE_ADMIN')]
+//    #[Route('/user/{id}/delete', name: 'user_delete', requirements: ['id' => '\d+'], methods: ['POST'])]
+//    public function delete(
+//        Users $user,
+//        Request $request,
+//        EntityManagerInterface $entityManager): Response
+//    {
+//        if (!$this->isCsrfTokenValid('delete-user-' . $user->getId(), $request->request->get('_token'))) {
+//            throw new AccessDeniedException('Invalid CSRF token.');
+//        }
+//
+//        if ($this->getUser() === $user) {
+//            $this->addFlash('error', 'You can\'t delete your own account.');
+//            return $this->redirectToRoute('users');
+//        }
+//
+//        $entityManager->remove($user);
+//        $entityManager->flush();
+//
+//        $this->addFlash('success', 'User deleted.');
+//
+//        return $this->redirectToRoute('users');
+//    }
 }

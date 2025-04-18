@@ -10,6 +10,9 @@
         <div class="page-header-container">
             <h1 class="big-title grow">{{ user.username }}</h1>
             <div class="buttons-container">
+                <a class="button button-action" href="{{ path('users') }}">
+                    <span class="material-icons">arrow_back</span>
+                </a>
                 <a class="button button-action" href="{{ path('user_edit', {'id': user.id}) }}">
                     <span class="material-icons">edit</span>
                 </a>

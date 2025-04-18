@@ -34,7 +34,13 @@
                 <button class="button button-primary" type="submit">Update</button>
             </div>
 
+{#            <form method="post" action="{{ path('admin_user_delete', {'id': user.id}) }}" onsubmit="return confirm('Ar you sure to remove this user ?');" style="display: inline-block">#}
+{#                <input type="hidden" name="_token" value="{{ csrf_token('delete-user-' ~ user.id) }}">#}
+{#                <button class="btn btn-danger">Supprimer</button>#}
+{#            </form>#}
+
             {{ form_end(form) }}
+
 
         </div>
     </div>

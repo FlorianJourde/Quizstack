@@ -7,6 +7,7 @@ use App\Entity\Users;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -51,7 +52,19 @@ class UsersFormType extends AbstractType
                 'attr' => [
                     'class' => 'form-check-input'
                 ],
+            ])
+            ->add('save', SubmitType::class, [
+                'label' => 'Update',
+                'attr' => ['class' => 'button button-primary']
+            ])
+            ->add('delete', SubmitType::class, [
+                'label' => 'Delete',
+                'attr' => [
+                    'class' => 'button button-primary button-red',
+                    'onclick' => 'return confirm("Are your sure you want to remove this user ?")'
+                ]
             ]);
+        ;
     }
 
     public function configureOptions(OptionsResolver $resolver)

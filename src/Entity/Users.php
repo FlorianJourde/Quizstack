@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use App\Repository\UsersRepository;
+use DateTimeImmutable;
 use Doctrine\Common\Collections\Collection;
 //use Doctrine\DBAL\Types\Type;
 use Doctrine\DBAL\Types\Types;
@@ -38,11 +39,11 @@ class Users implements UserInterface, PasswordAuthenticatedUserInterface
 
 //    #[ORM\Column]
     #[ORM\Column(type: Types::DATETIME_IMMUTABLE)]
-    private ?\DateTimeImmutable $inscription_date = null;
+    private ?DateTimeImmutable $inscription_date = null;
 
 //    #[ORM\Column]
     #[ORM\Column(type: Types::DATETIME_IMMUTABLE)]
-    private ?\DateTimeImmutable $last_authentication_date = null;
+    private ?DateTimeImmutable $last_authentication_date = null;
 
     /**
      * @var Collection<int, Comments>
@@ -61,8 +62,11 @@ class Users implements UserInterface, PasswordAuthenticatedUserInterface
 
     public function __construct()
     {
-        $this->inscription_date = new \DateTimeImmutable();
-        $this->last_authentication_date = new \DateTimeImmutable();
+        $this->inscription_date = new DateTimeImmutable();
+        $this->last_authentication_date = new DateTimeImmutable();
+
+        $this->scores = new Scores();
+
         $this->scores->setWeek(0);
         $this->scores->setMonth(0);
         $this->scores->setAllTime(0);
@@ -147,24 +151,24 @@ class Users implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
-    public function getInscriptionDate(): ?\DateTimeImmutable
+    public function getInscriptionDate(): ?DateTimeImmutable
     {
         return $this->inscription_date;
     }
 
-    public function setInscriptionDate(\DateTimeImmutable $inscription_date): static
+    public function setInscriptionDate(DateTimeImmutable $inscription_date): static
     {
         $this->inscription_date = $inscription_date;
 
         return $this;
     }
 
-    public function getLastAuthenticationDate(): ?\DateTimeImmutable
+    public function getLastAuthenticationDate(): ?DateTimeImmutable
     {
         return $this->last_authentication_date;
     }
 
-    public function setLastAuthenticationDate(\DateTimeImmutable $last_authentication_date): static
+    public function setLastAuthenticationDate(DateTimeImmutable $last_authentication_date): static
     {
         $this->last_authentication_date = $last_authentication_date;
 

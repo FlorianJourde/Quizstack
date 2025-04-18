@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}User edit{% endblock %}
+{% block title %}User edit {{ parent() }}{% endblock %}
 
 {% block body %}
 
@@ -8,7 +8,15 @@
 
     <div class="wrapper">
         <div class="page-header-container">
-            <h1 class="big-title grow">Edit user informations</h1>
+            <h1 class="big-title grow">Edit user</h1>
+            <div class="buttons-container">
+                <a class="button button-action" href="{{ path('user', {'id': user.id}) }}">
+                    <span class="material-icons">arrow_back</span>
+                </a>
+{#                <a class="button button-action" href="{{ path('user_edit', {'id': user.id}) }}">#}
+{#                    <span class="material-icons">edit</span>#}
+{#                </a>#}
+            </div>
         </div>
     </div>
 
@@ -48,9 +56,18 @@
             </div>
 
             <div class="buttons-container gap-4">
-                <a href="{{ path('users') }}" class="button button-tertiary">Cancel</a>
-                <button type="submit" class="button button-primary">Save</button>
+                <a href="{{ path('user', {'id': user.id}) }}" class="button button-tertiary">Cancel</a>
+                {{ form_row(form.delete) }}
+                {{ form_row(form.save) }}
+{#                <button type="submit" class="button button-primary">Save</button>#}
             </div>
+
+
+{#            <div class="buttons-container gap-4">#}
+{#                <a href="{{ path('users') }}" class="button button-tertiary">Cancel</a>#}
+{#                {{ form_row(form.delete) }}#}
+{#                <button class="button button-primary" type="submit">Update</button>#}
+{#            </div>#}
 
             {{ form_end(form) }}
 
