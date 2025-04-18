@@ -53,7 +53,7 @@ function CommentList({question, setQuestion}) {
                 <h2 className={'title'}>Comments</h2>
             </div>
             <ul className={'comments-container flex flex-col glass box bg-dark-grey-secondary'}>
-                {question.comments.length > 1 ? (
+                {question.comments.length > 0 ? (
                     question.comments.map((comment, index) => (
                         <CommentItem question={question} setQuestion={setQuestion} comment={comment} index={index}
                                      key={`comment-${index}`}/>
@@ -62,7 +62,6 @@ function CommentList({question, setQuestion}) {
                     <p>There's no discussion about this question...</p>
                 )}
             </ul>
-
 
             {isAuthenticated() ? (
                 <div className="form-container gap-4 glass box bg-dark-grey-secondary">

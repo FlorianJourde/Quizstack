@@ -3,10 +3,12 @@
 namespace App\Controller\Api;
 
 use App\Entity\Comments;
+use App\Entity\Users;
 use App\Repository\QuestionsRepository;
 use DateTimeImmutable;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Bundle\SecurityBundle\Security;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
@@ -15,10 +17,12 @@ use Symfony\Component\Routing\Annotation\Route;
 class CommentsApiController extends AbstractController
 {
     private DateTimeImmutable $currentDate;
+    private $security;
 
-    public function __construct()
+    public function __construct(Security $security)
     {
         $this->currentDate = new DateTimeImmutable();
+        $this->security = $security;
     }
 
     #[Route('/question/{id}/comment/add', name: 'add_comment', methods: ['POST'])]
@@ -67,10 +71,18 @@ class CommentsApiController extends AbstractController
     ): JsonResponse
     {
         $user = $this->getUser();
+        $isAuthor = $user && $comment->getUser()->getId() === $user->getId();
+        $isAdmin = $this->security->isGranted('ROLE_ADMIN');
+        $canEditComment = $isAuthor || $isAdmin;
+
         $data = json_decode($request->getContent(), true);
         $content = $data['content'];
 
-        if (!$user || $comment->getUser()->getId() !== $user->getId()) {
+//        dump($isAuthor);
+//        dump($isAdmin);
+//        die();
+
+        if (!$canEditComment) {
             return $this->json(['error' => 'You cannot edit this comment.'], 403);
         }
 
@@ -96,11 +108,20 @@ class CommentsApiController extends AbstractController
     }
 
     #[Route('/comment/{id}/delete', name: 'delete_comment', methods: ['DELETE'])]
-    public function deleteComment(Request $request, EntityManagerInterface $entityManager, Comments $comment): JsonResponse
+    public function deleteComment(
+        Request                $request,
+        EntityManagerInterface $entityManager,
+        Comments               $comment
+    ): JsonResponse
     {
+        /* @var Users $user */
         $user = $this->getUser();
 
-        if (!$user || $comment->getUser()->getId() !== $user->getId()) {
+        $isAuthor = $user && $comment->getUser()->getId() === $user->getId();
+        $isAdmin = $this->security->isGranted('ROLE_ADMIN');
+        $canDeleteComment = $isAuthor || $isAdmin;
+
+        if (!$canDeleteComment) {
             return $this->json(['error' => 'You cannot delete this comment.'], 403);
         }
 

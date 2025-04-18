@@ -7,7 +7,8 @@ export const AuthContext = createContext<AuthContextInterface>({
     loading: true,
     error: null,
     isAuthor: () => false,
-    isAuthenticated: () => false
+    isAuthenticated: () => false,
+    isAdmin: () => false,
 });
 
 export function AuthProvider({children}: { children: ReactNode }) {
@@ -20,6 +21,9 @@ export function AuthProvider({children}: { children: ReactNode }) {
             try {
                 const response = await fetch('/api/user/current');
                 const data = await response.json();
+
+                // console.log(data);
+                // console.log(data.roles.includes('ROLE_ADMIN'));
 
                 if (data.error) {
                     setCurrentUser(null);
@@ -48,12 +52,18 @@ export function AuthProvider({children}: { children: ReactNode }) {
         return currentUser !== null;
     }
 
+    function isAdmin(): boolean {
+        if (!currentUser) return false;
+        return currentUser.roles.includes('ROLE_ADMIN');
+    }
+
     const value: AuthContextInterface = {
         currentUser,
         loading,
         error,
         isAuthor,
         isAuthenticated,
+        isAdmin
     };
 
     return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;

@@ -6,4 +6,6 @@ export interface AuthContextInterface {
     error: string | null;
     isAuthor: (contentAuthorId: number) => boolean;
     isAuthenticated: () => boolean;
+    isAdmin: () => boolean;
+
 }

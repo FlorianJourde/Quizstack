@@ -7,9 +7,10 @@ import {useAuth} from "../../context/AuthContext";
 function CommentItem({question, setQuestion, comment, index}) {
     const [isEditing, setIsEditing] = useState(false);
     const [isDeleting, setIsDeleting] = useState(false);
-    const {isAuthor} = useAuth();
-    const userIsAuthor = isAuthor(comment.author.id);
     const {formattedDate, formattedTime} = formatDate(comment.creationDate);
+    const {isAuthor, isAdmin} = useAuth();
+    // const userIsAuthor = isAuthor(comment.author.id);
+    const userCanEdit = isAuthor(comment.author.id) || isAdmin();
 
     function handleCommentUpdated() {
         setIsEditing(false);
@@ -17,6 +18,16 @@ function CommentItem({question, setQuestion, comment, index}) {
 
     function handleCommentDeleted() {
         setIsDeleting(false);
+    }
+
+    function handleStartEditing() {
+        setIsEditing(true);
+        setIsDeleting(false);
+    }
+
+    function handleStartDeleting() {
+        setIsDeleting(true);
+        setIsEditing(false);
     }
 
     function formatDate(dateObject) {
@@ -53,12 +64,12 @@ function CommentItem({question, setQuestion, comment, index}) {
                             </div>
                         </div>
                         <div className="buttons-container">
-                            {userIsAuthor && (
+                            {userCanEdit && (
                                 <>
-                                    <button className="button button-action" onClick={() => setIsEditing(true)}>
+                                    <button className="button button-action" onClick={() => handleStartEditing()}>
                                         <span className="material-icons">edit</span>
                                     </button>
-                                    <button className="button button-action" onClick={() => setIsDeleting(true)}>
+                                    <button className="button button-action" onClick={() => handleStartDeleting()}>
                                         <span className="material-icons">delete</span>
                                     </button>
                                 </>
@@ -87,6 +98,7 @@ function CommentItem({question, setQuestion, comment, index}) {
                         onCancel={() => setIsDeleting(false)}
                     />
                 }
+
             </li>
         </>
     );

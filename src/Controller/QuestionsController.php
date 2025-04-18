@@ -8,8 +8,10 @@ use App\Form\QuestionsFormType;
 use App\Repository\QuestionsRepository;
 use DateTimeImmutable;
 use Doctrine\ORM\EntityManagerInterface;
+
 //use Knp\Component\Pager\Pagination\PaginationInterface;
 use Knp\Component\Pager\Pagination\PaginationInterface;
+
 //use Knp\Component\Pager\PaginatorInterface;
 //use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -19,6 +21,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Component\Security\Http\Attribute\IsGranted;
 
+#[IsGranted('ROLE_USER')]
 final class QuestionsController extends AbstractController
 {
     private DateTimeImmutable $currentDate;
@@ -28,38 +31,29 @@ final class QuestionsController extends AbstractController
         $this->currentDate = new DateTimeImmutable();
     }
 
-    #[IsGranted('ROLE_USER')]
     #[Route('/questions', name: 'questions')]
     public function questions(
 //        QuestionsRepository $questionsRepository,
 //        Security            $security,
 //        Request             $request
-        Security               $security,
-        Request                $request,
-        QuestionsRepository     $commentsRepository
+        Security            $security,
+        Request             $request,
+        QuestionsRepository $commentsRepository
     ): Response
     {
         /* @var Users $user */
         $user = $security->getUser();
-//        $page = $request->query->getInt('page', 1);
-//        $limit = 5;
 
         $offset = max(0, $request->query->getInt('offset', 0));
-//        $paginator = $commentsRepository->getQuestionsPaginator($user, $offset);
 
         if ($security->isGranted('ROLE_EDITOR')) {
-//            $query = $questionsRepository->findAllByUpdateDateQuery();
             $paginator = $commentsRepository->getQuestionsPaginator($offset);
-
         } else {
-//            $query = $questionsRepository->findAllByUserIdAndUpdateDateQuery($user);
             $paginator = $commentsRepository->getQuestionsByUserIdPaginator($user, $offset);
-
         }
 
-//        $pagination = $paginator->paginate($query, $page, $limit);
-
         return $this->render('questions/index.html.twig', [
+//            'user' => $user,
             'questions' => $paginator,
             'previous' => $offset - QuestionsRepository::QUESTIONS_PER_PAGE,
             'next' => min(count($paginator), $offset + QuestionsRepository::QUESTIONS_PER_PAGE),
@@ -71,7 +65,7 @@ final class QuestionsController extends AbstractController
     public function question(
         int                 $id,
         QuestionsRepository $questionsRepository,
-        Security $security
+        Security            $security
     ): Response
     {
         $isEditor = $security->isGranted('ROLE_EDITOR');
@@ -97,12 +91,17 @@ final class QuestionsController extends AbstractController
         Security               $security
     ): Response
     {
-        $currentUser = $security->getUser();
-        $isAuthor = $question->getUser() === $currentUser;
+        $user = $security->getUser();
+        $isAuthor = $question->getUser() === $user;
+        $isOnline = $question->getStatus();
         $isEditor = $security->isGranted('ROLE_EDITOR');
 
         if (!$isAuthor && !$isEditor) {
             throw $this->createAccessDeniedException('You cannot edit this question.');
+        }
+
+        if (!$isEditor && $isOnline) {
+            throw $this->createAccessDeniedException('You cannot edit online questions.');
         }
 
         $isEditor = $security->isGranted('ROLE_EDITOR');

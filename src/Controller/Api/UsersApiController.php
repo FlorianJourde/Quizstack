@@ -20,7 +20,8 @@ class UsersApiController extends AbstractController
 
         return $this->json([
             'success' => true,
-            'id' => $user->getId()
+            'id' => $user->getId(),
+            'roles' => $user->getRoles()
         ]);
     }
 }

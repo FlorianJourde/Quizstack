@@ -1,3 +1,13 @@
+:root {
+  --background-checkbox: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 256 256' fill='none'%3E%3Cpolyline points='216 72 104 184 48 128' stroke='%23FFFFFF' stroke-width='32' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+}
+
+#quiz-container[data-mode="display"] {
+  .checkbox-group .checkbox-input.correct + .checkbox-tile:before {
+    background-image: var(--background-checkbox);
+  }
+}
+
 .checkbox-group {
   display: flex;
   flex-wrap: wrap;
@@ -36,7 +46,7 @@
       box-shadow: 0 0 0 2px #ffffff80;
 
       &:before {
-        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 256 256' fill='none'%3E%3Cpolyline points='216 72 104 184 48 128' stroke='%23FFFFFF' stroke-width='32' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+        background-image: var(--background-checkbox);
       }
     }
 
@@ -90,9 +100,7 @@
 
 .categories-container {
   .choice-option {
-
     background-color: theme('colors.very-dark-grey-primary');
-
 
     .color-layer {
       mask-size: cover;

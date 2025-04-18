@@ -35,7 +35,12 @@
                     </tr>
                     </thead>
                     <tbody class="text-center">
+
                     {% for question in questions %}
+                        {#                        {{ dump(user is same as(question.user)) }} #}
+                        {#                        {{ dump(is_granted('ROLE_USER')) }} #}
+                        {#                        {{ dump(question.status) }} #}
+
                         <tr>
                             <td>{{ question.id }}</td>
                             <td>{{ question.difficulty }}</td>
@@ -61,10 +66,14 @@
                                     <a href="{{ path('question', {'id': question.id}) }}" class="button button-action">
                                         <span class="material-icons">visibility</span>
                                     </a>
-                                    <a href="{{ path('question_edit', {'id': question.id}) }}"
-                                       class="button button-action">
-                                        <span class="material-icons">edit</span>
-                                    </a>
+
+                                    {% if is_granted('ROLE_EDITOR') or not question.status %}
+                                        <a href="{{ path('question_edit', {'id': question.id}) }}"
+                                           class="button button-action">
+                                            <span class="material-icons">edit</span>
+                                        </a>
+                                    {% endif %}
+
                                 </div>
                             </td>
                         </tr>

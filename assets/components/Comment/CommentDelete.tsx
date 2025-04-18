@@ -31,23 +31,25 @@ function CommentUpdate({question, setQuestion, comment, onCommentDelete, onCance
 
     return (
         <>
-            <p>Do you want to remove this comment ?</p>
-            <button
-                type="submit"
-                className="button button-primary me-2"
-                disabled={isDeleting}
-                onClick={handleSubmit}
-            >
-                {isDeleting ? 'Deleting' : 'Delete'}
-            </button>
-            <button
-                type="button"
-                className="button button-secondary"
-                onClick={onCancel}
-                disabled={isDeleting}
-            >
-                Cancel
-            </button>
+            <div className="form-container">
+                <p>Do you want to remove this comment ?</p>
+                <div className={'buttons-container'}>
+                    <button
+                        type="button"
+                        className="button button-tertiary"
+                        onClick={onCancel}
+                        disabled={isDeleting}>
+                        Cancel
+                    </button>
+                    <button
+                        type="submit"
+                        className="button button-primary button-red"
+                        disabled={isDeleting}
+                        onClick={handleSubmit}>
+                        {isDeleting ? 'Deleting' : 'Delete'}
+                    </button>
+                </div>
+            </div>
         </>
     );
 }

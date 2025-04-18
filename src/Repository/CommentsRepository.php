@@ -14,7 +14,7 @@ use Doctrine\Persistence\ManagerRegistry;
  */
 class CommentsRepository extends ServiceEntityRepository
 {
-    public const COMMENTS_PER_PAGE = 5;
+    public const COMMENTS_PER_PAGE = 50;
 
     public function __construct(ManagerRegistry $registry)
     {
