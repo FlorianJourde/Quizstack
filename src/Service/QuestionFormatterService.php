@@ -29,7 +29,7 @@ class QuestionFormatterService
 
         $commentArray = [];
         foreach ($question->getComments() as $comment) {
-            $userId = $comment->getUserId();
+            $userId = $comment->getUser();
             $user = $userId ? $this->usersRepository->find($userId) : null;
 
             $commentArray[] = [

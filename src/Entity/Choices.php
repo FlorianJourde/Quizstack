@@ -36,12 +36,12 @@ class Choices
         return $this;
     }
 
-    public function getQuestionId(): ?Questions
+    public function getQuestion(): ?Questions
     {
         return $this->question;
     }
 
-    public function setQuestionId(?Questions $question): static
+    public function setQuestion(?Questions $question): static
     {
         $this->question = $question;
 

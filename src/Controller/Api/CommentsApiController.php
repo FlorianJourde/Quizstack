@@ -40,7 +40,7 @@ class CommentsApiController extends AbstractController
 
         $comment = new Comments();
         $comment->setContent($commentText);
-        $comment->setUserId($user);
+        $comment->setUser($user);
         $comment->setCreationDate($this->currentDate);
         $comment->setUpdateDate($this->currentDate);
         $question->addComment($comment);
@@ -70,7 +70,7 @@ class CommentsApiController extends AbstractController
         $data = json_decode($request->getContent(), true);
         $content = $data['content'];
 
-        if (!$user || $comment->getUserId()->getId() !== $user->getId()) {
+        if (!$user || $comment->getUser()->getId() !== $user->getId()) {
             return $this->json(['error' => 'You cannot edit this comment.'], 403);
         }
 
@@ -100,7 +100,7 @@ class CommentsApiController extends AbstractController
     {
         $user = $this->getUser();
 
-        if (!$user || $comment->getUserId()->getId() !== $user->getId()) {
+        if (!$user || $comment->getUser()->getId() !== $user->getId()) {
             return $this->json(['error' => 'You cannot delete this comment.'], 403);
         }
 

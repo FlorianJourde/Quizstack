@@ -48,24 +48,24 @@ class Comments
         return $this;
     }
 
-    public function getUserId(): ?Users
+    public function getUser(): ?Users
     {
         return $this->user;
     }
 
-    public function setUserId(?Users $user): static
+    public function setUser(?Users $user): static
     {
         $this->user = $user;
 
         return $this;
     }
 
-    public function getQuestionId(): ?int
+    public function getQuestion(): ?Questions
     {
-        return $this->question = null;
+        return $this->question;
     }
 
-    public function setQuestionId(?Questions $question): static
+    public function setQuestion(?Questions $question): static
     {
         $this->question = $question;
 

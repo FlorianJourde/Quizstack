@@ -24,7 +24,7 @@ class UsersController extends AbstractController
     ): Response
     {
         $page = $request->query->getInt('page', 1);
-        $limit = 10;
+        $limit = 3;
 
         $query = $usersRepository->findAllByLastAuthenticationDate();
 

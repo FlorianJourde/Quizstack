@@ -38,7 +38,7 @@ final class QuestionsController extends AbstractController
     {
         $user = $security->getUser();
         $page = $request->query->getInt('page', 1);
-        $limit = 50;
+        $limit = 5;
 
         if ($security->isGranted('ROLE_EDITOR')) {
             $query = $questionsRepository->findAllByUpdateDateQuery();

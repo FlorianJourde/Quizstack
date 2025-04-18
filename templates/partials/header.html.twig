@@ -16,32 +16,10 @@
 
             <nav class="header-bottom-container">
                 <ul class="dark-glass grid sm:grid-cols-2 box rounded-radius-primary gap-spacing-secondary mt-spacing-primary">
-                    <li>
-                        <a href="{{ path('app_filters') }}" class="button button-tertiary">Filters </a>
-                    </li>
-                    <li>
-                        <a href="{{ path('scores') }}" class="button button-tertiary">Hall of Fame</a>
-                    </li>
-                    {% if is_granted('ROLE_USER') %}
-                        <li>
-                            <a href="{{ path('profile') }}" class="button button-tertiary">Profile</a>
-                        </li>
-                    {% endif %}
-                    {% if is_granted('ROLE_ADMIN') %}
-                        <li>
-                            <a href="{{ path('users') }}" class="button button-tertiary">Users</a>
-                        </li>
-                    {% endif %}
-                    {% if is_granted('ROLE_ADMIN') %}
-                        <li>
-                            <a href="{{ path('categories') }}" class="button button-tertiary">Categories</a>
-                        </li>
-                    {% endif %}
-                    {% if is_granted('ROLE_USER') %}
-                        <li>
-                            <a href="{{ path('questions') }}" class="button button-tertiary">Questions</a>
-                        </li>
-                    {% endif %}
+
+{#                    {{ include(partials }}#}
+                    {{ include('partials/links.html.twig') }}
+
                     <div class="buttons-container sm:col-span-2 gap-spacing-primary justify-center">
                         {% if is_granted('ROLE_USER') %}
                             <li>

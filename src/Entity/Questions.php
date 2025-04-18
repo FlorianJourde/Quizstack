@@ -153,7 +153,7 @@ class Questions
     {
         if (!$this->choices->contains($choice)) {
             $this->choices->add($choice);
-            $choice->setQuestionId($this);
+            $choice->setQuestion($this);
         }
 
         return $this;
@@ -163,8 +163,8 @@ class Questions
     {
         if ($this->choices->removeElement($choice)) {
             // set the owning side to null (unless already changed)
-            if ($choice->getQuestionId() === $this) {
-                $choice->setQuestionId(null);
+            if ($choice->getQuestion() === $this) {
+                $choice->setQuestion(null);
             }
         }
 
@@ -184,7 +184,7 @@ class Questions
     {
         if (!$this->comments->contains($comment)) {
             $this->comments->add($comment);
-            $comment->setQuestionId($this);
+            $comment->setQuestion($this);
         }
 
         return $this;
@@ -194,8 +194,8 @@ class Questions
     {
         if ($this->comments->removeElement($comment)) {
             // set the owning side to null (unless already changed)
-            if ($comment->getQuestionId() === $this) {
-                $comment->setQuestionId(null);
+            if ($comment->getQuestion() === $this) {
+                $comment->setQuestion(null);
             }
         }
 

@@ -42,7 +42,7 @@ class Question3
         $manager->persist($question);
 
         $choice1 = new Choices();
-        $choice1->setQuestionId($question);
+        $choice1->setQuestion($question);
         $choice1->setContent(
             <<<'EOT'
             `true`
@@ -52,7 +52,7 @@ class Question3
         $manager->persist($choice1);
 
         $choice2 = new Choices();
-        $choice2->setQuestionId($question);
+        $choice2->setQuestion($question);
         $choice2->setContent(
             <<<'EOT'
             `false`
@@ -62,7 +62,7 @@ class Question3
         $manager->persist($choice2);
 
         $choice3 = new Choices();
-        $choice3->setQuestionId($question);
+        $choice3->setQuestion($question);
         $choice3->setContent(
             <<<'EOT'
             `undefined`

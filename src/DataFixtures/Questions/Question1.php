@@ -39,7 +39,7 @@ class Question1
         $manager->persist($question);
 
         $choice1 = new Choices();
-        $choice1->setQuestionId($question);
+        $choice1->setQuestion($question);
         $choice1->setContent(
             <<<'EOT'
             `$pdo = new PDO('mysql:host=localhost;dbname=test', 'user', 'password');`
@@ -49,7 +49,7 @@ class Question1
         $manager->persist($choice1);
 
         $choice2 = new Choices();
-        $choice2->setQuestionId($question);
+        $choice2->setQuestion($question);
         $choice2->setContent(
             <<<'EOT'
             `$pdo = mysqli_connect('localhost', 'user', 'password', 'test');`
@@ -60,7 +60,7 @@ class Question1
 
 
         $choice2 = new Choices();
-        $choice2->setQuestionId($question);
+        $choice2->setQuestion($question);
         $choice2->setContent(
             <<<'EOT'
             `$pdo = new MySQLi('localhost', 'user', 'password', 'test');`
