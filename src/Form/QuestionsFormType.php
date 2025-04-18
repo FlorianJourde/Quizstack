@@ -83,7 +83,7 @@ class QuestionsFormType extends AbstractType
 
         if ($options['is_editor']) {
             $builder->add('status', CheckboxType::class, [
-                'label' => 'Status',
+                'label' => 'online',
                 'required' => false
             ]);
         }

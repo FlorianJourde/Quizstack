@@ -70,9 +70,11 @@ final class QuestionsController extends AbstractController
     #[Route('/question/{id}', name: 'question', requirements: ['id' => '\d+'])]
     public function question(
         int                 $id,
-        QuestionsRepository $questionsRepository
+        QuestionsRepository $questionsRepository,
+        Security $security
     ): Response
     {
+        $isEditor = $security->isGranted('ROLE_EDITOR');
         $question = $questionsRepository->find($id);
 
         if (!$question) {
@@ -83,6 +85,7 @@ final class QuestionsController extends AbstractController
             'question' => $question,
             'mode' => 'display',
             'questionId' => $question->getId(),
+            'isEditor' => $isEditor
         ]);
     }
 

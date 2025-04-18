@@ -12,8 +12,14 @@
         </div>
     </div>
 
+
+
     <div class="wrapper">
+
+
         <div class="form-container glass box bg-dark-grey-secondary">
+
+            {{ include('partials/form/error.html.twig') }}
 
             {{ form_start(form) }}
 
@@ -23,6 +29,8 @@
             {{ include('partials/form/categories.html.twig', _context) }}
             {{ include('partials/form/status.html.twig', _context) }}
             {{ include('partials/form/choices.html.twig', _context) }}
+
+            {{ form_row(form._token) }}
 
             <div class="buttons-container mb-4 gap-4">
                 <a href="{{ path('questions') }}" class="button button-tertiary">Cancel</a>

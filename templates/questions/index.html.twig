@@ -19,65 +19,80 @@
 
     <div class="wrapper wrapper-large">
 
-        <div class="overflow-auto">
-            <table class="table glass">
-                <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Difficulty</th>
-                    <th>Content</th>
-                    <th>Categories</th>
-                    <th>Update date</th>
-                    <th>Status</th>
-                    <th>Author</th>
-                    <th>Actions</th>
-                </tr>
-                </thead>
-                <tbody class="text-center">
-                {% for question in questions %}
+        {% if questions is not empty %}
+            <div class="overflow-auto">
+                <table class="table glass">
+                    <thead>
                     <tr>
-                        <td>{{ question.id }}</td>
-                        <td>{{ question.difficulty }}</td>
-                        <td class="text-left">{{ question.content|slice(0, 60) ~ (question.content|length > 60 ? '...' : '') }}</td>
-                        <td>
-                            <ul class="tags-container justify-center">
-                                {% for category in question.categories %}
-                                    <li>
-                                        <span class="tag tag-small">{{ category.name }}</span>
-                                    </li>
-                                {% endfor %}
-                            </ul>
-                        </td>
-                        <td>{{ question.updateDate|date('d/m/y') }}</td>
-                        <td>
+                        <th>ID</th>
+                        <th>Difficulty</th>
+                        <th>Content</th>
+                        <th>Categories</th>
+                        <th>Update date</th>
+                        <th>Status</th>
+                        <th>Author</th>
+                        <th>Actions</th>
+                    </tr>
+                    </thead>
+                    <tbody class="text-center">
+                    {% for question in questions %}
+                        <tr>
+                            <td>{{ question.id }}</td>
+                            <td>{{ question.difficulty }}</td>
+                            <td class="text-left">{{ question.content|slice(0, 60) ~ (question.content|length > 60 ? '...' : '') }}</td>
+                            <td>
+                                <ul class="tags-container justify-center">
+                                    {% for category in question.categories %}
+                                        <li>
+                                            <span class="tag tag-small">{{ category.name }}</span>
+                                        </li>
+                                    {% endfor %}
+                                </ul>
+                            </td>
+                            <td>{{ question.updateDate|date('d/m/y') }}</td>
+                            <td>
                             <span class="text-xs rounded-sm px-2 py-1 {{ question.status ? 'bg-green-secondary/50' : 'bg-red-secondary/50' }}">
                                 {{ question.status ? 'online' : 'offline' }}
                             </span>
-                        </td>
-                        <td>{{ question.user.username }}</td>
-                        <td>
-                            <div class="buttons-container">
-                                <a href="{{ path('question', {'id': question.id}) }}" class="button button-action">
-                                    <span class="material-icons">visibility</span>
-                                </a>
-                                <a href="{{ path('question_edit', {'id': question.id}) }}" class="button button-action">
-                                    <span class="material-icons">edit</span>
-                                </a>
-                            </div>
-                        </td>
-                    </tr>
-                {% endfor %}
-                </tbody>
-            </table>
+                            </td>
+                            <td>{{ question.user.username }}</td>
+                            <td>
+                                <div class="buttons-container">
+                                    <a href="{{ path('question', {'id': question.id}) }}" class="button button-action">
+                                        <span class="material-icons">visibility</span>
+                                    </a>
+                                    <a href="{{ path('question_edit', {'id': question.id}) }}"
+                                       class="button button-action">
+                                        <span class="material-icons">edit</span>
+                                    </a>
+                                </div>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
 
-{#            <div class="navigation d-flex justify-content-center">#}
-{#                {{ knp_pagination_render(questions) }}#}
-{#            </div>#}
+                {#            <div class="navigation d-flex justify-content-center"> #}
+                {#                {{ knp_pagination_render(questions) }} #}
+                {#            </div> #}
 
-        </div>
+            </div>
 
-        {{ include('partials/pagination.html.twig', {'page': 'questions', 'pagination': questions}) }}
+            {{ include('partials/pagination.html.twig', {'page': 'questions', 'pagination': questions}) }}
 
+        {% else %}
+
+            <div class="glass box flex flex-col gap-spacing-primary">
+                <p>There's no questions in this section.</p>
+                <p>Please propose a new one !</p>
+                <div class="buttons-container gap-spacing-primary">
+                    <a href="{{ path('question_new') }}" class="button button-primary">
+                        Add
+                    </a>
+                </div>
+            </div>
+
+        {% endif %}
     </div>
 
 {% endblock %}

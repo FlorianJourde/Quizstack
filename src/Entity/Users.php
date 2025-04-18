@@ -66,6 +66,7 @@ class Users implements UserInterface, PasswordAuthenticatedUserInterface
         $this->scores->setWeek(0);
         $this->scores->setMonth(0);
         $this->scores->setAllTime(0);
+        $this->scores->setUsers($this);
     }
 
     public function getId(): ?int
