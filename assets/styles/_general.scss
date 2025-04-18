@@ -2,16 +2,15 @@
   --radius-primary: 10px;
   --radius-secondary: 6px;
   --spacing-primary: 2rem;
-  --spacing-secondary: 1.2rem;
+  --spacing-secondary: 1rem;
   --ff-primary: 'Manrope', sans-serif;
   --ff-secondary: "Spline Sans Mono", monospace;
 }
 
-
 @media (max-width: 640px) {
   :root {
     --spacing-primary: 1.5rem;
-    --spacing-secondary: 1rem;
+    --spacing-secondary: 0.8rem;
   }
 }
 
@@ -31,7 +30,8 @@ html body {
     border-radius: var(--radius-secondary);
     border-color: rgba(255, 255, 255, 0.1);
     border-style: solid;
-    padding: 16px;
+    //padding: 16px;
+    padding: var(--spacing-secondary);
     display: flex;
 
     &[type="checkbox"], &[type="radio"] {
@@ -81,11 +81,38 @@ header {
   .header-container {
     padding-top: var(--spacing-primary);
     padding-bottom: var(--spacing-primary);
+    position: relative;
 
     .header-bottom-container {
       height: 0;
-      overflow: hidden;
-      transition: height .4s;
+      //overflow: hidden;
+      //transition: height .4s;
+      position: absolute;
+      right: 0;
+      bottom: 0;
+      transform: translateY(100%);
+      max-width: 100%;
+      width: 20rem;
+      //opacity: 0;
+      //transition: .4s;
+      //pointer-events: none;
+
+      ul {
+        transform: translateY(-5px);
+        opacity: 0;
+        pointer-events: none;
+        transition: .4s;
+      }
+
+      &.visible {
+        //overflow: visible;
+        ul {
+          opacity: 1;
+          transform: translateY(0);
+          pointer-events: unset;
+        }
+      }
+
     }
   }
 }

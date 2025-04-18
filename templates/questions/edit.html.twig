@@ -1,6 +1,6 @@
-{% extends 'base.html.twig' %}
+{% extends 'layout.html.twig' %}
 
-{% block title %}New question{% endblock %}
+{% set title = 'Edit question' %}
 
 {% block body %}
 
@@ -28,7 +28,7 @@
             {{ include('partials/form/choices.html.twig', _context) }}
             {{ include('partials/form/status.html.twig', _context) }}
 
-            <div class="buttons-container gap-4">
+            <div class="buttons-container">
                 <a href="{{ path('questions') }}" class="button button-tertiary">Cancel</a>
                 {{ form_row(form.delete) }}
                 <button class="button button-primary" type="submit">Update</button>

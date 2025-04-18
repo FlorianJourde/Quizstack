@@ -10,7 +10,7 @@ function QuestionNotFound() {
             </div>
             <div className="glass box flex flex-col gap-spacing-primary">
                 No question found, try later or with different filters...
-                <div className="buttons-container gap-spacing-primary">
+                <div className="buttons-container">
                     <a href={ROUTES.FILTERS} className="button button-primary">
                         Filters
                     </a>

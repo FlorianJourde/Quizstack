@@ -49,8 +49,9 @@
                 {% for category in categories %}
                     <li class="choice-option glass font-bold {{ category.color }}">
 
-                        <div class="color-layer absolute top-0 left-0  w-full h-full z-10"
-                             style="mask-image: url({{ asset('images/categories/pattern.png') }});"></div>
+{#                        <div class="color-layer absolute top-0 left-0  w-full h-full z-10"#}
+{#                             style="mask-image: url({{ asset('images/categories/pattern.png') }});"></div>#}
+
                         <fieldset class="checkbox-group z-20">
                             <label for="category-{{ category.name }}">
                                 <input type="checkbox"
@@ -59,10 +60,12 @@
                                        name="category[]"
                                        class="checkbox-input"/>
                                 <span class="checkbox-tile box">
-                            <span class="checkbox-label text-center">
-                                {{ category.name }}
-                            </span>
-                        </span>
+                                    <span class="checkbox-label text-center">
+                                        {{ category.name }}
+                                    </span>
+                                </span>
+                                <div class="color-layer absolute top-0 left-0  w-full h-full z-10"
+                                     style="mask-image: url({{ asset('images/categories/pattern.png') }});"></div>
                             </label>
                         </fieldset>
                     </li>
@@ -95,7 +98,7 @@
                     </ul>
                 </div>
 
-                <div class="buttons-container grow gap-4">
+                <div class="buttons-container grow">
                     <a href="{{ path('quiz') }}" class="button button-tertiary">Play without filters</a>
                     <button class="button button-primary" type="submit">Play</button>
                 </div>

@@ -1,6 +1,6 @@
-{% extends 'base.html.twig' %}
+{% extends 'layout.html.twig' %}
 
-{% block title %}Edit categories{% endblock %}
+{% set title = 'Edit categories' %}
 
 {% block body %}
 
@@ -9,6 +9,14 @@
     <div class="wrapper">
         <div class="page-header-container">
             <h1 class="big-title grow">Edit categories</h1>
+            <div class="buttons-container">
+                <a class="button button-action" href="{{ path('categories') }}">
+                    <span class="material-icons">arrow_back</span>
+                </a>
+                {#                <a class="button button-action" href="{{ path('user_edit', {'id': user.id}) }}">#}
+                {#                    <span class="material-icons">edit</span>#}
+                {#                </a>#}
+            </div>
         </div>
     </div>
 
@@ -26,12 +34,12 @@
                 <h2 class="small-title">{{ addForm.color.vars.label }}</h2>
                 {{ form_widget(addForm.color) }}
             </div>
-            <div class="buttons-container mb-4 gap-4">
+{#            <div class="buttons-container mb-4 gap-4">#}
                 {#                <button type="submit" class="button button-primary">Add</button> #}
-            </div>
+{#            </div>#}
 
 
-            <div class="buttons-container gap-4">
+            <div class="buttons-container">
                 <a href="{{ path('categories') }}" class="button button-tertiary">Cancel</a>
                 {#                <button type="submit" class="button button-primary">Save</button> #}
                 {#                {{ form_widget(editForm.save) }} #}
@@ -140,7 +148,7 @@
             {#            </div> #}
 
 
-            <div class="buttons-container gap-4">
+            <div class="buttons-container">
                 <a href="{{ path('categories') }}" class="button button-tertiary">Cancel</a>
                 {#                <button type="submit" class="button button-primary">Save</button> #}
                 {{ form_widget(editForm.save) }}

@@ -11,7 +11,7 @@ function LimitReached() {
             <div className="glass box flex flex-col gap-spacing-primary">
                 <p>You've reached the question limit without authentication for today !</p>
                 <p>Please login or register.</p>
-                <div className="buttons-container gap-spacing-primary">
+                <div className="buttons-container">
                     <a href={ROUTES.LOGIN} className="button button-secondary">
                         Login
                     </a>

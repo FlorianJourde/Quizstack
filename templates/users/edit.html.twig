@@ -1,6 +1,6 @@
-{% extends 'base.html.twig' %}
+{% extends 'layout.html.twig' %}
 
-{% block title %}User edit {{ parent() }}{% endblock %}
+{% set title = 'Edit user' %}
 
 {% block body %}
 
@@ -55,7 +55,7 @@
                 {{ form_errors(form.roles) }}
             </div>
 
-            <div class="buttons-container gap-4">
+            <div class="buttons-container">
                 <a href="{{ path('user', {'id': user.id}) }}" class="button button-tertiary">Cancel</a>
                 {{ form_row(form.delete) }}
                 {{ form_row(form.save) }}

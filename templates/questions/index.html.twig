@@ -1,6 +1,6 @@
-{% extends 'base.html.twig' %}
+{% extends 'layout.html.twig' %}
 
-{% block title %}Questions{% endblock %}
+{% set title = 'Questions' %}
 
 {% block body %}
 
@@ -94,7 +94,7 @@
             <div class="glass box flex flex-col gap-spacing-primary">
                 <p>There's no questions in this section.</p>
                 <p>Please propose a new one !</p>
-                <div class="buttons-container gap-spacing-primary">
+                <div class="buttons-container">
                     <a href="{{ path('question_new') }}" class="button button-primary">
                         Add
                     </a>

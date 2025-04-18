@@ -1,6 +1,6 @@
-{% extends 'base.html.twig' %}
+{% extends 'layout.html.twig' %}
 
-{% block title %}New question{% endblock %}
+{% set title = 'Add question' %}
 
 {% block body %}
 
@@ -37,7 +37,7 @@
 
             {{ form_row(form._token) }}
 
-            <div class="buttons-container mb-4 gap-4">
+            <div class="buttons-container mb-4">
                 <a href="{{ path('questions') }}" class="button button-tertiary">Cancel</a>
                 <button type="submit" class="button button-primary">Add</button>
             </div>

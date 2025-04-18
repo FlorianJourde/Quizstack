@@ -1,6 +1,6 @@
-{% extends 'base.html.twig' %}
+{% extends 'layout.html.twig' %}
 
-{% block title %}Profile{% endblock %}
+{% set title = 'Edit profile' %}
 
 {% block body %}
 
@@ -33,7 +33,7 @@
                 {{ form_widget(form.username) }}
                 {{ form_errors(form.username) }}
             </div>
-            <div class="buttons-container gap-4">
+            <div class="buttons-container">
                 <a href="{{ path('profile') }}" class="button button-tertiary">Cancel</a>
                 <button type="submit" class="button button-primary">Save</button>
             </div>
@@ -55,7 +55,7 @@
                 {{ form_widget(passwordForm.plainPassword.second) }}
                 {{ form_errors(passwordForm.plainPassword.second) }}
             </div>
-            <div class="buttons-container gap-4">
+            <div class="buttons-container">
                 <a href="{{ path('profile') }}" class="button button-tertiary">Cancel</a>
                 <button type="submit" class="button button-primary">Save</button>
             </div>

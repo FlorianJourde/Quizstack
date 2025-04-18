@@ -6,10 +6,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
     menuButton?.addEventListener('click', () => {
         if (!isMenuOpen) {
-            const height = headerBottomContainer.scrollHeight;
-            headerBottomContainer.style.height = `${height}px`;
+            // const height = headerBottomContainer.scrollHeight;
+            // headerBottomContainer.style.height = `${height}px`;
+            headerBottomContainer.classList.add('visible');
+            // headerBottomContainer.style.overflow = 'visible';
         } else {
-            headerBottomContainer.style.height = '0';
+            // headerBottomContainer.style.height = '0';
+            headerBottomContainer.classList.remove('visible');
+            // headerBottomContainer.style.overflow = 'hidden';
         }
         isMenuOpen = !isMenuOpen;
     });

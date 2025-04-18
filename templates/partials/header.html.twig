@@ -7,7 +7,7 @@
                     <img src="{{ asset('images/logos/quizstack-logo.png') }}" alt="Quizstack logo" class="h-10">
                     Quizstack
                 </a>
-                <div class="buttons-container flex-col gap-2">
+                <div class="buttons-container gap-2">
                     <button id="button-menu" class="button button-action">
                         <span class="material-icons">menu</span>
                     </button>
@@ -15,12 +15,14 @@
             </div>
 
             <nav class="header-bottom-container">
-                <ul class="dark-glass grid sm:grid-cols-2 box rounded-radius-primary gap-spacing-secondary mt-spacing-primary">
+                {#                <ul class="dark-glass grid sm:grid-cols-2 box rounded-radius-primary gap-spacing-secondary mt-spacing-primary"> #}
+                <ul class="glass bg-dark-grey-secondary flex flex-col box rounded-radius-primary gap-spacing-primary">
 
-{#                    {{ include(partials }}#}
+                    {#                    {{ include(partials }} #}
+
                     {{ include('partials/links.html.twig') }}
 
-                    <div class="buttons-container sm:col-span-2 gap-spacing-primary justify-center">
+                    <div class="buttons-container">
                         {% if is_granted('ROLE_USER') %}
                             <li>
                                 <a href="{{ path('app_logout') }}" class="button button-primary button-red">Logout</a>
