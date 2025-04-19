@@ -6,6 +6,8 @@ import './styles/app.css';
 import './scripts/filters'
 import './scripts/question-form'
 import './scripts/menu'
+import {motion, AnimatePresence} from "motion/react";
+// import {animations} from "./motion/animations";
 
 document.addEventListener('DOMContentLoaded', () => {
     const questionContainer = document.getElementById('quiz-container');
@@ -17,7 +19,15 @@ document.addEventListener('DOMContentLoaded', () => {
         const root = createRoot(questionContainer);
         root.render(
             <AuthProvider>
-                <Question mode={mode} questionId={questionId} showComments={showComments}/>
+                {/*<AnimatePresence mode="wait">*/}
+                {/*    <motion.div*/}
+                {/*        key="main-content"*/}
+                {/*        initial="hidden" animate="visible" exit="hidden"*/}
+                {/*        variants={animations}*/}
+                {/*    >*/}
+                        <Question mode={mode} questionId={questionId} showComments={showComments}/>
+                {/*    </motion.div>*/}
+                {/*</AnimatePresence>*/}
             </AuthProvider>
         );
     }

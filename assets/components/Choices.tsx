@@ -1,6 +1,8 @@
 import React from 'react';
 import {MarkdownRenderer} from "./MarkdownRenderer";
 import useRaysAnimation from "../hook/RaysAnimation";
+import {container, item} from "../motion/animations";
+import {motion, AnimatePresence} from "motion/react";
 
 function Choices({mode, question, answers, setAnswers}) {
 
@@ -12,8 +14,7 @@ function Choices({mode, question, answers, setAnswers}) {
         setAnswers(prevSelected => {
             if (question.numberOfCorrectChoices === 1) {
                 return [answerId];
-            }
-            else {
+            } else {
                 if (prevSelected.includes(answerId)) {
                     return prevSelected.filter(id => id !== answerId);
                 } else {
@@ -37,9 +38,15 @@ function Choices({mode, question, answers, setAnswers}) {
     }
 
     return (
-        <ul className="choices-container flex flex-col gap-8">
+        <motion.ul
+            variants={container}
+            initial="hidden"
+            animate="visible"
+            className="choices-container flex flex-col gap-8">
             {question.choices.map((choice, index) => (
-                <li key={`choice-${choice.id}`} className={`choice-option glass`}>
+                <motion.li
+                    variants={item}
+                    key={`choice-${choice.id}`} className={`choice-option glass`}>
                     <fieldset className={`checkbox-group`}>
                         <label>
                             <input
@@ -60,9 +67,9 @@ function Choices({mode, question, answers, setAnswers}) {
                             </span>
                         </label>
                     </fieldset>
-                </li>
+                </motion.li>
             ))}
-        </ul>
+        </motion.ul>
     );
 }
 
