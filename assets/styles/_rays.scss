@@ -141,25 +141,7 @@
     inset: 0;
     background-image: var(--stripes), var(--rainbow);
     background-size: 200%, 100%;
-    animation: smoothBg 60s linear infinite;
+    //animation: smoothBg 60s linear infinite;
     //mix-blend-mode: lighten;
   }
-}
-
-@keyframes animSwitch {
-  50% {
-    transform: scale(1.2);
-    font-weight: 900;
-  }
-}
-
-.icon {
-  width: 1lh;
-  height: 1lh;
-  aspect-ratio: 1/1;
-  padding: 0.25em 0.35rem;
-  border-radius: calc(1px / 0);
-  border: 1px dashed;
-  --blink-opacity: 1;
-  animation: blink-animation 2s ease-in-out infinite running;
 }

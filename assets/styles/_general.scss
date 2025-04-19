@@ -132,7 +132,7 @@ div[style*="background: rgb(39, 40, 34);"] {
 
 .wrapper {
   width: 100%;
-  max-width: 1000px;
+  max-width: 900px;
   margin-left: auto;
   margin-right: auto;
   position: relative;
@@ -297,6 +297,15 @@ div[style*="background: rgb(39, 40, 34);"] {
   padding-top: 3rem;
   padding-bottom: 6rem;
   gap: 4rem;
+}
+
+.wrapper {
+  > .page-separator-container {
+    //padding-top: 50px;
+    //padding-bottom: 50px;
+    margin-top: var(--spacing-primary);
+    margin-bottom: var(--spacing-primary);
+  }
 }
 
 .page-separator-container {

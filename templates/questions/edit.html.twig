@@ -8,12 +8,24 @@
 
     <div class="wrapper">
         <div class="page-header-container">
-            <h1 class="big-title grow">Edit question</h1>
+            <h1 class="big-title grow">Edit question {{ question.id }}</h1>
             <div class="buttons-container">
                 <a class="button button-action" href="{{ path('questions') }}">
                     <span class="material-icons">arrow_back</span>
                 </a>
             </div>
+        </div>
+    </div>
+
+    <div class="wrapper">
+        <div id="quiz-container" data-mode="{{ mode }}" data-question-id="{{ questionId }}"
+             data-show-comments="{{ showComments }}"></div>
+    </div>
+
+
+    <div class="wrapper">
+        <div class="page-separator-container">
+            <h2 class="title">Dashboard</h2>
         </div>
     </div>
 
@@ -45,15 +57,11 @@
         </div>
     </div>
 
-    <div class="wrapper">
-        <div class="page-separator-container">
-            <h2 class="title">Preview</h2>
-        </div>
-    </div>
+{#    <div class="wrapper">#}
+{#        <div class="page-separator-container">#}
+{#            <h2 class="title">Preview</h2>#}
+{#        </div>#}
+{#    </div>#}
 
-    <div class="wrapper">
-        <div id="quiz-container" data-mode="{{ mode }}" data-question-id="{{ questionId }}"
-             data-show-comments="{{ showComments }}"></div>
-    </div>
 
 {% endblock %}
