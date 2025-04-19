@@ -37,13 +37,13 @@ class Questions
      * @var Collection<int, Choices>
      */
     #[Count(max: 6, maxMessage: "You cannot specify more than {{ limit }} choices")]
-    #[ORM\OneToMany(targetEntity: Choices::class, mappedBy: 'question', cascade: ['persist'], orphanRemoval: true)]
+    #[ORM\OneToMany(targetEntity: Choices::class, mappedBy: 'question', cascade: ['persist', 'remove'], orphanRemoval: true)]
     private Collection $choices;
 
     /**
      * @var Collection<int, Comments>
      */
-    #[ORM\OneToMany(targetEntity: Comments::class, mappedBy: 'question')]
+    #[ORM\OneToMany(targetEntity: Comments::class, mappedBy: 'question', cascade: ['persist', 'remove'])]
     private Collection $comments;
 
     #[ORM\Column]

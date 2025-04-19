@@ -1,0 +1,20 @@
+<div>
+    <h2 class="small-title">{{ form.image.vars.label }}</h2>
+    {{ form_widget(form.image) }}
+    {% if form.deleteImage is defined %}
+        <p class="mt-2">{{ question.image }}</p>
+        {#    <div> #}
+        {#    {{ form_widget(form.deleteImage) }} #}
+        <ul class="tags-container mt-2">
+            {#        {% for level in form.difficulty %} #}
+            <li class="flex">
+                <span class="tag">
+                    {{ form_widget(form.deleteImage) }}
+                    {{ form_label(form.deleteImage) }}
+                </span>
+            </li>
+            {#        {% endfor %} #}
+        </ul>
+        {#    </div> #}
+    {% endif %}
+</div>

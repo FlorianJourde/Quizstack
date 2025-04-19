@@ -21,7 +21,7 @@ class Comments
 
 //    #[ORM\Column]
     #[ORM\ManyToOne(inversedBy: 'comments')]
-    #[ORM\JoinColumn(nullable: false)]
+    #[ORM\JoinColumn(nullable: false, onDelete: 'CASCADE')]
     private ?Questions $question = null;
 
     #[ORM\Column(type: Types::TEXT)]

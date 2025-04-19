@@ -5,15 +5,16 @@ import {LimitReachedInterface} from "./limitReached";
 
 export interface QuestionInterface {
     id: number;
-    content: string;
-    difficulty: number;
-    explanation: string;
     categories: CategoriesInterface[];
     choices: ChoicesInterface[];
     comments: CommentInterface[];
-    numberOfCorrectChoices: number;
+    content: string;
     correctChoices?: number[];
+    difficulty: number;
+    explanation: string;
     isMatch?: boolean;
+    image?: string;
+    numberOfCorrectChoices: number;
 }
 
 export type QuestionOrLimitReached = QuestionInterface | LimitReachedInterface;

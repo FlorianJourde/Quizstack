@@ -15,7 +15,7 @@ class Choices
     private ?int $id = null;
 
     #[ORM\ManyToOne(targetEntity: Questions::class, inversedBy: 'choices')]
-    #[ORM\JoinColumn(nullable: false)]
+    #[ORM\JoinColumn(nullable: false, onDelete: 'CASCADE')]
     private ?Questions $question = null;
 
     #[ORM\Column(type: Types::TEXT)]

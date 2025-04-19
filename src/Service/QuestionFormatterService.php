@@ -66,6 +66,7 @@ class QuestionFormatterService
             'content' => $question->getContent(),
             'difficulty' => $question->getDifficulty(),
             'explanation' => $this->questionsRepository->findExplanationByQuestionId($question->getId()),
+            'image' => $question->getImage(),
             'numberOfCorrectChoices' => $numberOfCorrectChoices
         ];
     }

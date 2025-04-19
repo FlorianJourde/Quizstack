@@ -32,9 +32,12 @@
     <div class="wrapper">
         <div class="form-container glass box bg-dark-grey-secondary">
 
+            {{ include('partials/form/error.html.twig') }}
+
             {{ form_start(form) }}
             {{ include('partials/form/content.html.twig', _context) }}
             {{ include('partials/form/explanation.html.twig', _context) }}
+            {{ include('partials/form/image.html.twig', _context) }}
             {{ include('partials/form/difficulty.html.twig', _context) }}
             {{ include('partials/form/categories.html.twig', _context) }}
             {{ include('partials/form/choices.html.twig', _context) }}

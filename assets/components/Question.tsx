@@ -14,6 +14,7 @@ import QuestionNotFound from "./QuestionNotFound";
 import {motion, AnimatePresence} from "motion/react"
 import {transform} from "motion";
 import {item} from "../motion/animations";
+import Image from "./Image";
 
 function Question({mode, questionId, showComments}: { mode: string, questionId: number, showComments: boolean }) {
     const [loading, setLoading] = useState<boolean>(true);
@@ -23,7 +24,7 @@ function Question({mode, questionId, showComments}: { mode: string, questionId: 
     const [visible, setVisible] = useState(true);
 
     useEffect(() => {
-        console.log(question?.id)
+        console.log(question)
     }, [question]);
 
     useEffect(() => {
@@ -157,6 +158,8 @@ function Question({mode, questionId, showComments}: { mode: string, questionId: 
                                 {question.numberOfCorrectChoices > 1 &&
                                     <p className={'opacity-50 text-xs mt-4'}>Multiple choices possible.</p>
                                 }
+
+                                {question.image && <Image image={question.image}/>}
 
                                 {question.correctChoices && <Explanation question={question}/>}
 

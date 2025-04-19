@@ -6,20 +6,25 @@ use App\Entity\Questions;
 use App\Entity\Users;
 use App\Form\QuestionsFormType;
 use App\Repository\QuestionsRepository;
+use App\Service\FileUploaderService;
 use DateTimeImmutable;
 use Doctrine\ORM\EntityManagerInterface;
 
 //use Knp\Component\Pager\Pagination\PaginationInterface;
+use Exception;
 use Knp\Component\Pager\Pagination\PaginationInterface;
 
 //use Knp\Component\Pager\PaginatorInterface;
 //use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Bundle\SecurityBundle\Security;
+use Symfony\Component\DependencyInjection\Attribute\Autowire;
+use Symfony\Component\HttpFoundation\File\Exception\FileException;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Component\Security\Http\Attribute\IsGranted;
+use Symfony\Component\String\Slugger\SluggerInterface;
 
 #[IsGranted('ROLE_USER')]
 class QuestionsController extends AbstractController
@@ -88,7 +93,8 @@ class QuestionsController extends AbstractController
         Request                $request,
         Questions              $question,
         EntityManagerInterface $entityManager,
-        Security               $security
+        Security               $security,
+        FileUploaderService    $fileUploader
     ): Response
     {
         $user = $security->getUser();
@@ -113,18 +119,34 @@ class QuestionsController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             if ($form->get('delete')->isClicked()) {
+                if ($question->getImage()) {
+                    $fileUploader->delete($question->getImage());
+                }
                 $entityManager->remove($question);
                 $entityManager->flush();
 
-                $this->addFlash('success', 'Question has been deleted');
+                $this->addFlash('success', 'Question has been deleted.');
                 return $this->redirectToRoute('questions');
+            }
+
+            if ($form->has('deleteImage') && $form->get('deleteImage')->getData() === true) {
+                if ($question->getImage()) {
+                    $fileUploader->delete($question->getImage());
+                    $question->setImage(null);
+                }
+            } else {
+                $image = $form->get('image')->getData();
+
+                if ($image) {
+                    $imageName = $fileUploader->upload($image, $question->getImage());
+                    $question->setImage($imageName);
+                }
             }
 
             $question->setUpdateDate($this->currentDate);
             $entityManager->flush();
 
             $this->addFlash('success', 'Question updated.');
-            return $this->redirectToRoute('questions');
         }
 
         return $this->render('questions/edit.html.twig', [
@@ -141,7 +163,8 @@ class QuestionsController extends AbstractController
     public function new(
         Request                $request,
         Security               $security,
-        EntityManagerInterface $entityManager
+        EntityManagerInterface $entityManager,
+        FileUploaderService    $fileUploader
     ): Response
     {
         $question = new Questions();
@@ -154,6 +177,13 @@ class QuestionsController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $image = $form->get('image')->getData();
+
+            if ($image) {
+                $imageName = $fileUploader->upload($image);
+                $question->setImage($imageName);
+            }
+
             $question->setCreationDate($this->currentDate);
             $question->setUpdateDate($this->currentDate);
             if ($isEditor) {

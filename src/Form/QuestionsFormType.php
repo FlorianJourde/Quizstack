@@ -10,10 +10,12 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Validator\Constraints\File;
 
 class QuestionsFormType extends AbstractType
 {
@@ -36,6 +38,21 @@ class QuestionsFormType extends AbstractType
                 'expanded' => true,
                 'multiple' => false,
                 'label' => 'Difficulty'
+            ])
+            ->add('image', FileType::class, [
+                'label' => 'Image',
+                'mapped' => false,
+                'required' => false,
+                'constraints' => [
+                    new File([
+                        'maxSize' => '1024k',
+                        'mimeTypes' => [
+                            'image/jpeg',
+                            'image/png',
+                        ],
+                        'mimeTypesMessage' => 'Please upload an image.',
+                    ])
+                ],
             ])
             ->add('categories', EntityType::class, [
                 'class' => Categories::class,
@@ -71,6 +88,25 @@ class QuestionsFormType extends AbstractType
 
         $question = $builder->getData();
 
+
+        if ($question && $question->getImage()) {
+            $builder->add('deleteImage', CheckboxType::class, [
+                'label' => 'Delete image',
+                'required' => false,
+                'mapped' => false,
+            ]);
+        }
+
+
+        if ($options['is_editor']) {
+            $builder->add('status', CheckboxType::class, [
+                'label' => 'online',
+                'required' => false
+            ]);
+        }
+
+
+
         if ($question && $question->getId()) {
             $builder->add('delete', SubmitType::class, [
                 'label' => 'Delete',
@@ -78,13 +114,6 @@ class QuestionsFormType extends AbstractType
                     'class' => 'button button-primary button-red',
                     'onclick' => 'return confirm("Are you sure you want to delete this question ?")'
                 ]
-            ]);
-        }
-
-        if ($options['is_editor']) {
-            $builder->add('status', CheckboxType::class, [
-                'label' => 'online',
-                'required' => false
             ]);
         }
     }
