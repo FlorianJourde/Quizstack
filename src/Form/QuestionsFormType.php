@@ -88,7 +88,6 @@ class QuestionsFormType extends AbstractType
 
         $question = $builder->getData();
 
-
         if ($question && $question->getImage()) {
             $builder->add('deleteImage', CheckboxType::class, [
                 'label' => 'Delete image',

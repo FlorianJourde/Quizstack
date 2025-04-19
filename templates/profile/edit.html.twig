@@ -33,6 +33,17 @@
                 {{ form_widget(form.username) }}
                 {{ form_errors(form.username) }}
             </div>
+
+{#            {{ include('partials/form/image.html.twig') }}#}
+            {{ include('partials/form/image.html.twig', {'type': user}) }}
+
+
+            {#            <div>#}
+{#                <h2 class="small-title">{{ form.image.vars.label }}</h2>#}
+{#                {{ form_widget(form.image) }}#}
+{#                {{ form_errors(form.image) }}#}
+{#            </div>#}
+
             <div class="buttons-container">
                 <a href="{{ path('profile') }}" class="button button-tertiary">Cancel</a>
                 <button type="submit" class="button button-primary">Save</button>

@@ -5,10 +5,13 @@ namespace App\Form;
 use App\Entity\User;
 use App\Entity\Users;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Validator\Constraints\File;
 use Symfony\Component\Validator\Constraints\NotBlank;
 use Symfony\Component\Validator\Constraints\Email;
 
@@ -38,10 +41,34 @@ class ProfileFormType extends AbstractType
                 ],
                 'label' => 'Username'
             ])
+            ->add('image', FileType::class, [
+                'label' => 'Image',
+                'mapped' => false,
+                'required' => false,
+                'constraints' => [
+                    new File([
+                        'maxSize' => '1024k',
+                        'mimeTypes' => [
+                            'image/jpeg',
+                            'image/png',
+                        ],
+                        'mimeTypesMessage' => 'Please upload an image.',
+                    ])
+                ],
+            ]);
             // Add other fields you want to be editable
             // Note: You probably don't want to allow password editing here
             // Password editing typically requires confirming the current password
-        ;
+
+        $user = $builder->getData();
+
+        if ($user && $user->getImage()) {
+            $builder->add('deleteImage', CheckboxType::class, [
+                'label' => 'Delete image',
+                'required' => false,
+                'mapped' => false,
+            ]);
+        }
     }
 
     public function configureOptions(OptionsResolver $resolver)

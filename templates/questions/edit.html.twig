@@ -37,7 +37,10 @@
             {{ form_start(form) }}
             {{ include('partials/form/content.html.twig', _context) }}
             {{ include('partials/form/explanation.html.twig', _context) }}
-            {{ include('partials/form/image.html.twig', _context) }}
+
+{#            {{ include('partials/form/image.html.twig', _context) }}#}
+            {{ include('partials/form/image.html.twig', {'type': question}) }}
+
             {{ include('partials/form/difficulty.html.twig', _context) }}
             {{ include('partials/form/categories.html.twig', _context) }}
             {{ include('partials/form/choices.html.twig', _context) }}

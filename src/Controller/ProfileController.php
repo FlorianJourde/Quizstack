@@ -3,10 +3,12 @@
 namespace App\Controller;
 
 use App\Entity\Questions;
+use App\Entity\Users;
 use App\Form\ChangePasswordFormType;
 use App\Form\ProfileFormType;
 use App\Form\QuestionsFormType;
 use App\Repository\QuestionsRepository;
+use App\Service\FileUploaderService;
 use DateTimeImmutable;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -43,9 +45,11 @@ class ProfileController extends AbstractController
         Security                    $security,
         Request                     $request,
         EntityManagerInterface      $entityManager,
-        UserPasswordHasherInterface $passwordHasher
+        UserPasswordHasherInterface $passwordHasher,
+        FileUploaderService         $fileUploader
     ): Response
     {
+        /* @var Users $user */
         $user = $security->getUser();
 
         if (!$user) {
@@ -56,10 +60,24 @@ class ProfileController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            if ($form->has('deleteImage') && $form->get('deleteImage')->getData() === true) {
+                if ($user->getImage()) {
+                    $fileUploader->delete($user->getImage(), 'users');
+                    $user->setImage(null);
+                }
+            } else {
+                $image = $form->get('image')->getData();
+
+                if ($image) {
+//                    $imageName = $fileUploader->upload($image, $user->getImage());
+                    $imageName = $fileUploader->upload($image, 'users', $user->getImage());
+                    $user->setImage($imageName);
+                }
+            }
+
             $entityManager->flush();
 
             $this->addFlash('success', 'Your profile has been updated successfully.');
-
             return $this->redirectToRoute('profile_edit');
         }
 

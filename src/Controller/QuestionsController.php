@@ -120,7 +120,7 @@ class QuestionsController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             if ($form->get('delete')->isClicked()) {
                 if ($question->getImage()) {
-                    $fileUploader->delete($question->getImage());
+                    $fileUploader->delete($question->getImage(), 'questions');
                 }
                 $entityManager->remove($question);
                 $entityManager->flush();
@@ -131,14 +131,14 @@ class QuestionsController extends AbstractController
 
             if ($form->has('deleteImage') && $form->get('deleteImage')->getData() === true) {
                 if ($question->getImage()) {
-                    $fileUploader->delete($question->getImage());
+                    $fileUploader->delete($question->getImage(), 'questions');
                     $question->setImage(null);
                 }
             } else {
                 $image = $form->get('image')->getData();
 
                 if ($image) {
-                    $imageName = $fileUploader->upload($image, $question->getImage());
+                    $imageName = $fileUploader->upload($image, 'questions', $question->getImage());
                     $question->setImage($imageName);
                 }
             }
@@ -180,7 +180,7 @@ class QuestionsController extends AbstractController
             $image = $form->get('image')->getData();
 
             if ($image) {
-                $imageName = $fileUploader->upload($image);
+                $imageName = $fileUploader->upload($image, 'questions');
                 $question->setImage($imageName);
             }
 
