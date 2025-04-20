@@ -73,6 +73,23 @@
                 </span>
                 </div>
             </div>
+
+            <div class="buttons-container mt-8 relative">
+                {% if previousQuestion %}
+                    <a href="{{ path('question', {'id': previousQuestion.id}) }}"
+                       class="button button-action absolute right-0">
+                        <span class="material-icons">arrow_forward</span>
+                    </a>
+                {% endif %}
+
+                {% if nextQuestion %}
+                    <a href="{{ path('question', {'id': nextQuestion.id}) }}"
+                       class="button button-action absolute left-0">
+                        <span class="material-icons">arrow_back</span>
+                    </a>
+                {% endif %}
+            </div>
+
         </div>
     {% endif %}
 

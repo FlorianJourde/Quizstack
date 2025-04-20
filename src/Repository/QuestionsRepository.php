@@ -133,6 +133,28 @@ class QuestionsRepository extends ServiceEntityRepository
         return new Paginator($query);
     }
 
+    public function findNextQuestion(Questions $question)
+    {
+        return $this->createQueryBuilder('q')
+            ->where('q.update_date > :update_date')
+            ->setParameter('update_date', $question->getUpdateDate())
+            ->orderBy('q.update_date', 'ASC')
+            ->setMaxResults(1)
+            ->getQuery()
+            ->getOneOrNullResult();
+    }
+
+    public function findPreviousQuestion(Questions $question)
+    {
+        return $this->createQueryBuilder('q')
+            ->where('q.update_date < :update_date')
+            ->setParameter('update_date', $question->getUpdateDate())
+            ->orderBy('q.update_date', 'DESC')
+            ->setMaxResults(1)
+            ->getQuery()
+            ->getOneOrNullResult();
+    }
+
 
 //    public function getCommentPaginator(Users $user, int $offset): Paginator
 //    {

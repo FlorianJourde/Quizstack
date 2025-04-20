@@ -74,17 +74,23 @@ class QuestionsController extends AbstractController
     ): Response
     {
         $isEditor = $security->isGranted('ROLE_EDITOR');
+        /* @var Questions $question */
         $question = $questionsRepository->find($id);
 
         if (!$question) {
             throw $this->createNotFoundException('No question found !');
         }
 
+        $previousQuestion = $questionsRepository->findPreviousQuestion($question);
+        $nextQuestion = $questionsRepository->findNextQuestion($question);
+
         return $this->render('questions/question.html.twig', [
             'question' => $question,
             'mode' => 'display',
             'questionId' => $question->getId(),
-            'isEditor' => $isEditor
+            'isEditor' => $isEditor,
+            'previousQuestion' => $previousQuestion,
+            'nextQuestion' => $nextQuestion
         ]);
     }
 
