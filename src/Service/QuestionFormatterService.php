@@ -40,6 +40,7 @@ class QuestionFormatterService
                     'id' => $user->getId(),
                     'email' => $user->getEmail(),
                     'username' => $user->getUsername(),
+                    'image' => $user->getImage(),
                 ] : [
                     'username' => 'Anonyme',
                 ],

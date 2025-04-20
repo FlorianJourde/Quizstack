@@ -1,16 +1,17 @@
 :root {
   --radius-primary: 10px;
   --radius-secondary: 6px;
-  --spacing-primary: 2rem;
-  --spacing-secondary: 1rem;
   --ff-primary: 'Manrope', sans-serif;
   --ff-secondary: "Spline Sans Mono", monospace;
+
+  --spacing-primary: 1.5rem;
+  --spacing-secondary: 0.8rem;
 }
 
-@media (max-width: 640px) {
+@media (min-width: 40rem) {
   :root {
-    --spacing-primary: 1.5rem;
-    --spacing-secondary: 0.8rem;
+    --spacing-primary: 2rem;
+    --spacing-secondary: 1rem;
   }
 }
 

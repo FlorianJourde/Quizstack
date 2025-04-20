@@ -23,7 +23,7 @@ class ScoresService
         }
 
         $scores = $user->getScores();
-        $points = $difficulty * 10;
+        $points = $difficulty;
 
         $scores->setWeek($scores->getWeek() + $points);
         $scores->setMonth($scores->getMonth() + $points);

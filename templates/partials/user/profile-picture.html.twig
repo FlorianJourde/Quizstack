@@ -1,0 +1,7 @@
+{% if user.image is not null %}
+    {% set avatar = asset('/uploads/images/users/' ~ user.image) %}
+{% else %}
+    {% set avatar = asset('/images/logos/profile-picture.png') %}
+{% endif %}
+
+<img class="absolute right-spacing-primary top-spacing-primary aspect-square rounded-full w-12 sm:w-28 object-cover border-light-grey-secondary border-2" src="{{ avatar }}" alt="Profile picture">

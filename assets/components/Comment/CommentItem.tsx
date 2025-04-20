@@ -1,8 +1,9 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {MarkdownRenderer} from "../MarkdownRenderer";
 import CommentUpdate from "./CommentUpdate";
 import CommentDelete from "./CommentDelete";
 import {useAuth} from "../../context/AuthContext";
+import ProfilePicture from "../ProfilePicture";
 
 function CommentItem({question, setQuestion, comment, index}) {
     const [isEditing, setIsEditing] = useState(false);
@@ -11,6 +12,10 @@ function CommentItem({question, setQuestion, comment, index}) {
     const {isAuthor, isAdmin} = useAuth();
     // const userIsAuthor = isAuthor(comment.author.id);
     const userCanEdit = isAuthor(comment.author.id) || isAdmin();
+
+    useEffect(() => {
+        console.log(comment.author.image)
+    }, [comment]);
 
     function handleCommentUpdated() {
         setIsEditing(false);
@@ -51,19 +56,25 @@ function CommentItem({question, setQuestion, comment, index}) {
             {index !== 0 && <hr className="h-[2px] bg-white/10 border-0"/>}
             <li className={`py-8 first:pt-0 last:pb-0 flex flex-col gap-spacing-primary`}>
                 <div className="comment-container flex flex-col gap-spacing-secondary">
-                    <div className="comment-header-container flex gap-4 items-center">
-                        <div className="user-infos-container flex gap-8 items-center grow">
-                            <p>{comment.author.username}</p>
-                            <div className="date-container flex gap-4  items-center">
-                                <p className={'flex items-center muted'}><span
-                                    className="material-icons mr-2 md-14">calendar_today</span><span>{formattedDate}</span>
-                                </p>
-                                <p className={'flex items-center muted'}><span
-                                    className="material-icons mr-2 md-14">schedule</span><span>{formattedTime}</span>
-                                </p>
+                    <div className="comment-header-container flex flex-wrap gap-4 items-center">
+                        <div className="user-infos-container flex flex-wrap gap-spacing-secondary items-center grow">
+
+                            <ProfilePicture image={comment.author.image}/>
+
+                            <div className={`flex flex-col gap-2`}>
+                                <p>{comment.author.username}</p>
+                                <div className="date-container flex gap-4  items-center">
+                                    <p className={'flex items-center muted'}><span
+                                        className="material-icons mr-2 md-14">calendar_today</span><span>{formattedDate}</span>
+                                    </p>
+                                    <p className={'flex items-center muted'}><span
+                                        className="material-icons mr-2 md-14">schedule</span><span>{formattedTime}</span>
+                                    </p>
+                                </div>
                             </div>
+
                         </div>
-                        <div className="buttons-container">
+                        <div className="buttons-container grow">
                             {userCanEdit && (
                                 <>
                                     <button className="button button-action" onClick={() => handleStartEditing()}>

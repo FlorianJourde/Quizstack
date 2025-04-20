@@ -63,7 +63,7 @@ function CommentUpdate({question, setQuestion, comment, onCommentUpdated, onCanc
                       rows={3}
                       required/>
                 </div>
-                <div className="form-bottom-container justify-between flex gap-4">
+                <div className="form-bottom-container flex-wrap justify-between flex gap-4">
                     <div className="buttons-container">
                         <button className={`flex items-center opacity-50`} onClick={handleShowInfos}>
                             <img src="/images/logos/markdown-logo.png" alt="Markdown logo"
@@ -71,7 +71,7 @@ function CommentUpdate({question, setQuestion, comment, onCommentUpdated, onCanc
                             Markdown infos
                         </button>
                     </div>
-                    <div className={'buttons-container'}>
+                    <div className={'buttons-container grow'}>
                         <button
                             type="button"
                             className="button btn-tertiary"

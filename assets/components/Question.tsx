@@ -24,7 +24,7 @@ function Question({mode, questionId, showComments}: { mode: string, questionId: 
     const [visible, setVisible] = useState(true);
 
     useEffect(() => {
-        console.log(question)
+        // console.log(question)
     }, [question]);
 
     useEffect(() => {
@@ -156,7 +156,7 @@ function Question({mode, questionId, showComments}: { mode: string, questionId: 
                                 <MarkdownRenderer content={question.content}/>
 
                                 {question.numberOfCorrectChoices > 1 &&
-                                    <p className={'opacity-50 text-xs mt-4'}>Multiple choices possible.</p>
+                                    <p className={'opacity-50 text-sm mt-4'}>Multiple choices possible.</p>
                                 }
 
                                 {question.image && <Image image={question.image}/>}

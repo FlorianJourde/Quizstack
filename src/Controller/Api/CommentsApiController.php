@@ -35,6 +35,8 @@ class CommentsApiController extends AbstractController
         $data = json_decode($request->getContent(), true);
         $questionId = $data['questionId'] ?? null;
         $commentText = $data['content'];
+
+        /* @var Users $user */
         $user = $this->getUser();
         $question = $questionsRepository->find($questionId);
 

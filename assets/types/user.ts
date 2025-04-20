@@ -4,4 +4,5 @@ export interface UserInterface {
     username?: string;
     success: boolean;
     roles: string[];
+    image?: string;
 }

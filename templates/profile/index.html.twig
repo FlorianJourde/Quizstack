@@ -20,6 +20,7 @@
     <div class="wrapper wrapper-small">
         <div class="form-container glass box bg-dark-grey-secondary">
 
+            {{ include('partials/user/profile-picture.html.twig') }}
             {{ include('partials/user/username.html.twig', _context) }}
             {{ include('partials/user/email.html.twig', _context) }}
             {{ include('partials/user/roles.html.twig', _context) }}
