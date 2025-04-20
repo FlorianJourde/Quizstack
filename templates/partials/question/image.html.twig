@@ -1,5 +1,8 @@
 <div>
-    <h2 class="small-title">{{ form.image.vars.label }}</h2>
+    <h2 class="small-title">
+        <span class="material-icons">image</span>
+        {{ form.image.vars.label }}
+    </h2>
     {{ form_widget(form.image) }}
 
 
@@ -7,7 +10,7 @@
     {% if form.deleteImage is defined %}
 
 {#        {% set avatar = asset('/uploads/images/users/' ~ user.image) %}#}
-        <img class="mt-2 aspect-square rounded-full w-28 xl:w-32 object-cover border-white/10 border-2 bg-very-dark-grey-primary" src="{{ asset('/uploads/images/users/' ~ type.image) }}" alt="Profile picture">
+        <img class="mt-2 aspect-square rounded-full w-28 xl:w-32 object-cover border-light-grey-secondary border-2" src="{{ asset('/uploads/images/users/' ~ type.image) }}" alt="Profile picture">
 {#        <p class="mt-2">{{ type.image }}</p>#}
 
         {#    <div> #}

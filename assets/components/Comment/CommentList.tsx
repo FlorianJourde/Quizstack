@@ -67,7 +67,7 @@ function CommentList({question, setQuestion}) {
                 <div className="form-container gap-4 glass box bg-dark-grey-secondary">
 
                     <h2 className="small-title">
-                        <span className="material-icons mr-2">chat_bubble</span>
+                        <span className="material-icons">chat_bubble</span>
                         Join the conversation
                     </h2>
 
@@ -110,7 +110,7 @@ function CommentList({question, setQuestion}) {
                 <div className="glass box flex flex-col gap-spacing-primary">
                     <div>
                         <p className={'small-title'}>
-                            <span className="material-icons mr-2">chat_bubble</span>
+                            <span className="material-icons">chat_bubble</span>
                             Wanna join the conversation ?
                         </p>
                         <p className={'text-very-light-grey-secondary'}>Please login or register !</p>

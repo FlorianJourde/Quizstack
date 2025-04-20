@@ -9,6 +9,14 @@
     <div class="wrapper">
         <div class="page-header-container">
             <h1 class="big-title grow">Edit informations</h1>
+            <div class="buttons-container">
+                <a class="button button-action" href="{{ path('profile') }}">
+                    <span class="material-icons">arrow_back</span>
+                </a>
+                {#                <a class="button button-action" href="{{ path('user_edit', {'id': user.id}) }}"> #}
+                {#                    <span class="material-icons">edit</span> #}
+                {#                </a> #}
+            </div>
         </div>
     </div>
 
@@ -24,25 +32,31 @@
             {{ form_start(form, {'attr': {'class': 'needs-validation'}}) }}
 
             <div>
-                <h2 class="small-title">{{ form.email.vars.label }}</h2>
+                <h2 class="small-title">
+                    <span class="material-icons">alternate_email</span>
+                    {{ form.email.vars.label }}
+                </h2>
                 {{ form_widget(form.email) }}
                 {{ form_errors(form.email) }}
             </div>
             <div>
-                <h2 class="small-title">{{ form.username.vars.label }}</h2>
+                <h2 class="small-title">
+                    <span class="material-icons">person</span>
+                    {{ form.username.vars.label }}
+                </h2>
                 {{ form_widget(form.username) }}
                 {{ form_errors(form.username) }}
             </div>
 
-{#            {{ include('partials/form/image.html.twig') }}#}
-            {{ include('partials/form/image.html.twig', {'type': user}) }}
+            {#            {{ include('partials/question/image.html.twig') }} #}
+            {{ include('partials/question/image.html.twig', {'type': user}) }}
 
 
-            {#            <div>#}
-{#                <h2 class="small-title">{{ form.image.vars.label }}</h2>#}
-{#                {{ form_widget(form.image) }}#}
-{#                {{ form_errors(form.image) }}#}
-{#            </div>#}
+            {#            <div> #}
+            {#                <h2 class="small-title">{{ form.image.vars.label }}</h2> #}
+            {#                {{ form_widget(form.image) }} #}
+            {#                {{ form_errors(form.image) }} #}
+            {#            </div> #}
 
             <div class="buttons-container">
                 <a href="{{ path('profile') }}" class="button button-tertiary">Cancel</a>
@@ -51,18 +65,27 @@
             {{ form_end(form) }}
             {{ form_start(passwordForm) }}
             <div>
-                <h2 class="small-title">{{ passwordForm.currentPassword.vars.label }}</h2>
+                <h2 class="small-title">
+                    <span class="material-icons">key</span>
+                    {{ passwordForm.currentPassword.vars.label }}
+                </h2>
                 {{ form_widget(passwordForm.currentPassword) }}
                 {{ form_errors(passwordForm.currentPassword) }}
                 <p class="text-sm mt-2">Enter your current password to confirm your identity.</p>
             </div>
             <div>
-                <h2 class="small-title">{{ passwordForm.plainPassword.first.vars.label }}</h2>
+                <h2 class="small-title">
+                    <span class="material-icons">key</span>
+                    {{ passwordForm.plainPassword.first.vars.label }}
+                </h2>
                 {{ form_widget(passwordForm.plainPassword.first) }}
                 {{ form_errors(passwordForm.plainPassword.first) }}
             </div>
             <div>
-                <h2 class="small-title">{{ passwordForm.plainPassword.second.vars.label }}</h2>
+                <h2 class="small-title">
+                    <span class="material-icons">replay</span>
+                    {{ passwordForm.plainPassword.second.vars.label }}
+                </h2>
                 {{ form_widget(passwordForm.plainPassword.second) }}
                 {{ form_errors(passwordForm.plainPassword.second) }}
             </div>

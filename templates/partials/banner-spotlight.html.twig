@@ -1,0 +1,23 @@
+<section class='spotlight {{ color|default('') }}'>
+{#    <div class='glow'></div>#}
+    <div class='spots'>
+{#        <div class="spot dark overlay"></div>#}
+{#        <div class="spot dark overlay"></div>#}
+        <div class="spot spot-primary"></div>
+{#        <div class="spot dark overlay"></div>#}
+        <div class="spot spot-primary"></div>
+{#        <div class="spot spot-3-dark"></div>#}
+        <div class="spot spot-primary"></div>
+{#        <div class="spot spot-secondary"></div>#}
+{#        <div class="spot spot-4-dark"></div>#}
+{#        <div class="spot spot-4"></div>#}
+    </div>
+</section>
+
+<div class="particles">
+    {% for i in 1..50 %}
+        <div class="circle-container">
+            <div class="circle"></div>
+        </div>
+    {% endfor %}
+</div>

@@ -32,19 +32,19 @@
     <div class="wrapper">
         <div class="form-container glass box bg-dark-grey-secondary">
 
-            {{ include('partials/form/error.html.twig') }}
+            {{ include('partials/question/error.html.twig') }}
 
             {{ form_start(form) }}
-            {{ include('partials/form/content.html.twig', _context) }}
-            {{ include('partials/form/explanation.html.twig', _context) }}
+            {{ include('partials/question/content.html.twig', _context) }}
+            {{ include('partials/question/explanation.html.twig', _context) }}
 
-{#            {{ include('partials/form/image.html.twig', _context) }}#}
-            {{ include('partials/form/image.html.twig', {'type': question}) }}
+{#            {{ include('partials/question/image.html.twig', _context) }}#}
+            {{ include('partials/question/image.html.twig', {'type': question}) }}
 
-            {{ include('partials/form/difficulty.html.twig', _context) }}
-            {{ include('partials/form/categories.html.twig', _context) }}
-            {{ include('partials/form/choices.html.twig', _context) }}
-            {{ include('partials/form/status.html.twig', _context) }}
+            {{ include('partials/question/difficulty.html.twig', _context) }}
+            {{ include('partials/question/categories.html.twig', _context) }}
+            {{ include('partials/question/choices.html.twig', _context) }}
+            {{ include('partials/question/status.html.twig', _context) }}
 
             <div class="buttons-container">
                 <a href="{{ path('questions') }}" class="button button-tertiary">Cancel</a>

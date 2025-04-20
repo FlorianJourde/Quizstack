@@ -1,5 +1,8 @@
 <div>
-    <h2 class="small-title">{{ form.categories.vars.label }}</h2>
+    <h2 class="small-title">
+        <span class="material-icons">category</span>
+        {{ form.categories.vars.label }}
+    </h2>
     <ul class="tags-container">
         {% for category in form.categories %}
             <li class="flex">

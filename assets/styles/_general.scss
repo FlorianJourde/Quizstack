@@ -203,6 +203,15 @@ div[style*="background: rgb(39, 40, 34);"] {
   font-size: 1.2rem;
   margin-bottom: .6rem;
   font-weight: 600;
+
+  .material-icons {
+    margin-right: 0.5rem;
+  }
+
+  + p {
+    opacity: .75;
+  }
+
 }
 
 .button {

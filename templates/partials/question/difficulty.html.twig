@@ -1,5 +1,8 @@
 <div>
-    <h2 class="small-title">{{ form.difficulty.vars.label }}</h2>
+    <h2 class="small-title">
+        <span class="material-icons">leaderboard</span>
+        {{ form.difficulty.vars.label }}
+    </h2>
     <ul class="tags-container">
         {% for level in form.difficulty %}
             <li class="flex">

@@ -13,9 +13,9 @@
                 <a class="button button-action" href="{{ path('user', {'id': user.id}) }}">
                     <span class="material-icons">arrow_back</span>
                 </a>
-{#                <a class="button button-action" href="{{ path('user_edit', {'id': user.id}) }}">#}
-{#                    <span class="material-icons">edit</span>#}
-{#                </a>#}
+                {#                <a class="button button-action" href="{{ path('user_edit', {'id': user.id}) }}"> #}
+                {#                    <span class="material-icons">edit</span> #}
+                {#                </a> #}
             </div>
         </div>
     </div>
@@ -31,17 +31,26 @@
             {{ form_start(form) }}
 
             <div>
-                <h2 class="small-title">{{ form.email.vars.label }}</h2>
+                <h2 class="small-title">
+                    <span class="material-icons">alternate_email</span>
+                    {{ form.email.vars.label }}
+                </h2>
                 {{ form_widget(form.email) }}
                 {{ form_errors(form.email) }}
             </div>
             <div>
-                <h2 class="small-title">{{ form.email.vars.label }}</h2>
+                <h2 class="small-title">
+                    <span class="material-icons">person</span>
+                    {{ form.username.vars.label }}
+                </h2>
                 {{ form_widget(form.username) }}
                 {{ form_errors(form.username) }}
             </div>
             <div>
-                <h2 class="small-title">{{ form.roles.vars.label }}</h2>
+                <h2 class="small-title">
+                    <span class="material-icons">group</span>
+                    {{ form.roles.vars.label }}
+                </h2>
                 <ul class="tags-container">
                     {% for role in form.roles %}
                         <li class="flex">
@@ -59,15 +68,15 @@
                 <a href="{{ path('user', {'id': user.id}) }}" class="button button-tertiary">Cancel</a>
                 {{ form_row(form.delete) }}
                 {{ form_row(form.save) }}
-{#                <button type="submit" class="button button-primary">Save</button>#}
+                {#                <button type="submit" class="button button-primary">Save</button> #}
             </div>
 
 
-{#            <div class="buttons-container gap-4">#}
-{#                <a href="{{ path('users') }}" class="button button-tertiary">Cancel</a>#}
-{#                {{ form_row(form.delete) }}#}
-{#                <button class="button button-primary" type="submit">Update</button>#}
-{#            </div>#}
+            {#            <div class="buttons-container gap-4"> #}
+            {#                <a href="{{ path('users') }}" class="button button-tertiary">Cancel</a> #}
+            {#                {{ form_row(form.delete) }} #}
+            {#                <button class="button button-primary" type="submit">Update</button> #}
+            {#            </div> #}
 
             {{ form_end(form) }}
 

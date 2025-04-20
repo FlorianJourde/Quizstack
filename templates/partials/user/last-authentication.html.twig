@@ -1,4 +1,7 @@
 <div>
-    <h2 class="small-title">Last authentication</h2>
-    <p>{{ user.lastAuthenticationDate|date('d/m/Y H:i') }}</p>
+    <h2 class="small-title">
+        <span class="material-icons">fingerprint</span>
+        Last authentication
+    </h2>
+    <p>{{ user.lastAuthenticationDate|date('d/m/y') }}</p>
 </div>

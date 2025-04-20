@@ -13,30 +13,40 @@
                 <a class="button button-action" href="{{ path('categories') }}">
                     <span class="material-icons">arrow_back</span>
                 </a>
-                {#                <a class="button button-action" href="{{ path('user_edit', {'id': user.id}) }}">#}
-                {#                    <span class="material-icons">edit</span>#}
-                {#                </a>#}
+                {#                <a class="button button-action" href="{{ path('user_edit', {'id': user.id}) }}"> #}
+                {#                    <span class="material-icons">edit</span> #}
+                {#                </a> #}
             </div>
         </div>
     </div>
 
     <div class="wrapper">
         <div class="form-container glass box bg-dark-grey-secondary">
-            <h2 class="small-title">Add category</h2>
+            <h2 class="small-title">
+
+                Add category
+            </h2>
 
             {{ form_start(addForm) }}
 
             <div>
-                <h2 class="small-title">{{ addForm.name.vars.label }}</h2>
+                <h2 class="small-title">
+                    <span class="material-icons">title</span>
+                    {{ addForm.name.vars.label }}
+                </h2>
                 {{ form_widget(addForm.name) }}
             </div>
             <div>
-                <h2 class="small-title">{{ addForm.color.vars.label }}</h2>
+                <h2 class="small-title">
+                    <span class="material-icons">palette</span>
+
+                    {{ addForm.color.vars.label }}
+                </h2>
                 {{ form_widget(addForm.color) }}
             </div>
-{#            <div class="buttons-container mb-4 gap-4">#}
-                {#                <button type="submit" class="button button-primary">Add</button> #}
-{#            </div>#}
+            {#            <div class="buttons-container mb-4 gap-4"> #}
+            {#                <button type="submit" class="button button-primary">Add</button> #}
+            {#            </div> #}
 
 
             <div class="buttons-container">
