@@ -16,11 +16,13 @@ class ScoresRepository extends ServiceEntityRepository
         parent::__construct($registry, Scores::class);
     }
 
-    public function findScoreWithLimit(int $limit): ?array
+    public function findScoreWithLimit(int $limit, string $excludedUsername): ?array
     {
         return $this->createQueryBuilder('s')
             ->leftJoin('s.users', 'u')
             ->addSelect('u')
+            ->where('u.username != :excludedUsername')
+            ->setParameter('excludedUsername', $excludedUsername)
             ->orderBy('s.week', 'DESC')
             ->setMaxResults($limit)
             ->getQuery()
@@ -41,6 +43,15 @@ class ScoresRepository extends ServiceEntityRepository
         return $this->createQueryBuilder('s')
             ->update()
             ->set('s.month', 0)
+            ->getQuery()
+            ->execute();
+    }
+
+    public function resetAllTimeScores(): int
+    {
+        return $this->createQueryBuilder('s')
+            ->update()
+            ->set('s.all_time', 0)
             ->getQuery()
             ->execute();
     }

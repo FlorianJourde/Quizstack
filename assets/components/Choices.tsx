@@ -1,27 +1,35 @@
-import React from 'react';
+import React, {Dispatch, SetStateAction} from 'react';
 import {MarkdownRenderer} from "./MarkdownRenderer";
 import useRaysAnimation from "../hook/RaysAnimation";
 import {container, item} from "../motion/animations";
 import {motion, AnimatePresence} from "motion/react";
+import {QuestionInterface} from "../types";
 
-function Choices({mode, question, answers, setAnswers}) {
+function Choices({mode, question, answers, setAnswers}: {
+    mode: string;
+    question: QuestionInterface;
+    answers: number[];
+    setAnswers?: Dispatch<SetStateAction<number[]>>;
+}) {
 
     useRaysAnimation(question, mode);
 
     function handleAnswersChange(answerId) {
-        if (question.correctChoices) return false;
+        if (question.correctChoices) return;
+        if (!setAnswers) return;
 
-        setAnswers(prevSelected => {
-            if (question.numberOfCorrectChoices === 1) {
-                return [answerId];
-            } else {
-                if (prevSelected.includes(answerId)) {
-                    return prevSelected.filter(id => id !== answerId);
+            setAnswers(prevSelected => {
+                if (question.numberOfCorrectChoices === 1) {
+                    return [answerId];
                 } else {
-                    return [...prevSelected, answerId];
+                    if (prevSelected.includes(answerId)) {
+                        return prevSelected.filter(id => id !== answerId);
+                    } else {
+                        return [...prevSelected, answerId];
+                    }
                 }
-            }
-        });
+            });
+        // }
     }
 
     function checkAnswerValidity(answerId) {

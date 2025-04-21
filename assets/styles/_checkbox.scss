@@ -96,6 +96,13 @@
 
     .checkbox-label {
       margin-left: 2.8rem;
+
+      pre:only-child {
+        .code-wrapper {
+          margin-top: unset !important;
+          margin-bottom: unset !important;
+        }
+      }
     }
   }
 }

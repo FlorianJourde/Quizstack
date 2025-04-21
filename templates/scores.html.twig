@@ -6,22 +6,46 @@
 
     {{ include('partials/banner.html.twig', {'color': 'gold'}) }}
 
-    <div class="wrapper">
+    <div class="wrapper wrapper-large">
         <div class="page-header-container">
             <h1 class="big-title grow">Hall of Fame</h1>
         </div>
     </div>
 
-    <div class="wrapper">
-        {% for score in scores %}
-            <h2>{{ score.users.username }}</h2>
-            <p>Week : {{ score.week }}</p>
-            <p>Month : {{ score.month }}</p>
-            <p>All Time : {{ score.allTime }}</p>
-            <br/>
-        {% else %}
-            <p>No scores.</p>
-        {% endfor %}
+    <div class="wrapper wrapper-large">
+        <ul class="scores-container w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-spacing-primary">
+            {% for score in scores %}
+
+                {#                <div class="glass box"> #}
+
+                {% if score.users.image is not null %}
+                    {% set avatar = asset('/uploads/images/users/' ~ score.users.image) %}
+                {% else %}
+                    {% set avatar = asset('/images/logos/profile-picture.png') %}
+                {% endif %}
+
+                <li class="user-infos-container glass box flex flex-wrap gap-spacing-secondary items-center grow">
+                    <img class="aspect-square rounded-full w-16 xl:w-20 object-cover border-light-grey-secondary border-2"
+                         alt="Profile picture" src="{{ avatar }}">
+                    <div class="flex flex-col">
+                        <h3 class="small-title">{{ score.users.username }}</h3>
+                        {#                            <div class="date-container flex gap-4  items-center"> #}
+                        <p>{{ score.allTime }}</p>
+                        {#                            </div> #}
+                    </div>
+                </li>
+
+                {#                    <h2>{{ score.users.username }}</h2> #}
+                {#                    <p>Week : {{ score.week }}</p> #}
+                {#                    <p>Month : {{ score.month }}</p> #}
+                {#                    <p>All Time : {{ score.allTime }}</p> #}
+                {#                </div> #}
+
+
+            {% else %}
+                <p>No scores.</p>
+            {% endfor %}
+        </ul>
     </div>
 
 {% endblock %}

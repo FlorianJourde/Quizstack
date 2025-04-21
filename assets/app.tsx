@@ -7,6 +7,7 @@ import './scripts/filters'
 import './scripts/question-form'
 import './scripts/menu'
 import {motion, AnimatePresence} from "motion/react";
+import Demo from "./components/Demo";
 // import {animations} from "./motion/animations";
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -19,16 +20,16 @@ document.addEventListener('DOMContentLoaded', () => {
         const root = createRoot(questionContainer);
         root.render(
             <AuthProvider>
-                {/*<AnimatePresence mode="wait">*/}
-                {/*    <motion.div*/}
-                {/*        key="main-content"*/}
-                {/*        initial="hidden" animate="visible" exit="hidden"*/}
-                {/*        variants={animations}*/}
-                {/*    >*/}
-                        <Question mode={mode} questionId={questionId} showComments={showComments}/>
-                {/*    </motion.div>*/}
-                {/*</AnimatePresence>*/}
+                <Question mode={mode} questionId={questionId} showComments={showComments}/>
             </AuthProvider>
+        );
+    }
+
+    const demoContainer = document.getElementById('demo-container');
+    if (demoContainer) {
+        const root = createRoot(demoContainer);
+        root.render(
+            <Demo mode={'display'}/>
         );
     }
 });

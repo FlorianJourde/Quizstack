@@ -22,13 +22,13 @@
 
 @keyframes glow {
   0% {
-    opacity: 0.75;
+    opacity: 0.5;
   }
   50% {
     opacity: 1;
   }
   100% {
-    opacity: 0.75;
+    opacity: 0.5;
   }
 }
 
@@ -92,6 +92,16 @@
                     #003882 20%
     );
     --glow-light: radial-gradient(ellipse farthest-side at top, #145298 0, transparent 100%)
+  }
+
+  &.purple {
+    --rainbow: repeating-linear-gradient(
+                    100deg,
+                    #661dc0 10%,
+                    #4c07a1 15%,
+                    #3f0082 20%
+    );
+    --glow-light: radial-gradient(ellipse farthest-side at top, #401498 0, transparent 100%)
   }
 
   .glow {

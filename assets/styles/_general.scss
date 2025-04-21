@@ -1,11 +1,12 @@
 :root {
   --radius-primary: 10px;
   --radius-secondary: 6px;
-  --ff-primary: 'Manrope', sans-serif;
-  --ff-secondary: "Spline Sans Mono", monospace;
-
+  --font-primary: 'Manrope', sans-serif;
+  --font-secondary: "Spline Sans Mono", monospace;
   --spacing-primary: 1.5rem;
   --spacing-secondary: 0.8rem;
+  --spacing-large-primary: 8rem;
+  --spacing-large-secondary: 5rem;
 }
 
 @media (min-width: 40rem) {
@@ -21,7 +22,7 @@
 
 html body {
   line-height: initial;
-  font-family: var(--ff-primary);
+  font-family: var(--font-primary);
   overflow-x: hidden;
 
   textarea, input {
@@ -51,7 +52,7 @@ html body {
 }
 
 .code-wrapper, code {
-  font-family: var(--ff-secondary) !important;
+  font-family: var(--font-secondary) !important;
   font-size: .875rem !important;
 }
 
@@ -182,13 +183,13 @@ div[style*="background: rgb(39, 40, 34);"] {
 
 .big-title {
   display: block;
-  font-family: var(--ff-secondary);
+  font-family: var(--font-secondary);
   font-size: 2.5rem;
 }
 
 .title {
   display: block;
-  font-family: var(--ff-secondary);
+  font-family: var(--font-secondary);
   font-size: 1.2rem;
   text-align: center;
   //text-transform: uppercase;
@@ -309,6 +310,56 @@ div[style*="background: rgb(39, 40, 34);"] {
   gap: 4rem;
 }
 
+#demo-container {
+  mask-image: linear-gradient(to bottom, black 0%, black 50%, transparent 100%);
+  max-height: 600px;
+
+  .glass {
+    box-shadow: unset;
+    background-color: rgba(23, 23, 23, 0.90);
+    //background-color: #0f0f0f80;
+    //background-color: theme('colors.bg-dark-grey-secondary');
+
+
+    //border-color: transparent;
+    //background-color: transparent;
+    //position: relative;
+    //z-index: 1;
+    //
+    //&::after {
+    //  position: absolute;
+    //  content: "";
+    //  left: 0;
+    //  top: 0;
+    //  width: 100%;
+    //  height: 100%;
+    //  backdrop-filter: blur(50px);
+    //  z-index: -1;
+    //  background-color: rgba(255, 255, 255, 0.1);
+    //}
+  }
+
+  //display: block;
+  //width: 100%;
+  //display: block;
+
+  //.swiper-container-parent {
+  //  width: 100%;
+  //  display: block; /* Pour s'assurer qu'aucun flex ne perturbe */
+  //}
+
+  //.swiper {
+  //  width: 100%;
+  //  height: 300px; /* ou la hauteur souhaitée */
+  //}
+  //
+  //.swiper-slide {
+  //  display: flex;
+  //  justify-content: center;
+  //  align-items: center;
+  //}
+}
+
 .wrapper {
   > .page-separator-container {
     //padding-top: 50px;
@@ -388,7 +439,8 @@ div[style*="background: rgb(39, 40, 34);"] {
   }
 
   tbody tr:nth-child(even) {
-    background-color: theme('colors.dark-grey-secondary');
+    //background-color: theme('colors.dark-grey-secondary');
+    background-color: #0f0f0f80;
   }
 
   th {

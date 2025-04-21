@@ -9,18 +9,26 @@
 
     {{ include('partials/banner.html.twig', {'color': 'green'}) }}
 
-{#    <div class="wrapper">#}
-{#        <div class="page-header-container">#}
-{#            <h1 class="big-title grow">Home</h1>#}
-{#        </div>#}
-{#    </div>#}
+    {#    <div class="wrapper"> #}
+    {#        <div class="page-header-container"> #}
+    {#            <h1 class="big-title grow">Home</h1> #}
+    {#        </div> #}
+    {#    </div> #}
+
+    <div class="wrapper wrapper-large pt-spacing-large-primary pb-spacing-large-primary">
+        <div class="grid grid-cols-2 gap-spacing-large-secondary">
+            <div>
+
+        <h1 class="text-5xl font-secondary">Master web development through interactive quiz</h1>
+        <p class="text-xl pt-8">Challenge yourself with over 1k+ carefully crafted questions across 12 essential web development topics</p>
+            </div>
+            <div>
+                <div id="demo-container"></div>
+            </div>
+        </div>
+    </div>
 
     <div class="wrapper">
-        {#        <div> #}
-        {#            <p class="font-bold text-6xl text-center">Home</p> #}
-        {#        </div> #}
-
-
         {{ include('partials/filters.html.twig', _context) }}
     </div>
 

@@ -32,14 +32,16 @@ module.exports = {
             spacing: {
                 'spacing-primary': 'var(--spacing-primary)',
                 'spacing-secondary': 'var(--spacing-secondary)',
+                'spacing-large-primary': 'var(--spacing-large-primary)',
+                'spacing-large-secondary': 'var(--spacing-large-secondary)',
             },
             borderRadius: {
                 'radius-primary': 'var(--radius-primary)',
                 'radius-secondary': 'var(--radius-secondary)',
             },
             fontFamily: {
-                'primary': 'var(--ff-primary)',
-                'secondary': 'var(--ff-secondary)',
+                'primary': 'var(--font-primary)',
+                'secondary': 'var(--font-secondary)',
             }
         },
     },
