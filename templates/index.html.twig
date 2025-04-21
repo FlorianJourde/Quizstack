@@ -15,22 +15,79 @@
     {#        </div> #}
     {#    </div> #}
 
-    <div class="wrapper wrapper-large pt-spacing-large-primary pb-spacing-large-primary">
-        <div class="grid grid-cols-2 gap-spacing-large-secondary">
-            <div>
-
-        <h1 class="text-5xl font-secondary">Master web development through interactive quiz</h1>
-        <p class="text-xl pt-8">Challenge yourself with over 1k+ carefully crafted questions across 12 essential web development topics</p>
+    <div class="wrapper wrapper-large pt-spacing-large-secondary pb-spacing-large-secondary">
+        <div class="grid grid-cols-1 xl:grid-cols-2 gap-spacing-large-secondary">
+            {#            <div> #}
+            <h1 class="text-6xl text-center font-secondary col-span-full">Master web development <br> through <span
+                        class="text-green-tertiary">interactive quiz</span></h1>
+            <div class="flex flex-col gap-spacing-primary">
+                <p class="text-xl">Challenge yourself with over 1k+ carefully crafted questions across 12 essential
+                    web development topics.</p>
+                <p class="text-xl">Perfect your skills in HTML, JavaScript, React, and more - all from your mobile
+                    device, anytime, anywhere.</p>
+                <p class="text-xl">Join community of developers improving their knowledge through fun, interactive
+                    quizzes</p>
+                <div class="buttons-container">
+                    <a class="button button-tertiary" href="#filters-section">
+                        Select filters
+                    </a>
+                    <a class="button button-primary" href="{{ path('quiz') }}">
+                        Play
+                    </a>
+                </div>
             </div>
+
             <div>
                 <div id="demo-container"></div>
             </div>
         </div>
     </div>
 
+    <div class="wrapper wrapper-large pt-spacing-primary pb-spacing-primary">
+        <ul class="grid grid-cols-1 xl:grid-cols-3 gap-spacing-large-secondary text-center">
+            <li class="p-spacing-primary bg-[#7DA80D] rounded-radius-primary">
+                <h3 class="text-3xl font-secondary pb-4">
+                    {#                    <span class="material-icons">question_mark</span> #}
+                    1k+ questions
+                </h3>
+                <p class="text-xl opacity-75">Comprehensive quiz library for all skill levels</p>
+            </li>
+            <li class="p-spacing-primary bg-[#699908] rounded-radius-primary">
+                <h3 class="text-3xl font-secondary pb-4">
+                    {#                    <span class="material-icons">question_mark</span> #}
+                    12 thematics
+                </h3>
+                <p class="text-xl opacity-75">From HTML basics to advanced web security</p>
+            </li>
+            <li class="p-spacing-primary bg-[#448807] rounded-radius-primary">
+                <h3 class="text-3xl font-secondary pb-4">
+                    {#                    <span class="material-icons">question_mark</span> #}
+                    100+ users
+                </h3>
+                <p class="text-xl opacity-75">Join developers improving through daily practice</p>
+            </li>
+        </ul>
+    </div>
+
     <div class="wrapper">
         {{ include('partials/filters.html.twig', _context) }}
     </div>
+
+    <div class="wrapper wrapper-large pt-spacing-large-primary pb-spacing-large-primary">
+        <div class="grid grid-cols-1 xl:grid-cols-2 gap-spacing-large-secondary min-h-24 items-center">
+            <img src="{{ asset('images/decoration/comments.png') }}" alt="Comments decoration"
+                 class="w-full object-contain">
+
+            <div class="p-spacing-primary gap-4 {# glass box bg-dark-grey-secondary #}">
+                <h3 class="text-3xl font-secondary pb-4">
+                    {#                    <span class="material-icons">question_mark</span> #}
+                    12 thematics
+                </h3>
+                <p class="text-xl opacity-75">From HTML basics to advanced web security</p>
+            </div>
+        </div>
+    </div>
+
 
 {% endblock %}
 

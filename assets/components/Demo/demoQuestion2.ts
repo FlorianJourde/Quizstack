@@ -1,39 +1,46 @@
-export const demoQuestion2 = {
-    "id": 272,
-    "categories": [
+export const demoQuestion2 =
     {
-        "id": 704,
-        "name": "JavaScript"
+        "id": 273,
+        "categories": [
+            {
+                "id": 721,
+                "name": "CSS"
+            }
+        ],
+        "choices": [
+            {
+                "id": 177,
+                "content": "```css\r\np {\r\n    text-style: bold;\r\n}\r\n```"
+            },
+            {
+                "id": 178,
+                "content": "```css\r\np {\r\n    font-weight: bold;\r\n}\r\n```"
+            },
+            {
+                "id": 179,
+                "content": "```css\r\np {\r\n  font: bold;\r\n}\r\n```"
+            },
+            {
+                "id": 180,
+                "content": "```css\r\np {\r\n  style: bold;\r\n}\r\n```"
+            },
+            {
+                "id": 181,
+                "content": "```css\r\np {\r\n  font-weight: 700;\r\n}\r\n```"
+            }
+        ],
+        "comments": [],
+        "content": "What is the correct CSS syntax for making all paragraph elements bold ?",
+        "difficulty": 1,
+        "explanation": "To make text bold in CSS, you use the `font-weight` property with a value of `bold`.",
+        "numberOfCorrectChoices": 2,
+        "correctChoices": [
+            178,
+            181
+        ]
     }
-],
-    "choices": [
-    {
-        "id": 173,
-        "content": "20, 10"
-    },
-    {
-        "id": 174,
-        "content": "20, 20"
-    },
-    {
-        "id": 175,
-        "content": "10, 10"
-    },
-    {
-        "id": 176,
-        "content": "20, undefined"
-    }
-],
-    "comments": [],
-    "content": "What will be the output of the following JavaScript code?\r\n  ```javascript\r\n  function example() {\r\n    var x = 10;\r\n    if (true) {\r\n      var x = 20;\r\n      console.log(x);\r\n    }\r\n    console.log(x);\r\n  }\r\n  example();",
-    "difficulty": 1,
-    "explanation": "This question tests understanding of JavaScript variable scoping with `var`. Unlike `let` and `const`, variables declared with `var` are function-scoped, not block-scoped.",
-    "numberOfCorrectChoices": 1,
-    "correctChoices": [
-    174
-]
-}
 
 export const demoAnswers2 = [
-    174
+    177,
+    180
 ]

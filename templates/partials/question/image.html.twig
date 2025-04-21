@@ -4,7 +4,15 @@
         {{ form.image.vars.label }}
     </h2>
     {{ form_widget(form.image) }}
+{#    {{ form_errors(form.image) }}#}
 
+    {% if form.image.vars.errors|length > 0 %}
+        <p class="mt-2">
+            {{ form_errors(form.image) }}
+        </p>
+    {% endif %}
+
+    {{ include('partials/question/error.html.twig') }}
 
 
     {% if form.deleteImage is defined %}

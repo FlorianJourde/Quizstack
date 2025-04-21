@@ -7,7 +7,7 @@
 {% endfor %}
 
 {% if form.vars.errors|length > 0 %}
-    <div class="alert alert-danger">
+    <p class="mt-2">
         {{ form_errors(form) }}
-    </div>
+    </p>
 {% endif %}

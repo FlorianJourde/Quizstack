@@ -87,7 +87,9 @@ function CommentItem({question, setQuestion, comment, index}) {
                             )}
                         </div>
                     </div>
-                    <MarkdownRenderer content={comment.content}/>
+                    <div className="comment-body-container">
+                        <MarkdownRenderer content={comment.content}/>
+                    </div>
                 </div>
 
                 {isEditing &&

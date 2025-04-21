@@ -23,11 +23,27 @@
     <div class="wrapper wrapper-small">
         <div class="form-container glass box bg-dark-grey-secondary">
 
-            {% for message in app.flashes('success') %}
-                <div class="alert alert-success">
-                    {{ message }}
-                </div>
-            {% endfor %}
+{#            {{ include('partials/question/error.html.twig') }}#}
+
+{#            {% for label, messages in app.flashes %}#}
+{#                {% for message in messages %}#}
+{#                    <div class="alert alert-{{ label }}">#}
+{#                        {{ message }}#}
+{#                    </div>#}
+{#                {% endfor %}#}
+{#            {% endfor %}#}
+
+{#            {% if form.vars.errors|length > 0 %}#}
+{#                <div class="alert alert-danger">#}
+{#                    {{ form_errors(form) }}#}
+{#                </div>#}
+{#            {% endif %}#}
+
+{#            {% for message in app.flashes('success') %}#}
+{#                <div class="alert alert-success">#}
+{#                    {{ message }}#}
+{#                </div>#}
+{#            {% endfor %}#}
 
             {{ form_start(form, {'attr': {'class': 'needs-validation'}}) }}
 

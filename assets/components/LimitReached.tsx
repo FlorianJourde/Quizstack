@@ -9,8 +9,10 @@ function LimitReached() {
                 <h1 className="big-title grow">Limit reached !</h1>
             </div>
             <div className="glass box flex flex-col gap-spacing-primary">
-                <p>You've reached the question limit without authentication for today !</p>
-                <p>Please login or register.</p>
+                <div>
+                    <h2 className={`small-title`}>You've reached the question limit for today</h2>
+                    <p>Please login or register to continue to play.</p>
+                </div>
                 <div className="buttons-container">
                     <a href={ROUTES.LOGIN} className="button button-secondary">
                         Login

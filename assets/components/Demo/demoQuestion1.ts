@@ -1,39 +1,40 @@
 export const demoQuestion1 =
     {
-        "id": 263,
+        "id": 275,
         "categories": [
             {
-                "id": 703,
-                "name": "PHP"
-            },
-            {
-                "id": 725,
-                "name": "Backend"
+                "id": 701,
+                "name": "HTML"
             }
         ],
         "choices": [
             {
-                "id": 135,
-                "content": "`php bin/console make:controller`"
+                "id": 186,
+                "content": "```html\r\n<input type=\"check\">\r\n```"
             },
             {
-                "id": 136,
-                "content": "`php artisan make:controller`"
+                "id": 187,
+                "content": "```html\r\n<checkbox>\r\n```"
             },
             {
-                "id": 137,
-                "content": "`php console generate:controller`"
+                "id": 188,
+                "content": "```html\r\n<input type=\"checkbox\">\r\n```"
+            },
+            {
+                "id": 189,
+                "content": "```\r\n<check>\r\n```"
             }
         ],
         "comments": [],
-        "content": "In Symfony, which command is used to create a new controller ?",
-        "difficulty": 2,
-        "explanation": "The `make:controller` command in Symfony generates a new controller along with the associated views and routes.",
+        "content": "What is the correct HTML for creating a checkbox ?",
+        "difficulty": 1,
+        "explanation": "To create a checkbox in HTML, you use the `<input>` element with its `type` attribute set to `\"checkbox\"`.",
         "numberOfCorrectChoices": 1,
         "correctChoices": [
-            135
-        ],
-        "isMatch": false
+            188
+        ]
     }
 
-export const demoAnswers1 = [135]
+export const demoAnswers1 = [
+    188
+]

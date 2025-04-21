@@ -1,40 +1,39 @@
-export const demoQuestion3 =
+export const demoQuestion3 = {
+    "id": 272,
+    "categories": [
     {
-        "id": 270,
-        "categories": [
-            {
-                "id": 701,
-                "name": "HTML"
-            }
-        ],
-        "choices": [
-            {
-                "id": 165,
-                "content": "```html\r\n<dropdown>\r\n```"
-            },
-            {
-                "id": 166,
-                "content": "```html\r\n<select>\r\n```"
-            },
-            {
-                "id": 167,
-                "content": "```html\r\n<input type=\"dropdown\">\r\n```"
-            },
-            {
-                "id": 168,
-                "content": "```html\r\n<list>\r\n```"
-            }
-        ],
-        "comments": [],
-        "content": "What is the correct HTML element for creating a dropdown list ?",
-        "difficulty": 1,
-        "explanation": "The `<select>` element is used to create a dropdown list in HTML.",
-        "numberOfCorrectChoices": 1,
-        "correctChoices": [
-            166
-        ]
+        "id": 704,
+        "name": "JavaScript"
     }
+],
+    "choices": [
+    {
+        "id": 173,
+        "content": "20, 10"
+    },
+    {
+        "id": 174,
+        "content": "20, 20"
+    },
+    {
+        "id": 175,
+        "content": "10, 10"
+    },
+    {
+        "id": 176,
+        "content": "20, undefined"
+    }
+],
+    "comments": [],
+    "content": "What will be the output of the following JavaScript code?\r\n  ```javascript\r\n  function example() {\r\n    var x = 10;\r\n    if (true) {\r\n      var x = 20;\r\n      console.log(x);\r\n    }\r\n    console.log(x);\r\n  }\r\n  example();",
+    "difficulty": 1,
+    "explanation": "This question tests understanding of JavaScript variable scoping with `var`. Unlike `let` and `const`, variables declared with `var` are function-scoped, not block-scoped.",
+    "numberOfCorrectChoices": 1,
+    "correctChoices": [
+    174
+]
+}
 
 export const demoAnswers3 = [
-    166
+    174
 ]

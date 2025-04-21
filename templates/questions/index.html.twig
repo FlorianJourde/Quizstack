@@ -17,9 +17,9 @@
         </div>
     </div>
 
-    <div class="wrapper wrapper-large">
 
-        {% if questions is not empty %}
+    {% if questions is not empty %}
+        <div class="wrapper wrapper-large">
             <div class="overflow-auto">
                 <table class="table glass">
                     <thead>
@@ -89,19 +89,23 @@
 
             {{ include('partials/pagination.html.twig', {'page': 'questions', 'pagination': questions}) }}
 
-        {% else %}
+        </div>
+    {% else %}
 
+        <div class="wrapper">
             <div class="glass box flex flex-col gap-spacing-primary">
-                <p>There's no questions in this section.</p>
-                <p>Please propose a new one !</p>
+                <div>
+                    <h2 class="small-title">There's no questions in this section.</h2>
+                    <p>Please propose a new one !</p>
+                </div>
                 <div class="buttons-container">
                     <a href="{{ path('question_new') }}" class="button button-primary">
                         Add
                     </a>
                 </div>
             </div>
+        </div>
 
-        {% endif %}
-    </div>
+    {% endif %}
 
 {% endblock %}

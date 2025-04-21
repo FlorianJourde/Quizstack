@@ -45,6 +45,9 @@ class ProfileFormType extends AbstractType
                 'label' => 'Image',
                 'mapped' => false,
                 'required' => false,
+                'attr' => [
+                    'accept' => 'image/jpeg, image/png'
+                ],
                 'constraints' => [
                     new File([
                         'maxSize' => '1024k',
@@ -52,13 +55,14 @@ class ProfileFormType extends AbstractType
                             'image/jpeg',
                             'image/png',
                         ],
-                        'mimeTypesMessage' => 'Please upload an image.',
+                        'mimeTypesMessage' => 'Please upload a valid image (JPEG or PNG only).',
+                        'maxSizeMessage' => 'The file is too large ({{ size }} {{ suffix }}). Maximum size allowed is {{ limit }} {{ suffix }}.',
                     ])
                 ],
             ]);
-            // Add other fields you want to be editable
-            // Note: You probably don't want to allow password editing here
-            // Password editing typically requires confirming the current password
+        // Add other fields you want to be editable
+        // Note: You probably don't want to allow password editing here
+        // Password editing typically requires confirming the current password
 
         $user = $builder->getData();
 
