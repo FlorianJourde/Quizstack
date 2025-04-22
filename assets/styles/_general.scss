@@ -6,7 +6,7 @@
   --spacing-primary: 1.5rem;
   --spacing-secondary: 0.8rem;
   --spacing-large-primary: 8rem;
-  --spacing-large-secondary: 5rem;
+  --spacing-large-secondary: 4rem;
   --spacing-very-large-primary: 14rem;
   --spacing-very-large-secondary: 10rem;
 }
@@ -547,26 +547,53 @@ div[style*="background: rgb(39, 40, 34);"] {
 //  }
 //}
 
-.accordion-button {
-  cursor: pointer;
-  position: relative;
-}
 
-.accordion-content {
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height 0.4s;
-  //background-color: theme('colors.very-dark-grey');
+.accordion-item {
 
-  p {
-    background-color: theme('colors.very-dark-grey-primary');
-    padding: var(--spacing-secondary);
-    border-radius: var(--radius-secondary);
-    margin-top: var(--spacing-secondary);
+  .accordion-button {
+    cursor: pointer;
+    position: relative;
+    width: 100%;
+    text-align: left;
+
+    &:after, &:before {
+      content: '';
+      height: 2px;
+      width: 16px;
+      right: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      background-color: theme('colors.white-primary');
+      position: absolute;
+      transition: .4s;
+    }
+
+    &:before {
+      transform: translateY(-50%) rotate(90deg);
+    }
+
+    &.open {
+      //max-height: auto;
+      &:before, &:after {
+        //transform: translateY(-50%) rotate(90deg);
+        transform: translateY(-50%) rotate(360deg);
+      }
+    }
   }
 
-  &.open {
-    //max-height: auto;
+  .accordion-expander {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s;
+    //background-color: theme('colors.very-dark-grey');
+
+    .accordion-content {
+      background-color: theme('colors.very-dark-grey-primary');
+      margin-top: var(--spacing-secondary);
+      padding: var(--spacing-secondary);
+      border-radius: var(--radius-secondary);
+    }
+
   }
 }
 
@@ -662,4 +689,19 @@ div[style*="background: rgb(39, 40, 34);"] {
   font-size: .875rem;
   color: theme('colors.very-light-grey-primary');
   font-weight: normal;
+}
+
+.low-light {
+  width: 100%;
+  height: 800px;
+  position: absolute;
+  z-index: -1;
+
+  &.left {
+    background-image: radial-gradient(ellipse farthest-side at 20%, #ffffff0d 0%, transparent 100%);
+  }
+
+  &.right {
+    background-image: radial-gradient(ellipse farthest-side at 80%, #ffffff0d 0%, transparent 100%);
+  }
 }

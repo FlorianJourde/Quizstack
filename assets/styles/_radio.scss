@@ -9,25 +9,26 @@
     .switch-input {
       display: none;
 
+
       &:checked {
         + .switch-label {
-
-        }
-
-        + .switch-label-all {
           background-color: theme('colors.very-dark-grey-primary');
         }
 
+        + .switch-label-all {
+          //background-color: theme('colors.very-dark-grey-primary');
+        }
+
         + .switch-label-easy {
-          background-color: theme('colors.green-secondary');
+          //background-color: theme('colors.green-secondary');
         }
 
         + .switch-label-medium {
-          background-color: theme('colors.orange-secondary');
+          //background-color: theme('colors.orange-secondary');
         }
 
         + .switch-label-hard {
-          background-color: theme('colors.red-secondary');
+          //background-color: theme('colors.red-secondary');
         }
       }
     }

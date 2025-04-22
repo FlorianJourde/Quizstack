@@ -13,7 +13,7 @@
 
 # Todo
 - Pages
-    - Landing page
+    - Landing page : responsive
     - Contact
     - Legals
     - Errors

@@ -1,0 +1,36 @@
+{% extends 'layout.html.twig' %}
+
+{% set title = 'Contact' %}
+
+{% block body %}
+
+    {{ include('partials/banner.html.twig') }}
+    {#    {{ include('partials/banner-spotlight.html.twig', {'color': 'green'}) }} #}
+
+    <div class="wrapper">
+        <div class="page-header-container">
+            <h1 class="big-title grow">Contact</h1>
+        </div>
+    </div>
+
+    {#    <div class="wrapper"> #}
+    {#        <div> #}
+    {#            <p class="font-bold text-6xl text-center">Filters</p> #}
+    {#        </div> #}
+
+    {#        <div class="page-header-container"> #}
+    {#            <h1 class="big-title grow">Filters</h1> #}
+    {#        </div> #}
+
+    {#        {{ include('partials/filters.html.twig', _context) }} #}
+
+    <div class="wrapper wrapper-small">
+        <div class="form-container glass box bg-dark-grey-secondary">
+        </div>
+    </div>
+
+    {#    {{ include('partials/promotional/promotional-1.html.twig', _context) }} #}
+
+
+{% endblock %}
+

@@ -73,116 +73,43 @@
         {{ include('partials/filters.html.twig', _context) }}
     </div>
 
-    <div class="wrapper wrapper-large pt-spacing-very-large-primary pb-spacing-very-large-primary">
-        <div class="flex items-center  ml-32 rounded-radius-primary bg-dark-grey-secondary">
-            <img src="{{ asset('images/decoration/mockup.png') }}" alt="Desktop and mobile friendly"
-                 class="w-[600px] object-contain -ml-32 -mt-32 -mb-28">
+    {{ include('partials/promotional/promotional-1.html.twig', _context) }}
 
-            <div class="p-spacing-primary flex flex-col gap-4 {# glass box bg-dark-grey-secondary #}">
-                <h3 class="text-3xl font-secondary">
-                    {#                    <span class="material-icons">question_mark</span> #}
-                    Play anywhere, anytime
-                </h3>
-                <p class=" text-lg opacity-75">Quizstack's mobile-first design means you can strengthen your development
-                    skills during your commute, lunch break, or whenever inspiration strikes.</p>
-                <p class=" text-lg opacity-75">Our responsive interface adapts perfectly to any screen size, providing a
-                    seamless quiz experience
-                    whether you're on a smartphone, tablet, or desktop.</p>
-            </div>
-        </div>
-    </div>
-
-    <div class="wrapper wrapper-large pb-spacing-very-large-secondary">
-        <div class="flex items-center gap-spacing-large-primary">
-            <div class="flex flex-col gap-4 {# glass box bg-dark-grey-secondary #}">
-                <h3 class="text-3xl font-secondary">
-                    {#                    <span class="material-icons">question_mark</span> #}
-                    Join our community
-                </h3>
-                <p class=" text-lg opacity-75">Share insights, ask questions, and connect with fellow developers through
-                    our integrated comment system.</p>
-                <p class=" text-lg opacity-75">With full Markdown support, you can easily format code snippets, share
-                    resources, and engage in meaningful discussions about each quiz question.</p>
-            </div>
-            <img src="{{ asset('images/decoration/comment.png') }}" alt="Community comments"
-                 class="w-[600px] object-contain -mr-16">
-        </div>
-    </div>
+    {{ include('partials/promotional/promotional-2.html.twig', _context) }}
 
 
 
-    <div class="wrapper wrapper-large pb-spacing-very-large-secondary">
-        <div class="flex items-center gap-spacing-large-primary">
-            <img src="{{ asset('images/decoration/question.png') }}" alt="Community comments"
-                 class="w-[600px] object-contain -ml-16">
-            <div class="flex flex-col gap-4 {# glass box bg-dark-grey-secondary #}">
-                <h3 class="text-3xl font-secondary">
-                    {#                    <span class="material-icons">question_mark</span> #}
-                    Join our community
-                </h3>
-                <p class=" text-lg opacity-75">Quizstack's mobile-first design means you can strengthen your development
-                    skills during your commute, lunch break, or whenever inspiration strikes.</p>
-                <p class=" text-lg opacity-75">Our responsive interface adapts perfectly to any screen size, providing a
-                    seamless quiz experience
-                    whether you're on a smartphone, tablet, or desktop.</p>
-            </div>
-        </div>
-    </div>
 
 
 
-    <div class="wrapper pb-spacing-very-large-secondary">
-        <ul class="flex faq-container glass box gap-spacing-primary flex-col text-lg">
 
-            <li class="accordion-item">
-                <button class="accordion-button">
-                    How does the scoring system work ?
-                </button>
-                <div class="accordion-content">
-                    <p>
-                        Points are awarded from 1 to 3, based on question difficulty. Counting sysem register weekly,
-                        monthly and all time points progression
-                    </p>
-                </div>
-            </li>
-            <li class="accordion-item">
-                <button class="accordion-button text-lg">
-                    How does the scoring system work ?
-                </button>
-                <div class="accordion-content">
-                    <p>
-                        Points are awarded from 1 to 3, based on question difficulty. Counting sysem register weekly,
-                        monthly and all time points progression
-                    </p>
-                </div>
-            </li>
+    {#            <li class="accordion-item"> #}
+    {#                <button class="accordion-button text-lg"> #}
+    {#                    How does the scoring system work ? #}
+    {#                </button> #}
+    {#                <div class="expander bg-very-dark-grey-primary"> #}
+    {#                    <p class="expander-content text-lg"> #}
+    {#                        Points are awarded from 1 to 3, based on question difficulty. Counting sysem register weekly, #}
+    {#                        monthly and all time points progression #}
+    {#                    </p> #}
+    {#                </div> #}
+    {#            </li> #}
+    {#            <img src="{{ asset('images/decoration/question.png') }}" alt="Community comments" #}
+    {#                 class="w-[600px] object-contain -ml-16"> #}
+    {#            <div class="flex flex-col gap-4 #}{# glass box bg-dark-grey-secondary #}{# "> #}
+    {#                <h3 class="text-3xl font-secondary"> #}
+    {#                    #}{#                    <span class="material-icons">question_mark</span> #}
+    {#                    Join our community #}
+    {#                </h3> #}
+    {#                <p class=" text-lg opacity-75">Quizstack's mobile-first design means you can strengthen your development #}
+    {#                    skills during your commute, lunch break, or whenever inspiration strikes.</p> #}
+    {#                <p class=" text-lg opacity-75">Our responsive interface adapts perfectly to any screen size, providing a #}
+    {#                    seamless quiz experience #}
+    {#                    whether you're on a smartphone, tablet, or desktop.</p> #}
+    {#            </div> #}
 
-            {#            <li class="accordion-item"> #}
-            {#                <button class="accordion-button text-lg"> #}
-            {#                    How does the scoring system work ? #}
-            {#                </button> #}
-            {#                <div class="expander bg-very-dark-grey-primary"> #}
-            {#                    <p class="expander-content text-lg"> #}
-            {#                        Points are awarded from 1 to 3, based on question difficulty. Counting sysem register weekly, #}
-            {#                        monthly and all time points progression #}
-            {#                    </p> #}
-            {#                </div> #}
-            {#            </li> #}
-            {#            <img src="{{ asset('images/decoration/question.png') }}" alt="Community comments" #}
-            {#                 class="w-[600px] object-contain -ml-16"> #}
-            {#            <div class="flex flex-col gap-4 #}{# glass box bg-dark-grey-secondary #}{# "> #}
-            {#                <h3 class="text-3xl font-secondary"> #}
-            {#                    #}{#                    <span class="material-icons">question_mark</span> #}
-            {#                    Join our community #}
-            {#                </h3> #}
-            {#                <p class=" text-lg opacity-75">Quizstack's mobile-first design means you can strengthen your development #}
-            {#                    skills during your commute, lunch break, or whenever inspiration strikes.</p> #}
-            {#                <p class=" text-lg opacity-75">Our responsive interface adapts perfectly to any screen size, providing a #}
-            {#                    seamless quiz experience #}
-            {#                    whether you're on a smartphone, tablet, or desktop.</p> #}
-            {#            </div> #}
-        </ul>
-    </div>
+
+    {{ include('partials/faq.html.twig') }}
 
 
     {#    <div class="wrapper wrapper-large pb-spacing-large-primary"> #}
