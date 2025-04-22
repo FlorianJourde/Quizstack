@@ -7,13 +7,37 @@
                     <img src="{{ asset('images/logos/quizstack-logo.png') }}" alt="Quizstack logo" class="h-10">
                     Quizstack
                 </a>
-                <div class="buttons-container gap-2">
-                    <a href="{{ path('activity') }}" class="button button-action">
-                        <span class="material-icons">mark_chat_unread</span>
-                    </a>
-                    <a href="{{ path('scores') }}" class="button button-action">
-                        <span class="material-icons">emoji_events</span>
-                    </a>
+                <div class="buttons-container gap-2 sm:gap-4">
+
+                    <ul class="hidden sm:flex header-main-container buttons-container gap-2 sm:gap-4">
+
+                        {% if is_granted('ROLE_USER') %}
+                            <li>
+                                <a href="{{ path('app_logout') }}"
+                                   class="button {# button-small#} button-primary border-none button-dark-grey">
+{#                                    <span class="material-icons block sm:hidden">logout</span>#}
+                                    <span {#class="hidden sm:block"#}>Logout</span>
+                                </a>
+                            </li>
+                        {% else %}
+                            <li>
+                                <a href="{{ path('app_login') }}" class="button {# button-small#} button-tertiary">
+{#                                    <span class="material-icons block sm:hidden">login</span>#}
+                                    <span {#class="hidden sm:block"#}>Login</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{{ path('app_register') }}"
+                                   class="button {# button-small#} button-primary border-none button-dark-grey">
+{#                                    <span class="material-icons  block sm:hidden">person_add</span>#}
+                                    <span {#class="hidden sm:block"#}>
+                                    Register
+                                    </span>
+                                </a>
+                            </li>
+                        {% endif %}
+                    </ul>
+
                     <button id="button-menu" class="button button-action">
                         <span class="material-icons">menu</span>
                     </button>
@@ -28,20 +52,20 @@
 
                     {{ include('partials/links.html.twig') }}
 
-                    <div class="buttons-container">
-                        {% if is_granted('ROLE_USER') %}
-                            <li>
-                                <a href="{{ path('app_logout') }}" class="button button-primary button-red">Logout</a>
-                            </li>
-                        {% else %}
-                            <li>
-                                <a href="{{ path('app_login') }}" class="button button-secondary">Login</a>
-                            </li>
-                            <li>
-                                <a href="{{ path('app_register') }}" class="button button-primary">Register</a>
-                            </li>
-                        {% endif %}
-                    </div>
+                                        <div class="buttons-container sm:hidden">
+                                            {% if is_granted('ROLE_USER') %}
+                                                <li>
+                                                    <a href="{{ path('app_logout') }}" class="button button-primary button-red">Logout</a>
+                                                </li>
+                                            {% else %}
+                                                <li>
+                                                    <a href="{{ path('app_login') }}" class="button button-secondary">Login</a>
+                                                </li>
+                                                <li>
+                                                    <a href="{{ path('app_register') }}" class="button button-primary">Register</a>
+                                                </li>
+                                            {% endif %}
+                                        </div>
                 </ul>
             </nav>
 

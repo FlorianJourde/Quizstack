@@ -35,6 +35,8 @@ module.exports = {
                 'spacing-secondary': 'var(--spacing-secondary)',
                 'spacing-large-primary': 'var(--spacing-large-primary)',
                 'spacing-large-secondary': 'var(--spacing-large-secondary)',
+                'spacing-very-large-primary': 'var(--spacing-very-large-primary)',
+                'spacing-very-large-secondary': 'var(--spacing-very-large-secondary)',
             },
             borderRadius: {
                 'radius-primary': 'var(--radius-primary)',

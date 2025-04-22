@@ -43,6 +43,10 @@ class QuestionsFormType extends AbstractType
                 'label' => 'Image',
                 'mapped' => false,
                 'required' => false,
+//                'attr' => [
+//                    'data-browse' => 'Browse',
+//                    'lang' => 'en'
+//                ],
                 'constraints' => [
                     new File([
                         'maxSize' => '1024k',

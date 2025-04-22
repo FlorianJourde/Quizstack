@@ -6,6 +6,7 @@ import './styles/app.css';
 import './scripts/filters'
 import './scripts/question-form'
 import './scripts/menu'
+import './scripts/accordion'
 import {motion, AnimatePresence} from "motion/react";
 import Demo from "./components/Demo";
 // import {animations} from "./motion/animations";

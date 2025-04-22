@@ -1,27 +1,53 @@
-
 <li>
-    <a href="{{ path('app_filters') }}" class="button button-tertiary">Filters</a>
+    <a href="{{ path('scores') }}" class="button button-tertiary">
+        <span class="material-icons">emoji_events</span>
+        Hall of Fame
+    </a>
+</li>
+<li>
+    <a href="{{ path('app_filters') }}" class="button button-tertiary">
+        <span class="material-icons">tune</span>
+        Filters
+    </a>
+</li>
+<li>
+    <a href="{{ path('activity') }}" class="button button-tertiary">
+        <span class="material-icons">mark_chat_unread</span>
+        Activity
+    </a>
 </li>
 
 {% if is_granted('ROLE_USER') %}
     <li>
-        <a href="{{ path('profile') }}" class="button button-tertiary">Profile</a>
+        <a href="{{ path('profile') }}" class="button button-tertiary">
+            <span class="material-icons">person</span>
+            Profile
+        </a>
     </li>
 {% endif %}
-{#{% if is_granted('ROLE_USER') %}#}
-{#{% endif %}#}
+{# {% if is_granted('ROLE_USER') %} #}
+{# {% endif %} #}
 {% if is_granted('ROLE_ADMIN') %}
     <li>
-        <a href="{{ path('users') }}" class="button button-tertiary">Users</a>
+        <a href="{{ path('users') }}" class="button button-tertiary">
+            <span class="material-icons">group</span>
+            Users
+        </a>
     </li>
 {% endif %}
 {% if is_granted('ROLE_ADMIN') %}
     <li>
-        <a href="{{ path('categories') }}" class="button button-tertiary">Categories</a>
+        <a href="{{ path('categories') }}" class="button button-tertiary">
+            <span class="material-icons">category</span>
+            Categories
+        </a>
     </li>
 {% endif %}
 {% if is_granted('ROLE_USER') %}
     <li>
-        <a href="{{ path('questions') }}" class="button button-tertiary">Questions</a>
+        <a href="{{ path('questions') }}" class="button button-tertiary">
+            <span class="material-icons">question_mark</span>
+            Questions
+        </a>
     </li>
 {% endif %}
