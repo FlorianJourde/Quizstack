@@ -15,6 +15,7 @@
 - Pages
     - Landing page : responsive
     - Contact
+    - Activity to message
     - Legals
     - Errors
 - Preview last comments

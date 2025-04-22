@@ -13,6 +13,8 @@
         </div>
     </div>
 
+
+
     {#    <div class="wrapper"> #}
     {#        <div> #}
     {#            <p class="font-bold text-6xl text-center">Filters</p> #}
@@ -26,6 +28,50 @@
 
     <div class="wrapper wrapper-small">
         <div class="form-container glass box bg-dark-grey-secondary">
+
+            {{ form_start(form) }}
+
+            <div>
+                <h2 class="small-title">
+                    <span class="material-icons">alternate_email</span>
+                    {{ form.email.vars.label }}
+                </h2>
+                {{ form_widget(form.email) }}
+                {{ form_errors(form.email) }}
+            </div>
+            <div>
+                <h2 class="small-title">
+                    <span class="material-icons">person</span>
+                    {{ form.username.vars.label }}
+                </h2>
+                {{ form_widget(form.username) }}
+                {{ form_errors(form.username) }}
+            </div>
+            <div>
+                <h2 class="small-title">
+                    <span class="material-icons">mail</span>
+                    {{ form.message.vars.label }}
+                </h2>
+                {{ form_widget(form.message) }}
+                {{ form_errors(form.message) }}
+            </div>
+
+            {#            {{ include('partials/question/image.html.twig') }} #}
+{#            {{ include('partials/question/image.html.twig', {'type': user}) }}#}
+
+
+            {#            <div> #}
+            {#                <h2 class="small-title">{{ form.image.vars.label }}</h2> #}
+            {#                {{ form_widget(form.image) }} #}
+            {#                {{ form_errors(form.image) }} #}
+            {#            </div> #}
+
+            <div class="buttons-container">
+                <a href="{{ path('app_home') }}" class="button button-tertiary">Cancel</a>
+                <button type="submit" class="button button-primary">Send</button>
+            </div>
+            {{ form_end(form) }}
+
         </div>
     </div>
 
