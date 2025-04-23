@@ -13,7 +13,6 @@
 - `_context` dans l'import ?
 
 # Todo
-- Admin header
 - Pages
     - Landing page : responsive
     - Contact

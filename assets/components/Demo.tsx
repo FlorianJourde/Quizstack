@@ -43,6 +43,7 @@ export function Demo({mode}) {
                 }}
                 modules={[Autoplay]}
                 // effect={'cards'}
+                className={`max-w-[800px] ml-auto mr-auto`}
             >
                 {questionsData.map((data, index) => (
                     <SwiperSlide key={data.question.id}>

@@ -5,16 +5,20 @@
   --font-secondary: "Spline Sans Mono", monospace;
   --spacing-primary: 1.5rem;
   --spacing-secondary: 0.8rem;
-  --spacing-large-primary: 8rem;
-  --spacing-large-secondary: 4rem;
-  --spacing-very-large-primary: 14rem;
-  --spacing-very-large-secondary: 10rem;
+  --spacing-large-primary: 5rem;
+  --spacing-large-secondary: 3rem;
+  --spacing-very-large-primary: 10rem;
+  --spacing-very-large-secondary: 8rem;
 }
 
 @media (min-width: 40rem) {
   :root {
     --spacing-primary: 2rem;
     --spacing-secondary: 1rem;
+    --spacing-large-primary: 8rem;
+    --spacing-large-secondary: 4rem;
+    --spacing-very-large-primary: 14rem;
+    --spacing-very-large-secondary: 10rem;
   }
 }
 
@@ -635,6 +639,7 @@ div[style*="background: rgb(39, 40, 34);"] {
     position: relative;
     width: 100%;
     text-align: left;
+    padding-right: 2rem;
 
     &:after, &:before {
       content: '';
