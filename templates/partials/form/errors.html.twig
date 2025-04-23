@@ -1,0 +1,116 @@
+{# {% block form_errors %} #}
+{#    {% if errors|length > 0 %} #}
+{#        <ul class="mt-2"> #}
+{#            {% for error in errors %} #}
+{#                <li>{{ error.message }}</li> #}
+{#            {% endfor %} #}
+{#        </ul> #}
+{#    {% endif %} #}
+{# {% endblock %} #}
+
+ {% if form is defined and not form.vars.valid %}
+    <ul class="mt-2">
+        {% for error in form.vars.errors %}
+            <li>{{ error.message }}</li>
+        {% endfor %}
+
+        {% for child in form.children %}
+            {% if not child.vars.valid %}
+                {% for error in child.vars.errors %}
+                    <li>{{ error.message }}</li>
+                {% endfor %}
+            {% endif %}
+        {% endfor %}
+    </ul>
+ {% endif %}
+
+ {% if passwordForm is defined and not passwordForm.vars.valid %}
+     <ul class="mt-2">
+         {% for error in passwordForm.vars.errors %}
+             <li>{{ error.message }}</li>
+         {% endfor %}
+
+         {% for child in passwordForm.children %}
+             {% if not child.vars.valid %}
+                 {% for error in child.vars.errors %}
+                     <li>{{ error.message }}</li>
+                 {% endfor %}
+             {% endif %}
+         {% endfor %}
+     </ul>
+ {% endif %}
+
+{# {% if formToCheck is defined and not formToCheck.vars.valid %} #}
+{#    <ul class="mt-2"> #}
+{#        #}{#        {% for error in formToCheck.vars.errors %} #}
+{#        #}{#            <li>{{ error.message }}</li> #}
+{#        #}{#        {% endfor %} #}
+
+{#        {% for child in formToCheck.children %} #}
+{#            {% if not child.vars.valid %} #}
+{#                {% for error in child.vars.errors %} #}
+{#                    <li>{{ error.message }}</li> #}
+{#                {% endfor %} #}
+{#            {% endif %} #}
+{#        {% endfor %} #}
+{#    </ul> #}
+{# {% elseif form is defined and not form.vars.valid %} #}
+{#    <ul class="mt-2"> #}
+{#        #}{#        {% for error in form.vars.errors %} #}
+{#        #}{#            <li>{{ error.message }}</li> #}
+{#        #}{#        {% endfor %} #}
+
+{#        {% for child in form.children %} #}
+{#            {% if not child.vars.valid %} #}
+{#                {% for error in child.vars.errors %} #}
+{#                    <li>{{ error.message }}</li> #}
+{#                {% endfor %} #}
+{#            {% endif %} #}
+{#        {% endfor %} #}
+
+{#    </ul> #}
+{# {% endif %} #}
+
+{#{% if form.vars.errors|length > 0 %}#}
+{#    <ul class="mt-2">#}
+{#        {% for error in form.currentPassword.vars.errors %}#}
+{#            <li>{{ error.message }}</li>#}
+{#        {% endfor %}#}
+{#    </ul>#}
+{#{% endif %}#}
+
+{#{% if passwordForm.currentPassword.vars.errors|length > 0 %}#}
+{#    <ul class="mt-2">#}
+{#        {% for error in passwordForm.currentPassword.vars.errors %}#}
+{#            <li>{{ error.message }}</li>#}
+{#        {% endfor %}#}
+{#    </ul>#}
+{#{% endif %}#}
+
+{% for label, messages in app.flashes %}
+    {% for message in messages %}
+        <div class="alert alert-{{ label }}">
+            {{ message }}
+        </div>
+    {% endfor %}
+{% endfor %}
+
+{# {% if form is defined and form.vars.errors|length > 0 %} #}
+{#    <p class="mt-2"> #}
+{#        {{ form_errors(form) }} #}
+{#    </p> #}
+{# {% endif %} #}
+
+{# {% for label, messages in app.flashes %} #}
+{#    {% for message in messages %} #}
+{#        <p class="alert-{{ label }}"> #}
+{#            {{ message }} #}
+{#        </p> #}
+{#    {% endfor %} #}
+{# {% endfor %} #}
+
+{# {% if form is defined and not form.vars.valid %} #}
+{#    <p class="mt-2"> #}
+{#        {{ form_errors(form) }} #}
+{#    </p> #}
+{# {% endif %} #}

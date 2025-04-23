@@ -7,6 +7,8 @@ import ProfilePicture from "../ProfilePicture";
 import {QuestionInterface} from "../../types";
 import {CommentInterface} from "../../types/comment";
 import {ROUTES} from "../../utils/routes";
+import {container, item} from "../../motion/animations";
+import {motion, AnimatePresence} from "motion/react"
 
 function CommentItem(
     {
@@ -70,7 +72,15 @@ function CommentItem(
     return (
         <>
             {index !== 0 && <hr className="h-[2px] bg-white/10 border-0"/>}
-            <li className={`py-8 first:pt-0 last:pb-0 flex flex-col gap-spacing-primary`}>
+            <motion.li
+                // key={question.id}
+                // initial="hidden"
+                // animate="visible"
+                // exit="hidden"
+                variants={item}
+
+
+                className={`py-8 first:pt-0 last:pb-0 flex flex-col gap-spacing-primary`}>
                 <div className="comment-container flex flex-col gap-spacing-secondary">
                     <div className="comment-header-container flex flex-wrap gap-4 items-center">
                         <div
@@ -145,7 +155,7 @@ function CommentItem(
                     />
                 }
 
-            </li>
+            </motion.li>
         </>
     );
 }

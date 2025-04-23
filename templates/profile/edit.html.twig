@@ -23,29 +23,48 @@
     <div class="wrapper wrapper-small">
         <div class="form-container glass box bg-dark-grey-secondary">
 
-{#            {{ include('partials/question/error.html.twig') }}#}
+{#                        {{ include('partials/form/errors.html.twig') }}#}
+            {#            {{ form_errors(form) }} #}
 
-{#            {% for label, messages in app.flashes %}#}
-{#                {% for message in messages %}#}
-{#                    <div class="alert alert-{{ label }}">#}
-{#                        {{ message }}#}
-{#                    </div>#}
-{#                {% endfor %}#}
-{#            {% endfor %}#}
+            {{ include('partials/form/errors.html.twig') }}
+{#            {{ include('partials/form/errors.html.twig', {'formToCheck': passwordForm}) }}#}
 
-{#            {% if form.vars.errors|length > 0 %}#}
-{#                <div class="alert alert-danger">#}
-{#                    {{ form_errors(form) }}#}
-{#                </div>#}
+
+{#            {% form_theme passwordForm 'partials/form/errors.html.twig' %}#}
+
+{#            {% if form is defined %}#}
+{#                {{ form_errors(form) }}#}
 {#            {% endif %}#}
 
-{#            {% for message in app.flashes('success') %}#}
-{#                <div class="alert alert-success">#}
-{#                    {{ message }}#}
-{#                </div>#}
-{#            {% endfor %}#}
+            {#            {{ include('partials/question/error.html.twig') }} #}
+
+            {#            {% for label, messages in app.flashes %} #}
+            {#                {% for message in messages %} #}
+            {#                    <div class="alert alert-{{ label }}"> #}
+            {#                        {{ message }} #}
+            {#                    </div> #}
+            {#                {% endfor %} #}
+            {#            {% endfor %} #}
+
+            {#            {% if form.vars.errors|length > 0 %} #}
+            {#                <div class="alert alert-danger"> #}
+            {#                    {{ form_errors(form) }} #}
+            {#                </div> #}
+            {#            {% endif %} #}
+
+            {#            {% for message in app.flashes('success') %} #}
+            {#                <div class="alert alert-success"> #}
+            {#                    {{ message }} #}
+            {#                </div> #}
+            {#            {% endfor %} #}
 
             {{ form_start(form, {'attr': {'class': 'needs-validation'}}) }}
+
+            {#            {{ form_errors(form) }} #}
+
+            {#            {{ include('partials/form/errors.html.twig') }} #}
+
+            {#            {{ include('partials/form/errors.html.twig') }} #}
 
             <div>
                 <h2 class="small-title">
@@ -53,7 +72,7 @@
                     {{ form.email.vars.label }}
                 </h2>
                 {{ form_widget(form.email) }}
-                {{ form_errors(form.email) }}
+{#                {{ form_errors(form.email) }}#}
             </div>
             <div>
                 <h2 class="small-title">
@@ -61,11 +80,11 @@
                     {{ form.username.vars.label }}
                 </h2>
                 {{ form_widget(form.username) }}
-                {{ form_errors(form.username) }}
+{#                {{ form_errors(form.username) }}#}
             </div>
 
             {#            {{ include('partials/question/image.html.twig') }} #}
-            {{ include('partials/question/image.html.twig', {'type': user}) }}
+            {{ include('partials/form/image.html.twig', {'type': user}) }}
 
 
             {#            <div> #}
@@ -79,6 +98,9 @@
                 <button type="submit" class="button button-primary">Save</button>
             </div>
             {{ form_end(form) }}
+
+{#            {{ include('partials/form/errors.html.twig') }}#}
+
             {{ form_start(passwordForm) }}
             <div>
                 <h2 class="small-title">
@@ -86,7 +108,7 @@
                     {{ passwordForm.currentPassword.vars.label }}
                 </h2>
                 {{ form_widget(passwordForm.currentPassword) }}
-                {{ form_errors(passwordForm.currentPassword) }}
+{#                {{ form_errors(passwordForm.currentPassword) }}#}
                 <p class="text-sm mt-2">Enter your current password to confirm your identity.</p>
             </div>
             <div>
@@ -95,7 +117,7 @@
                     {{ passwordForm.plainPassword.first.vars.label }}
                 </h2>
                 {{ form_widget(passwordForm.plainPassword.first) }}
-                {{ form_errors(passwordForm.plainPassword.first) }}
+{#                {{ form_errors(passwordForm.plainPassword.first) }}#}
             </div>
             <div>
                 <h2 class="small-title">
@@ -103,7 +125,7 @@
                     {{ passwordForm.plainPassword.second.vars.label }}
                 </h2>
                 {{ form_widget(passwordForm.plainPassword.second) }}
-                {{ form_errors(passwordForm.plainPassword.second) }}
+{#                {{ form_errors(passwordForm.plainPassword.second) }}#}
             </div>
             <div class="buttons-container">
                 <a href="{{ path('profile') }}" class="button button-tertiary">Cancel</a>

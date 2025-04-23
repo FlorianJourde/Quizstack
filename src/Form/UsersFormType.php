@@ -13,6 +13,7 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints\NotBlank;
 use Symfony\Component\Validator\Constraints\Email;
+use Symfony\Component\Validator\Constraints as Assert;
 
 class UsersFormType extends AbstractType
 {
@@ -38,7 +39,13 @@ class UsersFormType extends AbstractType
                 'attr' => [
                     'class' => 'form-control'
                 ],
-                'label' => 'Username'
+                'label' => 'Username',
+                'constraints' => [
+                    new Assert\Regex([
+                        'pattern' => '/^[a-zA-Z0-9_]+$/',
+                        'message' => 'Username can only contain letters, numbers and underscores.'
+                    ]),
+                ]
             ])
             ->add('roles', ChoiceType::class, [
                 'choices' => [
@@ -63,8 +70,7 @@ class UsersFormType extends AbstractType
                     'class' => 'button button-primary button-red',
                     'onclick' => 'return confirm("Are your sure you want to remove this user ?")'
                 ]
-            ]);
-        ;
+            ]);;
     }
 
     public function configureOptions(OptionsResolver $resolver)

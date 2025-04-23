@@ -143,14 +143,14 @@ class CommentsApiController extends AbstractController
 
     #[Route('/comments/last', name: 'get_last_comments', methods: ['GET'])]
     public function getLastComments(
-        QuestionsRepository    $questionsRepository,
-        CommentsRepository     $commentsRepository,
-        Request                $request,
-        EntityManagerInterface $entityManager,
+        QuestionsRepository      $questionsRepository,
+        CommentsRepository       $commentsRepository,
+        Request                  $request,
+        EntityManagerInterface   $entityManager,
         CommentsFormatterService $formatterService
     ): JsonResponse
     {
-        $comments = $commentsRepository->getLastComment(10);
+        $comments = $commentsRepository->getLastComments();
 //        dump($comments);
 //        $commentsData = new C
 

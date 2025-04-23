@@ -26,7 +26,6 @@ use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Component\Security\Http\Attribute\IsGranted;
 use Symfony\Component\String\Slugger\SluggerInterface;
 
-#[IsGranted('ROLE_USER')]
 class QuestionsController extends AbstractController
 {
     private DateTimeImmutable $currentDate;
@@ -35,6 +34,8 @@ class QuestionsController extends AbstractController
     {
         $this->currentDate = new DateTimeImmutable();
     }
+
+    #[IsGranted('ROLE_USER')]
 
     #[Route('/questions', name: 'questions')]
     public function questions(
@@ -93,6 +94,8 @@ class QuestionsController extends AbstractController
             'nextQuestion' => $nextQuestion
         ]);
     }
+
+    #[IsGranted('ROLE_USER')]
 
     #[Route('/question/{id}/edit', name: 'question_edit', requirements: ['id' => '\d+'])]
     public function edit(
@@ -164,8 +167,8 @@ class QuestionsController extends AbstractController
         ]);
     }
 
-    #[Route('/question/new', name: 'question_new')]
     #[IsGranted('ROLE_USER')]
+    #[Route('/question/new', name: 'question_new')]
     public function new(
         Request                $request,
         Security               $security,

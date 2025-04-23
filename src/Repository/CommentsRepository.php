@@ -55,7 +55,7 @@ class CommentsRepository extends ServiceEntityRepository
         return new Paginator($query);
     }
 
-    public function getLastComment(int $limit): array
+    public function getLastComments(int $limit = 10): array
     {
         $query = $this->createQueryBuilder('c')
 //            ->andWhere('c.user = :user')

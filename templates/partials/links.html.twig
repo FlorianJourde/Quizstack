@@ -12,7 +12,7 @@
 </li>
 <li>
     <a href="{{ path('activity') }}" class="button button-tertiary">
-        <span class="material-icons">mark_chat_unread</span>
+        <span class="material-icons">chat_bubble</span>
         Activity
     </a>
 </li>
@@ -22,38 +22,3 @@
         Contact
     </a>
 </li>
-
-{% if is_granted('ROLE_USER') %}
-    <li>
-        <a href="{{ path('profile') }}" class="button button-tertiary">
-            <span class="material-icons">person</span>
-            Profile
-        </a>
-    </li>
-{% endif %}
-{# {% if is_granted('ROLE_USER') %} #}
-{# {% endif %} #}
-{% if is_granted('ROLE_ADMIN') %}
-    <li>
-        <a href="{{ path('users') }}" class="button button-tertiary">
-            <span class="material-icons">group</span>
-            Users
-        </a>
-    </li>
-{% endif %}
-{% if is_granted('ROLE_ADMIN') %}
-    <li>
-        <a href="{{ path('categories') }}" class="button button-tertiary">
-            <span class="material-icons">category</span>
-            Categories
-        </a>
-    </li>
-{% endif %}
-{% if is_granted('ROLE_USER') %}
-    <li>
-        <a href="{{ path('questions') }}" class="button button-tertiary">
-            <span class="material-icons">question_mark</span>
-            Questions
-        </a>
-    </li>
-{% endif %}

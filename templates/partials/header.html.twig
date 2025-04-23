@@ -3,7 +3,7 @@
         <div class="header-container flex flex-col w-full">
 
             <div class="header-top-container flex items-center justify-between w-full">
-                <a href="{{ path('app_home') }}" class="flex gap-4 items-center font-secondary text-xl">
+                <a href="{{ path('app_home') }}" class="flex gap-4 items-center font-secondary font-semibold text-xl">
                     <img src="{{ asset('images/logos/quizstack-logo.png') }}" alt="Quizstack logo" class="h-10">
                     Quizstack
                 </a>
@@ -14,23 +14,23 @@
                         {% if is_granted('ROLE_USER') %}
                             <li>
                                 <a href="{{ path('app_logout') }}"
-                                   class="button {# button-small#} button-primary border-none button-dark-grey">
-{#                                    <span class="material-icons block sm:hidden">logout</span>#}
-                                    <span {#class="hidden sm:block"#}>Logout</span>
+                                   class="button {# button-small #} button-primary border-none button-dark-grey">
+                                    {#                                    <span class="material-icons block sm:hidden">logout</span> #}
+                                    <span {# class="hidden sm:block" #}>Logout</span>
                                 </a>
                             </li>
                         {% else %}
                             <li>
-                                <a href="{{ path('app_login') }}" class="button {# button-small#} button-tertiary">
-{#                                    <span class="material-icons block sm:hidden">login</span>#}
-                                    <span {#class="hidden sm:block"#}>Login</span>
+                                <a href="{{ path('app_login') }}" class="button {# button-small #} button-tertiary">
+                                    {#                                    <span class="material-icons block sm:hidden">login</span> #}
+                                    <span {# class="hidden sm:block" #}>Login</span>
                                 </a>
                             </li>
                             <li>
                                 <a href="{{ path('app_register') }}"
-                                   class="button {# button-small#} button-primary border-none button-dark-grey">
-{#                                    <span class="material-icons  block sm:hidden">person_add</span>#}
-                                    <span {#class="hidden sm:block"#}>
+                                   class="button {# button-small #} button-primary border-none button-dark-grey">
+                                    {#                                    <span class="material-icons  block sm:hidden">person_add</span> #}
+                                    <span {# class="hidden sm:block" #}>
                                     Register
                                     </span>
                                 </a>
@@ -52,20 +52,82 @@
 
                     {{ include('partials/links.html.twig') }}
 
-                                        <div class="buttons-container sm:hidden">
-                                            {% if is_granted('ROLE_USER') %}
-                                                <li>
-                                                    <a href="{{ path('app_logout') }}" class="button button-primary button-red">Logout</a>
-                                                </li>
-                                            {% else %}
-                                                <li>
-                                                    <a href="{{ path('app_login') }}" class="button button-tertiary">Login</a>
-                                                </li>
-                                                <li>
-                                                    <a href="{{ path('app_register') }}" class="button button-primary">Register</a>
-                                                </li>
-                                            {% endif %}
-                                        </div>
+
+                    {% if is_granted('ROLE_USER') %}
+                        <li class="bg-very-dark-grey-primary flex flex-col p-spacing-primary gap-spacing-primary rounded-radius-primary ">
+                            {#                            <div class="flex flex-col gap-spacing-primary"> #}
+
+                            {#                                <p class="font-bold">User</p> #}
+                            <ul class="flex flex-col gap-spacing-primary">
+                                <li>
+                                    <a href="{{ path('profile') }}" class="button button-tertiary">
+                                        <span class="material-icons">person</span>
+                                        Profile
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="{{ path('questions') }}" class="button button-tertiary">
+                                        <span class="material-icons">question_mark</span>
+                                        Questions
+                                    </a>
+                                </li>
+
+                                {% if is_granted('ROLE_ADMIN') %}
+                                    {#                                <div class="flex flex-col gap-spacing-secondary"> #}
+                                    {#                            <li class="bg-very-dark-grey-primary flex flex-col p-spacing-secondary gap-spacing-secondary rounded-radius-primary "> #}
+                                    {#                                    <p class="font-bold">Admin</p> #}
+                                    {#                                    <ul class="flex flex-col gap-spacing-primary"> #}
+                                    <li>
+                                        <a href="{{ path('users') }}" class="button button-tertiary">
+                                            <span class="material-icons">group</span>
+                                            Users
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="{{ path('categories') }}" class="button button-tertiary">
+                                            <span class="material-icons">category</span>
+                                            Categories
+                                        </a>
+                                    </li>
+                                    {#                                    </ul> #}
+                                    {#                                </div> #}
+
+                                    {#                            </li> #}
+                                {% endif %}
+                            </ul>
+                            {#                            </div> #}
+
+                        </li>
+
+
+
+                    {% endif %}
+
+                    {# {% if is_granted('ROLE_USER') %} #}
+                    {# {% endif %} #}
+                    {#                    {% if is_granted('ROLE_USER') %} #}
+                    {#                        <li> #}
+                    {#                            <a href="{{ path('questions') }}" class="button button-tertiary"> #}
+                    {#                                <span class="material-icons">question_mark</span> #}
+                    {#                                Questions #}
+                    {#                            </a> #}
+                    {#                        </li> #}
+                    {#                    {% endif %} #}
+
+                    <ul class="buttons-container sm:hidden">
+                        {% if is_granted('ROLE_USER') %}
+                            <li>
+                                <a href="{{ path('app_logout') }}" class="button button-primary button-red">Logout</a>
+                            </li>
+                        {% else %}
+                            <li>
+                                <a href="{{ path('app_login') }}" class="button button-tertiary">Login</a>
+                            </li>
+                            <li>
+                                <a href="{{ path('app_register') }}" class="button button-primary">Register</a>
+                            </li>
+                        {% endif %}
+                    </ul>
                 </ul>
             </nav>
 

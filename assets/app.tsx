@@ -37,9 +37,8 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     const activityContainer = document.querySelector('#activity-container') as HTMLElement;
-    const mode = activityContainer.dataset.mode || 'display';
-
     if (activityContainer) {
+        const mode = activityContainer.dataset.mode || 'display';
         const root = createRoot(activityContainer);
         root.render(
             <Activity mode={mode}/>
