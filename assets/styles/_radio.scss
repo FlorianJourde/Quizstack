@@ -10,28 +10,33 @@
       display: none;
 
 
-      &:checked {
-        + .switch-label {
-          background-color: theme('colors.very-dark-grey-primary');
-        }
+      //.switch-label.active,
+      //{
 
-        + .switch-label-all {
-          //background-color: theme('colors.very-dark-grey-primary');
-        }
 
-        + .switch-label-easy {
-          //background-color: theme('colors.green-secondary');
-        }
+      + .switch-label-all {
+        //background-color: theme('colors.very-dark-grey-primary');
+      }
 
-        + .switch-label-medium {
-          //background-color: theme('colors.orange-secondary');
-        }
+      + .switch-label-easy {
+        //background-color: theme('colors.green-secondary');
+      }
 
-        + .switch-label-hard {
-          //background-color: theme('colors.red-secondary');
-        }
+      + .switch-label-medium {
+        //background-color: theme('colors.orange-secondary');
+      }
+
+      + .switch-label-hard {
+        //background-color: theme('colors.red-secondary');
       }
     }
+
+    .switch-input:checked + .switch-label,
+    .switch-label.active {
+      background-color: theme('colors.very-dark-grey-primary');
+    }
+
+    //}
 
     .switch-label {
       cursor: pointer;
@@ -40,6 +45,7 @@
       transition: .2s ease;
     }
   }
+
 }
 
 //.switch {

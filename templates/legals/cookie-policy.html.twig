@@ -5,7 +5,7 @@
 {% block body %}
 
     {{ include('partials/banner.html.twig') }}
-    {#    {{ include('partials/banner-spotlight.html.twig', {'color': 'green'}) }}#}
+    {#    {{ include('partials/banner-spotlight.html.twig', {'color': 'green'}) }} #}
 
     <div class="wrapper">
         <div class="page-header-container">
@@ -15,41 +15,41 @@
 
     <div class="wrapper">
 
-        1. What Are Cookies
-        Cookies are small text files stored on your device when you visit our website.
-        2. How We Use Cookies
+        <div class="legals-container">
+            <h2>
+                <span>1.</span>
+                What Are Cookies
+            </h2>
+            <p>Cookies are small text files stored on your device when you visit our website. </p>
+            <h2>
+                <span>2.</span>
+                How We Use Cookies
+            </h2>
+            <p>Essential Cookies : Required for the operation of our website</p>
+            <p>Preference Cookies : Remember your preferences and settings</p>
+            <p>Analytics Cookies : Help us understand how visitors interact with our website</p>
+            <p>Authentication Cookies : Recognize you when you return to our site</p>
+            <h2>
+                <span>3.</span>
+                Managing Cookies
+            </h2>
+            <p>Most web browsers allow you to control cookies through their settings. You may delete or block cookies,
+                but this may impact your experience on our site.</p>
+            <h2>
+                <span>4.</span>
+                Changes to Cookie Policy</h2>
+            <p>We may update this policy as our use of cookies changes. </p>
+            <h2>Contact Information </h2>
+            <p>If you have any questions about these legal documents, please contact us using <a
+                        href="{{ path('app_contact') }}">this form</a>.</p>
+            </p>
 
-        Essential Cookies: Required for the operation of our website
-        Preference Cookies: Remember your preferences and settings
-        Analytics Cookies: Help us understand how visitors interact with our website
-        Authentication Cookies: Recognize you when you return to our site
+        </div>
 
-        3. Managing Cookies
-        Most web browsers allow you to control cookies through their settings. You may delete or block cookies, but this may impact your experience on our site.
-        4. Changes to Cookie Policy
-        We may update this policy as our use of cookies changes.
-        Contact Information
-        If you have any questions about these legal documents, please contact us at:
-        Email: legal@quizstack.com
-        Quizstack
-        [Your Business Address]
-        [City, State/Province, ZIP/Postal Code]
-        [Country]
-        Last Updated: April 23, 2025
-
-        {#        <div> #}
-        {#            <p class="font-bold text-6xl text-center">Filters</p> #}
-        {#        </div> #}
-
-        {#        <div class="page-header-container"> #}
-        {#            <h1 class="big-title grow">Filters</h1> #}
-        {#        </div> #}
-
-{#        {{ include('partials/filters.html.twig', _context) }}#}
 
     </div>
 
-{#    {{ include('partials/promotional/promotional-1.html.twig', _context) }}#}
+    {#    {{ include('partials/promotional/promotional-1.html.twig', _context) }} #}
 
 
 {% endblock %}

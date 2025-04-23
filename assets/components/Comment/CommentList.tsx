@@ -116,7 +116,7 @@ function CommentList({question, setQuestion}) {
                         <p className={'text-very-light-grey-secondary'}>Please login or register !</p>
                     </div>
                     <div className="buttons-container">
-                        <a href={ROUTES.LOGIN} className="button button-secondary">
+                        <a href={ROUTES.LOGIN} className="button button-tertiary">
                             Login
                         </a>
                         <a href={ROUTES.REGISTER} className="button button-primary">

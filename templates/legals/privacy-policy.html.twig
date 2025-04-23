@@ -5,7 +5,7 @@
 {% block body %}
 
     {{ include('partials/banner.html.twig') }}
-    {#    {{ include('partials/banner-spotlight.html.twig', {'color': 'green'}) }}#}
+    {#    {{ include('partials/banner-spotlight.html.twig', {'color': 'green'}) }} #}
 
     <div class="wrapper">
         <div class="page-header-container">
@@ -15,50 +15,48 @@
 
     <div class="wrapper">
 
-        1. Information We Collect
 
-        Account Information: Email address, username, and password
-        Usage Data: Quiz performance, content interactions, and site usage patterns
-        User Contributions: Questions, comments, and other content you submit
-        Technical Data: IP address, browser type, device information
-
-        2. How We Use Your Information
-        We use your information to:
-
-        Provide and improve our services
-        Personalize your experience
-        Communicate with you about your account
-        Analyze usage patterns to enhance our platform
-
-        3. Information Sharing
-        We do not sell your personal information. We may share information:
-
-        With service providers who assist in operating our platform
-        If required by law or legal process
-        In connection with a merger, sale, or acquisition
-
-        4. Data Security
-        We implement reasonable security measures to protect your information, but no method of transmission over the internet is 100% secure.
-        5. Cookies and Tracking
-        We use cookies to enhance your experience, gather usage information, and track site performance.
-        6. Your Rights
-        Depending on your location, you may have rights to:
-
-        Access your personal information
-        Correct inaccurate information
-        Delete your information
-        Object to certain processing activities
-
-        7. Children's Privacy
-        Quizstack is not intended for children under 13. We do not knowingly collect information from children under 13.
-        8. Changes to Privacy Policy
-        We may update this privacy policy periodically. We will notify users of significant changes via email or site notification.
-        9. Contact Us
-        If you have questions about our privacy practices, please contact us at privacy@quizstack.com.
-
+        <div class="legals-container">
+            <h2><span>1.</span> Information We Collect</h2>
+            <p>Account Information : Email address, username, and password</p>
+            <p>Usage Data : Quiz performance, content interactions, and site usage patterns</p>
+            <p>User Contributions : Questions, comments, and other content you submit</p>
+            <p>Technical Data : IP address, browser type, device information</p>
+            <h2><span>2.</span> How We Use Your Information</h2>
+            <p>We use your information to :</p>
+            <p>Provide and improve our services</p>
+            <p>Personalize your experience</p>
+            <p>Communicate with you about your account</p>
+            <p>Analyze usage patterns to enhance our platform</p>
+            <h2><span>3.</span> Information Sharing</h2>
+            <p>We do not sell your personal information. We may share information:</p>
+            <p>With service providers who assist in operating our platform</p>
+            <p>If required by law or legal process</p>
+            <p>In connection with a merger, sale, or acquisition</p>
+            <h2><span>4.</span> Data Security</h2>
+            <p>We implement reasonable security measures to protect your information, but no method of transmission over
+                the internet is 100% secure.</p>
+            <h2><span>5.</span> Cookies and Tracking</h2>
+            <p>We use cookies to enhance your experience, gather usage information, and track site performance.</p>
+            <h2><span>6.</span> Your Rights</h2>
+            <p>Depending on your location, you may have rights to:</p>
+            <p>Access your personal information</p>
+            <p>Correct inaccurate information</p>
+            <p>Delete your information</p>
+            <p>Object to certain processing activities</p>
+            <h2><span>7.</span> Children's Privacy</h2>
+            <p>Quizstack is not intended for children under 13. We do not knowingly collect information from children
+                under 13.</p>
+            <h2><span>8.</span> Changes to Privacy Policy</h2>
+            <p>We may update this privacy policy periodically. We will notify users of significant changes via email or
+                site notification.</p>
+            <h2><span>9.</span> Contact Us</h2>
+            <p>If you have questions about our privacy practices, please contact us using <a
+                        href="{{ path('app_contact') }}">this form</a>.</p>
+        </div>
     </div>
 
-{#    {{ include('partials/promotional/promotional-1.html.twig', _context) }}#}
+    {#    {{ include('partials/promotional/promotional-1.html.twig', _context) }} #}
 
 
 {% endblock %}

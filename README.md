@@ -1,6 +1,7 @@
 # Quizstack
 
 # Counter review
+
 - role contributeur
 - paramètre par le DTO plutôt que natif
 - séparation des dossiers par Admin
@@ -12,16 +13,17 @@
 - `_context` dans l'import ?
 
 # Todo
+
+- Activity : preview last comments
 - Pages
     - Landing page : responsive
     - Contact
-    - Activity to message
-    - Legals
     - Errors
-- Preview last comments
-- JS scores week/month/all
 - Tests
 - CI/CD
 
 # SEO
-Challenge yourself with over 1,000 carefully crafted questions across 12 essential web development topics. Whether you're a beginner or looking to sharpen your skills, our mobile-friendly platform makes learning accessible anywhere. Compare scores with friends, track your progress, and join a community of passionate developers - all completely free.
+
+Challenge yourself with over 1,000 carefully crafted questions across 12 essential web development topics. Whether
+you're a beginner or looking to sharpen your skills, our mobile-friendly platform makes learning accessible anywhere.
+Compare scores with friends, track your progress, and join a community of passionate developers - all completely free.

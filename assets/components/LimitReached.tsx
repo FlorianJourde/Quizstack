@@ -14,7 +14,7 @@ function LimitReached() {
                     <p>Please login or register to continue to play.</p>
                 </div>
                 <div className="buttons-container">
-                    <a href={ROUTES.LOGIN} className="button button-secondary">
+                    <a href={ROUTES.LOGIN} className="button button-tertiary">
                         Login
                     </a>
                     <a href={ROUTES.REGISTER} className="button button-primary">

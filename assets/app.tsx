@@ -4,6 +4,7 @@ import Question from "./components/Question";
 import {AuthProvider} from "./context/AuthContext";
 import './styles/app.css';
 import './scripts/filters'
+import './scripts/switches'
 import './scripts/question-form'
 import './scripts/menu'
 import './scripts/accordion'

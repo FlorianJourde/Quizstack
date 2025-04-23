@@ -18,7 +18,8 @@
     <div class="wrapper wrapper-large pt-spacing-large-secondary pb-spacing-large-secondary">
         <div class="grid grid-cols-1 xl:grid-cols-2 gap-spacing-large-secondary">
             {#            <div> #}
-            <h1 class="text-6xl text-center font-secondary col-span-full">Master web development <br> through <span
+            <h1 class="text-6xl text-center font-secondary font-semibold col-span-full">Master web development <br>
+                through <span
                         class="text-green-tertiary">interactive quiz</span></h1>
             <div class="flex flex-col gap-spacing-primary">
                 <p class="text-xl">Challenge yourself with over 1k+ carefully crafted questions across 12 essential
@@ -46,21 +47,21 @@
     <div class="wrapper wrapper-large pt-spacing-primary pb-spacing-primary">
         <ul class="grid grid-cols-1 xl:grid-cols-3 gap-spacing-large-secondary text-center">
             <li class="p-spacing-primary bg-green-secondary rounded-radius-primary">
-                <h3 class="text-3xl font-secondary pb-4">
+                <h3 class="text-3xl font-semibold font-secondary pb-4">
                     {#                    <span class="material-icons">question_mark</span> #}
                     1k+ questions
                 </h3>
                 <p class="text-lg opacity-75">Comprehensive quiz library for all skill levels</p>
             </li>
             <li class="p-spacing-primary bg-green-secondary rounded-radius-primary">
-                <h3 class="text-3xl font-secondary pb-4">
+                <h3 class="text-3xl font-semibold font-secondary pb-4">
                     {#                    <span class="material-icons">question_mark</span> #}
                     12 thematics
                 </h3>
                 <p class="text-lg opacity-75">From HTML basics to advanced web security</p>
             </li>
             <li class="p-spacing-primary bg-green-secondary rounded-radius-primary">
-                <h3 class="text-3xl font-secondary pb-4">
+                <h3 class="text-3xl font-semibold font-secondary pb-4">
                     {#                    <span class="material-icons">question_mark</span> #}
                     100+ users
                 </h3>
@@ -69,14 +70,14 @@
         </ul>
     </div>
 
-    <div class="wrapper">
-        {{ include('partials/filters.html.twig', _context) }}
-    </div>
+    {#    <div class="wrapper"> #}
+    {{ include('partials/filters.html.twig', _context) }}
+    {#    </div> #}
 
 
-    <div class="wrapper wrapper-large pt-spacing-very-large-primary pb-spacing-very-large-secondary">
+{#    <div class="wrapper wrapper-large pt-spacing-very-large-primary pb-spacing-very-large-secondary">#}
         {{ include('partials/promotional/promotional-1.html.twig', _context) }}
-    </div>
+{#    </div>#}
 
     {{ include('partials/promotional/promotional-2.html.twig', _context) }}
 
