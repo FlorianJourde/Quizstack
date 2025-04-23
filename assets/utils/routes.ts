@@ -4,4 +4,5 @@ export const ROUTES = {
     FILTERS: '/filters',
     LOGIN: '/login',
     REGISTER: '/register',
+    QUESTION: '/question'
 };

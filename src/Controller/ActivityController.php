@@ -13,26 +13,29 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Component\Security\Http\Attribute\IsGranted;
 
-class CommentsController extends AbstractController
+class ActivityController extends AbstractController
 {
-    #[IsGranted('ROLE_USER')]
-    #[Route('/comments', name: 'comments')]
+//    #[IsGranted('ROLE_USER')]
+    #[Route('/activity', name: 'activity')]
     public function activity(
         Security               $security,
         Request                $request,
         CommentsRepository     $commentsRepository
     ): Response
     {
-        /* @var Users $user */
-        $user = $security->getUser();
+//        /* @var Users $user */
+//        $user = $security->getUser();
 
-        $offset = max(0, $request->query->getInt('offset', 0));
-        $paginator = $commentsRepository->getCommentPaginator($user, $offset);
+//        $offset = max(0, $request->query->getInt('offset', 0));
+//        $paginator = $commentsRepository->getLastComment($offset);
 
-        return $this->render('comments.html.twig', [
-            'comments' => $paginator,
-            'previous' => $offset - CommentsRepository::COMMENTS_PER_PAGE,
-            'next' => min(count($paginator), $offset + CommentsRepository::COMMENTS_PER_PAGE),
+        return $this->render('activity.html.twig', [
+//            , [
+                'mode' => 'display',
+//            ]
+//            'comments' => $paginator,
+//            'previous' => $offset - CommentsRepository::COMMENTS_PER_PAGE,
+//            'next' => min(count($paginator), $offset + CommentsRepository::COMMENTS_PER_PAGE),
         ]);
     }
 

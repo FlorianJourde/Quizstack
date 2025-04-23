@@ -4,8 +4,24 @@ import CommentUpdate from "./CommentUpdate";
 import CommentDelete from "./CommentDelete";
 import {useAuth} from "../../context/AuthContext";
 import ProfilePicture from "../ProfilePicture";
+import {QuestionInterface} from "../../types";
+import {CommentInterface} from "../../types/comment";
+import {ROUTES} from "../../utils/routes";
 
-function CommentItem({question, setQuestion, comment, index}) {
+function CommentItem(
+    {
+        comment,
+        index,
+        setQuestion,
+        question,
+        mode,
+    }: {
+        comment: CommentInterface;
+        index: number;
+        question?: QuestionInterface;
+        setQuestion?: React.Dispatch<React.SetStateAction<QuestionInterface | null>>;
+        mode?: string;
+    }) {
     const [isEditing, setIsEditing] = useState(false);
     const [isDeleting, setIsDeleting] = useState(false);
     const {formattedDate, formattedTime} = formatDate(comment.creationDate);
@@ -14,7 +30,7 @@ function CommentItem({question, setQuestion, comment, index}) {
     const userCanEdit = isAuthor(comment.author.id) || isAdmin();
 
     useEffect(() => {
-        console.log(comment.author.image)
+        console.log(comment)
     }, [comment]);
 
     function handleCommentUpdated() {
@@ -57,7 +73,8 @@ function CommentItem({question, setQuestion, comment, index}) {
             <li className={`py-8 first:pt-0 last:pb-0 flex flex-col gap-spacing-primary`}>
                 <div className="comment-container flex flex-col gap-spacing-secondary">
                     <div className="comment-header-container flex flex-wrap gap-4 items-center">
-                        <div className="user-infos-container flex flex-wrap gap-spacing-secondary items-center grow">
+                        <div
+                            className="user-infos-container flex flex-wrap gap-spacing-secondary items-center grow">
 
                             <ProfilePicture image={comment.author.image}/>
 
@@ -83,6 +100,22 @@ function CommentItem({question, setQuestion, comment, index}) {
                                     <button className="button button-action" onClick={() => handleStartDeleting()}>
                                         <span className="material-icons">delete</span>
                                     </button>
+                                </>
+                            )}
+                            {mode === 'display' && (
+                                <>
+                                    {/*<a href=""></a>*/}
+
+                                    {/*{comment.questionId}*/}
+
+                                    <a href={`${ROUTES.QUESTION}/${comment.questionId}`}
+                                       className="button button-action">
+                                        <span className="material-icons">visibility</span>
+                                    </a>
+
+                                    {/*<button className="button button-action" onClick={() => handleStartEditing()}>*/}
+                                    {/*    <span className="material-icons">visibility</span>*/}
+                                    {/*</button>*/}
                                 </>
                             )}
                         </div>

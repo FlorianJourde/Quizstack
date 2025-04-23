@@ -4,7 +4,9 @@ namespace App\Controller\Api;
 
 use App\Entity\Comments;
 use App\Entity\Users;
+use App\Repository\CommentsRepository;
 use App\Repository\QuestionsRepository;
+use App\Service\CommentsFormatterService;
 use DateTimeImmutable;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -72,6 +74,7 @@ class CommentsApiController extends AbstractController
         Comments               $comment
     ): JsonResponse
     {
+        /* @var Users $user */
         $user = $this->getUser();
         $isAuthor = $user && $comment->getUser()->getId() === $user->getId();
         $isAdmin = $this->security->isGranted('ROLE_ADMIN');
@@ -104,7 +107,8 @@ class CommentsApiController extends AbstractController
             'updateDate' => $comment->getUpdateDate(),
             'author' => [
                 'id' => $user->getId(),
-                'username' => $user->getUsername()
+                'username' => $user->getUsername(),
+                'image' => $user->getImage(),
             ]
         ]);
     }
@@ -135,5 +139,50 @@ class CommentsApiController extends AbstractController
             'message' => 'Comment deleted successfully',
             'commentId' => $comment->getId()
         ]);
+    }
+
+    #[Route('/comments/last', name: 'get_last_comments', methods: ['GET'])]
+    public function getLastComments(
+        QuestionsRepository    $questionsRepository,
+        CommentsRepository     $commentsRepository,
+        Request                $request,
+        EntityManagerInterface $entityManager,
+        CommentsFormatterService $formatterService
+    ): JsonResponse
+    {
+        $comments = $commentsRepository->getLastComment(10);
+//        dump($comments);
+//        $commentsData = new C
+
+
+        $commentsData = $formatterService->formatCommentsData($comments);
+//        if (!$comments) {
+//            return new JsonResponse('No question found.', 404);
+//        }
+//
+//        $questionData = $formatterService->formatQuestionData($question);
+//
+//        if ($this->getUser() === null) {
+//            if ($limitService->isLimitReached($request)) {
+//                return $limitService->getLimitResponse();
+//            }
+//
+//            return $limitService->createResponseWithCookie($questionData, $request);
+//        }
+
+//        return $this->json($questionData);
+
+        return $this->json($commentsData);
+
+//        return $this->json([
+////            'id' => $comment->getId(),
+////            'content' => $comment->getContent(),
+////            'creationDate' => $comment->getCreationDate(),
+////            'updateDate' => $comment->getUpdateDate(),
+////            'author' => [
+////                'id' => $user->getId(),
+////                'username' => $user->getUsername()
+////            ]
+//        ]);
     }
 }

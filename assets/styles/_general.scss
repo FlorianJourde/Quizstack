@@ -98,6 +98,10 @@ pre {
   }
 }
 
+.scores .switch li .switch-label.active {
+  background-color: theme('colors.dark-grey-secondary');
+}
+
 .score-container {
 
   display: none;
@@ -126,6 +130,7 @@ pre {
       position: absolute;
 
     }
+
 
     &:nth-child(1) {
       &:before {
@@ -748,7 +753,8 @@ div[style*="background: rgb(39, 40, 34);"] {
 
   th, td {
     text-overflow: ellipsis;
-    padding: 15px 30px;
+    //padding: 15px 30px;
+    padding: 0.6rem 1rem;
   }
 
   input {

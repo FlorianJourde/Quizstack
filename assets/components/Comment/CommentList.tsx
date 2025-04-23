@@ -55,7 +55,7 @@ function CommentList({question, setQuestion}) {
             <ul className={'comments-container flex flex-col glass box bg-dark-grey-secondary'}>
                 {question.comments.length > 0 ? (
                     question.comments.map((comment, index) => (
-                        <CommentItem question={question} setQuestion={setQuestion} comment={comment} index={index}
+                        <CommentItem comment={comment} index={index} question={question} setQuestion={setQuestion}
                                      key={`comment-${index}`}/>
                     ))
                 ) : (

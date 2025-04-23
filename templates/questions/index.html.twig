@@ -31,6 +31,7 @@
                         <th>Update date</th>
                         <th>Status</th>
                         <th>Author</th>
+                        <th>Comments</th>
                         <th>Actions</th>
                     </tr>
                     </thead>
@@ -44,7 +45,7 @@
                         <tr>
                             <td>{{ question.id }}</td>
                             <td>{{ question.difficulty }}</td>
-                            <td class="text-left">{{ question.content|slice(0, 60) ~ (question.content|length > 60 ? '...' : '') }}</td>
+                            <td class="text-left min-w-[300px]">{{ question.content|slice(0, 60) ~ (question.content|length > 60 ? '...' : '') }}</td>
                             <td>
                                 <ul class="tags-container justify-center">
                                     {% for category in question.categories %}
@@ -61,6 +62,7 @@
                             </span>
                             </td>
                             <td>{{ question.user.username }}</td>
+                            <td>{{ question.comments|length }}</td>
                             <td>
                                 <div class="buttons-container">
                                     <a href="{{ path('question', {'id': question.id}) }}" class="button button-action">

@@ -5,5 +5,6 @@ export interface CommentInterface {
     content: string;
     creationDate: Date;
     updateDate: Date;
+    questionId: number;
     author: UserInterface;
 }

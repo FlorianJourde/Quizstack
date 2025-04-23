@@ -25,11 +25,11 @@ function Question({mode, questionId, showComments}: { mode: string, questionId: 
     const [visible, setVisible] = useState(true);
 
     useEffect(() => {
-        console.log(question)
+        // console.log(question)
     }, [question]);
 
     useEffect(() => {
-        console.log(answers)
+        // console.log(answers)
     }, [answers]);
 
     useEffect(() => {

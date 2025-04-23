@@ -55,6 +55,21 @@ class CommentsRepository extends ServiceEntityRepository
         return new Paginator($query);
     }
 
+    public function getLastComment(int $limit): array
+    {
+        $query = $this->createQueryBuilder('c')
+//            ->andWhere('c.user = :user')
+//            ->setParameter('user', $user)
+            ->orderBy('c.creation_date', 'DESC')
+            ->setMaxResults(self::COMMENTS_PER_PAGE)
+//            ->setFirstResult($limit)
+            ->setMaxResults($limit)
+            ->getQuery()
+            ->getResult();
+
+        return $query;
+    }
+
 //    public function getAllPaginate(int $page, int $limit, int $userId): Paginator
 //    {
 //        $query = $this->createQueryBuilder('c')
