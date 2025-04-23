@@ -13,7 +13,6 @@
 - `_context` dans l'import ?
 
 # Todo
-
 - Activity : preview last comments
 - Pages
     - Landing page : responsive

@@ -98,12 +98,52 @@ pre {
   }
 }
 
-.score-item {
-  //display: grid;
-    display: none;
+.score-container {
+
+  display: none;
 
   &.active {
-  display: flex;
+    display: grid;
+  }
+
+  .score-item {
+    //display: grid;
+
+    &:before {
+      content: "";
+      background-size: contain;
+      background-position: top left;
+      width: 40px;
+      //height: 30px;
+      //aspect-ratio: 152/223;
+      aspect-ratio: 1/1;
+      object-fit: contain;
+      background-repeat: no-repeat;
+      right: var(--spacing-primary);
+      //top: var(--spacing-primary);
+      top: 0;
+      transform: translateY(-50%);
+      position: absolute;
+
+    }
+
+    &:nth-child(1) {
+      &:before {
+        background-image: url('/public/images/pictos/medal-gold.png');
+      }
+    }
+
+    &:nth-child(2) {
+      &:before {
+        background-image: url('/public/images/pictos/medal-silver.png');
+      }
+    }
+
+    &:nth-child(3) {
+      &:before {
+        background-image: url('/public/images/pictos/medal-bronze.png');
+      }
+    }
   }
 }
 
