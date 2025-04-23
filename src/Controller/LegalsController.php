@@ -9,12 +9,21 @@ use Symfony\Component\Routing\Attribute\Route;
 class LegalsController extends AbstractController
 {
 
-    #[Route('/legals', name: 'app_legals')]
-    public function legals(): Response
+    #[Route('/cookie-policy', name: 'app_cookie_policy')]
+    public function cookiePolicy(): Response
     {
-//        $categories = $categoriesRepository->findAll();
-//        $categories = $categoriesRepository->findCategoriesByOrder();
+        return $this->render('legals/cookie-policy.html.twig');
+    }
 
-        return $this->render('legals.html.twig');
+    #[Route('/privacy-policy', name: 'app_privacy_policy')]
+    public function privacyPolicy(): Response
+    {
+        return $this->render('legals/privacy-policy.html.twig');
+    }
+
+    #[Route('/terms-of-service', name: 'app_terms_of_service')]
+    public function termsOfService(): Response
+    {
+        return $this->render('legals/terms-of-service.html.twig');
     }
 }

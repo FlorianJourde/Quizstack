@@ -4,8 +4,8 @@
 
 {% block body %}
 
-        {{ include('partials/banner.html.twig') }}
-{#    {{ include('partials/banner-spotlight.html.twig', {'color': 'green'}) }}#}
+    {{ include('partials/banner.html.twig') }}
+    {#    {{ include('partials/banner-spotlight.html.twig', {'color': 'green'}) }} #}
 
     <div class="wrapper">
         {#        <div> #}
@@ -20,7 +20,9 @@
 
     </div>
 
-    {{ include('partials/promotional/promotional-1.html.twig', _context) }}
+    <div class="wrapper wrapper-large pt-spacing-very-large-primary pb-spacing-large-secondary">
+        {{ include('partials/promotional/promotional-1.html.twig', _context) }}
+    </div>
 
 
 {% endblock %}
