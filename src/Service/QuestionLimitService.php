@@ -9,11 +9,11 @@ use Symfony\Component\HttpFoundation\Request;
 
 class QuestionLimitService
 {
-//    private const MAX_QUESTIONS = 10;
-    private const MAX_QUESTIONS = 3;
+//    private const MAX_QUESTIONS = 3;
+    private const MAX_QUESTIONS = 10;
     private const COOKIE_NAME = 'viewed_questions_count';
-//    private const COOKIE_DURATION = 24 * 60 * 60;
-    private const COOKIE_DURATION = 60;
+//    private const COOKIE_DURATION = 60;
+    private const COOKIE_DURATION = 24 * 60 * 60;
 
     public function __construct(
         private Security $security
