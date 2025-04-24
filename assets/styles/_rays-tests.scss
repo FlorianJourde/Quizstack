@@ -48,10 +48,10 @@
   transition: opacity 1s;
   left: 50%;
   transform: translateX(-50%);
-  height: 1000px;
-  
-  @media (max-width: 640px) {
     height: 800px;
+
+  @media (max-width: 40rem) {
+  height: 1000px;
   }
 
   &.hide {

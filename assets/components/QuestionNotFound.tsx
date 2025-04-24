@@ -9,7 +9,17 @@ function QuestionNotFound() {
                 <h1 className="big-title grow">Question not found</h1>
             </div>
             <div className="glass box flex flex-col gap-spacing-primary">
-                No question found, try later or with different filters...
+
+                <div>
+                    <h2 className={'small-title'}>
+                        <span className="material-icons">warning</span>
+                        No question found
+                    </h2>
+                    <p className={'opacity-75'}>No question found, try later or with different
+                        filters.</p>
+                </div>
+
+
                 <div className="buttons-container">
                     <a href={ROUTES.FILTERS} className="button button-primary">
                         Filters

@@ -86,12 +86,12 @@
       background-size: 12px;
       background-repeat: no-repeat;
       background-position: 50% 50%;
-      top: 2.1rem;
-      left: 2.1rem;
+      top: 1.6rem;
+      left: 1.6rem;
 
-      @media (max-width: 640px) {
-        top: 1.6rem;
-        left: 1.6rem;
+      @media (min-width: 40rem) {
+        top: 2.1rem;
+        left: 2.1rem;
       }
     }
 

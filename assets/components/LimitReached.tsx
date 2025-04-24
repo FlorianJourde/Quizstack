@@ -10,7 +10,10 @@ function LimitReached() {
             </div>
             <div className="glass box flex flex-col gap-spacing-primary">
                 <div>
-                    <h2 className={`small-title`}>You've reached the question limit for today</h2>
+                    <h2 className={`small-title`}>
+                        <span className="material-icons">warning</span>
+                        You've reached the question limit for today
+                    </h2>
                     <p>Please login or register to continue to play.</p>
                 </div>
                 <div className="buttons-container">

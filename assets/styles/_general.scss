@@ -95,6 +95,10 @@ pre {
   }
 }
 
+#quiz-container {
+  //min-height: 50svh;
+}
+
 .comment-container {
   .code-wrapper {
     //margin-top: unset !important;
@@ -456,17 +460,6 @@ div[style*="background: rgb(39, 40, 34);"] {
     font-size: 14px;
   }
 
-  &.md-18 {
-    font-size: 18px;
-  }
-
-  &.md-24 {
-    font-size: 24px;
-
-    @media (max-width: 1024px) {
-      font-size: 18px;
-    }
-  }
 }
 
 .material-icons.md-48 {
@@ -495,10 +488,10 @@ div[style*="background: rgb(39, 40, 34);"] {
       }
 
       //&::after {
-      &:not(:last-child):after {
-        content: "•";
-        opacity: .5;
-      }
+      //&:not(:last-child):after {
+      //  content: "•";
+      //  opacity: .5;
+      //}
     }
   }
 }

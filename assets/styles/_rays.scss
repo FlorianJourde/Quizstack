@@ -44,10 +44,10 @@
   transition: opacity 1s;
   will-change: opacity;
   transform: translateX(-50%);
-  height: 1000px;
+  height: 800px;
 
-  @media (max-width: 640px) {
-    height: 800px;
+  @media (min-width: 40rem) {
+    height: 1000px;
   }
 
   &.hide {

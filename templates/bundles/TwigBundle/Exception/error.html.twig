@@ -1,10 +1,34 @@
-{% extends 'base.html.twig' %}
+{% extends 'layout.html.twig' %}
 
 {% block body %}
-    <h1>Page not found</h1>
 
-    <p>
-        The requested page couldn't be located. Checkout for any URL
-        misspelling or <a href="{{ path('homepage') }}">return to the homepage</a>.
-    </p>
+    {{ include('partials/banner.html.twig', {'color': 'red'}) }}
+    <div class="wrapper">
+        <div class="page-header-container">
+            <h1 class="big-title grow">Page not found</h1>
+        </div>
+    </div>
+
+    <div class="wrapper">
+        <div class="glass box flex flex-col gap-spacing-primary">
+            <div>
+                <h2 class=small-title>
+                    <span class="material-icons">error</span>
+                    Looks like this page is missing...
+                </h2>
+                <p class=opacity-75>We apologize, but the page you are looking for cannot be found.
+                    This may be due to a temporary issue or the page may have been moved or removed.</p>
+            </div>
+            <div class="buttons-container">
+                <a href="{{ path('app_home') }}" class="button button-primary">
+                    Home
+                </a>
+            </div>
+        </div>
+    </div>
+
+    {#    <p> #}
+    {#        The requested page couldn't be located. Checkout for any URL #}
+    {#        misspelling or <a href="{{ path('homepage') }}">return to the homepage</a>. #}
+    {#    </p> #}
 {% endblock %}

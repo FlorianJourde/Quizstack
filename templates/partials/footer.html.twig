@@ -8,7 +8,7 @@
                     <a href="{{ path('app_home') }}" class="flex gap-4 items-center">
                         <img src="{{ asset('images/logos/quizstack-logo.png') }}" alt="Quizstack logo" class="h-10">
                         <div class="flex flex-col gap-1">
-                            <p class="font-secondary">Quizstack</p>
+                            <p class="font-secondary font-semibold">Quizstack</p>
                             <p class="muted">
                                 Learn web development by answering questions
                             </p>
@@ -23,7 +23,7 @@
                 </div>
             </div>
 
-            <nav class="footer-bottom-container">
+            <nav class="footer-bottom-container flex flex-col flex-wrap gap-spacing-secondary">
                 <ul class="flex flex-wrap gap-spacing-secondary">
                     {#                    <li> #}
                     {#                        <a href="{{ path('app_filters') }}" class="button button-tertiary">Filters</a> #}
@@ -41,26 +41,30 @@
 
                     {{ include('partials/links.html.twig') }}
 
+                </ul>
+
+                <ul class="flex flex-wrap gap-spacing-secondary muted">
+
                     <li>
                         <a href="{{ path('app_cookie_policy') }}" class="button button-tertiary">
-{#                            <span class="material-icons">emoji_events</span>#}
+                            {#                            <span class="material-icons">emoji_events</span> #}
                             Cookie Policy
                         </a>
                     </li>
                     <li>
                         <a href="{{ path('app_privacy_policy') }}" class="button button-tertiary">
-{#                            <span class="material-icons">tune</span>#}
+                            {#                            <span class="material-icons">tune</span> #}
                             Privacy Policy
                         </a>
                     </li>
                     <li>
                         <a href="{{ path('app_terms_of_service') }}" class="button button-tertiary">
-{#                            <span class="material-icons">mark_chat_unread</span>#}
+                            {#                            <span class="material-icons">mark_chat_unread</span> #}
                             Terms of Service
                         </a>
                     </li>
-
                 </ul>
+
             </nav>
 
             <p class="muted">© {{ "now"|date("Y") }} Quizstack</p>

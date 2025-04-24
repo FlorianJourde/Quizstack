@@ -109,11 +109,11 @@ function CommentList({question, setQuestion}) {
             ) : (
                 <div className="glass box flex flex-col gap-spacing-primary">
                     <div>
-                        <p className={'small-title'}>
+                        <h2 className={'small-title'}>
                             <span className="material-icons">chat_bubble</span>
                             Wanna join the conversation ?
-                        </p>
-                        <p className={'text-very-light-grey-secondary'}>Please login or register !</p>
+                        </h2>
+                        <p className={'opacity-75'}>Please login or register !</p>
                     </div>
                     <div className="buttons-container">
                         <a href={ROUTES.LOGIN} className="button button-tertiary">

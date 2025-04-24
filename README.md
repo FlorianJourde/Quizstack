@@ -13,11 +13,12 @@
 - `_context` dans l'import ?
 
 # Todo
+
 - Pages
     - Contact
     - Errors
-- Tests
 - CI/CD
+- Tests
 
 # SEO
 
