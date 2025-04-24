@@ -2,7 +2,7 @@ import React, {Dispatch, SetStateAction} from 'react';
 import {MarkdownRenderer} from "./MarkdownRenderer";
 import useRaysAnimation from "../hook/RaysAnimation";
 import {container, item} from "../motion/animations";
-import {motion, AnimatePresence} from "motion/react";
+import {motion} from "motion/react";
 import {QuestionInterface} from "../types";
 
 function Choices({mode, question, answers, setAnswers}: {
@@ -18,18 +18,17 @@ function Choices({mode, question, answers, setAnswers}: {
         if (question.correctChoices) return;
         if (!setAnswers) return;
 
-            setAnswers(prevSelected => {
-                if (question.numberOfCorrectChoices === 1) {
-                    return [answerId];
+        setAnswers(prevSelected => {
+            if (question.numberOfCorrectChoices === 1) {
+                return [answerId];
+            } else {
+                if (prevSelected.includes(answerId)) {
+                    return prevSelected.filter(id => id !== answerId);
                 } else {
-                    if (prevSelected.includes(answerId)) {
-                        return prevSelected.filter(id => id !== answerId);
-                    } else {
-                        return [...prevSelected, answerId];
-                    }
+                    return [...prevSelected, answerId];
                 }
-            });
-        // }
+            }
+        });
     }
 
     function checkAnswerValidity(answerId) {

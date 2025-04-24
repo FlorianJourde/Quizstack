@@ -97,13 +97,6 @@
 
     .checkbox-label {
       margin-left: 2.8rem;
-      //
-      //pre:only-child {
-      //  .code-wrapper {
-      //    margin-top: unset !important;
-      //    margin-bottom: unset !important;
-      //  }
-      //}
     }
   }
 }
@@ -196,10 +189,6 @@
       .color-layer {
         background: radial-gradient(circle closest-corner at top, #ffe33840, transparent);
       }
-    }
-
-    .checkbox-group .checkbox-input:checked ~ .color-layer {
-      //background: radial-gradient(circle closest-corner at top, rgba(255, 255, 255, 0.42), transparent);
     }
 
     .checkbox-group {

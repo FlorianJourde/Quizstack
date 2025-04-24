@@ -1,7 +1,5 @@
 @use "_particles";
 @use "_rays";
-//@use "_rays-tests";
-//@use "_spotlight";
 @use "_noise-texture.scss";
 @use "_legals";
 @use "_general";
@@ -11,20 +9,3 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-
-* {
-  //outline: 1px solid tan !important;
-}
-
-body {
-  //background-color: #000000 !important;
-}
-
-//header {
-//  opacity: 0 !important;
-//}
-//
-//.noise-texture {
-//  opacity: 0 !important;
-//}

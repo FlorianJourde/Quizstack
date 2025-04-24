@@ -8,35 +8,12 @@
 
     .switch-input {
       display: none;
-
-
-      //.switch-label.active,
-      //{
-
-
-      + .switch-label-all {
-        //background-color: theme('colors.very-dark-grey-primary');
-      }
-
-      + .switch-label-easy {
-        //background-color: theme('colors.green-secondary');
-      }
-
-      + .switch-label-medium {
-        //background-color: theme('colors.orange-secondary');
-      }
-
-      + .switch-label-hard {
-        //background-color: theme('colors.red-secondary');
-      }
     }
 
     .switch-input:checked + .switch-label,
     .switch-label.active {
       background-color: theme('colors.very-dark-grey-primary');
     }
-
-    //}
 
     .switch-label {
       cursor: pointer;
@@ -45,66 +22,4 @@
       transition: .2s ease;
     }
   }
-
 }
-
-//.switch {
-//  position: relative;
-//  height: 32px;
-//  width: 300px;
-//  margin: 20px auto;
-//  background-color: theme('colors.very-dark-grey-primary');
-//  border-radius: 32px;
-//  display: flex;
-//  align-items: center;
-//
-//  .switch-input {
-//    display: none;
-//
-//    &:checked {
-//      + .switch-label {
-//        //color: #FFF;
-//        transition: .2s ease;
-//        transition-property: color, text-shadow;
-//      }
-//
-//      + .switch-label-y ~ .switch-selector {
-//        transform: translateX(0%);
-//        background-color: theme('colors.green-secondary');
-//      }
-//
-//      + .switch-label-i ~ .switch-selector {
-//        transform: translateX(100%);
-//        background-color: theme('colors.orange-secondary');
-//      }
-//
-//      + .switch-label-n ~ .switch-selector {
-//        transform: translateX(200%);
-//        background-color: theme('colors.red-secondary');
-//      }
-//    }
-//  }
-//
-//  .switch-label {
-//    font-weight: bold;
-//    position: relative;
-//    z-index: 2;
-//    float: left;
-//    width: 100px;
-//    text-align: center;
-//    cursor: pointer;
-//  }
-//
-//  .switch-selector {
-//    position: absolute;
-//    z-index: 1;
-//    top: 0;
-//    left: 0;
-//    display: block;
-//    width: 100px;
-//    height: 32px;
-//    border-radius: 32px;
-//    background-color: theme('colors.grey-secondary');
-//    transition: .4s;
-//  }
-//}

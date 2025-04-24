@@ -8,7 +8,6 @@ export async function getComments(questionId) {
 
 export async function getLastComments() {
     const response = await fetch(`${BASE_URL}/comments/last`);
-    // return response.json();
     const data = await response.json();
     return data.comments;
 }

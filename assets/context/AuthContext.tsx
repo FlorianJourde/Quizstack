@@ -22,9 +22,6 @@ export function AuthProvider({children}: { children: ReactNode }) {
                 const response = await fetch('/api/user/current');
                 const data = await response.json();
 
-                // console.log(data);
-                // console.log(data.roles.includes('ROLE_ADMIN'));
-
                 if (data.error) {
                     setCurrentUser(null);
                     setError(data.error);

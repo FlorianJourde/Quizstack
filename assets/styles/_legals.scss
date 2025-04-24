@@ -1,7 +1,3 @@
-* {
-  //outline: 1px solid tan !important;
-}
-
 .legals-container {
   h2 {
     font-size: 1.5rem;
@@ -22,7 +18,6 @@
   }
 
   p {
-    //opacity: .5;
     color: theme('colors.very-light-grey-secondary');
     margin-bottom: .2rem;
     font-size: 1.125rem;
@@ -31,9 +26,5 @@
 
   a {
     color: theme('colors.white-primary');
-  }
-
-  *:not(:last-child) {
-    //margin-bottom: 1rem;
   }
 }

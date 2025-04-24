@@ -1,21 +1,16 @@
 import React, {useEffect, useState} from 'react';
 import {getRandomQuestion, getQuestion, submitAnswers} from "../services/questionsApi";
 import Choices from "./Choices";
-import Explanation from "./Explanation";
 import CommentList from "./Comment/CommentList";
-import {MarkdownRenderer} from "./MarkdownRenderer";
 import {QuestionInterface, QuestionOrLimitReached} from '../types';
 import {UrlFiltersInterface} from "../types/urlFilters";
 import LimitReached from "./LimitReached";
 import Loading from "./Loading";
-import Banner from "./Banner";
 import Sidebar from "./Sidebar";
 import QuestionNotFound from "./QuestionNotFound";
-import {motion, AnimatePresence} from "motion/react"
-import {transform} from "motion";
-import {item} from "../motion/animations";
-import Image from "./Image";
 import QuestionContent from "./QuestionContent";
+import {motion, AnimatePresence} from "motion/react"
+import {item} from "../motion/animations";
 
 function Question({mode, questionId, showComments}: { mode: string, questionId: number, showComments: boolean }) {
     const [loading, setLoading] = useState<boolean>(true);
@@ -27,10 +22,6 @@ function Question({mode, questionId, showComments}: { mode: string, questionId: 
     useEffect(() => {
         // console.log(question)
     }, [question]);
-
-    useEffect(() => {
-        // console.log(answers)
-    }, [answers]);
 
     useEffect(() => {
         loadQuestion();
@@ -81,13 +72,11 @@ function Question({mode, questionId, showComments}: { mode: string, questionId: 
 
     function handleNextQuestion() {
         setVisible(false);
-        // loadQuestion();
     }
 
     async function handleSubmit() {
         try {
             const result: QuestionInterface = await submitAnswers(question?.id, answers);
-            // console.log(result);
             if (question) {
                 setQuestion({
                     ...question,
@@ -120,13 +109,10 @@ function Question({mode, questionId, showComments}: { mode: string, questionId: 
                         animate="visible"
                         exit="hidden"
                         variants={item}
-
                         className="flex flex-col relative">
 
-                        {/*{mode === 'game' && <Sidebar loadQuestion={loadQuestion} isLoading={loading}/>}*/}
                         {mode === 'game' && <Sidebar onNext={handleNextQuestion} isLoading={loading}/>}
 
-                        {/*<AnimatePresence>*/}
                         <div className="flex flex-col gap-8">
 
                             <QuestionContent question={question}/>

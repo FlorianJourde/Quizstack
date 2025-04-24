@@ -1,7 +1,7 @@
 import React from 'react';
 import {MarkdownRenderer} from "./MarkdownRenderer";
 import {item} from "../motion/animations";
-import {motion, AnimatePresence} from "motion/react";
+import {motion} from "motion/react";
 
 function Explanation({question}) {
     return (

@@ -4,7 +4,6 @@ import {ROUTES} from "../utils/routes";
 function QuestionNotFound() {
     return (
         <>
-            {/*<div className="wrapper">*/}
             <div className="page-header-container">
                 <h1 className="big-title grow">Question not found</h1>
             </div>
@@ -19,14 +18,12 @@ function QuestionNotFound() {
                         filters.</p>
                 </div>
 
-
                 <div className="buttons-container">
                     <a href={ROUTES.FILTERS} className="button button-primary">
                         Filters
                     </a>
                 </div>
             </div>
-            {/*</div>*/}
         </>
     );
 };

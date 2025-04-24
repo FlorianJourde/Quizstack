@@ -10,8 +10,6 @@ import './scripts/switches'
 import './scripts/question-form'
 import './scripts/menu'
 import './scripts/accordion'
-import {motion, AnimatePresence} from "motion/react";
-// import {animations} from "./motion/animations";
 
 document.addEventListener('DOMContentLoaded', () => {
     const questionContainer = document.querySelector('#quiz-container') as HTMLElement;

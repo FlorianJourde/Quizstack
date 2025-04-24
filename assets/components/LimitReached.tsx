@@ -4,7 +4,6 @@ import {ROUTES} from "../utils/routes";
 function LimitReached() {
     return (
         <>
-            {/*<div className="wrapper">*/}
             <div className="page-header-container">
                 <h1 className="big-title grow">Limit reached !</h1>
             </div>
@@ -25,7 +24,6 @@ function LimitReached() {
                     </a>
                 </div>
             </div>
-            {/*</div>*/}
         </>
     );
 }

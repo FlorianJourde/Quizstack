@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useState} from 'react';
 import {MarkdownRenderer} from "../MarkdownRenderer";
 import CommentUpdate from "./CommentUpdate";
 import CommentDelete from "./CommentDelete";
@@ -7,8 +7,8 @@ import ProfilePicture from "../ProfilePicture";
 import {QuestionInterface} from "../../types";
 import {CommentInterface} from "../../types/comment";
 import {ROUTES} from "../../utils/routes";
-import {container, item} from "../../motion/animations";
-import {motion, AnimatePresence} from "motion/react"
+import {item} from "../../motion/animations";
+import {motion} from "motion/react"
 
 function CommentItem(
     {
@@ -28,12 +28,7 @@ function CommentItem(
     const [isDeleting, setIsDeleting] = useState(false);
     const {formattedDate, formattedTime} = formatDate(comment.creationDate);
     const {isAuthor, isAdmin} = useAuth();
-    // const userIsAuthor = isAuthor(comment.author.id);
     const userCanEdit = isAuthor(comment.author.id) || isAdmin();
-
-    useEffect(() => {
-        console.log(comment)
-    }, [comment]);
 
     function handleCommentUpdated() {
         setIsEditing(false);
@@ -73,12 +68,7 @@ function CommentItem(
         <>
             {index !== 0 && <hr className="h-[2px] bg-white/10 border-0"/>}
             <motion.li
-                // key={question.id}
-                // initial="hidden"
-                // animate="visible"
-                // exit="hidden"
                 variants={item}
-
 
                 className={`py-8 first:pt-0 last:pb-0 flex flex-col gap-spacing-primary`}>
                 <div className="comment-container flex flex-col gap-spacing-secondary">
@@ -114,18 +104,10 @@ function CommentItem(
                             )}
                             {mode === 'display' && (
                                 <>
-                                    {/*<a href=""></a>*/}
-
-                                    {/*{comment.questionId}*/}
-
                                     <a href={`${ROUTES.QUESTION}/${comment.questionId}`}
                                        className="button button-action">
                                         <span className="material-icons">visibility</span>
                                     </a>
-
-                                    {/*<button className="button button-action" onClick={() => handleStartEditing()}>*/}
-                                    {/*    <span className="material-icons">visibility</span>*/}
-                                    {/*</button>*/}
                                 </>
                             )}
                         </div>

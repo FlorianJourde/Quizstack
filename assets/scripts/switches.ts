@@ -1,8 +1,6 @@
 document.addEventListener('DOMContentLoaded', (): void => {
     const switchButtons: NodeListOf<HTMLElement> = document.querySelectorAll('button.switch-label');
-    // const switchContainer: NodeListOf<HTMLElement> = document.querySelectorAll('button.switch-container');
     const scoresContainer: NodeListOf<HTMLElement> = document.querySelectorAll('.score-container');
-    const scoreItems: NodeListOf<HTMLElement> = document.querySelectorAll('.score-item');
 
     function showScoresByPeriod(period: string): void {
         scoresContainer.forEach(item => {
