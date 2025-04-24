@@ -30,7 +30,7 @@
 
             {{ include('partials/question/content.html.twig', _context) }}
             {{ include('partials/question/explanation.html.twig', _context) }}
-            {{ include('partials/question/image.html.twig', _context) }}
+            {{ include('partials/form/image.html.twig', _context) }}
             {{ include('partials/question/difficulty.html.twig', _context) }}
             {{ include('partials/question/categories.html.twig', _context) }}
             {{ include('partials/question/status.html.twig', _context) }}
@@ -40,7 +40,7 @@
 
             <div class="buttons-container mb-4">
                 <a href="{{ path('questions') }}" class="button button-tertiary">Cancel</a>
-                <button type="submit" class="button button-primary">Add</button>
+                <button type="submit" class="button button-primary">Submit</button>
             </div>
 
             {{ form_end(form, {'render_rest': false}) }}

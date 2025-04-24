@@ -14,7 +14,6 @@
 
 # Todo
 - Pages
-    - Landing page : responsive
     - Contact
     - Errors
 - Tests

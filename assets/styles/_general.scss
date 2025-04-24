@@ -121,7 +121,6 @@ pre {
       content: "";
       background-size: contain;
       background-position: top left;
-      width: 40px;
       //height: 30px;
       //aspect-ratio: 152/223;
       aspect-ratio: 1/1;
@@ -132,6 +131,13 @@ pre {
       top: 0;
       transform: translateY(-50%);
       position: absolute;
+
+      width: 30px;
+
+      @media (min-width: 40rem) {
+
+        width: 40px;
+      }
 
     }
 
