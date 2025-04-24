@@ -80,3 +80,7 @@ For questions or support, please open an issue on GitHub or contact us at contac
 ---
 
 Happy coding and quizzing!
+
+chmod -R 755 
+chmod -R 777 var/cache
+chmod -R 777 var/log
