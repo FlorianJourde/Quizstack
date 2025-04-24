@@ -9,22 +9,12 @@ use App\Repository\QuestionsRepository;
 use App\Service\FileUploaderService;
 use DateTimeImmutable;
 use Doctrine\ORM\EntityManagerInterface;
-
-//use Knp\Component\Pager\Pagination\PaginationInterface;
-use Exception;
-use Knp\Component\Pager\Pagination\PaginationInterface;
-
-//use Knp\Component\Pager\PaginatorInterface;
-//use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Bundle\SecurityBundle\Security;
-use Symfony\Component\DependencyInjection\Attribute\Autowire;
-use Symfony\Component\HttpFoundation\File\Exception\FileException;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Component\Security\Http\Attribute\IsGranted;
-use Symfony\Component\String\Slugger\SluggerInterface;
 
 class QuestionsController extends AbstractController
 {
@@ -39,9 +29,6 @@ class QuestionsController extends AbstractController
 
     #[Route('/questions', name: 'questions')]
     public function questions(
-//        QuestionsRepository $questionsRepository,
-//        Security            $security,
-//        Request             $request
         Security            $security,
         Request             $request,
         QuestionsRepository $commentsRepository
@@ -59,14 +46,12 @@ class QuestionsController extends AbstractController
         }
 
         return $this->render('questions/index.html.twig', [
-//            'user' => $user,
             'questions' => $paginator,
             'previous' => $offset - QuestionsRepository::QUESTIONS_PER_PAGE,
             'next' => min(count($paginator), $offset + QuestionsRepository::QUESTIONS_PER_PAGE),
         ]);
     }
 
-//    #[IsGranted('ROLE_EDITOR')]
     #[Route('/question/{id}', name: 'question', requirements: ['id' => '\d+'])]
     public function question(
         int                 $id,
@@ -96,7 +81,6 @@ class QuestionsController extends AbstractController
     }
 
     #[IsGranted('ROLE_USER')]
-
     #[Route('/question/{id}/edit', name: 'question_edit', requirements: ['id' => '\d+'])]
     public function edit(
         Request                $request,

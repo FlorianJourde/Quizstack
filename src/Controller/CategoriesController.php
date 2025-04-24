@@ -6,8 +6,6 @@ use App\Entity\Categories;
 use App\Form\CategoriesFormType;
 use App\Form\CategoryItemType;
 use App\Repository\CategoriesRepository;
-
-//use Doctrine\ORM\EntityManager;
 use App\Service\CategoriesService;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -22,7 +20,6 @@ class CategoriesController extends AbstractController
     #[Route('/categories', name: 'categories')]
     public function users(CategoriesRepository $categoriesRepository): Response
     {
-//        $categories = $categoriesRepository->findAll();
         $categories = $categoriesRepository->findCategoriesByOrder();
 
         return $this->render('categories/index.html.twig', [
@@ -38,7 +35,6 @@ class CategoriesController extends AbstractController
         EntityManagerInterface $entityManager
     ): Response
     {
-//        $categories = $categoriesRepository->findAll();
         $categories = $categoriesRepository->findCategoriesByOrder();
 
         $newCategory = new Categories();
@@ -126,9 +122,6 @@ class CategoriesController extends AbstractController
         $categoriesService->initializeCategoryPositions($entityManager);
         $currentPosition = $category->getPosition();
 
-//        dump($currentPosition);
-//        die();
-
         if ($currentPosition <= 0) {
             return $this->redirectToRoute('categories_edit');
         }
@@ -142,9 +135,6 @@ class CategoriesController extends AbstractController
 
             $entityManager->flush();
         }
-
-//        dump($category->getPosition());
-//        die();
 
         return $this->redirectToRoute('categories_edit');
     }

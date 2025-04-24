@@ -12,7 +12,6 @@ class HomeController extends AbstractController
     #[Route('/', name: 'app_home')]
     public function index(CategoriesRepository $categoriesRepository): Response
     {
-//        $categories = $categoriesRepository->findAll();
         $categories = $categoriesRepository->findCategoriesByOrder();
 
         return $this->render('index.html.twig', [

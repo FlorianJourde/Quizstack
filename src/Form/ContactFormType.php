@@ -22,9 +22,6 @@ class ContactFormType extends AbstractType
             ->add('message', null, [
                 'label' => 'Message',
             ])
-//            ->add('creationDate', null, [
-//                'widget' => 'single_text',
-//            ])
         ;
     }
 

@@ -8,12 +8,6 @@ use Doctrine\ORM\EntityManagerInterface;
 class CategoriesService
 {
 
-//    public function __construct(
-//        EntityManagerInterface $entityManager
-//    )
-//    {
-//    }
-
     public function initializeCategoryPositions(EntityManagerInterface $entityManager)
     {
 

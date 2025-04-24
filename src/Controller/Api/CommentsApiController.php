@@ -83,10 +83,6 @@ class CommentsApiController extends AbstractController
         $data = json_decode($request->getContent(), true);
         $content = $data['content'];
 
-//        dump($isAuthor);
-//        dump($isAdmin);
-//        die();
-
         if (!$canEditComment) {
             return $this->json(['error' => 'You cannot edit this comment.'], 403);
         }
@@ -115,7 +111,6 @@ class CommentsApiController extends AbstractController
 
     #[Route('/comment/{id}/delete', name: 'delete_comment', methods: ['DELETE'])]
     public function deleteComment(
-        Request                $request,
         EntityManagerInterface $entityManager,
         Comments               $comment
     ): JsonResponse
@@ -143,46 +138,13 @@ class CommentsApiController extends AbstractController
 
     #[Route('/comments/last', name: 'get_last_comments', methods: ['GET'])]
     public function getLastComments(
-        QuestionsRepository      $questionsRepository,
         CommentsRepository       $commentsRepository,
-        Request                  $request,
-        EntityManagerInterface   $entityManager,
         CommentsFormatterService $formatterService
     ): JsonResponse
     {
         $comments = $commentsRepository->getLastComments();
-//        dump($comments);
-//        $commentsData = new C
-
-
         $commentsData = $formatterService->formatCommentsData($comments);
-//        if (!$comments) {
-//            return new JsonResponse('No question found.', 404);
-//        }
-//
-//        $questionData = $formatterService->formatQuestionData($question);
-//
-//        if ($this->getUser() === null) {
-//            if ($limitService->isLimitReached($request)) {
-//                return $limitService->getLimitResponse();
-//            }
-//
-//            return $limitService->createResponseWithCookie($questionData, $request);
-//        }
-
-//        return $this->json($questionData);
 
         return $this->json($commentsData);
-
-//        return $this->json([
-////            'id' => $comment->getId(),
-////            'content' => $comment->getContent(),
-////            'creationDate' => $comment->getCreationDate(),
-////            'updateDate' => $comment->getUpdateDate(),
-////            'author' => [
-////                'id' => $user->getId(),
-////                'username' => $user->getUsername()
-////            ]
-//        ]);
     }
 }

@@ -3,7 +3,7 @@
 namespace App\Service;
 
 use App\Entity\Users;
-use http\Exception\InvalidArgumentException;
+use InvalidArgumentException;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Doctrine\ORM\EntityManagerInterface;
 

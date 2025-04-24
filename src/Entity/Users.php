@@ -7,8 +7,6 @@ use Symfony\Component\Validator\Constraints as Assert;
 use App\Repository\UsersRepository;
 use DateTimeImmutable;
 use Doctrine\Common\Collections\Collection;
-
-//use Doctrine\DBAL\Types\Type;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
@@ -46,11 +44,9 @@ class Users implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column]
     private ?string $password = null;
 
-//    #[ORM\Column]
     #[ORM\Column(type: Types::DATETIME_IMMUTABLE)]
     private ?DateTimeImmutable $inscription_date = null;
 
-//    #[ORM\Column]
     #[ORM\Column(type: Types::DATETIME_IMMUTABLE)]
     private ?DateTimeImmutable $last_authentication_date = null;
 

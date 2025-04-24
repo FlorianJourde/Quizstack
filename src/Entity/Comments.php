@@ -19,7 +19,6 @@ class Comments
     #[ORM\JoinColumn(nullable: false)]
     private ?Users $user = null;
 
-//    #[ORM\Column]
     #[ORM\ManyToOne(inversedBy: 'comments')]
     #[ORM\JoinColumn(nullable: false, onDelete: 'CASCADE')]
     private ?Questions $question = null;

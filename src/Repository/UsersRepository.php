@@ -4,7 +4,6 @@ namespace App\Repository;
 
 use App\Entity\Users;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
-use Doctrine\ORM\Query;
 use Doctrine\ORM\Tools\Pagination\Paginator;
 use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Component\Security\Core\Exception\UnsupportedUserException;
@@ -22,13 +21,6 @@ class UsersRepository extends ServiceEntityRepository implements PasswordUpgrade
     {
         parent::__construct($registry, Users::class);
     }
-
-//    public function findAllByLastAuthenticationDate(): ?Query
-//    {
-//        return $this->createQueryBuilder('u')
-//            ->orderBy('u.last_authentication_date', 'DESC')
-//            ->getQuery();
-//    }
 
     public function getUserPaginator(int $offset): Paginator
     {

@@ -3,17 +3,13 @@
 namespace App\Controller;
 
 use App\Entity\Users;
-use App\Form\ProfileFormType;
 use App\Form\UsersFormType;
 use App\Repository\UsersRepository;
 use Doctrine\ORM\EntityManagerInterface;
-
-//use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 use Symfony\Component\Security\Http\Attribute\IsGranted;
 
 class UsersController extends AbstractController
@@ -27,14 +23,6 @@ class UsersController extends AbstractController
     {
         $offset = max(0, $request->query->getInt('offset', 0));
         $paginator = $usersRepository->getUserPaginator($offset);
-
-//        $query = $usersRepository->findAllByLastAuthenticationDate();
-//
-//        $pagination = $paginator->paginate(
-//            $query,
-//            $page,
-//            $limit
-//        );
 
         return $this->render('users/index.html.twig', [
             'users' => $paginator,
@@ -120,28 +108,4 @@ class UsersController extends AbstractController
             'form' => $form
         ]);
     }
-
-//    #[IsGranted('ROLE_ADMIN')]
-//    #[Route('/user/{id}/delete', name: 'user_delete', requirements: ['id' => '\d+'], methods: ['POST'])]
-//    public function delete(
-//        Users $user,
-//        Request $request,
-//        EntityManagerInterface $entityManager): Response
-//    {
-//        if (!$this->isCsrfTokenValid('delete-user-' . $user->getId(), $request->request->get('_token'))) {
-//            throw new AccessDeniedException('Invalid CSRF token.');
-//        }
-//
-//        if ($this->getUser() === $user) {
-//            $this->addFlash('error', 'You can\'t delete your own account.');
-//            return $this->redirectToRoute('users');
-//        }
-//
-//        $entityManager->remove($user);
-//        $entityManager->flush();
-//
-//        $this->addFlash('success', 'User deleted.');
-//
-//        return $this->redirectToRoute('users');
-//    }
 }

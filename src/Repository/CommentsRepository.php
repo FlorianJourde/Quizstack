@@ -34,8 +34,6 @@ class CommentsRepository extends ServiceEntityRepository
     public function findCommentsByUserId(Users $user): ?Query
     {
         return $this->createQueryBuilder('c')
-//            ->join('c.user', 'u')
-//            ->join('c.question', 'q')
             ->where('c.user = :userId')
             ->setParameter('userId', $user)
             ->orderBy('c.creation_date', 'ASC')
@@ -58,29 +56,12 @@ class CommentsRepository extends ServiceEntityRepository
     public function getLastComments(int $limit = 10): array
     {
         $query = $this->createQueryBuilder('c')
-//            ->andWhere('c.user = :user')
-//            ->setParameter('user', $user)
             ->orderBy('c.creation_date', 'DESC')
             ->setMaxResults(self::COMMENTS_PER_PAGE)
-//            ->setFirstResult($limit)
             ->setMaxResults($limit)
             ->getQuery()
             ->getResult();
 
         return $query;
     }
-
-//    public function getAllPaginate(int $page, int $limit, int $userId): Paginator
-//    {
-//        $query = $this->createQueryBuilder('c')
-//            ->orderBy('c.creation_date', 'DESC')
-//            ->andWhere('c.user = :user')
-//            ->setParameter('user', $userId);
-//
-//        $paginator = new Paginator($query->getQuery(), true);
-//        $paginator->getQuery()
-//            ->setFirstResult($limit * ($page - 1))
-//            ->setMaxResults($limit);
-//        return $paginator;
-//    }
 }

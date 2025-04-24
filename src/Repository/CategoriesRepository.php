@@ -23,8 +23,5 @@ class CategoriesRepository extends ServiceEntityRepository
             ->addOrderBy('c.position', 'ASC')
             ->getQuery()
             ->getResult();
-//            ->orderBy('c.position', 'ASC')
-//            ->getQuery()
-//            ->getResult();
     }
 }

@@ -15,19 +15,11 @@ class ScoresController extends AbstractController
         $allTimeScore = $scoresRepository->findScoreWithLimit(20);
         $weeklyScores = $scoresRepository->findScoreWithLimit(20, 'week');
         $monthlyScores = $scoresRepository->findScoreWithLimit(20, 'month');
-//
-//        dump('alltime', $allTimeScore);
-//        dump('weekly', $weeklyScores);
-//        dump('monthly', $monthlyScores);
-//        die();
-
 
         return $this->render('scores.html.twig', [
-//            'scores' => $scores,
             'allTimeScores' => $allTimeScore,
             'monthlyScores' => $monthlyScores,
             'weeklyScores' => $weeklyScores,
-
         ]);
     }
 }

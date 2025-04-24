@@ -2,7 +2,6 @@
 
 namespace App\Service;
 
-use App\Entity\Questions;
 use Exception;
 use Symfony\Component\HttpFoundation\File\Exception\FileException;
 use Symfony\Component\HttpFoundation\File\UploadedFile;

@@ -31,9 +31,6 @@ class CategoriesFormType extends AbstractType
 
     public function configureOptions(OptionsResolver $resolver)
     {
-        $resolver->setDefaults([
-            // Configure your data_class if you have a wrapper entity,
-            // otherwise leave this empty
-        ]);
+        $resolver->setDefaults([]);
     }
 }

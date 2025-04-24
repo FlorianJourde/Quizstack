@@ -2,37 +2,22 @@
 
 namespace App\Service;
 
-use App\Entity\Questions;
-use App\Repository\ChoicesRepository;
-use App\Repository\QuestionsRepository;
 use App\Repository\UsersRepository;
 
 class CommentsFormatterService
 {
     public function __construct(
-        private UsersRepository     $usersRepository,
-        private ChoicesRepository   $choicesRepository,
-        private QuestionsRepository $questionsRepository
+        private UsersRepository $usersRepository
     )
     {
     }
 
     public function formatCommentsData($comments): array
     {
-//        $choiceArray = [];
-//        foreach ($question->getChoices() as $choice) {
-//            $choiceArray[] = [
-//                'id' => $choice->getId(),
-//                'content' => $choice->getContent()
-//            ];
-//        }
-
         $commentArray = [];
         foreach ($comments as $comment) {
             $userId = $comment->getUser();
             $user = $userId ? $this->usersRepository->find($userId) : null;
-//$comment;
-
 
             $commentArray[] = [
                 'id' => $comment->getId(),

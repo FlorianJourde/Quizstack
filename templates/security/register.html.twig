@@ -42,9 +42,9 @@
                 </ul>
             </div>
 
-            <div class="buttons-container flex-col">
-                <button class="button button-primary" type="submit">Register</button>
+            <div class="buttons-container flex-col-reverse items-end">
                 <a class="button button-tertiary" href="{{ path('app_login') }}">Already have an account ?</a>
+                <button class="button button-primary" type="submit">Register</button>
             </div>
 
             {{ form_end(registrationForm) }}

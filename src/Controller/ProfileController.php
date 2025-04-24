@@ -2,14 +2,10 @@
 
 namespace App\Controller;
 
-use App\Entity\Questions;
 use App\Entity\Users;
 use App\Form\ChangePasswordFormType;
 use App\Form\ProfileFormType;
-use App\Form\QuestionsFormType;
-use App\Repository\QuestionsRepository;
 use App\Service\FileUploaderService;
-use DateTimeImmutable;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Bundle\SecurityBundle\Security;
@@ -24,7 +20,6 @@ class ProfileController extends AbstractController
     #[IsGranted('ROLE_USER')]
     #[Route('/profile', name: 'profile')]
     public function profile(
-        QuestionsRepository $questionsRepository,
         Security            $security
     ): Response
     {
@@ -69,7 +64,6 @@ class ProfileController extends AbstractController
                 $image = $form->get('image')->getData();
 
                 if ($image) {
-//                    $imageName = $fileUploader->upload($image, $user->getImage());
                     $imageName = $fileUploader->upload($image, 'users', $user->getImage());
                     $user->setImage($imageName);
                 }

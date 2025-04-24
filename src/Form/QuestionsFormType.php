@@ -25,7 +25,6 @@ class QuestionsFormType extends AbstractType
             ->add('content', TextareaType::class, [
                 'label' => 'Content'
             ])
-//            ->add('image')
             ->add('explanation', TextareaType::class, [
                 'label' => 'Explanation'
             ])
@@ -43,10 +42,6 @@ class QuestionsFormType extends AbstractType
                 'label' => 'Image',
                 'mapped' => false,
                 'required' => false,
-//                'attr' => [
-//                    'data-browse' => 'Browse',
-//                    'lang' => 'en'
-//                ],
                 'constraints' => [
                     new File([
                         'maxSize' => '1024k',
@@ -63,12 +58,6 @@ class QuestionsFormType extends AbstractType
                 'choice_label' => 'name',
                 'multiple' => true,
                 'expanded' => true,
-//                'query_builder' => function (EntityRepository $er) {
-//                    return $er->createQueryBuilder('c')
-//                        ->where('c.status = :status')
-//                        ->setParameter('status', true)
-//                        ->orderBy('c.name', 'ASC');
-//                },
                 'label' => 'Categories'
             ])
             ->add('choices', CollectionType::class, [
@@ -107,8 +96,6 @@ class QuestionsFormType extends AbstractType
                 'required' => false
             ]);
         }
-
-
 
         if ($question && $question->getId()) {
             $builder->add('delete', SubmitType::class, [
