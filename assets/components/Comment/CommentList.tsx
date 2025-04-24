@@ -113,7 +113,7 @@ function CommentList({question, setQuestion}) {
                             <span className="material-icons">chat_bubble</span>
                             Wanna join the conversation ?
                         </h2>
-                        <p className={'opacity-75'}>Please login or register !</p>
+                        <p>Please login or register !</p>
                     </div>
                     <div className="buttons-container">
                         <a href={ROUTES.LOGIN} className="button button-tertiary">

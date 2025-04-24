@@ -15,7 +15,7 @@ function QuestionNotFound() {
                         <span className="material-icons">warning</span>
                         No question found
                     </h2>
-                    <p className={'opacity-75'}>No question found, try later or with different
+                    <p>No question found, try later or with different
                         filters.</p>
                 </div>
 

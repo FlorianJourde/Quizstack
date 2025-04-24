@@ -104,6 +104,26 @@
     --glow-light: radial-gradient(ellipse farthest-side at top, #401498 0, transparent 100%)
   }
 
+  &.pink {
+    --rainbow: repeating-linear-gradient(
+                    100deg,
+                    #c01db8 10%,
+                    #a10787 15%,
+                    #820068 20%
+    );
+    --glow-light: radial-gradient(ellipse farthest-side at top, #941498 0, transparent 100%)
+  }
+
+  &.white {
+    --rainbow: repeating-linear-gradient(
+                    100deg,
+                    hsl(303, 0%, 43%) 10%,
+                    hsl(310, 0%, 33%) 15%,
+                    hsl(312, 0%, 25%) 20%
+    );
+    --glow-light: radial-gradient(ellipse farthest-side at top, hsl(298, 0%, 34%) 0, transparent 100%)
+  }
+
   .glow {
     width: 100%;
     height: 100%;
