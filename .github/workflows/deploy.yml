@@ -22,16 +22,35 @@ jobs:
       - name: Install Composer dependencies
         run: composer install --prefer-dist --no-progress --no-dev --optimize-autoloader
 
+      - name: Set up SSH
+        run: |
+          mkdir -p ~/.ssh
+          echo "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config
+          chmod 600 ~/.ssh/config
+
       - name: Deploy to Hostinger
         uses: easingthemes/ssh-deploy@main
         env:
           SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
-          ARGS: "-rltgoDzvO --delete -e 'ssh -p ${{ secrets.REMOTE_PORT }}'"
+          ARGS: "-rltgoDzvO --delete"
           SOURCE: "/"
           REMOTE_HOST: ${{ secrets.REMOTE_HOST }}
           REMOTE_USER: ${{ secrets.REMOTE_USER }}
+          REMOTE_PORT: ${{ secrets.REMOTE_PORT }}
           TARGET: ${{ secrets.REMOTE_TARGET }}
           EXCLUDE: "/.git/, /.github/, /var/, /tests/, /node_modules/"
+
+      - name: Set production environment
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.REMOTE_HOST }}
+          username: ${{ secrets.REMOTE_USER }}
+          port: ${{ secrets.REMOTE_PORT }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          script: |
+            cd ${{ secrets.REMOTE_TARGET }}
+            echo 'APP_ENV=prod' > .env.local
+            echo 'APP_DEBUG=0' >> .env.local
 
       - name: Post-deploy setup
         uses: appleboy/ssh-action@master
@@ -42,6 +61,6 @@ jobs:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
             cd ${{ secrets.REMOTE_TARGET }}
-            php bin/console cache:clear
-            php bin/console doctrine:migrations:migrate --no-interaction
-            php bin/console assets:install public
+            php bin/console cache:clear --env=prod
+            php bin/console doctrine:migrations:migrate --no-interaction --env=prod
+            php bin/console assets:install public --env=prod
