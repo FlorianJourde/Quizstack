@@ -34,17 +34,18 @@
 
 .rays {
   width: 100%;
-  min-width: 1000px;
+  //min-width: 1000px;
   top: 0;
-  left: 50%;
+  //left: 50%;
   z-index: -1;
   position: absolute;
   pointer-events: none;
   opacity: .75;
   transition: opacity 1s;
   will-change: opacity;
-  transform: translateX(-50%);
+  //transform: translateX(-50%);
   height: 800px;
+  overflow-x: hidden;
 
   @media (min-width: 40rem) {
     height: 1000px;
@@ -145,6 +146,9 @@
     display: flex;
     place-content: center;
     place-items: center;
+    left: 50%;
+    min-width: 1000px;
+    transform: translateX(-50%);
     --stripes: repeating-linear-gradient(
                     100deg,
                     var(--stripe-color) 0%,

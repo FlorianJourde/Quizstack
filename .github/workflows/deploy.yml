@@ -32,13 +32,14 @@ jobs:
         uses: easingthemes/ssh-deploy@main
         env:
           SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
-          ARGS: "-rltgoDzvO --delete-excluded --exclude=.env.local --exclude=.htaccess --exclude=public/.htaccess --exclude=public/uploads/"
+          ARGS: "-rltgoDzvO --delete"
           SOURCE: "/"
           REMOTE_HOST: ${{ secrets.REMOTE_HOST }}
           REMOTE_USER: ${{ secrets.REMOTE_USER }}
           REMOTE_PORT: ${{ secrets.REMOTE_PORT }}
           TARGET: ${{ secrets.REMOTE_TARGET }}
-          EXCLUDE: "/.git/, /.github/, /var/, /tests/, /node_modules/"
+          EXCLUDE: "/.git/, /.github/, /var/, /tests/, /node_modules/, .env.local, .htaccess, public/.htaccess, public/uploads/"
+
 
       - name: Set production environment
         uses: appleboy/ssh-action@master
