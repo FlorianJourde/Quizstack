@@ -5,7 +5,6 @@
 {% block body %}
 
     {{ include('partials/banner.html.twig') }}
-    {#    {{ include('partials/banner-spotlight.html.twig', {'color': 'green'}) }} #}
 
     <div class="wrapper">
         <div class="page-header-container">
@@ -14,8 +13,6 @@
     </div>
 
     <div class="wrapper">
-
-
         <div class="legals-container">
             <h2><span>1.</span> Information We Collect</h2>
             <p>Account Information : Email address, username, and password</p>
@@ -55,9 +52,6 @@
                         href="{{ path('app_contact') }}">this form</a>.</p>
         </div>
     </div>
-
-    {#    {{ include('partials/promotional/promotional-1.html.twig', _context) }} #}
-
 
 {% endblock %}
 

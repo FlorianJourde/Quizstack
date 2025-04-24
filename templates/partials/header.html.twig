@@ -1,7 +1,6 @@
 <header class="flex justify-between items-center z-10">
     <div class="wrapper">
         <div class="header-container flex flex-col w-full">
-
             <div class="header-top-container flex items-center justify-between w-full">
                 <a href="{{ path('app_home') }}" class="flex gap-4 items-center font-secondary font-semibold text-xl">
                     <img src="{{ asset('images/logos/quizstack-logo.png') }}" alt="Quizstack logo" class="h-10">
@@ -14,28 +13,26 @@
                         {% if is_granted('ROLE_USER') %}
                             <li>
                                 <a href="{{ path('app_logout') }}"
-                                   class="button {# button-small #} button-primary border-none button-dark-grey">
-                                    {#                                    <span class="material-icons block sm:hidden">logout</span> #}
-                                    <span {# class="hidden sm:block" #}>Logout</span>
+                                   class="button button-primary border-none button-dark-grey">
+                                    <span>Logout</span>
                                 </a>
                             </li>
                         {% else %}
                             <li>
-                                <a href="{{ path('app_login') }}" class="button {# button-small #} button-tertiary">
-                                    {#                                    <span class="material-icons block sm:hidden">login</span> #}
-                                    <span {# class="hidden sm:block" #}>Login</span>
+                                <a href="{{ path('app_login') }}" class="button button-tertiary">
+                                    <span>Login</span>
                                 </a>
                             </li>
                             <li>
                                 <a href="{{ path('app_register') }}"
-                                   class="button {# button-small #} button-primary border-none button-dark-grey">
-                                    {#                                    <span class="material-icons  block sm:hidden">person_add</span> #}
-                                    <span {# class="hidden sm:block" #}>
+                                   class="button button-primary border-none button-dark-grey">
+                                    <span>
                                     Register
                                     </span>
                                 </a>
                             </li>
                         {% endif %}
+
                     </ul>
 
                     <button id="button-menu" class="button button-action">
@@ -43,21 +40,13 @@
                     </button>
                 </div>
             </div>
-
             <nav class="header-bottom-container">
-                {#                <ul class="dark-glass grid sm:grid-cols-2 box rounded-radius-primary gap-spacing-secondary mt-spacing-primary"> #}
                 <ul class="glass bg-dark-grey-secondary flex flex-col box rounded-radius-primary gap-spacing-primary">
-
-                    {#                    {{ include(partials }} #}
 
                     {{ include('partials/links.html.twig') }}
 
-
                     {% if is_granted('ROLE_USER') %}
                         <li class="bg-very-dark-grey-primary flex flex-col p-spacing-primary gap-spacing-primary rounded-radius-primary ">
-                            {#                            <div class="flex flex-col gap-spacing-primary"> #}
-
-                            {#                                <p class="font-bold">User</p> #}
                             <ul class="flex flex-col gap-spacing-primary">
                                 <li>
                                     <a href="{{ path('profile') }}" class="button button-tertiary">
@@ -73,10 +62,6 @@
                                 </li>
 
                                 {% if is_granted('ROLE_ADMIN') %}
-                                    {#                                <div class="flex flex-col gap-spacing-secondary"> #}
-                                    {#                            <li class="bg-very-dark-grey-primary flex flex-col p-spacing-secondary gap-spacing-secondary rounded-radius-primary "> #}
-                                    {#                                    <p class="font-bold">Admin</p> #}
-                                    {#                                    <ul class="flex flex-col gap-spacing-primary"> #}
                                     <li>
                                         <a href="{{ path('users') }}" class="button button-tertiary">
                                             <span class="material-icons">group</span>
@@ -89,32 +74,13 @@
                                             Categories
                                         </a>
                                     </li>
-                                    {#                                    </ul> #}
-                                    {#                                </div> #}
-
-                                    {#                            </li> #}
                                 {% endif %}
                             </ul>
-                            {#                            </div> #}
-
                         </li>
-
-
-
                     {% endif %}
 
-                    {# {% if is_granted('ROLE_USER') %} #}
-                    {# {% endif %} #}
-                    {#                    {% if is_granted('ROLE_USER') %} #}
-                    {#                        <li> #}
-                    {#                            <a href="{{ path('questions') }}" class="button button-tertiary"> #}
-                    {#                                <span class="material-icons">question_mark</span> #}
-                    {#                                Questions #}
-                    {#                            </a> #}
-                    {#                        </li> #}
-                    {#                    {% endif %} #}
-
                     <ul class="buttons-container sm:hidden">
+
                         {% if is_granted('ROLE_USER') %}
                             <li>
                                 <a href="{{ path('app_logout') }}" class="button button-primary button-red">Logout</a>
@@ -127,10 +93,10 @@
                                 <a href="{{ path('app_register') }}" class="button button-primary">Register</a>
                             </li>
                         {% endif %}
+
                     </ul>
                 </ul>
             </nav>
-
         </div>
     </div>
 </header>

@@ -5,26 +5,12 @@
 {% block body %}
 
     {{ include('partials/banner.html.twig') }}
-    {#    {{ include('partials/banner-spotlight.html.twig', {'color': 'green'}) }} #}
 
     <div class="wrapper">
         <div class="page-header-container">
             <h1 class="big-title grow">Contact</h1>
         </div>
     </div>
-
-
-
-    {#    <div class="wrapper"> #}
-    {#        <div> #}
-    {#            <p class="font-bold text-6xl text-center">Filters</p> #}
-    {#        </div> #}
-
-    {#        <div class="page-header-container"> #}
-    {#            <h1 class="big-title grow">Filters</h1> #}
-    {#        </div> #}
-
-    {#        {{ include('partials/filters.html.twig', _context) }} #}
 
     <div class="wrapper wrapper-small">
         <div class="form-container glass box bg-dark-grey-secondary">
@@ -56,16 +42,6 @@
                 {{ form_errors(form.message) }}
             </div>
 
-            {#            {{ include('partials/question/image.html.twig') }} #}
-{#            {{ include('partials/form/image.html.twig', {'type': user}) }}#}
-
-
-            {#            <div> #}
-            {#                <h2 class="small-title">{{ form.image.vars.label }}</h2> #}
-            {#                {{ form_widget(form.image) }} #}
-            {#                {{ form_errors(form.image) }} #}
-            {#            </div> #}
-
             <div class="buttons-container">
                 <a href="{{ path('app_home') }}" class="button button-tertiary">Cancel</a>
                 <button type="submit" class="button button-primary">Send</button>
@@ -74,9 +50,6 @@
 
         </div>
     </div>
-
-    {#    {{ include('partials/promotional/promotional-1.html.twig', _context) }} #}
-
 
 {% endblock %}
 

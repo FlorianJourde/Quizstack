@@ -22,7 +22,6 @@
              data-show-comments="{{ showComments }}"></div>
     </div>
 
-
     <div class="wrapper">
         <div class="page-separator-container">
             <h2 class="title">Dashboard</h2>
@@ -37,9 +36,6 @@
             {{ form_start(form) }}
             {{ include('partials/question/content.html.twig', _context) }}
             {{ include('partials/question/explanation.html.twig', _context) }}
-
-{#            {{ include('partials/question/image.html.twig', _context) }}#}
-
             {{ include('partials/question/difficulty.html.twig', _context) }}
             {{ include('partials/form/image.html.twig', {'type': question}) }}
             {{ include('partials/question/categories.html.twig', _context) }}
@@ -52,22 +48,9 @@
                 <button class="button button-primary" type="submit">Update</button>
             </div>
 
-{#            <form method="post" action="{{ path('admin_user_delete', {'id': user.id}) }}" onsubmit="return confirm('Ar you sure to remove this user ?');" style="display: inline-block">#}
-{#                <input type="hidden" name="_token" value="{{ csrf_token('delete-user-' ~ user.id) }}">#}
-{#                <button class="btn btn-danger">Supprimer</button>#}
-{#            </form>#}
-
             {{ form_end(form) }}
-
 
         </div>
     </div>
-
-{#    <div class="wrapper">#}
-{#        <div class="page-separator-container">#}
-{#            <h2 class="title">Preview</h2>#}
-{#        </div>#}
-{#    </div>#}
-
 
 {% endblock %}

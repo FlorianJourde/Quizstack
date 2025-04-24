@@ -4,7 +4,6 @@
         {{ form.image.vars.label }}
     </h2>
     {{ form_widget(form.image) }}
-{#    {{ form_errors(form.image) }}#}
 
     {% if form.image.vars.errors|length > 0 %}
         <p class="mt-2">
@@ -13,23 +12,16 @@
     {% endif %}
 
     {% if form.deleteImage is defined %}
-
-{#        {% set avatar = asset('/uploads/images/users/' ~ user.image) %}#}
-        <img class="mt-2 aspect-square rounded-full w-28 xl:w-32 object-cover border-light-grey-secondary border-2" src="{{ asset('/uploads/images/users/' ~ type.image) }}" alt="Profile picture">
-{#        <p class="mt-2">{{ type.image }}</p>#}
-
-        {#    <div> #}
-        {#    {{ form_widget(form.deleteImage) }} #}
+        <img class="mt-2 aspect-square rounded-full w-28 xl:w-32 object-cover border-light-grey-secondary border-2"
+             src="{{ asset('/uploads/images/users/' ~ type.image) }}" alt="Profile picture">
         <ul class="tags-container mt-2">
-            {#        {% for level in form.difficulty %} #}
             <li class="flex">
                 <span class="tag">
                     {{ form_widget(form.deleteImage) }}
                     {{ form_label(form.deleteImage) }}
                 </span>
             </li>
-            {#        {% endfor %} #}
         </ul>
-        {#    </div> #}
     {% endif %}
+
 </div>

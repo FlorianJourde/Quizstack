@@ -33,37 +33,25 @@
             class="score-container w-full grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-spacing-primary">
             {% for score in allTimeScores %}
                 {% set period = 'all-time' %}
-
-                {#            <li data-period="{{ period }}" class="user-infos-container glass box flex flex-wrap gap-spacing-secondary items-center grow"> #}
                 {{ include('partials/scores-grid.html.twig', {'period': period}) }}
-                {#            </li> #}
             {% endfor %}
         </ul>
 
         <ul data-period="month"
             class="score-container w-full grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-spacing-primary">
             {% for score in monthlyScores %}
-                {#                {% set period = month %} #}
                 {% set period = 'month' %}
-                {#            <li data-period="{{ period }}" class="user-infos-container glass box flex flex-wrap gap-spacing-secondary items-center grow"> #}
                 {{ include('partials/scores-grid.html.twig', {'period': period}) }}
-                {#            </li> #}
             {% endfor %}
         </ul>
 
         <ul data-period="week"
             class="score-container w-full grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-spacing-primary">
             {% for score in weeklyScores %}
-                {#                {% set period = week %} #}
                 {% set period = 'week' %}
-                {#            <li data-period="" class="user-infos-container glass box flex flex-wrap gap-spacing-secondary items-center grow"> #}
                 {{ include('partials/scores-grid.html.twig', {'period': period}) }}
-                {#            </li> #}
             {% endfor %}
         </ul>
     </div>
-
-{#    {{ include('partials/promotional/promotional-2.html.twig', _context) }}#}
-
 
 {% endblock %}

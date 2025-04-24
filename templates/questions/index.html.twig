@@ -17,7 +17,6 @@
         </div>
     </div>
 
-
     {% if questions is not empty %}
         <div class="wrapper wrapper-large">
             <div class="overflow-auto">
@@ -38,10 +37,6 @@
                     <tbody class="text-center">
 
                     {% for question in questions %}
-                        {#                        {{ dump(user is same as(question.user)) }} #}
-                        {#                        {{ dump(is_granted('ROLE_USER')) }} #}
-                        {#                        {{ dump(question.status) }} #}
-
                         <tr>
                             <td>{{ question.id }}</td>
                             <td>{{ question.difficulty }}</td>
@@ -82,11 +77,6 @@
                     {% endfor %}
                     </tbody>
                 </table>
-
-                {#            <div class="navigation d-flex justify-content-center"> #}
-                {#                {{ knp_pagination_render(questions) }} #}
-                {#            </div> #}
-
             </div>
 
             {{ include('partials/pagination.html.twig', {'page': 'questions', 'pagination': questions}) }}

@@ -4,20 +4,10 @@
 
 {% block body %}
 
-    {#    {{ include('partials/banner.html.twig') }} #}
-
-
     {{ include('partials/banner.html.twig', {'color': 'green'}) }}
-
-    {#    <div class="wrapper"> #}
-    {#        <div class="page-header-container"> #}
-    {#            <h1 class="big-title grow">Home</h1> #}
-    {#        </div> #}
-    {#    </div> #}
 
     <div class="wrapper wrapper-large pt-spacing-large-secondary pb-spacing-large-secondary">
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-spacing-large-secondary">
-            {#            <div> #}
             <h1 class="text-2xl sm:text-4xl md:text-5xl lg:text-6xl text-center font-secondary font-semibold col-span-full">
                 Master web development <br>
                 through <span
@@ -25,17 +15,10 @@
             <div class="flex flex-col gap-spacing-primary max-w-[600px] ml-auto mr-auto">
                 <div class="flex flex-col gap-spacing-secondary text-center lg:text-left">
 
-                    <p class="md:text-lg opacity-75">Challenge yourself with over 1k+ carefully
-                        crafted questions across
-                        12
-                        essential
-                        web development topics. Perfect your skills in HTML, JavaScript, React, and more — all from
-                        your
-                        mobile or desktop device, anytime, anywhere.</p>
+                    <p class="md:text-lg opacity-75">Challenge yourself with over 1k+ carefully crafted questions across
+                        12 essential web development topics. Perfect your skills in HTML, JavaScript, React, and more —
+                        all from your mobile or desktop device, anytime, anywhere.</p>
                 </div>
-                {#                <p class="text-xl opacity-75">Join community of developers improving their knowledge through fun, #}
-                {#                    interactive #}
-                {#                    quizzes !</p> #}
                 <div class="buttons-container">
                     <a class="button button-tertiary" href="#filters-section">
                         Select filters
@@ -45,7 +28,6 @@
                     </a>
                 </div>
             </div>
-
             <div>
                 <div id="demo-container"></div>
             </div>
@@ -56,21 +38,18 @@
         <ul class="grid grid-cols-1 max-w-[800px] lg:max-w-full ml-auto mr-auto lg:grid-cols-3 gap-spacing-primary lg:gap-spacing-large-secondary text-center">
             <li class="p-spacing-primary bg-green-secondary rounded-radius-primary">
                 <h3 class="text-2xl md:text-3xl font-semibold font-secondary pb-4">
-                    {#                    <span class="material-icons">question_mark</span> #}
                     1k+ questions
                 </h3>
                 <p class="text-lg opacity-75">Comprehensive quiz library for all skill levels</p>
             </li>
             <li class="p-spacing-primary bg-green-secondary rounded-radius-primary">
                 <h3 class="text-2xl md:text-3xl font-semibold font-secondary pb-4">
-                    {#                    <span class="material-icons">question_mark</span> #}
                     12 thematics
                 </h3>
                 <p class="text-lg opacity-75">From HTML basics to advanced web security</p>
             </li>
             <li class="p-spacing-primary bg-green-secondary rounded-radius-primary">
                 <h3 class="text-2xl md:text-3xl font-semibold font-secondary pb-4">
-                    {#                    <span class="material-icons">question_mark</span> #}
                     100+ users
                 </h3>
                 <p class="text-lg opacity-75">Join developers improving through daily practice</p>
@@ -78,84 +57,10 @@
         </ul>
     </div>
 
-    {#    <div class="wrapper"> #}
     {{ include('partials/filters.html.twig', _context) }}
-    {#    </div> #}
-
-
-    {#    <div class="wrapper wrapper-large pt-spacing-very-large-primary pb-spacing-very-large-secondary"> #}
     {{ include('partials/promotional/promotional-1.html.twig', _context) }}
-    {#    </div> #}
-
     {{ include('partials/promotional/promotional-2.html.twig', _context) }}
-
-
-
-
-
-
-
-    {#            <li class="accordion-item"> #}
-    {#                <button class="accordion-button text-lg"> #}
-    {#                    How does the scoring system work ? #}
-    {#                </button> #}
-    {#                <div class="expander bg-very-dark-grey-primary"> #}
-    {#                    <p class="expander-content text-lg"> #}
-    {#                        Points are awarded from 1 to 3, based on question difficulty. Counting sysem register weekly, #}
-    {#                        monthly and all time points progression #}
-    {#                    </p> #}
-    {#                </div> #}
-    {#            </li> #}
-    {#            <img src="{{ asset('images/decoration/question.png') }}" alt="Community comments" #}
-    {#                 class="w-[600px] object-contain -ml-16"> #}
-    {#            <div class="flex flex-col gap-4 #}{# glass box bg-dark-grey-secondary #}{# "> #}
-    {#                <h3 class="text-3xl font-secondary"> #}
-    {#                    #}{#                    <span class="material-icons">question_mark</span> #}
-    {#                    Join our community #}
-    {#                </h3> #}
-    {#                <p class=" text-lg opacity-75">Quizstack's mobile-first design means you can strengthen your development #}
-    {#                    skills during your commute, lunch break, or whenever inspiration strikes.</p> #}
-    {#                <p class=" text-lg opacity-75">Our responsive interface adapts perfectly to any screen size, providing a #}
-    {#                    seamless quiz experience #}
-    {#                    whether you're on a smartphone, tablet, or desktop.</p> #}
-    {#            </div> #}
-
-
     {{ include('partials/faq.html.twig') }}
-
-
-    {#    <div class="wrapper wrapper-large pb-spacing-large-primary"> #}
-    {#        <div class="grid grid-cols-1 xl:grid-cols-2 gap-spacing-large-secondary min-h-24 items-center"> #}
-
-    {#            <div class="p-spacing-primary gap-4 #}{# glass box bg-dark-grey-secondary #}{# "> #}
-    {#                <h3 class="text-3xl font-secondary pb-4"> #}
-    {#                    #}{#                    <span class="material-icons">question_mark</span> #}
-    {#                    12 thematics #}
-    {#                </h3> #}
-    {#                <p class="text-xl opacity-75">From HTML basics to advanced web security</p> #}
-    {#            </div> #}
-
-    {#            <img src="{{ asset('images/decoration/comment.png') }}" alt="Comments decoration" #}
-    {#                 class="w-full object-contain"> #}
-    {#        </div> #}
-    {#    </div> #}
-
-    {#    <div class="wrapper wrapper-large pb-spacing-large-primary"> #}
-    {#        <div class="grid grid-cols-1 xl:grid-cols-2 gap-spacing-large-secondary min-h-24 items-center"> #}
-
-    {#            <img src="{{ asset('images/decoration/question.png') }}" alt="Comments decoration" #}
-    {#                 class="w-full object-contain"> #}
-
-    {#            <div class="p-spacing-primary gap-4 #}{# glass box bg-dark-grey-secondary #}{# "> #}
-    {#                <h3 class="text-3xl font-secondary pb-4"> #}
-    {#                    #}{#                    <span class="material-icons">question_mark</span> #}
-    {#                    12 thematics #}
-    {#                </h3> #}
-    {#                <p class="text-xl opacity-75">From HTML basics to advanced web security</p> #}
-    {#            </div> #}
-    {#        </div> #}
-    {#    </div> #}
-
 
 {% endblock %}
 

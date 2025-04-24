@@ -4,9 +4,6 @@
 
 {% block body %}
 
-    {#    {{ include('partials/banner.html.twig') }} #}
-
-
     {{ include('partials/banner.html.twig', {'color': 'purple'}) }}
 
     <div class="wrapper">
@@ -15,21 +12,11 @@
         </div>
     </div>
 
-
-
     <div class="wrapper wrapper-large">
-
-
-        {#        {% for comment in comments %} #}
-        {#            <p>{{ dump(comment.content) }}</p> #}
-        {#        {% endfor %} #}
-
         <div class="overflow-auto">
             <table class="table glass">
                 <thead>
                 <tr>
-                    {#                    <th>ID</th> #}
-                    {#                    <th>User</th> #}
                     <th>Content</th>
                     <th>Date</th>
                     <th>Question</th>
@@ -39,8 +26,6 @@
 
                 {% for comment in comments %}
                     <tr>
-                        {#                        <td>{{ comment.id }}</td> #}
-                        {#                        <td>{{ comment.user.username }}</td> #}
                         <td class="text-left min-w-[300px]">{{ comment.content|slice(0, 120) ~ (comment.content|length > 120 ? '...' : '') }}</td>
                         <td>{{ comment.creationDate|date('d/m/y') }}</td>
                         <td>

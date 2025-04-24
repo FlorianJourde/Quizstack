@@ -4,20 +4,6 @@
     {% set avatar = asset('/images/logos/profile-picture.png') %}
 {% endif %}
 
-{% if period == 'all-time' %}
-    {#    {% set dataPeriod = 'all-time' %} #}
-{% elseif  period == score.week %}
-    {#    {% set dataPeriod = 'month' %} #}
-{% else %}
-    {#    {% set dataPeriod = 'week' %} #}
-{% endif %}
-
-{# {% if period is not null %} #}
-{#    {% set period = asset('/uploads/images/users/' ~ score.users.image) %} #}
-{# {% else %} #}
-{#    {% set avatar = asset('/images/logos/profile-picture.png') %} #}
-{# {% endif %} #}
-
  {% if period == 'all-time' %}
      {% set points = score.allTime %}
  {% elseif period == 'month' %}
@@ -27,13 +13,6 @@
  {% endif %}
 
 <li class="score-item glass box flex flex-wrap gap-spacing-secondary items-center grow">
-
-    {#    {{ period }} #}
-
-    {#    {{ dump(score.allTime) }} #}
-    {#    {{ dump(score.week) }} #}
-    {#    {{ dump(score.month) }} #}
-
     <img class="aspect-square rounded-full w-16 xl:w-20 object-cover border-light-grey-secondary border-2"
          alt="Profile picture" src="{{ avatar }}">
     <div class="flex flex-col">

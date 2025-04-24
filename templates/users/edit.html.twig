@@ -13,9 +13,6 @@
                 <a class="button button-action" href="{{ path('user', {'id': user.id}) }}">
                     <span class="material-icons">arrow_back</span>
                 </a>
-                {#                <a class="button button-action" href="{{ path('user_edit', {'id': user.id}) }}"> #}
-                {#                    <span class="material-icons">edit</span> #}
-                {#                </a> #}
             </div>
         </div>
     </div>
@@ -68,15 +65,7 @@
                 <a href="{{ path('user', {'id': user.id}) }}" class="button button-tertiary">Cancel</a>
                 {{ form_row(form.delete) }}
                 {{ form_row(form.save) }}
-                {#                <button type="submit" class="button button-primary">Save</button> #}
             </div>
-
-
-            {#            <div class="buttons-container gap-4"> #}
-            {#                <a href="{{ path('users') }}" class="button button-tertiary">Cancel</a> #}
-            {#                {{ form_row(form.delete) }} #}
-            {#                <button class="button button-primary" type="submit">Update</button> #}
-            {#            </div> #}
 
             {{ form_end(form) }}
 

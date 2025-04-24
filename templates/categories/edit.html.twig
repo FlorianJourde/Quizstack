@@ -13,19 +13,13 @@
                 <a class="button button-action" href="{{ path('categories') }}">
                     <span class="material-icons">arrow_back</span>
                 </a>
-                {#                <a class="button button-action" href="{{ path('user_edit', {'id': user.id}) }}"> #}
-                {#                    <span class="material-icons">edit</span> #}
-                {#                </a> #}
             </div>
         </div>
     </div>
 
     <div class="wrapper">
         <div class="form-container glass box bg-dark-grey-secondary">
-            <h2 class="small-title">
-
-                Add category
-            </h2>
+            <h2 class="small-title"> Add category</h2>
 
             {{ form_start(addForm) }}
 
@@ -39,35 +33,21 @@
             <div>
                 <h2 class="small-title">
                     <span class="material-icons">palette</span>
-
                     {{ addForm.color.vars.label }}
                 </h2>
                 {{ form_widget(addForm.color) }}
             </div>
-            {#            <div class="buttons-container mb-4 gap-4"> #}
-            {#                <button type="submit" class="button button-primary">Add</button> #}
-            {#            </div> #}
-
-
             <div class="buttons-container">
                 <a href="{{ path('categories') }}" class="button button-tertiary">Cancel</a>
-                {#                <button type="submit" class="button button-primary">Save</button> #}
-                {#                {{ form_widget(editForm.save) }} #}
                 <button type="submit" class="button button-primary">Add</button>
-
-
             </div>
-
 
             {{ form_end(addForm) }}
 
         </div>
     </div>
-    {#    </div> #}
-
 
     <div class="wrapper wrapper-large pt-spacing-primary">
-        {#    <div class="wrapper wrapper-large"> #}
         <div class="form-container">
 
             {{ form_start(editForm) }}
@@ -100,12 +80,6 @@
                                 </span>
                             </td>
                             <td>
-
-                                {#                                <div class="buttons-container"> #}
-                                {#                                    <a class="button button-action" href="{{ path('user_edit', {'id': user.id}) }}"> #}
-                                {#                                        <span class="material-icons">edit</span> #}
-                                {#                                    </a> #}
-                                {#                                </div> #}
                                 <div class="buttons-container justify-center">
 
                                     {% if not loop.first %}
@@ -122,16 +96,8 @@
                                         </a>
                                     {% endif %}
 
-                                    {#                                    <a href="{{ path('category_move_up', {'id': category.id}) }}" class="button"> #}
-                                    {#                                        <span class="material-icons">arrow_upward</span> #}
-                                    {#                                    </a> #}
-                                    {#                                    <a href="{{ path('category_move_down', {'id': category.id}) }}" class="button"> #}
-                                    {#                                        <span class="material-icons">arrow_downward</span> #}
-                                    {#                                    </a> #}
-
                                     <a href="{{ path('category_toggle', {'id': category.id}) }}"
                                        class="button button-action">
-                                        {#                                        {{ category.status ? 'Disable' : 'Enable' }} #}
                                         {% if category.status %}
                                             <span class="material-icons">toggle_on</span>
                                         {% else %}
@@ -156,21 +122,13 @@
                 </table>
             </div>
 
-            {#            <div class="buttons-container mb-4 gap-4"> #}
-            {#                {{ form_widget(editForm.save) }} #}
-            {#            </div> #}
-
-
             <div class="buttons-container">
                 <a href="{{ path('categories') }}" class="button button-tertiary">Cancel</a>
-                {#                <button type="submit" class="button button-primary">Save</button> #}
                 {{ form_widget(editForm.save) }}
-
             </div>
 
             {{ form_end(editForm) }}
 
         </div>
-
     </div>
 {% endblock %}

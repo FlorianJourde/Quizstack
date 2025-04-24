@@ -11,14 +11,9 @@
             <h1 class="big-title grow">Question {{ question.id }}</h1>
 
             <div class="buttons-container">
-                {#                <a class="button button-action" href="{{ path('questions') }}"> #}
-                {#                <a class="button button-action" href="#" onclick="e.preventDefault(); window.history.back();"> #}
                 <a class="button button-action" href="javascript:history.back()">
                     <span class="material-icons">arrow_back</span>
                 </a>
-
-                {#                <a href="{{ path(app.request.get('_route')) }}">Same page</a> #}
-
 
                 {% if is_granted('ROLE_EDITOR') or not question.status %}
                     <a class="button button-action" href="{{ path('question_edit', {'id': question.id}) }}">
@@ -94,7 +89,6 @@
                     </a>
                 {% endif %}
             </div>
-
         </div>
     {% endif %}
 

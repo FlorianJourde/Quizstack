@@ -4,9 +4,6 @@
 
 {% block body %}
 
-    {#    {{ include('partials/banner.html.twig') }} #}
-
-
     {{ include('partials/banner.html.twig', {'color': 'purple'}) }}
 
     <div class="wrapper">
@@ -15,53 +12,8 @@
         </div>
     </div>
 
-
-
     <div class="wrapper">
-
-
         <div id="activity-container" data-mode="{{ mode }}"></div>
-
-        {#        {% for comment in comments %} #}
-        {#            <p>{{ dump(comment.content) }}</p> #}
-        {#        {% endfor %} #}
-
-        {#        <div class="overflow-auto"> #}
-        {#            <table class="table glass"> #}
-        {#                <thead> #}
-        {#                <tr> #}
-        {#                    #}{#                    <th>ID</th> #}
-        {#                    #}{#                    <th>User</th> #}
-        {#                    <th>Content</th> #}
-        {#                    <th>Date</th> #}
-        {#                    <th>Question</th> #}
-        {#                </tr> #}
-        {#                </thead> #}
-        {#                <tbody class="text-center"> #}
-
-        {#                {% for comment in comments %} #}
-        {#                    <tr> #}
-        {#                        #}{#                        <td>{{ comment.id }}</td> #}
-        {#                        #}{#                        <td>{{ comment.user.username }}</td> #}
-        {#                        <td class="text-left">{{ comment.content|slice(0, 120) ~ (comment.content|length > 120 ? '...' : '') }}</td> #}
-        {#                        <td>{{ comment.creationDate|date('d/m/y') }}</td> #}
-        {#                        <td> #}
-        {#                            <div class="buttons-container"> #}
-        {#                                <a href="{{ path('question', {'id': comment.question.id}) }}" #}
-        {#                                   class="button button-action"> #}
-        {#                                    <span class="material-icons">visibility</span> #}
-        {#                                </a> #}
-        {#                            </div> #}
-        {#                        </td> #}
-        {#                    </tr> #}
-        {#                {% endfor %} #}
-
-        {#                </tbody> #}
-        {#            </table> #}
-        {#        </div> #}
-
-        {#        {{ include('partials/pagination.html.twig', {'page': 'activity', 'pagination': comments}) }} #}
-
     </div>
 
 {% endblock %}
