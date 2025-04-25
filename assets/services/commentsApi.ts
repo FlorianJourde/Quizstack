@@ -18,7 +18,7 @@ export async function addComment(questionId, content) {
         headers: {
             'Content-Type': 'application/json',
         },
-        body: JSON.stringify({questionId: questionId, content: content}),
+        body: JSON.stringify({content: content}),
     });
     return response.json();
 }

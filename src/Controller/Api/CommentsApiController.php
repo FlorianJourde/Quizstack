@@ -3,6 +3,7 @@
 namespace App\Controller\Api;
 
 use App\Entity\Comments;
+use App\Entity\Questions;
 use App\Entity\Users;
 use App\Repository\CommentsRepository;
 use App\Repository\QuestionsRepository;
@@ -31,20 +32,21 @@ class CommentsApiController extends AbstractController
     public function addComment(
         QuestionsRepository    $questionsRepository,
         Request                $request,
-        EntityManagerInterface $entityManager
+        EntityManagerInterface $entityManager,
+        Questions                    $question
     ): JsonResponse
     {
         $data = json_decode($request->getContent(), true);
-        $questionId = $data['questionId'] ?? null;
+//        $questionId = $data['questionId'] ?? null;
         $commentText = $data['content'];
 
         /* @var Users $user */
         $user = $this->getUser();
-        $question = $questionsRepository->find($questionId);
+//        $question = $questionsRepository->find($questionId);
 
-        if (!$question) {
-            return $this->json(['error' => 'Question not found'], 404);
-        }
+//        if (!$question) {
+//            return $this->json(['error' => 'Question not found'], 404);
+//        }
 
         $comment = new Comments();
         $comment->setContent($commentText);
@@ -62,7 +64,8 @@ class CommentsApiController extends AbstractController
             'updateDate' => $comment->getUpdateDate(),
             'author' => [
                 'id' => $user->getId(),
-                'username' => $user->getUsername()
+                'username' => $user->getUsername(),
+                'image' => $user->getImage(),
             ]
         ]);
     }
