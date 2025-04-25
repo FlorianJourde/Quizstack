@@ -1,10 +1,22 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" dir="ltr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="theme-color" content="#0f0f0f"/>
+    <meta name="description"
+          content="{% block meta_description %}Challenge your web development skills with over 1,000 questions across 12 topics including HTML, CSS, JavaScript and more{% endblock %}">
+    <meta name="robots" content="index, follow">
+    <meta property="og:title" content="{% block og_title %}{{ block('title') }}{% endblock %}">
+    <meta property="og:description" content="{% block og_description %}{{ block('meta_description') }}{% endblock %}">
+    <meta property="og:image"
+          content="{% block og_image %}{{ absolute_url(asset('images/quizstack-share.jpg')) }}{% endblock %}">
+    <meta property="og:url" content="{{ absolute_url(app.request.pathInfo) }}">
+    <meta property="og:type" content="website">
     <title>{% block title %}Quizstack{% endblock %}</title>
+    <link rel="canonical" href="{{ absolute_url(app.request.pathInfo) }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
     <link rel="icon" type="image/jpg" href="{{ asset('favicon.ico') }}"/>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
           rel="stylesheet">

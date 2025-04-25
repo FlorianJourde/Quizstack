@@ -70,7 +70,8 @@ class UsersFormType extends AbstractType
                     'class' => 'button button-primary button-red',
                     'onclick' => 'return confirm("Are your sure you want to remove this user ?")'
                 ]
-            ]);;
+            ]);
+        ;
     }
 
     public function configureOptions(OptionsResolver $resolver)

@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Users;
 use App\Form\UsersFormType;
 use App\Repository\UsersRepository;
+use App\Service\FileUploaderService;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -12,9 +13,9 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Http\Attribute\IsGranted;
 
+#[IsGranted('ROLE_ADMIN')]
 class UsersController extends AbstractController
 {
-    #[IsGranted('ROLE_ADMIN')]
     #[Route('/users', name: 'users')]
     public function users(
         Request         $request,
@@ -31,7 +32,6 @@ class UsersController extends AbstractController
         ]);
     }
 
-    #[IsGranted('ROLE_ADMIN')]
     #[Route('/user/{id}', name: 'user', requirements: ['id' => '\d+'])]
     public function user(int $id, UsersRepository $usersRepository): Response
     {
@@ -46,15 +46,16 @@ class UsersController extends AbstractController
         ]);
     }
 
-    #[IsGranted('ROLE_ADMIN')]
     #[Route('/user/{id}/edit', name: 'user_edit', requirements: ['id' => '\d+'])]
     public function edit(
         int                    $id,
         UsersRepository        $usersRepository,
         Request                $request,
-        EntityManagerInterface $entityManager
+        EntityManagerInterface $entityManager,
+        FileUploaderService    $fileUploader
     ): Response
     {
+        /* @var Users $user */
         $user = $usersRepository->find($id);
 
         if (!$user) {
@@ -69,6 +70,10 @@ class UsersController extends AbstractController
                 if ($this->getUser() && $this->getUser()->getId() === $user->getId()) {
                     $this->addFlash('error', 'You cannot delete your own account.');
                     return $this->redirectToRoute('users');
+                }
+
+                if ($user->getImage()) {
+                    $fileUploader->delete($user->getImage(), 'users');
                 }
 
                 $anonymousUser = $usersRepository->findOneBy(['username' => 'Anonymous']);

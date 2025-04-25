@@ -35,9 +35,12 @@ function CommentList({question, setQuestion}) {
                 setSuccess(true);
                 setComment('');
             }
-        } catch (error) {
-            console.error('Error submitting comment:', error);
-            setError('Failed to add comment: ' + error.message);
+        } catch (error: unknown) {
+            if (error instanceof Error) {
+                setError('Failed to add comment: ' + error.message);
+            } else {
+                setError('Failed to add comment: ' + error);
+            }
         } finally {
             setIsSubmitting(false);
         }

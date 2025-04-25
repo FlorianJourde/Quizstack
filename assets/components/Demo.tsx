@@ -25,7 +25,16 @@ export function Demo({mode}) {
 
             <Swiper
                 speed={1000}
-                spaceBetween={50}
+                // spaceBetween={50}
+                breakpoints={{
+                    0: {
+                        spaceBetween: 24,
+                    },
+                    640: {
+                        spaceBetween: 32,
+
+                    },
+                }}
                 slidesPerView={1}
                 loop={true}
                 centeredSlides={true}
