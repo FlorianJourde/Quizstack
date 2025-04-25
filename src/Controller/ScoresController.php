@@ -12,9 +12,9 @@ class ScoresController extends AbstractController
     #[Route('/scores', name: 'scores')]
     public function users(ScoresRepository $scoresRepository): Response
     {
-        $allTimeScore = $scoresRepository->findScoreWithLimit(20);
-        $weeklyScores = $scoresRepository->findScoreWithLimit(20, 'week');
-        $monthlyScores = $scoresRepository->findScoreWithLimit(20, 'month');
+        $allTimeScore = $scoresRepository->findScoreWithLimit(20, 'all_time', ['Anonymous', 'User', 'Editor']);
+        $weeklyScores = $scoresRepository->findScoreWithLimit(20, 'week', ['Anonymous', 'User', 'Editor']);
+        $monthlyScores = $scoresRepository->findScoreWithLimit(20, 'month', ['Anonymous', 'User', 'Editor']);
 
         return $this->render('scores.html.twig', [
             'allTimeScores' => $allTimeScore,
