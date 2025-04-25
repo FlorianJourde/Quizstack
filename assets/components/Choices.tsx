@@ -34,14 +34,7 @@ function Choices({mode, question, answers, setAnswers}: {
     function checkAnswerValidity(answerId) {
         if (!question.correctChoices) return false;
 
-        if (answers.length === 0) {
-            return question.correctChoices.includes(answerId);
-        }
-
-        const isCorrect = question.correctChoices.includes(answerId);
-        const wasSelected = answers.includes(answerId);
-
-        return isCorrect === wasSelected;
+        return question.correctChoices.includes(answerId);
     }
 
     return (

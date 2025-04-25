@@ -18,6 +18,7 @@ function Question({mode, questionId, showComments}: { mode: string, questionId: 
     const [answers, setAnswers] = useState<number[]>([]);
     const [limitReached, setLimitReached] = useState<boolean>(false);
     const [visible, setVisible] = useState(true);
+    const [wrap, setWrap] = useState<boolean>(false)
 
     useEffect(() => {
         // console.log(question)
@@ -26,6 +27,18 @@ function Question({mode, questionId, showComments}: { mode: string, questionId: 
     useEffect(() => {
         loadQuestion();
     }, []);
+
+    useEffect(() => {
+        const quizContainer = document.querySelector('#quiz-container');
+
+        if (quizContainer) {
+            if (wrap) {
+                quizContainer.classList.add('wrap');
+            } else {
+                quizContainer.classList.remove('wrap');
+            }
+        }
+    }, [wrap]);
 
     async function loadQuestion() {
         setLoading(true);
@@ -74,6 +87,10 @@ function Question({mode, questionId, showComments}: { mode: string, questionId: 
         setVisible(false);
     }
 
+    function handleToggleWrap() {
+        setWrap(wrap => !wrap);
+    }
+
     async function handleSubmit() {
         try {
             const result: QuestionInterface = await submitAnswers(question?.id, answers);
@@ -111,7 +128,8 @@ function Question({mode, questionId, showComments}: { mode: string, questionId: 
                         variants={item}
                         className="flex flex-col relative">
 
-                        {mode === 'game' && <Sidebar onNext={handleNextQuestion} isLoading={loading}/>}
+                        {mode === 'game' &&
+                            <Sidebar onNext={handleNextQuestion} onWrap={handleToggleWrap} wrap={wrap} isLoading={loading}/>}
 
                         <div className="flex flex-col gap-8">
 

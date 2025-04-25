@@ -212,6 +212,10 @@ div[style*="background: rgb(39, 40, 34);"] {
   overflow-wrap: anywhere !important;
 }
 
+#quiz-container.wrap .code-wrapper > code {
+  white-space: break-spaces !important;
+}
+
 .wrapper {
   width: 100%;
   max-width: 900px;

@@ -1,7 +1,19 @@
 import React from 'react';
 import {ROUTES} from "../utils/routes";
+import {QuestionInterface} from "../types";
 
-function Sidebar({onNext, isLoading}: { onNext: () => void; isLoading: boolean }) {
+function Sidebar(
+    {
+        onNext,
+        onWrap,
+        wrap,
+        isLoading
+    }: {
+        onNext: () => void;
+        onWrap: () => void;
+        wrap: boolean,
+        isLoading: boolean;
+    }) {
 
     return (
         <div className={`xl:sticky top-spacing-primary z-10`}>
@@ -15,6 +27,14 @@ function Sidebar({onNext, isLoading}: { onNext: () => void; isLoading: boolean }
                     <a href={ROUTES.FILTERS} className="button button-action">
                         <span className="material-icons">tune</span>
                     </a>
+
+                    <button className="button button-action" onClick={onWrap}>
+                        {wrap ? (
+                            <span className="material-icons">start</span>
+                        ) : (
+                            <span className="material-icons">keyboard_return</span>
+                        )}
+                    </button>
                 </div>
             </aside>
         </div>
