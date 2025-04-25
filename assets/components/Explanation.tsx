@@ -7,8 +7,8 @@ function Explanation({question}) {
     return (
         <motion.div
             variants={item}
-            className={`question-bottom-container mt-4`}>
-            <h3 className={`small-title`}>Explanation</h3>
+            className={`question-bottom-container mt-4 flex flex-col gap-spacing-secondary`}>
+            <h3 className={`text-lg font-semibold`}>Explanation</h3>
             <MarkdownRenderer content={question.explanation}/>
         </motion.div>
     );

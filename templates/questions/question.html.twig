@@ -15,12 +15,15 @@
                     <span class="material-icons">arrow_back</span>
                 </a>
 
+                <a class="button button-action" href="{{ path('question_new') }}">
+                    <span class="material-icons">add</span>
+                </a>
+
                 {% if is_granted('ROLE_EDITOR') or not question.status %}
                     <a class="button button-action" href="{{ path('question_edit', {'id': question.id}) }}">
                         <span class="material-icons">edit</span>
                     </a>
                 {% endif %}
-
             </div>
         </div>
     </div>

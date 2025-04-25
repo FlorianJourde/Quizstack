@@ -208,13 +208,28 @@ div[style*="background: rgb(39, 40, 34);"] {
   background: theme('colors.very-dark-grey-primary') !important;
 }
 
-.code-wrapper > code {
-  overflow-wrap: anywhere !important;
+.code-wrapper {
+  > code {
+    overflow-wrap: anywhere !important;
+  }
 }
 
 #quiz-container.wrap .code-wrapper > code {
   white-space: break-spaces !important;
 }
+
+//#quiz-container {
+//  .box {
+//
+//    ol {
+//      list-style-type: decimal;
+//    }
+//
+//    ul {
+//      list-style-type: unset;
+//    }
+//  }
+//}
 
 .wrapper {
   width: 100%;
@@ -260,6 +275,21 @@ div[style*="background: rgb(39, 40, 34);"] {
   padding: var(--spacing-primary);
 }
 
+.question-bottom-container,
+.question-content-container {
+  ol, ul {
+    list-style-position: inside;
+  }
+
+  ol {
+    list-style-type: decimal;
+  }
+
+  ul {
+    list-style-type: unset;
+  }
+}
+
 .very-big-title {
   display: block;
   font-size: 3rem;
@@ -292,7 +322,7 @@ div[style*="background: rgb(39, 40, 34);"] {
     margin-right: 0.5rem;
   }
 
-  + p {
+  ~ * {
     opacity: .75;
   }
 }

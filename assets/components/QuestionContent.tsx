@@ -29,7 +29,9 @@ function QuestionContent({question}) {
                 </div>
             </div>
 
-            <MarkdownRenderer content={question.content}/>
+            <div className={`question-content-container mt-4 flex flex-col gap-spacing-secondary`}>
+                <MarkdownRenderer content={question.content}/>
+            </div>
 
             {question.numberOfCorrectChoices > 1 &&
                 <p className={'opacity-50 text-sm mt-4'}>Multiple choices possible.</p>
