@@ -8,8 +8,8 @@ import MarkdownInfos from "../MarkdownInfos";
 function CommentList({question, setQuestion}) {
     const [comment, setComment] = useState<string>('');
     const [isSubmitting, setIsSubmitting] = useState(false);
-    const [success, setSuccess] = useState(false);
-    const [error, setError] = useState(null);
+    const [success, setSuccess] = useState<boolean>(false);
+    const [error, setError] = useState<string | null>(null);
     const [markdownInfos, setMarkdownInfos] = useState<boolean>(false);
     const {isAuthenticated} = useAuth();
 
@@ -17,6 +17,7 @@ function CommentList({question, setQuestion}) {
         e.preventDefault();
         setIsSubmitting(true);
         setError(null);
+        setSuccess(false);
 
         try {
             const newComment = await addComment(question.id, comment);
@@ -34,9 +35,9 @@ function CommentList({question, setQuestion}) {
                 setSuccess(true);
                 setComment('');
             }
-
         } catch (error) {
-            console.error('Error submitting answers : ', error);
+            console.error('Error submitting comment:', error);
+            setError('Failed to add comment: ' + error.message);
         } finally {
             setIsSubmitting(false);
         }

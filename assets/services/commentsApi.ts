@@ -19,7 +19,15 @@ export async function addComment(questionId, content) {
             'Content-Type': 'application/json',
         },
         body: JSON.stringify({content: content}),
+        credentials: 'include',
     });
+
+    if (!response.ok) {
+        const errorText = await response.text();
+        console.error('Server error:', errorText);
+        throw new Error(`Server error: ${response.status} ${response.statusText}`);
+    }
+
     return response.json();
 }
 

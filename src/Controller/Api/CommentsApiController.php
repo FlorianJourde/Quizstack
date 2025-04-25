@@ -33,41 +33,48 @@ class CommentsApiController extends AbstractController
         QuestionsRepository    $questionsRepository,
         Request                $request,
         EntityManagerInterface $entityManager,
-        Questions                    $question
+        Questions              $question
     ): JsonResponse
     {
-        $data = json_decode($request->getContent(), true);
-//        $questionId = $data['questionId'] ?? null;
-        $commentText = $data['content'];
+        try {
+            $data = json_decode($request->getContent(), true);
 
-        /* @var Users $user */
-        $user = $this->getUser();
-//        $question = $questionsRepository->find($questionId);
+            if (!isset($data['content'])) {
+                return $this->json(['error' => 'Content is required'], 400);
+            }
 
-//        if (!$question) {
-//            return $this->json(['error' => 'Question not found'], 404);
-//        }
+            $commentText = $data['content'];
 
-        $comment = new Comments();
-        $comment->setContent($commentText);
-        $comment->setUser($user);
-        $comment->setCreationDate($this->currentDate);
-        $comment->setUpdateDate($this->currentDate);
-        $question->addComment($comment);
-        $entityManager->persist($comment);
-        $entityManager->flush();
+            /* @var Users $user */
+            $user = $this->getUser();
 
-        return $this->json([
-            'id' => $comment->getId(),
-            'content' => $comment->getContent(),
-            'creationDate' => $comment->getCreationDate(),
-            'updateDate' => $comment->getUpdateDate(),
-            'author' => [
-                'id' => $user->getId(),
-                'username' => $user->getUsername(),
-                'image' => $user->getImage(),
-            ]
-        ]);
+            if (!$user) {
+                return $this->json(['error' => 'User not authenticated'], 401);
+            }
+
+            $comment = new Comments();
+            $comment->setContent($commentText);
+            $comment->setUser($user);
+            $comment->setCreationDate($this->currentDate);
+            $comment->setUpdateDate($this->currentDate);
+            $question->addComment($comment);
+            $entityManager->persist($comment);
+            $entityManager->flush();
+
+            return $this->json([
+                'id' => $comment->getId(),
+                'content' => $comment->getContent(),
+                'creationDate' => $comment->getCreationDate(),
+                'updateDate' => $comment->getUpdateDate(),
+                'author' => [
+                    'id' => $user->getId(),
+                    'username' => $user->getUsername(),
+                    'image' => $user->getImage(),
+                ]
+            ]);
+        } catch (\Exception $e) {
+            return $this->json(['error' => $e->getMessage()], 500);
+        }
     }
 
     #[Route('/comment/{id}/edit', name: 'edit_comment', methods: ['PUT'])]
