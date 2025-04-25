@@ -33,6 +33,8 @@ class Categories
     #[ORM\Column(nullable: true)]
     private ?int $position = null;
 
+    private int|null $questionsCount = null;
+
     public function __construct()
     {
         $this->questions = new ArrayCollection();
@@ -97,6 +99,22 @@ class Categories
         if ($this->questions->removeElement($question)) {
             $question->removeCategory($this);
         }
+
+        return $this;
+    }
+
+    public function getQuestionsCount(): int
+    {
+        if ($this->questionsCount !== null) {
+            return $this->questionsCount;
+        }
+
+        return $this->questions->count();
+    }
+
+    public function setQuestionsCount(int $count): self
+    {
+        $this->questionsCount = $count;
 
         return $this;
     }

@@ -18,10 +18,44 @@ class CategoriesRepository extends ServiceEntityRepository
 
     public function findCategoriesByOrder()
     {
-        return $this->createQueryBuilder('c')
+        $categories = $this->createQueryBuilder('c')
             ->orderBy('CASE WHEN c.position IS NULL THEN 1 ELSE 0 END', 'ASC')
             ->addOrderBy('c.position', 'ASC')
             ->getQuery()
             ->getResult();
+
+        if (empty($categories)) {
+            return [];
+        }
+
+        $categoryIds = array_map(function ($category) {
+            return $category->getId();
+        }, $categories);
+
+        $countsQuery = $this->createQueryBuilder('c')
+            ->select('c.id', 'COUNT(q.id) as questionsCount')
+            ->leftJoin('c.questions', 'q')
+            ->where('c.id IN (:ids)')
+            ->setParameter('ids', $categoryIds)
+            ->groupBy('c.id')
+            ->getQuery();
+
+        $counts = $countsQuery->getResult();
+
+        $countsMap = [];
+        foreach ($counts as $count) {
+            $countsMap[$count['id']] = $count['questionsCount'];
+        }
+
+        foreach ($categories as $category) {
+            $categoryId = $category->getId();
+            if (isset($countsMap[$categoryId])) {
+                $category->setQuestionsCount($countsMap[$categoryId]);
+            } else {
+                $category->setQuestionsCount(0);
+            }
+        }
+
+        return $categories;
     }
 }
