@@ -14,7 +14,7 @@ use Doctrine\Persistence\ManagerRegistry;
  */
 class QuestionsRepository extends ServiceEntityRepository
 {
-    public const QUESTIONS_PER_PAGE = 20;
+    public const QUESTIONS_PER_PAGE = 50;
 
     public function __construct(ManagerRegistry $registry)
     {

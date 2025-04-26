@@ -38,7 +38,7 @@ export function Demo({mode}) {
                 slidesPerView={1}
                 loop={true}
                 centeredSlides={true}
-                grabCursor={true}
+                // grabCursor={true}
                 autoplay={{
                     delay: 5000,
                     disableOnInteraction: false,

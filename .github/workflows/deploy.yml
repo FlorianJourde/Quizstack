@@ -38,8 +38,7 @@ jobs:
           REMOTE_USER: ${{ secrets.REMOTE_USER }}
           REMOTE_PORT: ${{ secrets.REMOTE_PORT }}
           TARGET: ${{ secrets.REMOTE_TARGET }}
-          EXCLUDE: "/.git/, /.github/, /var/, /tests/, /node_modules/, public/uploads/"
-
+          EXCLUDE: "/.git/, /.github/, /var/cache/, /tests/, /node_modules/, /public/uploads/, .env.local"
 
       - name: Set production environment
         uses: appleboy/ssh-action@master
@@ -50,8 +49,13 @@ jobs:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
             cd ${{ secrets.REMOTE_TARGET }}
-            echo 'APP_ENV=prod' > .env.local
-            echo 'APP_DEBUG=0' >> .env.local
+            if [ ! -f .env.local ]; then
+              echo 'APP_ENV=prod' > .env.local
+              echo 'APP_DEBUG=0' >> .env.local
+              echo "Created new .env.local file"
+            else
+              echo ".env.local file already exists, keeping it intact"
+            fi
 
       - name: Post-deploy setup
         uses: appleboy/ssh-action@master
@@ -62,7 +66,10 @@ jobs:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
             cd ${{ secrets.REMOTE_TARGET }}
-            php bin/console cache:clear --env=prod --no-warmup
+            mkdir -p var/cache
+            chmod -R 775 var
+            php bin/console cache:clear --env=prod --no-debug --no-warmup
             php bin/console cache:warmup --env=prod
             php bin/console doctrine:migrations:migrate --no-interaction --env=prod
             php bin/console assets:install public --env=prod
+            chmod -R 775 var/cache

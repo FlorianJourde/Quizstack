@@ -4,12 +4,33 @@ document.addEventListener('DOMContentLoaded', () => {
 
     let isMenuOpen: boolean = false;
 
-    menuButton?.addEventListener('click', () => {
+    function openMenu() {
+        headerBottomContainer.classList.add('visible');
+        isMenuOpen = true;
+    }
+
+    function closeMenu() {
+        headerBottomContainer.classList.remove('visible');
+        isMenuOpen = false;
+    }
+
+    menuButton?.addEventListener('click', (event) => {
+        event.stopPropagation(); // Empêche la propagation du clic au document
+
         if (!isMenuOpen) {
-            headerBottomContainer.classList.add('visible');
+            openMenu();
         } else {
-            headerBottomContainer.classList.remove('visible');
+            closeMenu();
         }
-        isMenuOpen = !isMenuOpen;
+    });
+
+    headerBottomContainer?.addEventListener('click', (event) => {
+        event.stopPropagation();
+    });
+
+    document.addEventListener('click', () => {
+        if (isMenuOpen) {
+            closeMenu();
+        }
     });
 });
