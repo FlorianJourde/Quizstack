@@ -10,6 +10,7 @@ import './scripts/switches'
 import './scripts/question-form'
 import './scripts/menu'
 import './scripts/accordion'
+import StacksSlider from "./components/StacksSlider";
 
 document.addEventListener('DOMContentLoaded', () => {
     const questionContainer = document.querySelector('#quiz-container') as HTMLElement;
@@ -40,6 +41,14 @@ document.addEventListener('DOMContentLoaded', () => {
         const root = createRoot(activityContainer);
         root.render(
             <Activity mode={mode}/>
+        );
+    }
+
+    const stacksSliderContainer = document.querySelector('#stacks-slider-container') as HTMLElement;
+    if (stacksSliderContainer) {
+        const root = createRoot(stacksSliderContainer);
+        root.render(
+            <StacksSlider/>
         );
     }
 });

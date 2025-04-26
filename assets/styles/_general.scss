@@ -230,6 +230,56 @@ div[style*="background: rgb(39, 40, 34);"] {
   }
 }
 
+#stacks-slider-container {
+  position: relative;
+
+  .swiper {
+
+    &::before, &::after {
+      content: "";
+      position: absolute;
+      width: 20vw;
+      height: 100%;
+      z-index: 2;
+
+    }
+
+    &::before {
+      left: 0;
+      top: 0;
+      background: linear-gradient(to left, transparent, theme('colors.very-dark-grey-primary'));
+    }
+
+    &::after {
+      right: 0;
+      top: 0;
+      background: linear-gradient(to right, transparent, theme('colors.very-dark-grey-primary'));
+    }
+
+    .swiper-wrapper {
+      transition-timing-function: linear;
+
+      .swiper-slide {
+        //width: unset !important;
+
+        img {
+          margin-left: auto;
+          margin-right: auto;
+          filter: saturate(0);
+          object-fit: contain;
+          height: 80px;
+
+          @media (max-width: 40rem) {
+            height: 50px;
+          }
+          //@media (max-width: 40rem) {
+          //  height: 80px;
+          //}
+        }
+      }
+    }
+  }
+}
 
 //#quiz-container {
 //  .box {

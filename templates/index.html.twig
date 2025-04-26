@@ -37,37 +37,7 @@
                 {#            <div class="mask-container"> #}
                 <div id="demo-container" class="flex justify-center w-[600px] max-w-full lg:max-w-[50%]"></div>
             </div>
-
-            {#                <div class="mask"></div> #}
-            {#            </div> #}
         </div>
-
-        {#        <div class="grid grid-cols-1 lg:grid-cols-2 gap-spacing-large-secondary"> #}
-        {#            <h1 class="text-2xl sm:text-4xl md:text-5xl lg:text-6xl text-center font-secondary font-semibold col-span-full"> #}
-        {#                Master web development <br> #}
-        {#                through <span #}
-        {#                        class="text-green-tertiary">interactive quiz</span></h1> #}
-        {#            <div class="flex flex-col gap-spacing-primary max-w-[600px] ml-auto mr-auto"> #}
-        {#                <div class="flex flex-col gap-spacing-secondary text-center lg:text-left"> #}
-
-        {#                    <p class="md:text-lg opacity-75">Challenge yourself with over 1k+ carefully crafted questions across #}
-        {#                        12 essential web development topics. Perfect your skills in HTML, JavaScript, React, and more -#}
-        {#                        all from your mobile or desktop device, anytime, anywhere.</p> #}
-        {#                </div> #}
-        {#                <div class="buttons-container"> #}
-        {#                    <a class="button button-tertiary" href="#filters-section"> #}
-        {#                        Select filters #}
-        {#                    </a> #}
-        {#                    <a class="button button-primary" href="{{ path('quiz') }}"> #}
-        {#                        Play #}
-        {#                    </a> #}
-        {#                </div> #}
-        {#            </div> #}
-        {#            <div class="mask-container"> #}
-        {#                <div id="demo-container" class="flex justify-center"></div> #}
-        {#                <div class="mask"></div> #}
-        {#            </div> #}
-        {#        </div> #}
     </div>
 
     <div class="wrapper wrapper-large pt-spacing-primary pb-spacing-primary">
@@ -95,6 +65,9 @@
 
     {{ include('partials/filters.html.twig', _context) }}
     {{ include('partials/promotional/promotional-1.html.twig', _context) }}
+
+    <div id="stacks-slider-container" class="pb-spacing-very-large-secondary"></div>
+
     {{ include('partials/promotional/promotional-2.html.twig', _context) }}
     {{ include('partials/faq.html.twig') }}
 
