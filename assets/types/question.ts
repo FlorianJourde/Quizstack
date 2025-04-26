@@ -11,7 +11,7 @@ export interface QuestionInterface {
     content: string;
     correctChoices?: number[];
     difficulty: number;
-    explanation: string;
+    explanation?: string;
     isMatch?: boolean;
     image?: string;
     numberOfCorrectChoices: number;

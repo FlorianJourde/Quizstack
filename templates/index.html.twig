@@ -7,35 +7,71 @@
     {{ include('partials/banner.html.twig', {'color': 'green'}) }}
 
     <div class="wrapper wrapper-large pt-spacing-large-secondary pb-spacing-large-secondary">
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-spacing-large-secondary">
-            <h1 class="text-2xl sm:text-4xl md:text-5xl lg:text-6xl text-center font-secondary font-semibold col-span-full">
-                Master web development <br>
-                through <span
-                        class="text-green-tertiary">interactive quiz</span></h1>
-            <div class="flex flex-col gap-spacing-primary max-w-[600px] ml-auto mr-auto">
-                <div class="flex flex-col gap-spacing-secondary text-center lg:text-left">
 
-                    <p class="md:text-lg opacity-75">Challenge yourself with over 1k+ carefully crafted questions across
-                        12 essential web development topics. Perfect your skills in HTML, JavaScript, React, and more -
-                        all from your mobile or desktop device, anytime, anywhere.</p>
+        <div class="flex flex-col gap-spacing-large-secondary">
+            {#            <div> #}
+            {#                <h1 class="text-2xl sm:text-4xl md:text-5xl lg:text-6xl text-center font-secondary font-semibold col-span-full"> #}
+            <h1 class="text-[clamp(1rem,7vw,7vw)] md:text-5xl lg:text-6xl text-center font-secondary font-semibold mx-auto col-span-full">
+                Master&nbsp;web development <br class="hidden md:block"/> through <span
+                        class="text-green-tertiary">interactive&nbsp;quiz</span></h1>
+            {#            </div> #}
+            <div class="flex flex-col lg:flex-row gap-spacing-large-secondary items-center lg:items-start">
+                <div class="flex flex-col gap-spacing-primary max-w-[600px] mx-auto">
+                    <div class="flex flex-col gap-spacing-secondary text-center lg:text-left">
+
+                        <p class="md:text-lg opacity-75">Challenge yourself with over 1k+ carefully crafted questions
+                            across
+                            12 essential web development topics. Perfect your skills in HTML, JavaScript, React, and
+                            more -
+                            all from your mobile or desktop device, anytime, anywhere.</p>
+                    </div>
+                    <div class="buttons-container">
+                        <a class="button button-tertiary" href="#filters-section">
+                            Select filters
+                        </a>
+                        <a class="button button-primary" href="{{ path('quiz') }}">
+                            Play
+                        </a>
+                    </div>
                 </div>
-                <div class="buttons-container">
-                    <a class="button button-tertiary" href="#filters-section">
-                        Select filters
-                    </a>
-                    <a class="button button-primary" href="{{ path('quiz') }}">
-                        Play
-                    </a>
-                </div>
+                {#            <div class="mask-container"> #}
+                <div id="demo-container" class="flex justify-center w-[600px] max-w-full lg:max-w-[50%]"></div>
             </div>
-            <div>
-                <div id="demo-container"></div>
-            </div>
+
+            {#                <div class="mask"></div> #}
+            {#            </div> #}
         </div>
+
+        {#        <div class="grid grid-cols-1 lg:grid-cols-2 gap-spacing-large-secondary"> #}
+        {#            <h1 class="text-2xl sm:text-4xl md:text-5xl lg:text-6xl text-center font-secondary font-semibold col-span-full"> #}
+        {#                Master web development <br> #}
+        {#                through <span #}
+        {#                        class="text-green-tertiary">interactive quiz</span></h1> #}
+        {#            <div class="flex flex-col gap-spacing-primary max-w-[600px] ml-auto mr-auto"> #}
+        {#                <div class="flex flex-col gap-spacing-secondary text-center lg:text-left"> #}
+
+        {#                    <p class="md:text-lg opacity-75">Challenge yourself with over 1k+ carefully crafted questions across #}
+        {#                        12 essential web development topics. Perfect your skills in HTML, JavaScript, React, and more -#}
+        {#                        all from your mobile or desktop device, anytime, anywhere.</p> #}
+        {#                </div> #}
+        {#                <div class="buttons-container"> #}
+        {#                    <a class="button button-tertiary" href="#filters-section"> #}
+        {#                        Select filters #}
+        {#                    </a> #}
+        {#                    <a class="button button-primary" href="{{ path('quiz') }}"> #}
+        {#                        Play #}
+        {#                    </a> #}
+        {#                </div> #}
+        {#            </div> #}
+        {#            <div class="mask-container"> #}
+        {#                <div id="demo-container" class="flex justify-center"></div> #}
+        {#                <div class="mask"></div> #}
+        {#            </div> #}
+        {#        </div> #}
     </div>
 
     <div class="wrapper wrapper-large pt-spacing-primary pb-spacing-primary">
-        <ul class="grid grid-cols-1 max-w-[800px] lg:max-w-full ml-auto mr-auto lg:grid-cols-3 gap-spacing-primary lg:gap-spacing-large-secondary text-center">
+        <ul class="grid grid-cols-1 max-w-[800px] lg:max-w-full mx-auto lg:grid-cols-3 gap-spacing-primary lg:gap-spacing-large-secondary text-center">
             <li class="p-spacing-primary bg-green-secondary rounded-radius-primary">
                 <h3 class="text-2xl md:text-3xl font-semibold font-secondary pb-4">
                     1k+ questions

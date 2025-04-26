@@ -43,6 +43,7 @@ html {
       border-style: solid;
       padding: var(--spacing-secondary);
       display: flex;
+      caret-color: theme('colors.green-primary');
 
       &[type="checkbox"], &[type="radio"] {
         width: unset;
@@ -53,6 +54,10 @@ html {
       min-height: 120px;
     }
   }
+}
+
+li::marker {
+  color: #ffffff80;
 }
 
 .code-wrapper, code {
@@ -214,9 +219,17 @@ div[style*="background: rgb(39, 40, 34);"] {
   }
 }
 
-#quiz-container.wrap .code-wrapper > code {
-  white-space: break-spaces !important;
+#quiz-container,
+#demo-container {
+  &.wrap .code-wrapper > code {
+    white-space: break-spaces !important;
+  }
+
+  p > code {
+    word-wrap: break-word;
+  }
 }
+
 
 //#quiz-container {
 //  .box {
@@ -433,15 +446,66 @@ div[style*="background: rgb(39, 40, 34);"] {
 }
 
 #demo-container {
-  mask-image: linear-gradient(to bottom, black 0%, black 50%, transparent 100%);
-  max-height: 500px;
+  //mask-image: linear-gradient(to bottom, black 0%, black 50%, transparent 100%);
+  //mask-image: unset;
+  //max-height: 500px;
+  //overflow: hidden;
 
   .glass {
-    background-color: rgb(0 0 0 / 75%);
-    backdrop-filter: blur(50px);
-    box-shadow: 0 0 40px inset rgba(8, 7, 16, 0.6);
+    //background-color: rgb(0 0 0 / 75%);
+    //backdrop-filter: blur(50px);
+    //box-shadow: 0 0 30px inset rgba(8, 7, 16, 0.6);
+    //box-shadow: unset;
+    //background-color: unset;
+    //backdrop-filter: unset;
+    //position: relative;
+    //box-shadow: unset;
+    box-shadow: 0 0 30px rgba(8, 7, 16, 0.6);
+
+    //&::before {
+    //  content: "";
+    //  position: absolute;
+    //  top: 0;
+    //  left: 0;
+    //  height: 100%;
+    //  width: 100%;
+    //
+    //  //background-color: rgba(255, 255, 255, 0.1);
+    //  //background-color: rgba(255, 255, 255, 0.5);
+    //  //border: 2px solid rgba(255, 255, 255, 0.1);
+    //  backdrop-filter: blur(50px);
+    //  //filter: blur(10px);
+    //  z-index: 1;
+    //}
+  }
+
+  .choice-option {
+    &:nth-last-child(2) {
+      opacity: calc((1 / 3) * 2) !important;
+    }
+
+    &:nth-last-child(1) {
+      opacity: calc(1 / 3) !important;
+    }
   }
 }
+
+//.mask-container {
+//  position: relative;
+//
+//  .mask {
+//    position: absolute;
+//    width: 100%;
+//    height: 50%;
+//    bottom: 0;
+//    left: 0;
+//    background-color: rgba(255, 255, 255, 0.1);
+//    mask-image: linear-gradient(to top, black 0%, black 50%, transparent 100%);
+//    backdrop-filter: blur(50px);
+//    z-index: 1;
+//    pointer-events: none;
+//  }
+//}
 
 .wrapper {
   > .page-separator-container {

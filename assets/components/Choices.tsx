@@ -42,7 +42,7 @@ function Choices({mode, question, answers, setAnswers}: {
             variants={container}
             initial="hidden"
             animate="visible"
-            className="choices-container flex flex-col gap-8">
+            className="choices-container flex flex-col gap-spacing-primary">
             {question.choices.map((choice, index) => (
                 <motion.li
                     variants={item}

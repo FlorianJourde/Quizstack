@@ -112,7 +112,7 @@ function Question({mode, questionId, showComments}: { mode: string, questionId: 
 
     return (
         <div
-            className="flex flex-col gap-8">
+            className="flex flex-col gap-spacing-primary">
             <AnimatePresence mode='wait'
                              onExitComplete={async () => {
                                  await loadQuestion();
@@ -131,7 +131,7 @@ function Question({mode, questionId, showComments}: { mode: string, questionId: 
                         {mode === 'game' &&
                             <Sidebar onNext={handleNextQuestion} onWrap={handleToggleWrap} wrap={wrap} isLoading={loading}/>}
 
-                        <div className="flex flex-col gap-8">
+                        <div className="flex flex-col gap-spacing-primary">
 
                             <QuestionContent question={question}/>
 

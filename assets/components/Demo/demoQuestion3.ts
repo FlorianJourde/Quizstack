@@ -9,25 +9,22 @@ export const demoQuestion3 = {
     "choices": [
     {
         "id": 173,
-        "content": "20, 10"
+        "content": "`[1, 2, 3, 4, 5]`"
     },
     {
         "id": 174,
-        "content": "20, 20"
-    },
-    {
-        "id": 175,
-        "content": "10, 10"
-    },
-    {
-        "id": 176,
-        "content": "20, undefined"
+        "content": "`[2, 4, 6, 8, 10]`"
     }
 ],
     "comments": [],
-    "content": "What will be the output of the following JavaScript code?\r\n  ```javascript\r\n  function example() {\r\n    var x = 10;\r\n    if (true) {\r\n      var x = 20;\r\n      console.log(x);\r\n    }\r\n    console.log(x);\r\n  }\r\n  example();",
+    "content":
+        "What will be the output of the following code ?\n" +
+        "```javascript\n" +
+        "const numbers = [1, 2, 3, 4, 5];\n" +
+        "const doubled = numbers.map(num => num * 2);\n" +
+        "console.log(doubled);\n" +
+        "```",
     "difficulty": 1,
-    "explanation": "This question tests understanding of JavaScript variable scoping with `var`. Unlike `let` and `const`, variables declared with `var` are function-scoped, not block-scoped.",
     "numberOfCorrectChoices": 1,
     "correctChoices": [
     174

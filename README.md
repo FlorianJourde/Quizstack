@@ -19,7 +19,7 @@ Quizstack is an open-source web development quiz platform designed to help devel
 - Community Features: Comment on questions using Markdown formatting, perfect for sharing code snippets and explanations.
 - Open Contribution: Anyone can propose new questions, helping our platform grow with diverse, up-to-date content.
 
-[![Preview site](https://img.shields.io/badge/Preview%20site--b7cf3e?style=for-the-badge)](https://quizstack.io/)
+[![Website](https://img.shields.io/badge/Website--b7cf3e?style=for-the-badge)](https://quizstack.io/)
 
 ## Getting Started
 

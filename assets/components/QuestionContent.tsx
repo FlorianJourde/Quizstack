@@ -39,7 +39,7 @@ function QuestionContent({question}) {
 
             {question.image && <Image image={question.image}/>}
 
-            {question.correctChoices && <Explanation question={question}/>}
+            {question.explanation && <Explanation question={question}/>}
         </div>
     );
 };

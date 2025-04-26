@@ -28,10 +28,10 @@ export function Demo({mode}) {
                 // spaceBetween={50}
                 breakpoints={{
                     0: {
-                        spaceBetween: 24,
+                        // spaceBetween: 24,
                     },
                     640: {
-                        spaceBetween: 32,
+                        // spaceBetween: 32,
 
                     },
                 }}
@@ -44,7 +44,7 @@ export function Demo({mode}) {
                     disableOnInteraction: false,
                 }}
                 modules={[Autoplay]}
-                className={`max-w-[800px] ml-auto mr-auto`}
+                className={`-m-spacing-primary`}
             >
                 {questionsData.map((data, index) => (
                     <SwiperSlide key={data.question.id}>
@@ -56,7 +56,7 @@ export function Demo({mode}) {
                             variants={item}
                             className="flex flex-col relative"
                         >
-                            <div className="flex flex-col gap-8">
+                            <div className="flex flex-col gap-spacing-primary m-spacing-primary">
                                 <QuestionContent question={data.question}/>
                                 <Choices
                                     mode={mode}
