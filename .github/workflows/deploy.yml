@@ -38,7 +38,7 @@ jobs:
           REMOTE_USER: ${{ secrets.REMOTE_USER }}
           REMOTE_PORT: ${{ secrets.REMOTE_PORT }}
           TARGET: ${{ secrets.REMOTE_TARGET }}
-          EXCLUDE: "/.git/, /.github/, /var/cache/, /tests/, /node_modules/, /public/uploads/, .env.local"
+          EXCLUDE: "/.git/, /.github/, /var/cache/, /tests/, /node_modules/, public/uploads/, .env.local"
 
       - name: Set production environment
         uses: appleboy/ssh-action@master

@@ -31,10 +31,16 @@ function Choices({mode, question, answers, setAnswers}: {
         });
     }
 
-    function checkAnswerValidity(answerId) {
-        if (!question.correctChoices) return false;
+    function getAnswerStatus(answerId) {
+        if (!question.correctChoices) return '';
 
-        return question.correctChoices.includes(answerId);
+        const isSelected = answers.includes(answerId);
+        const isCorrect = question.correctChoices.includes(answerId);
+
+        if (isCorrect) return 'correct';
+        if (isSelected) return 'incorrect';
+
+        return '';
     }
 
     return (
@@ -56,9 +62,11 @@ function Choices({mode, question, answers, setAnswers}: {
                                 value={choice.id}
                                 checked={answers.includes(choice.id)}
                                 onChange={() => handleAnswersChange(choice.id)}
-                                className={`checkbox-input ${question.correctChoices && (
-                                    checkAnswerValidity(choice.id) ? "correct" : "incorrect")
-                                }`}
+                                className={`checkbox-input ${getAnswerStatus(choice.id)}`}
+
+                                // className={`checkbox-input ${question.correctChoices && (
+                                //     checkAnswerValidity(choice.id) ? "correct" : "incorrect")
+                                // }`}
                             />
                             <span className="checkbox-tile box">
                                 <span className="checkbox-label">
