@@ -230,7 +230,10 @@ div[style*="background: rgb(39, 40, 34);"] {
     white-space: break-spaces !important;
   }
 
-  p > code {
+
+  //https://quizstack.io/question/410
+  p > code,
+  p {
     word-wrap: break-word;
   }
 }
