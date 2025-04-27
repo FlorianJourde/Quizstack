@@ -268,12 +268,17 @@ div[style*="background: rgb(39, 40, 34);"] {
       transition-timing-function: linear;
 
       .swiper-slide {
+        width: auto;
+
         img {
-          margin-left: auto;
-          margin-right: auto;
+          //margin-left: auto;
+          //margin-right: auto;
           filter: saturate(0);
           object-fit: contain;
+          //height: 50px;
           height: 50px;
+          //width: 50px;
+          //flex-shrink: 0;
 
           @media (max-width: 40rem) {
             height: 35px;

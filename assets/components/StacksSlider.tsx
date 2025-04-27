@@ -7,9 +7,8 @@ function StacksSlider() {
         <>
             <Swiper
                 modules={[Autoplay]}
-                spaceBetween={30}
-                loop={true}
-                speed={5000}
+                spaceBetween={50}
+                speed={8000}
                 allowTouchMove={false}
                 preventClicks={true}
                 simulateTouch={false}
@@ -21,26 +20,11 @@ function StacksSlider() {
                     stopOnLastSlide: false,
                     waitForTransition: true,
                 }}
+                slidesPerView={'auto'}
+                freeMode={true}
                 breakpoints={{
-                    320: {
-                        slidesPerView: 5,
-                        spaceBetween: 10,
-                    },
-                    640: {
-                        slidesPerView: 7,
-                        spaceBetween: 20,
-                    },
-                    1024: {
-                        slidesPerView: 10,
-                        spaceBetween: 30,
-                    },
-                    1280: {
-                        slidesPerView: 12,
-                        spaceBetween: 30,
-                    },
-                    1536: {
-                        slidesPerView: 15,
-                        spaceBetween: 30,
+                    641: {
+                        spaceBetween: 80,
                     },
                 }}
             >
