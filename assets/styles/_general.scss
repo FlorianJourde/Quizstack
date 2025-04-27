@@ -538,6 +538,10 @@ div[style*="background: rgb(39, 40, 34);"] {
 }
 
 .accordion-item {
+  button {
+    padding-top: var(--spacing-primary);
+    padding-bottom: var(--spacing-primary);
+  }
 
   .accordion-button {
     cursor: pointer;
@@ -576,7 +580,7 @@ div[style*="background: rgb(39, 40, 34);"] {
 
     .accordion-content {
       background-color: theme('colors.very-dark-grey-primary');
-      margin-top: var(--spacing-secondary);
+      margin-bottom: var(--spacing-primary);
       padding: var(--spacing-secondary);
       border-radius: var(--radius-secondary);
     }

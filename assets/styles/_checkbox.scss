@@ -5,18 +5,23 @@
 #demo-container,
 #quiz-container[data-mode="display"] {
   .checkbox-group {
+    &:not(.correct, .incorrect):hover + .checkbox-tile {
+      box-shadow: unset;
+    }
+  }
+
+  .checkbox-tile {
+    cursor: unset
+  }
+}
+
+
+#quiz-container[data-mode="display"] {
+  .checkbox-group {
     .checkbox-input {
       &.correct + .checkbox-tile:before {
         background-image: var(--background-checkbox);
       }
-
-      &:not(.correct, .incorrect):hover + .checkbox-tile {
-        box-shadow: unset;
-      }
-    }
-
-    .checkbox-tile {
-      cursor: unset
     }
   }
 }
