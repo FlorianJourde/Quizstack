@@ -413,8 +413,9 @@ div[style*="background: rgb(39, 40, 34);"] {
 
 .button-primary {
   padding: 0.6rem 1rem;
-  background-color: theme('colors.green-secondary');
-  border: 2px solid theme('colors.green-secondary');
+  //background-color: theme('colors.green-secondary');
+  background: linear-gradient(to bottom, theme('colors.green-secondary'), theme('colors.green-quaternary'));
+  //border: 2px solid theme('colors.green-secondary');
   gap: 16px;
   opacity: 1;
 
@@ -424,12 +425,12 @@ div[style*="background: rgb(39, 40, 34);"] {
 }
 
 .button-red {
-  background-color: theme('colors.red-secondary');
+  background: theme('colors.red-secondary');
   border-color: theme('colors.red-secondary');
 }
 
 .button-dark-grey {
-  background-color: theme('colors.dark-grey-secondary');
+  background: theme('colors.dark-grey-secondary');
   border-color: theme('colors.dark-grey-secondary');
 }
 

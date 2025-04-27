@@ -21,10 +21,6 @@ function Question({mode, questionId, showComments}: { mode: string, questionId: 
     const [wrap, setWrap] = useState<boolean>(false)
 
     useEffect(() => {
-        // console.log(question)
-    }, [question]);
-
-    useEffect(() => {
         loadQuestion();
     }, []);
 

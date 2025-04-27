@@ -4,10 +4,6 @@ import Image from "./Image";
 import Explanation from "./Explanation";
 
 function QuestionContent({question, mode}) {
-    useEffect(() => {
-        console.log(mode)
-    }, [question]);
-
     return (
         <div className="glass box">
             <div className="question-header-container flex gap-8 justify-between items-center mb-4">
