@@ -84,6 +84,10 @@ pre {
   }
 }
 
+.website-title {
+  text-shadow: 0px 10px 20px rgb(15 15 15 / 25%);
+}
+
 .scores .switch li .switch-label.active {
   background-color: theme('colors.dark-grey-secondary');
 }
@@ -480,7 +484,8 @@ div[style*="background: rgb(39, 40, 34);"] {
 
 #demo-container {
   .glass {
-    box-shadow: 0 0 30px rgba(8, 7, 16, 0.6);
+    //box-shadow: 0 0 30px rgba(8, 7, 16, 0.6);
+    box-shadow: 0 0 var(--spacing-primary) rgba(8, 7, 16, 0.6);
   }
 
   .choice-option {
