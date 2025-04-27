@@ -133,7 +133,7 @@ function Question({mode, questionId, showComments}: { mode: string, questionId: 
 
                         <div className="flex flex-col gap-spacing-primary">
 
-                            <QuestionContent question={question}/>
+                            <QuestionContent question={question} mode={mode}/>
 
                             <Choices mode={mode} question={question} answers={answers} setAnswers={setAnswers}/>
 

@@ -34,16 +34,13 @@
 
 .rays {
   width: 100%;
-  //min-width: 1000px;
   top: 0;
-  //left: 50%;
   z-index: -1;
   position: absolute;
   pointer-events: none;
   opacity: .75;
   transition: opacity 1s;
   will-change: opacity;
-  //transform: translateX(-50%);
   height: 800px;
   overflow-x: hidden;
 

@@ -25,7 +25,6 @@ export const demoQuestion1 =
             "<button type=\"submit\">Submit</button>\n" +
             "```",
         "difficulty": 1,
-        // "explanation": "To create a checkbox in HTML, you use the `<input>` element with its `type` attribute set to `\"checkbox\"`.",
         "numberOfCorrectChoices": 1,
         "correctChoices": [
             188

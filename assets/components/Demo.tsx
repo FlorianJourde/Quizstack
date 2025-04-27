@@ -25,20 +25,9 @@ export function Demo({mode}) {
 
             <Swiper
                 speed={1000}
-                // spaceBetween={50}
-                breakpoints={{
-                    0: {
-                        // spaceBetween: 24,
-                    },
-                    640: {
-                        // spaceBetween: 32,
-
-                    },
-                }}
                 slidesPerView={1}
                 loop={true}
                 centeredSlides={true}
-                // grabCursor={true}
                 autoplay={{
                     delay: 5000,
                     disableOnInteraction: false,
@@ -57,7 +46,7 @@ export function Demo({mode}) {
                             className="flex flex-col relative"
                         >
                             <div className="flex flex-col gap-spacing-primary m-spacing-primary">
-                                <QuestionContent question={data.question}/>
+                                <QuestionContent question={data.question} mode={mode}/>
                                 <Choices
                                     mode={mode}
                                     question={data.question}

@@ -9,12 +9,9 @@
     <div class="wrapper wrapper-large pt-spacing-large-secondary pb-spacing-large-secondary">
 
         <div class="flex flex-col gap-spacing-large-secondary">
-            {#            <div> #}
-            {#                <h1 class="text-2xl sm:text-4xl md:text-5xl lg:text-6xl text-center font-secondary font-semibold col-span-full"> #}
             <h1 class="text-[clamp(1rem,7vw,7vw)] md:text-5xl lg:text-6xl text-center font-secondary font-semibold mx-auto col-span-full">
                 Master&nbsp;web development <br class="hidden md:block"/> through <span
                         class="text-green-tertiary">interactive&nbsp;quiz</span></h1>
-            {#            </div> #}
             <div class="flex flex-col lg:flex-row gap-spacing-large-secondary items-center lg:items-start">
                 <div class="flex flex-col gap-spacing-primary max-w-[600px] mx-auto">
                     <div class="flex flex-col gap-spacing-secondary text-center lg:text-left">
@@ -34,7 +31,6 @@
                         </a>
                     </div>
                 </div>
-                {#            <div class="mask-container"> #}
                 <div id="demo-container" class="flex justify-center w-[600px] max-w-full lg:max-w-[50%]"></div>
             </div>
         </div>
@@ -66,7 +62,7 @@
     {{ include('partials/filters.html.twig', _context) }}
     {{ include('partials/promotional/promotional-1.html.twig', _context) }}
 
-    <div id="stacks-slider-container" class="pb-spacing-very-large-secondary"></div>
+    <div id="stacks-slider-container" class="pb-spacing-large-primary"></div>
 
     {{ include('partials/promotional/promotional-2.html.twig', _context) }}
     {{ include('partials/faq.html.twig') }}

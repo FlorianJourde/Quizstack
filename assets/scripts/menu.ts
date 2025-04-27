@@ -15,7 +15,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     menuButton?.addEventListener('click', (event) => {
-        event.stopPropagation(); // Empêche la propagation du clic au document
+        event.stopPropagation();
 
         if (!isMenuOpen) {
             openMenu();

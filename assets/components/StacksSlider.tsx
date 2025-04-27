@@ -1,13 +1,4 @@
 import React from 'react';
-// import {Autoplay} from "swiper/types/modules";
-// import {Swiper, SwiperSlide} from "swiper/swiper-react";
-// import {Swiper, SwiperSlide} from "swiper/react";
-// import {Autoplay} from 'swiper/modules';
-import {motion} from "motion/react";
-import {item} from "../motion/animations";
-import QuestionContent from "./QuestionContent";
-import Choices from "./Choices";
-// import {Swiper, SwiperSlide} from "swiper/react";
 import {Swiper, SwiperSlide} from "swiper/react";
 import {Autoplay} from 'swiper/modules';
 
@@ -15,13 +6,14 @@ function StacksSlider() {
     return (
         <>
             <Swiper
-
                 modules={[Autoplay]}
                 spaceBetween={30}
-                // freeMode={true}
-                // slidesPerView={10}
                 loop={true}
                 speed={5000}
+                allowTouchMove={false}
+                preventClicks={true}
+                simulateTouch={false}
+                touchStartPreventDefault={true}
                 autoplay={{
                     delay: 0,
                     disableOnInteraction: false,
@@ -31,105 +23,103 @@ function StacksSlider() {
                 }}
                 breakpoints={{
                     320: {
-                        slidesPerView: 4,
+                        slidesPerView: 5,
                         spaceBetween: 10,
                     },
                     640: {
-                        slidesPerView: 5,
+                        slidesPerView: 7,
                         spaceBetween: 20,
                     },
                     1024: {
-                        slidesPerView: 7,
-                        spaceBetween: 30,
-                    },
-                    1280: {
                         slidesPerView: 10,
                         spaceBetween: 30,
                     },
-                    1536: {
+                    1280: {
                         slidesPerView: 12,
                         spaceBetween: 30,
                     },
+                    1536: {
+                        slidesPerView: 15,
+                        spaceBetween: 30,
+                    },
                 }}
-
-                // speed={1000}
-                // // spaceBetween={50}
-                // breakpoints={{
-                //     0: {
-                //         // spaceBetween: 24,
-                //     },
-                //     640: {
-                //         // spaceBetween: 32,
-                //
-                //     },
-                // }}
-                // slidesPerView={10}
-                // loop={true}
-                // centeredSlides={true}
-                // // grabCursor={true}
-                // autoplay={{
-                //     delay: 5000,
-                //     disableOnInteraction: false,
-                // }}
-                // modules={[Autoplay]}
             >
                 <SwiperSlide>
-                    <img src={`/images/logos/css3-logo.png`} alt=""/>
+                    <img src={`/images/logos/css3-logo.png`} alt="CSS logo"/>
                 </SwiperSlide>
                 <SwiperSlide>
-                    <img src={`/images/logos/javascript-logo.png`} alt=""/>
+                    <img src={`/images/logos/javascript-logo.png`} alt="JavaScript logo"/>
                 </SwiperSlide>
                 <SwiperSlide>
-                    <img src={`/images/logos/docker-logo.png`} alt=""/>
+                    <img src={`/images/logos/docker-logo.png`} alt="Docker logo"/>
                 </SwiperSlide>
                 <SwiperSlide>
-                    <img src={`/images/logos/next-js-logo.png`} alt=""/>
+                    <img src={`/images/logos/next-js-logo.png`} alt="Next.js logo"/>
                 </SwiperSlide>
                 <SwiperSlide>
-                    <img src={`/images/logos/react-logo.png`} alt=""/>
+                    <img src={`/images/logos/react-logo.png`} alt="React logo"/>
                 </SwiperSlide>
                 <SwiperSlide>
-                    <img src={`/images/logos/sass-logo.png`} alt=""/>
+                    <img src={`/images/logos/html-logo.png`} alt="HTML logo"/>
                 </SwiperSlide>
                 <SwiperSlide>
-                    <img src={`/images/logos/symfony-logo-2.png`} alt=""/>
+                    <img src={`/images/logos/sass-logo.png`} alt="Sass logo"/>
                 </SwiperSlide>
                 <SwiperSlide>
-                    <img src={`/images/logos/tailwindcss-logo.png`} alt=""/>
-                </SwiperSlide>
-                {/*<SwiperSlide>*/}
-                {/*    <img src={`/images/logos/tailwindcss-logo.png`} alt=""/>*/}
-                {/*</SwiperSlide>*/}
-                <SwiperSlide>
-                    <img src={`/images/logos/vue-js-logo.png`} alt=""/>
+                    <img src={`/images/logos/symfony-logo-2.png`} alt="Symfony logo"/>
                 </SwiperSlide>
                 <SwiperSlide>
-                    <img src={`/images/logos/git-logo.png`} alt=""/>
+                    <img src={`/images/logos/tailwindcss-logo.png`} alt="TailwindCSS logo"/>
                 </SwiperSlide>
                 <SwiperSlide>
-                    <img src={`/images/logos/node-js-logo.png`} alt=""/>
+                    <img src={`/images/logos/vue-js-logo.png`} alt="Vue.js logo"/>
                 </SwiperSlide>
                 <SwiperSlide>
-                    <img src={`/images/logos/typescript-logo.png`} alt=""/>
+                    <img src={`/images/logos/wordpress-logo.png`} alt="Wordpress logo"/>
                 </SwiperSlide>
                 <SwiperSlide>
-                    <img src={`/images/logos/django-logo-2.png`} alt=""/>
+                    <img src={`/images/logos/python-logo.png`} alt="Python logo"/>
                 </SwiperSlide>
                 <SwiperSlide>
-                    <img src={`/images/logos/angular-logo.png`} alt=""/>
+                    <img src={`/images/logos/git-logo.png`} alt="Git logo"/>
                 </SwiperSlide>
                 <SwiperSlide>
-                    <img src={`/images/logos/laravel-logo.png`} alt=""/>
+                    <img src={`/images/logos/node-js-logo.png`} alt="Node.js logo"/>
                 </SwiperSlide>
                 <SwiperSlide>
-                    <img src={`/images/logos/mysql-logo.png`} alt=""/>
+                    <img src={`/images/logos/php-logo.png`} alt="PHP logo"/>
                 </SwiperSlide>
                 <SwiperSlide>
-                    <img src={`/images/logos/github-logo.png`} alt=""/>
+                    <img src={`/images/logos/typescript-logo.png`} alt="TypeScript logo"/>
+                </SwiperSlide>
+                <SwiperSlide>
+                    <img src={`/images/logos/django-logo.png`} alt="Django logo"/>
+                </SwiperSlide>
+                <SwiperSlide>
+                    <img src={`/images/logos/angular-logo.png`} alt="Angular logo"/>
+                </SwiperSlide>
+                <SwiperSlide>
+                    <img src={`/images/logos/twig-logo.png`} alt="Twig logo"/>
+                </SwiperSlide>
+                <SwiperSlide>
+                    <img src={`/images/logos/github-logo.png`} alt="GitHub logo"/>
+                </SwiperSlide>
+                <SwiperSlide>
+                    <img src={`/images/logos/laravel-logo.png`} alt="Laravel logo"/>
+                </SwiperSlide>
+                <SwiperSlide>
+                    <img src={`/images/logos/mysql-logo.png`} alt="MySQL logo"/>
+                </SwiperSlide>
+                <SwiperSlide>
+                    <img src={`/images/logos/express-logo.png`} alt="ExpressJS logo"/>
+                </SwiperSlide>
+                <SwiperSlide>
+                    <img src={`/images/logos/gitlab-logo.png`} alt="GitLab logo"/>
                 </SwiperSlide>
             </Swiper>
         </>
-    );
+    )
+        ;
 };
 
 export default StacksSlider;

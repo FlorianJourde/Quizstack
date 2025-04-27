@@ -1,9 +1,13 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {MarkdownRenderer} from "./MarkdownRenderer";
 import Image from "./Image";
 import Explanation from "./Explanation";
 
-function QuestionContent({question}) {
+function QuestionContent({question, mode}) {
+    useEffect(() => {
+        console.log(mode)
+    }, [question]);
+
     return (
         <div className="glass box">
             <div className="question-header-container flex gap-8 justify-between items-center mb-4">
@@ -39,7 +43,7 @@ function QuestionContent({question}) {
 
             {question.image && <Image image={question.image}/>}
 
-            {question.explanation && <Explanation question={question}/>}
+            {question.correctChoices && question.explanation && <Explanation question={question}/>}
         </div>
     );
 };
