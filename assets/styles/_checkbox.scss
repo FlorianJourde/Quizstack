@@ -5,7 +5,7 @@
 #demo-container,
 #quiz-container[data-mode="display"] {
   .checkbox-group {
-    &:not(.correct, .incorrect):hover + .checkbox-tile {
+    .checkbox-input:not(.correct):not(.incorrect):hover + .checkbox-tile {
       box-shadow: unset;
     }
   }
