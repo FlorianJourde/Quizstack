@@ -79,4 +79,4 @@ For questions or support, please open an issue on GitHub or contact us at contac
 
 ---
 
-Happy coding and quizzing!
+Happy coding and quizzing !

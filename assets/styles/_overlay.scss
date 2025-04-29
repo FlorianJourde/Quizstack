@@ -1,0 +1,22 @@
+#overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  //z-index: 1000;
+  //object-fit: cover;
+  opacity: 0;
+  pointer-events: none;
+  //transition: unset;
+  background-color: black;
+  //background-image: url('/public/images/background/noise.png');
+  //background-repeat: repeat;
+  //background-size: 150px;
+  z-index: 10;
+  transition: opacity .4s;
+
+  &.visible {
+    opacity: .5;
+  }
+}
