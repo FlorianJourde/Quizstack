@@ -22,15 +22,24 @@
             {{ form_start(registrationForm) }}
 
             <div>
-                <h2 class="small-title">{{ registrationForm.email.vars.label }}</h2>
+                <h2 class="small-title">
+                    <span class="material-icons">alternate_email</span>
+                    {{ registrationForm.email.vars.label }}
+                </h2>
                 {{ form_widget(registrationForm.email) }}
             </div>
             <div>
-                <h2 class="small-title">{{ registrationForm.username.vars.label }}</h2>
+                <h2 class="small-title">
+                    <span class="material-icons">person</span>
+                    {{ registrationForm.username.vars.label }}
+                </h2>
                 {{ form_widget(registrationForm.username) }}
             </div>
             <div>
-                <h2 class="small-title">{{ registrationForm.plainPassword.vars.label }}</h2>
+                <h2 class="small-title">
+                    <span class="material-icons">key</span>
+                    {{ registrationForm.plainPassword.vars.label }}
+                </h2>
                 {{ form_widget(registrationForm.plainPassword) }}
             </div>
             <div>

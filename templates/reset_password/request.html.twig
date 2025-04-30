@@ -21,13 +21,26 @@
 
             {{ form_start(requestForm) }}
 
+
             <div>
-                {{ form_row(requestForm.email) }}
+                <h2 class="small-title">
+                    <span class="material-icons">alternate_email</span>
+                    {{ requestForm.email.vars.label }}
+                </h2>
+                {{ form_widget(requestForm.email) }}
                 <p class="mt-2">
                     Enter your email address and we will send you a
                     link to reset your password.
                 </p>
             </div>
+
+{#            <div>#}
+{#                {{ form_row(requestForm.email) }}#}
+{#                <p class="mt-2">#}
+{#                    Enter your email address and we will send you a#}
+{#                    link to reset your password.#}
+{#                </p>#}
+{#            </div>#}
 
             <div class="buttons-container">
                 <button class="button button-primary">Send</button>

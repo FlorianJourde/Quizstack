@@ -60,7 +60,7 @@
                         <table align="center" border="0" cellpadding="0" cellspacing="0"
                                width="100%" style="max-width: 545px; table-layout: fixed;">
                             <tr>
-                                <td align="left" style="padding: 0;">
+                                <td align="center" style="padding: 0;">
                                     <p style="margin: 0; font-size: 13px; font-family: Arial; line-height: 1.5;">
                                         To reset your password, please visit the following link.
                                     </p>
@@ -80,7 +80,7 @@
                                width="100%" style="max-width: 545px; table-layout: fixed;">
                             <tr>
                                 <td align="left" style="padding: 0;">
-                                    <table align="left" border="0" cellpadding="0" cellspacing="0">
+                                    <table align="center" border="0" cellpadding="0" cellspacing="0">
                                         <tr>
                                             <td style="background-color: #7da80d; border-radius: 4px;">
                                                 <a href="{{ url('app_reset_password', {token: resetToken.token}) }}"
@@ -106,7 +106,7 @@
                         <table align="center" border="0" cellpadding="0" cellspacing="0"
                                width="100%" style="max-width: 545px; table-layout: fixed;">
                             <tr>
-                                <td align="left" style="padding: 0;">
+                                <td align="center" style="padding: 0;">
                                     <p style="margin: 0; font-size: 13px; font-family: Arial; line-height: 1.5;">
                                         This link will expire
                                         in {{ resetToken.expirationMessageKey|trans(resetToken.expirationMessageData, 'ResetPasswordBundle') }}
@@ -154,173 +154,3 @@
 </table>
 </body>
 </html>
-
-{# <body class="is-html-mode" contenteditable="false"> #}
-{# <table align="center" border="0" cellpadding="0" cellspacing="0" width="100%" #}
-{#       style="border-collapse: collapse; border-spacing: 0;" contenteditable="false"> #}
-{#    <tbody> #}
-{#    <tr> #}
-{#        <td align="center" bgcolor="#e6e6e6"> #}
-{#            <table align="center" border="0" cellpadding="0" cellspacing="0" class="resize" id="newsletter" #}
-{#                   style="border-collapse: collapse; border-spacing: 0; max-width:99%;table-layout:fixed;font-family:Arial, Helvetica, sans-serif;font-size:11px;" #}
-{#                   width="600" contenteditable="false"> #}
-{#                <tbody> #}
-{#                <tr> #}
-{#                    <td bgcolor="#FFFFFF"> #}
-{#                        <table width="600" align="center" border="0" cellpadding="0" #}
-{#                               cellspacing="0" #}
-{#                               style="table-layout: fixed;" bgcolor="#0F0F0F"> #}
-{#                            <tbody> #}
-{#                            <tr bgcolor="#0F0F0F"> #}
-{#                                <td height="20"> #}
-{#                                </td> #}
-{#                            </tr> #}
-{#                            <tr> #}
-{#                                <td align="center"> #}
-{#                                    <a href="http://quizstack.io/" target="_blank" #}
-{#                                       style="text-decoration: none; display: block; font-size: 0;"> #}
-{#                                        <table width="200" border="0" cellpadding="0" cellspacing="0"> #}
-{#                                            <tr> #}
-{#                                                <td align="center"> #}
-{#                                                    <img alt="Quizstack" border="0" #}
-{#                                                         src="https://quizstack.io/images/decoration/quizstack-email-header.png" #}
-{#                                                         width="200" #}
-{#                                                         style="width: 200px; max-width: 200px; height: auto; display: block;"> #}
-{#                                                </td> #}
-{#                                            </tr> #}
-{#                                        </table> #}
-{#                                    </a> #}
-{#                                </td> #}
-{#                            </tr> #}
-{#                            <tr bgcolor="#0F0F0F"> #}
-{#                                <td height="20"> #}
-{#                                </td> #}
-{#                            </tr> #}
-{#                            </tbody> #}
-{#                        </table> #}
-{#                    </td> #}
-{#                </tr> #}
-{#                <tr bgcolor="#FFFFFF"> #}
-{#                    <td height="20"> #}
-{#                        <br> #}
-{#                    </td> #}
-{#                </tr> #}
-{#                <tr> #}
-{#                    <td align="center" bgcolor="#FFFFFF" style="border-spacing: 0"> #}
-{#                        <table contenteditable="false" align="center" border="0" cellpadding="0" cellspacing="0" #}
-{#                               width="545" #}
-{#                               style="table-layout: fixed;"> #}
-{#                            <tbody> #}
-{#                            <tr valign="bottom"> #}
-{#                                <td align="left" width="545" style="padding: 0;"> #}
-{#                                    <p style="margin:0;font-size:13px; font-family: Arial;"> #}
-{#                                        To reset your password, please visit the following link. #}
-{#                                    </p> #}
-{#                                </td> #}
-{#                            </tr> #}
-{#                            </tbody> #}
-{#                        </table> #}
-{#                    </td> #}
-{#                </tr> #}
-{#                <tr bgcolor="#FFFFFF"> #}
-{#                    <td height="10"> #}
-{#                        <br> #}
-{#                    </td> #}
-{#                </tr> #}
-{#                <tr> #}
-{#                    <td align="center" bgcolor="#FFFFFF" style="border-spacing: 0"> #}
-{#                        <table contenteditable="false" align="center" border="0" cellpadding="0" cellspacing="0" #}
-{#                               width="545" #}
-{#                               style="table-layout: fixed;"> #}
-{#                            <tbody> #}
-{#                            <tr valign="bottom"> #}
-{#                                <td align="left" width="545" style="padding: 0;"> #}
-{#                                    <table contenteditable="false" align="center" border="0" cellpadding="0" #}
-{#                                           cellspacing="0" style="table-layout: fixed;"> #}
-{#                                        <tbody> #}
-{#                                        <tr> #}
-
-{#                                            <td style="background-color: #7da80d; border-radius: 4px;"> #}
-{#                                                <table border="0" cellpadding="0" cellspacing="0" role="presentation"> #}
-{#                                                    <tr> #}
-{#                                                        <td style="padding: 8px 16px;"> #}
-{#                                                            <a href="{{ url('app_reset_password', {token: resetToken.token}) }}" #}
-{#                                                               target="_blank" #}
-{#                                                               style="text-decoration: none; font-size: 15px; font-weight: 500; color: #ffffff; font-family: Arial; display: block;"> #}
-{#                                                                Reset your password #}
-{#                                                            </a> #}
-{#                                                        </td> #}
-{#                                                    </tr> #}
-{#                                                </table> #}
-{#                                            </td> #}
-{#                                        </tr> #}
-{#                                        </tbody> #}
-{#                                    </table> #}
-{#                                </td> #}
-{#                            </tr> #}
-{#                            </tbody> #}
-{#                        </table> #}
-{#                    </td> #}
-{#                </tr> #}
-{#                <tr bgcolor="#FFFFFF"> #}
-{#                    <td height="10"> #}
-{#                        <br> #}
-{#                    </td> #}
-{#                </tr> #}
-{#                <tr> #}
-{#                    <td align="center" bgcolor="#FFFFFF" style="border-spacing: 0"> #}
-{#                        <table contenteditable="false" align="center" border="0" cellpadding="0" cellspacing="0" #}
-{#                               width="545" #}
-{#                               style="table-layout: fixed;"> #}
-{#                            <tbody> #}
-{#                            <tr valign="bottom"> #}
-{#                                <td align="left" width="545" style="padding: 0;"> #}
-{#                                    <p style="margin:0;font-size:13px; font-family: Arial;"> #}
-{#                                        This link will expire #}
-{#                                        in {{ resetToken.expirationMessageKey|trans(resetToken.expirationMessageData, 'ResetPasswordBundle') }} #}
-{#                                        . #}
-{#                                    </p> #}
-{#                                </td> #}
-{#                            </tr> #}
-{#                            </tbody> #}
-{#                        </table> #}
-{#                    </td> #}
-{#                </tr> #}
-{#                <tr bgcolor="#FFFFFF"> #}
-{#                    <td height="20"> #}
-{#                        <br> #}
-{#                    </td> #}
-{#                </tr> #}
-{#                <tr> #}
-{#                    <td bgcolor="#FFFFFF"> #}
-{#                        <table width="600" contenteditable="false" align="center" border="0" cellpadding="0" #}
-{#                               cellspacing="0" #}
-{#                               style="table-layout: fixed;" bgcolor="#0F0F0F"> #}
-{#                            <tbody> #}
-{#                            <tr bgcolor="#0F0F0F"> #}
-{#                                <td height="10"> #}
-{#                                </td> #}
-{#                            </tr> #}
-{#                            <tr> #}
-{#                                <td align="center"> #}
-{#                                    <a href="http://quizstack.io/" target="_blank" #}
-{#                                       style="text-decoration: none; color: white; font-size: 12px; font-weight: 500;"> #}
-{#                                        © Quizstack #}
-{#                                    </a> #}
-{#                                </td> #}
-{#                            </tr> #}
-{#                            <tr bgcolor="#0F0F0F"> #}
-{#                                <td height="10"> #}
-{#                                </td> #}
-{#                            </tr> #}
-{#                            </tbody> #}
-{#                        </table> #}
-{#                    </td> #}
-{#                </tr> #}
-{#                </tbody> #}
-{#            </table> #}
-{#        </td> #}
-{#    </tr> #}
-{#    </tbody> #}
-{# </table> #}
-{# </body> #}

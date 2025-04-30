@@ -198,14 +198,14 @@ class ResetPasswordController extends AbstractController
             ->from('contact@quizstack.io')
             ->to('jourdeflorian@gmail.com')
             ->subject('Test Symfony Mailer - ' . time())
-            ->text('Ceci est un test pour vérifier que l\'envoi d\'email fonctionne correctement.')
-            ->html('<p>Ceci est un test pour vérifier que l\'envoi d\'email <strong>fonctionne correctement</strong>.</p>');
+            ->text('This is a test email.')
+            ->html('<p>This is a <strong>test email</strong>.</p>');
 
         try {
             $mailer->send($email);
-            return new Response('Email de test envoyé avec succès. Vérifiez votre boîte de réception.');
+            return new Response('Test email sent successfully. Check your inbox.');
         } catch (\Exception $e) {
-            return new Response('Erreur lors de l\'envoi de l\'email : ' . $e->getMessage(), 500);
+            return new Response('Error while sending email : ' . $e->getMessage(), 500);
         }
     }
 }

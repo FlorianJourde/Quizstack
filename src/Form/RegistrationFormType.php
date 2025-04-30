@@ -19,6 +19,7 @@ class RegistrationFormType extends AbstractType
                 'label' => 'Email',
                 'attr' => [
                     'autocomplete' => 'email',
+                    'autofocus' => true,
                 ],
             ])
             ->add('username', null, [
