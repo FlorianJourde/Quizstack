@@ -14,6 +14,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Mailer\MailerInterface;
 use Symfony\Component\Mime\Address;
+use Symfony\Component\Mime\Email;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\Routing\Attribute\Route;
 use SymfonyCasts\Bundle\ResetPassword\Controller\ResetPasswordControllerTrait;
@@ -161,7 +162,7 @@ class ResetPasswordController extends AbstractController
         }
 
         $email = (new TemplatedEmail())
-            ->from(new Address('contact@quizstack.io', 'Reset password'))
+            ->from(new Address('contact@quizstack.io', 'Reset Password'))
             ->to((string)$user->getEmail())
             ->subject('Your password reset request')
             ->htmlTemplate('reset_password/email.html.twig')
@@ -188,5 +189,23 @@ class ResetPasswordController extends AbstractController
         return $this->render('reset_password/email.html.twig', [
             'resetToken' => $resetToken
         ]);
+    }
+
+    #[Route('/test-mail', name: 'app_test_mail')]
+    public function index(MailerInterface $mailer): Response
+    {
+        $email = (new Email())
+            ->from('contact@quizstack.io')
+            ->to('jourdeflorian@gmail.com')
+            ->subject('Test Symfony Mailer - ' . time())
+            ->text('Ceci est un test pour vérifier que l\'envoi d\'email fonctionne correctement.')
+            ->html('<p>Ceci est un test pour vérifier que l\'envoi d\'email <strong>fonctionne correctement</strong>.</p>');
+
+        try {
+            $mailer->send($email);
+            return new Response('Email de test envoyé avec succès. Vérifiez votre boîte de réception.');
+        } catch (\Exception $e) {
+            return new Response('Erreur lors de l\'envoi de l\'email : ' . $e->getMessage(), 500);
+        }
     }
 }
