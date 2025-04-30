@@ -2,11 +2,69 @@
 
 {% block title %}Reset your password{% endblock %}
 
-{% block body %}
-    <h1>Reset your password</h1>
 
-    {{ form_start(resetForm) }}
-        {{ form_row(resetForm.plainPassword) }}
-        <button class="button button-primary">Reset password</button>
-    {{ form_end(resetForm) }}
+{% block body %}
+
+    {{ include('partials/banner.html.twig', {'color': 'blue'}) }}
+
+    <div class="wrapper">
+        <div class="page-header-container">
+            <h1 class="big-title grow">Reset your password</h1>
+        </div>
+    </div>
+
+    <div class="wrapper wrapper-small">
+        <div class="form-container glass box bg-dark-grey-secondary">
+
+            {{ form_start(resetForm) }}
+{#            {{ form_row(resetForm.plainPassword) }}#}
+
+            <div>
+                <h2 class="small-title">
+                    <span class="material-icons">key</span>
+                    {{ resetForm.plainPassword.first.vars.label }}
+                </h2>
+                {{ form_widget(resetForm.plainPassword.first) }}
+            </div>
+            <div>
+                <h2 class="small-title">
+                    <span class="material-icons">replay</span>
+                    {{ resetForm.plainPassword.second.vars.label }}
+                </h2>
+                {{ form_widget(resetForm.plainPassword.second) }}
+            </div>
+
+{#            <div>#}
+{#                <h2 class="small-title">#}
+{#                    <span class="material-icons">key</span>#}
+{#                    {{ resetForm.plainPassword.vars.label }}#}
+{#                </h2>#}
+{#                {{ form_widget(resetForm.plainPassword) }}#}
+{#                <p class="text-sm mt-2">Enter your current password to confirm your identity.</p>#}
+{#            </div>#}
+
+{#            {{ form_start(passwordForm) }}#}
+{#            <div>#}
+{#                <h2 class="small-title">#}
+{#                    <span class="material-icons">key</span>#}
+{#                    {{ passwordForm.currentPassword.vars.label }}#}
+{#                </h2>#}
+{#                {{ form_widget(passwordForm.currentPassword) }}#}
+{#                <p class="text-sm mt-2">Enter your current password to confirm your identity.</p>#}
+{#            </div>#}
+
+            {#            <button class="button button-primary">Reset password</button> #}
+
+            <div class="buttons-container">
+{#                <a class="button button-tertiary" href="{{ path('app_forgot_password_request') }}">Forgotten#}
+{#                    password</a>#}
+                <button class="button button-primary">
+                    Reset password
+                </button>
+            </div>
+
+            {{ form_end(resetForm) }}
+
+        </div>
+    </div>
 {% endblock %}

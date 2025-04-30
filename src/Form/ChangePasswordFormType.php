@@ -16,21 +16,6 @@ class ChangePasswordFormType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('currentPassword', PasswordType::class, [
-                'label' => 'Current Password',
-                'mapped' => false,
-                'constraints' => [
-                    new NotBlank([
-                        'message' => 'Please enter your current password',
-                    ]),
-                    new UserPassword([
-                        'message' => 'The password you entered is incorrect.',
-                    ]),
-                ],
-                'attr' => [
-                    'class' => 'form-control'
-                ]
-            ])
             ->add('plainPassword', RepeatedType::class, [
                 'type' => PasswordType::class,
                 'options' => [
@@ -59,20 +44,47 @@ class ChangePasswordFormType extends AbstractType
 //                        ]),
                     ],
                     'label' => 'New password',
+                    'label_attr' => [
+                        'class' => 'small-title'
+                    ],
                 ],
                 'second_options' => [
                     'label' => 'Repeat Password',
+                    'label_attr' => [
+                        'class' => 'small-title'
+                    ],
                 ],
                 'invalid_message' => 'The password fields must match.',
                 // Instead of being set onto the object directly,
                 // this is read and encoded in the controller
                 'mapped' => false,
-            ])
-        ;
+            ]);
+
+
+        if ($options['require_current_password']) {
+            $builder
+                ->add('currentPassword', PasswordType::class, [
+                    'label' => 'Current Password',
+                    'mapped' => false,
+                    'constraints' => [
+                        new NotBlank([
+                            'message' => 'Please enter your current password',
+                        ]),
+                        new UserPassword([
+                            'message' => 'The password you entered is incorrect.',
+                        ]),
+                    ],
+                    'attr' => [
+                        'class' => 'form-control'
+                    ]
+                ]);
+        };
     }
 
     public function configureOptions(OptionsResolver $resolver): void
     {
-        $resolver->setDefaults([]);
+        $resolver->setDefaults([
+            'require_current_password' => true,
+        ]);
     }
 }

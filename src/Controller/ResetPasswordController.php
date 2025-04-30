@@ -26,8 +26,9 @@ class ResetPasswordController extends AbstractController
 
     public function __construct(
         private ResetPasswordHelperInterface $resetPasswordHelper,
-        private EntityManagerInterface $entityManager
-    ) {
+        private EntityManagerInterface       $entityManager
+    )
+    {
     }
 
     /**
@@ -103,7 +104,9 @@ class ResetPasswordController extends AbstractController
         }
 
         // The token is valid; allow the user to change their password.
-        $form = $this->createForm(ChangePasswordFormType::class);
+        $form = $this->createForm(ChangePasswordFormType::class, null, [
+            'require_current_password' => false,
+        ]);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -156,14 +159,13 @@ class ResetPasswordController extends AbstractController
         }
 
         $email = (new TemplatedEmail())
-            ->from(new Address('jourdeflorian@gmail.com', 'Reset Password'))
-            ->to((string) $user->getEmail())
+            ->from(new Address('contact@quizstack.io', 'Reset Password'))
+            ->to((string)$user->getEmail())
             ->subject('Your password reset request')
             ->htmlTemplate('reset_password/email.html.twig')
             ->context([
                 'resetToken' => $resetToken,
-            ])
-        ;
+            ]);
 
         $mailer->send($email);
 
@@ -171,5 +173,17 @@ class ResetPasswordController extends AbstractController
         $this->setTokenObjectInSession($resetToken);
 
         return $this->redirectToRoute('app_check_email');
+    }
+
+    #[Route('/email-template', name: 'app_test_email_template')]
+    public function testEmailTemplate(): Response
+    {
+        // Créez un faux token pour tester
+        $expireDate = new \DateTime('+1 hour');
+//        $resetToken = new ResetPasswordToken('fake_token_value', $expireDate, 'P1D');
+
+        return $this->render('reset_password/email.html.twig', [
+//            'resetToken' => $resetToken
+        ]);
     }
 }

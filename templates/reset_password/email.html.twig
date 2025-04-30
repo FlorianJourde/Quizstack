@@ -1,9 +1,778 @@
-<h1>Hi!</h1>
+{# <div class="max-w-[600px]"> #}
+{#    #}{#    <img src="" alt=""> #}
 
-<p>To reset your password, please visit the following link</p>
+{#    <img src="https://quizstack.io/images/decoration/quizstack-email-header.png" alt="Quizstack email header"> #}
 
-<a href="{{ url('app_reset_password', {token: resetToken.token}) }}">{{ url('app_reset_password', {token: resetToken.token}) }}</a>
+{#    <div class="buttons-container"> #}
+{#        <p>To reset your password, please visit the following link</p> #}
+{#        <a class="button button-primary" href="{{ url('app_reset_password', {token: resetToken.token}) }}">Reset your #}
+{#            password</a> #}
+{#        <p>This link will expire #}
+{#            in {{ resetToken.expirationMessageKey|trans(resetToken.expirationMessageData, 'ResetPasswordBundle') }}.</p> #}
+{#    </div> #}
+{# </div> #}
 
-<p>This link will expire in {{ resetToken.expirationMessageKey|trans(resetToken.expirationMessageData, 'ResetPasswordBundle') }}.</p>
+<body class="is-html-mode" contenteditable="false">
+<table align="center" border="0" cellpadding="0" cellspacing="0" width="100%"
+       style="border-collapse: collapse; border-spacing: 0;" contenteditable="false">
+    <tbody>
+    <tr>
+        <td align="center" bgcolor="#e6e6e6">
+            <table align="center" border="0" cellpadding="0" cellspacing="0" class="resize" id="newsletter"
+                   style="border-collapse: collapse; border-spacing: 0; max-width:99%;table-layout:fixed;font-family:Arial, Helvetica, sans-serif;font-size:11px;"
+                   width="600" contenteditable="false">
+                <tbody>
+                <tr>
+                    <td bgcolor="#FFFFFF">
+                        <table width="600" align="center" border="0" cellpadding="0"
+                               cellspacing="0"
+                               style="table-layout: fixed;" bgcolor="#0F0F0F">
+                            <tbody>
+                            <tr bgcolor="#0F0F0F">
+                                <td height="20">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td align="center">
+                                    <a href="http://quizstack.io/" target="_blank"
+                                       style="text-decoration: none; display: block; font-size: 0;">
+                                        <table width="300" border="0" cellpadding="0" cellspacing="0">
+                                            <tr>
+                                                <td align="center">
+                                                    <img alt="Quizstack" border="0"
+                                                         src="https://quizstack.io/images/decoration/quizstack-email-header.png"
+                                                         width="300"
+                                                         style="width: 300px; max-width: 300px; height: auto; display: block;">
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </a>
+                                </td>
+                            </tr>
+                            <tr bgcolor="#0F0F0F">
+                                <td height="20">
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </td>
+                </tr>
 
-<p>Cheers!</p>
+                {#                <tr> #}
+                {#                    <td align="center" bgcolor="#0F0F0F" style="line-height:0px; border-spacing: 0"> #}
+                {#                        <a href="http://quizstack.io/" target="_blank" style="text-decoration: none;"> #}
+                {#                            <img alt="Quizstack" border="0" #}
+                {#                                 src="https://quizstack.io/images/decoration/quizstack-email-header.png" #}
+                {#                                 style="max-width:100%;"> #}
+                {#                        </a> #}
+                {#                    </td> #}
+                {#                </tr> #}
+
+                <tr bgcolor="#FFFFFF">
+                    <td height="20">
+                        <br>
+                    </td>
+                </tr>
+                <tr>
+                    <td align="center" bgcolor="#FFFFFF" style="border-spacing: 0">
+                        <table contenteditable="false" align="center" border="0" cellpadding="0" cellspacing="0"
+                               width="545"
+                               style="table-layout: fixed;">
+                            <tbody>
+                            <tr valign="bottom">
+                                <td align="left" width="545" style="padding: 0;">
+                                    <p style="margin:0;font-size:13px; font-family: Arial;">
+                                        To reset your password, please visit the following link.
+                                    </p>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </td>
+                </tr>
+                <tr bgcolor="#FFFFFF">
+                    <td height="10">
+                        <br>
+                    </td>
+                </tr>
+                <tr>
+                    <td align="center" bgcolor="#FFFFFF" style="border-spacing: 0">
+                        <table contenteditable="false" align="center" border="0" cellpadding="0" cellspacing="0"
+                               width="545"
+                               style="table-layout: fixed;">
+                            <tbody>
+                            <tr valign="bottom">
+                                <td align="left" width="545" style="padding: 0;">
+                                    {#                                    <p style="margin:0;font-size:13px; font-family: Arial;"> #}
+                                    {#                                        To reset your password, please visit the following link #}
+                                    {#                                    </p> #}
+                                    <table contenteditable="false" align="center" border="0" cellpadding="0"
+                                           cellspacing="0" style="table-layout: fixed;">
+                                        <tbody>
+                                        <tr>
+
+                                            <td style="background-color: #7da80d; border-radius: 4px;">
+                                                <table border="0" cellpadding="0" cellspacing="0" role="presentation">
+                                                    <tr>
+                                                        <td style="padding: 8px 16px;">
+                                                            <a href=" {{ url('app_reset_password', {token: resetToken.token}) }} "
+                                                               target="_blank"
+                                                               style="text-decoration: none; font-size: 15px; font-weight: 500; color: #ffffff; font-family: Arial; display: block;">
+                                                                Reset your password
+                                                            </a>
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                            </td>
+
+                                            {#                                            <td align="center" bgcolor="#7da80d"> #}
+                                            {#                                                <a href=" #}{# {{ url('app_reset_password', {token: resetToken.token}) }} #}{# " #}
+                                            {#                                                   target="_blank" #}
+                                            {#                                                   style="text-decoration:none; font-size:15px; font-weight:500; color: #ffffff; font-family: Arial;"> #}
+                                            {#                                                    <span style="font-size: 5px"><br></span> #}
+                                            {#                                                    Reset your password #}
+                                            {#                                                    <span style="font-size: 5px"><br><br></span> #}
+                                            {#                                                </a> #}
+                                            {#                                            </td> #}
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </td>
+                </tr>
+                <tr bgcolor="#FFFFFF">
+                    <td height="10">
+                        <br>
+                    </td>
+                </tr>
+                <tr>
+                    <td align="center" bgcolor="#FFFFFF" style="border-spacing: 0">
+                        <table contenteditable="false" align="center" border="0" cellpadding="0" cellspacing="0"
+                               width="545"
+                               style="table-layout: fixed;">
+                            <tbody>
+                            <tr valign="bottom">
+                                <td align="left" width="545" style="padding: 0;">
+                                    <p style="margin:0;font-size:13px; font-family: Arial;">
+                                        This link will expire
+                                        in {{ resetToken.expirationMessageKey|trans(resetToken.expirationMessageData, 'ResetPasswordBundle') }}
+                                        .
+                                    </p>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </td>
+                </tr>
+                <tr bgcolor="#FFFFFF">
+                    <td height="20">
+                        <br>
+                    </td>
+                </tr>
+                {#                <tr> #}
+                {#                    <td align="center" bgcolor="#0F0F0F" style="border-spacing: 0"> #}
+                {#                        <a href="http://quizstack.io/" target="_blank" style="text-decoration: none;"> #}
+                {#                            <img alt="Quizstack" border="0" #}
+                {#                                 src="https://quizstack.io/images/decoration/quizstack-email-header.png" #}
+                {#                                 style="max-width:100%;"> #}
+                {#                        </a> #}
+
+                {#                        <a href="http://quizstack.io/" target="_blank" #}
+                {#                           style="text-decoration: none; color: black; font-size: 15px; font-weight: 600;"> #}
+                {#                            © Quizstack #}
+                {#                        </a> #}
+
+                {#                    </td> #}
+                {#                </tr> #}
+
+                <tr>
+                    <td bgcolor="#FFFFFF">
+                        <table width="600" contenteditable="false" align="center" border="0" cellpadding="0"
+                               cellspacing="0"
+                               style="table-layout: fixed;" bgcolor="#0F0F0F">
+                            <tbody>
+                            <tr bgcolor="#0F0F0F">
+                                <td height="10">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td align="center">
+                                    <a href="http://quizstack.io/" target="_blank"
+                                       style="text-decoration: none; color: white; font-size: 12px; font-weight: 500;">
+                                        © Quizstack
+                                    </a>
+                                </td>
+                            </tr>
+                            <tr bgcolor="#0F0F0F">
+                                <td height="10">
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </td>
+                </tr>
+                {#                <tr> #}
+                {#                    <td align="center" bgcolor="#0F0F0F" style="line-height:0px; border-spacing: 0"> #}
+                {#                        <a href="http://quizstack.io/" target="_blank" #}
+                {#                           style="text-decoration: none; color: black; font-size: 15px; font-weight: 600;"> #}
+                {#                            #}{#                            <img alt="Quizstack" border="0" #}
+                {#                            #}{#                                 src="https://quizstack.io/images/decoration/quizstack-email-header.png" #}
+                {#                            #}{#                                 style="max-width:100%;"> #}
+                {#                            © Quizstack #}
+                {#                        </a> #}
+                {#                    </td> #}
+                {#                </tr> #}
+                </tbody>
+            </table>
+        </td>
+    </tr>
+    </tbody>
+</table>
+</body>
+
+{#                <tr bgcolor="#FFFFFF"> #}
+{#                    <td height="50"> #}
+{#                        <br> #}
+{#                    </td> #}
+{#                </tr> #}
+{#                <tr> #}
+{#                    <td align="center" bgcolor="#FFFFFF" style="line-height:0px; border-spacing: 0"> #}
+{#                        <table contenteditable="false" align="center" border="0" cellpadding="0" cellspacing="0" width="545" #}
+{#                               style="table-layout: fixed;"> #}
+{#                            <tbody> #}
+{#                            <tr> #}
+{#                                <td align="left" width="140"> #}
+{#                                    <a href="https://www.vithalia.fr/le-club-de-forme/" #}
+{#                                       style="color: #c6c6c6;text-decoration: none; font-size: 15px;font-weight: 500; font-family: Arial;"> #}
+{#                                        CLUB DE FORME #}
+{#                                    </a> #}
+{#                                </td> #}
+{#                                <td align="right" width="140"> #}
+{#                                    <a href="https://www.vithalia.fr/linstitut-spa/" #}
+{#                                       style="color: #c6c6c6;text-decoration: none; font-size: 15px; font-weight: 500; font-family: Arial;"> #}
+{#                                        INSTITUT &amp; SPA #}
+{#                                    </a> #}
+{#                                </td> #}
+{#                                <td align="center" width="170"> #}
+{#                                    <a href="https://www.vithalia.fr/centre-minceur-anti-age/centre-minceur/" #}
+{#                                       style="color: #c6c6c6;text-decoration: none; font-size: 15px; font-weight: 500; font-family: Arial;"> #}
+{#                                        MINCEUR #}
+{#                                    </a> #}
+{#                                </td> #}
+{#                                <td align="right" width="80"> #}
+{#                                    <a href="https://www.vithalia.fr/centre-minceur-anti-age/centre-anti-age/" #}
+{#                                       style="color: #c6c6c6;text-decoration: none; line-height: 30px; font-size: 15px; font-weight: 500; font-family: Arial;"> #}
+{#                                        ANTI-ÂGE #}
+{#                                    </a> #}
+{#                                </td> #}
+{#                            </tr> #}
+{#                            </tbody> #}
+{#                        </table> #}
+{#                    </td> #}
+{#                </tr> #}
+{#                <tr bgcolor="#FFFFFF"> #}
+{#                    <td height="20"> #}
+{#                        <br> #}
+{#                    </td> #}
+{#                </tr> #}
+{#                <tr> #}
+{#                    <td align="center" bgcolor="#FFFFFF" style="line-height:0px; border-spacing: 0"> #}
+{#                        <a href="https://app.kiute.com/vithalia/category/6138815769018368" target="_blank" #}
+{#                           style="text-decoration: none;"> #}
+{#                            <img alt="Un soin pour Noël... Pour tous ceux qui ont été très sages cette année !" border="0" #}
+{#                                 src="https://newsletter.vps104.groupe-cwa.fr/vithalia-20221122/img/header_title_december.jpg" #}
+{#                                 style="max-width:100%;"> #}
+{#                        </a> #}
+{#                    </td> #}
+{#                </tr> #}
+<!-- INTRODUCTION -->
+{#                <tr> #}
+{#                    <td align="right" bgcolor="#FFFFFF" contenteditable="false" #}
+{#                        style="border-spacing: 0; table-layout: fixed"> #}
+{#                        <table align="right" border="0" cellpadding="0" cellspacing="0" width="565"> #}
+{#                            <tbody> #}
+{#                            <tr> #}
+{#                                <td align="right" width="565" style="padding: 0;"> #}
+{#                                    <img border="0" #}
+{#                                         src="https://newsletter.vps104.groupe-cwa.fr/vithalia-20221122/img/intro_img.jpg" #}
+{#                                         style="max-width:100%;"> #}
+{#                                </td> #}
+{#                            </tr> #}
+{#                            </tbody> #}
+{#                        </table> #}
+{#                    </td> #}
+{#                </tr> #}
+{#                <tr bgcolor="#FFFFFF"> #}
+{#                    <td height="80"> #}
+{#                        <br> #}
+{#                    </td> #}
+{#                </tr> #}
+{#                <tr> #}
+{#                    <td align="center" bgcolor="#FFFFFF" contenteditable="false" #}
+{#                        style="line-height:0px; border-spacing: 0; table-layout: fixed"> #}
+{#                        <img border="0" src="https://newsletter.vps104.groupe-cwa.fr/vithalia-20221122/img/moment_title.jpg" #}
+{#                             style="max-width:100%;" alt="C'est le moment"> #}
+{#                    </td> #}
+{#                </tr> #}
+{#                <tr> #}
+{#                    <td align="left" bgcolor="#FFFFFF" contenteditable="false" #}
+{#                        style="border-spacing: 0; table-layout: fixed"> #}
+{#                        <table align="left" border="0" cellpadding="0" cellspacing="0" width="565"> #}
+{#                            <tbody> #}
+{#                            <tr valign="top" align="left"> #}
+{#                                <td align="left" width="275" style="padding: 0; line-height:0; border-spacing: 0;"> #}
+{#                                    <img border="0" #}
+{#                                         src="https://newsletter.vps104.groupe-cwa.fr/vithalia-20221122/img/moment_1.jpg" #}
+{#                                         style="max-width:100%;"> #}
+{#                                </td> #}
+{#                                <td align="left" width="20" style="padding: 0;">&nbsp;</td> #}
+{#                                <td align="left" width="270" style="padding: 0;"> #}
+{#                                    <p style="margin:0;font-size:15px; font-weight: 600; font-family: Arial;"> #}
+{#                                        <br> #}
+{#                                        Animation Maquillage Flash pour le(s) Réveillon(s) :<br> #}
+{#                                        Brillez de mille feux le Jour J !<br> #}
+{#                                        <br> #}
+{#                                    </p> #}
+{#                                    <p style="margin:0;font-size:13px; font-family: Arial;"> #}
+{#                                        Quoi de mieux pour attendre le Père Noël que de se sentir bien dans ses souliers&nbsp;?<br> #}
+{#                                        Un regard qui pétille, un teint qui s’illumine, une bouche qui scintille… Sublimez votre #}
+{#                                        look grâce à un <b>maquillage</b> à la hauteur de l’évènement&nbsp;!<br> #}
+{#                                        Les <b>24 et 31 Décembre</b>, nos praticiennes Institut et Spa prennent les choses en main #}
+{#                                        pour vous faire sentir plus belle que jamais&nbsp;!<br> #}
+{#                                        40 minutes à vous faire chouchouter… et le tout est joué&nbsp;! <br> #}
+{#                                        Vous n’avez plus qu’à faire la Fête&nbsp;!<br> #}
+{#                                        <br> #}
+{#                                        <b>Prenez dès maintenant rdv avec votre beauté&nbsp;!</b><br> #}
+{#                                        <br> #}
+{#                                        <br> #}
+{#                                    </p> #}
+{#                                    <table contenteditable="false" align="center" border="0" cellpadding="0" cellspacing="0" #}
+{#                                           width="250" style="table-layout: fixed;"> #}
+{#                                        <tbody> #}
+{#                                        <tr> #}
+{#                                            <td align="center" bgcolor="#FFFFFF" width="250" style="border: solid 1px #000000;"> #}
+{#                                                <a href="https://www.vithalia.fr/institut-beaute-spa-brive/maquillage/" #}
+{#                                                   target="_blank" #}
+{#                                                   style="text-decoration:none; font-size:15px; font-weight:500; color: #000000;font-family: Arial;"> #}
+{#                                                    <span style="font-size: 5px"><br></span> #}
+{#                                                    Réserver ma mise en beauté #}
+{#                                                    <span style="font-size: 5px"><br><br></span> #}
+{#                                                </a> #}
+{#                                            </td> #}
+{#                                        </tr> #}
+{#                                        </tbody> #}
+{#                                    </table> #}
+{#                                </td> #}
+{#                            </tr> #}
+{#                            </tbody> #}
+{#                        </table> #}
+{#                    </td> #}
+{#                </tr> #}
+{#                <tr bgcolor="#FFFFFF"> #}
+{#                    <td height="60"> #}
+{#                        <br> #}
+{#                    </td> #}
+{#                </tr> #}
+{#                <tr> #}
+{#                    <td align="right" bgcolor="#FFFFFF" contenteditable="false" #}
+{#                        style="border-spacing: 0; table-layout: fixed"> #}
+{#                        <table align="right" border="0" cellpadding="0" cellspacing="0" width="565"> #}
+{#                            <tbody> #}
+{#                            <tr> #}
+{#                                <td align="left" width="270" style="padding: 0;"> #}
+{#                                    <p style="margin:0;font-size:15px; font-weight: 600; font-family: Arial;"> #}
+{#                                        Save the date : Soirée RELANCE #}
+{#                                        LES MILLS® le 16 Décembre…<br> #}
+{#                                        Redécouvrez le Fitness nouvelle génération chez Vithalia&nbsp;!<br> #}
+{#                                        <br> #}
+{#                                    </p> #}
+{#                                    <p style="margin:0;font-size:13px; font-family: Arial;"> #}
+{#                                        La fin de l’année sera sportive ou ne sera pas… Et il y a du nouveau chez Vithalia !<br> #}
+{#                                        En prévision des Fêtes et de ses petits excès, et/ou pour annoncer une nouvelle année qui #}
+{#                                        s’annonce remplie d’énergie, nos coachs vous dévoilent en exclusivité la nouvelle édition #}
+{#                                        LES MILLS® !<br> #}
+{#                                        <b>Rendez-vous le 16 Décembre de 18h30 à 20h15 pour découvrir les nouvelles musiques et les #}
+{#                                            nouveaux enchainements de vos cours Fitness préférés !</b> BodyPump, BodyBalance, #}
+{#                                        BodyAttack, RPM… Vos séances se réinventent au service de votre forme ! Réservez vite votre #}
+{#                                        place**.<br> #}
+{#                                        Et n’hésitez pas à venir accompagné(e)s&nbsp;!<br> #}
+{#                                        <br> #}
+{#                                        <br> #}
+{#                                    </p> #}
+{#                                    <table contenteditable="false" align="center" border="0" cellpadding="0" cellspacing="0" #}
+{#                                           width="250" style="table-layout: fixed;"> #}
+{#                                        <tbody> #}
+{#                                        <tr> #}
+{#                                            <td align="center" bgcolor="#FFFFFF" width="250" style="border: solid 1px #000000;"> #}
+{#                                                <a href="https://www.vithalia.fr/contact/" target="_blank" #}
+{#                                                   style="text-decoration:none; font-size:15px; font-weight:500; color: #000000;font-family: Arial;"> #}
+{#                                                    <span style="font-size: 5px"><br></span> #}
+{#                                                    Réserver ma séance #}
+{#                                                    <span style="font-size: 5px"><br><br></span> #}
+{#                                                </a> #}
+{#                                            </td> #}
+{#                                        </tr> #}
+{#                                        </tbody> #}
+{#                                    </table> #}
+{#                                </td> #}
+{#                                <td align="left" width="40" style="padding: 0;">&nbsp;</td> #}
+{#                                <td align="right" width="275" style="padding: 0; line-height:0; border-spacing: 0;"> #}
+{#                                    <img border="0" #}
+{#                                         src="https://newsletter.vps104.groupe-cwa.fr/vithalia-20221122/img/moment_2.jpg" #}
+{#                                         style="max-width:100%;"> #}
+{#                                </td> #}
+{#                            </tr> #}
+{#                            </tbody> #}
+{#                        </table> #}
+{#                    </td> #}
+{#                </tr> #}
+{#                <tr bgcolor="#FFFFFF"> #}
+{#                    <td height="80"> #}
+{#                        <br> #}
+{#                    </td> #}
+{#                </tr> #}
+{#                <tr> #}
+{#                    <td align="left" bgcolor="#FFFFFF" contenteditable="false" #}
+{#                        style="line-height:0px; border-spacing: 0; table-layout: fixed; padding: 0;"> #}
+{#                        <img border="0" #}
+{#                             src="https://newsletter.vps104.groupe-cwa.fr/vithalia-20221122/img/decouvrir_section_title.jpg" #}
+{#                             alt="A Découvrir..." style="max-width:100%;"> #}
+{#                    </td> #}
+{#                </tr> #}
+{#                <tr> #}
+{#                    <td align="center" bgcolor="#FFFFFF" contenteditable="false" #}
+{#                        style="border-spacing: 0; table-layout: fixed"> #}
+{#                        <table align="center" border="0" cellpadding="0" cellspacing="0" width="544"> #}
+{#                            <tbody> #}
+{#                            <tr> #}
+{#                                <td align="left" width="30" style="padding: 0;" bgcolor="#000000"> #}
+{#                                    &nbsp; #}
+{#                                </td> #}
+{#                                <td align="left" width="185" style="padding: 0;" bgcolor="#000000" valign="top"> #}
+{#                                    <p style="margin:0;font-size:18px; font-weight: 600; font-family: Arial; color: #FFFFFF;"> #}
+{#                                        <br> #}
+{#                                        Votre boutique VITHALIA :<br> #}
+{#                                        <br> #}
+{#                                        LIBRE-SERVICE DE COSMÉTIQUES &amp; ACCESSOIRES BIEN-ÊTRE !<br> #}
+{#                                        <br> #}
+{#                                    </p> #}
+{#                                    <p style="margin:0;font-size:15px; font-weight: 500; font-family: Arial; color: #FFFFFF;"> #}
+{#                                        Du Lundi au Vendredi : 8h30-19h<br> #}
+{#                                        Le samedi : 8h30-18h<br> #}
+{#                                        <br> #}
+{#                                        <br> #}
+{#                                    </p> #}
+{#                                    <table contenteditable="false" align="left" border="0" cellpadding="0" cellspacing="0" #}
+{#                                           width="150" style="table-layout: fixed;"> #}
+{#                                        <tbody> #}
+{#                                        <tr> #}
+{#                                            <td align="center" bgcolor="#000000" width="150" style="border: solid 1px #FFFFFF;"> #}
+{#                                                <a href="https://www.vithalia.fr/boutique/" target="_blank" #}
+{#                                                   style="text-decoration:none; font-size:15px; font-weight:500; color: #FFFFFF;font-family: Arial;"> #}
+{#                                                    <span style="font-size: 5px"><br></span> #}
+{#                                                    En savoir plus #}
+{#                                                    <span style="font-size: 5px"><br><br></span> #}
+{#                                                </a> #}
+{#                                            </td> #}
+{#                                        </tr> #}
+{#                                        </tbody> #}
+{#                                    </table> #}
+{#                                </td> #}
+{#                                <td align="left" width="15" style="padding: 0;" bgcolor="#000000"> #}
+{#                                    &nbsp; #}
+{#                                </td> #}
+{#                                <td align="left" width="20" style="padding: 0;">&nbsp;</td> #}
+{#                                <td align="left" width="280" style="padding: 0;"> #}
+{#                                    <p style="margin:0;font-size:13px; font-family: Arial;"> #}
+{#                                        <br> #}
+{#                                        <br> #}
+{#                                        À la recherche de LA bonne idée pour faire plaisir à vos proches à l’occasion des Fêtes de #}
+{#                                        fin d’année&nbsp;? #}
+{#                                        Avec VITHALIA, profitez d’une sélection d’articles de prestige… et du conseil en plus !<br> #}
+{#                                        <br> #}
+{#                                        <b>Produits cosmétiques, minceur, anti-âge, maquillage, crèmes corps et visage, bougies, #}
+{#                                            parfums d’intérieur, accessoires pour vos séances de sport</b>… Notre boutique regorge #}
+{#                                        d’idées et s’adapte à toutes les envies, toutes les personnalités et tous les #}
+{#                                        portes-monnaies !<br> #}
+{#                                        <br> #}
+{#                                        <b>Rendez-vous du lundi au samedi</b> pour découvrir notre sélection d’idées spécialement #}
+{#                                        élaborée pour les Fêtes !<br> #}
+{#                                        Et glissez sous le sapin des cadeaux Bien-Être bien mérités (également disponibles en #}
+{#                                        commande en ligne et en click and collect !).<br> #}
+{#                                        <br> #}
+{#                                        <br> #}
+{#                                        <br> #}
+{#                                    </p> #}
+{#                                </td> #}
+{#                            </tr> #}
+{#                            </tbody> #}
+{#                        </table> #}
+{#                    </td> #}
+{#                </tr> #}
+{#                <tr bgcolor="#FFFFFF"> #}
+{#                    <td height="60"> #}
+{#                        <br> #}
+{#                    </td> #}
+{#                </tr> #}
+<!-- LE BLOG SECTION -->
+{#                <tr> #}
+{#                    <td align="center" bgcolor="#FFFFFF" contenteditable="false" #}
+{#                        style="border-spacing: 0; table-layout: fixed"> #}
+{#                        <table align="center" border="0" cellpadding="0" cellspacing="0" width="545"> #}
+{#                            <tbody> #}
+{#                            <tr> #}
+{#                                <td align="left" style="padding: 0;"> #}
+{#                                    <p style="margin:0; font-size:50px; font-weight: 100; font-family: Arial; color: #becdd1;"> #}
+{#                                        NOTRE BLOG #}
+{#                                    </p> #}
+{#                                </td> #}
+{#                            </tr> #}
+{#                            </tbody> #}
+{#                        </table> #}
+{#                    </td> #}
+{#                </tr> #}
+{#                <tr> #}
+{#                    <td align="right" bgcolor="#FFFFFF" contenteditable="false" #}
+{#                        style="border-spacing: 0; table-layout: fixed"> #}
+{#                        <table align="left" border="0" cellpadding="0" cellspacing="0" width="600"> #}
+{#                            <tbody> #}
+{#                            <tr> #}
+{#                                <td align="right" width="600" style="padding: 0;"> #}
+{#                                    <img border="0" #}
+{#                                         src="https://newsletter.vps104.groupe-cwa.fr/vithalia-20221122/img/right_grey_underline.jpg" #}
+{#                                         style="max-width:100%;"> #}
+{#                                </td> #}
+{#                            </tr> #}
+{#                            </tbody> #}
+{#                        </table> #}
+{#                    </td> #}
+{#                </tr> #}
+{#                <tr bgcolor="#FFFFFF"> #}
+{#                    <td height="20"> #}
+{#                        <br> #}
+{#                    </td> #}
+{#                </tr> #}
+{#                <tr> #}
+{#                    <td bgcolor="#FFFFFF"> #}
+{#                        <table contenteditable="false" align="center" border="0" cellpadding="0" cellspacing="0" width="545" #}
+{#                               style="table-layout: fixed;"> #}
+{#                            <tbody> #}
+{#                            <tr valign="top"> #}
+{#                                <td width="255"> #}
+{#                                    <h2 style="margin:0;font-size:13px; font-weight: 800; font-family: Arial;"> #}
+{#                                        Rituels Spa : <br> #}
+{#                                        quel instant Bien-Être choisir pour faire plaisir&nbsp;?<br> #}
+{#                                        <br> #}
+{#                                    </h2> #}
+{#                                </td> #}
+{#                                <td width="20"></td> #}
+{#                                <td width="255"> #}
+{#                                    <h2 style="margin:0;font-size:13px; font-weight: 800; font-family: Arial;"> #}
+{#                                        Idées Cadeaux de Noël : et si vous glissiez du Bien-Être dans les petits souliers&nbsp;?<br> #}
+{#                                        <br> #}
+{#                                    </h2> #}
+{#                                </td> #}
+{#                            </tr> #}
+{#                            <tr> #}
+{#                                <td width="255" height="5"> #}
+{#                                    <br><br> #}
+{#                                </td> #}
+{#                                <td width="20"></td> #}
+{#                                <td width="255" height="5"> #}
+{#                                    <br><br> #}
+{#                                </td> #}
+{#                            </tr> #}
+{#                            <tr> #}
+{#                                <td width="255"> #}
+{#                                    <img alt="" border="0" #}
+{#                                         src="https://newsletter.vps104.groupe-cwa.fr/vithalia-20221122/img/blog_1.jpg" width="255"> #}
+{#                                </td> #}
+{#                                <td width="20"></td> #}
+{#                                <td width="255"> #}
+{#                                    <img alt="" border="0" #}
+{#                                         src="https://newsletter.vps104.groupe-cwa.fr/vithalia-20221122/img/blog_2.jpg" width="255"> #}
+{#                                </td> #}
+{#                            </tr> #}
+{#                            <tr> #}
+{#                                <td width="255" height="20"> #}
+{#                                    <br> #}
+{#                                </td> #}
+{#                                <td width="20"></td> #}
+{#                                <td width="255" height="20"> #}
+{#                                    <br> #}
+{#                                </td> #}
+{#                            </tr> #}
+{#                            <tr> #}
+{#                                <td width="255" align="center" style="border-spacing: 0; table-layout: fixed"> #}
+{#                                    <table contenteditable="false" align="center" border="0" cellpadding="0" cellspacing="0" #}
+{#                                           width="170" style="table-layout: fixed;"> #}
+{#                                        <tbody> #}
+{#                                        <tr> #}
+{#                                            <td width="170" bgcolor="#000000" align="center" valign="middle" height="40"> #}
+{#                                                <a href="https://www.leblogdevithalia.com/rituels-spa-quel-instant-bien-etre-choisir-pour-faire-plaisir/" #}
+{#                                                   style="color: white; background-color: black; font-size: 15px; font-weight: 600; font-family: Arial; text-decoration: none;"> #}
+{#                                                    Lire la suite #}
+{#                                                </a> #}
+{#                                            </td> #}
+{#                                        </tr> #}
+{#                                        </tbody> #}
+{#                                    </table> #}
+{#                                </td> #}
+{#                                <td width="20"></td> #}
+{#                                <td width="255" align="center" style="border-spacing: 0; table-layout: fixed"> #}
+{#                                    <table contenteditable="false" align="center" border="0" cellpadding="0" cellspacing="0" #}
+{#                                           width="170" style="table-layout: fixed;"> #}
+{#                                        <tbody> #}
+{#                                        <tr> #}
+{#                                            <td width="170" bgcolor="#000000" align="center" valign="middle" height="40"> #}
+{#                                                <a href="https://www.leblogdevithalia.com/idees-cadeaux-de-noel-et-si-vous-glissiez-du-bien-etre-dans-les-petits-souliers%e2%80%89/" #}
+{#                                                   style="color: white; background-color: black; font-size: 15px; font-weight: 600; font-family: Arial; text-decoration: none;"> #}
+{#                                                    Lire la suite #}
+{#                                                </a> #}
+{#                                            </td> #}
+{#                                        </tr> #}
+{#                                        </tbody> #}
+{#                                    </table> #}
+{#                                </td> #}
+{#                            </tr> #}
+{#                            </tbody> #}
+{#                        </table> #}
+{#                    </td> #}
+{#                </tr> #}
+{#                <tr bgcolor="#FFFFFF"> #}
+{#                    <td height="60"> #}
+{#                        <br> #}
+{#                    </td> #}
+{#                </tr> #}
+<!-- FOOTER SECTION -->
+{# <tr> #}
+{#    <td bgcolor="#FFFFFF"> #}
+{#        <table width="545" contenteditable="false" align="center" border="0" cellpadding="0" cellspacing="0" #}
+{#               style="table-layout: fixed;" bgcolor="#000000"> #}
+{#            <tbody> #}
+{#            <tr> #}
+{#                <td> #}
+{#                    <a href="https://www.vithalia.fr/" width="545" style="max-width:100%;"> #}
+{#                        <img alt="" border="0" #}
+{#                             src="https://newsletter.vps104.groupe-cwa.fr/vithalia-20221122/img/logo_footer.jpg" #}
+{#                             width="545" style="max-width:100%;"> #}
+{#                    </a> #}
+{#                </td> #}
+{#            </tr> #}
+{#            <tr> #}
+{#                <td align="center" style="line-height:0px; border-spacing: 0"> #}
+{#                    <table contenteditable="false" align="center" border="0" cellpadding="0" cellspacing="0" #}
+{#                           width="480" style="table-layout: fixed;"> #}
+{#                        <tbody> #}
+{#                        <tr> #}
+{#                            <td align="left" width="130"> #}
+{#                                <a href="https://www.vithalia.fr/le-club-de-forme/" #}
+{#                                   style="color: #FFFFFF;text-decoration: none; font-size: 15px;font-weight: 500; font-family: Arial;"> #}
+{#                                    CLUB DE FORME #}
+{#                                </a> #}
+{#                            </td> #}
+{#                            <td align="right" width="130"> #}
+{#                                <a href="https://www.vithalia.fr/linstitut-spa/" #}
+{#                                   style="color: #FFFFFF;text-decoration: none; font-size: 15px; font-weight: 500; font-family: Arial;"> #}
+{#                                    INSTITUT &amp; SPA #}
+{#                                </a> #}
+{#                            </td> #}
+{#                            <td align="center" width="140"> #}
+{#                                <a href="https://www.vithalia.fr/centre-minceur-anti-age/centre-minceur/" #}
+{#                                   style="color: #FFFFFF;text-decoration: none; font-size: 15px; font-weight: 500; font-family: Arial;"> #}
+{#                                    MINCEUR #}
+{#                                </a> #}
+{#                            </td> #}
+{#                            <td align="right" width="80"> #}
+{#                                <a href="https://www.vithalia.fr/centre-minceur-anti-age/centre-anti-age/" #}
+{#                                   style="color: #FFFFFF;text-decoration: none; line-height: 30px; font-size: 15px; font-weight: 500; font-family: Arial;"> #}
+{#                                    ANTI-ÂGE #}
+{#                                </a> #}
+{#                            </td> #}
+{#                        </tr> #}
+{#                        </tbody> #}
+{#                    </table> #}
+{#                </td> #}
+{#            </tr> #}
+{#            <tr bgcolor="#000000"> #}
+{#                <td height="20"> #}
+{#                    <br> #}
+{#                </td> #}
+{#            </tr> #}
+{#            <tr> #}
+{#                <td align="center"> #}
+{#                    <p style="margin:0; color: white; font-size:15px;font-family: Arial;"> #}
+{#                        Du Lundi au Vendredi : 8h30-19h / Samedi : 8h30-18h<br> #}
+{#                        22 Avenue du Progrès - 19360 Malemort-sur-Corrèze<br> #}
+{#                    </p> #}
+{#                    <p style="margin:0; color: white; font-size:15px; font-weight: 600;font-family: Arial;"> #}
+{#                        <br>05 55 922 922<br><br> #}
+{#                    </p> #}
+{#                </td> #}
+{#            </tr> #}
+{#            </tbody> #}
+{#        </table> #}
+{#    </td> #}
+{# </tr> #}
+{# <tr bgcolor="#FFFFFF"> #}
+{#    <td height="20"> #}
+{#        <br> #}
+{#    </td> #}
+{# </tr> #}
+{#                <tr> #}
+{#                    <td bgcolor="#FFFFFF" align="center"> #}
+{#                        <a href="https://www.facebook.com/VithaliaBrive" target="_blank" #}
+{#                           style="font-family: Arial;color: white; text-decoration: none;font-weight: 600;"> #}
+{#                            <img src="https://newsletter.vps104.groupe-cwa.fr/vithalia-20221122/img/facebook_footer.jpg" #}
+{#                                 width="35"> #}
+{#                        </a> #}
+{#                        &nbsp;&nbsp;&nbsp;&nbsp; #}
+{#                        <a href="https://www.instagram.com/vithalia_brive/" target="_blank" #}
+{#                           style="font-family: Arial;color: white; text-decoration: none;font-weight: 600;"> #}
+{#                            <img src="https://newsletter.vps104.groupe-cwa.fr/vithalia-20221122/img/insta_footer.jpg" #}
+{#                                 width="35"> #}
+{#                        </a> #}
+{#                        &nbsp;&nbsp;&nbsp;&nbsp; #}
+{#                        <a href="https://www.linkedin.com/company/vithalia" target="_blank" #}
+{#                           style="font-family: Arial;color: white; text-decoration: none;font-weight: 600;"> #}
+{#                            <img src="https://newsletter.vps104.groupe-cwa.fr/vithalia-20221122/img/linkedin_footer.jpg" #}
+{#                                 width="35"> #}
+{#                        </a> #}
+{#                    </td> #}
+{#                </tr> #}
+{#                <tr bgcolor="#FFFFFF"> #}
+{#                    <td height="20"> #}
+{#                        <br> #}
+{#                    </td> #}
+{#                </tr> #}
+{#                <tr> #}
+{#                    <td bgcolor="#FFFFFF" align="center"> #}
+{#                        <p style="font-family: Arial;margin:0; font-size:10px;"> #}
+{#                            *Offre valable du 1er au 31 décembre 2022. Sur rendez-vous.<br> #}
+{#                            **Places limitées.<br> #}
+{#                            Crédits Photo : Emma Tournier | Conception : #}
+{#                            <a href="https://www.agence-cwa.com/" target="_blank" style="color:black; text-decoration:none;"> #}
+{#                                agence <img alt="cwa" border="0" #}
+{#                                            src="https://newsletter.vps104.groupe-cwa.fr/vithalia-20221122/img/logo_cwa.jpg" height="7"> #}
+{#                            </a> #}
+{#                        </p> #}
+{#                    </td> #}
+{#                </tr> #}
+{#                <tr bgcolor="#FFFFFF"> #}
+{#                    <td height="20"> #}
+{#                        <br> #}
+{#                    </td> #}
+{#                </tr> #}
+
+{# <h1>Hi!</h1> #}
+
+{# <p>To reset your password, please visit the following link</p> #}
+
+{# <a href="{{ url('app_reset_password', {token: resetToken.token}) }}">{{ url('app_reset_password', {token: resetToken.token}) }}</a> #}
+
+{# <p>This link will expire in {{ resetToken.expirationMessageKey|trans(resetToken.expirationMessageData, 'ResetPasswordBundle') }}.</p> #}
+
+{# <p>Cheers!</p> #}

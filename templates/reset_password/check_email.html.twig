@@ -1,11 +1,57 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Password Reset Email Sent{% endblock %}
+{% block title %}Password reset email sent{% endblock %}
 
 {% block body %}
-    <p>
-        If an account matching your email exists, then an email was just sent that contains a link that you can use to reset your password.
-        This link will expire in {{ resetToken.expirationMessageKey|trans(resetToken.expirationMessageData, 'ResetPasswordBundle') }}.
-    </p>
-    <p>If you don't receive an email please check your spam folder or <a href="{{ path('app_forgot_password_request') }}">try again</a>.</p>
+    {{ include('partials/banner.html.twig', {'color': 'blue'}) }}
+
+    <div class="wrapper">
+        <div class="page-header-container">
+            <h1 class="big-title grow">Password reset email sent</h1>
+        </div>
+    </div>
+
+
+
+
+    <div class="wrapper wrapper-small">
+        {#    <div class="form-container glass box bg-dark-grey-secondary"> #}
+        <div class="glass box flex flex-col gap-spacing-primary">
+            <div>
+                <h2 class=small-title>
+                    <span class="material-icons">alternate_email</span>
+                    Please check your inbox
+                </h2>
+                <div class="flex flex-col gap-2">
+
+                    <p>If an account matching your email exists, then an email was just sent that contains a link that
+                        you can use to reset your password. This link will expire
+                        in {{ resetToken.expirationMessageKey|trans(resetToken.expirationMessageData, 'ResetPasswordBundle') }}
+                        .</p>
+                    <p>If you don't receive an email please check your spam folder or try again.</p>
+                </div>
+            </div>
+
+            <div class="buttons-container">
+
+                <a class="button button-primary" href="{{ path('app_forgot_password_request') }}">Retry</a>
+                {#            <a href={ROUTES.LOGIN} class="button button-tertiary"> #}
+                {#                Login #}
+                {#            </a> #}
+                {#            <a href={ROUTES.REGISTER} class="button button-primary"> #}
+                {#                Register #}
+                {#            </a> #}
+            </div>
+
+        </div>
+    </div>
+
+    {#    <p> #}
+    {#        If an account matching your email exists, then an email was just sent that contains a link that you can use to #}
+    {#        reset your password. #}
+    {#        This link will expire #}
+    {#        in {{ resetToken.expirationMessageKey|trans(resetToken.expirationMessageData, 'ResetPasswordBundle') }}. #}
+    {#    </p> #}
+    {#    <p>If you don't receive an email please check your spam folder or <a #}
+    {#                href="{{ path('app_forgot_password_request') }}">try again</a>.</p> #}
 {% endblock %}

@@ -17,6 +17,9 @@ class RegistrationFormType extends AbstractType
         $builder
             ->add('email', EmailType::class, [
                 'label' => 'Email',
+                'attr' => [
+                    'autocomplete' => 'email',
+                ],
             ])
             ->add('username', null, [
                 'label' => 'Username',
