@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Users;
 use App\Form\ChangePasswordFormType;
 use App\Form\ResetPasswordRequestFormType;
+use DateTime;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bridge\Twig\Mime\TemplatedEmail;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -17,6 +18,7 @@ use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\Routing\Attribute\Route;
 use SymfonyCasts\Bundle\ResetPassword\Controller\ResetPasswordControllerTrait;
 use SymfonyCasts\Bundle\ResetPassword\Exception\ResetPasswordExceptionInterface;
+use SymfonyCasts\Bundle\ResetPassword\Model\ResetPasswordToken;
 use SymfonyCasts\Bundle\ResetPassword\ResetPasswordHelperInterface;
 
 #[Route('/reset-password')]
@@ -159,7 +161,7 @@ class ResetPasswordController extends AbstractController
         }
 
         $email = (new TemplatedEmail())
-            ->from(new Address('contact@quizstack.io', 'Reset Password'))
+            ->from(new Address('contact@quizstack.io', 'Reset password'))
             ->to((string)$user->getEmail())
             ->subject('Your password reset request')
             ->htmlTemplate('reset_password/email.html.twig')
@@ -178,12 +180,13 @@ class ResetPasswordController extends AbstractController
     #[Route('/email-template', name: 'app_test_email_template')]
     public function testEmailTemplate(): Response
     {
-        // Créez un faux token pour tester
-        $expireDate = new \DateTime('+1 hour');
-//        $resetToken = new ResetPasswordToken('fake_token_value', $expireDate, 'P1D');
+        $expireDate = new DateTime('+1 hour');
+
+        $generatedAt = time();
+        $resetToken = new ResetPasswordToken('fake_token_value', $expireDate, $generatedAt);
 
         return $this->render('reset_password/email.html.twig', [
-//            'resetToken' => $resetToken
+            'resetToken' => $resetToken
         ]);
     }
 }
