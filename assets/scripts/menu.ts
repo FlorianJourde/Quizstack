@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', function() {
     const menuButton = document.querySelector('#button-menu') as HTMLButtonElement;
     const headerBottomContainer = document.querySelector('.header-bottom-container') as HTMLElement;
     const overlay = document.querySelector('#overlay') as HTMLElement;
@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', () => {
         isMenuOpen = false;
     }
 
-    menuButton?.addEventListener('click', (event) => {
+    menuButton?.addEventListener('click', function(event) {
         event.stopPropagation();
 
         if (!isMenuOpen) {
@@ -27,12 +27,18 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    headerBottomContainer?.addEventListener('click', (event) => {
+    headerBottomContainer?.addEventListener('click', function(event) {
         event.stopPropagation();
     });
 
-    document.addEventListener('click', () => {
+    document.addEventListener('click', function() {
         if (isMenuOpen) {
+            closeMenu();
+        }
+    });
+
+    document.addEventListener('keydown', function(event) {
+        if (event.key === 'Escape' && isMenuOpen) {
             closeMenu();
         }
     });

@@ -9,7 +9,9 @@
   opacity: 0;
   pointer-events: none;
   //transition: unset;
-  background-color: black;
+  //background-color: black;
+  background-color: #00000080;
+  backdrop-filter: blur(10px);
   //background-image: url('/public/images/background/noise.png');
   //background-repeat: repeat;
   //background-size: 150px;
@@ -17,6 +19,6 @@
   transition: opacity .4s;
 
   &.visible {
-    opacity: .5;
+    opacity: 1;
   }
 }
