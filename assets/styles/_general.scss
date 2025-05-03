@@ -55,20 +55,35 @@ html {
     }
 
     hr {
-      //content: "";
+      ////content: "";
+      ////position: absolute;
+      //border: unset;
+      //width: 100%;
+      ////max-width: 1200px;
+      //max-width: calc(100% - 100px);
+      ////background: var(--colors-white--white-20);
+      //background-color: rgba(255, 255, 255, 0.1);
+      //mask: linear-gradient(to right, transparent 0%, #ffffff 50%, transparent 100%);
+      ////top: 0%;
+      //left: 50%;
+      //height: 2px;
+      //position: relative;
+      //transform: translateX(-50%);
+
       //position: absolute;
       border: unset;
       width: 100%;
       //max-width: 1200px;
-      max-width: calc(100% - 100px);
+      //max-width: calc(100% - 100px);
       //background: var(--colors-white--white-20);
       background-color: rgba(255, 255, 255, 0.1);
-      mask: linear-gradient(to right, transparent 0%, #ffffff 50%, transparent 100%);
+      //mask: linear-gradient(to right, #ffffff 0%, #ffffff 50%, transparent 100%);
+      //mask: linear-gradient(to right, transparent 0%, #ffffff var(--spacing-primary), #ffffff 50%, transparent 100%);
       //top: 0%;
-      left: 50%;
+      //left: 50%;
       height: 2px;
-      position: relative;
-      transform: translateX(-50%);
+      //position: relative;
+      //transform: translateX(-50%);
     }
   }
 }
