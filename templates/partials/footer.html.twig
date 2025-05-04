@@ -3,8 +3,8 @@
     <div class="wrapper">
         <div class="footer-container gap-spacing-primary flex flex-col w-full">
 
-            <div class="footer-top-container flex items-center justify-between w-full">
-                <div class="site-identity-container">
+            <div class="footer-top-container flex items-center gap-spacing-primary justify-between w-full">
+                <div class="site-identity-container shrink-[10]">
                     <a href="{{ path('app_home') }}" class="flex gap-4 items-center">
                         <img src="{{ asset('images/logos/quizstack-logo.png') }}" alt="Quizstack logo" class="h-10 object-contain">
                         <div class="flex flex-col gap-1">
@@ -15,10 +15,14 @@
                         </div>
                     </a>
                 </div>
-                <div class="networks-container">
+                <div class="networks-container flex gap-spacing-secondary md:gap-spacing-primary">
+                    <a href="https://x.com/quizstackapp" target="_blank">
+                        <img src="{{ asset('images/logos/x-logo.png') }}" alt="X logo"
+                             class="h-5 button object-contain button-tertiary rounded-none">
+                    </a>
                     <a href="https://github.com/FlorianJourde/Quizstack" target="_blank">
                         <img src="{{ asset('images/logos/github-logo.png') }}" alt="GitHub logo"
-                             class="h-5 button object-contain button-tertiary">
+                             class="h-5 button object-contain button-tertiary rounded-none">
                     </a>
                 </div>
             </div>
