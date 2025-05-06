@@ -23,6 +23,8 @@
       "url": "{{ absolute_url('/') }}",
       "logo": "{{ absolute_url(asset('favicon.png')) }}"
     }
+
+
     </script>
     <link rel="canonical" href="{{ absolute_url(app.request.pathInfo) }}">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -41,10 +43,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Spline+Sans+Mono:ital,wght@0,300..700;1,300..700&display=swap"
           rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Flow+Rounded&display=swap" rel="stylesheet">
-    <link
-            rel="stylesheet"
-            href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
-    />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
 
     {% block stylesheets %}
         {{ encore_entry_link_tags('styles') }}
