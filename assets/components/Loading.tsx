@@ -3,7 +3,7 @@ import React from 'react';
 function Loading() {
     return (
         <>
-            <div className="glass box flow-rounded-regular opacity/50">
+            <div className="glass box flow-rounded-regular opacity-25">
                 <div className="question-header-container flex gap-8 justify-between items-center mb-4">
                     <ul className="tags-container grow-1">
                         <li><span className="tag tag-small">Langage</span></li>

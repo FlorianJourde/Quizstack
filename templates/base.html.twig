@@ -14,14 +14,14 @@
     <meta property="og:url" content="{{ absolute_url(app.request.pathInfo) }}">
     <meta property="og:type" content="website">
     <title>{% block title %}Quizstack{% endblock %}</title>
-    <link rel="icon" type="image/jpg" href="{{ asset('favicon.ico') }}"/>
+    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}"/>
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "Organization",
       "name": "Quizstack",
       "url": "{{ absolute_url('/') }}",
-      "logo": "{{ absolute_url(asset('images/logos/favicon.png')) }}"
+      "logo": "{{ absolute_url(asset('favicon.png')) }}"
     }
     </script>
     <link rel="canonical" href="{{ absolute_url(app.request.pathInfo) }}">
