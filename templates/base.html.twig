@@ -10,11 +10,20 @@
     <meta property="og:title" content="{% block og_title %}{{ block('title') }}{% endblock %}">
     <meta property="og:description" content="{% block og_description %}{{ block('meta_description') }}{% endblock %}">
     <meta property="og:image"
-          content="{% block og_image %}{{ absolute_url(asset('images/decoration/quizstack-social.png')) }}{% endblock %}">
+          content="{% block og_image %}{{ absolute_url(asset('images/decoration/quizstack-screenshot.jpg')) }}{% endblock %}">
     <meta property="og:url" content="{{ absolute_url(app.request.pathInfo) }}">
     <meta property="og:type" content="website">
     <title>{% block title %}Quizstack{% endblock %}</title>
     <link rel="icon" type="image/jpg" href="{{ asset('favicon.ico') }}"/>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "Quizstack",
+      "url": "{{ absolute_url('/') }}",
+      "logo": "{{ absolute_url(asset('images/logos/favicon.png')) }}"
+    }
+    </script>
     <link rel="canonical" href="{{ absolute_url(app.request.pathInfo) }}">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -26,9 +35,12 @@
           as="style">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
           rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Spline+Sans+Mono:ital,wght@0,300..700;1,300..700&display=swap"
           rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Flow+Rounded&display=swap" rel="stylesheet">
     <link
             rel="stylesheet"
             href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"

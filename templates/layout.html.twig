@@ -1,5 +1,3 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}
-    {% if title is defined %}{{ title }} | {% endif %}{{ parent() }}
-{% endblock %}
+{% block title %}{{ parent() }}{% if title is defined %} | {{ title }}{% endif %}{% endblock %}
