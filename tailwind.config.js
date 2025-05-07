@@ -30,10 +30,12 @@ module.exports = {
                 'orange-primary': '#b48110',
                 'orange-secondary': '#a96712',
                 'pink-primary': '#f92672',
+                'pink-secondary': '#ff74a6',
                 'red-primary': '#c7403e',
                 'red-secondary': '#9b2f2d',
                 'white-primary': '#ffffff',
                 'white-secondary': '#eeeeee',
+                'black-primary': '#000000',
             },
             spacing: {
                 'spacing-primary': 'var(--spacing-primary)',

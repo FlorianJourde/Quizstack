@@ -378,6 +378,90 @@ div[style*="background: rgb(39, 40, 34);"] {
   padding: var(--spacing-primary);
 }
 
+.card {
+  //position: relative;
+  //position: relative;
+  //border: 2px solid transparent;
+  //background: linear-gradient(71deg, #080509, #1a171c, #080509);
+  //background-clip: padding-box;
+  //border-radius: 45px;
+  //padding: 40px;
+  position: relative;
+  /* border: 2px solid transparent; */
+  //background: #0000009e;
+  //background: linear-gradient(theme('colors.very-dark-grey-primary'), theme('colors.very-dark-grey-primary'), #0f0f0fd4);
+  background: linear-gradient(theme('colors.very-dark-grey-primary') 50%, #0f0f0fd9);
+  background-clip: padding-box;
+  z-index: unset;
+  backdrop-filter: unset;
+  //border-radius: 45px;
+  //padding: 40px;
+  margin-bottom: -10px;
+  border-bottom-width: 0;
+  border-color: theme('colors.grey-primary');
+
+  .material-icons {
+    //background-color: theme('colors.very-dark-grey-primary');
+    background-color: theme('colors.dark-grey-secondary');
+  }
+
+  &::after {
+    //background: linear-gradient(100deg, #110e0e, #afa220, #110e0e);
+    //background: linear-gradient(100deg, #ff9654, #fa79de, #c73fff);
+    background: linear-gradient(100deg, #9a9a9a, #d5d5d5, #ffffff);
+    position: absolute;
+    //top: 10px;
+    top: 2px;
+    //bottom: -1px;
+    left: -1px;
+    //right: -1px;
+    content: "";
+    z-index: -1;
+    border-radius: inherit;
+    width: calc(100% + 2px);
+    height: 100%;
+    //border-radius: 45px;
+    //content: "";
+    //top: 10px;
+    //left: 0;
+    //position: absolute;
+    //z-index: -1;
+  }
+
+  &.card-pink {
+    .material-icons {
+      color: theme('colors.pink-secondary');
+    }
+
+    &::after {
+      //background: linear-gradient(100deg, #e79b5b, #dc6790, #cd32c7);
+      background: linear-gradient(100deg, #ff9654, #ff61d6, #c12eff);
+    }
+  }
+
+  &.card-green {
+    .material-icons {
+      color: theme('colors.green-tertiary');
+    }
+
+    &::after {
+      //background: linear-gradient(100deg, #f0eb52, #a0e27d, #45e09d);
+      background: linear-gradient(100deg, #ffe163, #acff71, #55f0f0);
+    }
+  }
+
+  &.card-blue {
+    .material-icons {
+      color: theme('colors.blue-secondary');
+    }
+
+    &::after {
+      //background: linear-gradient(100deg, #374699, #3678bd, #28b0d7);
+      background: linear-gradient(100deg, #2a428c, #4382c7, #55b5f0);
+    }
+  }
+}
+
 .question-bottom-container,
 .question-content-container {
   ol, ul {
