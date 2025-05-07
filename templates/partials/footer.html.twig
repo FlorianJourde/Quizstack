@@ -1,61 +1,77 @@
 <footer class="flex flex-col  pt-spacing-large-primary pb-spacing-large-secondary">
     <hr class="mb-spacing-large-secondary"/>
     <div class="wrapper">
-        <div class="footer-container gap-spacing-primary flex flex-col w-full">
+        <div class="footer-container gap-spacing-large-secondary flex flex-col w-full">
 
-            <div class="footer-top-container flex items-center gap-spacing-primary justify-between w-full">
-                <div class="site-identity-container shrink-[10]">
-                    <a href="{{ path('app_home') }}" class="flex gap-4 items-center">
-                        <img src="{{ asset('images/logos/quizstack-logo.png') }}" alt="Quizstack logo" class="h-10 object-contain">
-                        <div class="flex flex-col gap-1">
-                            <p class="font-bold">Quizstack</p>
-                            <p class="muted">
-                                Learn web development <br class="block sm:hidden"/> through interactive quiz
-                            </p>
-                        </div>
-                    </a>
+            <div class="footer-top-container flex flex-col sm:flex-row items-stretch gap-spacing-large-secondary justify-between w-full">
+                <div class="flex flex-row sm:flex-col items-center sm:items-start gap-spacing-primary">
+
+                    <div class="site-identity-container grow">
+                        <a href="{{ path('app_home') }}" class="flex gap-4 items-center">
+                            <img src="{{ asset('images/logos/quizstack-logo.png') }}" alt="Quizstack logo"
+                                 class="h-10 object-contain">
+                            <div class="flex flex-col gap-1">
+                                <p class="font-bold">Quizstack</p>
+                                <p class="button button-tertiary muted">
+{#                                    Learn web development <br class="block sm:hidden"/> through interactive quiz#}
+                                    Learn web development <br/> through interactive quiz
+                                    {#                                Learn web development through interactive quiz #}
+                                </p>
+                            </div>
+                        </a>
+                    </div>
+
+                    <div class="networks-container flex gap-spacing-primary">
+                        <a href="https://x.com/quizstackapp" target="_blank">
+                            <img src="{{ asset('images/logos/x-logo.png') }}" alt="X logo"
+                                 class="h-5 button object-contain button-tertiary rounded-none">
+                        </a>
+                        <a href="https://github.com/FlorianJourde/Quizstack" target="_blank">
+                            <img src="{{ asset('images/logos/github-logo.png') }}" alt="GitHub logo"
+                                 class="h-5 button object-contain button-tertiary rounded-none">
+                        </a>
+                    </div>
                 </div>
-                <div class="networks-container flex gap-spacing-primary">
-                    <a href="https://x.com/quizstackapp" target="_blank">
-                        <img src="{{ asset('images/logos/x-logo.png') }}" alt="X logo"
-                             class="h-5 button object-contain button-tertiary rounded-none">
-                    </a>
-                    <a href="https://github.com/FlorianJourde/Quizstack" target="_blank">
-                        <img src="{{ asset('images/logos/github-logo.png') }}" alt="GitHub logo"
-                             class="h-5 button object-contain button-tertiary rounded-none">
-                    </a>
-                </div>
+
+                <nav class=" grid grid-cols-2 gap-spacing-primary">
+                    <div class="links-container flex flex-col gap-spacing-secondary">
+                        <h2 class="text-sm">Pages</h2>
+                        <ul class="flex flex-col gap-spacing-secondary">
+
+                            {{ include('partials/links.html.twig') }}
+
+                        </ul>
+                    </div>
+
+                    <div class="links-container flex flex-col gap-spacing-secondary">
+                        <h2 class="text-sm">Legals</h2>
+                        <ul class="flex flex-col gap-spacing-secondary">
+                            <li>
+                                <a href="{{ path('app_cookie_policy') }}" class="button button-tertiary">
+                                    Cookie policy
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{{ path('app_privacy_policy') }}" class="button button-tertiary">
+                                    Privacy policy
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{{ path('app_terms_of_service') }}" class="button button-tertiary">
+                                    Terms of service
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+
+                </nav>
+
             </div>
 
-            <nav class="footer-bottom-container flex flex-col flex-wrap gap-spacing-secondary">
-                <ul class="flex flex-wrap gap-spacing-secondary">
 
-                    {{ include('partials/links.html.twig') }}
-
-                </ul>
-
-                <ul class="flex flex-wrap gap-spacing-secondary muted">
-
-                    <li>
-                        <a href="{{ path('app_cookie_policy') }}" class="button button-tertiary">
-                            Cookie Policy
-                        </a>
-                    </li>
-                    <li>
-                        <a href="{{ path('app_privacy_policy') }}" class="button button-tertiary">
-                            Privacy Policy
-                        </a>
-                    </li>
-                    <li>
-                        <a href="{{ path('app_terms_of_service') }}" class="button button-tertiary">
-                            Terms of Service
-                        </a>
-                    </li>
-                </ul>
-
-            </nav>
-
-            <p class="muted">© {{ "now"|date("Y") }} Quizstack</p>
+            <div class="footer-bottom-container flex justify-center">
+                <p class="muted">© {{ "now"|date("Y") }} Quizstack · All rights reserved</p>
+            </div>
 
         </div>
     </div>
