@@ -4,41 +4,35 @@
 
 {% block body %}
 
-    {{ include('partials/banner.html.twig') }}
+{#    {{ include('partials/banner.html.twig') }}#}
 
     <div class="wrapper">
         <div class="page-header-container">
-            <h1 class="big-title grow">Question {{ question.id }}</h1>
+            <h1 class="big-title grow">Share question {{ question.id }}</h1>
 
             <div class="buttons-container">
                 <a class="button button-action" href="javascript:history.back()">
                     <span class="material-icons">arrow_back</span>
                 </a>
 
-                <a class="button button-action" href="{{ path('question_new') }}">
-                    <span class="material-icons">add</span>
-                </a>
+{#                <a class="button button-action" href="{{ path('question_new') }}">#}
+{#                <span class="material-icons">add</span>#}
+{#                </a>#}
 
-                {% if is_granted('ROLE_EDITOR') or not question.status %}
-                    <a class="button button-action" href="{{ path('question_edit', {'id': question.id}) }}">
-                        <span class="material-icons">edit</span>
-                    </a>
-                {% endif %}
-
-                {% if is_granted('ROLE_ADMIN') %}
-                    <a class="button button-action" href="{{ path('question_share', {'id': question.id}) }}">
-                        <span class="material-icons">share</span>
-                    </a>
-                {% endif %}
+{#                {% if is_granted('ROLE_EDITOR') or not question.status %}#}
+{#                    <a class="button button-action" href="{{ path('question_edit', {'id': question.id}) }}">#}
+{#                        <span class="material-icons">edit</span>#}
+{#                    </a>#}
+{#                {% endif %}#}
             </div>
         </div>
     </div>
 
-    <div class="wrapper">
-        <div id="quiz-container" data-mode="{{ mode }}" data-question-id="{{ questionId }}"></div>
+    <div class="wrapper wrapper-small">
+        <div id="share-container" data-question-id="{{ questionId }}" data-mode="{{ mode }}"></div>
     </div>
 
-    {% if isEditor %}
+{#    {% if isEditor %}#}
         <div class="wrapper">
             <div class="page-separator-container">
                 <h2 class="title">Informations</h2>
@@ -90,22 +84,22 @@
                 </div>
             </div>
 
-            <div class="buttons-container mt-8 relative">
-                {% if previousQuestion %}
-                    <a href="{{ path('question', {'id': previousQuestion.id}) }}"
-                       class="button button-action absolute right-0">
-                        <span class="material-icons">arrow_forward</span>
-                    </a>
-                {% endif %}
+{#            <div class="buttons-container mt-8 relative">#}
+{#                {% if previousQuestion %}#}
+{#                    <a href="{{ path('question', {'id': previousQuestion.id}) }}"#}
+{#                       class="button button-action absolute right-0">#}
+{#                        <span class="material-icons">arrow_forward</span>#}
+{#                    </a>#}
+{#                {% endif %}#}
 
-                {% if nextQuestion %}
-                    <a href="{{ path('question', {'id': nextQuestion.id}) }}"
-                       class="button button-action absolute left-0">
-                        <span class="material-icons">arrow_back</span>
-                    </a>
-                {% endif %}
-            </div>
+{#                {% if nextQuestion %}#}
+{#                    <a href="{{ path('question', {'id': nextQuestion.id}) }}"#}
+{#                       class="button button-action absolute left-0">#}
+{#                        <span class="material-icons">arrow_back</span>#}
+{#                    </a>#}
+{#                {% endif %}#}
+{#            </div>#}
         </div>
-    {% endif %}
+{#    {% endif %}#}
 
 {% endblock %}

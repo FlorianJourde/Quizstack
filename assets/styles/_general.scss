@@ -268,7 +268,8 @@ div[style*="background: rgb(39, 40, 34);"] {
 }
 
 #quiz-container,
-#demo-container {
+#demo-container,
+#share-container {
   // https://quizstack.io/question/326
   &.wrap .code-wrapper > code,
   pre > code {
@@ -282,6 +283,28 @@ div[style*="background: rgb(39, 40, 34);"] {
     word-wrap: break-word;
   }
 }
+
+#share-container {
+  // https://quizstack.io/question/326
+  .code-wrapper > code {
+    //pre > code {
+    white-space: break-spaces !important;
+  }
+
+
+  //https://quizstack.io/question/410
+  //p > code,
+  //p {
+  //  word-wrap: break-word;
+  //}
+}
+
+#share-container {
+  zoom: 100%;
+  //zoom: 150%;
+}
+
+
 
 #stacks-slider-container {
   position: relative;

@@ -11,6 +11,7 @@ import './scripts/question-form'
 import './scripts/menu'
 import './scripts/accordion'
 import StacksSlider from "./components/StacksSlider";
+import Share from "./components/Share";
 
 document.addEventListener('DOMContentLoaded', () => {
     const questionContainer = document.querySelector('#quiz-container') as HTMLElement;
@@ -32,6 +33,17 @@ document.addEventListener('DOMContentLoaded', () => {
         const root = createRoot(demoContainer);
         root.render(
             <Demo mode={'display'}/>
+        );
+    }
+
+    const shareContainer = document.querySelector('#share-container') as HTMLElement;
+    if (shareContainer) {
+        const questionId = parseInt(shareContainer.dataset.questionId || '0');
+        const mode = shareContainer.dataset.mode || 'display';
+
+        const root = createRoot(shareContainer);
+        root.render(
+            <Share questionId={questionId} mode={mode}/>
         );
     }
 

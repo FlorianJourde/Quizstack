@@ -5,7 +5,7 @@ function useRaysAnimation(question: QuestionInterface, mode: string) {
     useEffect(function() {
         const originalElement = document.querySelector('.rays');
 
-        if (mode === 'display') return;
+        if (mode === 'display' || mode === 'share') return;
 
         if (originalElement) {
             if (question.correctChoices) {

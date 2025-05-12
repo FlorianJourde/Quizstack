@@ -25,6 +25,10 @@ function Question({mode, questionId, showComments}: { mode: string, questionId: 
     }, []);
 
     useEffect(() => {
+        console.log(question);
+    }, [question]);
+
+    useEffect(() => {
         const quizContainer = document.querySelector('#quiz-container');
 
         if (quizContainer) {

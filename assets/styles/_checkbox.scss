@@ -15,7 +15,7 @@
   }
 }
 
-
+#share-container,
 #quiz-container[data-mode="display"] {
   .checkbox-group {
     .checkbox-input {
@@ -23,6 +23,16 @@
         background-image: var(--background-checkbox);
       }
     }
+  }
+}
+
+#share-container {
+  .choice-option:has(.checkbox-input:not(.correct)) {
+    //display: none;
+    //.choice-option:has(.checkbox-input) {
+    //* {
+    //  outline: solid 5px tomato;
+    //}
   }
 }
 

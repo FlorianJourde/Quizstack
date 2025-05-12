@@ -26,7 +26,6 @@ class QuestionsController extends AbstractController
     }
 
     #[IsGranted('ROLE_USER')]
-
     #[Route('/questions', name: 'questions')]
     public function questions(
         Security            $security,
@@ -77,6 +76,34 @@ class QuestionsController extends AbstractController
             'isEditor' => $isEditor,
             'previousQuestion' => $previousQuestion,
             'nextQuestion' => $nextQuestion
+        ]);
+    }
+    #[IsGranted('ROLE_ADMIN')]
+    #[Route('/question/{id}/share', name: 'question_share', requirements: ['id' => '\d+'])]
+    public function questionShare(
+        int                 $id,
+        QuestionsRepository $questionsRepository,
+        Security            $security
+    ): Response
+    {
+//        $isEditor = $security->isGranted('ROLE_EDITOR');
+        /* @var Questions $question */
+        $question = $questionsRepository->find($id);
+
+        if (!$question) {
+            throw $this->createNotFoundException('No question found !');
+        }
+
+//        $previousQuestion = $questionsRepository->findPreviousQuestion($question);
+//        $nextQuestion = $questionsRepository->findNextQuestion($question);
+
+        return $this->render('questions/share.html.twig', [
+            'question' => $question,
+            'mode' => 'share',
+            'questionId' => $question->getId(),
+//            'isEditor' => $isEditor,
+//            'previousQuestion' => $previousQuestion,
+//            'nextQuestion' => $nextQuestion
         ]);
     }
 
