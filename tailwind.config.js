@@ -52,7 +52,10 @@ module.exports = {
             fontFamily: {
                 'primary': 'var(--font-primary)',
                 'secondary': 'var(--font-secondary)',
-            }
+            },
+            aspectRatio: {
+                '4/5': '4 / 5',
+            },
         },
     },
     plugins: [],

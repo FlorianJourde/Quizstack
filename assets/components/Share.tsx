@@ -57,8 +57,8 @@ export function Share({questionId, mode}) {
 
     function Header() {
         return (
-            <div className={`flex absolute w-full p-spacing-primary gap-4 items-center font-bold text-xl`}>
-                <img src={`/images/logos/quizstack-logo.png`} className={`h-8`} alt="Quizstack logo"/>
+            <div className={`flex absolute w-full p-spacing-primary gap-4 items-center font-bold text-2xl`}>
+                <img src={`/images/logos/quizstack-logo.png`} className={`h-10`} alt="Quizstack logo"/>
                 <h2>Quizstack</h2>
             </div>
         )
@@ -144,7 +144,7 @@ export function Share({questionId, mode}) {
                 <li ref={el => setLiRef(el, 0)}>
                     <Screenshot onClick={() => captureScreenshot(0)}/>
                     <div
-                        className="screenbox flex flex-col justify-center overflow-hidden relative aspect-square outline outline-2 outline-[#ffffff1a]">
+                        className="screenbox flex flex-col justify-center overflow-hidden relative aspect-[4/5] outline outline-2 outline-[#ffffff1a]">
 
                         <Banner/>
                         <div className={`flex flex-col h-full`}>
@@ -162,7 +162,7 @@ export function Share({questionId, mode}) {
                 <li ref={el => setLiRef(el, 1)}>
                     <Screenshot onClick={() => captureScreenshot(1)}/>
                     <div
-                        className="screenbox flex flex-col justify-center overflow-hidden relative aspect-square outline outline-2 outline-[#ffffff1a]">
+                        className="screenbox flex flex-col justify-center overflow-hidden relative aspect-[4/5] outline outline-2 outline-[#ffffff1a]">
                         <Banner/>
 
                         <div className={`flex flex-col h-full`}>
@@ -185,7 +185,7 @@ export function Share({questionId, mode}) {
                 <li ref={el => setLiRef(el, 2)}>
                     <Screenshot onClick={() => captureScreenshot(2)}/>
                     <div
-                        className="show-answers screenbox flex flex-col justify-center overflow-hidden relative aspect-square outline outline-2 outline-[#ffffff1a]">
+                        className="show-answers screenbox flex flex-col justify-center overflow-hidden relative aspect-[4/5] outline outline-2 outline-[#ffffff1a]">
                         <Banner color='green'/>
 
                         <div className={`flex flex-col h-full`}>
@@ -208,7 +208,7 @@ export function Share({questionId, mode}) {
                 <li ref={el => setLiRef(el, 3)}>
                     <Screenshot onClick={() => captureScreenshot(3)}/>
                     <div
-                        className="show-answers screenbox flex flex-col justify-center overflow-hidden relative aspect-square outline outline-2 outline-[#ffffff1a]">
+                        className="show-answers screenbox flex flex-col justify-center overflow-hidden relative aspect-[4/5] outline outline-2 outline-[#ffffff1a]">
                         <Banner color='green'/>
                         <div className={`flex flex-col h-full`}>
                             <Header/>
@@ -227,7 +227,7 @@ export function Share({questionId, mode}) {
                 <li ref={el => setLiRef(el, 4)}>
                     <Screenshot onClick={() => captureScreenshot(4)}/>
                     <div
-                        className="show-answers screenbox flex flex-col justify-center overflow-hidden relative aspect-square outline outline-2 outline-[#ffffff1a]">
+                        className="show-answers screenbox flex flex-col justify-center overflow-hidden relative aspect-[4/5] outline outline-2 outline-[#ffffff1a]">
                         <Banner color='green'/>
                         <div className={`flex flex-col h-full`}>
                             {/*<Header/>*/}
