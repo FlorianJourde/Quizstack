@@ -643,6 +643,10 @@ div[style*="background: rgb(39, 40, 34);"] {
   ul {
     list-style-type: unset;
   }
+
+  li + li {
+    margin-top: var(--spacing-secondary);
+  }
 }
 
 .very-big-title {

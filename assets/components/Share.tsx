@@ -70,7 +70,7 @@ export function Share({questionId, mode}) {
                 <div
                     className={`flex absolute bottom-0 justify-end w-full p-spacing-primary gap-4 items-center font-bold text-xl`}>
                     {/*<span className="material-icons">arrow_forward</span>*/}
-                    <img src={`/images/pictos/arrow-forward.png`} className={`h-6`} alt="Forward picto"/>
+                    <img src={`/images/pictos/arrow-forward.png`} className={`h-8`} alt="Forward picto"/>
                 </div>
                 {/*<div className="screenbox-noise-texture"></div>*/}
             </>
