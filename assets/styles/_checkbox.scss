@@ -15,7 +15,7 @@
   }
 }
 
-#share-container,
+#share-container .show-answers,
 #quiz-container[data-mode="display"] {
   .checkbox-group {
     .checkbox-input {
@@ -126,6 +126,12 @@
     .checkbox-label {
       margin-left: 2.8rem;
     }
+  }
+}
+
+#share-container > ul > li:not(.show-answers) {
+  .checkbox-group .checkbox-input.correct + .checkbox-tile {
+    box-shadow: unset;
   }
 }
 

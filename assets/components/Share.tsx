@@ -28,6 +28,27 @@ export function Share({questionId, mode}) {
         console.log(question);
     }, [question]);
 
+    function Header() {
+        return (
+            <div className={`flex absolute w-full p-spacing-primary gap-4 items-center font-bold text-xl`}>
+                <img src={`/images/logos/quizstack-logo.png`} className={`h-8`} alt="Quizstack logo"/>
+                <h2>Quizstack</h2>
+            </div>
+        )
+    }
+
+
+    function Footer() {
+        return (
+            <div className={`flex absolute bottom-0 justify-end w-full p-spacing-primary gap-4 items-center font-bold text-xl`}>
+                {/*<img src={`/images/logos/quizstack-logo.png`} className={`h-8`} alt="Quizstack logo"/>*/}
+                {/*<h2>Quizstack</h2>*/}
+                <span className="material-icons">arrow_forward</span>
+            </div>
+        )
+    }
+
+
     async function loadQuestion() {
         setLoading(true);
         setAnswers([]);
@@ -66,8 +87,12 @@ export function Share({questionId, mode}) {
                 className="flex flex-col justify-center overflow-hidden relative aspect-square border-solid border-2"
             >
                 <Banner/>
-                <div className="flex flex-col gap-spacing-primary m-spacing-primary">
-                    <QuestionContent question={question} mode={mode}/>
+                <div className={`flex flex-col h-full`}>
+                    <Header/>
+                    <div className="zoom grow justify-center flex flex-col gap-spacing-primary m-spacing-primary">
+                        <QuestionContent question={question} mode={mode}/>
+                    </div>
+                    <Footer/>
                 </div>
             </li>
 
@@ -75,13 +100,18 @@ export function Share({questionId, mode}) {
                 className="flex flex-col justify-center overflow-hidden relative aspect-square border-solid border-2"
             >
                 <Banner/>
-                <div className="flex flex-col gap-spacing-primary m-spacing-primary">
-                    <Choices
-                        mode={mode}
-                        question={question}
-                        answers={answers}
-                        setAnswers={setAnswers}
-                    />
+
+                <div className={`flex flex-col h-full`}>
+                    <Header/>
+                    <div className="zoom grow justify-center flex flex-col gap-spacing-primary m-spacing-primary">
+                        <Choices
+                            mode={mode}
+                            question={question}
+                            answers={answers}
+                            setAnswers={setAnswers}
+                        />
+                    </div>
+                    <Footer/>
                 </div>
             </li>
 
@@ -89,13 +119,18 @@ export function Share({questionId, mode}) {
                 className="show-answers flex flex-col justify-center overflow-hidden relative aspect-square border-solid border-2"
             >
                 <Banner color='green'/>
-                <div className="flex flex-col gap-spacing-primary m-spacing-primary">
-                    <Choices
-                        mode={mode}
-                        question={question}
-                        answers={answers}
-                        setAnswers={setAnswers}
-                    />
+
+                <div className={`flex flex-col h-full`}>
+                    <Header/>
+                    <div className="zoom grow justify-center flex flex-col gap-spacing-primary m-spacing-primary">
+                        <Choices
+                            mode={mode}
+                            question={question}
+                            answers={answers}
+                            setAnswers={setAnswers}
+                        />
+                    </div>
+                    <Footer/>
                 </div>
             </li>
 
@@ -103,8 +138,16 @@ export function Share({questionId, mode}) {
                 className="flex flex-col justify-center overflow-hidden relative aspect-square border-solid border-2"
             >
                 <Banner color='green'/>
-                <div className="flex flex-col gap-spacing-primary m-spacing-primary">
-                    <Explanation question={question}/>
+                <div className={`flex flex-col h-full`}>
+                    <Header/>
+                    <div className="zoom grow justify-center flex flex-col gap-spacing-primary m-spacing-primary">
+                        <div className="glass box">
+                            {/*<div className="question-header-container flex gap-8 justify-between items-center mb-4">*/}
+                            <Explanation question={question}/>
+                            {/*</div>*/}
+                        </div>
+                    </div>
+                    <Footer/>
                 </div>
             </li>
 
