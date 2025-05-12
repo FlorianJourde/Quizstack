@@ -109,6 +109,7 @@ export function Share({questionId, mode}) {
                         quality: 0.90,
                         pixelRatio: 2,
                         cacheBust: true,
+                        skipFonts: false,
                     })
                     .then(function (dataUrl) {
                         let link = document.createElement('a');
