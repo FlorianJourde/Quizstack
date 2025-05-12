@@ -129,7 +129,7 @@
   }
 }
 
-#share-container > ul > li:not(.show-answers) {
+#share-container .screenbox:not(.show-answers) {
   .checkbox-group .checkbox-input.correct + .checkbox-tile {
     box-shadow: unset;
   }

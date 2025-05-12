@@ -291,19 +291,154 @@ div[style*="background: rgb(39, 40, 34);"] {
     white-space: break-spaces !important;
   }
 
+  .glass {
+    backdrop-filter: unset;
+  }
 
   //https://quizstack.io/question/410
   //p > code,
   //p {
   //  word-wrap: break-word;
   //}
-}
+  .zoom {
+    zoom: 100%;
+    //zoom: 150%;
+    perspective: 1000px;
+  }
 
-#share-container .zoom {
-  zoom: 100%;
-  //zoom: 150%;
-}
+  .screenbox {
+    //perspective: 10px;
 
+    &::after, &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+
+    &::after {
+      background-color: theme('colors.very-dark-grey-primary');
+      z-index: -10;
+
+    }
+
+    //&::before {
+    //  z-index: 1000;
+    //  //-o-object-fit: cover;
+    //  object-fit: cover;
+    //  background-image: url('/public/images/background/noise.png');
+    //  background-repeat: repeat;
+    //  background-size: 150px;
+    //  opacity: 0.1;
+    //  //opacity: 0.5;
+    //  //pointer-events: none;
+    //  //transition: none 0s ease 0s;
+    //  //transition: initial;
+    //  //background-image: url(/build/images/noise.db8b66b8.png);
+    //}
+
+    .demo {
+      //transform: scale(.5) skew(350deg, 0deg);
+      //pointer-events: none;
+      pointer-events: none;
+      position: absolute;
+      //right: 0;
+      left: 100%;
+      top: 100%;
+      //left: 50%;
+      //top: 50%;
+      width: 600px;
+      //transform: translate(-20px, -500px);
+      //transform: scale(.5) translate(-400px, -500px) skewY(-5deg) rotateX(20deg);
+      //transform: translate(-400px, -500px) rotateY(-30deg) skew(0deg, 5deg);
+      //transform: translate(-300px, -600px) rotateY(-30deg) rotateX(20deg) skew(0deg, 0deg);
+      //transform: translate(-400px, -650px) rotateY(-30deg) rotateX(20deg) skew(0deg, 0deg);
+      //transform: translate(-350px, -600px) rotateY(-30deg) rotateX(20deg) skew(0deg, 0deg);
+      transform: translate(-400px, -600px) rotateY(-30deg) rotateX(20deg) skew(0deg, 0deg);
+      //transform: scale(.5) translate(-1200px, -1200px) rotateY(-30deg) skew(0deg, 5deg);
+      //transform: translate(-400px, -500px) rotateY(-30deg) skew(0deg, 5deg);
+      //transform: rotateY(-30deg) skew(0deg, 5deg);
+      //transform: skewY(-5deg) rotateX(20deg);
+
+
+      //.glass, .choices-container {
+      //  opacity: 1 !important;
+      //  transform: unset !important;
+      //}
+
+      //&.duplicate {
+      //  &[data-has-clone] {
+      //
+      //    .glass {
+      //      //box-shadow: unset;
+      //      //opacity: 1;
+      //      //transform: unset;
+      //      ////opacity: 1;
+      //      //transform: unset;
+      //
+      //      background-color: unset;
+      //    }
+      //  }
+      //
+      //  &[data-cloned] {
+      //    //position: absolute;
+      //    //width: 100%;
+      //    //height: 100%;
+      //    //left: 0;
+      //    //top: 0;
+      //    top: 0;
+      //    left: 0;
+      //    transform: unset;
+      //    //opacity: 1;
+      //
+      //    .glass {
+      //      box-shadow: unset;
+      //      //opacity: 1 !important;
+      //      //transform: unset !important;
+      //      //opacity: 1;
+      //      //transform: unset;
+      //
+      //      background-color: rgba(255, 255, 255, 0.1);
+      //    }
+      //
+      //    * {
+      //      //opacity: 0;
+      //      //opacity: 1;
+      //      //transform: unset;
+      //    }
+      //
+      //    .choices-container {
+      //      //opacity: 1 !important;
+      //      //transform: unset !important;
+      //    }
+      //  }
+      //}
+
+    }
+
+    .screenbox-noise-texture {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 1000;
+      //-o-object-fit: cover;
+      object-fit: cover;
+      opacity: 0.05;
+      pointer-events: none;
+      //transition: none 0s ease 0s;
+      //transition: initial;
+      //background-image: url(/build/images/noise.db8b66b8.png);
+      background-image: url('/public/images/background/noise.png');
+      //
+      background-repeat: repeat;
+      background-size: 150px;
+    }
+  }
+}
 
 
 #stacks-slider-container {
@@ -538,6 +673,13 @@ div[style*="background: rgb(39, 40, 34);"] {
   ~ * {
     opacity: .75;
   }
+}
+
+.gradient-title {
+  background: linear-gradient(to bottom right, theme('colors.white-primary'), #f6ffc1);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 .button {
