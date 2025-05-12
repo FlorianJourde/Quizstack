@@ -345,18 +345,25 @@ div[style*="background: rgb(39, 40, 34);"] {
       pointer-events: none;
       position: absolute;
       //right: 0;
-      left: 100%;
-      top: 100%;
+      //left: 100%;
+      //top: 100%;
+      width: 600px;
+      //transform: translate(-400px, -600px) rotateY(-30deg) rotateX(20deg) skew(0deg, 0deg);
+
+      //top: 0%;
+      top: 50px;
+      //left: 40%;
+      left: 50%;
+      transform: rotateY(-30deg) rotateX(20deg) skew(0deg, 0deg);
+
       //left: 50%;
       //top: 50%;
-      width: 600px;
       //transform: translate(-20px, -500px);
       //transform: scale(.5) translate(-400px, -500px) skewY(-5deg) rotateX(20deg);
       //transform: translate(-400px, -500px) rotateY(-30deg) skew(0deg, 5deg);
       //transform: translate(-300px, -600px) rotateY(-30deg) rotateX(20deg) skew(0deg, 0deg);
       //transform: translate(-400px, -650px) rotateY(-30deg) rotateX(20deg) skew(0deg, 0deg);
       //transform: translate(-350px, -600px) rotateY(-30deg) rotateX(20deg) skew(0deg, 0deg);
-      transform: translate(-400px, -600px) rotateY(-30deg) rotateX(20deg) skew(0deg, 0deg);
       //transform: scale(.5) translate(-1200px, -1200px) rotateY(-30deg) skew(0deg, 5deg);
       //transform: translate(-400px, -500px) rotateY(-30deg) skew(0deg, 5deg);
       //transform: rotateY(-30deg) skew(0deg, 5deg);
