@@ -7,7 +7,6 @@
                     Quizstack
                 </a>
                 <div class="buttons-container gap-2 sm:gap-4">
-
                     <ul class="hidden sm:flex header-main-container buttons-container gap-2 sm:gap-4">
 
                         {% if is_granted('ROLE_USER') %}
@@ -34,13 +33,6 @@
                         {% endif %}
 
                     </ul>
-
-                    {#                    <button class="button button-action"> #}
-                    {#                    <a href="{{ path('quiz') }}" class="button button-tertiary"> #}
-                    {#                        <span class="material-icons">play_arrow</span> #}
-                    {#                    </a> #}
-                    {#                    </button> #}
-
                     <button id="button-menu" class="button button-action">
                         <span class="material-icons">menu</span>
                     </button>

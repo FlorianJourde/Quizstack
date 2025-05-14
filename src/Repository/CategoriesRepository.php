@@ -27,10 +27,9 @@ class CategoriesRepository extends ServiceEntityRepository
                     ->setParameter('status', $status);
             }
 
-        $categories = $categories->getQuery()->getResult();
-
-//            ->getQuery()
-//            ->getResult();
+        $categories = $categories
+            ->getQuery()
+            ->getResult();
 
         if (empty($categories)) {
             return [];

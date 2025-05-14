@@ -4,26 +4,13 @@
 
 {% block body %}
 
-{#    {{ include('partials/banner.html.twig') }}#}
-
     <div class="wrapper">
         <div class="page-header-container">
             <h1 class="big-title grow">Share question {{ question.id }}</h1>
-
             <div class="buttons-container">
                 <a class="button button-action" href="javascript:history.back()">
                     <span class="material-icons">arrow_back</span>
                 </a>
-
-{#                <a class="button button-action" href="{{ path('question_new') }}">#}
-{#                <span class="material-icons">add</span>#}
-{#                </a>#}
-
-{#                {% if is_granted('ROLE_EDITOR') or not question.status %}#}
-{#                    <a class="button button-action" href="{{ path('question_edit', {'id': question.id}) }}">#}
-{#                        <span class="material-icons">edit</span>#}
-{#                    </a>#}
-{#                {% endif %}#}
             </div>
         </div>
     </div>
@@ -32,74 +19,56 @@
         <div id="share-container" data-question-id="{{ questionId }}" data-mode="{{ mode }}"></div>
     </div>
 
-{#    {% if isEditor %}#}
-        <div class="wrapper">
-            <div class="page-separator-container">
-                <h2 class="title">Informations</h2>
-            </div>
+    <div class="wrapper">
+        <div class="page-separator-container">
+            <h2 class="title">Informations</h2>
         </div>
+    </div>
 
-        <div class="wrapper">
-            <div class="form-container glass box bg-dark-grey-secondary">
-                <div>
-                    <h2 class="small-title">
-                        <span class="material-icons">person</span>
-                        Author
-                    </h2>
-                    <p>{{ question.user.username }}</p>
-                </div>
-                <div>
-                    <h2 class="small-title">
-                        <span class="material-icons">image</span>
-                        Image
-                    </h2>
-                    {% if question.image %}
-                        <p>{{ question.image }}</p>
-                    {% else %}
-                        <p>No image</p>
-                    {% endif %}
-                </div>
-                <div>
-                    <h2 class="small-title">
-                        <span class="material-icons">today</span>
-                        Creation date
-                    </h2>
-                    <p>{{ question.creationDate|date('d/m/y') }}</p>
-                </div>
-                <div>
-                    <h2 class="small-title">
-                        <span class="material-icons">event_repeat</span>
-                        Update date
-                    </h2>
-                    <p>{{ question.updateDate|date('d/m/y') }}</p>
-                </div>
-                <div>
-                    <h2 class="small-title">
-                        <span class="material-icons">toggle_on</span>
-                        Status
-                    </h2>
-                    <span class="text-xs rounded-sm px-2 py-1 {{ question.status ? 'bg-green-secondary/50' : 'bg-red-secondary/50' }}">
+    <div class="wrapper">
+        <div class="form-container glass box bg-dark-grey-secondary">
+            <div>
+                <h2 class="small-title">
+                    <span class="material-icons">person</span>
+                    Author
+                </h2>
+                <p>{{ question.user.username }}</p>
+            </div>
+            <div>
+                <h2 class="small-title">
+                    <span class="material-icons">image</span>
+                    Image
+                </h2>
+                {% if question.image %}
+                    <p>{{ question.image }}</p>
+                {% else %}
+                    <p>No image</p>
+                {% endif %}
+            </div>
+            <div>
+                <h2 class="small-title">
+                    <span class="material-icons">today</span>
+                    Creation date
+                </h2>
+                <p>{{ question.creationDate|date('d/m/y') }}</p>
+            </div>
+            <div>
+                <h2 class="small-title">
+                    <span class="material-icons">event_repeat</span>
+                    Update date
+                </h2>
+                <p>{{ question.updateDate|date('d/m/y') }}</p>
+            </div>
+            <div>
+                <h2 class="small-title">
+                    <span class="material-icons">toggle_on</span>
+                    Status
+                </h2>
+                <span class="text-xs rounded-sm px-2 py-1 {{ question.status ? 'bg-green-secondary/50' : 'bg-red-secondary/50' }}">
                     {{ question.status ? 'online' : 'offline' }}
                 </span>
-                </div>
             </div>
-
-{#            <div class="buttons-container mt-8 relative">#}
-{#                {% if previousQuestion %}#}
-{#                    <a href="{{ path('question', {'id': previousQuestion.id}) }}"#}
-{#                       class="button button-action absolute right-0">#}
-{#                        <span class="material-icons">arrow_forward</span>#}
-{#                    </a>#}
-{#                {% endif %}#}
-
-{#                {% if nextQuestion %}#}
-{#                    <a href="{{ path('question', {'id': nextQuestion.id}) }}"#}
-{#                       class="button button-action absolute left-0">#}
-{#                        <span class="material-icons">arrow_back</span>#}
-{#                    </a>#}
-{#                {% endif %}#}
-{#            </div>#}
         </div>
-{#    {% endif %}#}
+    </div>
 
 {% endblock %}

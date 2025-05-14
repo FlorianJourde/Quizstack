@@ -26,8 +26,6 @@ class QuestionsRepository extends ServiceEntityRepository
         $qb = $this->createQueryBuilder('q')
             ->leftJoin('q.categories', 'ca')
             ->leftJoin('q.choices', 'ch')
-//            ->where('q.status = :status')
-//            ->setParameter('status', true);
             ->where('q.status = :questionStatus')
             ->andWhere('ca.status = :categoryStatus')
             ->setParameter('questionStatus', true)
@@ -54,7 +52,6 @@ class QuestionsRepository extends ServiceEntityRepository
 
         $offset = mt_rand(0, $total - 1);
 
-//        return $qb->setFirstResult($offset)
         return $qb->select('q')
             ->distinct(true)
             ->setFirstResult($offset)

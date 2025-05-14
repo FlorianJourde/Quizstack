@@ -20,41 +20,6 @@ export function Share({questionId, mode}) {
         console.log(question);
     }, [question]);
 
-    // function DemoDuplicator() {
-    //     useEffect(() => {
-    //         const duplicates = document.querySelectorAll(".demo:not([data-has-clone='true'])");
-    //
-    //         duplicates.forEach((el) => {
-    //             const element = el as HTMLElement;
-    //             const clone = element.cloneNode(true) as HTMLElement;
-    //             clone.dataset.cloned = "true";
-    //
-    //             clone.querySelectorAll(".demo").forEach((child) => {
-    //                 const childElement = child as HTMLElement;
-    //                 if (!childElement.dataset.cloned) child.remove();
-    //             });
-    //
-    //             el.insertBefore(clone, element.firstChild);
-    //
-    //
-    //             element.dataset.hasClone = "true";
-    //         });
-    //     }, []);
-    //
-    //     return null;
-    //
-    //     // useEffect(() => {
-    //     //     const demos = document.querySelectorAll(".duplicate");
-    //     //
-    //     //     demos.forEach((el) => {
-    //     //         const clone = el.cloneNode(true);
-    //     //         el.parentNode?.insertBefore(clone, el);
-    //     //     });
-    //     // }, []);
-    //     //
-    //     // return null;
-    // }
-
     function Header() {
         return (
             <div className={`flex absolute w-full p-spacing-primary gap-4 items-center font-bold text-xl`}>
@@ -69,10 +34,8 @@ export function Share({questionId, mode}) {
             <>
                 <div
                     className={`flex absolute bottom-0 justify-end w-full p-spacing-primary gap-4 items-center font-bold text-xl`}>
-                    {/*<span className="material-icons">arrow_forward</span>*/}
                     <img src={`/images/pictos/arrow-forward.png`} className={`h-6`} alt="Forward picto"/>
                 </div>
-                {/*<div className="screenbox-noise-texture"></div>*/}
             </>
         )
     }
@@ -139,7 +102,6 @@ export function Share({questionId, mode}) {
 
     return question && (
         <>
-            {/*<DemoDuplicator/>*/}
             <ul className={`flex flex-col gap-spacing-large-secondary`}>
                 <li ref={el => setLiRef(el, 0)}>
                     <Screenshot onClick={() => captureScreenshot(0)}/>
@@ -230,27 +192,20 @@ export function Share({questionId, mode}) {
                         className="show-answers screenbox flex flex-col justify-center overflow-hidden relative aspect-square outline outline-2 outline-[#ffffff1a]">
                         <Banner color='green'/>
                         <div className={`flex flex-col h-full`}>
-                            {/*<Header/>*/}
                             <div
                                 className="zoom grow justify-center flex flex-col m-spacing-primary">
                                 <div
                                     className={`discover flex gap-spacing-primary flex-col h-full w-full max-w-[350px] pt-spacing-large-secondary pl-spacing-large-secondary`}>
                                     <div className={`flex w-full gap-4 items-center font-bold text-xl`}>
-                                        {/*<div>*/}
-
                                         <img src={`/images/logos/quizstack-logo.png`} className={`h-11`}
                                              alt="Quizstack logo"/>
                                         <h2 className={`text-4xl`}>Quizstack</h2>
-                                        {/*</div>*/}
                                     </div>
                                     <h2 className={`text-xl gradient-title font-semibold`}>
                                         Learn web development
                                         through interactive quiz
                                     </h2>
                                     <div className="buttons-container justify-start">
-                                        {/*<a className="button button-tertiary" href="#filters-section">*/}
-                                        {/*    Select filters*/}
-                                        {/*</a>*/}
                                         <a className="button button-primary" href="{{ path('quiz') }}">
                                             Play
                                         </a>
