@@ -86,7 +86,6 @@ class QuestionsController extends AbstractController
         Security            $security
     ): Response
     {
-//        $isEditor = $security->isGranted('ROLE_EDITOR');
         /* @var Questions $question */
         $question = $questionsRepository->find($id);
 
@@ -94,16 +93,10 @@ class QuestionsController extends AbstractController
             throw $this->createNotFoundException('No question found !');
         }
 
-//        $previousQuestion = $questionsRepository->findPreviousQuestion($question);
-//        $nextQuestion = $questionsRepository->findNextQuestion($question);
-
         return $this->render('questions/share.html.twig', [
             'question' => $question,
             'mode' => 'share',
             'questionId' => $question->getId(),
-//            'isEditor' => $isEditor,
-//            'previousQuestion' => $previousQuestion,
-//            'nextQuestion' => $nextQuestion
         ]);
     }
 

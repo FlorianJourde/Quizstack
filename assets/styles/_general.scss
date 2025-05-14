@@ -3,7 +3,6 @@
   --radius-secondary: 6px;
   --font-primary: 'Manrope', sans-serif;
   --font-secondary: "Spline Sans Mono", monospace;
-  //--font-tertiary: "Manrope", monospace;
   --spacing-primary: 1.5rem;
   --spacing-secondary: 0.8rem;
   --spacing-large-primary: 5rem;
@@ -55,35 +54,10 @@ html {
     }
 
     hr {
-      ////content: "";
-      ////position: absolute;
-      //border: unset;
-      //width: 100%;
-      ////max-width: 1200px;
-      //max-width: calc(100% - 100px);
-      ////background: var(--colors-white--white-20);
-      //background-color: rgba(255, 255, 255, 0.1);
-      //mask: linear-gradient(to right, transparent 0%, #ffffff 50%, transparent 100%);
-      ////top: 0%;
-      //left: 50%;
-      //height: 2px;
-      //position: relative;
-      //transform: translateX(-50%);
-
-      //position: absolute;
       border: unset;
       width: 100%;
-      //max-width: 1200px;
-      //max-width: calc(100% - 100px);
-      //background: var(--colors-white--white-20);
       background-color: rgba(255, 255, 255, 0.1);
-      //mask: linear-gradient(to right, #ffffff 0%, #ffffff 50%, transparent 100%);
-      //mask: linear-gradient(to right, transparent 0%, #ffffff var(--spacing-primary), #ffffff 50%, transparent 100%);
-      //top: 0%;
-      //left: 50%;
       height: 2px;
-      //position: relative;
-      //transform: translateX(-50%);
     }
   }
 }
@@ -180,22 +154,7 @@ pre {
 }
 
 header {
-  //z-index: 20;
   transition: transform .4s, margin .4s;
-
-  //.overlay {
-  //  position: absolute;
-  //  top: 0;
-  //  left: 0;
-  //  width: 100%;
-  //  height: 100%;
-  //  box-shadow: 0 0 40px rgba(8, 7, 16, 0.6);
-  //  background-color: rgba(255, 255, 255, 0.1);
-  //  border-bottom: 2px solid;
-  //  border-color: rgba(255, 255, 255, 0.1);
-  //  backdrop-filter: blur(50px);
-  //  opacity: 0;
-  //}
 
   .header-container {
     padding-top: var(--spacing-primary);
@@ -211,9 +170,7 @@ header {
       max-width: 100%;
       width: 20rem;
 
-
       @media (max-width: 30rem) {
-        //height: 35px;
         width: 100%;
       }
 
@@ -296,19 +253,12 @@ div[style*="background: rgb(39, 40, 34);"] {
   }
 
   //https://quizstack.io/question/410
-  //p > code,
-  //p {
-  //  word-wrap: break-word;
-  //}
   .zoom {
     zoom: 100%;
-    //zoom: 150%;
     perspective: 1000px;
   }
 
   .screenbox {
-    //perspective: 10px;
-
     &::after, &::before {
       content: '';
       position: absolute;
@@ -324,107 +274,13 @@ div[style*="background: rgb(39, 40, 34);"] {
 
     }
 
-    //&::before {
-    //  z-index: 1000;
-    //  //-o-object-fit: cover;
-    //  object-fit: cover;
-    //  background-image: url('/public/images/background/noise.png');
-    //  background-repeat: repeat;
-    //  background-size: 150px;
-    //  opacity: 0.1;
-    //  //opacity: 0.5;
-    //  //pointer-events: none;
-    //  //transition: none 0s ease 0s;
-    //  //transition: initial;
-    //  //background-image: url(/build/images/noise.db8b66b8.png);
-    //}
-
     .demo {
-      //transform: scale(.5) skew(350deg, 0deg);
-      //pointer-events: none;
       pointer-events: none;
       position: absolute;
-      //right: 0;
-      //left: 100%;
-      //top: 100%;
       width: 600px;
-      //transform: translate(-400px, -600px) rotateY(-30deg) rotateX(20deg) skew(0deg, 0deg);
-
-      //top: 0%;
-      //top: 50px;
-      //left: 40%;
-      //left: 50%;
       top: 100px;
       left: 40%;
       transform: rotateY(-30deg) rotateX(20deg) skew(0deg, 0deg);
-
-      //left: 50%;
-      //top: 50%;
-      //transform: translate(-20px, -500px);
-      //transform: scale(.5) translate(-400px, -500px) skewY(-5deg) rotateX(20deg);
-      //transform: translate(-400px, -500px) rotateY(-30deg) skew(0deg, 5deg);
-      //transform: translate(-300px, -600px) rotateY(-30deg) rotateX(20deg) skew(0deg, 0deg);
-      //transform: translate(-400px, -650px) rotateY(-30deg) rotateX(20deg) skew(0deg, 0deg);
-      //transform: translate(-350px, -600px) rotateY(-30deg) rotateX(20deg) skew(0deg, 0deg);
-      //transform: scale(.5) translate(-1200px, -1200px) rotateY(-30deg) skew(0deg, 5deg);
-      //transform: translate(-400px, -500px) rotateY(-30deg) skew(0deg, 5deg);
-      //transform: rotateY(-30deg) skew(0deg, 5deg);
-      //transform: skewY(-5deg) rotateX(20deg);
-
-
-      //.glass, .choices-container {
-      //  opacity: 1 !important;
-      //  transform: unset !important;
-      //}
-
-      //&.duplicate {
-      //  &[data-has-clone] {
-      //
-      //    .glass {
-      //      //box-shadow: unset;
-      //      //opacity: 1;
-      //      //transform: unset;
-      //      ////opacity: 1;
-      //      //transform: unset;
-      //
-      //      background-color: unset;
-      //    }
-      //  }
-      //
-      //  &[data-cloned] {
-      //    //position: absolute;
-      //    //width: 100%;
-      //    //height: 100%;
-      //    //left: 0;
-      //    //top: 0;
-      //    top: 0;
-      //    left: 0;
-      //    transform: unset;
-      //    //opacity: 1;
-      //
-      //    .glass {
-      //      box-shadow: unset;
-      //      //opacity: 1 !important;
-      //      //transform: unset !important;
-      //      //opacity: 1;
-      //      //transform: unset;
-      //
-      //      background-color: rgba(255, 255, 255, 0.1);
-      //    }
-      //
-      //    * {
-      //      //opacity: 0;
-      //      //opacity: 1;
-      //      //transform: unset;
-      //    }
-      //
-      //    .choices-container {
-      //      //opacity: 1 !important;
-      //      //transform: unset !important;
-      //    }
-      //  }
-      //}
-
     }
 
     .screenbox-noise-texture {
@@ -674,10 +530,11 @@ div[style*="background: rgb(39, 40, 34);"] {
 
 .small-title {
   display: flex;
-  align-items: center;
+  //align-items: center;
   font-size: 1.2rem;
   margin-bottom: .6rem;
   font-weight: 600;
+  align-items: flex-start;
 
   .material-icons {
     margin-right: 0.5rem;
@@ -801,11 +658,6 @@ div[style*="background: rgb(39, 40, 34);"] {
 
     }
   }
-
-  //.links-container {
-  //  font-size: 0.875rem;
-  //  opacity: 0.5;
-  //}
 }
 
 #demo-container {

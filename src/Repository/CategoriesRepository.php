@@ -16,11 +16,18 @@ class CategoriesRepository extends ServiceEntityRepository
         parent::__construct($registry, Categories::class);
     }
 
-    public function findCategoriesByOrder()
+    public function findCategoriesByOrder(?bool $status = null): array
     {
         $categories = $this->createQueryBuilder('c')
             ->orderBy('CASE WHEN c.position IS NULL THEN 1 ELSE 0 END', 'ASC')
-            ->addOrderBy('c.position', 'ASC')
+            ->addOrderBy('c.position', 'ASC');
+
+            if ($status !== null) {
+                $categories->andWhere('c.status = :status')
+                    ->setParameter('status', $status);
+            }
+
+        $categories = $categories
             ->getQuery()
             ->getResult();
 

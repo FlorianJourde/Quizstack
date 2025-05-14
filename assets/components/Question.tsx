@@ -25,10 +25,6 @@ function Question({mode, questionId, showComments}: { mode: string, questionId: 
     }, []);
 
     useEffect(() => {
-        console.log(question);
-    }, [question]);
-
-    useEffect(() => {
         const quizContainer = document.querySelector('#quiz-container');
 
         if (quizContainer) {
@@ -100,6 +96,10 @@ function Question({mode, questionId, showComments}: { mode: string, questionId: 
                     correctChoices: result.correctChoices,
                     isMatch: result.isMatch
                 });
+
+                window.scrollTo({
+                    top: 0
+                });
             }
         } catch (error) {
             console.error('Error submitting answers : ', error);
@@ -129,9 +129,10 @@ function Question({mode, questionId, showComments}: { mode: string, questionId: 
                         className="flex flex-col relative">
 
                         {mode === 'game' &&
-                            <Sidebar onNext={handleNextQuestion} onWrap={handleToggleWrap} wrap={wrap} isLoading={loading}/>}
+                            <Sidebar onNext={handleNextQuestion} onWrap={handleToggleWrap} wrap={wrap}
+                                     isLoading={loading}/>}
 
-                        <div className="flex flex-col gap-spacing-primary">
+                        <div className="flex flex-col gap-spacing-primary mb-spacing-large-secondary xl:mb-0">
 
                             <QuestionContent question={question} mode={mode}/>
 

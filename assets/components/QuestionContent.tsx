@@ -39,7 +39,7 @@ function QuestionContent({question, mode}) {
 
             {question.image && <Image image={question.image}/>}
 
-            {question.correctChoices && question.explanation && (mode !== 'share') && <Explanation question={question}/>}
+            {question.correctChoices && question.explanation && (mode !== 'share') && <Explanation question={question} mode={mode}/>}
         </div>
     );
 };

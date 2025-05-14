@@ -2,7 +2,6 @@
 
 {% block title %}Reset your password{% endblock %}
 
-
 {% block body %}
 
     {{ include('partials/banner.html.twig', {'color': 'blue'}) }}
@@ -17,7 +16,6 @@
         <div class="form-container glass box bg-dark-grey-secondary">
 
             {{ form_start(resetForm) }}
-{#            {{ form_row(resetForm.plainPassword) }}#}
 
             <div>
                 <h2 class="small-title">
@@ -34,30 +32,7 @@
                 {{ form_widget(resetForm.plainPassword.second) }}
             </div>
 
-{#            <div>#}
-{#                <h2 class="small-title">#}
-{#                    <span class="material-icons">key</span>#}
-{#                    {{ resetForm.plainPassword.vars.label }}#}
-{#                </h2>#}
-{#                {{ form_widget(resetForm.plainPassword) }}#}
-{#                <p class="text-sm mt-2">Enter your current password to confirm your identity.</p>#}
-{#            </div>#}
-
-{#            {{ form_start(passwordForm) }}#}
-{#            <div>#}
-{#                <h2 class="small-title">#}
-{#                    <span class="material-icons">key</span>#}
-{#                    {{ passwordForm.currentPassword.vars.label }}#}
-{#                </h2>#}
-{#                {{ form_widget(passwordForm.currentPassword) }}#}
-{#                <p class="text-sm mt-2">Enter your current password to confirm your identity.</p>#}
-{#            </div>#}
-
-            {#            <button class="button button-primary">Reset password</button> #}
-
             <div class="buttons-container">
-{#                <a class="button button-tertiary" href="{{ path('app_forgot_password_request') }}">Forgotten#}
-{#                    password</a>#}
                 <button class="button button-primary">
                     Reset password
                 </button>
