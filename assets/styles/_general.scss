@@ -674,10 +674,11 @@ div[style*="background: rgb(39, 40, 34);"] {
 
 .small-title {
   display: flex;
-  align-items: center;
+  //align-items: center;
   font-size: 1.2rem;
   margin-bottom: .6rem;
   font-weight: 600;
+  align-items: flex-start;
 
   .material-icons {
     margin-right: 0.5rem;

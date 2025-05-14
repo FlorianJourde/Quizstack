@@ -12,7 +12,7 @@ class FiltersController extends AbstractController
     #[Route('/filters', name: 'app_filters')]
     public function index(CategoriesRepository $categoriesRepository): Response
     {
-        $categories = $categoriesRepository->findAll();
+        $categories = $categoriesRepository->findCategoriesByOrder(true);
 
         return $this->render('filters.html.twig', [
             'categories' => $categories

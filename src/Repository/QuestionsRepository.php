@@ -26,8 +26,12 @@ class QuestionsRepository extends ServiceEntityRepository
         $qb = $this->createQueryBuilder('q')
             ->leftJoin('q.categories', 'ca')
             ->leftJoin('q.choices', 'ch')
-            ->where('q.status = :status')
-            ->setParameter('status', true);
+//            ->where('q.status = :status')
+//            ->setParameter('status', true);
+            ->where('q.status = :questionStatus')
+            ->andWhere('ca.status = :categoryStatus')
+            ->setParameter('questionStatus', true)
+            ->setParameter('categoryStatus', true);
 
         if (!empty($categories)) {
             $qb->andWhere('ca.name IN (:categories)')
@@ -40,7 +44,7 @@ class QuestionsRepository extends ServiceEntityRepository
         }
 
         $countQb = clone $qb;
-        $total = $countQb->select('COUNT(q.id)')
+        $total = $countQb->select('COUNT(DISTINCT q.id)')
             ->getQuery()
             ->getSingleScalarResult();
 
@@ -50,7 +54,10 @@ class QuestionsRepository extends ServiceEntityRepository
 
         $offset = mt_rand(0, $total - 1);
 
-        return $qb->setFirstResult($offset)
+//        return $qb->setFirstResult($offset)
+        return $qb->select('q')
+            ->distinct(true)
+            ->setFirstResult($offset)
             ->setMaxResults(1)
             ->getQuery()
             ->getOneOrNullResult();
