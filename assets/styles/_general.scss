@@ -214,6 +214,21 @@ button, input, optgroup, select, textarea {
   outline: none;
 }
 
+body .fade-in-up {
+  transform: translateY(20px);
+  filter: blur(5px);
+  opacity: 0;
+  //transition: opacity 1.2s, transform 1.2s, filter 1.2s;
+  transition: opacity 1s, transform 1s, filter 1s;
+  //will-change: transform, opacity;
+}
+
+body .fade-in-up.show {
+  opacity: 1;
+  transform: translateY(0);
+  filter: unset;
+}
+
 div[style*="background: rgb(39, 40, 34);"] {
   background: theme('colors.very-dark-grey-primary') !important;
 }

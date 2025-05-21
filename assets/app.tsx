@@ -10,6 +10,7 @@ import './scripts/switches'
 import './scripts/question-form'
 import './scripts/menu'
 import './scripts/accordion'
+import './scripts/appear-on-scroll'
 import StacksSlider from "./components/StacksSlider";
 import Share from "./components/Share";
 
