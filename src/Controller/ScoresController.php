@@ -9,7 +9,7 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class ScoresController extends AbstractController
 {
-    #[Route('/scores', name: 'scores')]
+    #[Route('/hall-of-fame', name: 'scores')]
     public function users(ScoresRepository $scoresRepository): Response
     {
         $allTimeScore = $scoresRepository->findScoreWithLimit(20, 'all_time', ['Anonymous', 'User', 'Editor']);

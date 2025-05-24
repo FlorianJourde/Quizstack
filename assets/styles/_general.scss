@@ -215,7 +215,8 @@ button, input, optgroup, select, textarea {
 }
 
 body .fade-in-up {
-  transform: translateY(20px);
+  //transform: translateY(20px);
+  transform: translateY(var(--spacing-secondary));
   filter: blur(5px);
   opacity: 0;
   //transition: opacity 1.2s, transform 1.2s, filter 1.2s;
