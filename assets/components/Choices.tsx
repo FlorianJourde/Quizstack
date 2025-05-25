@@ -48,7 +48,7 @@ function Choices({mode, question, answers, setAnswers}: {
             variants={container}
             initial="hidden"
             animate="visible"
-            className="choices-container flex flex-col gap-spacing-primary">
+            className={`choices-container flex flex-col gap-spacing-primary ${question.numberOfCorrectChoices > 1 && 'multiple-choices'}`}>
             {question.choices.map((choice, index) => (
                 <motion.li
                     variants={item}
@@ -56,7 +56,7 @@ function Choices({mode, question, answers, setAnswers}: {
                     <fieldset className={`checkbox-group`}>
                         <label>
                             <input
-                                type="checkbox"
+                                type={`${question.numberOfCorrectChoices > 1 ? 'checkbox' : 'radio'}`}
                                 id={`choice-${index}`}
                                 name="choice"
                                 value={choice.id}

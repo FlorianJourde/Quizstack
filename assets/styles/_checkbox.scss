@@ -25,7 +25,9 @@ body #demo-container {
   .checkbox-group {
     .checkbox-input {
       &.correct + .checkbox-tile:before {
-        background-image: var(--background-checkbox);
+        //background-image: var(--background-checkbox);
+        background-color: theme('colors.white-primary');
+        box-shadow: inset 0px 0px 0px 3px theme('colors.grey-primary');
       }
     }
   }
@@ -77,7 +79,10 @@ body #demo-container {
         box-shadow: 0 0 0 2px #ffffff80;
 
         &:before {
-          background-image: var(--background-checkbox);
+          //background-image: var(--background-checkbox);
+
+          background-color: theme('colors.white-primary');
+          box-shadow: inset 0px 0px 0px 3px theme('colors.grey-primary');
         }
       }
     }
@@ -126,6 +131,16 @@ body #demo-container {
 
     .checkbox-label {
       margin-left: 2.8rem;
+    }
+  }
+}
+
+.multiple-choices {
+  .checkbox-group {
+    .checkbox-tile {
+      &:before {
+        border-radius: unset;
+      }
     }
   }
 }

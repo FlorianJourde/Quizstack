@@ -13,7 +13,7 @@ function LimitReached() {
                         <span className="material-icons">warning</span>
                         You've reached the question limit for today
                     </h2>
-                    <p>Please login or register to continue to play.</p>
+                    <p>Please login or register to continue to play and save your progression.</p>
                 </div>
                 <div className="buttons-container">
                     <a href={ROUTES.LOGIN} className="button button-tertiary">
