@@ -1,12 +1,12 @@
 import React from 'react';
 
-function Image({image}) {
+function QuestionImage({image}) {
     return (
         <>
             <img src={`/uploads/images/questions/${image}`}
                  className={`mt-4 max-w-full rounded-radius-secondary mx-auto`} alt=""/>
         </>
     );
-};
+}
 
-export default Image;
+export default QuestionImage;

@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import {updateComment} from "../../services/commentsApi";
-import MarkdownInfos from "../MarkdownInfos";
+import MarkdownInfos from "../Markdown/MarkdownInfos";
 
 function CommentUpdate({question, setQuestion, comment, onCommentUpdated, onCancel}) {
     const [isSubmitting, setIsSubmitting] = useState<boolean>(false);

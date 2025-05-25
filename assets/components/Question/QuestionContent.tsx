@@ -1,6 +1,6 @@
-import React, {useEffect} from 'react';
-import {MarkdownRenderer} from "./MarkdownRenderer";
-import Image from "./Image";
+import React from 'react';
+import {MarkdownRenderer} from "../Markdown/MarkdownRenderer";
+import QuestionImage from "./QuestionImage";
 import Explanation from "./Explanation";
 
 function QuestionContent({question, mode}) {
@@ -37,9 +37,10 @@ function QuestionContent({question, mode}) {
                 <p className={'opacity-50 text-sm mt-4'}>Multiple choices possible.</p>
             }
 
-            {question.image && <Image image={question.image}/>}
+            {question.image && <QuestionImage image={question.image}/>}
 
-            {question.correctChoices && question.explanation && (mode !== 'share') && <Explanation question={question} mode={mode}/>}
+            {question.correctChoices && question.explanation && (mode !== 'share') &&
+                <Explanation question={question} mode={mode}/>}
         </div>
     );
 };

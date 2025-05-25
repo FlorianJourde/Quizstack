@@ -1,8 +1,7 @@
-import React, {useEffect} from 'react';
-import {MarkdownRenderer} from "./MarkdownRenderer";
-import {item} from "../motion/animations";
+import React from 'react';
+import {MarkdownRenderer} from "../Markdown/MarkdownRenderer";
+import {item} from "../../motion/animations";
 import {motion} from "motion/react";
-import Sidebar from "./Sidebar";
 
 function Explanation({question, mode = 'display'}) {
     return (

@@ -1,9 +1,9 @@
 import React, {useState} from 'react';
-import {MarkdownRenderer} from "../MarkdownRenderer";
+import {MarkdownRenderer} from "../Markdown/MarkdownRenderer";
 import CommentUpdate from "./CommentUpdate";
 import CommentDelete from "./CommentDelete";
 import {useAuth} from "../../context/AuthContext";
-import ProfilePicture from "../ProfilePicture";
+import ProfilePicture from "./ProfilePicture";
 import {QuestionInterface} from "../../types";
 import {CommentInterface} from "../../types/comment";
 import {ROUTES} from "../../utils/routes";

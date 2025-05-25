@@ -1,16 +1,16 @@
 import React, {useEffect, useState} from 'react';
-import {getRandomQuestion, getQuestion, submitAnswers} from "../services/questionsApi";
+import {getRandomQuestion, getQuestion, submitAnswers} from "../../services/questionsApi";
 import Choices from "./Choices";
-import CommentList from "./Comment/CommentList";
-import {QuestionInterface, QuestionOrLimitReached} from '../types';
-import {UrlFiltersInterface} from "../types/urlFilters";
-import LimitReached from "./LimitReached";
-import Loading from "./Loading";
+import CommentList from "../Comment/CommentList";
+import {QuestionInterface, QuestionOrLimitReached} from '../../types';
+import {UrlFiltersInterface} from "../../types/urlFilters";
+import LimitReached from "../Sections/LimitReached";
+import Loading from "../Sections/Loading";
 import Sidebar from "./Sidebar";
-import QuestionNotFound from "./QuestionNotFound";
+import QuestionNotFound from "../Sections/QuestionNotFound";
 import QuestionContent from "./QuestionContent";
 import {motion, AnimatePresence} from "motion/react"
-import {item} from "../motion/animations";
+import {item} from "../../motion/animations";
 
 function Question({mode, questionId, showComments}: { mode: string, questionId: number, showComments: boolean }) {
     const [loading, setLoading] = useState<boolean>(true);

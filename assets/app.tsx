@@ -1,9 +1,9 @@
 import React from 'react';
 import {createRoot} from "react-dom/client";
 import {AuthProvider} from "./context/AuthContext";
-import Question from "./components/Question";
-import Demo from "./components/Demo";
-import Activity from "./components/Activity";
+import Question from "./components/Question/Question";
+import Demo from "./components/Demo/Demo";
+import Activity from "./components/Sections/Activity";
 import './styles/app.css';
 import './scripts/filters'
 import './scripts/switches'
@@ -11,8 +11,8 @@ import './scripts/question-form'
 import './scripts/menu'
 import './scripts/accordion'
 import './scripts/appear-on-scroll'
-import StacksSlider from "./components/StacksSlider";
-import Share from "./components/Share";
+import StacksSlider from "./components/Sections/StacksSlider";
+import Share from "./components/Share/Share";
 
 document.addEventListener('DOMContentLoaded', () => {
     const questionContainer = document.querySelector('#quiz-container') as HTMLElement;

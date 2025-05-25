@@ -1,5 +1,5 @@
 import React from 'react';
-import {ROUTES} from "../utils/routes";
+import {ROUTES} from "../../utils/routes";
 
 function LimitReached() {
     return (

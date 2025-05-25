@@ -1,10 +1,10 @@
 import React, {useEffect, useState} from 'react';
-import {container} from "../motion/animations";
+import {container} from "../../motion/animations";
 import {motion} from "motion/react"
-import {CommentInterface} from "../types/comment";
-import {getLastComments} from "../services/commentsApi";
-import CommentItem from "./Comment/CommentItem";
-import {ROUTES} from "../utils/routes";
+import {CommentInterface} from "../../types/comment";
+import {getLastComments} from "../../services/commentsApi";
+import CommentItem from "../Comment/CommentItem";
+import {ROUTES} from "../../utils/routes";
 import Loading from "./Loading";
 
 export function Activity({mode}) {
@@ -65,6 +65,6 @@ export function Activity({mode}) {
         </>
 
     );
-};
+}
 
 export default Activity;

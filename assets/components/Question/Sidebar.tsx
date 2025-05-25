@@ -1,6 +1,5 @@
 import React from 'react';
-import {ROUTES} from "../utils/routes";
-import {QuestionInterface} from "../types";
+import {ROUTES} from "../../utils/routes";
 
 function Sidebar(
     {
@@ -39,6 +38,6 @@ function Sidebar(
             </aside>
         </div>
     );
-};
+}
 
 export default Sidebar;

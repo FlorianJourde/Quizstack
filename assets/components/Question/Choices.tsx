@@ -1,33 +1,36 @@
-import React, {Dispatch, SetStateAction} from 'react';
-import {MarkdownRenderer} from "./MarkdownRenderer";
-import useRaysAnimation from "../hook/RaysAnimation";
-import {container, item} from "../motion/animations";
+import React from 'react';
+import {MarkdownRenderer} from "../Markdown/MarkdownRenderer";
+import useRaysAnimation from "../../hook/RaysAnimation";
+import {container, item} from "../../motion/animations";
 import {motion} from "motion/react";
-import {QuestionInterface} from "../types";
+import {QuestionInterface} from "../../types";
+
+type SetState<T> = React.Dispatch<React.SetStateAction<T>>;
 
 function Choices({mode, question, answers, setAnswers}: {
     mode: string;
     question: QuestionInterface;
     answers: number[];
-    setAnswers?: Dispatch<SetStateAction<number[]>>;
+    setAnswers?: SetState<number[]>;
 }) {
 
     useRaysAnimation(question, mode);
 
-    function handleAnswersChange(answerId) {
-        if (question.correctChoices) return;
-        if (!setAnswers) return;
+    function handleAnswersChange(answerId: number): void {
+        if (question.correctChoices || !setAnswers) {
+            return;
+        }
 
         setAnswers(prevSelected => {
             if (question.numberOfCorrectChoices === 1) {
                 return [answerId];
-            } else {
-                if (prevSelected.includes(answerId)) {
-                    return prevSelected.filter(id => id !== answerId);
-                } else {
-                    return [...prevSelected, answerId];
-                }
             }
+
+            const isCurrentlySelected = prevSelected.includes(answerId);
+
+            return isCurrentlySelected
+                ? prevSelected.filter(id => id !== answerId)
+                : [...prevSelected, answerId];
         });
     }
 

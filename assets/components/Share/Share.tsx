@@ -1,10 +1,10 @@
 import React, {useEffect, useRef, useState} from 'react';
-import QuestionContent from "./QuestionContent";
-import Choices from "./Choices";
-import {QuestionInterface} from "../types";
-import {getQuestion} from "../services/questionsApi";
-import Explanation from "./Explanation";
-import Banner from "./Banner";
+import QuestionContent from "../Question/QuestionContent";
+import Choices from "../Question/Choices";
+import {QuestionInterface} from "../../types";
+import {getQuestion} from "../../services/questionsApi";
+import Explanation from "../Question/Explanation";
+import Banner from "../Banner/Banner";
 import * as htmlToImage from 'html-to-image';
 
 export function Share({questionId, mode}) {

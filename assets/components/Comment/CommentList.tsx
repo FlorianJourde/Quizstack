@@ -3,7 +3,7 @@ import {addComment} from "../../services/commentsApi";
 import CommentItem from "./CommentItem";
 import {useAuth} from "../../context/AuthContext";
 import {ROUTES} from "../../utils/routes";
-import MarkdownInfos from "../MarkdownInfos";
+import MarkdownInfos from "../Markdown/MarkdownInfos";
 
 function CommentList({question, setQuestion}) {
     const [comment, setComment] = useState<string>('');
