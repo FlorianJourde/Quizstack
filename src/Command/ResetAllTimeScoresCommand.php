@@ -5,17 +5,17 @@ namespace App\Command;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
-use App\Repository\ScoresRepository;
+use App\Repository\ScoreRepository;
 
 class ResetAllTimeScoresCommand extends Command
 {
     protected static $defaultName = 'app:reset-all-time-scores';
-    private ScoresRepository $scoresRepository;
+    private ScoreRepository $scoreRepository;
 
-    public function __construct(ScoresRepository $scoresRepository)
+    public function __construct(ScoreRepository $scoreRepository)
     {
         parent::__construct();
-        $this->scoresRepository = $scoresRepository;
+        $this->scoreRepository = $scoreRepository;
     }
 
     protected function configure()
@@ -27,7 +27,7 @@ class ResetAllTimeScoresCommand extends Command
     {
         $output->writeln('Resetting all time users scores...');
 
-        $this->scoresRepository->resetAllTimeScores();
+        $this->scoreRepository->resetAllTimeScores();
 
         $output->writeln('All time scores flushed !');
 

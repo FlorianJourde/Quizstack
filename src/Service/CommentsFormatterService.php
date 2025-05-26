@@ -2,12 +2,12 @@
 
 namespace App\Service;
 
-use App\Repository\UsersRepository;
+use App\Repository\UserRepository;
 
 class CommentsFormatterService
 {
     public function __construct(
-        private UsersRepository $usersRepository
+        private UserRepository $userRepository
     )
     {
     }
@@ -17,7 +17,7 @@ class CommentsFormatterService
         $commentArray = [];
         foreach ($comments as $comment) {
             $userId = $comment->getUser();
-            $user = $userId ? $this->usersRepository->find($userId) : null;
+            $user = $userId ? $this->userRepository->find($userId) : null;
 
             $commentArray[] = [
                 'id' => $comment->getId(),

@@ -2,25 +2,25 @@
 
 namespace App\Service;
 
-use App\Entity\Questions;
-use App\Repository\ChoicesRepository;
-use App\Repository\QuestionsRepository;
-use App\Repository\UsersRepository;
+use App\Entity\Question;
+use App\Repository\ChoiceRepository;
+use App\Repository\QuestionRepository;
+use App\Repository\UserRepository;
 
 class QuestionFormatterService
 {
     public function __construct(
-        private UsersRepository     $usersRepository,
-        private ChoicesRepository   $choicesRepository,
-        private QuestionsRepository $questionsRepository
+        private UserRepository      $userRepository,
+        private ChoiceRepository    $choiceRepository,
+        private QuestionRepository $questionRepository
     )
     {
     }
 
-    public function formatQuestionData(Questions $question): array
+    public function formatQuestionData(Question $question): array
     {
         $choiceArray = [];
-        foreach ($question->getChoices() as $choice) {
+        foreach ($question->getChoice() as $choice) {
             $choiceArray[] = [
                 'id' => $choice->getId(),
                 'content' => $choice->getContent()
@@ -30,7 +30,7 @@ class QuestionFormatterService
         $commentArray = [];
         foreach ($question->getComments() as $comment) {
             $userId = $comment->getUser();
-            $user = $userId ? $this->usersRepository->find($userId) : null;
+            $user = $userId ? $this->userRepository->find($userId) : null;
 
             $commentArray[] = [
                 'id' => $comment->getId(),
@@ -56,7 +56,7 @@ class QuestionFormatterService
         }
 
         $numberOfCorrectChoices = count(
-            $this->choicesRepository->findCorrectAnswerIdsByQuestionId($question->getId())
+            $this->choiceRepository->findCorrectAnswerIdsByQuestionId($question->getId())
         );
 
         return [
@@ -66,7 +66,7 @@ class QuestionFormatterService
             'comments' => $commentArray,
             'content' => $question->getContent(),
             'difficulty' => $question->getDifficulty(),
-            'explanation' => $this->questionsRepository->findExplanationByQuestionId($question->getId()),
+            'explanation' => $this->questionRepository->findExplanationByQuestionId($question->getId()),
             'image' => $question->getImage(),
             'numberOfCorrectChoices' => $numberOfCorrectChoices
         ];

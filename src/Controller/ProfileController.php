@@ -2,7 +2,7 @@
 
 namespace App\Controller;
 
-use App\Entity\Users;
+use App\Entity\User;
 use App\Form\ChangePasswordFormType;
 use App\Form\ProfileFormType;
 use App\Service\FileUploaderService;
@@ -44,7 +44,7 @@ class ProfileController extends AbstractController
         FileUploaderService         $fileUploader
     ): Response
     {
-        /* @var Users $user */
+        /* @var User $user */
         $user = $security->getUser();
 
         if (!$user) {

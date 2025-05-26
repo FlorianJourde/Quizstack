@@ -9,6 +9,6 @@ function ProfilePicture({image}) {
         <img className={`aspect-square rounded-full w-12 xl:w-12 object-cover border-light-grey-secondary border-2`} src={imageSrc}
              alt="Profile picture"/>
     );
-};
+}
 
 export default ProfilePicture;

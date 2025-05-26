@@ -1,7 +1,7 @@
 <?php
 namespace App\EventListener;
 
-use App\Entity\Users;
+use App\Entity\User;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\Security\Http\Event\LoginSuccessEvent;
@@ -26,7 +26,7 @@ class AuthenticationSuccessListener implements EventSubscriberInterface
     {
         $user = $event->getUser();
 
-        if ($user instanceof Users) {
+        if ($user instanceof User) {
             $user->setLastAuthenticationDate(new \DateTimeImmutable());
             $this->entityManager->persist($user);
             $this->entityManager->flush();
