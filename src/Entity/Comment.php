@@ -2,13 +2,15 @@
 
 namespace App\Entity;
 
-use App\Repository\CommentsRepository;
-use App\Repository\QuestionsRepository;
+use App\Repository\CommentRepository;
+use App\Repository\QuestionRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\ORM\Mapping\Table;
 
-#[ORM\Entity(repositoryClass: CommentsRepository::class)]
-class Comments
+#[ORM\Entity(repositoryClass: CommentRepository::class)]
+#[Table(name: 'comments')]
+class Comment
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
@@ -17,11 +19,11 @@ class Comments
 
     #[ORM\ManyToOne(inversedBy: 'comments')]
     #[ORM\JoinColumn(nullable: false)]
-    private ?Users $user = null;
+    private ?User $user = null;
 
     #[ORM\ManyToOne(inversedBy: 'comments')]
     #[ORM\JoinColumn(nullable: false, onDelete: 'CASCADE')]
-    private ?Questions $question = null;
+    private ?Question $question = null;
 
     #[ORM\Column(type: Types::TEXT)]
     private ?string $content = null;
@@ -47,24 +49,24 @@ class Comments
         return $this;
     }
 
-    public function getUser(): ?Users
+    public function getUser(): ?User
     {
         return $this->user;
     }
 
-    public function setUser(?Users $user): static
+    public function setUser(?User $user): static
     {
         $this->user = $user;
 
         return $this;
     }
 
-    public function getQuestion(): ?Questions
+    public function getQuestion(): ?Question
     {
         return $this->question;
     }
 
-    public function setQuestion(?Questions $question): static
+    public function setQuestion(?Question $question): static
     {
         $this->question = $question;
 

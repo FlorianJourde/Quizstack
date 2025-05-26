@@ -2,31 +2,31 @@
 
 namespace App\DataFixtures;
 
-use App\Entity\Categories;
+use App\Entity\Category;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
 
-class CategoriesFixtures extends Fixture
+class CategoryFixtures extends Fixture
 {
     public function load(ObjectManager $manager): void
     {
-        $category = new Categories();
+        $category = new Category();
         $category->setName('HTML');
         $manager->persist($category);
 
-        $category = new Categories();
+        $category = new Category();
         $category->setName('CSS');
         $manager->persist($category);
 
-        $category = new Categories();
+        $category = new Category();
         $category->setName('PHP');
         $manager->persist($category);
 
-        $category = new Categories();
+        $category = new Category();
         $category->setName('JavaScript');
         $manager->persist($category);
 
-        $category = new Categories();
+        $category = new Category();
         $category->setName('SQL');
         $manager->persist($category);
 

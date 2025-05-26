@@ -2,13 +2,15 @@
 
 namespace App\Entity;
 
-use App\Repository\CategoriesRepository;
+use App\Repository\CategoryRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\ORM\Mapping\Table;
 
-#[ORM\Entity(repositoryClass: CategoriesRepository::class)]
-class Categories
+#[ORM\Entity(repositoryClass: CategoryRepository::class)]
+#[Table(name: 'categories')]
+class Category
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
@@ -22,9 +24,9 @@ class Categories
     private ?bool $status = false;
 
     /**
-     * @var Collection<int, Questions>
+     * @var Collection<int, Question>
      */
-    #[ORM\ManyToMany(targetEntity: Questions::class, mappedBy: 'categories')]
+    #[ORM\ManyToMany(targetEntity: Question::class, mappedBy: 'categories')]
     private Collection $questions;
 
     #[ORM\Column(length: 255, nullable: true)]
@@ -77,14 +79,14 @@ class Categories
     }
 
     /**
-     * @return Collection<int, Questions>
+     * @return Collection<int, Question>
      */
     public function getQuestions(): Collection
     {
         return $this->questions;
     }
 
-    public function addQuestion(Questions $question): static
+    public function addQuestion(Question $question): static
     {
         if (!$this->questions->contains($question)) {
             $this->questions->add($question);
@@ -94,7 +96,7 @@ class Categories
         return $this;
     }
 
-    public function removeQuestion(Questions $question): static
+    public function removeQuestion(Question $question): static
     {
         if ($this->questions->removeElement($question)) {
             $question->removeCategory($this);

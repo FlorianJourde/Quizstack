@@ -1,5 +1,5 @@
-{% if score.users.image is not null %}
-    {% set avatar = asset('/uploads/images/users/' ~ score.users.image) %}
+{% if score.user.image is not null %}
+    {% set avatar = asset('/uploads/images/users/' ~ score.user.image) %}
 {% else %}
     {% set avatar = asset('/images/logos/profile-picture.png') %}
 {% endif %}
@@ -16,7 +16,7 @@
     <img class="aspect-square rounded-full w-16 xl:w-20 object-cover border-light-grey-secondary border-2"
          alt="Profile picture" src="{{ avatar }}">
     <div class="flex flex-col">
-        <h3 class="small-title">{{ score.users.username }}</h3>
+        <h3 class="small-title">{{ score.user.username }}</h3>
         <div class="date-container flex gap-4  items-center">
             <p>{{ points }}</p>
         </div>

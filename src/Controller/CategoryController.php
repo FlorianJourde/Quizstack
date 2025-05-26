@@ -2,10 +2,10 @@
 
 namespace App\Controller;
 
-use App\Entity\Categories;
-use App\Form\CategoriesFormType;
+use App\Entity\Category;
+use App\Form\CategoryFormType;
 use App\Form\CategoryItemType;
-use App\Repository\CategoriesRepository;
+use App\Repository\CategoryRepository;
 use App\Service\CategoriesService;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -14,13 +14,13 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Http\Attribute\IsGranted;
 
-class CategoriesController extends AbstractController
+class CategoryController extends AbstractController
 {
     #[IsGranted('ROLE_ADMIN')]
     #[Route('/categories', name: 'categories')]
-    public function users(CategoriesRepository $categoriesRepository): Response
+    public function users(CategoryRepository $categoryRepository): Response
     {
-        $categories = $categoriesRepository->findCategoriesByOrder();
+        $categories = $categoryRepository->findCategoriesByOrder();
 
         return $this->render('categories/index.html.twig', [
             'categories' => $categories
@@ -30,14 +30,14 @@ class CategoriesController extends AbstractController
     #[IsGranted('ROLE_ADMIN')]
     #[Route('/categories/edit', name: 'categories_edit', methods: ['GET', 'POST'])]
     public function edit(
-        CategoriesRepository   $categoriesRepository,
+        CategoryRepository   $categoryRepository,
         Request                $request,
         EntityManagerInterface $entityManager
     ): Response
     {
-        $categories = $categoriesRepository->findCategoriesByOrder();
+        $categories = $categoryRepository->findCategoriesByOrder();
 
-        $newCategory = new Categories();
+        $newCategory = new Category();
         $newCategory->setStatus(true);
 
         $addForm = $this->createForm(CategoryItemType::class, $newCategory);
@@ -52,7 +52,7 @@ class CategoriesController extends AbstractController
         }
 
         $formData = ['categories' => $categories];
-        $editForm = $this->createForm(CategoriesFormType::class, $formData);
+        $editForm = $this->createForm(CategoryFormType::class, $formData);
         $editForm->handleRequest($request);
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {
@@ -85,7 +85,7 @@ class CategoriesController extends AbstractController
     #[Route('/category/{id}/delete', name: 'category_delete', methods: ['POST'])]
     public function delete(
         Request                $request,
-        Categories             $category,
+        Category             $category,
         EntityManagerInterface $entityManager
     ): Response
     {
@@ -102,7 +102,7 @@ class CategoriesController extends AbstractController
     #[IsGranted('ROLE_ADMIN')]
     #[Route('/category/{id}/toggle', name: 'category_toggle', methods: ['GET'])]
     public function toggle(
-        Categories             $category,
+        Category             $category,
         EntityManagerInterface $entityManager
     ): Response
     {
@@ -110,14 +110,14 @@ class CategoriesController extends AbstractController
         $entityManager->flush();
 
         $status = $category->getStatus() ? 'enabled' : 'disabled';
-        $this->addFlash('success', "Category '{$category->getName()}' has been {$status}.");
+        $this->addFlash('success', "Category '{$category->getName()}' has been $status.");
 
         return $this->redirectToRoute('categories_edit');
     }
 
     #[IsGranted('ROLE_ADMIN')]
     #[Route('/category/{id}/move-up', name: 'category_move_up')]
-    public function moveUp(Categories $category, EntityManagerInterface $entityManager, CategoriesService $categoriesService): Response
+    public function moveUp(Category $category, EntityManagerInterface $entityManager, CategoriesService $categoriesService): Response
     {
         $categoriesService->initializeCategoryPositions($entityManager);
         $currentPosition = $category->getPosition();
@@ -126,7 +126,7 @@ class CategoriesController extends AbstractController
             return $this->redirectToRoute('categories_edit');
         }
 
-        $previousCategory = $entityManager->getRepository(Categories::class)
+        $previousCategory = $entityManager->getRepository(Category::class)
             ->findOneBy(['position' => $currentPosition - 1]);
 
         if ($previousCategory) {
@@ -141,7 +141,7 @@ class CategoriesController extends AbstractController
 
     #[IsGranted('ROLE_ADMIN')]
     #[Route('/admin/category/{id}/move-down', name: 'category_move_down')]
-    public function moveDown(Categories $category, EntityManagerInterface $entityManager, CategoriesService $categoriesService): Response
+    public function moveDown(Category $category, EntityManagerInterface $entityManager, CategoriesService $categoriesService): Response
     {
         $categoriesService->initializeCategoryPositions($entityManager);
 
@@ -154,7 +154,7 @@ class CategoriesController extends AbstractController
             return $this->redirectToRoute('categories_edit');
         }
 
-        $nextCategory = $entityManager->getRepository(Categories::class)
+        $nextCategory = $entityManager->getRepository(Category::class)
             ->findOneBy(['position' => $currentPosition + 1]);
 
         if ($nextCategory) {

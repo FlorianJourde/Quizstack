@@ -7,7 +7,7 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\Routing\Annotation\Route;
 
 #[Route('/api', name: 'api_user_')]
-class UsersApiController extends AbstractController
+class UserApiController extends AbstractController
 {
     #[Route('/user/current', name: 'get', methods: ['GET'])]
     public function getCurrentUser(): JsonResponse

@@ -2,14 +2,14 @@
 
 namespace App\Form;
 
-use App\Entity\Choices;
+use App\Entity\Choice;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class ChoicesFormType extends AbstractType
+class ChoiceFormType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
@@ -37,7 +37,7 @@ class ChoicesFormType extends AbstractType
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
-            'data_class' => Choices::class,
+            'data_class' => Choice::class,
         ]);
     }
 }

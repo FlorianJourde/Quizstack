@@ -2,8 +2,8 @@
 
 namespace App\Form;
 
-use App\Entity\Categories;
-use App\Entity\Questions;
+use App\Entity\Category;
+use App\Entity\Question;
 use Doctrine\ORM\EntityRepository;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
@@ -17,7 +17,7 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints\File;
 
-class QuestionsFormType extends AbstractType
+class QuestionFormType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
@@ -54,14 +54,14 @@ class QuestionsFormType extends AbstractType
                 ],
             ])
             ->add('categories', EntityType::class, [
-                'class' => Categories::class,
+                'class' => Category::class,
                 'choice_label' => 'name',
                 'multiple' => true,
                 'expanded' => true,
-                'label' => 'Categories'
+                'label' => 'Category'
             ])
             ->add('choices', CollectionType::class, [
-                'entry_type' => ChoicesFormType::class,
+                'entry_type' => ChoiceFormType::class,
                 'entry_options' => [
                     'label' => false,
                     'attr' => [
@@ -111,7 +111,7 @@ class QuestionsFormType extends AbstractType
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
-            'data_class' => Questions::class,
+            'data_class' => Question::class,
             'is_editor' => false,
         ]);
     }

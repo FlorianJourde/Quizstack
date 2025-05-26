@@ -2,11 +2,11 @@
 
 namespace App\Controller\Api;
 
-use App\Entity\Comments;
-use App\Entity\Questions;
-use App\Entity\Users;
-use App\Repository\CommentsRepository;
-use App\Repository\QuestionsRepository;
+use App\Entity\Comment;
+use App\Entity\Question;
+use App\Entity\User;
+use App\Repository\CommentRepository;
+use App\Repository\QuestionRepository;
 use App\Service\CommentsFormatterService;
 use DateTimeImmutable;
 use Doctrine\ORM\EntityManagerInterface;
@@ -17,7 +17,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 
 #[Route('/api', name: 'api_comments_')]
-class CommentsApiController extends AbstractController
+class CommentApiController extends AbstractController
 {
     private DateTimeImmutable $currentDate;
     private $security;
@@ -30,10 +30,10 @@ class CommentsApiController extends AbstractController
 
     #[Route('/question/{id}/comment/add', name: 'add_comment', methods: ['POST'])]
     public function addComment(
-        QuestionsRepository    $questionsRepository,
+        QuestionRepository     $questionRepository,
         Request                $request,
         EntityManagerInterface $entityManager,
-        Questions              $question
+        Question $question
     ): JsonResponse
     {
         try {
@@ -45,14 +45,14 @@ class CommentsApiController extends AbstractController
 
             $commentText = $data['content'];
 
-            /* @var Users $user */
+            /* @var User $user */
             $user = $this->getUser();
 
             if (!$user) {
                 return $this->json(['error' => 'User not authenticated'], 401);
             }
 
-            $comment = new Comments();
+            $comment = new Comment();
             $comment->setContent($commentText);
             $comment->setUser($user);
             $comment->setCreationDate($this->currentDate);
@@ -81,10 +81,10 @@ class CommentsApiController extends AbstractController
     public function editComment(
         Request                $request,
         EntityManagerInterface $entityManager,
-        Comments               $comment
+        Comment $comment
     ): JsonResponse
     {
-        /* @var Users $user */
+        /* @var User $user */
         $user = $this->getUser();
         $isAuthor = $user && $comment->getUser()->getId() === $user->getId();
         $isAdmin = $this->security->isGranted('ROLE_ADMIN');
@@ -122,10 +122,10 @@ class CommentsApiController extends AbstractController
     #[Route('/comment/{id}/delete', name: 'delete_comment', methods: ['DELETE'])]
     public function deleteComment(
         EntityManagerInterface $entityManager,
-        Comments               $comment
+        Comment $comment
     ): JsonResponse
     {
-        /* @var Users $user */
+        /* @var User $user */
         $user = $this->getUser();
 
         $isAuthor = $user && $comment->getUser()->getId() === $user->getId();
@@ -148,11 +148,11 @@ class CommentsApiController extends AbstractController
 
     #[Route('/comments/last', name: 'get_last_comments', methods: ['GET'])]
     public function getLastComments(
-        CommentsRepository       $commentsRepository,
+        CommentRepository        $commentRepository,
         CommentsFormatterService $formatterService
     ): JsonResponse
     {
-        $comments = $commentsRepository->getLastComments();
+        $comments = $commentRepository->getLastComments();
         $commentsData = $formatterService->formatCommentsData($comments);
 
         return $this->json($commentsData);

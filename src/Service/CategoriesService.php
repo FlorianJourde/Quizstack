@@ -2,7 +2,7 @@
 
 namespace App\Service;
 
-use App\Entity\Categories;
+use App\Entity\Category;
 use Doctrine\ORM\EntityManagerInterface;
 
 class CategoriesService
@@ -11,7 +11,7 @@ class CategoriesService
     public function initializeCategoryPositions(EntityManagerInterface $entityManager)
     {
 
-        $categories = $entityManager->getRepository(Categories::class)
+        $categories = $entityManager->getRepository(Category::class)
             ->findBy([], ['id' => 'ASC']);
 
         $needsInitialization = false;

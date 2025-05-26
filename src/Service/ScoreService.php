@@ -2,12 +2,12 @@
 
 namespace App\Service;
 
-use App\Entity\Users;
+use App\Entity\User;
 use InvalidArgumentException;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Doctrine\ORM\EntityManagerInterface;
 
-class ScoresService
+class ScoreService
 {
     private EntityManagerInterface $entityManager;
 
@@ -18,16 +18,16 @@ class ScoresService
 
     public function setScores(UserInterface $user, int $difficulty): void
     {
-        if (!$user instanceof Users) {
+        if (!$user instanceof User) {
             throw new InvalidArgumentException('Invalid user !');
         }
 
-        $scores = $user->getScores();
+        $score = $user->getScore();
         $points = $difficulty;
 
-        $scores->setWeek($scores->getWeek() + $points);
-        $scores->setMonth($scores->getMonth() + $points);
-        $scores->setAllTime($scores->getAllTime() + $points);
+        $score->setWeek($score->getWeek() + $points);
+        $score->setMonth($score->getMonth() + $points);
+        $score->setAllTime($score->getAllTime() + $points);
 
         $this->entityManager->flush();
     }

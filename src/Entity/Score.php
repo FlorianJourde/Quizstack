@@ -2,11 +2,13 @@
 
 namespace App\Entity;
 
-use App\Repository\ScoresRepository;
+use App\Repository\ScoreRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\ORM\Mapping\Table;
 
-#[ORM\Entity(repositoryClass: ScoresRepository::class)]
-class Scores
+#[ORM\Entity(repositoryClass: ScoreRepository::class)]
+#[Table(name: 'scores')]
+class Score
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
@@ -22,9 +24,9 @@ class Scores
     #[ORM\Column(nullable: true)]
     private ?int $all_time = null;
 
-    #[ORM\OneToOne(inversedBy: 'scores', cascade: ['persist', 'remove'])]
+    #[ORM\OneToOne(inversedBy: 'score', cascade: ['persist', 'remove'])]
     #[ORM\JoinColumn(nullable: false)]
-    private ?Users $users = null;
+    private ?User $user = null;
 
     public function getId(): ?int
     {
@@ -74,14 +76,14 @@ class Scores
         return $this;
     }
 
-    public function getUsers(): ?Users
+    public function getUser(): ?User
     {
-        return $this->users;
+        return $this->user;
     }
 
-    public function setUsers(Users $users): static
+    public function setUser(User $user): static
     {
-        $this->users = $users;
+        $this->user = $user;
 
         return $this;
     }

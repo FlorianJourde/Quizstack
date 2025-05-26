@@ -2,19 +2,19 @@
 
 namespace App\Controller\Api;
 
-use App\Entity\Questions;
-use App\Repository\ChoicesRepository;
+use App\Entity\Question;
+use App\Repository\ChoiceRepository;
 use App\Service\QuestionFinderService;
 use App\Service\QuestionFormatterService;
 use App\Service\QuestionLimitService;
-use App\Service\ScoresService;
+use App\Service\ScoreService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\Routing\Annotation\Route;
 
 #[Route('/api', name: 'api_question_')]
-class QuestionsApiController extends AbstractController
+class QuestionApiController extends AbstractController
 {
     #[Route('/question', name: 'get_random_question', methods: ['GET'])]
     public function getRandomQuestion(
@@ -49,12 +49,12 @@ class QuestionsApiController extends AbstractController
     #[Route('/question/{id}', name: 'get_question', methods: ['GET'])]
     public function getQuestion(
         QuestionFormatterService $formatterService,
-        ChoicesRepository        $choicesRepository,
-        Questions                $question
+        ChoiceRepository         $choiceRepository,
+        Question $question
     ): JsonResponse
     {
         $questionData = $formatterService->formatQuestionData($question);
-        $correctChoices = $choicesRepository->findCorrectAnswerIdsByQuestionId($question->getId());
+        $correctChoices = $choiceRepository->findCorrectAnswerIdsByQuestionId($question->getId());
         $questionData['correctChoices'] = $correctChoices;
 
         return $this->json($questionData);
@@ -62,10 +62,10 @@ class QuestionsApiController extends AbstractController
 
     #[Route('/question/{id}/check', name: 'check_answers', methods: ['POST'])]
     public function checkAnswers(
-        ScoresService     $scoresService,
-        ChoicesRepository $choicesRepository,
-        Request           $request,
-        Questions         $question
+        ScoreService     $scoreService,
+        ChoiceRepository $choiceRepository,
+        Request          $request,
+        Question         $question
     ): JsonResponse
     {
         $data = json_decode($request->getContent(), true);
@@ -76,13 +76,13 @@ class QuestionsApiController extends AbstractController
             return $this->json(['error' => 'No answer provided'], 400);
         }
 
-        $correctChoices = $choicesRepository->findCorrectAnswerIdsByQuestionId($question->getId());
+        $correctChoices = $choiceRepository->findCorrectAnswerIdsByQuestionId($question->getId());
         $diff1 = array_diff($correctChoices, $answers);
         $diff2 = array_diff($answers, $correctChoices);
         $match = (empty($diff1) && empty($diff2));
 
         if ($user && $match) {
-            $scoresService->setScores($user, $question->getDifficulty());
+            $scoreService->setScores($user, $question->getDifficulty());
         }
 
         return $this->json([

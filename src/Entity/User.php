@@ -2,9 +2,10 @@
 
 namespace App\Entity;
 
+use Doctrine\ORM\Mapping\Table;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Validator\Constraints as Assert;
-use App\Repository\UsersRepository;
+use App\Repository\UserRepository;
 use DateTimeImmutable;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
@@ -12,10 +13,11 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
 
-#[ORM\Entity(repositoryClass: UsersRepository::class)]
+#[ORM\Entity(repositoryClass: UserRepository::class)]
 #[ORM\UniqueConstraint(name: 'UNIQ_IDENTIFIER_EMAIL', fields: ['email'])]
 #[UniqueEntity(fields: ['username'], message: 'This username is already taken.')]
-class Users implements UserInterface, PasswordAuthenticatedUserInterface
+#[Table(name: 'users')]
+class User implements UserInterface, PasswordAuthenticatedUserInterface
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
@@ -51,19 +53,19 @@ class Users implements UserInterface, PasswordAuthenticatedUserInterface
     private ?DateTimeImmutable $last_authentication_date = null;
 
     /**
-     * @var Collection<int, Comments>
+     * @var Collection<int, Comment>
      */
-    #[ORM\OneToMany(targetEntity: Comments::class, mappedBy: 'user')]
+    #[ORM\OneToMany(targetEntity: Comment::class, mappedBy: 'user')]
     private Collection $comments;
 
     /**
-     * @var Collection<int, Questions>
+     * @var Collection<int, Question>
      */
-    #[ORM\OneToMany(targetEntity: Questions::class, mappedBy: 'user')]
+    #[ORM\OneToMany(targetEntity: Question::class, mappedBy: 'user')]
     private Collection $questions;
 
-    #[ORM\OneToOne(mappedBy: 'users', cascade: ['persist', 'remove'])]
-    private ?Scores $scores = null;
+    #[ORM\OneToOne(mappedBy: 'user', cascade: ['persist', 'remove'])]
+    private ?Score $score = null;
 
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $image = null;
@@ -73,12 +75,12 @@ class Users implements UserInterface, PasswordAuthenticatedUserInterface
         $this->inscription_date = new DateTimeImmutable();
         $this->last_authentication_date = new DateTimeImmutable();
 
-        $this->scores = new Scores();
+        $this->score = new Score();
 
-        $this->scores->setWeek(0);
-        $this->scores->setMonth(0);
-        $this->scores->setAllTime(0);
-        $this->scores->setUsers($this);
+        $this->score->setWeek(0);
+        $this->score->setMonth(0);
+        $this->score->setAllTime(0);
+        $this->score->setUser($this);
     }
 
     public function getId(): ?int
@@ -184,14 +186,14 @@ class Users implements UserInterface, PasswordAuthenticatedUserInterface
     }
 
     /**
-     * @return Collection<int, Comments>
+     * @return Collection<int, Comment>
      */
     public function getComments(): Collection
     {
         return $this->comments;
     }
 
-    public function addComment(Comments $comment): static
+    public function addComment(Comment $comment): static
     {
         if (!$this->comments->contains($comment)) {
             $this->comments->add($comment);
@@ -201,7 +203,7 @@ class Users implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
-    public function removeComment(Comments $comment): static
+    public function removeComment(Comment $comment): static
     {
         if ($this->comments->removeElement($comment)) {
             // set the owning side to null (unless already changed)
@@ -214,14 +216,14 @@ class Users implements UserInterface, PasswordAuthenticatedUserInterface
     }
 
     /**
-     * @return Collection<int, Questions>
+     * @return Collection<int, Question>
      */
     public function getQuestions(): Collection
     {
         return $this->questions;
     }
 
-    public function addQuestion(Questions $question): static
+    public function addQuestion(Question $question): static
     {
         if (!$this->questions->contains($question)) {
             $this->questions->add($question);
@@ -231,7 +233,7 @@ class Users implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
-    public function removeQuestion(Questions $question): static
+    public function removeQuestion(Question $question): static
     {
         if ($this->questions->removeElement($question)) {
             // set the owning side to null (unless already changed)
@@ -243,19 +245,19 @@ class Users implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
-    public function getScores(): ?Scores
+    public function getScore(): ?Score
     {
-        return $this->scores;
+        return $this->score;
     }
 
-    public function setScores(Scores $scores): static
+    public function setScore(Score $score): static
     {
         // set the owning side of the relation if necessary
-        if ($scores->getUsers() !== $this) {
-            $scores->setUsers($this);
+        if ($score->getUser() !== $this) {
+            $score->setUser($this);
         }
 
-        $this->scores = $scores;
+        $this->score = $score;
 
         return $this;
     }

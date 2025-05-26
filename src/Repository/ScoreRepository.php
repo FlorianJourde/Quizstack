@@ -2,18 +2,18 @@
 
 namespace App\Repository;
 
-use App\Entity\Scores;
+use App\Entity\Score;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
- * @extends ServiceEntityRepository<Scores>
+ * @extends ServiceEntityRepository<Score>
  */
-class ScoresRepository extends ServiceEntityRepository
+class ScoreRepository extends ServiceEntityRepository
 {
     public function __construct(ManagerRegistry $registry)
     {
-        parent::__construct($registry, Scores::class);
+        parent::__construct($registry, Score::class);
     }
 
     public function findScoreWithLimit(int $limit, string $period = 'all_time', array $excludedUsernames = ['Anonymous']): ?array
@@ -25,7 +25,7 @@ class ScoresRepository extends ServiceEntityRepository
         };
 
         $queryBuilder = $this->createQueryBuilder('s')
-            ->leftJoin('s.users', 'u')
+            ->leftJoin('s.user', 'u')
             ->addSelect('u')
             ->orderBy($orderField, 'DESC')
             ->setMaxResults($limit);

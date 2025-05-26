@@ -3,7 +3,7 @@
 namespace App\Utils;
 
 use Doctrine\Persistence\ObjectManager;
-use App\Entity\Categories;
+use App\Entity\Category;
 
 class CategoryHelper
 {
@@ -16,7 +16,7 @@ class CategoryHelper
 
     public function getCategoryByName($name)
     {
-        return $this->manager->getRepository(Categories::class)->findOneBy(['name' => $name]);
+        return $this->manager->getRepository(Category::class)->findOneBy(['name' => $name]);
     }
 
     public function getCategoriesByNames(array $names)

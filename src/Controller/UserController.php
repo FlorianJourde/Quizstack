@@ -2,9 +2,9 @@
 
 namespace App\Controller;
 
-use App\Entity\Users;
-use App\Form\UsersFormType;
-use App\Repository\UsersRepository;
+use App\Entity\User;
+use App\Form\UserFormType;
+use App\Repository\UserRepository;
 use App\Service\FileUploaderService;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -14,28 +14,28 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Http\Attribute\IsGranted;
 
 #[IsGranted('ROLE_ADMIN')]
-class UsersController extends AbstractController
+class UserController extends AbstractController
 {
     #[Route('/users', name: 'users')]
     public function users(
         Request         $request,
-        UsersRepository $usersRepository
+        UserRepository $userRepository
     ): Response
     {
         $offset = max(0, $request->query->getInt('offset', 0));
-        $paginator = $usersRepository->getUserPaginator($offset);
+        $paginator = $userRepository->getUserPaginator($offset);
 
         return $this->render('users/index.html.twig', [
             'users' => $paginator,
-            'previous' => $offset - UsersRepository::USERS_PER_PAGE,
-            'next' => min(count($paginator), $offset + UsersRepository::USERS_PER_PAGE),
+            'previous' => $offset - UserRepository::USERS_PER_PAGE,
+            'next' => min(count($paginator), $offset + UserRepository::USERS_PER_PAGE),
         ]);
     }
 
     #[Route('/user/{id}', name: 'user', requirements: ['id' => '\d+'])]
-    public function user(int $id, UsersRepository $usersRepository): Response
+    public function user(int $id, UserRepository $userRepository): Response
     {
-        $user = $usersRepository->find($id);
+        $user = $userRepository->find($id);
 
         if (!$user) {
             throw $this->createNotFoundException('User not found.');
@@ -49,36 +49,36 @@ class UsersController extends AbstractController
     #[Route('/user/{id}/edit', name: 'user_edit', requirements: ['id' => '\d+'])]
     public function edit(
         int                    $id,
-        UsersRepository        $usersRepository,
+        UserRepository         $userRepository,
         Request                $request,
         EntityManagerInterface $entityManager,
         FileUploaderService    $fileUploader
     ): Response
     {
-        /* @var Users $user */
-        $user = $usersRepository->find($id);
+        /* @var User $user */
+        $user = $userRepository->find($id);
 
         if (!$user) {
             throw $this->createNotFoundException('User not found.');
         }
 
-        $form = $this->createForm(UsersFormType::class, $user);
+        $form = $this->createForm(UserFormType::class, $user);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
             if ($form->get('delete')->isClicked()) {
                 if ($this->getUser() && $this->getUser()->getId() === $user->getId()) {
                     $this->addFlash('error', 'You cannot delete your own account.');
-                    return $this->redirectToRoute('users');
+                    return $this->redirectToRoute('user');
                 }
 
                 if ($user->getImage()) {
-                    $fileUploader->delete($user->getImage(), 'users');
+                    $fileUploader->delete($user->getImage(), 'user');
                 }
 
-                $anonymousUser = $usersRepository->findOneBy(['username' => 'Anonymous']);
+                $anonymousUser = $userRepository->findOneBy(['username' => 'Anonymous']);
                 if (!$anonymousUser) {
-                    $anonymousUser = new Users();
+                    $anonymousUser = new User();
                     $anonymousUser->setUsername('Anonymous');
                     $anonymousUser->setEmail('anonymous@email.com');
                     $anonymousUser->setPassword('!');

@@ -2,16 +2,18 @@
 
 namespace App\Entity;
 
-use App\Repository\QuestionsRepository;
+use App\Repository\QuestionRepository;
 use DateTimeImmutable;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\ORM\Mapping\Table;
 use Symfony\Component\Validator\Constraints\Count;
 
-#[ORM\Entity(repositoryClass: QuestionsRepository::class)]
-class Questions
+#[ORM\Entity(repositoryClass: QuestionRepository::class)]
+#[Table(name: 'questions')]
+class Question
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
@@ -34,25 +36,26 @@ class Questions
     private ?bool $status = false;
 
     /**
-     * @var Collection<int, Choices>
+     * @var Collection<int, Choice>
      */
     #[Count(max: 6, maxMessage: "You cannot specify more than {{ limit }} choices")]
-    #[ORM\OneToMany(targetEntity: Choices::class, mappedBy: 'question', cascade: ['persist', 'remove'], orphanRemoval: true)]
+    #[ORM\OneToMany(targetEntity: Choice::class, mappedBy: 'question', cascade: ['persist', 'remove'], orphanRemoval: true)]
     private Collection $choices;
 
     /**
-     * @var Collection<int, Comments>
+     * @var Collection<int, Comment>
      */
-    #[ORM\OneToMany(targetEntity: Comments::class, mappedBy: 'question', cascade: ['persist', 'remove'])]
+    #[ORM\OneToMany(targetEntity: Comment::class, mappedBy: 'question', cascade: ['persist', 'remove'])]
     private Collection $comments;
 
     #[ORM\Column]
     private ?int $difficulty = null;
 
     /**
-     * @var Collection<int, Categories>
+     * @var Collection<int, Category>
      */
-    #[ORM\ManyToMany(targetEntity: Categories::class, inversedBy: 'questions')]
+    #[ORM\ManyToMany(targetEntity: Category::class, inversedBy: 'questions')]
+    #[ORM\JoinTable(name: 'questions_categories')]
     private Collection $categories;
 
     #[ORM\Column(type: Types::TEXT, nullable: true)]
@@ -60,7 +63,7 @@ class Questions
 
     #[ORM\ManyToOne(inversedBy: 'questions')]
     #[ORM\JoinColumn(nullable: false)]
-    private ?Users $user = null;
+    private ?User $user = null;
 
     public function __construct()
     {
@@ -142,14 +145,14 @@ class Questions
     }
 
     /**
-     * @return Collection<int, Choices>
+     * @return Collection<int, Choice>
      */
-    public function getChoices(): Collection
+    public function getChoice(): Collection
     {
         return $this->choices;
     }
 
-    public function addChoice(Choices $choice): static
+    public function addChoice(Choice $choice): static
     {
         if (!$this->choices->contains($choice)) {
             $this->choices->add($choice);
@@ -159,7 +162,7 @@ class Questions
         return $this;
     }
 
-    public function removeChoice(Choices $choice): static
+    public function removeChoice(Choice $choice): static
     {
         if ($this->choices->removeElement($choice)) {
             // set the owning side to null (unless already changed)
@@ -173,14 +176,14 @@ class Questions
 
 
     /**
-     * @return Collection<int, Comments>
+     * @return Collection<int, Comment>
      */
     public function getComments(): Collection
     {
         return $this->comments;
     }
 
-    public function addComment(Comments $comment): static
+    public function addComment(Comment $comment): static
     {
         if (!$this->comments->contains($comment)) {
             $this->comments->add($comment);
@@ -190,7 +193,7 @@ class Questions
         return $this;
     }
 
-    public function removeComment(Comments $comment): static
+    public function removeComment(Comment $comment): static
     {
         if ($this->comments->removeElement($comment)) {
             // set the owning side to null (unless already changed)
@@ -215,14 +218,14 @@ class Questions
     }
 
     /**
-     * @return Collection<int, Categories>
+     * @return Collection<int, Category>
      */
     public function getCategories(): Collection
     {
         return $this->categories;
     }
 
-    public function addCategory(Categories $category): static
+    public function addCategory(Category $category): static
     {
         if (!$this->categories->contains($category)) {
             $this->categories->add($category);
@@ -231,7 +234,7 @@ class Questions
         return $this;
     }
 
-    public function removeCategory(Categories $category): static
+    public function removeCategory(Category $category): static
     {
         $this->categories->removeElement($category);
 
@@ -250,12 +253,12 @@ class Questions
         return $this;
     }
 
-    public function getUser(): ?Users
+    public function getUser(): ?User
     {
         return $this->user;
     }
 
-    public function setUser(?Users $user): static
+    public function setUser(?User $user): static
     {
         $this->user = $user;
 

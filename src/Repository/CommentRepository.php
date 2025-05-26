@@ -2,23 +2,23 @@
 
 namespace App\Repository;
 
-use App\Entity\Comments;
-use App\Entity\Users;
+use App\Entity\Comment;
+use App\Entity\User;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\ORM\Query;
 use Doctrine\ORM\Tools\Pagination\Paginator;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
- * @extends ServiceEntityRepository<Comments>
+ * @extends ServiceEntityRepository<Comment>
  */
-class CommentsRepository extends ServiceEntityRepository
+class CommentRepository extends ServiceEntityRepository
 {
     public const COMMENTS_PER_PAGE = 50;
 
     public function __construct(ManagerRegistry $registry)
     {
-        parent::__construct($registry, Comments::class);
+        parent::__construct($registry, Comment::class);
     }
 
     public function findCommentsByQuestionId(int $questionId): ?array
@@ -31,7 +31,7 @@ class CommentsRepository extends ServiceEntityRepository
             ->getResult();
     }
 
-    public function findCommentsByUserId(Users $user): ?Query
+    public function findCommentsByUserId(User $user): ?Query
     {
         return $this->createQueryBuilder('c')
             ->where('c.user = :userId')
@@ -40,7 +40,7 @@ class CommentsRepository extends ServiceEntityRepository
             ->getQuery();
     }
 
-    public function getCommentPaginator(Users $user, int $offset): Paginator
+    public function getCommentPaginator(User $user, int $offset): Paginator
     {
         $query = $this->createQueryBuilder('c')
             ->andWhere('c.user = :user')

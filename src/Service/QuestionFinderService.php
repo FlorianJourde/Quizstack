@@ -2,19 +2,19 @@
 
 namespace App\Service;
 
-use App\Entity\Questions;
-use App\Repository\QuestionsRepository;
+use App\Entity\Question;
+use App\Repository\QuestionRepository;
 
 class QuestionFinderService
 {
     public function __construct(
-        private QuestionsRepository $questionsRepository
+        private QuestionRepository $questionRepository
     )
     {
     }
 
-    public function findRandomQuestion(?string $difficultyLevel, array $categories): ?Questions
+    public function findRandomQuestion(?string $difficultyLevel, array $categories): ?Question
     {
-        return $this->questionsRepository->findRandomQuestionByFilters($difficultyLevel, $categories);
+        return $this->questionRepository->findRandomQuestionByFilters($difficultyLevel, $categories);
     }
 }

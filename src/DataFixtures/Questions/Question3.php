@@ -2,9 +2,9 @@
 
 namespace App\DataFixtures\Questions;
 
-use App\Entity\Choices;
-use App\Entity\Questions;
-use App\Entity\Users;
+use App\Entity\Choice;
+use App\Entity\Question;
+use App\Entity\User;
 use App\Utils\CategoryHelper;
 use Doctrine\Persistence\ObjectManager;
 
@@ -12,7 +12,7 @@ class Question3
 {
     public function createQuestionWithChoices(ObjectManager $manager, \DateTimeImmutable $date, CategoryHelper $categories)
     {
-        $question = new Questions();
+        $question = new Question();
         $question->setContent(
             <<<'EOT'
             What will be logged in the console when executing the following JavaScript snippet ?
@@ -36,12 +36,12 @@ class Question3
             $question->addCategory($category);
         }
 
-        $user = $manager->getRepository(Users::class)->findOneBy(['username' => 'User']);
+        $user = $manager->getRepository(User::class)->findOneBy(['username' => 'User']);
         $question->setUser($user);
 
         $manager->persist($question);
 
-        $choice1 = new Choices();
+        $choice1 = new Choice();
         $choice1->setQuestion($question);
         $choice1->setContent(
             <<<'EOT'
@@ -51,7 +51,7 @@ class Question3
         $choice1->setCorrect(false);
         $manager->persist($choice1);
 
-        $choice2 = new Choices();
+        $choice2 = new Choice();
         $choice2->setQuestion($question);
         $choice2->setContent(
             <<<'EOT'
@@ -61,7 +61,7 @@ class Question3
         $choice2->setCorrect(true);
         $manager->persist($choice2);
 
-        $choice3 = new Choices();
+        $choice3 = new Choice();
         $choice3->setQuestion($question);
         $choice3->setContent(
             <<<'EOT'

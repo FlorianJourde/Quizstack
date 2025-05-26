@@ -2,21 +2,23 @@
 
 namespace App\Entity;
 
-use App\Repository\ChoicesRepository;
+use App\Repository\ChoiceRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\ORM\Mapping\Table;
 
-#[ORM\Entity(repositoryClass: ChoicesRepository::class)]
-class Choices
+#[ORM\Entity(repositoryClass: ChoiceRepository::class)]
+#[Table(name: 'choices')]
+class Choice
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\ManyToOne(targetEntity: Questions::class, inversedBy: 'choices')]
+    #[ORM\ManyToOne(targetEntity: Question::class, inversedBy: 'choices')]
     #[ORM\JoinColumn(nullable: false, onDelete: 'CASCADE')]
-    private ?Questions $question = null;
+    private ?Question $question = null;
 
     #[ORM\Column(type: Types::TEXT)]
     private ?string $content = null;
@@ -36,12 +38,12 @@ class Choices
         return $this;
     }
 
-    public function getQuestion(): ?Questions
+    public function getQuestion(): ?Question
     {
         return $this->question;
     }
 
-    public function setQuestion(?Questions $question): static
+    public function setQuestion(?Question $question): static
     {
         $this->question = $question;
 

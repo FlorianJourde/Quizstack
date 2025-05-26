@@ -2,10 +2,10 @@
 
 namespace App\Controller;
 
-use App\Entity\Questions;
-use App\Entity\Users;
-use App\Form\QuestionsFormType;
-use App\Repository\QuestionsRepository;
+use App\Entity\Question;
+use App\Entity\User;
+use App\Form\QuestionFormType;
+use App\Repository\QuestionRepository;
 use App\Service\FileUploaderService;
 use DateTimeImmutable;
 use Doctrine\ORM\EntityManagerInterface;
@@ -16,7 +16,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Component\Security\Http\Attribute\IsGranted;
 
-class QuestionsController extends AbstractController
+class QuestionController extends AbstractController
 {
     private DateTimeImmutable $currentDate;
 
@@ -28,46 +28,46 @@ class QuestionsController extends AbstractController
     #[IsGranted('ROLE_USER')]
     #[Route('/questions', name: 'questions')]
     public function questions(
-        Security            $security,
-        Request             $request,
-        QuestionsRepository $commentsRepository
+        Security           $security,
+        Request            $request,
+        QuestionRepository $commentRepository
     ): Response
     {
-        /* @var Users $user */
+        /* @var User $user */
         $user = $security->getUser();
 
         $offset = max(0, $request->query->getInt('offset', 0));
 
         if ($security->isGranted('ROLE_EDITOR')) {
-            $paginator = $commentsRepository->getQuestionsPaginator($offset);
+            $paginator = $commentRepository->getQuestionsPaginator($offset);
         } else {
-            $paginator = $commentsRepository->getQuestionsByUserIdPaginator($user, $offset);
+            $paginator = $commentRepository->getQuestionsByUserIdPaginator($user, $offset);
         }
 
         return $this->render('questions/index.html.twig', [
             'questions' => $paginator,
-            'previous' => $offset - QuestionsRepository::QUESTIONS_PER_PAGE,
-            'next' => min(count($paginator), $offset + QuestionsRepository::QUESTIONS_PER_PAGE),
+            'previous' => $offset - QuestionRepository::QUESTIONS_PER_PAGE,
+            'next' => min(count($paginator), $offset + QuestionRepository::QUESTIONS_PER_PAGE),
         ]);
     }
 
     #[Route('/question/{id}', name: 'question', requirements: ['id' => '\d+'])]
     public function question(
-        int                 $id,
-        QuestionsRepository $questionsRepository,
-        Security            $security
+        int                $id,
+        QuestionRepository $questionRepository,
+        Security           $security
     ): Response
     {
         $isEditor = $security->isGranted('ROLE_EDITOR');
-        /* @var Questions $question */
-        $question = $questionsRepository->find($id);
+        /* @var Question $question */
+        $question = $questionRepository->find($id);
 
         if (!$question) {
             throw $this->createNotFoundException('No question found !');
         }
 
-        $previousQuestion = $questionsRepository->findPreviousQuestion($question);
-        $nextQuestion = $questionsRepository->findNextQuestion($question);
+        $previousQuestion = $questionRepository->findPreviousQuestion($question);
+        $nextQuestion = $questionRepository->findNextQuestion($question);
 
         return $this->render('questions/question.html.twig', [
             'question' => $question,
@@ -78,16 +78,17 @@ class QuestionsController extends AbstractController
             'nextQuestion' => $nextQuestion
         ]);
     }
+
     #[IsGranted('ROLE_ADMIN')]
     #[Route('/question/{id}/share', name: 'question_share', requirements: ['id' => '\d+'])]
     public function questionShare(
-        int                 $id,
-        QuestionsRepository $questionsRepository,
-        Security            $security
+        int                $id,
+        QuestionRepository $questionRepository,
+        Security           $security
     ): Response
     {
-        /* @var Questions $question */
-        $question = $questionsRepository->find($id);
+        /* @var Question $question */
+        $question = $questionRepository->find($id);
 
         if (!$question) {
             throw $this->createNotFoundException('No question found !');
@@ -104,7 +105,7 @@ class QuestionsController extends AbstractController
     #[Route('/question/{id}/edit', name: 'question_edit', requirements: ['id' => '\d+'])]
     public function edit(
         Request                $request,
-        Questions              $question,
+        Question               $question,
         EntityManagerInterface $entityManager,
         Security               $security,
         FileUploaderService    $fileUploader
@@ -125,7 +126,7 @@ class QuestionsController extends AbstractController
 
         $isEditor = $security->isGranted('ROLE_EDITOR');
 
-        $form = $this->createForm(QuestionsFormType::class, $question, [
+        $form = $this->createForm(QuestionFormType::class, $question, [
             'is_editor' => $isEditor,
         ]);
         $form->handleRequest($request);
@@ -180,11 +181,11 @@ class QuestionsController extends AbstractController
         FileUploaderService    $fileUploader
     ): Response
     {
-        $question = new Questions();
+        $question = new Question();
         $question->setUser($security->getUser());
         $isEditor = $security->isGranted('ROLE_EDITOR');
 
-        $form = $this->createForm(QuestionsFormType::class, $question, [
+        $form = $this->createForm(QuestionFormType::class, $question, [
             'is_editor' => $isEditor,
         ]);
         $form->handleRequest($request);

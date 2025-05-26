@@ -5,17 +5,17 @@ namespace App\Command;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
-use App\Repository\ScoresRepository;
+use App\Repository\ScoreRepository;
 
 class ResetMonthlyScoresCommand extends Command
 {
     protected static $defaultName = 'app:reset-monthly-scores';
-    private ScoresRepository $scoresRepository;
+    private ScoreRepository $scoreRepository;
 
-    public function __construct(ScoresRepository $scoresRepository)
+    public function __construct(ScoreRepository $scoreRepository)
     {
         parent::__construct();
-        $this->scoresRepository = $scoresRepository;
+        $this->scoreRepository = $scoreRepository;
     }
 
     protected function configure()
@@ -27,7 +27,7 @@ class ResetMonthlyScoresCommand extends Command
     {
         $output->writeln('Resetting monthly users scores...');
 
-        $this->scoresRepository->resetMonthlyScores();
+        $this->scoreRepository->resetMonthlyScores();
 
         $output->writeln('Monthly scores flushed !');
 
