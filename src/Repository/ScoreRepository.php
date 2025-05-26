@@ -25,7 +25,7 @@ class ScoreRepository extends ServiceEntityRepository
         };
 
         $queryBuilder = $this->createQueryBuilder('s')
-            ->leftJoin('s.users', 'u')
+            ->leftJoin('s.user', 'u')
             ->addSelect('u')
             ->orderBy($orderField, 'DESC')
             ->setMaxResults($limit);
