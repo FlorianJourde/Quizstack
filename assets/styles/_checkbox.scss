@@ -23,8 +23,15 @@ body #demo-container {
   }
 }
 
+#share-container {
+  .question-bottom-container {
+    margin-top: unset;
+  }
+}
+
 #share-container .show-answers,
 #quiz-container[data-mode="display"] {
+//#demo-container {
   .checkbox-group {
     .checkbox-input {
       &.correct + .checkbox-tile:before {
@@ -37,11 +44,18 @@ body #demo-container {
   }
 }
 
-#share-container {
-  .question-bottom-container {
-    margin-top: unset;
-  }
-}
+//#demo-container {
+//  .checkbox-group {
+//    .checkbox-input {
+//      &.correct + .checkbox-tile:before {
+//        background-image: var(--background-checkbox);
+//        background-color: theme('colors.white-primary');
+//        background-size: 70%;
+//        //box-shadow: inset 0px 0px 0px 3px theme('colors.grey-primary');
+//      }
+//    }
+//  }
+//}
 
 .checkbox-group {
   display: flex;
@@ -78,7 +92,8 @@ body #demo-container {
       }
     }
 
-    &:checked {
+    &:checked,
+    &.checked {
       + .checkbox-tile {
         box-shadow: 0 0 0 2px #ffffff80;
 

@@ -65,7 +65,8 @@ function Choices({mode, question, answers, setAnswers}: {
                                 value={choice.id}
                                 checked={answers.includes(choice.id)}
                                 onChange={() => handleAnswersChange(choice.id)}
-                                className={`checkbox-input ${getAnswerStatus(choice.id)}`}
+                                // className={`checkbox-input ${getAnswerStatus(choice.id)} ${answers.includes(choice.id) ? 'checked' : ''}`}
+                                className={`checkbox-input ${getAnswerStatus(choice.id)} ${answers.includes(choice.id) ? 'checked' : ''}`}
                             />
                             <span className="checkbox-tile box">
                                 <span className="checkbox-label">
