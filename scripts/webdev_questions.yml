@@ -1,0 +1,166 @@
+- question: |
+    What happens when you use the spaceship operator (`<=>`) in PHP 8 with `null` values ?
+  explanation: |
+    The spaceship operator returns -1, 0, or 1 when comparing two operands. In PHP, `null <=> value` returns -1 if `value` is not null, and 0 if both are null.
+  difficulty: 2
+  category: PHP
+  answers:
+    - answer_content: `null <=> 5` returns -1
+      correct_answer: true
+    - answer_content: `5 <=> null` returns 1
+      correct_answer: true
+    - answer_content: `null <=> null` returns 0
+      correct_answer: true
+    - answer_content: `null <=> 5` throws a TypeError
+      correct_answer: false
+
+- question: |
+    Which of the following statements about Composer's `autoload` feature is false ?
+  explanation: |
+    Composer's `autoload` maps namespaces to file paths using PSR-4 or PSR-0. Class names must match folder structures. It does not scan files automatically.
+  difficulty: 1
+  category: Composer
+  answers:
+    - answer_content: You must run `composer dump-autoload` after changing autoload mappings
+      correct_answer: true
+    - answer_content: Autoload uses PSR-4 or PSR-0 standards
+      correct_answer: true
+    - answer_content: Composer automatically scans all PHP files recursively
+      correct_answer: false
+    - answer_content: Autoload requires a properly configured `composer.json`
+      correct_answer: true
+
+- question: |
+    What does the `bindValue()` method do in PDO ?
+  explanation: |
+    `bindValue()` binds a value to a parameter in a prepared statement, using a copy of the value. It's useful for immediate binding before execution.
+  difficulty: 1
+  category: PDO
+  answers:
+    - answer_content: Binds a variable by reference to a parameter
+      correct_answer: false
+    - answer_content: Binds a copy of a value to a parameter
+      correct_answer: true
+    - answer_content: Executes a statement immediately
+      correct_answer: false
+    - answer_content: Requires using `PDO::PARAM_BIND`
+      correct_answer: false
+
+- question: |
+    What is a use case for PHP Traits in OOP ?
+  explanation: |
+    Traits are used to share methods between multiple classes without requiring inheritance. They help overcome PHP's lack of multiple inheritance.
+  difficulty: 2
+  category: OOP
+  answers:
+    - answer_content: Allow classes to inherit multiple parent classes
+      correct_answer: false
+    - answer_content: Allow code reuse across unrelated classes
+      correct_answer: true
+    - answer_content: Replace interfaces in PHP
+      correct_answer: false
+    - answer_content: Encapsulate methods for reuse
+      correct_answer: true
+
+- question: |
+    What is the role of `Kernel.php` in a Laravel application ?
+  explanation: |
+    The `Kernel.php` file handles HTTP requests and CLI commands, registering middleware and bootstrapping the app lifecycle.
+  difficulty: 2
+  category: Laravel
+  answers:
+    - answer_content: Defines application routes
+      correct_answer: false
+    - answer_content: Registers and manages middleware
+      correct_answer: true
+    - answer_content: Handles CLI commands in `artisan`
+      correct_answer: true
+    - answer_content: Manages database connections
+      correct_answer: false
+
+- question: |
+    What does the `wp_nonce_field()` function do in WordPress ?
+  explanation: |
+    It generates a hidden input field with a nonce to protect forms against CSRF attacks. The nonce can be verified with `check_admin_referer()`.
+  difficulty: 2
+  category: WordPress
+  answers:
+    - answer_content: It stores post metadata
+      correct_answer: false
+    - answer_content: It adds a CSRF protection field to forms
+      correct_answer: true
+    - answer_content: It displays a form field in the admin editor
+      correct_answer: false
+    - answer_content: It verifies that the user is logged in
+      correct_answer: false
+
+- question: |
+    What is the difference between a Cookie and a Session in PHP ?
+  explanation: |
+    Cookies are stored client-side and manually set/read. Sessions store data server-side with a session ID passed via a cookie.
+  difficulty: 1
+  category: Sessions
+  answers:
+    - answer_content: Cookies store data on the server
+      correct_answer: false
+    - answer_content: Sessions store data on the server
+      correct_answer: true
+    - answer_content: Cookies are encrypted by default
+      correct_answer: false
+    - answer_content: Sessions use a cookie to track the session ID
+      correct_answer: true
+
+- question: |
+    In Symfony, what does `@Route("/path", name="example")` do ?
+  explanation: |
+    The `@Route` annotation maps a URL to a controller method. `name` assigns a route name for referencing in templates or redirects.
+  difficulty: 2
+  category: Symfony
+  answers:
+    - answer_content: Maps a URL path to a controller method
+      correct_answer: true
+    - answer_content: Declares a Doctrine entity
+      correct_answer: false
+    - answer_content: Assigns a route name for reuse
+      correct_answer: true
+    - answer_content: Specifies the controller’s namespace
+      correct_answer: false
+
+- question: |
+    What will the following code output in PHP 8 ?
+    
+    ```php
+    match (8.0) {
+      8 => 'int',
+      8.0 => 'float',
+    };
+    ```
+  explanation: |
+    The `match` expression in PHP 8 uses strict comparison. Since 8.0 is a float, it matches `'float'`. `8` (int) would not match.
+  difficulty: 3
+  category: PHP 8
+  answers:
+    - answer_content: Throws a `MatchError`
+      correct_answer: false
+    - answer_content: Returns 'int'
+      correct_answer: false
+    - answer_content: Returns 'float'
+      correct_answer: true
+    - answer_content: Returns both 'int' and 'float'
+      correct_answer: false
+
+- question: |
+    What is the effect of declaring `namespace App\Controller;` in a PHP file ?
+  explanation: |
+    It defines the namespace for the file. All declared classes/functions/constants are scoped under it unless otherwise specified.
+  difficulty: 1
+  category: Namespaces
+  answers:
+    - answer_content: Allows the file to access all classes in `App\Controller`
+      correct_answer: false
+    - answer_content: Declares that the following code belongs to the `App\Controller` namespace
+      correct_answer: true
+    - answer_content: Automatically imports all PHP classes in the folder
+      correct_answer: false
+    - answer_content: Sets the file's default visibility
+      correct_answer: false
