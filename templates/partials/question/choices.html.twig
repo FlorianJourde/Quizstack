@@ -2,10 +2,10 @@
     <div class="w-full flex flex-col">
         <h2 class="small-title">
             <span class="material-icons">list</span>
-            {{ form.choices.vars.label }}
+            {{ form.choice.vars.label }}
         </h2>
-        <ul class="choices-list" data-max-choices="{{ form.choices.vars.attr['data-max-choices'] }}">
-            {% for choice in form.choices %}
+        <ul class="choices-list" data-max-choices="{{ form.choice.vars.attr['data-max-choices'] }}">
+            {% for choice in form.choice %}
                 <li class="choice-item flex flex-col mb-8 relative">
                     {{ form_row(choice) }}
                     <button type="button"
@@ -16,8 +16,8 @@
             {% endfor %}
         </ul>
         <ul class="choices-collection flex flex-col w-full"
-            data-index="{{ form.choices|length > 0 ? form.choices|last.vars.name + 1 : 0 }}"
-            data-prototype="{{ form_widget(form.choices.vars.prototype)|e('html_attr') }}"
+            data-index="{{ form.choice|length > 0 ? form.choice|last.vars.name + 1 : 0 }}"
+            data-prototype="{{ form_widget(form.choice.vars.prototype)|e('html_attr') }}"
         ></ul>
         <button type="button" class="add_item_link button button-primary self-start"
                 data-collection-holder-class="choices-collection">

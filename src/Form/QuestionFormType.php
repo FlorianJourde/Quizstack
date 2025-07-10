@@ -60,7 +60,7 @@ class QuestionFormType extends AbstractType
                 'expanded' => true,
                 'label' => 'Category'
             ])
-            ->add('choices', CollectionType::class, [
+            ->add('choice', CollectionType::class, [
                 'entry_type' => ChoiceFormType::class,
                 'entry_options' => [
                     'label' => false,
