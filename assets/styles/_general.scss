@@ -645,7 +645,6 @@ div[style*="background: rgb(39, 40, 34);"] {
   &.md-14 {
     font-size: 14px;
   }
-
 }
 
 .material-icons.md-48 {
@@ -809,6 +808,21 @@ div[style*="background: rgb(39, 40, 34);"] {
       min-height: 150px;
     }
   }
+}
+
+.code-editor
+//.code-wrapper
+{
+  //font-family: 'Courier New', monospace;
+  //font-family: var(--font-secondary);
+  //font-size: 14px;
+  //line-height: 1.4;
+  //tab-size: 4;
+  //white-space: pre;
+  //overflow-wrap: normal;
+  //overflow-x: auto;
+  font-family: var(--font-secondary) !important;
+  font-size: 0.875rem !important;
 }
 
 .table {

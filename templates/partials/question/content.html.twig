@@ -1,7 +1,24 @@
 <div>
-    <h2 class="small-title">
-        <span class="material-icons">description</span>
-        {{ form.content.vars.label }}
+    <h2 class="small-title items-center justify-between">
+        <div class="flex items-center">
+            <span class="material-icons">description</span>
+            {{ form.content.vars.label }}
+        </div>
+        <div class="markdown-infos-container text-sm relative group">
+            <button class="flex items-center opacity-50 hover:opacity-100 transition-opacity">
+                <img alt="Markdown logo" class="h-4 mr-2"
+                     src="/images/logos/markdown-logo.png">Markdown infos
+            </button>
+            <ul class="markdown-info box bg-very-dark-grey-primary rounded-radius-secondary absolute right-0 top-spacing-secondary z-10 p-4 min-w-max shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible group-hover:top-spacing-primary transition-all duration-500">
+                <li><p><code>` ... `</code><span class="muted ml-2">Inline code</span></p></li>
+                <li><p><code>```javascript ... ```</code><span class="muted ml-2">Code block</span></p></li>
+                <li><p><code>* ... *</code><span class="muted ml-2">Italic</span></p></li>
+                <li><p><code>** ... **</code><span class="muted ml-2">Bold</span></p></li>
+                <li><p><code>[ ... ](https://url.com)</code><span class="muted ml-2">Link</span></p></li>
+                <li><p><code>- ...</code><span class="muted ml-2">Unordered list</span></p></li>
+                <li><p><code>1. ...</code><span class="muted ml-2">Ordered list</span></p></li>
+            </ul>
+        </div>
     </h2>
     {{ form_widget(form.content) }}
 </div>

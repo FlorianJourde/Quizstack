@@ -23,10 +23,16 @@ class QuestionFormType extends AbstractType
     {
         $builder
             ->add('content', TextareaType::class, [
-                'label' => 'Content'
+                'label' => 'Content',
+                'attr' => [
+                    'class' => 'code-editor',
+                ]
             ])
             ->add('explanation', TextareaType::class, [
-                'label' => 'Explanation'
+                'label' => 'Explanation',
+                'attr' => [
+                    'class' => 'code-editor',
+                ]
             ])
             ->add('difficulty', ChoiceType::class, [
                 'choices' => [

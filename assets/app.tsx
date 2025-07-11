@@ -12,6 +12,7 @@ import './scripts/question-form'
 import './scripts/question-autocomplete'
 import './scripts/menu'
 import './scripts/accordion'
+import './scripts/textarea'
 import './scripts/appear-on-scroll'
 import StacksSlider from "./components/Sections/StacksSlider";
 import Share from "./components/Share/Share";
