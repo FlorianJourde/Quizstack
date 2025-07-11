@@ -19,7 +19,7 @@ class ChoiceFormType extends AbstractType
                 'attr' => [
                     'placeholder' => 'New choice',
                     'rows' => 2,
-                    'class' => 'pb-12'
+                    'class' => 'pb-12 code-editor'
                 ],
                 'row_attr' => [
                     'class' => 'w-full'

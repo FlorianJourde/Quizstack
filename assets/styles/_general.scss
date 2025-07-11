@@ -645,7 +645,6 @@ div[style*="background: rgb(39, 40, 34);"] {
   &.md-14 {
     font-size: 14px;
   }
-
 }
 
 .material-icons.md-48 {
@@ -811,6 +810,11 @@ div[style*="background: rgb(39, 40, 34);"] {
   }
 }
 
+.code-editor {
+  font-family: var(--font-secondary) !important;
+  font-size: 0.875rem !important;
+}
+
 .table {
   width: 100%;
   overflow: hidden;
@@ -820,7 +824,6 @@ div[style*="background: rgb(39, 40, 34);"] {
   .buttons-container {
     flex-wrap: unset;
     justify-content: center;
-
   }
 
   thead {

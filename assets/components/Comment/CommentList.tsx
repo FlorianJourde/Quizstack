@@ -81,7 +81,7 @@ function CommentList({question, setQuestion}) {
                     <form onSubmit={handleSubmit}>
                         <div className="form-group w-full">
                             <textarea
-                                className="form"
+                                className="form code-editor"
                                 value={comment}
                                 onChange={(e) => setComment(e.target.value)}
                                 placeholder="Your comment..."
