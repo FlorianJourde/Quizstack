@@ -20,6 +20,7 @@ function parseSimpleYaml(yamlContent: string): QuestionData {
     let answers: Answer[] = [];
     let currentAnswer: Partial<Answer> = {};
     let inAnswers: boolean = false;
+    let inAnswerMultiline: boolean = false;
 
     for (let i = 0; i < lines.length; i++) {
         let line: string = lines[i];
@@ -72,13 +73,21 @@ function parseSimpleYaml(yamlContent: string): QuestionData {
             }
 
             currentAnswer = {};
-            currentAnswer.answer_content = line.replace(/^\s+-\s+answer_content:\s*/, '');
+
+            if (line.includes('|')) {
+                inAnswerMultiline = true;
+                currentAnswer.answer_content = '';
+            } else {
+                inAnswerMultiline = false;
+                currentAnswer.answer_content = line.replace(/^\s+-\s+answer_content:\s*/, '');
+            }
             continue;
         }
 
         if (inAnswers && line.match(/^\s+correct_answer:/)) {
             const value: string = line.replace(/^\s+correct_answer:\s*/, '');
             currentAnswer.correct_answer = value === 'true';
+            inAnswerMultiline = false;
             continue;
         }
 
@@ -87,11 +96,21 @@ function parseSimpleYaml(yamlContent: string): QuestionData {
             continue;
         }
 
+        if (inAnswerMultiline && line.match(/^\s{6,}/)) {
+            const content: string = line.replace(/^\s{6}/, '');
+            currentAnswer.answer_content += (currentAnswer.answer_content ? '\n' : '') + content;
+            continue;
+        }
+
         if (inMultilineValue && !line.match(/^\s{4,}/)) {
             inMultilineValue = false;
             if (currentKey && !inAnswers) {
                 (question as any)[currentKey] = currentValue.trim();
             }
+        }
+
+        if (inAnswerMultiline && !line.match(/^\s{6,}/)) {
+            inAnswerMultiline = false;
         }
     }
 
@@ -104,6 +123,24 @@ function parseSimpleYaml(yamlContent: string): QuestionData {
 
     question.answers = answers;
     return question;
+}
+
+function cleanIndentation(text: string, tabsToRemove: number = 2): string {
+    if (!text) return text;
+
+    return text.split('\n').map(function (line: string): string {
+        let cleanedLine: string = line;
+        for (let i = 0; i < tabsToRemove; i++) {
+            if (cleanedLine.startsWith('\t')) {
+                cleanedLine = cleanedLine.substring(1);
+            } else if (cleanedLine.startsWith('  ')) {
+                cleanedLine = cleanedLine.substring(2);
+            } else {
+                break;
+            }
+        }
+        return cleanedLine;
+    }).join('\n');
 }
 
 function addChoicesToForm(numberOfChoices: number): boolean {
@@ -219,7 +256,8 @@ function injectIntoForm(questionData: QuestionData): boolean {
             questionData.answers.forEach(function (answer: Answer, index: number): void {
                 const choiceContentField: HTMLTextAreaElement | null = document.querySelector(`#question_form_choice_${index}_content`) as HTMLTextAreaElement;
                 if (choiceContentField && answer.answer_content) {
-                    choiceContentField.value = answer.answer_content;
+                    const cleanedContent: string = cleanIndentation(answer.answer_content, 2);
+                    choiceContentField.value = cleanedContent;
                 }
 
                 const choiceCorrectField: HTMLInputElement | null = document.querySelector(`#question_form_choice_${index}_correct`) as HTMLInputElement;
