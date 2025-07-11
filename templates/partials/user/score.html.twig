@@ -1,0 +1,26 @@
+<div>
+    <h2 class="small-title">
+        <span class="material-icons">emoji_events</span>
+        Score
+    </h2>
+    <ul>
+        <li>
+            <p class="flex">
+                <span class="material-icons mr-2 opacity-75">calendar_view_week</span>
+                {{ user.score.week }} points
+            </p>
+        </li>
+        <li>
+            <p class="flex">
+                <span class="material-icons mr-2 opacity-75">calendar_view_month</span>
+                {{ user.score.month }} points
+            </p>
+        </li>
+        <li>
+            <p class="flex">
+                <span class="material-icons mr-2 opacity-75">all_inclusive</span>
+                {{ user.score.allTime }} points
+            </p>
+        </li>
+    </ul>
+</div>

@@ -17,16 +17,17 @@
 
         </div>
 
-        <div class="yaml-injector-container">
-            <div style="margin-bottom: 15px;">
-                <label for="yamlFileInput" style="display: block; margin-bottom: 5px; font-weight: bold;">Select YAML File:</label>
-                <input type="file" id="yamlFileInput" accept=".yml,.yaml" style="margin-bottom: 10px;">
-                <button id="loadFileButton" class="inject-button" style="margin-left: 10px;">Load & Inject</button>
-            </div>
+        {#        <div class="yaml-injector-container"> #}
+        {#            <div> #}
+        {#                <label for="yamlFileInput">Select YAML File</label> #}
+        {#                <input type="file" id="yamlFileInput" accept=".yml,.yaml"> #}
+        {#                <button id="loadFileButton" class="inject-button">Load & Inject</button> #}
+        {#            </div> #}
 
-            <div id="errorMessage" class="error-message"></div>
-            <div id="successMessage" class="success-message"></div>
-        </div>
+        {#            <div id="errorMessage" class="error-message"></div> #}
+        {#            <div id="successMessage" class="success-message"></div> #}
+        {#        </div> #}
+
 
     </div>
 
@@ -34,6 +35,8 @@
 
         <div class="form-container glass box bg-dark-grey-secondary">
 
+
+            {{ include('partials/form/autocomplete.html.twig') }}
             {{ include('partials/form/errors.html.twig') }}
 
             {{ form_start(form) }}

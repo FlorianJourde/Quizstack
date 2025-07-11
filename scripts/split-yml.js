@@ -4,7 +4,7 @@ const path = require('path');
 const inputFile = process.argv[2];
 
 if (!inputFile) {
-    console.error('Merci de fournir un fichier YAML en argument.\nExemple : node split-yml.js questions.yml');
+    console.error('YAML must be given.\nExemple : node split-yml.js questions.yml');
     process.exit(1);
 }
 
@@ -25,11 +25,11 @@ try {
         const fullBlock = `- question:${blockContent}`;
         const outputPath = path.join(outputDir, `question_${index + 1}.yml`);
         fs.writeFileSync(outputPath, fullBlock.trimStart(), 'utf8');
-        console.log(`Fichier écrit : question_${index + 1}.yml`);
+        console.log(`File created : question_${index + 1}.yml`);
     });
 
-    console.log(`\nTerminé ! ${rawBlocks.length} fichier(s) exporté(s) dans ${outputDir}`);
+    console.log(`\nSuccess ! ${rawBlocks.length} files(s) exported(s) in ${outputDir}`);
 } catch (err) {
-    console.error('Erreur de traitement du fichier :', err.message);
+    console.error('Error during file treatment :', err.message);
     process.exit(1);
 }
