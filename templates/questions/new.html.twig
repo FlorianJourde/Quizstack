@@ -14,29 +14,13 @@
                     <span class="material-icons">arrow_back</span>
                 </a>
             </div>
-
         </div>
-
-        {#        <div class="yaml-injector-container"> #}
-        {#            <div> #}
-        {#                <label for="yamlFileInput">Select YAML File</label> #}
-        {#                <input type="file" id="yamlFileInput" accept=".yml,.yaml"> #}
-        {#                <button id="loadFileButton" class="inject-button">Load & Inject</button> #}
-        {#            </div> #}
-
-        {#            <div id="errorMessage" class="error-message"></div> #}
-        {#            <div id="successMessage" class="success-message"></div> #}
-        {#        </div> #}
-
-
     </div>
 
     <div class="wrapper">
-
         <div class="form-container glass box bg-dark-grey-secondary">
 
-
-            {{ include('partials/form/autocomplete.html.twig') }}
+            {{ include('partials/question/autocomplete.html.twig') }}
             {{ include('partials/form/errors.html.twig') }}
 
             {{ form_start(form) }}
@@ -60,4 +44,5 @@
 
         </div>
     </div>
+
 {% endblock %}
