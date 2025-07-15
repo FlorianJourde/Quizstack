@@ -13,5 +13,6 @@
 
   &.visible {
     opacity: 1;
+    pointer-events: unset;
   }
 }
