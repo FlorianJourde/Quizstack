@@ -15,17 +15,20 @@
     <meta property="og:type" content="website">
     <title>{% block title %}Quizstack{% endblock %}</title>
     <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}"/>
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "Organization",
-      "name": "Quizstack",
-      "url": "{{ absolute_url('/') }}",
-      "logo": "{{ absolute_url(asset('favicon.png')) }}"
-    }
-
-    </script>
-{#    <script src="https://unpkg.com/lenis@1.3.4/dist/lenis.min.js"></script>#}
+    {% block page_schema %}
+        <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "Organization",
+            "name": "Quizstack",
+            "url": "{{ absolute_url('/') }}",
+            "logo": "{{ absolute_url(asset('favicon.png')) }}",
+            "description": "Free web development quiz platform for HTML, CSS, JavaScript, PHP, SQL",
+            "sameAs": ["https://github.com/FlorianJourde/Quizstack"]
+        }
+        </script>
+    {% endblock %}
+    {#    <script src="https://unpkg.com/lenis@1.3.4/dist/lenis.min.js"></script> #}
     <link rel="canonical" href="{{ absolute_url(app.request.pathInfo) }}">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>

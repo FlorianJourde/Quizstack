@@ -1,0 +1,15 @@
+User-agent: *
+Allow: /
+Sitemap: https://quizstack.io/sitemap.xml
+
+Disallow: /admin/
+Disallow: /api/
+Disallow: /login
+Disallow: /register
+Disallow: /reset-password
+Disallow: /email-sent
+Disallow: /logout
+Disallow: /user/
+
+Disallow: /filters?*
+Allow: /filters$

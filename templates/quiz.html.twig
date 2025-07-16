@@ -1,6 +1,34 @@
 {% extends 'layout.html.twig' %}
 
-{% set title = 'Web development quiz' %}
+{% block page_schema %}
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Quiz",
+        "name": "Web Development Quiz",
+        "description": "Interactive quiz for HTML, CSS, JavaScript, PHP, SQL",
+        "url": "{{ absolute_url(app.request.uri) }}",
+        "isAccessibleForFree": true,
+        "inLanguage": "en",
+        "educationalLevel": ["Beginner", "Intermediate", "Advanced"],
+        "learningResourceType": "Quiz",
+        "about": [
+            {"@type": "Thing", "name": "HTML"},
+            {"@type": "Thing", "name": "CSS"},
+            {"@type": "Thing", "name": "JavaScript"},
+            {"@type": "Thing", "name": "PHP"},
+            {"@type": "Thing", "name": "SQL"}
+        ],
+        "provider": {
+            "@type": "Organization",
+            "name": "Quizstack",
+            "url": "{{ absolute_url('/') }}"
+        }
+    }
+    </script>
+{% endblock %}
+
+{% set title = 'Play web development quiz games' %}
 
 {% block meta_description %}Test your web development knowledge with interactive quiz covering frontend, backend, and modern web stacks{% endblock %}
 
@@ -8,7 +36,11 @@
 
     {{ include('partials/banner.html.twig') }}
 
+    {#    <div id="filters-section" class="page-header-container"> #}
+    {#    </div> #}
+
     <div class="wrapper">
+        <h1 class="sr-only">Play web development quiz games</h1>
         <div id="quiz-container" data-mode="{{ mode }}"></div>
     </div>
 

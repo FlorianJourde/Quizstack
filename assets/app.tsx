@@ -6,7 +6,6 @@ import Demo from "./components/Demo/Demo";
 import Activity from "./components/Sections/Activity";
 import './styles/app.css';
 import './scripts/filters'
-// import './scripts/lenis'
 import './scripts/switches'
 import './scripts/question-form'
 import './scripts/question-autocomplete'

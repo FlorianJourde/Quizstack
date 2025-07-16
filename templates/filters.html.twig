@@ -7,7 +7,17 @@
 {% block body %}
 
     {{ include('partials/banner.html.twig') }}
-    {{ include('partials/filters.html.twig', _context) }}
+
+
+    <div class="wrapper">
+        <div id="filters-section" class="page-header-container">
+            <h1 class="big-title grow">Filters</h1>
+        </div>
+
+        {{ include('partials/filters.html.twig', _context) }}
+
+    </div>
+
     {{ include('partials/promotional/promotional-1.html.twig', _context) }}
 
 {% endblock %}

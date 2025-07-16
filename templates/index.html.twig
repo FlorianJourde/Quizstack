@@ -52,29 +52,35 @@
         <ul class="grid grid-cols-1 max-w-[800px] lg:max-w-full mx-auto lg:grid-cols-3 gap-spacing-primary">
             <li class="card card-pink box glass flex flex-col items-start justify-start">
                 <span class="material-icons max-w-[40px] overflow-hidden p-2 text-white-primary mb-4 flex items-center justify-center aspect-square rounded-radius-secondary">question_mark</span>
-                <h2 class="text-2xl items-center flex font-bold mb-2">
+                <h3 class="text-2xl items-center flex font-bold mb-2">
                     1k+ questions
-                </h2>
+                </h3>
                 <p>Comprehensive quiz library for all skill levels</p>
             </li>
             <li class="card card-green box glass flex flex-col items-start justify-start">
                 <span class="material-icons max-w-[40px] overflow-hidden p-2 text-white-primary mb-4 flex items-center justify-center aspect-square rounded-radius-secondary">category</span>
-                <h2 class="text-2xl items-center flex font-bold mb-2">
+                <h3 class="text-2xl items-center flex font-bold mb-2">
                     12 thematics
-                </h2>
+                </h3>
                 <p>From HTML basics to advanced web security</p>
             </li>
             <li class="card card-blue box glass flex flex-col items-start justify-start">
                 <span class="material-icons max-w-[40px] overflow-hidden p-2 text-white-primary mb-4 flex items-center justify-center aspect-square rounded-radius-secondary">group</span>
-                <h2 class="text-2xl items-center flex font-bold mb-2">
+                <h3 class="text-2xl items-center flex font-bold mb-2">
                     100+ users
-                </h2>
+                </h3>
                 <p>Join developers improving through daily practice</p>
             </li>
         </ul>
     </div>
 
-    {{ include('partials/filters.html.twig', _context) }}
+    <div class="wrapper">
+        <div id="filters-section" class="page-header-container">
+            <h2 class="big-title grow">Filters</h2>
+        </div>
+        {{ include('partials/filters.html.twig', _context) }}
+    </div>
+
     {{ include('partials/promotional/promotional-1.html.twig', _context) }}
 
     <div id="stacks-slider-container" class="pb-spacing-large-primary"></div>

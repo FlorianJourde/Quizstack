@@ -1,6 +1,9 @@
-{% extends 'base.html.twig' %}
+{% extends 'layout.html.twig' %}
 
-{% block title %}Reset your password{% endblock %}
+{#{% block title %}Reset your password{% endblock %}#}
+{% set title = 'Reset your password' %}
+
+{% block meta_description %}Password reset email sent to your inbox. Follow the link to reset your Quizstack password and continue your web development learning journey{% endblock %}
 
 {% block body %}
 

@@ -1,5 +1,13 @@
 <IfModule mod_rewrite.c>
     RewriteEngine On
+
+    RewriteCond %{HTTP_HOST} ^www\.quizstack\.io$ [NC]
+    RewriteRule ^(.*)$ https://quizstack.io/$1 [R=301,L]
+
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteRule ^(.*)$ index.php [QSA,L]
 </IfModule>
+
+<Files "robots.txt">
+    Require all granted
+</Files>
