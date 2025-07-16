@@ -11,5 +11,5 @@ Disallow: /email-sent
 Disallow: /logout
 Disallow: /user/
 
-Disallow: /filters?*
-Allow: /filters$
+Disallow: /web-development-quiz?*
+Allow: /web-development-quiz$
