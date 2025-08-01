@@ -2,10 +2,8 @@
     <hr class="mb-spacing-large-secondary"/>
     <div class="wrapper">
         <div class="footer-container gap-spacing-large-secondary flex flex-col w-full">
-
             <div class="footer-top-container flex flex-col sm:flex-row items-stretch gap-spacing-large-secondary justify-between w-full">
                 <div class="flex flex-row sm:flex-col items-center sm:items-start gap-spacing-primary">
-
                     <div class="site-identity-container grow">
                         <a href="{{ path('app_home') }}" class="flex gap-4 items-center">
                             <img src="{{ asset('images/logos/quizstack-logo.png') }}" alt="Quizstack logo"
@@ -18,12 +16,11 @@
                             </div>
                         </a>
                     </div>
-
                     <div class="networks-container flex gap-spacing-primary">
-                        <a href="https://www.instagram.com/quizstackapp/" target="_blank">
-                            <img src="{{ asset('images/logos/instagram-logo.png') }}" alt="Instagram logo"
-                                 class="h-5 button object-contain button-tertiary rounded-none">
-                        </a>
+{#                        <a href="https://www.instagram.com/quizstackapp/" target="_blank">#}
+{#                            <img src="{{ asset('images/logos/instagram-logo.png') }}" alt="Instagram logo"#}
+{#                                 class="h-5 button object-contain button-tertiary rounded-none">#}
+{#                        </a>#}
                         <a href="https://x.com/quizstackapp" target="_blank">
                             <img src="{{ asset('images/logos/x-logo.png') }}" alt="X logo"
                                  class="h-5 button object-contain button-tertiary rounded-none">
@@ -34,7 +31,6 @@
                         </a>
                     </div>
                 </div>
-
                 <nav class=" grid grid-cols-2 gap-spacing-primary">
                     <div class="links-container flex flex-col gap-spacing-secondary">
                         <h2 class="text-sm">Pages</h2>
@@ -44,7 +40,6 @@
 
                         </ul>
                     </div>
-
                     <div class="links-container flex flex-col gap-spacing-secondary">
                         <h2 class="text-sm">Legals</h2>
                         <ul class="flex flex-col gap-spacing-secondary">
@@ -71,15 +66,11 @@
                             </li>
                         </ul>
                     </div>
-
                 </nav>
-
             </div>
-
             <div class="footer-bottom-container flex justify-center">
                 <p class="muted">© {{ "now"|date("Y") }} Quizstack</p>
             </div>
-
         </div>
     </div>
 </footer>
