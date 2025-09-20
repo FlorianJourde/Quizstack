@@ -1,9 +1,10 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import {MarkdownRenderer} from "../Markdown/MarkdownRenderer";
 import useRaysAnimation from "../../hook/RaysAnimation";
 import {container, item} from "../../motion/animations";
 import {motion} from "motion/react";
 import {QuestionInterface} from "../../types";
+import shuffle from "../../scripts/shuffle";
 
 type SetState<T> = React.Dispatch<React.SetStateAction<T>>;
 
@@ -13,6 +14,8 @@ function Choices({mode, question, answers, setAnswers}: {
     answers: number[];
     setAnswers?: SetState<number[]>;
 }) {
+
+    const [shuffledChoices, setShuffledChoices] = useState(() => shuffle(question.choices));
 
     useRaysAnimation(question, mode);
 
@@ -52,7 +55,7 @@ function Choices({mode, question, answers, setAnswers}: {
             initial="hidden"
             animate="visible"
             className={`choices-container flex flex-col gap-spacing-primary ${question.numberOfCorrectChoices > 1 && 'multiple-choices'}`}>
-            {question.choices.map((choice, index) => (
+            {shuffledChoices.map((choice, index) => (
                 <motion.li
                     variants={item}
                     key={`choice-${choice.id}`} className={`choice-option glass`}>
