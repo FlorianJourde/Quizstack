@@ -14,7 +14,7 @@ function StacksSlider() {
                 simulateTouch={false}
                 touchStartPreventDefault={true}
                 autoplay={{
-                    delay: 0,
+                    delay: 100,
                     disableOnInteraction: false,
                     pauseOnMouseEnter: false,
                     stopOnLastSlide: false,

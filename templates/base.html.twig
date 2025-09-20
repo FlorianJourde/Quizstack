@@ -2,58 +2,65 @@
 <html lang="en" dir="ltr">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="theme-color" content="#0f0f0f"/>
-    <meta name="description"
-          content="{% block meta_description %}Quizstack is a free web development quiz platform to learn HTML, CSS, JavaScript, PHP, SQL and more coding skills on any device. Test our challenges now !{% endblock %}">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <meta name="theme-color" content="#0f0f0f">
+    <title>{% block title %}Quizstack{% endblock %}</title>
+
+    <meta name="description" content="{% block meta_description %}Quizstack is a free web development quiz platform to learn HTML, CSS, JavaScript, PHP, SQL and more coding skills on any device. Test our challenges now!{% endblock %}">
     <meta name="robots" content="index, follow">
+
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Quizstack">
     <meta property="og:title" content="{% block og_title %}{{ block('title') }}{% endblock %}">
     <meta property="og:description" content="{% block og_description %}{{ block('meta_description') }}{% endblock %}">
-    <meta property="og:image"
-          content="{% block og_image %}{{ absolute_url(asset('images/decoration/quizstack-social.jpg')) }}{% endblock %}">
     <meta property="og:url" content="{{ absolute_url(app.request.pathInfo) }}">
-    <meta property="og:type" content="website">
-    <title>{% block title %}Quizstack{% endblock %}</title>
-    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}"/>
-    {% block page_schema %}
-        <script type="application/ld+json">
-        {
-            "@context": "https://schema.org",
-            "@type": "Organization",
-            "name": "Quizstack",
-            "url": "{{ absolute_url('/') }}",
-            "logo": "{{ absolute_url(asset('favicon.png')) }}",
-            "description": "Free web development quiz platform for HTML, CSS, JavaScript, PHP, SQL",
-            "sameAs": ["https://github.com/FlorianJourde/Quizstack"]
-        }
-        </script>
-    {% endblock %}
-    {#    <script src="https://unpkg.com/lenis@1.3.4/dist/lenis.min.js"></script> #}
+    <meta property="og:image" content="{% block og_image %}{{ absolute_url(asset('images/decoration/quizstack-social.jpg')) }}{% endblock %}">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="{{ block('title') }}">
+    <meta name="twitter:description" content="{{ block('meta_description') }}">
+    <meta name="twitter:image" content="{{ absolute_url(asset('images/decoration/quizstack-social.jpg')) }}">
+
     <link rel="canonical" href="{{ absolute_url(app.request.pathInfo) }}">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link rel="icon" href="{{ asset('favicon.ico') }}" sizes="any">
+
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
-    <link rel="preload" href="https://fonts.googleapis.com/icon?family=Material+Icons" as="style">
-    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap" as="style">
-    <link rel="preload"
-          href="https://fonts.googleapis.com/css2?family=Spline+Sans+Mono:ital,wght@0,300..700;1,300..700&display=swap"
-          as="style">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
-          rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Spline+Sans+Mono:ital,wght@0,300..700;1,300..700&display=swap"
-          rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Flow+Rounded&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap" media="print" onload="this.media='all'">
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap"></noscript>
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Spline+Sans+Mono:ital,wght@0,300..700;1,300..700&display=swap" media="print" onload="this.media='all'">
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Spline+Sans+Mono:ital,wght@0,300..700;1,300..700&display=swap"></noscript>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" media="print" onload="this.media='all'">
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"></noscript>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
 
     {% block stylesheets %}
         {{ encore_entry_link_tags('styles') }}
     {% endblock %}
 
+    {% block page_schema %}
+        <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "Quizstack",
+      "url": "{{ absolute_url('/') }}",
+      "logo": "{{ absolute_url(asset('favicon.png')) }}",
+      "description": "Free web development quiz platform for HTML, CSS, JavaScript, PHP, SQL",
+      "sameAs": ["https://github.com/FlorianJourde/Quizstack"]
+    }
+    </script>
+    {% endblock %}
+
     {% block javascripts %}
         {{ encore_entry_script_tags('app') }}
     {% endblock %}
-
 </head>
 
 <body class="bg-very-dark-grey-primary text-white">
