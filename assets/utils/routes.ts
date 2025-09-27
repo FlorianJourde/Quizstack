@@ -1,6 +1,6 @@
 export const ROUTES = {
     HOME: '/',
-    QUIZ: '/quiz',
+    QUIZ: '/web-development-quiz',
     FILTERS: '/filters',
     LOGIN: '/login',
     REGISTER: '/register',
