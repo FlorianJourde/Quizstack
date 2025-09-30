@@ -4,7 +4,9 @@ import {AuthProvider} from "./context/AuthContext";
 import Question from "./components/Question/Question";
 import Demo from "./components/Demo/Demo";
 import Activity from "./components/Sections/Activity";
-import './styles/app.css';
+import StacksSlider from "./components/Sections/StacksSlider";
+import Share from "./components/Share/Share";
+import './styles/app.scss';
 import './scripts/filters'
 import './scripts/switches'
 import './scripts/question-form'
@@ -13,8 +15,6 @@ import './scripts/menu'
 import './scripts/accordion'
 import './scripts/textarea'
 import './scripts/appear-on-scroll'
-import StacksSlider from "./components/Sections/StacksSlider";
-import Share from "./components/Share/Share";
 
 document.addEventListener('DOMContentLoaded', () => {
     const questionContainer = document.querySelector('#quiz-container') as HTMLElement;
