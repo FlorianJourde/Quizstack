@@ -15,6 +15,7 @@ import './scripts/menu'
 import './scripts/accordion'
 import './scripts/textarea'
 import './scripts/appear-on-scroll'
+import InfiniteSlider from "./components/Sections/InfiniteSlider";
 
 document.addEventListener('DOMContentLoaded', () => {
     const questionContainer = document.querySelector('#quiz-container') as HTMLElement;
@@ -66,4 +67,12 @@ document.addEventListener('DOMContentLoaded', () => {
             <StacksSlider/>
         );
     }
+
+    // const infiniteSliderContainer = document.querySelector('#infinite-slider-container') as HTMLElement;
+    // if (infiniteSliderContainer) {
+    //     const root = createRoot(infiniteSliderContainer);
+    //     root.render(
+    //         <InfiniteSlider/>
+    //     );
+    // }
 });
