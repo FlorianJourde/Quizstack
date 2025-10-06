@@ -1,25 +1,7 @@
-* {
-  //outline: 1px solid tan;
-}
-
-.testimonials {
-  //background-color: theme('colors.dark-grey-secondary');
-  //display: flex;
-  //flex-direction: column;
-  //border-radius: var(--radius-secondary);
-  //column-count: 3;
-  //flex flex-col items-center rounded-radius-primary bg-dark-grey-secondary
-}
-
 .testimonial {
   background-color: theme('colors.dark-grey-secondary');
-  //display: flex;
-  //flex-direction: column;
   break-inside: avoid;
   page-break-inside: avoid;
-  //-webkit-column-break-inside: avoid; /* Webkit */
   border-radius: var(--radius-secondary);
-  //column-count: 3;
   margin-bottom: var(--spacing-primary);
-  //flex flex-col items-center rounded-radius-primary bg-dark-grey-secondary
 }

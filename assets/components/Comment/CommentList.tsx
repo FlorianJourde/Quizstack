@@ -2,8 +2,8 @@ import React, {useState} from 'react';
 import {addComment} from "../../services/commentsApi";
 import CommentItem from "./CommentItem";
 import {useAuth} from "../../context/AuthContext";
-import {ROUTES} from "../../utils/routes";
 import MarkdownInfos from "../Markdown/MarkdownInfos";
+import {ROUTES} from "../../utils/routes";
 
 function CommentList({question, setQuestion}) {
     const [comment, setComment] = useState<string>('');

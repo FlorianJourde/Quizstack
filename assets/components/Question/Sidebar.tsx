@@ -1,18 +1,24 @@
 import React from 'react';
 import {ROUTES} from "../../utils/routes";
+import {useAuth} from "../../context/AuthContext";
+import {QuestionInterface} from "../../types";
+import Question from "./Question";
 
 function Sidebar(
     {
         onNext,
         onWrap,
         wrap,
-        isLoading
+        isLoading,
+        question
     }: {
         onNext: () => void;
         onWrap: () => void;
         wrap: boolean,
         isLoading: boolean;
+        question: QuestionInterface
     }) {
+    const {isAdmin} = useAuth();
 
     return (
         <div className={`xl:sticky top-spacing-primary z-10`}>
@@ -34,6 +40,13 @@ function Sidebar(
                             <span className="material-icons">keyboard_return</span>
                         )}
                     </button>
+
+                    {isAdmin() && (
+                        <a href={`${ROUTES.QUESTION}/${question.id}/edit`}
+                           className="button button-action bg-very-dark-grey-primary">
+                            <span className="material-icons">edit</span>
+                        </a>
+                    )}
                 </div>
             </aside>
         </div>

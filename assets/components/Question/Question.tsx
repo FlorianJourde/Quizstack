@@ -130,7 +130,7 @@ function Question({mode, questionId, showComments}: { mode: string, questionId: 
 
                         {mode === 'game' &&
                             <Sidebar onNext={handleNextQuestion} onWrap={handleToggleWrap} wrap={wrap}
-                                     isLoading={loading}/>}
+                                     isLoading={loading} question={question} /> }
 
                         <div className="flex flex-col gap-spacing-primary mb-spacing-large-secondary xl:mb-0">
 

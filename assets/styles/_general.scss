@@ -215,13 +215,10 @@ button, input, optgroup, select, textarea {
 }
 
 body .fade-in-up {
-  //transform: translateY(20px);
   transform: translateY(var(--spacing-secondary));
   filter: blur(5px);
   opacity: 0;
-  //transition: opacity 1.2s, transform 1.2s, filter 1.2s;
   transition: opacity 1s, transform 1s, filter 1s;
-  //will-change: transform, opacity;
 }
 
 body .fade-in-up.show {
@@ -250,7 +247,7 @@ div[style*="background: rgb(39, 40, 34);"] {
   }
 
 
-  //https://quizstack.io/question/410
+  // https://quizstack.io/question/410
   p > code,
   p {
     word-wrap: break-word;
@@ -260,7 +257,6 @@ div[style*="background: rgb(39, 40, 34);"] {
 #share-container {
   // https://quizstack.io/question/326
   .code-wrapper > code {
-    //pre > code {
     white-space: break-spaces !important;
   }
 
@@ -268,7 +264,7 @@ div[style*="background: rgb(39, 40, 34);"] {
     backdrop-filter: unset;
   }
 
-  //https://quizstack.io/question/410
+  // https://quizstack.io/question/410
   .zoom {
     zoom: 100%;
     perspective: 1000px;
@@ -306,15 +302,10 @@ div[style*="background: rgb(39, 40, 34);"] {
       width: 100%;
       height: 100%;
       z-index: 1000;
-      //-o-object-fit: cover;
       object-fit: cover;
       opacity: 0.05;
       pointer-events: none;
-      //transition: none 0s ease 0s;
-      //transition: initial;
-      //background-image: url(/build/images/noise.db8b66b8.png);
       background-image: url('/public/images/background/noise.png');
-      //
       background-repeat: repeat;
       background-size: 150px;
     }
@@ -354,14 +345,9 @@ div[style*="background: rgb(39, 40, 34);"] {
         width: auto;
 
         img {
-          //margin-left: auto;
-          //margin-right: auto;
           filter: saturate(0);
           object-fit: contain;
-          //height: 50px;
           height: 50px;
-          //width: 50px;
-          //flex-shrink: 0;
 
           @media (max-width: 40rem) {
             height: 35px;
@@ -417,54 +403,29 @@ div[style*="background: rgb(39, 40, 34);"] {
 }
 
 .card {
-  //position: relative;
-  //position: relative;
-  //border: 2px solid transparent;
-  //background: linear-gradient(71deg, #080509, #1a171c, #080509);
-  //background-clip: padding-box;
-  //border-radius: 45px;
-  //padding: 40px;
   position: relative;
-  /* border: 2px solid transparent; */
-  //background: #0000009e;
-  //background: linear-gradient(theme('colors.very-dark-grey-primary'), theme('colors.very-dark-grey-primary'), #0f0f0fd4);
   background: linear-gradient(theme('colors.very-dark-grey-primary') 50%, #0f0f0fd9);
   background-clip: padding-box;
   z-index: unset;
   backdrop-filter: unset;
-  //border-radius: 45px;
-  //padding: 40px;
-  //margin-bottom: -10px;
   margin-bottom: 2px;
   border-bottom-width: 0;
   border-color: theme('colors.grey-primary');
 
   .material-icons {
-    //background-color: theme('colors.very-dark-grey-primary');
     background-color: theme('colors.dark-grey-secondary');
   }
 
   &::after {
-    //background: linear-gradient(100deg, #110e0e, #afa220, #110e0e);
-    //background: linear-gradient(100deg, #ff9654, #fa79de, #c73fff);
     background: linear-gradient(100deg, #9a9a9a, #d5d5d5, #ffffff);
     position: absolute;
-    //top: 10px;
     top: 2px;
-    //bottom: -1px;
     left: -1px;
-    //right: -1px;
     content: "";
     z-index: -1;
     border-radius: inherit;
     width: calc(100% + 2px);
     height: 100%;
-    //border-radius: 45px;
-    //content: "";
-    //top: 10px;
-    //left: 0;
-    //position: absolute;
-    //z-index: -1;
   }
 
   &.card-pink {
@@ -473,7 +434,6 @@ div[style*="background: rgb(39, 40, 34);"] {
     }
 
     &::after {
-      //background: linear-gradient(100deg, #e79b5b, #dc6790, #cd32c7);
       background: linear-gradient(100deg, #ff9654, #ff61d6, #c12eff);
     }
   }
@@ -484,7 +444,6 @@ div[style*="background: rgb(39, 40, 34);"] {
     }
 
     &::after {
-      //background: linear-gradient(100deg, #f0eb52, #a0e27d, #45e09d);
       background: linear-gradient(100deg, #ffe163, #acff71, #55f0f0);
     }
   }
@@ -495,7 +454,6 @@ div[style*="background: rgb(39, 40, 34);"] {
     }
 
     &::after {
-      //background: linear-gradient(100deg, #374699, #3678bd, #28b0d7);
       background: linear-gradient(100deg, #2a428c, #4382c7, #55b5f0);
     }
   }
@@ -528,15 +486,12 @@ div[style*="background: rgb(39, 40, 34);"] {
 
 .big-title {
   display: block;
-  //font-family: var(--font-secondary);
   font-size: 2.5rem;
-  //font-weight: 600;
   font-weight: bold;
 }
 
 .title {
   display: block;
-  //font-family: var(--font-secondary);
   font-family: var(--font-primary);
   font-size: 1.5rem;
   text-align: center;
@@ -545,7 +500,6 @@ div[style*="background: rgb(39, 40, 34);"] {
 
 .small-title {
   display: flex;
-  //align-items: center;
   font-size: 1.2rem;
   margin-bottom: .6rem;
   font-weight: 600;
@@ -556,7 +510,6 @@ div[style*="background: rgb(39, 40, 34);"] {
   }
 
   ~ * {
-    //opacity: .75;
   }
 }
 
@@ -601,7 +554,6 @@ div[style*="background: rgb(39, 40, 34);"] {
 .button-primary {
   padding: 0.6rem 1rem;
   background-color: theme('colors.green-secondary');
-  //background: linear-gradient(to bottom, theme('colors.green-secondary'), theme('colors.green-quaternary'));
   border: 2px solid theme('colors.green-secondary');
   gap: 16px;
   opacity: 1;
@@ -662,8 +614,6 @@ div[style*="background: rgb(39, 40, 34);"] {
 .footer-bottom-container, .footer-top-container, .footer-middle-container {
   ul {
     li {
-      //display: flex;
-      //gap: var(--spacing-secondary);
 
       .material-icons {
         display: none;
@@ -676,7 +626,6 @@ div[style*="background: rgb(39, 40, 34);"] {
 
 #demo-container {
   .glass {
-    //box-shadow: 0 0 30px rgba(8, 7, 16, 0.6);
     box-shadow: 0 0 var(--spacing-primary) rgba(8, 7, 16, 0.6);
   }
 
@@ -847,11 +796,8 @@ div[style*="background: rgb(39, 40, 34);"] {
 
 .links-container a, .muted {
   font-size: .875rem;
-  //color: theme('colors.very-light-grey-primary');
   opacity: .5;
   font-weight: normal;
-  //font-weight: normal;
-  //font-weight: 600;
 }
 
 .low-light {
@@ -874,7 +820,6 @@ div[style*="background: rgb(39, 40, 34);"] {
 
   &.separator {
     background: linear-gradient(to top, theme('colors.black-primary'), transparent 100%);
-    //height: 1200px;
     transform: translateY(-100%);
     opacity: .5;
   }
