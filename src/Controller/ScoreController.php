@@ -12,9 +12,11 @@ class ScoreController extends AbstractController
     #[Route('/hall-of-fame', name: 'scores')]
     public function users(ScoreRepository $scoreRepository): Response
     {
-        $allTimeScore = $scoreRepository->findScoreWithLimit(12, 'all_time', ['Anonymous', 'User', 'Editor']);
-        $weeklyScores = $scoreRepository->findScoreWithLimit(12, 'week', ['Anonymous', 'User', 'Editor']);
-        $monthlyScores = $scoreRepository->findScoreWithLimit(12, 'month', ['Anonymous', 'User', 'Editor']);
+        $excludedUsernames = ['Anonymous', 'User', 'Editor', 'Ctrl_FJ'];
+
+        $allTimeScore = $scoreRepository->findScoreWithLimit(12, 'all_time', $excludedUsernames);
+        $weeklyScores = $scoreRepository->findScoreWithLimit(12, 'week', $excludedUsernames);
+        $monthlyScores = $scoreRepository->findScoreWithLimit(12, 'month', $excludedUsernames);
 
         return $this->render('scores.html.twig', [
             'allTimeScores' => $allTimeScore,
