@@ -22,11 +22,11 @@ document.addEventListener('DOMContentLoaded', (): void => {
             button.classList.add('active');
 
             if (index === 0) {
-                showScoresByPeriod('week');
+                showScoresByPeriod('all-time');
             } else if (index === 1) {
                 showScoresByPeriod('month');
             } else if (index === 2) {
-                showScoresByPeriod('all-time');
+                showScoresByPeriod('week');
             }
         });
     });
@@ -34,9 +34,9 @@ document.addEventListener('DOMContentLoaded', (): void => {
     const activeButton = document.querySelector('.switch-label.active');
     if (activeButton) {
         const activeIndex = Array.from(switchButtons).indexOf(activeButton as HTMLElement);
-        const periods = ['week', 'month', 'all-time'];
+        const periods = ['all-time', 'month', 'week'];
         showScoresByPeriod(periods[activeIndex]);
     } else {
-        showScoresByPeriod('week');
+        showScoresByPeriod('all-time');
     }
 });
