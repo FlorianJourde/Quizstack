@@ -17,6 +17,28 @@
         </div>
     </div>
 
+    {% if categories is not empty %}
+        <div class="wrapper">
+            <ul class="tags-container pb-spacing-large-secondary">
+                <li class="flex">
+                    <a class="tag {% if selectedCategory is null %}active{% endif %}"
+                       href="{{ path('questions') }}">
+                        Toutes
+                    </a>
+                </li>
+
+                {% for category in categories %}
+                    <li class="flex">
+                        <a class="tag {% if selectedCategory and selectedCategory.id == category.id %}active{% endif %}"
+                           href="{{ path('questions', {category: category.name}) }}">
+                            {{ category.name }}
+                        </a>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+    {% endif %}
+
     {% if questions is not empty %}
         <div class="wrapper wrapper-large">
             <div class="overflow-auto">
@@ -79,9 +101,14 @@
                 </table>
             </div>
 
-            {{ include('partials/pagination.html.twig', {'page': 'questions', 'pagination': questions}) }}
+            {{ include('partials/pagination.html.twig', {
+                'page': 'questions',
+                'pagination': questions,
+                'selectedCategory': selectedCategory
+            }) }}
 
         </div>
+
     {% else %}
 
         <div class="wrapper">

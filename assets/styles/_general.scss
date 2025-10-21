@@ -668,6 +668,11 @@ div[style*="background: rgb(39, 40, 34);"] {
     background-color: rgba(0, 0, 0, 0.5);
     gap: 0.5rem;
 
+    &.active {
+      background-color: theme('colors.white-primary');
+      color: theme('colors.very-dark-grey-primary');
+    }
+
     &.tag-small {
       font-size: 0.75rem;
     }

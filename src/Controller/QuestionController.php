@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Question;
 use App\Entity\User;
 use App\Form\QuestionFormType;
+use App\Repository\CategoryRepository;
 use App\Repository\QuestionRepository;
 use App\Service\FileUploaderService;
 use DateTimeImmutable;
@@ -30,22 +31,32 @@ class QuestionController extends AbstractController
     public function questions(
         Security           $security,
         Request            $request,
-        QuestionRepository $commentRepository
+        QuestionRepository $questionRepository,
+        CategoryRepository $categoryRepository
     ): Response
     {
         /* @var User $user */
         $user = $security->getUser();
+        $categories = $categoryRepository->findCategoriesByOrder();
 
         $offset = max(0, $request->query->getInt('offset', 0));
+        $categoryName = $request->query->get('category');
+
+        $selectedCategory = null;
+        if ($categoryName) {
+            $selectedCategory = $categoryRepository->findOneBy(['name' => $categoryName]);
+        }
 
         if ($security->isGranted('ROLE_EDITOR')) {
-            $paginator = $commentRepository->getQuestionsPaginator($offset);
+            $paginator = $questionRepository->getQuestionsPaginator($offset, $selectedCategory);
         } else {
-            $paginator = $commentRepository->getQuestionsByUserIdPaginator($user, $offset);
+            $paginator = $questionRepository->getQuestionsByUserIdPaginator($user, $offset, $selectedCategory);
         }
 
         return $this->render('questions/index.html.twig', [
+            'categories' => $categories,
             'questions' => $paginator,
+            'selectedCategory' => $selectedCategory,
             'previous' => $offset - QuestionRepository::QUESTIONS_PER_PAGE,
             'next' => min(count($paginator), $offset + QuestionRepository::QUESTIONS_PER_PAGE),
         ]);

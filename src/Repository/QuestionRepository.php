@@ -2,6 +2,7 @@
 
 namespace App\Repository;
 
+use App\Entity\Category;
 use App\Entity\Question;
 use App\Entity\User;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
@@ -70,26 +71,34 @@ class QuestionRepository extends ServiceEntityRepository
             ->getOneOrNullResult(AbstractQuery::HYDRATE_SINGLE_SCALAR);
     }
 
-    public function getQuestionsPaginator(int $offset): Paginator
+    public function getQuestionsPaginator(int $offset, ?Category $category = null): Paginator
     {
         $query = $this->createQueryBuilder('q')
             ->orderBy('q.update_date', 'DESC')
             ->setMaxResults(self::QUESTIONS_PER_PAGE)
-            ->setFirstResult($offset)
-            ->getQuery();
+            ->setFirstResult($offset);
+
+        if ($category) {
+            $query->andWhere(':category MEMBER OF q.categories')
+                ->setParameter('category', $category);
+        }
 
         return new Paginator($query);
     }
 
-    public function getQuestionsByUserIdPaginator(User $user, int $offset): Paginator
+    public function getQuestionsByUserIdPaginator(User $user, int $offset, ?Category $category = null): Paginator
     {
         $query = $this->createQueryBuilder('q')
             ->andWhere('q.user = :user')
             ->setParameter('user', $user)
             ->orderBy('q.creation_date', 'DESC')
             ->setMaxResults(self::QUESTIONS_PER_PAGE)
-            ->setFirstResult($offset)
-            ->getQuery();
+            ->setFirstResult($offset);
+
+        if ($category) {
+            $query->andWhere(':category MEMBER OF q.categories')
+                ->setParameter('category', $category);
+        }
 
         return new Paginator($query);
     }
