@@ -1,0 +1,9 @@
+.git
+.idea
+var/cache/*
+var/log/*
+var/sessions/*
+node_modules
+vendor
+.env.local
+docker-compose.override.yml
