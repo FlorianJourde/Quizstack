@@ -2,7 +2,7 @@
 
 ![OpenClassrooms banneer](public/images/decoration/quizstack-social.jpg)
 
-[![PHP Badge](https://img.shields.io/badge/PHP-8.1-7a86b8?style=flat-square&logo=php&logoColor=white/)](https://www.php.net/) [![Symfony Badge](https://img.shields.io/badge/Symfony-6.4-000000?style=flat-square&logo=symfony&logoColor=white/)](http://symfony.com/) [![MySQL Badge](https://img.shields.io/badge/MySQL-9.1-4479A1?style=flat-square&logo=symfony&logoColor=white/)](https://www.mysql.com/) [![React Badge](https://img.shields.io/badge/React-19.1-61DAFB?style=flat-square&logo=React&logoColor=white/)](https://react.dev/) [![TypeScript Badge](https://img.shields.io/badge/TypeScript-5.8-3178C6?style=flat-square&logo=typescript&logoColor=white/)](https://www.typescriptlang.org/) [![Sass Badge](https://img.shields.io/badge/Sass-1.86-CC6699?style=flat-square&logo=sass&logoColor=white/)](https://sass-lang.com/) [![Tailwind Badge](https://img.shields.io/badge/Tailwind-3.4-61DAFB?style=flat-square&logo=tailwindcss&logoColor=white/)](https://tailwindcss.com/) [![Motion Badge](https://img.shields.io/badge/Motion-12.7-0055FF?style=flat-square&logo=framer&logoColor=white/)](https://motion.dev/) [![Twig Badge](https://img.shields.io/badge/Twig-2.12-bacf29?style=flat-square&logo=symfony&logoColor=white/)](https://twig.symfony.com/) [![GitHub Badge](https://img.shields.io/badge/GitHub-2.39-181717?style=flat-square&logo=github&logoColor=white/)](https://github.com/) [![Webpack Badge](https://img.shields.io/badge/Webpack-5.74-8DD6F9?style=flat-square&logo=webpack&logoColor=white/)](https://tailwindcss.com/) [![Composer Badge](https://img.shields.io/badge/Composer-2.2-6c3e22?style=flat-square&logo=composer&logoColor=white/)](https://getcomposer.org/) [![npm Badge](https://img.shields.io/badge/Npm-10.8-CB3837?style=flat-square&logo=npm&logoColor=white/)](https://www.npmjs.com/) [![Node.js Badge](https://img.shields.io/badge/Node.js-20.19-5FA04E?style=flat-square&logo=node.js&logoColor=white/)](https://nodejs.org/en)
+[![Docker Badge](https://img.shields.io/badge/Docker-4-2496ed?style=flat-square&logo=docker&logoColor=white/)](https://www.docker.com/) [![Docker Badge](https://img.shields.io/badge/PHP-8.1-7a86b8?style=flat-square&logo=php&logoColor=white/)](https://www.php.net/) [![Symfony Badge](https://img.shields.io/badge/Symfony-6.4-000000?style=flat-square&logo=symfony&logoColor=white/)](http://symfony.com/) [![MySQL Badge](https://img.shields.io/badge/MySQL-9.1-4479A1?style=flat-square&logo=symfony&logoColor=white/)](https://www.mysql.com/) [![React Badge](https://img.shields.io/badge/React-19.1-61DAFB?style=flat-square&logo=React&logoColor=white/)](https://react.dev/) [![TypeScript Badge](https://img.shields.io/badge/TypeScript-5.8-3178C6?style=flat-square&logo=typescript&logoColor=white/)](https://www.typescriptlang.org/) [![Sass Badge](https://img.shields.io/badge/Sass-1.86-CC6699?style=flat-square&logo=sass&logoColor=white/)](https://sass-lang.com/) [![Tailwind Badge](https://img.shields.io/badge/Tailwind-3.4-61DAFB?style=flat-square&logo=tailwindcss&logoColor=white/)](https://tailwindcss.com/) [![Motion Badge](https://img.shields.io/badge/Motion-12.7-0055FF?style=flat-square&logo=framer&logoColor=white/)](https://motion.dev/) [![Twig Badge](https://img.shields.io/badge/Twig-2.12-bacf29?style=flat-square&logo=symfony&logoColor=white/)](https://twig.symfony.com/) [![GitHub Badge](https://img.shields.io/badge/GitHub-2.39-181717?style=flat-square&logo=github&logoColor=white/)](https://github.com/) [![Webpack Badge](https://img.shields.io/badge/Webpack-5.74-8DD6F9?style=flat-square&logo=webpack&logoColor=white/)](https://tailwindcss.com/) [![Composer Badge](https://img.shields.io/badge/Composer-2.2-6c3e22?style=flat-square&logo=composer&logoColor=white/)](https://getcomposer.org/) [![npm Badge](https://img.shields.io/badge/Npm-10.8-CB3837?style=flat-square&logo=npm&logoColor=white/)](https://www.npmjs.com/) [![Node.js Badge](https://img.shields.io/badge/Node.js-20.19-5FA04E?style=flat-square&logo=node.js&logoColor=white/)](https://nodejs.org/en)
 
 ## Learn web development through interactive quiz
 
@@ -24,11 +24,7 @@ Quizstack is an open-source web development quiz platform designed to help devel
 ## Getting Started
 
 ### Prerequisites
-- PHP 8.1+
-- Symfony 6.4
-- MySQL 9.1+
-- Composer
-- Node.js v16+
+- Docker
 
 ### Installation
 
@@ -39,9 +35,22 @@ cd quizstack
 ```
 
 ```bash
-# Install dependencies
-composer install
-npm install
+# Run Docker environment
+docker-compose up -d
+docker-compose down
+
+# Start PhpMyAdmin
+docker-compose --profile tools up -d
+docker-compose stop phpmyadmin
+
+# Enter the container
+docker-compose exec php bash
+```
+
+```bash
+# Assets compilation
+npm run watch
+npm run build
 ```
 
 ```bash
@@ -59,12 +68,6 @@ php bin/console doctrine:migrations:migrate
 ```bash
 # Load sample data
 php bin/console doctrine:fixtures:load
-```
-
-```bash
-# Start development server
-npm run dev
-symfony serve
 ```
 
 Visit `http://localhost:8000` in your browser to access the application.
