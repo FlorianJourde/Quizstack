@@ -1,0 +1,62 @@
+version: '3.8'
+
+services:
+  php:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile
+    container_name: quizstack_app
+    ports:
+      - "8000:80"
+      - "8080:8080"
+    volumes:
+      - .:/var/www/html
+      - vendor:/var/www/html/vendor
+      - node_modules:/var/www/html/node_modules
+    environment:
+      - DATABASE_URL=mysql://quizstack_user:root@db:3306/quizstack_db?serverVersion=8.0
+      - APP_ENV=dev
+    depends_on:
+      - db
+    networks:
+      - quizstack_network
+
+  db:
+    image: mysql:8.0
+    container_name: quizstack_db
+    ports:
+      - "3307:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: quizstack_db
+      MYSQL_USER: quizstack_user
+      MYSQL_PASSWORD: root
+    volumes:
+      - db_data:/var/lib/mysql
+    networks:
+      - quizstack_network
+
+  phpmyadmin:
+    image: phpmyadmin:latest
+    container_name: quizstack_phpmyadmin
+    ports:
+      - "8081:80"
+    environment:
+      PMA_HOST: db
+      PMA_USER: quizstack_user
+      PMA_PASSWORD: root
+    depends_on:
+      - db
+    networks:
+      - quizstack_network
+    profiles:
+      - tools
+
+volumes:
+  db_data:
+  vendor:
+  node_modules:
+
+networks:
+  quizstack_network:
+    driver: bridge
