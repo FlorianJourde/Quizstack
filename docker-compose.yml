@@ -49,8 +49,6 @@ services:
       - db
     networks:
       - quizstack_network
-    profiles:
-      - tools
 
 volumes:
   db_data:
