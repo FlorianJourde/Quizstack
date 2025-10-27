@@ -5,8 +5,13 @@
 #demo-container,
 #quiz-container[data-mode="display"] {
   .checkbox-group {
-    .checkbox-input:not(.correct):not(.incorrect):hover + .checkbox-tile {
-      box-shadow: unset;
+    .checkbox-input:not(.correct):not(.incorrect) {
+      &:hover,
+      &:focus {
+        + .checkbox-tile {
+          box-shadow: unset;
+        }
+      }
     }
   }
 
@@ -63,12 +68,6 @@
       border-color: #ffffff;
     }
 
-    &:hover {
-      & + .checkbox-tile {
-        box-shadow: 0 0 0 2px #ffffff;
-      }
-    }
-
     &:checked,
     &.checked {
       + .checkbox-tile {
@@ -79,6 +78,13 @@
           background-color: theme('colors.white-primary');
           background-size: 70%;
         }
+      }
+    }
+
+    &:hover,
+    &:focus {
+      + .checkbox-tile {
+        box-shadow: 0 0 0 2px #ffffff;
       }
     }
 
@@ -258,17 +264,27 @@
         }
       }
 
-      .checkbox-input:checked {
-        + .checkbox-tile {
-          box-shadow: 0 0 0 2px #808080;
+      .checkbox-input {
+        &:checked {
+          + .checkbox-tile {
+            box-shadow: 0 0 0 2px #808080;
 
-          &:before {
-            opacity: 1;
+            &:before {
+              opacity: 1;
+            }
+          }
+
+          ~ .color-layer {
+            background: radial-gradient(circle closest-corner at top, rgba(255, 255, 255, 0.25), transparent);
           }
         }
 
-        ~ .color-layer {
-          background: radial-gradient(circle closest-corner at top, rgba(255, 255, 255, 0.25), transparent);
+        &:hover,
+        &:focus,
+        {
+          + .checkbox-tile {
+            box-shadow: 0 0 0 2px #ffffff;
+          }
         }
       }
     }

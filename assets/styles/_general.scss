@@ -545,7 +545,8 @@ div[style*="background: rgb(39, 40, 34);"] {
   padding: .5rem;
   opacity: .75;
 
-  &:hover {
+  &:hover,
+  &:focus {
     background-color: theme('colors.dark-grey-secondary');
     opacity: 1;
   }

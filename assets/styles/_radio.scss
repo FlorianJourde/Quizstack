@@ -7,12 +7,18 @@
     display: flex;
 
     .switch-input {
-      display: none;
-    }
+      position: absolute;
+      opacity: 0;
+      pointer-events: none;
 
-    .switch-input:checked + .switch-label,
-    .switch-label.active {
-      background-color: theme('colors.very-dark-grey-primary');
+      &:focus-visible + .switch-label {
+        outline: 2px solid #ffffff;
+        outline-offset: 2px;
+      }
+
+      &:checked + .switch-label {
+        background-color: theme('colors.very-dark-grey-primary');
+      }
     }
 
     .switch-label {
@@ -20,6 +26,10 @@
       padding: 0.6rem 1rem;
       border-radius: var(--radius-secondary);
       transition: .2s ease;
+
+      &.active {
+        background-color: theme('colors.very-dark-grey-primary');
+      }
     }
   }
 }

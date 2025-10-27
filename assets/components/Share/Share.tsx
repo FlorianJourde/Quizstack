@@ -16,10 +16,6 @@ export function Share({questionId, mode}) {
         loadQuestion();
     }, []);
 
-    useEffect(() => {
-        console.log(question);
-    }, [question]);
-
     function Header() {
         return (
             <div className={`flex absolute w-full p-spacing-primary gap-4 items-center font-bold text-xl`}>

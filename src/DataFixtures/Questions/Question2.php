@@ -22,6 +22,7 @@ class Question2
         $question->setCreationDate($date);
         $question->setUpdateDate($date);
         $question->setDifficulty(3);
+        $question->setStatus(true);
         $question->setExplanation(
             <<<'EOT'
             Prepared statements with PDO bind parameters to SQL queries, ensuring that user input is treated as data and not executable code.

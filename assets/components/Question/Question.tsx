@@ -128,10 +128,6 @@ function Question({mode, questionId, showComments}: { mode: string, questionId: 
                         variants={item}
                         className="flex flex-col relative">
 
-                        {mode === 'game' &&
-                            <Sidebar onNext={handleNextQuestion} onWrap={handleToggleWrap} wrap={wrap}
-                                     isLoading={loading} question={question} /> }
-
                         <div className="flex flex-col gap-spacing-primary mb-spacing-large-secondary xl:mb-0">
 
                             <QuestionContent question={question} mode={mode}/>
@@ -152,6 +148,11 @@ function Question({mode, questionId, showComments}: { mode: string, questionId: 
                                 </div>
                             )}
                         </div>
+
+                        {mode === 'game' &&
+                            <Sidebar onNext={handleNextQuestion} onWrap={handleToggleWrap} wrap={wrap}
+                                     isLoading={loading} question={question}/>}
+
                     </motion.div>
                 )}
             </AnimatePresence>

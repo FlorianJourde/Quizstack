@@ -21,10 +21,11 @@ class Question3
             ```
             EOT
         );
-        $question->setImage('/pattern-js.png');
+        $question->setImage('pattern-js.png');
         $question->setCreationDate($date);
         $question->setUpdateDate($date);
         $question->setDifficulty(2);
+        $question->setStatus(true);
         $question->setExplanation(
             <<<'EOT'
             Due to floating point precision issues in JavaScript, `0.1 + 0.2` does not exactly equal `0.3`. The result is `false`.

@@ -23,6 +23,9 @@ Encore
     .enableTypeScriptLoader()
     .enableReactPreset()
     .enablePostCssLoader()
+    .configureWatchOptions(watchOptions => {
+        watchOptions.poll = 1000;
+    })
 ;
 
 module.exports = Encore.getWebpackConfig();

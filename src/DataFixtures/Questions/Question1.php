@@ -18,10 +18,11 @@ class Question1
             What is the correct way to connect to a MySQL database using PDO in PHP ?
             EOT
         );
-        $question->setImage('/decoration-php.png');
+        $question->setImage('decoration-php.png');
         $question->setCreationDate($date);
         $question->setUpdateDate($date);
         $question->setDifficulty(2);
+        $question->setStatus(true);
         $question->setExplanation(
             <<<'EOT'
             Using PDO is a secure and flexible way to interact with databases. It supports prepared statements, which help prevent SQL injection.

@@ -1,8 +1,8 @@
-import { useEffect } from 'react';
+import {useEffect} from 'react';
 import {QuestionInterface} from "../types";
 
 function useRaysAnimation(question: QuestionInterface, mode: string) {
-    useEffect(function() {
+    useEffect(function () {
         const originalElement = document.querySelector('.rays');
 
         if (mode === 'display' || mode === 'share') return;
@@ -22,7 +22,7 @@ function useRaysAnimation(question: QuestionInterface, mode: string) {
                     clonedElement.classList.remove('hide');
                 });
 
-                setTimeout(function() {
+                setTimeout(function () {
                     originalElement.remove();
                 }, 1000);
             } else {
@@ -38,7 +38,7 @@ function useRaysAnimation(question: QuestionInterface, mode: string) {
                     clonedElement.classList.remove('red');
                 });
 
-                setTimeout(function() {
+                setTimeout(function () {
                     originalElement.remove();
                 }, 1000);
             }
