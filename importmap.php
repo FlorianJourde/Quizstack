@@ -37,4 +37,7 @@ return [
     '@symfony/ux-react' => [
         'path' => './vendor/symfony/ux-react/assets/dist/loader.js',
     ],
+    'react-dom/client' => [
+        'version' => '18.3.1',
+    ],
 ];

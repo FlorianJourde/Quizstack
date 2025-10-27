@@ -2,25 +2,22 @@
 
 namespace App\Command;
 
+use Symfony\Component\Console\Attribute\AsCommand;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use App\Repository\ScoreRepository;
 
+#[AsCommand(
+    name: 'app:reset-weekly-scores',
+    description: 'Reset weekly users scores.'
+)]
 class ResetWeeklyScoresCommand extends Command
 {
-    protected static $defaultName = 'app:reset-weekly-scores';
-    private ScoreRepository $scoreRepository;
-
-    public function __construct(ScoreRepository $scoreRepository)
-    {
+    public function __construct(
+        private readonly ScoreRepository $scoreRepository
+    ) {
         parent::__construct();
-        $this->scoreRepository = $scoreRepository;
-    }
-
-    protected function configure()
-    {
-        $this->setDescription('Reset weekly users scores.');
     }
 
     protected function execute(InputInterface $input, OutputInterface $output): int
