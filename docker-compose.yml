@@ -13,9 +13,6 @@ services:
       - .:/var/www/html
       - vendor:/var/www/html/vendor
       - node_modules:/var/www/html/node_modules
-    environment:
-      - DATABASE_URL=mysql://quizstack_user:root@db:3306/quizstack_db?serverVersion=8.0
-      - APP_ENV=dev
     depends_on:
       - db
     networks:
