@@ -17,16 +17,20 @@
     <div class="wrapper wrapper-small">
         <div class="form-container glass box bg-dark-grey-secondary">
 
+            {{ include('partials/form/errors.html.twig') }}
+
             {{ form_start(form) }}
 
-            <div>
-                <h2 class="small-title">
-                    <span class="material-icons">alternate_email</span>
-                    {{ form.email.vars.label }}
-                </h2>
-                {{ form_widget(form.email) }}
-                {{ form_errors(form.email) }}
-            </div>
+            {% if form.email is defined %}
+                <div>
+                    <h2 class="small-title">
+                        <span class="material-icons">alternate_email</span>
+                        {{ form.email.vars.label }}
+                    </h2>
+                    {{ form_widget(form.email) }}
+                    {{ form_errors(form.email) }}
+                </div>
+            {% endif %}
             <div>
                 <h2 class="small-title">
                     <span class="material-icons">person</span>
@@ -48,6 +52,7 @@
                 <a href="{{ path('app_home') }}" class="button button-tertiary">Cancel</a>
                 <button type="submit" class="button button-primary">Send</button>
             </div>
+
             {{ form_end(form) }}
 
         </div>

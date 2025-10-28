@@ -1,0 +1,78 @@
+{% extends 'layout.html.twig' %}
+
+{% set title = 'Messages' %}
+
+{% block meta_description %}Have messages about Quizstack ? Contact our team for support with your web development quiz challenges or account issues{% endblock %}
+
+{% block body %}
+
+    {{ include('partials/banner.html.twig') }}
+
+    <div class="wrapper">
+        <div class="page-header-container">
+            <h1 class="big-title grow">Messages</h1>
+        </div>
+    </div>
+
+    {% if messages is not empty %}
+        <div class="wrapper wrapper-large">
+            <div class="overflow-auto">
+                <table class="table glass">
+                    <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Username</th>
+                        <th>Email</th>
+                        <th>Message</th>
+                        <th>Date</th>
+                        <th>Actions</th>
+                    </tr>
+                    </thead>
+                    <tbody class="text-center">
+
+                    {% for message in messages %}
+                        <tr>
+                            <td>{{ message.id }}</td>
+                            <td>{{ message.username }}</td>
+                            <td>{{ message.email }}</td>
+                            <td>{{ message.message }}</td>
+                            <td>{{ message.creationDate|date('d/m/y') }}</td>
+                            <td>
+                                <div class="buttons-container">
+                                    <a href="{{ path('message', {'id': message.id}) }}" class="button button-action">
+                                        <span class="material-icons">visibility</span>
+                                    </a>
+                                </div>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+
+            {{ include('partials/pagination.html.twig', {
+                'page': 'messages',
+                'pagination': messages,
+            }) }}
+
+        </div>
+
+    {% else %}
+
+        <div class="wrapper">
+            <div class="glass box flex flex-col gap-spacing-primary">
+                <div>
+                    <h2 class="small-title">There's no messages in this section.</h2>
+                </div>
+                <div class="buttons-container">
+                    <a href="{{ path('app_home') }}" class="button button-primary">
+                        Home
+                    </a>
+                </div>
+            </div>
+        </div>
+
+    {% endif %}
+
+{% endblock %}
+

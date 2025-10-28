@@ -1,0 +1,56 @@
+{% extends 'layout.html.twig' %}
+
+{% set title = 'Messages' %}
+
+{% block meta_description %}Have questions about Quizstack ? Contact our team for support with your web development quiz challenges or account issues{% endblock %}
+
+{% block body %}
+
+    {{ include('partials/banner.html.twig') }}
+
+    <div class="wrapper">
+        <div class="page-header-container">
+            <h1 class="big-title grow">Message</h1>
+            <div class="buttons-container">
+                <a class="button button-action" href="{{ path('messages') }}">
+                    <span class="material-icons">arrow_back</span>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="wrapper wrapper-small">
+        <div class="form-container glass box bg-dark-grey-secondary">
+            <div>
+                <h2 class="small-title">
+                    <span class="material-icons">person</span>
+                    Username
+                </h2>
+                <p>{{ message.username }}</p>
+            </div>
+            <div>
+                <h2 class="small-title">
+                    <span class="material-icons">alternate_email</span>
+                    Email
+                </h2>
+                <p>{{ message.email }}</p>
+            </div>
+            <div>
+                <h2 class="small-title">
+                    <span class="material-icons">alternate_email</span>
+                    Date
+                </h2>
+                <p>{{ message.creationDate|date('d/m/y') }}</p>
+            </div>
+            <div>
+                <h2 class="small-title">
+                    <span class="material-icons">email</span>
+                    Message
+                </h2>
+                <p>{{ message.message }}</p>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+

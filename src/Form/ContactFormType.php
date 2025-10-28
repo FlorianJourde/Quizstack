@@ -15,20 +15,24 @@ class ContactFormType extends AbstractType
         $builder
             ->add('username', null, [
                 'label' => 'Username',
-            ])
-            ->add('email', EmailType::class, [
-                'label' => 'Email',
+                'disabled' => $options['is_logged_in'],
             ])
             ->add('message', null, [
                 'label' => 'Message',
-            ])
-        ;
+            ]);
+
+        if (!$options['is_logged_in']) {
+            $builder->add('email', EmailType::class, [
+                'label' => 'Email',
+            ]);
+        }
     }
 
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
             'data_class' => Contact::class,
+            'is_logged_in' => false,
         ]);
     }
 }
