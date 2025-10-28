@@ -574,6 +574,11 @@ div[style*="background: rgb(39, 40, 34);"] {
   border-color: theme('colors.dark-grey-secondary');
 }
 
+.button-very-dark-grey {
+  background-color: theme('colors.very-dark-grey-primary');
+  border-color: theme('colors.very-dark-grey-primary');
+}
+
 .button-secondary {
   border: 2px solid theme('colors.green-secondary');
   padding: 0.6rem 1rem;

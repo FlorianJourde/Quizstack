@@ -14,7 +14,7 @@
     </ul>
 {% endif %}
 
-{% if passwordForm is defined and not passwordForm.vars.valid %}
+{% if passwordForm is defined and passwordForm is not null and not passwordForm.vars.valid %}
     <ul class="mt-2">
         {% for error in passwordForm.vars.errors %}
             <li>{{ error.message }}</li>

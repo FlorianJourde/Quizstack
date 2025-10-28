@@ -20,7 +20,7 @@ class ProfileController extends AbstractController
     #[IsGranted('ROLE_USER')]
     #[Route('/profile', name: 'profile')]
     public function profile(
-        Security            $security
+        Security $security
     ): Response
     {
         $user = $security->getUser();
@@ -37,7 +37,6 @@ class ProfileController extends AbstractController
     #[IsGranted('ROLE_USER')]
     #[Route('/profile/edit', name: 'profile_edit')]
     public function edit(
-        Security                    $security,
         Request                     $request,
         EntityManagerInterface      $entityManager,
         UserPasswordHasherInterface $passwordHasher,
@@ -45,16 +44,23 @@ class ProfileController extends AbstractController
     ): Response
     {
         /* @var User $user */
-        $user = $security->getUser();
+        $user = $this->getUser();
 
         if (!$user) {
             throw $this->createAccessDeniedException('You need to be logged in to access this page.');
         }
 
+        $originalUsername = $user->getUsername();
+
         $form = $this->createForm(ProfileFormType::class, $user);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            if ($originalUsername !== null && ($user->getUsername() === null || trim($user->getUsername()) === '')) {
+                $this->addFlash('error', 'You cannot remove your username once it has been set.');
+                return $this->redirectToRoute('profile_edit');
+            }
+
             if ($form->has('deleteImage') && $form->get('deleteImage')->getData() === true) {
                 if ($user->getImage()) {
                     $fileUploader->delete($user->getImage(), 'users');
@@ -75,27 +81,30 @@ class ProfileController extends AbstractController
             return $this->redirectToRoute('profile_edit');
         }
 
-        $passwordForm = $this->createForm(ChangePasswordFormType::class);
-        $passwordForm->handleRequest($request);
+        $passwordForm = null;
+        if ($user->getPassword() !== null) {
+            $passwordForm = $this->createForm(ChangePasswordFormType::class);
+            $passwordForm->handleRequest($request);
 
-        if ($passwordForm->isSubmitted() && $passwordForm->isValid()) {
-            $newEncodedPassword = $passwordHasher->hashPassword(
-                $user,
-                $passwordForm->get('plainPassword')->getData()
-            );
+            if ($passwordForm->isSubmitted() && $passwordForm->isValid()) {
+                $newEncodedPassword = $passwordHasher->hashPassword(
+                    $user,
+                    $passwordForm->get('plainPassword')->getData()
+                );
 
-            $user->setPassword($newEncodedPassword);
-            $entityManager->flush();
+                $user->setPassword($newEncodedPassword);
+                $entityManager->flush();
 
-            $this->addFlash('success', 'Your password has been changed successfully.');
+                $this->addFlash('success', 'Your password has been changed successfully.');
 
-            return $this->redirectToRoute('profile_edit');
+                return $this->redirectToRoute('profile_edit');
+            }
         }
 
         return $this->render('profile/edit.html.twig', [
             'user' => $user,
             'form' => $form->createView(),
-            'passwordForm' => $passwordForm
+            'passwordForm' => $passwordForm ? $passwordForm->createView() : null
         ]);
     }
 }

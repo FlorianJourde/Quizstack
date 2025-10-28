@@ -1,7 +1,9 @@
-<div>
-    <h2 class="small-title">
-        <span class="material-icons">person</span>
-        Username
-    </h2>
-    <p>{{ user.username }}</p>
-</div>
+{% if user.username is not null %}
+    <div>
+        <h2 class="small-title">
+            <span class="material-icons">person</span>
+            Username
+        </h2>
+        <p>{{ user.username }}</p>
+    </div>
+{% endif %}
