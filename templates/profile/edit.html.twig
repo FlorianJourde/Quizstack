@@ -21,6 +21,7 @@
         <div class="form-container glass box bg-dark-grey-secondary">
 
             {{ include('partials/form/errors.html.twig') }}
+
             {{ form_start(form, {'attr': {'class': 'needs-validation'}}) }}
 
             <div>
@@ -46,34 +47,37 @@
             </div>
             {{ form_end(form) }}
 
-            {{ form_start(passwordForm) }}
-            <div>
-                <h2 class="small-title">
-                    <span class="material-icons">key</span>
-                    {{ passwordForm.currentPassword.vars.label }}
-                </h2>
-                {{ form_widget(passwordForm.currentPassword) }}
-                <p class="text-sm mt-2">Enter your current password to confirm your identity.</p>
-            </div>
-            <div>
-                <h2 class="small-title">
-                    <span class="material-icons">key</span>
-                    {{ passwordForm.plainPassword.first.vars.label }}
-                </h2>
-                {{ form_widget(passwordForm.plainPassword.first) }}
-            </div>
-            <div>
-                <h2 class="small-title">
-                    <span class="material-icons">replay</span>
-                    {{ passwordForm.plainPassword.second.vars.label }}
-                </h2>
-                {{ form_widget(passwordForm.plainPassword.second) }}
-            </div>
-            <div class="buttons-container">
-                <a href="{{ path('profile') }}" class="button button-tertiary">Cancel</a>
-                <button type="submit" class="button button-primary">Save</button>
-            </div>
-            {{ form_end(passwordForm) }}
+            {% if passwordForm is not null %}
+                {{ form_start(passwordForm) }}
+                <div>
+                    <h2 class="small-title">
+                        <span class="material-icons">key</span>
+                        {{ passwordForm.currentPassword.vars.label }}
+                    </h2>
+                    {{ form_widget(passwordForm.currentPassword) }}
+                    <p class="text-sm mt-2">Enter your current password to confirm your identity.</p>
+                </div>
+                <div>
+                    <h2 class="small-title">
+                        <span class="material-icons">key</span>
+                        {{ passwordForm.plainPassword.first.vars.label }}
+                    </h2>
+                    {{ form_widget(passwordForm.plainPassword.first) }}
+                </div>
+                <div>
+                    <h2 class="small-title">
+                        <span class="material-icons">replay</span>
+                        {{ passwordForm.plainPassword.second.vars.label }}
+                    </h2>
+                    {{ form_widget(passwordForm.plainPassword.second) }}
+                </div>
+                <div class="buttons-container">
+                    <a href="{{ path('profile') }}" class="button button-tertiary">Cancel</a>
+                    <button type="submit" class="button button-primary">Save</button>
+                </div>
+                {{ form_end(passwordForm) }}
+            {% endif %}
+
         </div>
     </div>
 {% endblock %}

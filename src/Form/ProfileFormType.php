@@ -11,6 +11,7 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints\File;
+use Symfony\Component\Validator\Constraints\Length;
 use Symfony\Component\Validator\Constraints\NotBlank;
 use Symfony\Component\Validator\Constraints\Email;
 
@@ -18,6 +19,24 @@ class ProfileFormType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
+        $user = $options['data'];
+        $hasUsername = $user && $user->getUsername() !== null;
+
+        $usernameConstraints = [];
+
+        if ($hasUsername) {
+            $usernameConstraints[] = new NotBlank([
+                'message' => 'Username cannot be empty once set',
+            ]);
+        }
+
+        $usernameConstraints[] = new Length([
+            'min' => 3,
+            'max' => 180,
+            'minMessage' => 'Username must be at least {{ limit }} characters long',
+            'maxMessage' => 'Username cannot be longer than {{ limit }} characters',
+        ]);
+
         $builder
             ->add('email', EmailType::class, [
                 'constraints' => [
@@ -34,11 +53,14 @@ class ProfileFormType extends AbstractType
                 'label' => 'Email'
             ])
             ->add('username', TextType::class, [
-                'required' => false,
+                'required' => $hasUsername,
+                'constraints' => $usernameConstraints,
                 'attr' => [
-                    'class' => 'form-control'
+                    'class' => 'form-control',
+                    'placeholder' => $hasUsername ? 'Username is required' : 'Optional username'
                 ],
-                'label' => 'Username'
+                'label' => 'Username',
+                'help' => $hasUsername ? 'You cannot remove your username once set' : null,
             ])
             ->add('image', FileType::class, [
                 'label' => 'Image',
@@ -59,11 +81,6 @@ class ProfileFormType extends AbstractType
                     ])
                 ],
             ]);
-        // Add other fields you want to be editable
-        // Note: You probably don't want to allow password editing here
-        // Password editing typically requires confirming the current password
-
-        $user = $builder->getData();
 
         if ($user && $user->getImage()) {
             $builder->add('deleteImage', CheckboxType::class, [

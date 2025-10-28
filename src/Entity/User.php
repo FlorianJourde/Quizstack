@@ -27,10 +27,16 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(length: 180)]
     private ?string $email = null;
 
-    #[ORM\Column(length: 255, unique: true)]
+    #[ORM\Column(length: 255, unique: true, nullable: true)]
     #[Assert\Regex(
         pattern: '/^[a-zA-Z0-9_]+$/',
         message: 'Username can only contain letters, numbers and underscores.'
+    )]
+    #[Assert\Length(
+        min: 3,
+        max: 180,
+        minMessage: 'Username must be at least {{ limit }} characters long.',
+        maxMessage: 'Username cannot be longer than {{ limit }} characters.'
     )]
     private ?string $username = null;
 
@@ -43,7 +49,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     /**
      * @var string The hashed password
      */
-    #[ORM\Column]
+    #[ORM\Column(nullable: true)]
     private ?string $password = null;
 
     #[ORM\Column(type: Types::DATETIME_IMMUTABLE)]
@@ -69,6 +75,9 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $image = null;
+
+    #[ORM\Column(type: 'string', length: 255, nullable: true, unique: true)]
+    private ?string $googleId = null;
 
     public function __construct()
     {
@@ -119,7 +128,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      */
     public function getUserIdentifier(): string
     {
-        return (string)$this->email;
+        return (string)$this->username ?? $this->email;
     }
 
     /**
@@ -280,6 +289,17 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     {
         $this->image = $image;
 
+        return $this;
+    }
+
+    public function getGoogleId(): ?string
+    {
+        return $this->googleId;
+    }
+
+    public function setGoogleId(?string $googleId): self
+    {
+        $this->googleId = $googleId;
         return $this;
     }
 }
