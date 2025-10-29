@@ -3,7 +3,7 @@ import {createRoot} from "react-dom/client";
 import {AuthProvider} from "./context/AuthContext";
 import Question from "./components/Question/Question";
 import Demo from "./components/Demo/Demo";
-import Activity from "./components/Sections/Activity";
+import Discussions from "./components/Sections/Discussions";
 import StacksSlider from "./components/Sections/StacksSlider";
 import Share from "./components/Share/Share";
 import './styles/app.scss';
@@ -50,12 +50,12 @@ document.addEventListener('DOMContentLoaded', () => {
         );
     }
 
-    const activityContainer = document.querySelector('#activity-container') as HTMLElement;
-    if (activityContainer) {
-        const mode = activityContainer.dataset.mode || 'display';
-        const root = createRoot(activityContainer);
+    const discussionsContainer = document.querySelector('#discussions-container') as HTMLElement;
+    if (discussionsContainer) {
+        const mode = discussionsContainer.dataset.mode || 'display';
+        const root = createRoot(discussionsContainer);
         root.render(
-            <Activity mode={mode}/>
+            <Discussions mode={mode}/>
         );
     }
 

@@ -1,0 +1,50 @@
+{% extends 'layout.html.twig' %}
+
+{% set title = 'Discussions' %}
+
+{% block meta_description %}See the latest discussions and community engagement on Quizstack - new quizzes, popular challenges, and recent achievements{% endblock %}
+
+{% block body %}
+
+    {{ include('partials/banner.html.twig', {'color': 'purple'}) }}
+
+    <div class="wrapper">
+        <div class="page-header-container subtitle">
+            <h1 class="big-title grow">Discussions</h1>
+            <h2 class="fade-in-up md:text-lg opacity-75" style="transition-delay: 0.2s;">
+                Share insights, ask questions, and learn faster with developers exploring the same
+                web topics.
+            </h2>
+        </div>
+    </div>
+
+    <div class="wrapper">
+        <div id="discussions-container" data-mode="{{ mode }}"></div>
+    </div>
+
+    <div class="wrapper">
+        <div class="pt-spacing-very-large-tertiary flex flex-col gap-4">
+            <p class="fade-in-up opacity-75" style="transition-delay: 0.2s;">Stay on top of what the
+                community is saying. The discussions page collects all recent comments on Quizstack questions, giving
+                you a live stream of insights, clarifications, and alternative solutions across our 12 web development
+                topics.
+            </p>
+            <p class="fade-in-up opacity-75" style="transition-delay: 0.2s;">Browse threads connected to
+                specific questions in HTML, CSS, JavaScript, React, Node.js, accessibility, performance, testing, and
+                more. Filter by topic, difficulty, recency, or popularity to find the discussions that matter most. Skim
+                concise explanations, code snippets, and references to documentation shared by contributors.
+            </p>
+            <p class="fade-in-up opacity-75" style="transition-delay: 0.2s;">Signed-in users can reply, ask for
+                clarification, and more... Your participation feeds into badges, streaks, and leaderboard points,
+                showcasing your expertise on your profile.
+            </p>
+            <p class="fade-in-up opacity-75" style="transition-delay: 0.2s;">Quality comes first : community reporting
+                and moderation highlight constructive, well-sourced comments and keep conversations respectful. Make
+                Discussions part of your routine—check what’s trending, revisit topics you’re practicing, and turn quick
+                reading sessions into steady progress.
+            </p>
+        </div>
+    </div>
+
+{% endblock %}
+

@@ -2,21 +2,26 @@
 
 ![OpenClassrooms banneer](public/images/decoration/quizstack-social.jpg)
 
-[![Docker Badge](https://img.shields.io/badge/Docker-4-2496ed?style=flat-square&logo=docker&logoColor=white/)](https://www.docker.com/) [![PHP Badge](https://img.shields.io/badge/PHP-8.1-7a86b8?style=flat-square&logo=php&logoColor=white/)](https://www.php.net/) [![Symfony Badge](https://img.shields.io/badge/Symfony-6.4-000000?style=flat-square&logo=symfony&logoColor=white/)](http://symfony.com/) [![MySQL Badge](https://img.shields.io/badge/MySQL-9.1-4479A1?style=flat-square&logo=mysql&logoColor=white/)](https://www.mysql.com/) [![React Badge](https://img.shields.io/badge/React-19.1-61DAFB?style=flat-square&logo=React&logoColor=white/)](https://react.dev/) [![TypeScript Badge](https://img.shields.io/badge/TypeScript-5.8-3178C6?style=flat-square&logo=typescript&logoColor=white/)](https://www.typescriptlang.org/) [![Sass Badge](https://img.shields.io/badge/Sass-1.86-CC6699?style=flat-square&logo=sass&logoColor=white/)](https://sass-lang.com/) [![Tailwind Badge](https://img.shields.io/badge/Tailwind-3.4-61DAFB?style=flat-square&logo=tailwindcss&logoColor=white/)](https://tailwindcss.com/) [![Motion Badge](https://img.shields.io/badge/Motion-12.7-0055FF?style=flat-square&logo=framer&logoColor=white/)](https://motion.dev/) [![Twig Badge](https://img.shields.io/badge/Twig-2.12-bacf29?style=flat-square&logo=symfony&logoColor=white/)](https://twig.symfony.com/) [![GitHub Badge](https://img.shields.io/badge/GitHub-2.39-181717?style=flat-square&logo=github&logoColor=white/)](https://github.com/) [![Webpack Badge](https://img.shields.io/badge/Webpack-5.74-8DD6F9?style=flat-square&logo=webpack&logoColor=white/)](https://tailwindcss.com/) [![Composer Badge](https://img.shields.io/badge/Composer-2.2-6c3e22?style=flat-square&logo=composer&logoColor=white/)](https://getcomposer.org/) [![npm Badge](https://img.shields.io/badge/Npm-10.8-CB3837?style=flat-square&logo=npm&logoColor=white/)](https://www.npmjs.com/) [![Node.js Badge](https://img.shields.io/badge/Node.js-20.19-5FA04E?style=flat-square&logo=node.js&logoColor=white/)](https://nodejs.org/en)
+[![Docker Badge](https://img.shields.io/badge/Docker-4-2496ed?style=flat-square&logo=docker&logoColor=white/)](https://www.docker.com/) [![PHP Badge](https://img.shields.io/badge/PHP-8.4-7a86b8?style=flat-square&logo=php&logoColor=white/)](https://www.php.net/) [![Symfony Badge](https://img.shields.io/badge/Symfony-7.3-000000?style=flat-square&logo=symfony&logoColor=white/)](http://symfony.com/)  [![Doctrine Badge](https://img.shields.io/badge/Doctrine-3-fc6a31?style=flat-square&logo=doctrine&logoColor=white/)](https://www.doctrine-project.org/) [![MySQL Badge](https://img.shields.io/badge/MySQL-9.1-4479A1?style=flat-square&logo=mysql&logoColor=white/)](https://www.mysql.com/) [![React Badge](https://img.shields.io/badge/React-19.1-61DAFB?style=flat-square&logo=React&logoColor=white/)](https://react.dev/) [![TypeScript Badge](https://img.shields.io/badge/TypeScript-5.8-3178C6?style=flat-square&logo=typescript&logoColor=white/)](https://www.typescriptlang.org/) [![Sass Badge](https://img.shields.io/badge/Sass-1.86-CC6699?style=flat-square&logo=sass&logoColor=white/)](https://sass-lang.com/) [![Tailwind Badge](https://img.shields.io/badge/Tailwind-3.4-61DAFB?style=flat-square&logo=tailwindcss&logoColor=white/)](https://tailwindcss.com/) [![Motion Badge](https://img.shields.io/badge/Motion-12.7-0055FF?style=flat-square&logo=framer&logoColor=white/)](https://motion.dev/) [![Twig Badge](https://img.shields.io/badge/Twig-2.12-bacf29?style=flat-square&logo=symfony&logoColor=white/)](https://twig.symfony.com/) [![GitHub Badge](https://img.shields.io/badge/GitHub-2.39-181717?style=flat-square&logo=github&logoColor=white/)](https://github.com/) [![Webpack Badge](https://img.shields.io/badge/Webpack-5.74-8DD6F9?style=flat-square&logo=webpack&logoColor=white/)](https://tailwindcss.com/) [![Composer Badge](https://img.shields.io/badge/Composer-2.2-6c3e22?style=flat-square&logo=composer&logoColor=white/)](https://getcomposer.org/) [![npm Badge](https://img.shields.io/badge/Npm-10.8-CB3837?style=flat-square&logo=npm&logoColor=white/)](https://www.npmjs.com/) [![Node.js Badge](https://img.shields.io/badge/Node.js-20.19-5FA04E?style=flat-square&logo=node.js&logoColor=white/)](https://nodejs.org/en)
 
 ## Learn web development through interactive quiz
 
 ### Introduction
 
-Quizstack is an open-source web development quiz platform designed to help developers test and improve their knowledge through interactive challenges. With over 1,000 questions across 12 essential web development domains, Quizstack provides a comprehensive learning resource for beginners and experienced developers alike.
+Quizstack is an open-source web development quiz platform designed to help developers test and improve their knowledge
+through interactive challenges. With over 1,000 questions across 12 essential web development domains, Quizstack
+provides a comprehensive learning resource for beginners and experienced developers alike.
 
 ### Features
 
-- Extensive Question Bank: 1,000+ carefully crafted questions covering HTML, CSS, JavaScript, PHP, SQL, front-end frameworks, back-end frameworks, accessibility, UX/UI, SEO, web security, and performance optimization.
-- Mobile-First Design: Learn and practice your skills anywhere, anytime with our responsive interface optimized for all devices.
+- Extensive Question Bank: 1,000+ carefully crafted questions covering HTML, CSS, JavaScript, PHP, SQL, front-end
+  frameworks, back-end frameworks, accessibility, UX/UI, SEO, web security, and performance optimization.
+- Mobile-First Design: Learn and practice your skills anywhere, anytime with our responsive interface optimized for all
+  devices.
 - Skill Level System: Questions tailored to different expertise levels, from beginners to advanced developers.
 - Competitive Elements: Leaderboards, achievements, and a points system to track progress and compete with friends.
-- Community Features: Comment on questions using Markdown formatting, perfect for sharing code snippets and explanations.
+- Community Features: Comment on questions using Markdown formatting, perfect for sharing code snippets and
+  explanations.
 - Open Contribution: Anyone can propose new questions, helping our platform grow with diverse, up-to-date content.
 
 [![Website](https://img.shields.io/badge/Website-b7cf3e?style=for-the-badge)](https://quizstack.io/) [![Website](https://img.shields.io/badge/--000000?style=for-the-badge&logo=x&logoColor=white/)](https://x.com/quizstackapp)
@@ -24,6 +29,7 @@ Quizstack is an open-source web development quiz platform designed to help devel
 ## Getting Started
 
 ### Prerequisites
+
 - Docker
 
 ### Installation
@@ -31,13 +37,16 @@ Quizstack is an open-source web development quiz platform designed to help devel
 ```bash
 # Clone the repository
 git clone https://github.com/FlorianJourde/Quizstack.git
+```
+
+```bash
+# Move to repository
 cd quizstack
 ```
 
 ```bash
-# Run & stop Docker environment
+# Mount container
 docker-compose up -d
-docker-compose down
 ```
 
 ```bash
@@ -46,15 +55,68 @@ docker-compose exec php bash
 ```
 
 ```bash
+# Create database structure
+php bin/console doctrine:schema:create
+```
+
+```bash
 # Load sample datas
-php bin/console doctrine:fixtures:load
+php bin/console --env=dev doctrine:fixtures:load
 ```
 
 Visit `http://localhost:8000` in your browser to access the application.
 
+## Useful commands
+
+```bash
+# Build environment
+docker-compose build --no-cache
+```
+
+```bash
+# Stop container
+docker-compose down
+```
+
+```bash
+# Stop & remove containers + volumes
+docker-compose down -v
+```
+
+```bash
+# List images
+docker images
+```
+
+```bash
+# Remove specific image
+docker rmi project-php
+```
+
+```bash
+# Install PHP dependencies
+composer install
+```
+
+```bash
+# Install Node.js dependencies
+npm install
+```
+
+```bash
+# Watch assets
+npm run watch
+```
+
+```bash
+# Build assets
+npm run build
+```
+
 ## Contributing
 
-We welcome contributions from the community ! Please check out our [contribution guidelines](https://quizstack.io) for details on how to submit questions, report bugs, or contribute code.
+We welcome contributions from the community ! Please check out our [contribution guidelines](https://quizstack.io) for
+details on how to submit questions, report bugs, or contribute code.
 
 ## Contact
 

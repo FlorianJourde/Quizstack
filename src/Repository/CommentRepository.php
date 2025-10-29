@@ -14,7 +14,7 @@ use Doctrine\Persistence\ManagerRegistry;
  */
 class CommentRepository extends ServiceEntityRepository
 {
-    public const COMMENTS_PER_PAGE = 50;
+    public const COMMENTS_PER_PAGE = 10;
 
     public function __construct(ManagerRegistry $registry)
     {
@@ -40,25 +40,11 @@ class CommentRepository extends ServiceEntityRepository
             ->getQuery();
     }
 
-    public function getCommentPaginator(User $user, int $offset): Paginator
-    {
-        $query = $this->createQueryBuilder('c')
-            ->andWhere('c.user = :user')
-            ->setParameter('user', $user)
-            ->orderBy('c.creation_date', 'DESC')
-            ->setMaxResults(self::COMMENTS_PER_PAGE)
-            ->setFirstResult($offset)
-            ->getQuery();
-
-        return new Paginator($query);
-    }
-
-    public function getLastComments(int $limit = 10): array
+    public function getLastComments(): array
     {
         $query = $this->createQueryBuilder('c')
             ->orderBy('c.creation_date', 'DESC')
             ->setMaxResults(self::COMMENTS_PER_PAGE)
-            ->setMaxResults($limit)
             ->getQuery()
             ->getResult();
 

@@ -9,8 +9,11 @@
     {{ include('partials/banner.html.twig', {'color': 'gold'}) }}
 
     <div class="wrapper wrapper-large">
-        <div class="page-header-container">
+        <div class="page-header-container subtitle">
             <h1 class="big-title grow">Hall of fame</h1>
+            <h2 class="fade-in-up md:text-lg opacity-75" style="transition-delay: 0.2s;">
+                Compete weekly, monthly, or all-time and showcase your skills.
+            </h2>
         </div>
     </div>
 
@@ -54,6 +57,29 @@
                 {{ include('partials/scores-grid.html.twig', {'period': period}) }}
             {% endfor %}
         </ul>
+    </div>
+
+    <div class="wrapper wrapper-large">
+        <div class="pt-spacing-very-large-tertiary flex flex-col gap-4">
+            <p class="fade-in-up opacity-75" style="transition-delay: 0.2s;">Welcome to the Hall of Fame - where top
+                performers earn recognition for consistent, high-quality play. Browse leaderboards by week, month, or
+                all time to see who’s mastering HTML, CSS, JavaScript, React, Node.js, accessibility, performance,
+                testing, and more. Each ranking reflects points earned from correct answers, speed, difficulty, and
+                streak multipliers, rewarding both accuracy and momentum.</p>
+            <p class="fade-in-up opacity-75" style="transition-delay: 0.2s;">Sign in to track your position, compare
+                with friends, and follow rivals. Build streaks, unlock badges, and aim for higher tiers, from Code
+                Apprentice to Development Legend. Filters let you view global leaders or narrow results by topic and
+                difficulty, so you can target your next breakthrough. Check back often - leaderboards reset
+                weekly and monthly, offering fresh chances to rise. Learn from the best and turn every session into
+                measurable
+                progress.</p>
+            <p class="fade-in-up opacity-75" style="transition-delay: 0.2s;">Want your name on the board ? Practice with
+                intent. Use Filters to focus on topics you’re weakest in, review missed questions, and revisit
+                explanations from top commenters on the Activity page. Short daily sessions compound quickly—aim for
+                consistent streaks, pace your attempts to maintain accuracy, and tackle higher - difficulty quizzes when
+                you’re ready for bigger multipliers. Compete solo or create a team to combine scores and unlock special
+                team badges.</p>
+        </div>
     </div>
 
 {% endblock %}

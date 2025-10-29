@@ -7,7 +7,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 
-class FiltersController extends AbstractController
+class FilterController extends AbstractController
 {
     #[Route('/filters', name: 'app_filters')]
     public function index(CategoryRepository $categoryRepository): Response

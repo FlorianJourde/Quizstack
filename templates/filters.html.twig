@@ -9,12 +9,31 @@
     {{ include('partials/banner.html.twig') }}
 
     <div class="wrapper">
-        <div id="filters-section" class="page-header-container">
+        <div id="filters-section" class="page-header-container subtitle">
             <h1 class="big-title grow">Filters</h1>
+            <h2 class="fade-in-up md:text-lg opacity-75" style="transition-delay: 0.2s;">
+                Refine your quiz journey : choose filters to match your goals and level.
+            </h2>
         </div>
 
         {{ include('partials/filters.html.twig', _context) }}
 
+    </div>
+
+    <div class="wrapper">
+        <div class="pt-spacing-very-large-tertiary flex flex-col gap-4">
+            <p class="fade-in-up opacity-75" style="transition-delay: 0.2s;">Fine-tune your learning with Filters.
+                Select the topics, difficulty levels, and question types that match your goals—whether you’re reviewing
+                fundamentals or preparing for a technical interview. You can combine multiple categories like HTML, CSS,
+                JavaScript, React, Node.js, accessibility, performance, or testing to build a focused practice set.</p>
+            <p class="fade-in-up opacity-75" style="transition-delay: 0.2s;">Use difficulty filters to balance speed and
+                challenge, and sort by new, most missed, or highest rated to target high-impact questions. Save your
+                favorite filter presets to quickly resume where you left off on mobile or desktop. Logged-in users can
+                sync preferences across devices and receive personalized recommendations based on recent activity.</p>
+            <p class="fade-in-up opacity-75" style="transition-delay: 0.2s;">Set clear intentions, minimize
+                distractions, and practice with purpose. The right filters turn every session into measurable
+                progress.</p>
+        </div>
     </div>
 
     {{ include('partials/promotional/promotional-1.html.twig', _context) }}

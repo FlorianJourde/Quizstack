@@ -9,6 +9,7 @@
   --spacing-large-secondary: 3rem;
   --spacing-very-large-primary: 10rem;
   --spacing-very-large-secondary: 8rem;
+  --spacing-very-large-tertiary: 6rem;
 }
 
 @media (min-width: 40rem) {
@@ -225,6 +226,10 @@ body .fade-in-up.show {
   opacity: 1;
   transform: translateY(0);
   filter: unset;
+
+  &.opacity-75 {
+    opacity: .75;
+  }
 }
 
 div[style*="background: rgb(39, 40, 34);"] {
@@ -614,7 +619,12 @@ div[style*="background: rgb(39, 40, 34);"] {
   justify-content: space-between;
   padding-top: 3rem;
   padding-bottom: 6rem;
-  gap: 4rem;
+  gap: 1rem;
+
+  &.subtitle {
+    flex-direction: column;
+    align-items: unset;
+  }
 }
 
 .footer-bottom-container, .footer-top-container, .footer-middle-container {

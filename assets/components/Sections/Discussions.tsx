@@ -7,7 +7,7 @@ import CommentItem from "../Comment/CommentItem";
 import {ROUTES} from "../../utils/routes";
 import Loading from "./Loading";
 
-export function Activity({mode}) {
+export function Discussions({mode}) {
     const [comments, setComments] = useState<CommentInterface[] | []>([]);
     const [loading, setLoading] = useState<boolean>(true);
 
@@ -67,4 +67,4 @@ export function Activity({mode}) {
     );
 }
 
-export default Activity;
+export default Discussions;

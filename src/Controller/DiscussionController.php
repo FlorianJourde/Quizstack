@@ -6,12 +6,12 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 
-class ActivityController extends AbstractController
+class DiscussionController extends AbstractController
 {
-    #[Route('/activity', name: 'activity')]
-    public function activity(): Response
+    #[Route('/discussions', name: 'discussions')]
+    public function discussions(): Response
     {
-        return $this->render('activity.html.twig', [
+        return $this->render('discussions.html.twig', [
             'mode' => 'display',
         ]);
     }

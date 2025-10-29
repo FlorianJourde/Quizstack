@@ -9,8 +9,11 @@
     {{ include('partials/banner.html.twig') }}
 
     <div class="wrapper">
-        <div class="page-header-container">
+        <div class="page-header-container subtitle">
             <h1 class="big-title grow">Contact</h1>
+            <h2 class="fade-in-up md:text-lg opacity-75" style="transition-delay: 0.2s;">
+                Get in touch : ask a question, suggest a feature, or partner with Quizstack.
+            </h2>
         </div>
     </div>
 
@@ -55,6 +58,23 @@
 
             {{ form_end(form) }}
 
+        </div>
+    </div>
+
+    <div class="wrapper">
+        <div class="pt-spacing-very-large-tertiary flex flex-col gap-4">
+            <p class="fade-in-up opacity-75" style="transition-delay: 0.2s;">Have a question, idea, or issue to report?
+                Use the form below to reach the Quizstack team. We read every message carefully and typically reply
+                within 1–2 business days. To help us assist you faster, include as much context as possible - page URLs,
+                screenshots, device/browser details, and steps to reproduce if you’re reporting a bug.</p>
+            <p class="fade-in-up opacity-75" style="transition-delay: 0.2s;">Product suggestions are welcome. Tell us
+                which quiz topics you’d like to see next, how we can improve explanations, or which features would make
+                your learning experience smoother. Educators, companies, and community organizers can also contact us
+                about partnerships, bulk access, or custom leaderboards for events and classrooms.</p>
+            <p class="fade-in-up opacity-75" style="transition-delay: 0.2s;">We value respectful, clear communication.
+                Please avoid sharing sensitive credentials; if needed, we’ll arrange a secure follow-up. By submitting
+                the form, you agree to our privacy policy and understand that we’ll use your information to respond to
+                your request. Thank you for helping us build a better web development learning platform.</p>
         </div>
     </div>
 

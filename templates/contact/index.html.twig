@@ -35,7 +35,7 @@
                             <td>{{ message.id }}</td>
                             <td>{{ message.username }}</td>
                             <td>{{ message.email }}</td>
-                            <td>{{ message.message }}</td>
+                            <td class="text-left min-w-[300px]">{{ message.message|slice(0, 60) ~ (message.message|length > 60 ? '...' : '') }}</td>
                             <td>{{ message.creationDate|date('d/m/y') }}</td>
                             <td>
                                 <div class="buttons-container">
