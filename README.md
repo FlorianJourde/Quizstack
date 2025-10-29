@@ -34,84 +34,31 @@ provides a comprehensive learning resource for beginners and experienced develop
 
 ### Installation
 
-```bash
-# Clone the repository
-git clone https://github.com/FlorianJourde/Quizstack.git
-```
+Mount container :
 
 ```bash
-# Move to repository
-cd quizstack
-```
-
-```bash
-# Mount container
 docker-compose up -d
 ```
 
+Enter the container :
+
 ```bash
-# Enter the container
 docker-compose exec php bash
 ```
 
+Create database structure :
+
 ```bash
-# Create database structure
 php bin/console doctrine:schema:create
 ```
 
+Load sample datas :
+
 ```bash
-# Load sample datas
 php bin/console --env=dev doctrine:fixtures:load
 ```
 
 Visit `http://localhost:8000` in your browser to access the application.
-
-## Useful commands
-
-```bash
-# Build environment
-docker-compose build --no-cache
-```
-
-```bash
-# Stop container
-docker-compose down
-```
-
-```bash
-# Stop & remove containers + volumes
-docker-compose down -v
-```
-
-```bash
-# List images
-docker images
-```
-
-```bash
-# Remove specific image
-docker rmi project-php
-```
-
-```bash
-# Install PHP dependencies
-composer install
-```
-
-```bash
-# Install Node.js dependencies
-npm install
-```
-
-```bash
-# Watch assets
-npm run watch
-```
-
-```bash
-# Build assets
-npm run build
-```
 
 ## Contributing
 
