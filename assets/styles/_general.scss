@@ -244,7 +244,7 @@ div[style*="background: rgb(39, 40, 34);"] {
 
 #quiz-container,
 #demo-container,
-.share-container {
+#share-container {
   // https://quizstack.io/question/326
   &.wrap .code-wrapper > code,
   pre > code {
@@ -259,7 +259,7 @@ div[style*="background: rgb(39, 40, 34);"] {
   }
 }
 
-.share-container {
+#share-container {
   // https://quizstack.io/question/326
   .code-wrapper > code {
     white-space: break-spaces !important;

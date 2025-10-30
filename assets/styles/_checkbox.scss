@@ -20,13 +20,13 @@
   }
 }
 
-.share-container {
+#share-container {
   .question-bottom-container {
     margin-top: unset;
   }
 }
 
-.share-container .show-answers,
+#share-container .show-answers,
 #quiz-container[data-mode="display"] {
   .checkbox-group {
     .checkbox-input {
@@ -146,7 +146,7 @@
   }
 }
 
-.share-container .screenbox:not(.show-answers) {
+#share-container .screenbox:not(.show-answers) {
   .checkbox-group .checkbox-input.correct + .checkbox-tile {
     box-shadow: unset;
   }
