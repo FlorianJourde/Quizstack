@@ -16,6 +16,11 @@
                 <a class="button button-action" href="{{ path('question_new') }}">
                     <span class="material-icons">add</span>
                 </a>
+                {% if is_granted('ROLE_ADMIN') %}
+                    <a class="button button-action" href="{{ path('question_share', {'id': question.id}) }}">
+                        <span class="material-icons">share</span>
+                    </a>
+                {% endif %}
             </div>
         </div>
     </div>

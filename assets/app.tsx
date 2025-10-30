@@ -39,16 +39,17 @@ document.addEventListener('DOMContentLoaded', () => {
         );
     }
 
-    const shareContainer = document.querySelector('#share-container') as HTMLElement;
-    if (shareContainer) {
+    const shareContainers = document.querySelectorAll('.share-container') as NodeListOf<HTMLElement>;
+    shareContainers.forEach((shareContainer) => {
         const questionId = parseInt(shareContainer.dataset.questionId || '0');
         const mode = shareContainer.dataset.mode || 'display';
+        const social = shareContainer.dataset.social;
 
         const root = createRoot(shareContainer);
         root.render(
-            <Share questionId={questionId} mode={mode}/>
+            <Share questionId={questionId} mode={mode} social={social}/>
         );
-    }
+    });
 
     const discussionsContainer = document.querySelector('#discussions-container') as HTMLElement;
     if (discussionsContainer) {

@@ -21,7 +21,6 @@ class Question3
             ```
             EOT
         );
-        $question->setImage('pattern-js.png');
         $question->setCreationDate($date);
         $question->setUpdateDate($date);
         $question->setDifficulty(2);

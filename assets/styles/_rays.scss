@@ -167,8 +167,13 @@
       inset: 0;
       background-image: var(--stripes), var(--rainbow);
       background-size: 200%, 100%;
-      animation: smoothBg 120s linear infinite;
       mix-blend-mode: lighten;
+    }
+
+    &.animate {
+      &::after {
+        animation: smoothBg 120s linear infinite;
+      }
     }
   }
 }
