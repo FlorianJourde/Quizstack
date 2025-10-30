@@ -33,12 +33,12 @@ function Twitter({
             <li ref={el => setLiRef(el, 0)}>
                 <Screenshot onClick={() => captureScreenshot(0)}/>
                 <div
-                    className="screenbox flex flex-col justify-center overflow-hidden relative aspect-[3/4] outline outline-2 outline-[#ffffff1a]">
+                    className="screenbox flex flex-col justify-center overflow-hidden relative outline outline-2 outline-[#ffffff1a]">
                     <Banner/>
                     <div className={`flex flex-col h-full`}>
                         <Header/>
                         <div
-                            className="zoom grow justify-center flex flex-col gap-spacing-primary m-spacing-primary">
+                            className="zoom big grow justify-center flex flex-col gap-spacing-primary mx-spacing-primary mt-spacing-very-large-tertiary mb-[5rem]">
                             <QuestionContent question={question} mode={mode}/>
                             <Choices
                                 mode={mode}
@@ -46,9 +46,9 @@ function Twitter({
                                 answers={answers}
                                 setAnswers={setAnswers}
                             />
+                        </div>
                             <Footer/>
                             <div className="screenbox-noise-texture"></div>
-                        </div>
                     </div>
                 </div>
             </li>
@@ -56,13 +56,13 @@ function Twitter({
             <li ref={el => setLiRef(el, 2)}>
                 <Screenshot onClick={() => captureScreenshot(2)}/>
                 <div
-                    className="show-answers screenbox flex flex-col justify-center overflow-hidden relative aspect-[3/4] outline outline-2 outline-[#ffffff1a]">
+                    className="show-answers screenbox flex flex-col justify-center overflow-hidden relative outline outline-2 outline-[#ffffff1a]">
                     <Banner color='green'/>
 
                     <div className={`flex flex-col h-full`}>
                         <Header/>
                         <div
-                            className="zoom grow justify-center flex flex-col gap-spacing-primary m-spacing-primary">
+                            className="zoom big grow justify-center flex flex-col gap-spacing-primary mx-spacing-primary mt-spacing-very-large-tertiary mb-[5rem]">
                             <div className="glass box">
                                 <Explanation question={question}/>
                             </div>

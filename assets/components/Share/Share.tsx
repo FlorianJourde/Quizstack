@@ -21,8 +21,8 @@ export function Share({questionId, mode, social}) {
     function Header() {
         return (
             <div className={`flex absolute w-full p-spacing-primary gap-4 items-center font-bold text-xl`}>
-                <img src={`/images/logos/quizstack-logo.png`} className={`h-8`} alt="Quizstack logo"/>
-                <h2>Quizstack</h2>
+                <img src={`/images/logos/quizstack-logo.png`} className={`h-12`} alt="Quizstack logo"/>
+                <h2 className={`text-3xl`}>Quizstack</h2>
             </div>
         )
     }

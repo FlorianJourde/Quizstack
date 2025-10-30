@@ -273,6 +273,10 @@ div[style*="background: rgb(39, 40, 34);"] {
   .zoom {
     zoom: 100%;
     perspective: 1000px;
+
+    &.big {
+      zoom: 120%;
+    }
   }
 
   .screenbox {
