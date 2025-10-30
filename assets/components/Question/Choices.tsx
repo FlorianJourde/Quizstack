@@ -63,12 +63,11 @@ function Choices({mode, question, answers, setAnswers}: {
                         <label>
                             <input
                                 type={`${question.numberOfCorrectChoices > 1 ? 'checkbox' : 'radio'}`}
-                                id={`choice-${index}`}
                                 name="choice"
                                 value={choice.id}
                                 checked={answers.includes(choice.id)}
                                 onChange={() => handleAnswersChange(choice.id)}
-                                className={`checkbox-input ${getAnswerStatus(choice.id)} ${answers.includes(choice.id) ? 'checked' : ''}`}
+                                className={`choice-${index} checkbox-input ${getAnswerStatus(choice.id)} ${answers.includes(choice.id) ? 'checked' : ''}`}
                                 tabIndex={mode === 'display' ? -1 : undefined}
                             />
                             <span className="checkbox-tile box">

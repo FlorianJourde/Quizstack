@@ -61,7 +61,6 @@ export function Share({questionId, mode, social}) {
 
         if (currentLi) {
             const elementToCapture = currentLi.querySelector('.screenbox') as HTMLElement;
-            console.log(elementToCapture);
 
             if (elementToCapture) {
                 htmlToImage
