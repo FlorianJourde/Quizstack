@@ -21,7 +21,6 @@ module.exports = {
                 'very-dark-grey-primary': '#0f0f0f',
                 'blue-primary': '#27a2ba',
                 'blue-secondary': '#66d9ef',
-                // 'green-gradient': 'linear-gradient(to bottom, #7da80d, #59780a)',
                 'yellow-primary': '#e6db74',
                 'green-primary': '#b7cf3e',
                 'green-secondary': '#7da80d',

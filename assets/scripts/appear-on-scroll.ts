@@ -20,6 +20,7 @@ function showItems(counter: number): void {
             counter++;
 
             setTimeout(function() {
+                (item as HTMLElement).style.transitionDelay = '';
                 counter--;
             }, ((counter * 0.1) * 1000) + 400);
         }
