@@ -6,7 +6,8 @@
     <meta name="theme-color" content="#0f0f0f">
     <title>{% block title %}Quizstack{% endblock %}</title>
 
-    <meta name="description" content="{% block meta_description %}Quizstack is a free web development quiz platform to learn HTML, CSS, JavaScript, PHP, SQL and more coding skills on any device. Test our challenges now!{% endblock %}">
+    <meta name="description"
+          content="{% block meta_description %}Quizstack is a free web development quiz platform to learn HTML, CSS, JavaScript, PHP, SQL and more coding skills on any device. Test our challenges now!{% endblock %}">
     <meta name="robots" content="index, follow">
 
     <meta property="og:type" content="website">
@@ -14,7 +15,8 @@
     <meta property="og:title" content="{% block og_title %}{{ block('title') }}{% endblock %}">
     <meta property="og:description" content="{% block og_description %}{{ block('meta_description') }}{% endblock %}">
     <meta property="og:url" content="{{ absolute_url(app.request.pathInfo) }}">
-    <meta property="og:image" content="{% block og_image %}{{ absolute_url(asset('images/decoration/quizstack-social.jpg')) }}{% endblock %}">
+    <meta property="og:image"
+          content="{% block og_image %}{{ absolute_url(asset('images/decoration/quizstack-social.jpg')) }}{% endblock %}">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
     <meta name="twitter:card" content="summary_large_image">
@@ -30,13 +32,24 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
 
     <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap" media="print" onload="this.media='all'">
-    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap"></noscript>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap"
+          media="print" onload="this.media='all'">
+    <noscript>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap">
+    </noscript>
 
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Spline+Sans+Mono:ital,wght@0,300..700;1,300..700&display=swap" media="print" onload="this.media='all'">
-    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Spline+Sans+Mono:ital,wght@0,300..700;1,300..700&display=swap"></noscript>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" media="print" onload="this.media='all'">
-    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"></noscript>
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css2?family=Spline+Sans+Mono:ital,wght@0,300..700;1,300..700&display=swap"
+          media="print" onload="this.media='all'">
+    <noscript>
+        <link rel="stylesheet"
+              href="https://fonts.googleapis.com/css2?family=Spline+Sans+Mono:ital,wght@0,300..700;1,300..700&display=swap">
+    </noscript>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" media="print"
+          onload="this.media='all'">
+    <noscript>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    </noscript>
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
 
@@ -46,16 +59,32 @@
 
     {% block page_schema %}
         <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "Organization",
-      "name": "Quizstack",
-      "url": "{{ absolute_url('/') }}",
-      "logo": "{{ absolute_url(asset('favicon.png')) }}",
-      "description": "Free web development quiz platform for HTML, CSS, JavaScript, PHP, SQL",
-      "sameAs": ["https://github.com/FlorianJourde/Quizstack"]
-    }
-    </script>
+            {
+                "@context": "https://schema.org",
+                "@graph": [
+                    {
+                        "@type": "Organization",
+                        "@id": "https://quizstack.io/#organization",
+                        "name": "Quizstack",
+                        "url": "https://quizstack.io/",
+                        "logo": "https://quizstack.io/favicon.png",
+                        "description": "Free web development quiz platform for HTML, CSS, JavaScript, PHP, SQL, Frontend, Backend, Accessibility, SEO, Security, and Performance",
+                        "sameAs": [
+                            "https://github.com/FlorianJourde/Quizstack"
+                        ]
+                    },
+                    {
+                        "@type": "WebSite",
+                        "@id": "https://quizstack.io/#website",
+                        "url": "https://quizstack.io/",
+                        "name": "Quizstack",
+                        "publisher": {
+                            "@id": "https://quizstack.io/#organization"
+                        }
+                    }
+                ]
+            }
+        </script>
     {% endblock %}
 
     {% block javascripts %}

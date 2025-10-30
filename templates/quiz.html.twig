@@ -5,22 +5,35 @@
     {
         "@context": "https://schema.org",
         "@type": "Quiz",
+        "@id": "{{ absolute_url(app.request.uri) }}#quiz",
         "name": "Web Development Quiz",
-        "description": "Interactive quiz for HTML, CSS, JavaScript, PHP, SQL",
+        "description": "Interactive quiz with 1000+ questions on HTML, CSS, JavaScript, PHP, SQL, Frontend, Backend, Accessibility, SEO, Security, and Performance",
         "url": "{{ absolute_url(app.request.uri) }}",
         "isAccessibleForFree": true,
         "inLanguage": "en",
         "educationalLevel": ["Beginner", "Intermediate", "Advanced"],
         "learningResourceType": "Quiz",
+        "numberOfQuestions": 1000,
+        "typicalAgeRange": "18-",
+        "interactivityType": "active",
+        "assesses": ["HTML", "CSS", "JavaScript", "PHP", "SQL", "Frontend Development", "Backend Development", "Web Accessibility", "SEO", "Web Security", "Web Performance", "Web Development Culture"],
         "about": [
             {"@type": "Thing", "name": "HTML"},
             {"@type": "Thing", "name": "CSS"},
             {"@type": "Thing", "name": "JavaScript"},
             {"@type": "Thing", "name": "PHP"},
-            {"@type": "Thing", "name": "SQL"}
+            {"@type": "Thing", "name": "SQL"},
+            {"@type": "Thing", "name": "Frontend Development"},
+            {"@type": "Thing", "name": "Backend Development"},
+            {"@type": "Thing", "name": "Web Accessibility"},
+            {"@type": "Thing", "name": "SEO"},
+            {"@type": "Thing", "name": "Web Security"},
+            {"@type": "Thing", "name": "Web Performance"},
+            {"@type": "Thing", "name": "Web Development Culture"}
         ],
         "provider": {
             "@type": "Organization",
+            "@id": "https://quizstack.io/#organization",
             "name": "Quizstack",
             "url": "{{ absolute_url('/') }}"
         }
