@@ -8,7 +8,6 @@ import Banner from "../Banner/Banner";
 import * as htmlToImage from 'html-to-image';
 
 export function Share({questionId, mode}) {
-    const [loading, setLoading] = useState<boolean>(true);
     const [question, setQuestion] = useState<QuestionInterface | null>(null);
     const [answers, setAnswers] = useState<number[]>([]);
 
@@ -82,7 +81,6 @@ export function Share({questionId, mode}) {
     }
 
     async function loadQuestion() {
-        setLoading(true);
         setAnswers([]);
 
         try {
@@ -91,8 +89,6 @@ export function Share({questionId, mode}) {
             setQuestion(data);
         } catch (error) {
             console.error('Error loading question:', error);
-        } finally {
-            setLoading(false);
         }
     }
 
@@ -151,13 +147,13 @@ export function Share({questionId, mode}) {
             <li ref={el => setLiRef(el, 4)}>
                 <Screenshot onClick={() => captureScreenshot(4)}/>
                 <div
-                    className="show-answers screenbox flex flex-col justify-center overflow-hidden relative aspect-square outline outline-2 outline-[#ffffff1a]">
+                    className="show-answers screenbox flex flex-col justify-center overflow-hidden relative aspect-[2/3] outline outline-2 outline-[#ffffff1a]">
                     <Banner color='green'/>
                     <div className={`flex flex-col h-full`}>
                         <div
-                            className="zoom grow justify-center flex flex-col m-spacing-primary">
+                            className="zoom big grow justify-center flex flex-col m-spacing-primary">
                             <div
-                                className={`discover flex gap-spacing-primary flex-col h-full w-full max-w-[350px] pt-spacing-large-secondary pl-spacing-large-secondary`}>
+                                className={`discover flex gap-spacing-primary flex-col h-full w-full max-w-[350px] pt-[3rem] pl-[3rem]`}>
                                 <div className={`flex w-full gap-4 items-center font-bold text-xl`}>
                                     <img src={`/images/logos/quizstack-logo.png`} className={`h-11`}
                                          alt="Quizstack logo"/>
@@ -189,6 +185,6 @@ export function Share({questionId, mode}) {
             </li>
         </ul>
     );
-};
+}
 
 export default Share;
