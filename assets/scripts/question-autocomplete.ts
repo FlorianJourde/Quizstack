@@ -1,3 +1,5 @@
+import {showMessage} from "./helper/show-message";
+
 interface Answer {
     answer_content: string;
     correct_answer: boolean;
@@ -256,8 +258,7 @@ function injectIntoForm(questionData: QuestionData): boolean {
             questionData.answers.forEach(function (answer: Answer, index: number): void {
                 const choiceContentField: HTMLTextAreaElement | null = document.querySelector(`#question_form_choice_${index}_content`) as HTMLTextAreaElement;
                 if (choiceContentField && answer.answer_content) {
-                    const cleanedContent: string = cleanIndentation(answer.answer_content, 2);
-                    choiceContentField.value = cleanedContent;
+                    choiceContentField.value = cleanIndentation(answer.answer_content, 2);
                 }
 
                 const choiceCorrectField: HTMLInputElement | null = document.querySelector(`#question_form_choice_${index}_correct`) as HTMLInputElement;
@@ -272,33 +273,6 @@ function injectIntoForm(questionData: QuestionData): boolean {
         console.error('Error injecting data into form:', error);
         return false;
     }
-}
-
-function showMessage(message: string, isError: boolean = false): void {
-    const errorDiv: HTMLElement | null = document.querySelector('#errorMessage');
-    const successDiv: HTMLElement | null = document.querySelector('#successMessage');
-
-    if (isError) {
-        if (errorDiv) {
-            errorDiv.textContent = message;
-            errorDiv.style.display = 'block';
-        }
-        if (successDiv) {
-            successDiv.style.display = 'none';
-        }
-    } else {
-        if (successDiv) {
-            successDiv.textContent = message;
-            successDiv.style.display = 'block';
-        }
-        if (errorDiv) {
-            errorDiv.style.display = 'none';
-        }
-    }
-}
-
-function handleInject(): void {
-    showMessage('Please use "Load & Inject" button to load a YAML file.', true);
 }
 
 document.addEventListener('DOMContentLoaded', function (): void {

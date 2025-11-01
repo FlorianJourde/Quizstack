@@ -8,6 +8,8 @@ Encore
     .setOutputPath('public/build/')
     .setPublicPath('/build')
     .addEntry('app', './assets/app.tsx')
+    .addEntry('file-splitter', './assets/scripts/file-splitter.ts')
+    .addEntry('question-autocomplete', './assets/scripts/question-autocomplete.ts')
     .splitEntryChunks()
     .enableStimulusBridge('./assets/controllers.json')
     .enableSingleRuntimeChunk()
