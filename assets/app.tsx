@@ -10,7 +10,6 @@ import './styles/app.scss';
 import './scripts/filters'
 import './scripts/switches'
 import './scripts/question-form'
-import './scripts/question-autocomplete'
 import './scripts/menu'
 import './scripts/accordion'
 import './scripts/textarea'
@@ -48,7 +47,7 @@ document.addEventListener('DOMContentLoaded', () => {
         root.render(
             <Share questionId={questionId} mode={mode}/>
         );
-    };
+    }
 
     const discussionsContainer = document.querySelector('#discussions-container') as HTMLElement;
     if (discussionsContainer) {
