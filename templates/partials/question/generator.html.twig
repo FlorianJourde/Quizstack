@@ -1,0 +1,53 @@
+<ul class="col-span-full">
+    <li class="accordion-item">
+        <button class="small-title accordion-button md:text-lg">
+            <span class="material-icons">call_to_action</span>
+            Preprompt
+        </button>
+        <div class="accordion-expander">
+            <button type="button"
+                    class="copy-button bg-very-dark-grey-primary opacity-100 button button-action absolute top-[16px] right-[16px]">
+                <span class="material-icons">content_copy</span></button>
+            <p class="accordion-content">
+                {% set preprompt %}
+                    {% include 'partials/question/prompt/preprompt.md.twig' %}
+                {% endset %}
+                {{ preprompt|e }}
+            </p>
+        </div>
+    </li>
+    <li class="accordion-item">
+        <button class="small-title accordion-button md:text-lg">
+            <span class="material-icons">data_object</span>
+            Template
+        </button>
+        <div class="accordion-expander">
+            <button type="button"
+                    class="copy-button bg-very-dark-grey-primary opacity-100 button button-action absolute top-[16px] right-[16px]">
+                <span class="material-icons">content_copy</span></button>
+            <p class="accordion-content">
+                {% set template %}
+                    {% include 'partials/question/prompt/template.md.twig' %}
+                {% endset %}
+                {{ template|e }}
+            </p>
+        </div>
+    </li>
+    <li class="accordion-item">
+        <button class="small-title accordion-button md:text-lg">
+            <span class="material-icons">category</span>
+            Categories
+        </button>
+        <div class="accordion-expander">
+            <button type="button"
+                    class="copy-button bg-very-dark-grey-primary opacity-100 button button-action absolute top-[16px] right-[16px]">
+                <span class="material-icons">content_copy</span></button>
+            <p class="accordion-content">
+                {% set categories %}
+                    {% include 'partials/question/prompt/categories.md.twig' %}
+                {% endset %}
+                {{ categories|e|nl2br }}
+            </p>
+        </div>
+    </li>
+</ul>

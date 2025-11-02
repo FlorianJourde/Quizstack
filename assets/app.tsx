@@ -12,6 +12,7 @@ import './scripts/switches'
 import './scripts/question-form'
 import './scripts/menu'
 import './scripts/accordion'
+import './scripts/helper/copy-content'
 import './scripts/textarea'
 import './scripts/appear-on-scroll'
 

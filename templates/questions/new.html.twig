@@ -20,7 +20,13 @@
     <div class="wrapper">
         <div class="form-container glass box bg-dark-grey-secondary">
 
-            {{ include('partials/question/autocomplete.html.twig') }}
+            <div id="errorMessage" class="error-message"></div>
+            <div id="successMessage" class="success-message"></div>
+
+            {% if is_granted('ROLE_ADMIN') %}
+                {{ include('partials/question/autocomplete.html.twig') }}
+            {% endif %}
+
             {{ include('partials/form/errors.html.twig') }}
 
             {{ form_start(form) }}
@@ -41,8 +47,28 @@
             </div>
 
             {{ form_end(form, {'render_rest': false}) }}
-
         </div>
     </div>
 
+    {% if is_granted('ROLE_ADMIN') %}
+        <div class="wrapper">
+            <div class="page-separator-container">
+                <h2 class="title">Generation helpers</h2>
+            </div>
+        </div>
+
+        <div class="wrapper">
+            <div class="form-container glass box bg-dark-grey-secondary">
+                {{ include('partials/question/splitter.html.twig') }}
+                {{ include('partials/question/generator.html.twig') }}
+            </div>
+        </div>
+    {% endif %}
+
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    {{ encore_entry_script_tags('question-autocomplete') }}
+    {{ encore_entry_script_tags('file-splitter') }}
 {% endblock %}

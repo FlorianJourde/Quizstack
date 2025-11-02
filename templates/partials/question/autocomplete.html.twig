@@ -1,25 +1,7 @@
-{% if is_granted('ROLE_ADMIN') %}
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-spacing-primary">
-        <div class="yaml-autocomplete-container">
-            <h2 class="small-title">
-                <span class="material-icons">auto_mode</span>
-                <label for="yamlFileInput">Autocompletion</label>
-            </h2>
-            <input type="file" id="yamlFileInput" accept=".yml,.yaml">
-        </div>
-        <div class="yaml-splitter-container">
-            <h2 class="small-title">
-                <span class="material-icons">content_cut</span>
-                <label for="yamlFileSplitter">Splitter</label>
-            </h2>
-            <input type="file" id="yamlFileSplitter" accept=".yml,.yaml">
-        </div>
-    </div>
-    <div id="errorMessage" class="error-message text-sm mt-2"></div>
-    <div id="successMessage" class="success-message text-sm mt-2"></div>
-{% endif %}
-
-{% block javascripts %}
-    {{ encore_entry_script_tags('file-splitter') }}
-    {{ encore_entry_script_tags('question-autocomplete') }}
-{% endblock %}
+<div class="yaml-autocomplete-container">
+    <h2 class="small-title">
+        <span class="material-icons">auto_mode</span>
+        <label for="yamlFileInput">Autocompletion</label>
+    </h2>
+    <input type="file" id="yamlFileInput" accept=".yml,.yaml">
+</div>

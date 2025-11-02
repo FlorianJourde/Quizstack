@@ -468,6 +468,16 @@ div[style*="background: rgb(39, 40, 34);"] {
   }
 }
 
+.error-message,
+.success-message {
+  display: none;
+}
+
+.error-message:not(:empty),
+.success-message:not(:empty) {
+  display: block;
+}
+
 .question-bottom-container,
 .question-content-container {
   ol, ul {
@@ -714,7 +724,7 @@ div[style*="background: rgb(39, 40, 34);"] {
 }
 
 .accordion-item {
-  button {
+  .accordion-button {
     padding-top: var(--spacing-primary);
     padding-bottom: var(--spacing-primary);
   }
@@ -753,12 +763,22 @@ div[style*="background: rgb(39, 40, 34);"] {
     max-height: 0;
     overflow: hidden;
     transition: max-height 0.4s;
+    position: relative;
 
     .accordion-content {
       background-color: theme('colors.very-dark-grey-primary');
       margin-bottom: var(--spacing-primary);
       padding: var(--spacing-secondary);
       border-radius: var(--radius-secondary);
+    }
+  }
+}
+
+.form-container {
+  .accordion-item {
+    .accordion-button {
+      padding-top: var(--spacing-secondary);
+      padding-bottom: var(--spacing-secondary);
     }
   }
 }
