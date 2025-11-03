@@ -32,9 +32,13 @@ fileInput.addEventListener('change', async (event: Event) => {
         }
 
         const baseName = file.name.replace(/\.(yml|yaml)$/i, '');
-        splitFiles.forEach((content, index) => {
-            downloadFile(`${baseName}_${index + 1}.yml`, content);
-        });
+
+        for (let i = 0; i < splitFiles.length; i++) {
+            downloadFile(`${baseName}_${i + 1}.yml`, splitFiles[i]);
+            if (i < splitFiles.length - 1) {
+                await new Promise(resolve => setTimeout(resolve, 100));
+            }
+        }
 
         showMessage(`Success ! ${splitFiles.length} file(s) downloaded.`, false);
         target.value = '';
