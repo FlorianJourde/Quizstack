@@ -191,7 +191,8 @@ function handleFileSelection(event: Event): void {
 
     reader.onload = function (event: ProgressEvent<FileReader>): void {
         try {
-            const yamlContent: string = event.target?.result as string;
+            const yamlContent = String(event.target?.result ?? '')
+                .replace(/\r\n?/g, '\n')
             const questionData: QuestionData = parseSimpleYaml(yamlContent);
 
             if (!questionData.question) {
