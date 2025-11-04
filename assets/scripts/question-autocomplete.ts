@@ -18,31 +18,36 @@ function parseSimpleYaml(yamlContent: string): QuestionData {
     const question: QuestionData = {} as QuestionData;
     let currentKey: string | null = null;
     let currentValue: string = '';
-    let inMultilineValue: boolean = false;
+    let isMultilineValue: boolean = false;
     let answers: Answer[] = [];
     let currentAnswer: Partial<Answer> = {};
-    let inAnswers: boolean = false;
-    let inAnswerMultiline: boolean = false;
+    let isAnswers: boolean = false;
+    let isAnswerMultiline: boolean = false;
 
     for (let i = 0; i < lines.length; i++) {
         let line: string = lines[i];
 
-        if (!line.trim()) continue;
+        if (!line.trim() && !isMultilineValue && !isAnswerMultiline) continue;
 
         if (line.match(/^-\s+question:/)) {
+            if (currentKey && !isAnswers) {
+                (question as any)[currentKey] = currentValue.trim();
+            }
+
             currentKey = 'question';
             if (line.includes('|')) {
-                inMultilineValue = true;
+                isMultilineValue = true;
                 currentValue = '';
             } else {
                 currentValue = line.replace(/^-\s+question:\s*/, '');
-                inMultilineValue = false;
+                isMultilineValue = false;
             }
+            isAnswers = false;
             continue;
         }
 
         if (line.match(/^\s+(explanation|difficulty|category):/)) {
-            if (currentKey && !inAnswers) {
+            if (currentKey && !isAnswers) {
                 (question as any)[currentKey] = currentValue.trim();
             }
 
@@ -50,76 +55,87 @@ function parseSimpleYaml(yamlContent: string): QuestionData {
             if (match) {
                 currentKey = match[1];
 
-                if (currentKey === 'explanation' && match[2].includes('|')) {
-                    inMultilineValue = true;
+                if ((currentKey === 'explanation') && line.includes('|')) {
+                    isMultilineValue = true;
                     currentValue = '';
                 } else {
                     currentValue = match[2];
-                    inMultilineValue = false;
+                    isMultilineValue = false;
                 }
             }
             continue;
         }
 
         if (line.match(/^\s+answers:/)) {
-            if (currentKey && !inAnswers) {
+            if (currentKey && !isAnswers) {
                 (question as any)[currentKey] = currentValue.trim();
             }
-            inAnswers = true;
+            currentKey = null;
+            isAnswers = true;
             continue;
         }
 
-        if (inAnswers && line.match(/^\s+-\s+answer_content:/)) {
-            if (currentAnswer.answer_content) {
+        if (isAnswers && line.match(/^\s+-\s+answer_content:/)) {
+            if (Object.keys(currentAnswer).length > 0) {
                 answers.push(currentAnswer as Answer);
             }
 
             currentAnswer = {};
 
             if (line.includes('|')) {
-                inAnswerMultiline = true;
+                isAnswerMultiline = true;
                 currentAnswer.answer_content = '';
             } else {
-                inAnswerMultiline = false;
+                isAnswerMultiline = false;
                 currentAnswer.answer_content = line.replace(/^\s+-\s+answer_content:\s*/, '');
             }
             continue;
         }
 
-        if (inAnswers && line.match(/^\s+correct_answer:/)) {
+        if (isAnswers && line.match(/^\s+correct_answer:/)) {
             const value: string = line.replace(/^\s+correct_answer:\s*/, '');
             currentAnswer.correct_answer = value === 'true';
-            inAnswerMultiline = false;
+            if (isAnswerMultiline) {
+                currentAnswer.answer_content = (currentAnswer.answer_content || '').trim();
+                isAnswerMultiline = false;
+            }
             continue;
         }
 
-        if (inMultilineValue && line.match(/^\s{4,}/)) {
-            currentValue += (currentValue ? '\n' : '') + line.replace(/^\s{4}/, '');
+        if (isMultilineValue && (line.match(/^\s{4,}/) || !line.trim())) {
+            currentValue += line.replace(/^\s{4}/, '') + '\n';
             continue;
         }
 
-        if (inAnswerMultiline && line.match(/^\s{6,}/)) {
+        if (isAnswerMultiline && (line.match(/^\s{6,}/) || !line.trim())) {
             const content: string = line.replace(/^\s{6}/, '');
-            currentAnswer.answer_content += (currentAnswer.answer_content ? '\n' : '') + content;
+            currentAnswer.answer_content = (currentAnswer.answer_content || '') + content + '\n';
             continue;
         }
 
-        if (inMultilineValue && !line.match(/^\s{4,}/)) {
-            inMultilineValue = false;
-            if (currentKey && !inAnswers) {
+        if (isMultilineValue && !line.match(/^\s{4,}/)) {
+            isMultilineValue = false;
+            if (currentKey && !isAnswers) {
                 (question as any)[currentKey] = currentValue.trim();
+                currentValue = '';
             }
         }
 
-        if (inAnswerMultiline && !line.match(/^\s{6,}/)) {
-            inAnswerMultiline = false;
+        if (isAnswerMultiline && !line.match(/^\s{6,}/)) {
+            isAnswerMultiline = false;
+            if (currentAnswer.answer_content) {
+                currentAnswer.answer_content = currentAnswer.answer_content.trim();
+            }
         }
     }
 
-    if (currentKey && !inAnswers) {
+    if (currentKey && !isAnswers) {
         (question as any)[currentKey] = currentValue.trim();
     }
-    if (currentAnswer.answer_content) {
+    if (Object.keys(currentAnswer).length > 0) {
+        if (currentAnswer.answer_content) {
+            currentAnswer.answer_content = currentAnswer.answer_content.trim();
+        }
         answers.push(currentAnswer as Answer);
     }
 
@@ -127,22 +143,55 @@ function parseSimpleYaml(yamlContent: string): QuestionData {
     return question;
 }
 
-function cleanIndentation(text: string, tabsToRemove: number = 2): string {
+function cleanIndentation(text: string): string {
     if (!text) return text;
 
-    return text.split('\n').map(function (line: string): string {
-        let cleanedLine: string = line;
-        for (let i = 0; i < tabsToRemove; i++) {
-            if (cleanedLine.startsWith('\t')) {
-                cleanedLine = cleanedLine.substring(1);
-            } else if (cleanedLine.startsWith('  ')) {
-                cleanedLine = cleanedLine.substring(2);
+    const lines = text.split('\n');
+
+    let minIndent = Infinity;
+    for (const line of lines) {
+        const trimmed = line.trim();
+        if (trimmed && !trimmed.startsWith('```')) {
+            let indent = 0;
+            for (let i = 0; i < line.length; i++) {
+                if (line[i] === ' ') {
+                    indent++;
+                } else if (line[i] === '\t') {
+                    indent += 2;
+                } else {
+                    break;
+                }
+            }
+            minIndent = Math.min(minIndent, indent);
+        }
+    }
+
+    if (minIndent === Infinity || minIndent === 0) return text.trim();
+
+    return lines.map(function (line: string): string {
+        if (!line.trim()) return '';
+
+        if (line.trim().startsWith('```')) {
+            return line.trim();
+        }
+
+        let spacesToRemove = minIndent;
+        let index = 0;
+
+        while (spacesToRemove > 0 && index < line.length) {
+            if (line[index] === ' ') {
+                spacesToRemove--;
+                index++;
+            } else if (line[index] === '\t') {
+                spacesToRemove -= 2;
+                index++;
             } else {
                 break;
             }
         }
-        return cleanedLine;
-    }).join('\n');
+
+        return line.substring(index);
+    }).join('\n').trim();
 }
 
 function addChoicesToForm(numberOfChoices: number): boolean {
@@ -259,7 +308,7 @@ function injectIntoForm(questionData: QuestionData): boolean {
             questionData.answers.forEach(function (answer: Answer, index: number): void {
                 const choiceContentField: HTMLTextAreaElement | null = document.querySelector(`#question_form_choice_${index}_content`) as HTMLTextAreaElement;
                 if (choiceContentField && answer.answer_content) {
-                    choiceContentField.value = cleanIndentation(answer.answer_content, 2);
+                    choiceContentField.value = cleanIndentation(answer.answer_content);
                 }
 
                 const choiceCorrectField: HTMLInputElement | null = document.querySelector(`#question_form_choice_${index}_correct`) as HTMLInputElement;
