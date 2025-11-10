@@ -75,8 +75,9 @@ class ProfileFormType extends AbstractType
                         'mimeTypes' => [
                             'image/jpeg',
                             'image/png',
+                            'image/webp',
                         ],
-                        'mimeTypesMessage' => 'Please upload a valid image (JPEG or PNG only).',
+                        'mimeTypesMessage' => 'Please upload a valid image.',
                         'maxSizeMessage' => 'The file is too large ({{ size }} {{ suffix }}). Maximum size allowed is {{ limit }} {{ suffix }}.',
                     ])
                 ],

@@ -39,7 +39,7 @@
                 {{ form_widget(form.username) }}
             </div>
 
-            {{ include('partials/form/image.html.twig', {'type': user}) }}
+            {{ include('partials/form/image.html.twig', {'type': 'users', 'object': user}) }}
 
             <div class="buttons-container">
                 <a href="{{ path('profile') }}" class="button button-tertiary">Cancel</a>

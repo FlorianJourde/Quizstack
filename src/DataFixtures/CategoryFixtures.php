@@ -40,6 +40,48 @@ class CategoryFixtures extends Fixture
         $category->setColor('green');
         $manager->persist($category);
 
+        $category = new Category();
+        $category->setName('Frontend');
+        $category->setStatus(true);
+        $category->setColor('blue');
+        $manager->persist($category);
+
+        $category = new Category();
+        $category->setName('Backend');
+        $category->setStatus(true);
+        $category->setColor('red');
+        $manager->persist($category);
+
+        $category = new Category();
+        $category->setName('Accessibility');
+        $category->setStatus(true);
+        $category->setColor('lightblue');
+        $manager->persist($category);
+
+        $category = new Category();
+        $category->setName('Culture');
+        $category->setStatus(true);
+        $category->setColor('turquoise');
+        $manager->persist($category);
+
+        $category = new Category();
+        $category->setName('SEO');
+        $category->setStatus(true);
+        $category->setColor('orange');
+        $manager->persist($category);
+
+        $category = new Category();
+        $category->setName('Security');
+        $category->setStatus(true);
+        $category->setColor('blue');
+        $manager->persist($category);
+
+        $category = new Category();
+        $category->setName('Performance');
+        $category->setStatus(true);
+        $category->setColor('blue');
+        $manager->persist($category);
+
         $manager->flush();
     }
 }

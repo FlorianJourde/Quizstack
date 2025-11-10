@@ -29,9 +29,9 @@ function Question({mode, questionId, showComments}: { mode: string, questionId: 
 
         if (quizContainer) {
             if (wrap) {
-                quizContainer.classList.add('wrap');
-            } else {
                 quizContainer.classList.remove('wrap');
+            } else {
+                quizContainer.classList.add('wrap');
             }
         }
     }, [wrap]);
@@ -150,8 +150,8 @@ function Question({mode, questionId, showComments}: { mode: string, questionId: 
                         </div>
 
                         {mode === 'game' &&
-                            <Sidebar onNext={handleNextQuestion} onWrap={handleToggleWrap} wrap={wrap}
-                                     isLoading={loading} question={question}/>}
+                            <Sidebar onNext={handleNextQuestion} onWrap={handleToggleWrap} isLoading={loading}
+                                     question={question}/>}
 
                     </motion.div>
                 )}

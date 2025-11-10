@@ -13,7 +13,7 @@
 
     {% if form.deleteImage is defined %}
         <img class="mt-2 aspect-square rounded-full w-28 xl:w-32 object-cover border-light-grey-secondary border-2"
-             src="{{ asset('/uploads/images/users/' ~ type.image) }}" alt="Profile picture">
+             src="{{ asset('/uploads/images/' ~ type ~ '/' ~ object.image) }}" alt="Profile picture">
         <ul class="tags-container mt-2">
             <li class="flex">
                 <span class="tag">

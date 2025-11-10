@@ -2,20 +2,16 @@ import React from 'react';
 import {ROUTES} from "../../utils/routes";
 import {useAuth} from "../../context/AuthContext";
 import {QuestionInterface} from "../../types";
-import Question from "./Question";
-import {item} from "../../motion/animations";
 
 function Sidebar(
     {
         onNext,
         onWrap,
-        wrap,
         isLoading,
         question
     }: {
         onNext: () => void;
         onWrap: () => void;
-        wrap: boolean,
         isLoading: boolean;
         question: QuestionInterface
     }) {
@@ -35,11 +31,7 @@ function Sidebar(
                     </a>
 
                     <button className="button button-action" onClick={onWrap}>
-                        {wrap ? (
-                            <span className="material-icons">start</span>
-                        ) : (
-                            <span className="material-icons">keyboard_return</span>
-                        )}
+                        <span className="material-icons">keyboard_return</span>
                     </button>
 
                     {isAdmin() && (

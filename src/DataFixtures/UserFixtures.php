@@ -29,6 +29,7 @@ class UserFixtures extends Fixture
                 '123456'
             )
         );
+        $user->setImage('classnames-69121f80eeac4.jpg');
         $user->setInscriptionDate($date);
         $user->setLastAuthenticationDate($date);
         $user->setRoles(['ROLE_ADMIN']);

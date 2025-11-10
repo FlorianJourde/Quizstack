@@ -54,8 +54,9 @@ class QuestionFormType extends AbstractType
                         'mimeTypes' => [
                             'image/jpeg',
                             'image/png',
+                            'image/webp'
                         ],
-                        'mimeTypesMessage' => 'Please upload an image.',
+                        'mimeTypesMessage' => 'Please upload a valid image.',
                     ])
                 ],
             ])
