@@ -34,6 +34,15 @@ function Sidebar(
                         <span className="material-icons">keyboard_return</span>
                     </button>
 
+                    {question.correctChoices && (
+                        <button className="button button-action relative copy-link" data-url={`${window.location.origin}/question/${question.id}`}>
+                            <span className="material-icons">share</span>
+                            <ul className="tags-container hidden absolute whitespace-nowrap top-0 left-1/2 -translate-x-1/2 -translate-y-full lg:top-1/2 lg:left-auto lg:right-0 lg:translate-x-full lg:-translate-y-1/2">
+                                <span className="tag tag-small hidden">Copied !</span>
+                            </ul>
+                        </button>
+                    )}
+
                     {isAdmin() && (
                         <a href={`${ROUTES.QUESTION}/${question.id}/edit`}
                            className="button button-action bg-very-dark-grey-primary">

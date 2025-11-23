@@ -1,8 +1,6 @@
 document.addEventListener('DOMContentLoaded', function () {
-    const copyContentButtons: NodeListOf<HTMLElement> = document.querySelectorAll('.copy-button');
-
-    async function copyContent(this: HTMLElement): Promise<void> {
-        const contentElement = this.nextElementSibling as HTMLElement;
+    async function copyContent(button: HTMLElement): Promise<void> {
+        const contentElement = button.nextElementSibling as HTMLElement;
 
         if (contentElement) {
             const text = contentElement.innerHTML
@@ -13,13 +11,13 @@ document.addEventListener('DOMContentLoaded', function () {
             try {
                 await navigator.clipboard.writeText(text);
 
-                const originalHTML = this.innerHTML;
-                this.innerHTML = 'Copied !';
-                this.classList.add('copied');
+                const originalHTML = button.innerHTML;
+                button.innerHTML = 'Copied !';
+                button.classList.add('copied');
 
                 setTimeout(() => {
-                    this.innerHTML = originalHTML;
-                    this.classList.remove('copied');
+                    button.innerHTML = originalHTML;
+                    button.classList.remove('copied');
                 }, 2000);
             } catch (err) {
                 console.error('Failed to copy:', err);
@@ -27,7 +25,45 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 
-    copyContentButtons.forEach(button => {
-        button.addEventListener('click', copyContent);
+    async function copyLink(button: HTMLButtonElement): Promise<void> {
+        const url = button.dataset.url;
+
+        if (url) {
+            if (button.classList.contains('copied')) return;
+
+            try {
+                await navigator.clipboard.writeText(url);
+
+                const tagsContainer = button.querySelector('.tags-container') as HTMLElement;
+
+                if (tagsContainer) {
+                    tagsContainer.classList.remove('hidden');
+
+                    setTimeout(() => {
+                        tagsContainer.classList.add('hidden');
+                    }, 2000);
+                }
+            } catch (err) {
+                console.error('Failed to copy link:', err);
+            }
+        }
+
+    }
+
+
+    document.addEventListener('click', (event) => {
+        const target = event.target as HTMLElement;
+
+        const copyButton = target.closest('.copy-button') as HTMLElement;
+        if (copyButton) {
+            copyContent(copyButton);
+            return;
+        }
+
+        const copyLinkButton = target.closest('.copy-link') as HTMLButtonElement;
+        if (copyLinkButton) {
+            copyLink(copyLinkButton);
+            return;
+        }
     });
 });

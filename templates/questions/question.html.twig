@@ -11,13 +11,15 @@
             <h1 class="big-title grow">Question {{ question.id }}</h1>
 
             <div class="buttons-container">
-                <a class="button button-action" href="javascript:history.back()">
-                    <span class="material-icons">arrow_back</span>
-                </a>
+                {% if is_granted('ROLE_USER') %}
+                    <a class="button button-action" href="javascript:history.back()">
+                        <span class="material-icons">arrow_back</span>
+                    </a>
 
-                <a class="button button-action" href="{{ path('question_new') }}">
-                    <span class="material-icons">add</span>
-                </a>
+                    <a class="button button-action" href="{{ path('question_new') }}">
+                        <span class="material-icons">add</span>
+                    </a>
+                {% endif %}
 
                 {% if is_granted('ROLE_EDITOR') or not question.status %}
                     <a class="button button-action" href="{{ path('question_edit', {'id': question.id}) }}">
@@ -27,7 +29,7 @@
 
                 {% if is_granted('ROLE_ADMIN') %}
                     <a class="button button-action" href="{{ path('question_share', {'id': question.id}) }}">
-                        <span class="material-icons">share</span>
+                        <span class="material-icons">photo_camera</span>
                     </a>
                 {% endif %}
             </div>
