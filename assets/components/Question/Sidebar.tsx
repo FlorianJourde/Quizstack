@@ -7,11 +7,13 @@ function Sidebar(
     {
         onNext,
         onWrap,
+        wrap,
         isLoading,
         question
     }: {
         onNext: () => void;
         onWrap: () => void;
+        wrap: boolean,
         isLoading: boolean;
         question: QuestionInterface
     }) {
@@ -31,7 +33,11 @@ function Sidebar(
                     </a>
 
                     <button className="button button-action" onClick={onWrap}>
-                        <span className="material-icons">keyboard_return</span>
+                        {wrap ? (
+                            <span className="material-icons">keyboard_return</span>
+                        ) : (
+                            <span className="material-icons">start</span>
+                        )}
                     </button>
 
                     {question.correctChoices && (

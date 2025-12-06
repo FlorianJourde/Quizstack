@@ -17,6 +17,10 @@
         </div>
     </div>
 
+    {% if user and user.username is null %}
+        {{ include('partials/scores-show-user.html.twig') }}
+    {% endif %}
+
     <div class="wrapper wrapper-large">
         <div class="buttons-container mb-spacing-primary justify-end">
             <div class="radio-input-container scores">

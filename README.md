@@ -46,6 +46,13 @@ Enter the container :
 docker-compose exec php bash
 ```
 
+Install JavaScript & PHP dependencies :
+
+```bash
+composer install
+npm install
+```
+
 Create database structure :
 
 ```bash
@@ -59,7 +66,7 @@ php bin/console --env=dev doctrine:fixtures:load
 ```
 
 Visit `http://localhost:8000` in your browser to access the application.
-
+ 
 ## Contributing
 
 We welcome contributions from the community ! Please check out our [contribution guidelines](https://quizstack.io) for

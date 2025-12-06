@@ -27,17 +27,9 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(length: 180)]
     private ?string $email = null;
 
+//    #[ORM\Column(length: 255, unique: true, nullable: true)]
     #[ORM\Column(length: 255, unique: true, nullable: true)]
-    #[Assert\Regex(
-        pattern: '/^[a-zA-Z0-9_]+$/',
-        message: 'Username can only contain letters, numbers and underscores.'
-    )]
-    #[Assert\Length(
-        min: 3,
-        max: 180,
-        minMessage: 'Username must be at least {{ limit }} characters long.',
-        maxMessage: 'Username cannot be longer than {{ limit }} characters.'
-    )]
+    #[Assert\Length(max: 255)]
     private ?string $username = null;
 
     /**
@@ -114,7 +106,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this->username;
     }
 
-    public function setUsername(string $username): static
+    public function setUsername(?string $username): static
     {
         $this->username = $username;
 

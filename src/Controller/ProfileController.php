@@ -50,17 +50,10 @@ class ProfileController extends AbstractController
             throw $this->createAccessDeniedException('You need to be logged in to access this page.');
         }
 
-        $originalUsername = $user->getUsername();
-
         $form = $this->createForm(ProfileFormType::class, $user);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            if ($originalUsername !== null && ($user->getUsername() === null || trim($user->getUsername()) === '')) {
-                $this->addFlash('error', 'You cannot remove your username once it has been set.');
-                return $this->redirectToRoute('profile_edit');
-            }
-
             if ($form->has('deleteImage') && $form->get('deleteImage')->getData() === true) {
                 if ($user->getImage()) {
                     $fileUploader->delete($user->getImage(), 'users');

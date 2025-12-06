@@ -150,7 +150,7 @@ function Question({mode, questionId, showComments}: { mode: string, questionId: 
                         </div>
 
                         {mode === 'game' &&
-                            <Sidebar onNext={handleNextQuestion} onWrap={handleToggleWrap} isLoading={loading}
+                            <Sidebar onNext={handleNextQuestion} onWrap={handleToggleWrap} wrap={wrap} isLoading={loading}
                                      question={question}/>}
 
                     </motion.div>

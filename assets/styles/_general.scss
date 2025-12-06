@@ -593,6 +593,15 @@ div[style*="background: rgb(39, 40, 34);"] {
   }
 }
 
+.button-gold {
+  background-color: theme('colors.gold-primary');
+  border-color: theme('colors.gold-primary');
+
+  &:hover:not(:disabled) {
+    box-shadow: 0 0 5px theme('colors.gold-primary'), 0 0 25px theme('colors.gold-primary'), 0 0 50px theme('colors.gold-primary');
+  }
+}
+
 .button-dark-grey {
   background-color: theme('colors.dark-grey-secondary');
   border-color: theme('colors.dark-grey-secondary');
