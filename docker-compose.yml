@@ -9,8 +9,6 @@ services:
       - "8080:8080"
     volumes:
       - .:/var/www/html
-      - vendor:/var/www/html/vendor
-      - node_modules:/var/www/html/node_modules
     depends_on:
       - db
     networks:
@@ -47,8 +45,6 @@ services:
 
 volumes:
   db_data:
-  vendor:
-  node_modules:
 
 networks:
   quizstack_network:

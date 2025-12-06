@@ -25,7 +25,7 @@ class UserRepository extends ServiceEntityRepository implements PasswordUpgrader
     public function getUserPaginator(int $offset): Paginator
     {
         $query = $this->createQueryBuilder('u')
-            ->orderBy('u.id', 'DESC')
+            ->orderBy('u.last_authentication_date', 'DESC')
             ->setMaxResults(self::USERS_PER_PAGE)
             ->setFirstResult($offset)
             ->getQuery();

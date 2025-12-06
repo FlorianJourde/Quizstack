@@ -12,7 +12,7 @@ class ScoreController extends AbstractController
     #[Route('/hall-of-fame', name: 'scores')]
     public function users(ScoreRepository $scoreRepository): Response
     {
-        $excludedUsernames = ['Anonymous', 'User', 'Editor', 'Ctrl_FJ'];
+        $excludedUsernames = ['Anonymous', 'User', 'Editor'];
 
         $allTimeScore = $scoreRepository->findScoreWithLimit(12, 'all_time', $excludedUsernames);
         $weeklyScores = $scoreRepository->findScoreWithLimit(12, 'week', $excludedUsernames);
@@ -22,6 +22,7 @@ class ScoreController extends AbstractController
             'allTimeScores' => $allTimeScore,
             'monthlyScores' => $monthlyScores,
             'weeklyScores' => $weeklyScores,
+            'user' => $this->getUser(),
         ]);
     }
 }

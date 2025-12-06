@@ -4,38 +4,26 @@ namespace App\Form;
 
 use App\Entity\User;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\CallbackTransformer;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\Form\FormEvent;
+use Symfony\Component\Form\FormEvents;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints\File;
 use Symfony\Component\Validator\Constraints\Length;
 use Symfony\Component\Validator\Constraints\NotBlank;
 use Symfony\Component\Validator\Constraints\Email;
+use Symfony\Component\Validator\Constraints\Regex;
 
 class ProfileFormType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $user = $options['data'];
-        $hasUsername = $user && $user->getUsername() !== null;
-
-        $usernameConstraints = [];
-
-        if ($hasUsername) {
-            $usernameConstraints[] = new NotBlank([
-                'message' => 'Username cannot be empty once set',
-            ]);
-        }
-
-        $usernameConstraints[] = new Length([
-            'min' => 3,
-            'max' => 180,
-            'minMessage' => 'Username must be at least {{ limit }} characters long',
-            'maxMessage' => 'Username cannot be longer than {{ limit }} characters',
-        ]);
 
         $builder
             ->add('email', EmailType::class, [
@@ -53,14 +41,19 @@ class ProfileFormType extends AbstractType
                 'label' => 'Email'
             ])
             ->add('username', TextType::class, [
-                'required' => $hasUsername,
-                'constraints' => $usernameConstraints,
+                'required' => false,
+                'empty_data' => '',
+                'constraints' => [
+                    new Length([
+                        'max' => 180,
+                        'maxMessage' => 'Username cannot be longer than {{ limit }} characters'
+                    ])
+                ],
                 'attr' => [
                     'class' => 'form-control',
-                    'placeholder' => $hasUsername ? 'Username is required' : 'Optional username'
+                    'placeholder' => 'Set a username to display your score'
                 ],
                 'label' => 'Username',
-                'help' => $hasUsername ? 'You cannot remove your username once set' : null,
             ])
             ->add('image', FileType::class, [
                 'label' => 'Image',
@@ -81,7 +74,13 @@ class ProfileFormType extends AbstractType
                         'maxSizeMessage' => 'The file is too large ({{ size }} {{ suffix }}). Maximum size allowed is {{ limit }} {{ suffix }}.',
                     ])
                 ],
-            ]);
+            ])
+            ->addEventListener(FormEvents::SUBMIT, function (FormEvent $event) {
+                $user = $event->getData();
+                if ($user->getUsername() === '') {
+                    $user->setUsername(null);
+                }
+            });
 
         if ($user && $user->getImage()) {
             $builder->add('deleteImage', CheckboxType::class, [
