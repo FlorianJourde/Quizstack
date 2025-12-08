@@ -9,6 +9,7 @@ import {CommentInterface} from "../../types/comment";
 import {ROUTES} from "../../utils/routes";
 import {item} from "../../motion/animations";
 import {motion} from "motion/react"
+import getDisplayName from "../../scripts/display-name";
 
 function CommentItem(
     {
@@ -79,7 +80,7 @@ function CommentItem(
                             <ProfilePicture image={comment.author.image}/>
 
                             <div className={`flex flex-col gap-2`}>
-                                <p>{comment.author.username}</p>
+                                <p>{getDisplayName(comment.author)}</p>
                                 <div className="date-container flex gap-4  items-center">
                                     <p className={'flex items-center muted'}><span
                                         className="material-icons mr-2 md-14">calendar_today</span><span>{formattedDate}</span>
