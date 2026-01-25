@@ -92,7 +92,7 @@
 
       animation-name: #{$framesName};
       animation-duration: $moveDuration;
-      animation-delay: math.random(37000) + ms;
+      animation-delay: math.random(37000) - 25000 + ms;
 
       @keyframes #{$framesName} {
         from {
@@ -113,7 +113,7 @@
       }
 
       .circle {
-        animation-delay: math.random(4000) + ms;
+        animation-delay: math.random(4000) - 25000 + ms;
       }
     }
   }
