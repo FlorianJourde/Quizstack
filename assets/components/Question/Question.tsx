@@ -81,6 +81,10 @@ function Question({mode, questionId, showComments}: { mode: string, questionId: 
 
     function handleNextQuestion() {
         setVisible(false);
+
+        window.scrollTo({
+            top: 0
+        });
     }
 
     function handleToggleWrap() {
@@ -132,7 +136,13 @@ function Question({mode, questionId, showComments}: { mode: string, questionId: 
 
                             <QuestionContent question={question} mode={mode}/>
 
-                            <Choices mode={mode} question={question} answers={answers} setAnswers={setAnswers}/>
+                            <Choices
+                                mode={mode}
+                                question={question}
+                                answers={answers}
+                                setAnswers={setAnswers}
+                                onAutoSubmit={handleSubmit}
+                            />
 
                             {mode === 'game' && (
                                 <div className={'buttons-container'}>
@@ -140,10 +150,14 @@ function Question({mode, questionId, showComments}: { mode: string, questionId: 
                                         <button className={`button button-tertiary`} onClick={handleNextQuestion}>
                                             Next question
                                         </button>
-                                    ) : (
+                                    ) : question.numberOfCorrectChoices > 1 ? (
                                         <button className={'button button-tertiary'} onClick={handleSubmit}>
                                             Validate
                                         </button>
+                                    ) : (
+                                        <div className={'button button-tertiary invisible'} aria-hidden="true">
+                                            Validate
+                                        </div>
                                     )}
                                 </div>
                             )}
