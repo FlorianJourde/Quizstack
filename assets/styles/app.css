@@ -4572,7 +4572,7 @@ div[style*="background: rgb(39, 40, 34);"] {
 }
 
 :root {
-  --background-checkbox: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 256 256' fill='none'%3E%3Cpolyline points='216 72 104 184 48 128' stroke='%23FFFFFF' stroke-width='32' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  --background-checkbox-correct: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 256 256' fill='none'%3E%3Cpolyline points='216 72 104 184 48 128' stroke='%23FFFFFF' stroke-width='32' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
 }
 
 #demo-container .checkbox-group .checkbox-input:not(.correct):not(.incorrect):hover + .checkbox-tile,
@@ -4586,7 +4586,7 @@ div[style*="background: rgb(39, 40, 34);"] {
 
 #share-container .show-answers .checkbox-group .checkbox-input.correct + .checkbox-tile:before,
 #quiz-container[data-mode=display] .checkbox-group .checkbox-input.correct + .checkbox-tile:before {
-  background-image: var(--background-checkbox);
+  background-image: var(--background-checkbox-correct);
 }
 
 #share-container .question-bottom-container {
@@ -4627,7 +4627,7 @@ div[style*="background: rgb(39, 40, 34);"] {
   box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.5019607843);
 }
 .checkbox-group .checkbox-input:checked + .checkbox-tile:before {
-  background-image: var(--background-checkbox);
+  background-image: var(--background-checkbox-correct);
 }
 .checkbox-group .checkbox-input.correct + .checkbox-tile {
   box-shadow: 0 0 0 2px theme("colors.green-primary");

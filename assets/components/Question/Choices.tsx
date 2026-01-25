@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import {MarkdownRenderer} from "../Markdown/MarkdownRenderer";
 import useRaysAnimation from "../../hook/RaysAnimation";
 import {container, item} from "../../motion/animations";
@@ -8,16 +8,44 @@ import shuffle from "../../scripts/shuffle";
 
 type SetState<T> = React.Dispatch<React.SetStateAction<T>>;
 
-function Choices({mode, question, answers, setAnswers}: {
+function Choices({mode, question, answers, setAnswers, onAutoSubmit}: {
     mode: string;
     question: QuestionInterface;
     answers: number[];
     setAnswers?: SetState<number[]>;
+    onAutoSubmit?: () => void;
 }) {
-
-    const [shuffledChoices, setShuffledChoices] = useState(() => shuffle(question.choices));
+    const [shuffledChoices] = useState(() => shuffle(question.choices));
+    const isMouseClick = useRef(false);
+    const isSingleChoice = question.numberOfCorrectChoices === 1;
+    const isAnswered = Boolean(question.correctChoices);
+    const hasOneAnswer = answers.length === 1;
+    const canAutoSubmit = isSingleChoice && hasOneAnswer && !isAnswered;
 
     useRaysAnimation(question, mode);
+
+    useEffect(() => {
+        if (!canAutoSubmit) return;
+
+        if (isMouseClick.current && onAutoSubmit) {
+            onAutoSubmit();
+        }
+
+        isMouseClick.current = false;
+    }, [answers, canAutoSubmit, onAutoSubmit]);
+
+    useEffect(() => {
+        if (!canAutoSubmit) return;
+
+        const handleKeyDown = (e: KeyboardEvent) => {
+            if (e.key === 'Enter' && onAutoSubmit) {
+                onAutoSubmit();
+            }
+        };
+
+        window.addEventListener('keydown', handleKeyDown);
+        return () => window.removeEventListener('keydown', handleKeyDown);
+    }, [canAutoSubmit, onAutoSubmit]);
 
     function handleAnswersChange(answerId: number): void {
         if (question.correctChoices || !setAnswers) {
@@ -60,7 +88,9 @@ function Choices({mode, question, answers, setAnswers}: {
                     variants={item}
                     key={`choice-${choice.id}`} className={`choice-option glass`}>
                     <fieldset className={`checkbox-group`}>
-                        <label>
+                        <label onMouseDown={() => {
+                            isMouseClick.current = true;
+                        }}>
                             <input
                                 type={`${question.numberOfCorrectChoices > 1 ? 'checkbox' : 'radio'}`}
                                 name="choice"
