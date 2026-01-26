@@ -46,7 +46,10 @@ export function Demo({mode}) {
                             className="flex flex-col relative"
                         >
                             <div className="flex flex-col gap-spacing-primary m-spacing-primary">
-                                <QuestionContent question={data.question} mode={mode}/>
+                                <QuestionContent
+                                    question={data.question}
+                                    mode={mode}
+                                />
                                 <Choices
                                     mode={mode}
                                     question={data.question}

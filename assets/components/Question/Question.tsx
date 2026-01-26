@@ -22,7 +22,7 @@ function Question({mode, questionId, showComments}: { mode: string, questionId: 
 
     useEffect(() => {
         loadQuestion();
-    }, []);
+    }, [mode, questionId]);
 
     useEffect(() => {
         const quizContainer = document.querySelector('#quiz-container');
@@ -134,7 +134,11 @@ function Question({mode, questionId, showComments}: { mode: string, questionId: 
 
                         <div className="flex flex-col gap-spacing-primary mb-spacing-large-secondary xl:mb-0">
 
-                            <QuestionContent question={question} mode={mode}/>
+                            <QuestionContent
+                                question={question}
+                                mode={mode}
+                                onNext={handleNextQuestion}
+                            />
 
                             <Choices
                                 mode={mode}

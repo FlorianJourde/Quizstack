@@ -8,6 +8,10 @@ function appearOnScroll(): void {
     addEventListener("load", function() {
         showItems(counter);
     });
+
+    addEventListener("reactComponentUpdated", function() {
+        showItems(counter);
+    });
 }
 
 function showItems(counter: number): void {

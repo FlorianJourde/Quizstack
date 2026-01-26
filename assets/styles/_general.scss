@@ -646,8 +646,10 @@ div[style*="background: rgb(39, 40, 34);"] {
   }
 }
 
-.material-icons.md-48 {
-  font-size: 48px;
+.material-icons {
+  &.md-48 {
+    font-size: 48px;
+  }
 }
 
 .page-header-container {
@@ -667,12 +669,9 @@ div[style*="background: rgb(39, 40, 34);"] {
 .footer-bottom-container, .footer-top-container, .footer-middle-container {
   ul {
     li {
-
       .material-icons {
         display: none;
       }
-
-
     }
   }
 }

@@ -1,9 +1,25 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {MarkdownRenderer} from "../Markdown/MarkdownRenderer";
 import QuestionImage from "./QuestionImage";
 import Explanation from "./Explanation";
+import {QuestionInterface} from "../../types";
 
-function QuestionContent({question, mode}) {
+function QuestionContent(
+    {
+        question,
+        mode,
+        onNext,
+    }: {
+        question: QuestionInterface;
+        mode: string;
+        onNext?: () => void;
+    }) {
+
+    useEffect(() => {
+        const event = new CustomEvent('reactComponentUpdated');
+        window.dispatchEvent(event);
+    }, [question]);
+
     return (
         <div className="glass box">
             <div className="question-header-container flex gap-8 justify-between items-center mb-4">
@@ -41,8 +57,19 @@ function QuestionContent({question, mode}) {
 
             {question.correctChoices && question.explanation && (mode !== 'share') &&
                 <Explanation question={question} mode={mode}/>}
+
+            {mode === 'game' && (
+                <div className={'buttons-container absolute right-0 bottom-spacing-primary translate-x-1/2 -mr-0.5'}>
+                    {question.correctChoices &&
+                        <button className={`button button-action bg-dark-grey-primary opacity-100 fade-in-up`} onClick={onNext}>
+                            <span className="material-icons text-[14px] sm:text-[24px]">arrow_forward</span>
+                        </button>
+                    }
+                </div>
+            )}
+
         </div>
     );
-};
+}
 
 export default QuestionContent;
