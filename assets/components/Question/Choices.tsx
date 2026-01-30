@@ -77,6 +77,23 @@ function Choices({mode, question, answers, setAnswers, onAutoSubmit}: {
         return '';
     }
 
+    function getMissingAnswer(answerId) {
+        if (
+            !question.correctChoices ||
+            question.numberOfCorrectChoices <= 1 ||
+            mode !== 'game'
+        ) {
+            return '';
+        }
+
+        console.log('getMissingAnswer')
+
+        const isSelected = answers.includes(answerId);
+        const isCorrect = question.correctChoices.includes(answerId);
+
+        if (isCorrect && !isSelected) return 'missing';
+    }
+
     return (
         <motion.ul
             variants={container}
@@ -97,7 +114,7 @@ function Choices({mode, question, answers, setAnswers, onAutoSubmit}: {
                                 value={choice.id}
                                 checked={answers.includes(choice.id)}
                                 onChange={() => handleAnswersChange(choice.id)}
-                                className={`choice-${index} checkbox-input ${getAnswerStatus(choice.id)} ${answers.includes(choice.id) ? 'checked' : ''}`}
+                                className={`choice-${index} checkbox-input ${getAnswerStatus(choice.id)} ${getMissingAnswer(choice.id)} ${answers.includes(choice.id) ? 'checked' : ''}`}
                                 tabIndex={mode === 'display' ? -1 : undefined}
                             />
                             <span className="checkbox-tile box">
