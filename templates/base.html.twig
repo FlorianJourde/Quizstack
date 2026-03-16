@@ -100,11 +100,15 @@
     {% endblock %}
 </head>
 
-<body class="bg-very-dark-grey-primary text-white">
+<body class="bg-very-dark-grey-primary relative text-white">
 
 {{ include('partials/header.html.twig') }}
 
 {% block body %}{% endblock %}
+
+{% if app.request.attributes.get('_route') == 'app_home' %}
+    {{ include('partials/banner-bottom.html.twig', {'color': 'green', 'animate' : 'animate'}) }}
+{% endif %}
 
 {{ include('partials/footer.html.twig') }}
 {{ include('partials/noise-texture.html.twig') }}

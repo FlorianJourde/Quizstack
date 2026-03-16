@@ -582,6 +582,10 @@ div[style*="background: rgb(39, 40, 34);"] {
   &:hover:not(:disabled) {
     box-shadow: 0 0 5px theme('colors.green-secondary'), 0 0 25px theme('colors.green-secondary'), 0 0 50px theme('colors.green-secondary');
   }
+
+  &.button-large {
+    padding: .8rem 1.6rem;
+  }
 }
 
 .button-red {
@@ -889,5 +893,17 @@ div[style*="background: rgb(39, 40, 34);"] {
     background: linear-gradient(to top, theme('colors.black-primary'), transparent 100%);
     transform: translateY(-100%);
     opacity: .5;
+  }
+}
+
+.cta {
+  background-image: url('/public/images/decoration/quizstack-logo-decoration.png');
+  background-position: 110% center;
+  background-size: 400px;
+  background-repeat: no-repeat;
+
+  @media (max-width: 48rem) {
+    background-size: 300px;
+    background-position: 110% 110%;
   }
 }

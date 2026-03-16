@@ -44,6 +44,12 @@
   height: 800px;
   overflow-x: hidden;
 
+  &.bottom {
+    top: unset;
+    bottom: 0;
+    transform: rotate(180deg);
+  }
+
   @media (min-width: 40rem) {
     height: 1000px;
   }
