@@ -106,10 +106,6 @@
 
 {% block body %}{% endblock %}
 
-{% if app.request.attributes.get('_route') == 'app_home' %}
-    {{ include('partials/banner-bottom.html.twig', {'color': 'green', 'animate' : 'animate'}) }}
-{% endif %}
-
 {{ include('partials/footer.html.twig') }}
 {{ include('partials/noise-texture.html.twig') }}
 {{ include('partials/overlay.html.twig') }}

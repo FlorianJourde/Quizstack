@@ -98,6 +98,16 @@
     --glow-light: radial-gradient(ellipse farthest-side at top, #145298 0, transparent 100%)
   }
 
+  &.turquoise {
+    --rainbow: repeating-linear-gradient(
+                    100deg,
+                    #1d9ac0 10%,
+                    #077da1 15%,
+                    #005f82 20%
+    );
+    --glow-light: radial-gradient(ellipse farthest-side at top, #147998 0, transparent 100%)
+  }
+
   &.purple {
     --rainbow: repeating-linear-gradient(
                     100deg,
