@@ -78,6 +78,16 @@
     --glow-light: radial-gradient(ellipse farthest-side at top, #469814 0, transparent 100%)
   }
 
+  &.yellowgreen {
+    --rainbow: repeating-linear-gradient(
+                    100deg,
+                    #9dc01d 10%,
+                    #75a107 15%,
+                    #718200 20%
+    );
+    --glow-light: radial-gradient(ellipse farthest-side at top, #8b9814 0, transparent 100%)
+  }
+
   &.gold {
     --rainbow: repeating-linear-gradient(
                     100deg,
