@@ -15,6 +15,7 @@ import './scripts/accordion'
 import './scripts/helper/copy-content'
 import './scripts/textarea'
 import './scripts/appear-on-scroll'
+import Article from "./components/Article/Article";
 
 document.addEventListener('DOMContentLoaded', () => {
     const questionContainer = document.querySelector('#quiz-container') as HTMLElement;
@@ -38,6 +39,22 @@ document.addEventListener('DOMContentLoaded', () => {
             <Demo mode={'display'}/>
         );
     }
+
+    // const articleContainer = document.querySelector('#article-container') as HTMLElement;
+    //
+    // if (articleContainer) {
+    //     const title = articleContainer.dataset.title || '';
+    //     const content = articleContainer.dataset.content || '';
+    //
+    //     const root = createRoot(articleContainer);
+    //
+    //     root.render(
+    //         <Article
+    //             title={title}
+    //             content={content}
+    //         />
+    //     );
+    // }
 
     const shareContainer = document.querySelector('#share-container') as HTMLElement;
     if (shareContainer) {

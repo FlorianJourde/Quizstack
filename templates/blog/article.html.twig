@@ -1,0 +1,25 @@
+{% extends 'layout.html.twig' %}
+
+{% set title = article.title %}
+
+{% block meta_description %}{{ article.excerpt }}{% endblock %}
+
+{% block body %}
+
+    {{ include('partials/banner.html.twig', {'color': 'gold', 'animate' : 'animate'}) }}
+
+    <div class="wrapper wrapper-large">
+
+
+        <h1>{{ article.title }}</h1>
+
+        <p>
+            Published on {{ article.creationDate|date('Y-m-d') }}
+        </p>
+
+        <div id="article-container">
+            <pre>{{ article.content }}</pre>
+        </div>
+
+    </div>
+{% endblock %}

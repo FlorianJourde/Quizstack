@@ -1,0 +1,55 @@
+{% extends 'layout.html.twig' %}
+
+{% set title = 'Blog' %}
+
+{% block meta_description %}Meta description{% endblock %}
+
+{% block body %}
+
+    {{ include('partials/banner.html.twig', {'color': 'gold', 'animate' : 'animate'}) }}
+
+    <div class="wrapper wrapper-large">
+
+        <h1>Blog</h1>
+
+        {% if articles is empty %}
+            <p>No articles found.</p>
+        {% else %}
+
+            {% for article in articles %}
+                <article>
+
+                    <h2>
+{#                        <a href="#">#}
+{#                            {{ article.title }}#}
+{#                        </a>#}
+
+                        <a href="{{ path('app_blog_show', {
+                            slug: article.slug
+                        }) }}">
+                            {{ article.title }}
+                        </a>
+                    </h2>
+
+                    <p>
+                        Published on
+                        {{ article.creationDate|date('Y-m-d') }}
+                    </p>
+
+                    {% if article.image %}
+                        <img
+                                src="{{ asset('uploads/articles/' ~ article.image) }}"
+                                alt="{{ article.title }}"
+                                width="300"
+                        >
+                    {% endif %}
+
+                </article>
+
+                <hr>
+
+            {% endfor %}
+
+        {% endif %}
+    </div>
+{% endblock %}
