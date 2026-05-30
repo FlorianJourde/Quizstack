@@ -12,6 +12,7 @@
         "doctrine/doctrine-migrations-bundle": "^3.4",
         "doctrine/orm": "^3.2",
         "knpuniversity/oauth2-client-bundle": "^2.19",
+        "league/commonmark": "^2.8",
         "league/oauth2-google": "^4.0",
         "symfony/asset": "7.3.*",
         "symfony/asset-mapper": "7.3.*",
@@ -33,6 +34,7 @@
         "symfonycasts/reset-password-bundle": "^1.23",
         "symfonycasts/tailwind-bundle": "^0.9.0",
         "twig/extra-bundle": "^2.12|^3.0",
+        "twig/markdown-extra": "^3.26",
         "twig/twig": "^2.12|^3.0"
     },
     "config": {

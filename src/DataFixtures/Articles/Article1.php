@@ -11,38 +11,51 @@ class Article1
     {
         $article = new Article();
 
-        $article->setTitle('Docker: Understanding Containers in 5 Minutes');
-        $article->setSlug('docker-understanding-containers');
-        $article->setImage('docker.webp');
+        $article->setTitle('CSS Features That Truly Change the Way We Build Interfaces');
+        $article->setSlug('modern-css-features');
+        $article->setImage('css.webp');
         $article->setStatus(true);
         $article->setCreationDate($date);
         $article->setUpdateDate($date);
 
-        $article->setContent(<<<'MARKDOWN'
-# Docker: Understanding Containers in 5 Minutes
-
-Docker has become a standard tool in modern software development.
-
-## Why Use Docker?
-
-A container allows an application to run in an isolated environment.
-
-Benefits include:
-
-- Consistent environments everywhere
-- Simplified deployments
-- Fewer dependency conflicts
-
-## Example
-
-    docker run nginx
-
-This command starts an Nginx server inside a container.
-
-## Conclusion
-
-Docker significantly simplifies application development and deployment.
-MARKDOWN);
+        $article->setContent(
+            <<<'MARKDOWN'
+            CSS continues to **evolve** rapidly, bringing *powerful* features that improve developer productivity.
+            
+            ## :has()
+            
+            The parent selector finally allows elements to be styled based on their children.
+            
+            Example:
+            
+            ```css
+            .card:has(img) { padding: 20px; }
+            ```
+            
+            ## Container Queries
+            
+            **Components** can now adapt based on their own size rather than the viewport.
+            
+            > Docker images are immutable.
+            
+            Example:
+            
+            ```css
+            @container (min-width: 500px) {
+                .card {
+                    display: flex;
+                }
+            }
+            ```
+            
+            ## Anchor Positioning
+            
+            Anchor positioning introduces a new way to place elements relative to others.
+            
+            ## Conclusion
+            
+            Modern CSS reduces the need for JavaScript in many common UI scenarios.
+            MARKDOWN);
 
         $manager->persist($article);
         $manager->flush();

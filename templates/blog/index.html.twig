@@ -6,7 +6,7 @@
 
 {% block body %}
 
-    {{ include('partials/banner.html.twig', {'color': 'gold', 'animate' : 'animate'}) }}
+    {{ include('partials/banner.html.twig', {'color': 'blue', 'animate' : 'animate'}) }}
 
     <div class="wrapper wrapper-large">
 
@@ -20,13 +20,11 @@
                 <article>
 
                     <h2>
-{#                        <a href="#">#}
-{#                            {{ article.title }}#}
-{#                        </a>#}
+                        {#                        <a href="#"> #}
+                        {#                            {{ article.title }} #}
+                        {#                        </a> #}
 
-                        <a href="{{ path('app_blog_show', {
-                            slug: article.slug
-                        }) }}">
+                        <a href="{{ path('article', { slug: article.slug }) }}">
                             {{ article.title }}
                         </a>
                     </h2>

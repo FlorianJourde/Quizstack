@@ -67,26 +67,26 @@ li::marker {
   color: #ffffff80;
 }
 
-.code-wrapper, code {
+pre[class*="language-"], code {
   font-family: var(--font-secondary) !important;
   font-size: .875rem !important;
 }
 
-.code-wrapper {
-  margin-top: 1rem !important;
-  margin-bottom: 1rem !important;
-  padding: var(--spacing-secondary) !important;
+pre[class*="language-"] {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  padding: var(--spacing-secondary);
 }
 
 pre {
   &:first-child {
-    .code-wrapper {
+    &[class*="language-"] {
       margin-top: unset !important;
     }
   }
 
   &:last-child {
-    .code-wrapper {
+    &[class*="language-"] {
       margin-bottom: unset !important;
     }
   }
@@ -233,10 +233,12 @@ body .fade-in-up.show {
 }
 
 div[style*="background: rgb(39, 40, 34);"] {
-  background: theme('colors.very-dark-grey-primary') !important;
+  //background: theme('colors.very-dark-grey-primary') !important;
 }
 
-.code-wrapper {
+pre[class*="language-"] {
+  background: theme('colors.very-dark-grey-primary') !important;
+
   > code {
     overflow-wrap: anywhere !important;
   }
@@ -246,7 +248,7 @@ div[style*="background: rgb(39, 40, 34);"] {
 #demo-container,
 #share-container {
   // https://quizstack.io/question/326
-  &.wrap .code-wrapper > code,
+  &.wrap pre[class*="language-"] > code,
   pre > code {
     white-space: break-spaces !important;
   }
@@ -261,7 +263,7 @@ div[style*="background: rgb(39, 40, 34);"] {
 
 #share-container {
   // https://quizstack.io/question/326
-  .code-wrapper > code {
+  pre[class*="language-"] > code {
     white-space: break-spaces !important;
   }
 

@@ -6,20 +6,36 @@
 
 {% block body %}
 
-    {{ include('partials/banner.html.twig', {'color': 'gold', 'animate' : 'animate'}) }}
+    {{ include('partials/banner.html.twig', {'color': 'blue', 'animate' : 'animate'}) }}
 
-    <div class="wrapper wrapper-large">
+    <div class="wrapper">
+        <div class="flex flex-col relative">
+            <div class="glass box">
+                <div id="article-container">
+                    <h1>{{ article.title }}</h1>
+                    <p class="opacity-5">Published on {{ article.creationDate|date('Y-m-d') }}</p>
+                    <img alt="{{ article.title }}" class="rounded-radius-secondary" src="{{ asset('uploads/images/articles/' ~ article.image) }}">
 
+                    {{ article.content|markdown_to_html }}
 
-        <h1>{{ article.title }}</h1>
-
-        <p>
-            Published on {{ article.creationDate|date('Y-m-d') }}
-        </p>
-
-        <div id="article-container">
-            <pre>{{ article.content }}</pre>
+                </div>
+            </div>
+            <div class="xl:sticky top-spacing-primary z-10 -order-1">
+                <aside class="absolute glass box bg-dark-grey-secondary bottom-0 xl:bottom-auto xl:mt-0 xl:-left-spacing-primary xl:-translate-x-full -translate-y-[12px] translate-y-1/2 right-spacing-primary xl:right-auto xl:translate-y-0 p-2 z-10">
+                    <div class="buttons-container xl:flex-col gap-2">
+                        <button class="button button-action relative copy-link" data-url={{ url('article', { slug: article.slug }) }}>
+                            <span class="material-icons">share</span>
+                            <div class="tags-container hidden absolute whitespace-nowrap top-0 left-1/2 -translate-x-1/2 -translate-y-full lg:top-1/2 lg:left-auto lg:right-0 lg:translate-x-full lg:-translate-y-1/2 z-10">
+                                <span class="tag tag-small hidden">Copied !</span>
+                            </div>
+                        </button>
+                    </div>
+                </aside>
+            </div>
         </div>
 
     </div>
+
+
+
 {% endblock %}

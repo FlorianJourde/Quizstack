@@ -9,7 +9,7 @@ use Symfony\Component\Routing\Attribute\Route;
 
 final class BlogController extends AbstractController
 {
-    #[Route('/blog', name: 'app_blog')]
+    #[Route('/blog', name: 'blog')]
     public function index(ArticleRepository $articleRepository): Response
     {
         $articles = $articleRepository->findBy(
@@ -22,8 +22,8 @@ final class BlogController extends AbstractController
         ]);
     }
 
-    #[Route('/blog/{slug}', name: 'app_blog_show')]
-    public function show(string $slug, ArticleRepository $articleRepository): Response
+    #[Route('/blog/{slug}', name: 'article')]
+    public function article(string $slug, ArticleRepository $articleRepository): Response
     {
         $article = $articleRepository->findOneBy([
             'slug' => $slug,
