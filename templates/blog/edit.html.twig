@@ -41,7 +41,10 @@
             {{ include('partials/blog/slug.html.twig') }}
             {{ include('partials/blog/excerpt.html.twig') }}
             {{ include('partials/blog/content.html.twig') }}
-            {{ include('partials/form/image.html.twig', _context) }}
+
+{#            {{ dump(article.image) }}#}
+
+            {{ include('partials/form/image.html.twig', {'type': 'articles', 'object': article}) }}
             {{ include('partials/blog/status.html.twig') }}
 
             <div class="buttons-container">

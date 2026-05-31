@@ -31,7 +31,7 @@ export function MarkdownRenderer({content}: { content: string; }) {
     }, [content]);
 
     return (
-        <div ref={containerRef}>
+        <div ref={containerRef} className={`flex flex-col gap-spacing-secondary`}>
             <ReactMarkdown>
                 {content}
             </ReactMarkdown>

@@ -6,18 +6,27 @@
 
 {% block body %}
 
-    {{ include('partials/banner.html.twig', {'color': 'blue', 'animate' : 'animate'}) }}
+    {% if article.status %}
+        {{ include('partials/banner.html.twig', {'color': 'blue', 'animate' : 'animate'}) }}
+    {% else %}
+        {{ include('partials/banner.html.twig', {'animate' : 'animate'}) }}
+    {% endif %}
 
     <div class="wrapper">
         <div class="flex flex-col relative">
             <div class="glass box">
                 <div id="article-container">
                     <h1>{{ article.title }}</h1>
-                    <p class="opacity-5">Published on {{ article.creationDate|date('Y-m-d') }}</p>
-                    <img alt="{{ article.title }}" class="rounded-radius-secondary" src="{{ asset('uploads/images/articles/' ~ article.image) }}">
-
+                    <div class="date-container flex gap-4 items-center">
+                        <p class="flex items-center muted">
+                            <span class="material-icons mr-2 md-14 text-white">calendar_today</span>
+                            <span>{{ article.creationDate|date('d/m/Y') }}</span>
+                        </p>
+                    </div>
+                    {% if article.image %}
+                        <img alt="{{ article.title }}" class="h-96 object-cover w-full rounded-radius-secondary" src="{{ asset('uploads/images/articles/' ~ article.image) }}">
+                    {% endif %}
                     {{ article.content|markdown_to_html }}
-
                 </div>
             </div>
             <div class="xl:sticky top-spacing-primary z-10 -order-1">
@@ -29,14 +38,15 @@
                                 <span class="tag tag-small hidden">Copied !</span>
                             </div>
                         </button>
-
+                        <a href="{{ path('blog') }}" class="button button-action">
+                            <span class="material-icons">newspaper</span>
+                        </a>
                         {% if is_granted('ROLE_ADMIN') %}
                             <a href="{{ path('article_edit', { slug: article.slug }) }}"
                                class="button button-action bg-very-dark-grey-primary">
                                 <span class="material-icons">edit</span>
                             </a>
                         {% endif %}
-
                     </div>
                 </aside>
             </div>

@@ -73,21 +73,23 @@ pre[class*="language-"], code {
 }
 
 pre[class*="language-"] {
-  margin-top: 1rem;
-  margin-bottom: 1rem;
+  //margin-top: 1rem;
+  //margin-bottom: 1rem;
+  margin-top: unset;
+  margin-bottom: unset;
   padding: var(--spacing-secondary);
 }
 
 pre {
   &:first-child {
     &[class*="language-"] {
-      margin-top: unset !important;
+      //margin-top: unset !important;
     }
   }
 
   &:last-child {
     &[class*="language-"] {
-      margin-bottom: unset !important;
+      //margin-bottom: unset !important;
     }
   }
 }
@@ -479,6 +481,7 @@ pre[class*="language-"] {
   display: block;
 }
 
+#article-container,
 .question-bottom-container,
 .question-content-container {
   ol, ul {

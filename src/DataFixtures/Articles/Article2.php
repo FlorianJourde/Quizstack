@@ -14,14 +14,14 @@ class Article2
         $article->setTitle('Docker: Understanding Containers in 5 Minutes');
         $article->setSlug('docker-understanding-containers');
         $article->setExcerpt('Docker has become a standard tool in modern software development.');
-        $article->setImage('docker.webp');
+        $article->setImage('vector.jpg');
         $article->setStatus(true);
         $article->setCreationDate($date);
         $article->setUpdateDate($date);
 
         $article->setContent(
             <<<'MARKDOWN'
-            Docker has become a standard tool in modern software development.
+            Docker has become a standard tool in modern software development. Here's the [documentation](https://www.docker.com/).
             
             ## Why Use Docker?
             
@@ -33,11 +33,20 @@ class Article2
             - Simplified deployments
             - Fewer dependency conflicts
             
+            > Docker images are immutable.
+            
             ## Example
             
             ```bash
             docker run nginx
             ```
+            
+            This is a list :
+            1. **Gérer les images** : `pull`, `build`, `push`, `tag`, `history`
+            2. **Manipuler les conteneurs** : `run`, `ps`, `stop`, `rm`, `restart`
+            3. **Debugger efficacement** : `logs`, `exec`, `inspect`, `stats`
+            4. **Volumes et persistance** : `create`, `mount`, `prune`
+            5. **Réseaux Docker** : `create`, `connect`, `inspect`
             
             This command starts an Nginx server inside a container.
             

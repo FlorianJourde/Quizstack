@@ -21,44 +21,35 @@
 
     <div class="wrapper wrapper-large">
 
-        <h1>Blog</h1>
-
         {% if articles is empty %}
             <p>No articles found.</p>
         {% else %}
+            <ul id="blog-container" class="grid grid-cols-1 max-w-[800px] lg:max-w-full mx-auto lg:grid-cols-3 gap-spacing-primary">
 
-            {% for article in articles %}
-                <article>
+                {% for article in articles %}
+                    <li class="card {{ is_granted('ROLE_EDITOR') and not article.status ? '' : 'card-blue' }} p-0 box glass flex flex-col items-start justify-start relative">
+                        {% if article.image %}
+                            <img src="{{ asset('uploads/images/articles/' ~ article.image) }}" class="h-52 object-cover w-full rounded-tl-[inherit] rounded-tr-[inherit]" alt="{{ article.title }}">
+                        {% endif %}
+                        <article class="p-spacing-primary flex flex-col gap-4 grow">
+                            <h3 class="text-xl items-center flex font-bold">
+                                <a href="{{ path('article', { slug: article.slug }) }}" class="after:absolute after:inset-0">
+                                    {{ article.title }}
+                                </a>
+                            </h3>
+                            <p class="grow">{{ article.excerpt }}</p>
+                            <div class="date-container flex gap-4 items-center">
+                                <p class="flex items-center muted">
+                                    <span class="material-icons mr-2 md-14 text-white">calendar_today</span>
+                                    <span>{{ article.creationDate|date('d/m/Y') }}</span>
+                                </p>
+                            </div>
+                        </article>
+                    </li>
+                {% endfor %}
 
-                    <h2>
-                        {#                        <a href="#"> #}
-                        {#                            {{ article.title }} #}
-                        {#                        </a> #}
-
-                        <a href="{{ path('article', { slug: article.slug }) }}">
-                            {{ article.title }}
-                        </a>
-                    </h2>
-
-                    <p>
-                        Published on
-                        {{ article.creationDate|date('Y-m-d') }}
-                    </p>
-
-                    {% if article.image %}
-                        <img
-                                src="{{ asset('uploads/articles/' ~ article.image) }}"
-                                alt="{{ article.title }}"
-                                width="300"
-                        >
-                    {% endif %}
-
-                </article>
-
-                <hr>
-
-            {% endfor %}
-
+            </ul>
         {% endif %}
+
     </div>
 {% endblock %}

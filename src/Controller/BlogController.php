@@ -20,10 +20,17 @@ final class BlogController extends AbstractController
     #[Route('/blog', name: 'blog')]
     public function index(ArticleRepository $articleRepository): Response
     {
-        $articles = $articleRepository->findBy(
-            ['status' => true],
-            ['creationDate' => 'DESC']
-        );
+        if ($this->isGranted('ROLE_EDITOR')) {
+            $articles = $articleRepository->findBy(
+                [],
+                ['creationDate' => 'DESC']
+            );
+        } else {
+            $articles = $articleRepository->findBy(
+                ['status' => true],
+                ['creationDate' => 'DESC']
+            );
+        }
 
         return $this->render('blog/index.html.twig', [
             'articles' => $articles,
@@ -172,14 +179,23 @@ final class BlogController extends AbstractController
     }
 
     #[Route('/blog/{slug}', name: 'article')]
-    public function article(string $slug, ArticleRepository $articleRepository): Response
+    public function article(
+        string            $slug,
+        ArticleRepository $articleRepository
+    ): Response
     {
         $article = $articleRepository->findOneBy([
             'slug' => $slug,
-            'status' => true,
         ]);
 
         if (!$article) {
+            throw $this->createNotFoundException();
+        }
+
+        if (
+            !$article->getStatus()
+            && !$this->isGranted('ROLE_EDITOR')
+        ) {
             throw $this->createNotFoundException();
         }
 

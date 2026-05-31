@@ -60,6 +60,16 @@ class ArticleFormType extends AbstractType
                     'onclick' => 'return confirm("Are you sure you want to delete this article ?")'
                 ]
             ]);
+
+        $article = $builder->getData();
+
+        if ($article && $article->getImage()) {
+            $builder->add('deleteImage', CheckboxType::class, [
+                'label' => 'Delete image',
+                'required' => false,
+                'mapped' => false,
+            ]);
+        }
     }
 
     public function configureOptions(OptionsResolver $resolver): void

@@ -14,7 +14,7 @@ class Article1
         $article->setTitle('CSS Features That Truly Change the Way We Build Interfaces');
         $article->setSlug('modern-css-features');
         $article->setExcerpt('CSS continues to evolve rapidly, bringing powerful features that improve developer productivity.');
-        $article->setImage('css.webp');
+        $article->setImage('city.jpg');
         $article->setStatus(true);
         $article->setCreationDate($date);
         $article->setUpdateDate($date);
@@ -36,8 +36,6 @@ class Article1
             ## Container Queries
             
             **Components** can now adapt based on their own size rather than the viewport.
-            
-            > Docker images are immutable.
             
             Example:
             

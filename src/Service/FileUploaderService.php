@@ -15,6 +15,7 @@ class FileUploaderService
     private const UPLOAD_DIRECTORIES = [
         'questions' => '/uploads/images/questions',
         'users' => '/uploads/images/users',
+        'articles' => '/uploads/images/articles',
     ];
 
     public function __construct(

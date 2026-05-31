@@ -1,3 +1,9 @@
+#blog-container {
+  .card.card-blue .material-icons {
+    color: unset;
+  }
+}
+
 #article-container {
   display: flex;
   flex-direction: column;
@@ -7,7 +13,7 @@
     font-weight: 700;
 
     &:not(:first-child) {
-      margin-top: var(--spacing-primary);
+      margin-top: var(--spacing-secondary);
     }
   }
 
@@ -23,8 +29,8 @@
     font-size: 1.25rem;
   }
 
-  p {
-    opacity: .75;
+  a {
+    color: theme('colors.blue-secondary');
   }
 
   pre[class*="language-"] {

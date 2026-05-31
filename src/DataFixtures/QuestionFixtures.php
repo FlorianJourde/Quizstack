@@ -5,6 +5,7 @@ namespace App\DataFixtures;
 use App\DataFixtures\Questions\Question1;
 use App\DataFixtures\Questions\Question2;
 use App\DataFixtures\Questions\Question3;
+use App\DataFixtures\Questions\Question4;
 use App\Utils\CategoryHelper;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\DataFixtures\DependentFixtureInterface;
@@ -24,6 +25,9 @@ class QuestionFixtures extends Fixture implements DependentFixtureInterface
         $question2->createQuestionWithChoices($manager, $date, $categories);
 
         $question3 = new Question3();
+        $question3->createQuestionWithChoices($manager, $date, $categories);
+
+        $question3 = new Question4();
         $question3->createQuestionWithChoices($manager, $date, $categories);
     }
 

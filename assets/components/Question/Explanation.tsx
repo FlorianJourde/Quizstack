@@ -7,7 +7,7 @@ function Explanation({question, mode = 'display'}) {
     return (
         <motion.div
             variants={item}
-            className={`question-bottom-container mt-4 flex flex-col gap-spacing-secondary`}>
+            className={`question-bottom-container mt-spacing-primary flex flex-col gap-spacing-secondary`}>
 
             {mode === 'game' ? (
                 <h3 className={`text-lg font-semibold`}>{question.isMatch ? 'Correct !' : 'Incorrect...'} Here's an
