@@ -52,13 +52,6 @@ class ArticleFormType extends AbstractType
             ->add('status', CheckboxType::class, [
                 'label' => 'online',
                 'required' => false
-            ])
-            ->add('delete', SubmitType::class, [
-                'label' => 'Delete',
-                'attr' => [
-                    'class' => 'button button-primary button-red',
-                    'onclick' => 'return confirm("Are you sure you want to delete this article ?")'
-                ]
             ]);
 
         $article = $builder->getData();
@@ -68,6 +61,16 @@ class ArticleFormType extends AbstractType
                 'label' => 'Delete image',
                 'required' => false,
                 'mapped' => false,
+            ]);
+        }
+
+        if ($article && $article->getId()) {
+            $builder->add('delete', SubmitType::class, [
+                'label' => 'Delete',
+                'attr' => [
+                    'class' => 'button button-primary button-red',
+                    'onclick' => 'return confirm("Are you sure you want to delete this article ?")'
+                ]
             ]);
         }
     }

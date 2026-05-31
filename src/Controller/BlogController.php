@@ -184,9 +184,22 @@ final class BlogController extends AbstractController
             );
         }
 
+        $mediaDirectory = $fileUploader->getTargetDirectory('medias');
+
+        $media = glob($mediaDirectory . '/*');
+
+        $media = array_filter($media, 'is_file');
+
+        usort($media, function ($a, $b) {
+            return filemtime($b) <=> filemtime($a);
+        });
+
+        $media = array_map('basename', $media);
+
         return $this->render('blog/new.html.twig', [
             'article' => $article,
             'form' => $form->createView(),
+            'media' => $media,
         ]);
     }
 

@@ -805,6 +805,10 @@ pre[class*="language-"] {
   justify-content: flex-end;
   align-items: center;
   flex-wrap: wrap;
+
+  //form {
+  //  width: unset;
+  //}
 }
 
 .form-container {
@@ -825,6 +829,10 @@ pre[class*="language-"] {
 
     > * {
       width: 100%;
+
+      &.button-action {
+        //width: unset;
+      }
     }
 
     textarea {
@@ -834,6 +842,13 @@ pre[class*="language-"] {
       {
         min-height: 450px;
       }
+    }
+  }
+
+  .buttons-container {
+    form {
+      width: unset;
+
     }
   }
 }

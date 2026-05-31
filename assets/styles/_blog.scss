@@ -56,4 +56,8 @@
     left: calc(var(--spacing-secondary) + .05rem);
     font-size: 20px;
   }
+
+  img {
+    border-radius: var(--radius-secondary);
+  }
 }
