@@ -29,6 +29,14 @@
                                 <span class="tag tag-small hidden">Copied !</span>
                             </div>
                         </button>
+
+                        {% if is_granted('ROLE_ADMIN') %}
+                            <a href="{{ path('article_edit', { slug: article.slug }) }}"
+                               class="button button-action bg-very-dark-grey-primary">
+                                <span class="material-icons">edit</span>
+                            </a>
+                        {% endif %}
+
                     </div>
                 </aside>
             </div>

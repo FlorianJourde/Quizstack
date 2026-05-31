@@ -13,6 +13,7 @@ class Article2
 
         $article->setTitle('Docker: Understanding Containers in 5 Minutes');
         $article->setSlug('docker-understanding-containers');
+        $article->setExcerpt('Docker has become a standard tool in modern software development.');
         $article->setImage('docker.webp');
         $article->setStatus(true);
         $article->setCreationDate($date);

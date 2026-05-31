@@ -13,6 +13,7 @@ class Article1
 
         $article->setTitle('CSS Features That Truly Change the Way We Build Interfaces');
         $article->setSlug('modern-css-features');
+        $article->setExcerpt('CSS continues to evolve rapidly, bringing powerful features that improve developer productivity.');
         $article->setImage('css.webp');
         $article->setStatus(true);
         $article->setCreationDate($date);

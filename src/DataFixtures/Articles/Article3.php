@@ -13,6 +13,7 @@ class Article3
 
         $article->setTitle('How Artificial Intelligence Is Transforming Software Development');
         $article->setSlug('ai-and-software-development');
+        $article->setExcerpt('Artificial intelligence is now part of many developers\' daily workflows.');
         $article->setImage('ai.webp');
         $article->setStatus(true);
         $article->setCreationDate($date);

@@ -1,0 +1,18 @@
+{#{{ form_row(form.status) }}#}
+
+{% if form.status is defined %}
+    <div>
+        <h2 class="small-title">
+            <span class="material-icons">toggle_on</span>
+            Status
+        </h2>
+        <ul class="tags-container">
+            <li class="flex">
+                <span class="tag">
+                    {{ form_widget(form.status) }}
+                    {{ form_label(form.status) }}
+                </span>
+            </li>
+        </ul>
+    </div>
+{% endif %}
