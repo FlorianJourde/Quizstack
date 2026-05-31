@@ -111,9 +111,22 @@ final class BlogController extends AbstractController
             );
         }
 
+        $mediaDirectory = $fileUploader->getTargetDirectory('medias');
+
+        $media = glob($mediaDirectory . '/*');
+
+        $media = array_filter($media, 'is_file');
+
+        usort($media, function ($a, $b) {
+            return filemtime($b) <=> filemtime($a);
+        });
+
+        $media = array_map('basename', $media);
+
         return $this->render('blog/edit.html.twig', [
             'article' => $article,
             'form' => $form->createView(),
+            'media' => $media,
         ]);
     }
 
@@ -175,7 +188,51 @@ final class BlogController extends AbstractController
             'article' => $article,
             'form' => $form->createView(),
         ]);
+    }
 
+    #[IsGranted('ROLE_EDITOR')]
+    #[Route('/blog/media/upload', name: 'article_media_upload')]
+    public function uploadMedia(
+        Request             $request,
+        FileUploaderService $fileUploader
+    ): Response
+    {
+        $file = $request->files->get('media');
+
+        if ($file) {
+            $fileUploader->upload($file, 'medias');
+
+            $this->addFlash('success', 'Media uploaded.');
+        }
+
+        return $this->redirect(
+            $request->headers->get('referer')
+        );
+    }
+
+    #[IsGranted('ROLE_EDITOR')]
+    #[Route(
+        '/blog/media/delete',
+        name: 'article_media_delete',
+        methods: ['POST']
+    )]
+    public function deleteMedia(
+        Request $request,
+        FileUploaderService $fileUploader
+    ): Response
+    {
+        $filename = $request->request->get('filename');
+
+        if ($filename) {
+            $fileUploader->delete(
+                basename($filename),
+                'medias'
+            );
+        }
+
+        return $this->redirect(
+            $request->headers->get('referer')
+        );
     }
 
     #[Route('/blog/{slug}', name: 'article')]

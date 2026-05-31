@@ -42,7 +42,7 @@
             {{ include('partials/blog/excerpt.html.twig') }}
             {{ include('partials/blog/content.html.twig') }}
 
-{#            {{ dump(article.image) }}#}
+            {#            {{ dump(article.image) }} #}
 
             {{ include('partials/form/image.html.twig', {'type': 'articles', 'object': article}) }}
             {{ include('partials/blog/status.html.twig') }}
@@ -56,6 +56,128 @@
 
         {{ form_end(form) }}
 
+    </div>
+
+    <div class="wrapper">
+        <div class="page-separator-container">
+            <h2 class="title">Media library</h2>
+        </div>
+    </div>
+
+    <div class="wrapper">
+        <div class="form-container glass box bg-dark-grey-secondary">
+
+            <form method="post" action="{{ path('article_media_upload') }}" enctype="multipart/form-data">
+                <input type="file" name="media" accept="image/*">
+                <div class="buttons-container">
+                    <button type="submit" class="button button-primary">
+                        Upload
+                    </button>
+                </div>
+            </form>
+
+            {#            {% if media is not empty %} #}
+            {#                <ul class="flex flex-wrap gap-spacing-primary"> #}
+            {#                    {% for media in media %} #}
+            {#                        <li class="max-w-40"> #}
+            {#                            <img src="{{ asset('uploads/images/articles/medias/' ~ media) }}" alt="" class="rounded-radius-secondary"> #}
+
+            {#                            <p class="text-sm mt-2"> #}
+            {#                                {{ media }} #}
+            {#                            </p> #}
+            {#                        </li> #}
+            {#                    {% endfor %} #}
+            {#                </ul> #}
+            {#            {% endif %} #}
+            {% if media is not empty %}
+
+                <ul class="grid grid-cols-3 gap-spacing-primary">
+                    {% for item in media %}
+                        <li class="w-full relative">
+
+
+                            {#                            <button #}
+                            {#                                    type="button" #}
+                            {#                                    class="button button-action copy-link" #}
+                            {#                                    data-url="![](/uploads/images/articles/medias/{{ item }})" #}
+                            {#                            > #}
+                            {#                                <span class="material-icons">content_copy</span> #}
+
+                            {#                                <div class="tags-container hidden"> #}
+                            {#                                    <span class="tag tag-small">Copied !</span> #}
+                            {#                                </div> #}
+                            {#                            </button> #}
+
+
+                            {#                            <button class="copy-link bg-very-dark-grey-primary opacity-100 button button-action absolute top-[16px] right-[16px]" data-url="![](/uploads/images/articles/medias/{{ item }})"> #}
+                            {#                                <span class="material-icons">content_copy</span> #}
+                            {#                                <div class="tags-container hidden absolute whitespace-nowrap top-0 left-1/2 -translate-x-1/2 -translate-y-full lg:top-1/2 lg:left-auto lg:right-0 lg:translate-x-full lg:-translate-y-1/2 z-10"> #}
+                            {#                                    <span class="tag tag-small hidden">Copied !</span> #}
+                            {#                                    <span class="material-icons">content_copy</span> #}
+                            {#                                </div> #}
+                            {#                            </button> #}
+
+
+                            {#                            <button type="button" #}
+                            {#                                    class="copy-button bg-very-dark-grey-primary opacity-100 button button-action absolute top-[16px] right-[16px]" #}
+                            {#                                    data-url="![](/uploads/images/articles/medias/{{ item }})" #}
+                            {#                            > #}
+                            {#                                <span class="material-icons">content_copy</span></button> #}
+
+                            <button class="copy-link bg-very-dark-grey-primary opacity-100 button button-action absolute top-[16px] right-[16px]" data-url="![](/uploads/images/articles/medias/{{ item }})">
+                                <span class="material-icons">content_copy</span>
+                                <span class="tags-container hidden absolute whitespace-nowrap top-0 left-1/2 -translate-x-1/2 -translate-y-full lg:top-1/2 lg:left-auto lg:right-0 lg:translate-x-full lg:-translate-y-1/2 z-10">
+                                                <span class="tag tag-small hidden">Copied !</span>
+                                            </span>
+                            </button>
+
+                            <img
+                                    src="{{ asset('uploads/images/articles/medias/' ~ item) }}"
+                                    alt=""
+                                    class="w-full rounded"
+                            >
+
+
+                            <div class="buttons-container mt-2">
+                                <form
+                                        method="post"
+                                        action="{{ path('article_media_delete') }}"
+                                >
+                                    <input
+                                            type="hidden"
+                                            name="filename"
+                                            value="{{ item }}"
+                                    >
+
+
+                                    <div class="buttons-container">
+                                        {#                                        <button #}
+                                        {#                                                type="button" #}
+                                        {#                                                class="button button-action copy-button" #}
+                                        {#                                                data-content="![](/uploads/images/articles/medias/{{ item }})" #}
+                                        {#                                        > #}
+                                        {#                                            <span class="material-icons">content_copy</span> #}
+                                        {#                                        </button> #}
+
+                                        <button
+                                                type="submit"
+                                                class="button button-action"
+                                        >
+                                            <span class="material-icons">delete</span>
+                                        </button>
+
+
+                                    </div>
+                                </form>
+                            </div>
+                        </li>
+                    {% endfor %}
+                </ul>
+
+            {% endif %}
+
+
+        </div>
     </div>
 
 {% endblock %}
