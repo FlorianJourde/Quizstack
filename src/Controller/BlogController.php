@@ -18,22 +18,17 @@ use Symfony\Component\Security\Http\Attribute\IsGranted;
 final class BlogController extends AbstractController
 {
     #[Route('/blog', name: 'blog')]
-    public function index(ArticleRepository $articleRepository): Response
+    public function index(Request $request, ArticleRepository $articleRepository): Response
     {
-        if ($this->isGranted('ROLE_EDITOR')) {
-            $articles = $articleRepository->findBy(
-                [],
-                ['creationDate' => 'DESC']
-            );
-        } else {
-            $articles = $articleRepository->findBy(
-                ['status' => true],
-                ['creationDate' => 'DESC']
-            );
-        }
+        $offset = max(0, $request->query->getInt('offset', 0));
+        $publishedOnly = !$this->isGranted('ROLE_EDITOR');
+
+        $paginator = $articleRepository->getArticlesPaginator($offset, $publishedOnly);
 
         return $this->render('blog/index.html.twig', [
-            'articles' => $articles,
+            'articles' => $paginator,
+            'previous' => $offset - ArticleRepository::ARTICLES_PER_PAGE,
+            'next' => min(count($paginator), $offset + ArticleRepository::ARTICLES_PER_PAGE),
         ]);
     }
 

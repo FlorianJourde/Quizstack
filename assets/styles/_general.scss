@@ -469,6 +469,34 @@ pre[class*="language-"] {
       background: linear-gradient(100deg, #2a428c, #4382c7, #55b5f0);
     }
   }
+
+  &.card-orange {
+    .material-icons {
+      color: theme('colors.yellow-primary');
+    }
+
+    &::after {
+      background: linear-gradient(100deg, #ec7148, #deb368, #fcff47);
+    }
+  }
+
+  &.alternate {
+    border-color: transparent;
+
+    &::after {
+      width: calc(100% + 4px);
+      height: calc(100% + 4px);
+      top: -2px;
+      left: -2px;
+    }
+
+    &.card-blue {
+      &::after {
+        //box-shadow: 0 10px 100px 0 rgb(25 94 190 / 20%);
+        box-shadow: 0 10px 100px 0 color-mix(in srgb, theme('colors.blue-primary') 20%, transparent);
+      }
+    }
+  }
 }
 
 .error-message,

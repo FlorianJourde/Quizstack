@@ -1,0 +1,34 @@
+
+
+    {% if articles is empty %}
+        <p>No articles found.</p>
+    {% else %}
+        <ul id="blog-container" class="grid grid-cols-1 max-w-[800px] lg:max-w-full mx-auto lg:grid-cols-3 gap-spacing-primary">
+
+            {% for article in articles %}
+                <li class="card alternate {{ is_granted('ROLE_EDITOR') and not article.status ? '' : 'card-blue' }} p-0 box glass flex flex-col items-start justify-start relative">
+                    {% if article.image %}
+                        <div class="relative w-full">
+                            <img src="{{ asset('uploads/images/articles/' ~ article.image) }}" class="h-52 object-cover w-full rounded-tl-[calc(var(--radius-primary)-2px)] rounded-tr-[calc(var(--radius-primary)-2px)]" alt="{{ article.title }}">
+                            <div class="absolute inset-0 top-auto h-24 bg-gradient-to-t from-very-dark-grey-primary to-transparent"></div>
+                        </div>
+                    {% endif %}
+                    <article class="p-spacing-primary flex flex-col gap-4 grow">
+                        <h3 class="text-xl items-center flex font-bold">
+                            <a href="{{ path('article', { slug: article.slug }) }}" class="after:absolute after:inset-0">
+                                {{ article.title }}
+                            </a>
+                        </h3>
+                        <p class="grow">{{ article.excerpt }}</p>
+                        <div class="date-container flex gap-4 items-center">
+                            <p class="flex items-center muted">
+                                <span class="material-icons mr-2 md-14 text-white">calendar_today</span>
+                                <span>{{ article.creationDate|date('d/m/Y') }}</span>
+                            </p>
+                        </div>
+                    </article>
+                </li>
+            {% endfor %}
+
+        </ul>
+    {% endif %}
