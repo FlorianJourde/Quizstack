@@ -264,8 +264,11 @@ final class BlogController extends AbstractController
             throw $this->createNotFoundException();
         }
 
+        $articles = $articleRepository->findLatestExcept($article, 3);
+
         return $this->render('blog/article.html.twig', [
             'article' => $article,
+            'articles' => $articles,
         ]);
     }
 }

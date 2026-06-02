@@ -33,4 +33,17 @@ class ArticleRepository extends ServiceEntityRepository
 
         return new Paginator($query);
     }
+
+    public function findLatestExcept(Article $excludedArticle, int $limit = 3): array
+    {
+        return $this->createQueryBuilder('a')
+            ->where('a.status = :status')
+            ->andWhere('a.id != :excludedId')
+            ->setParameter('status', true)
+            ->setParameter('excludedId', $excludedArticle->getId())
+            ->orderBy('a.creationDate', 'DESC')
+            ->setMaxResults($limit)
+            ->getQuery()
+            ->getResult();
+    }
 }

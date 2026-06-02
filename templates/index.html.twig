@@ -66,19 +66,36 @@
         </ul>
     </div>
 
-    <div class="wrapper pb-spacing-primary">
+    <div class="wrapper">
         <div id="filters-section" class="page-header-container">
             <h2 class="big-title grow">Filters</h2>
         </div>
         {{ include('partials/filters.html.twig', _context) }}
     </div>
 
-    <div class="wrapper wrapper-large">
+    {% if articles is not empty %}
+        <div class="low-light-container">
+            <div class="low-light left purple"></div>
+            <div class="low-light right blue"></div>
+        </div>
+
+        <div class="wrapper wrapper-large pt-spacing-large-secondary">
             <div class="page-separator-container">
                 <h2 class="title">Last articles</h2>
             </div>
-        {{ include('partials/blog/articles.html.twig') }}
-    </div>
+            <div class="flex flex-col gap-spacing-primary">
+
+                {{ include('partials/blog/articles.html.twig') }}
+
+
+                <div class="buttons-container">
+                    <a class="button button-tertiary fade-in-up" href="{{ path('blog') }}">
+                        See more articles
+                    </a>
+                </div>
+            </div>
+        </div>
+    {% endif %}
 
     {{ include('partials/promotional/promotional-1.html.twig', _context) }}
 

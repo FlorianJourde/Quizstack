@@ -21,6 +21,7 @@ module.exports = {
                 'very-dark-grey-primary': '#0f0f0f',
                 'blue-primary': '#2793ba',
                 'blue-secondary': '#66d9ef',
+                'blue-tertiary': '#20709f',
                 'yellow-primary': '#e6db74',
                 'gold-primary': '#ad8f1a',
                 'green-primary': '#b7cf3e',

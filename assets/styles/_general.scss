@@ -428,8 +428,9 @@ pre[class*="language-"] {
   }
 
   &.disable {
-    background-color: rgb(255 0 0 / 20%);
-    border: 2px solid rgb(255 0 0 / 20%);
+    //background-color: rgb(255 0 0 / 20%);
+    //border: 2px solid rgb(255 0 0 / 20%);
+    opacity: .25;
   }
 }
 
@@ -516,7 +517,7 @@ pre[class*="language-"] {
   bottom: 0;
   right: 0;
   width: 100%;
-  height: calc(100% + 50px);
+  height: calc(100% + 100px);
   pointer-events: none;
 }
 
@@ -531,75 +532,75 @@ pre[class*="language-"] {
 }
 
 
-$blur-intensity: 5;
-$spread: 10%; // Contrôle l'espacement entre les couches
+//$blur-intensity: 2;
+//$spread: 10%; // Contrôle l'espacement entre les couches
+//
+//.progressive-blur-container > .blur-filter {
+//  @for $i from 1 through 7 {
+//    &:nth-child(#{$i}) {
+//      $blur: math.pow(2, $i - 1) * 1px * $blur-intensity;
+//      $offset: ($i - 1) * $spread;
+//
+//      backdrop-filter: blur($blur);
+//
+//      @if $i == 7 {
+//        z-index: 10;
+//        mask: linear-gradient(
+//                        rgba(0, 0, 0, 0) (100% - $spread * 3),
+//                        rgba(0, 0, 0, 1) 100%
+//        );
+//      } @else if $i == 6 {
+//        mask: linear-gradient(
+//                        rgba(0, 0, 0, 0) (100% - $spread * 4),
+//                        rgba(0, 0, 0, 1) (100% - $spread * 2)
+//        );
+//      } @else {
+//        mask: linear-gradient(
+//                        rgba(0, 0, 0, 0) $offset,
+//                        rgba(0, 0, 0, 1) ($offset + $spread),
+//                        rgba(0, 0, 0, 1) ($offset + $spread * 3),
+//                        rgba(0, 0, 0, 0) ($offset + $spread * 4)
+//        );
+//      }
+//    }
+//  }
+//}
 
-.progressive-blur-container > .blur-filter {
-  @for $i from 1 through 7 {
-    &:nth-child(#{$i}) {
-      $blur: math.pow(2, $i - 1) * 1px * $blur-intensity;
-      $offset: ($i - 1) * $spread;
-
-      backdrop-filter: blur($blur);
-
-      @if $i == 7 {
-        z-index: 10;
-        mask: linear-gradient(
-                        rgba(0, 0, 0, 0) (100% - $spread * 3),
-                        rgba(0, 0, 0, 1) 100%
-        );
-      } @else if $i == 6 {
-        mask: linear-gradient(
-                        rgba(0, 0, 0, 0) (100% - $spread * 4),
-                        rgba(0, 0, 0, 1) (100% - $spread * 2)
-        );
-      } @else {
-        mask: linear-gradient(
-                        rgba(0, 0, 0, 0) $offset,
-                        rgba(0, 0, 0, 1) ($offset + $spread),
-                        rgba(0, 0, 0, 1) ($offset + $spread * 3),
-                        rgba(0, 0, 0, 0) ($offset + $spread * 4)
-        );
-      }
-    }
-  }
+.progressive-blur-container > .blur-filter:nth-child(1) {
+  backdrop-filter: blur(1px);
+  mask: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 1) 10%, rgba(0, 0, 0, 1) 30%, rgba(0, 0, 0, 0) 40%);
 }
 
-//.progressive-blur-container > .blur-filter:nth-child(1) {
-//  backdrop-filter: blur(1px);
-//  mask: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 1) 10%, rgba(0, 0, 0, 1) 30%, rgba(0, 0, 0, 0) 40%);
-//}
-//
-//.progressive-blur-container > .blur-filter:nth-child(2) {
-//  backdrop-filter: blur(2px);
-//  mask: linear-gradient(rgba(0, 0, 0, 0) 10%, rgba(0, 0, 0, 1) 20%, rgba(0, 0, 0, 1) 40%, rgba(0, 0, 0, 0) 50%);
-//}
-//
-//.progressive-blur-container > .blur-filter:nth-child(3) {
-//  backdrop-filter: blur(4px);
-//  mask: linear-gradient(rgba(0, 0, 0, 0) 15%, rgba(0, 0, 0, 1) 30%, rgba(0, 0, 0, 1) 50%, rgba(0, 0, 0, 0) 60%);
-//}
-//
-//.progressive-blur-container > .blur-filter:nth-child(4) {
-//  backdrop-filter: blur(8px);
-//  mask: linear-gradient(rgba(0, 0, 0, 0) 20%, rgba(0, 0, 0, 1) 40%, rgba(0, 0, 0, 1) 60%, rgba(0, 0, 0, 0) 70%);
-//}
-//
-//.progressive-blur-container > .blur-filter:nth-child(5) {
-//  backdrop-filter: blur(16px);
-//  mask: linear-gradient(rgba(0, 0, 0, 0) 40%, rgba(0, 0, 0, 1) 60%, rgba(0, 0, 0, 1) 80%, rgba(0, 0, 0, 0) 90%);
-//}
-//
-//.progressive-blur-container > .blur-filter:nth-child(6) {
-//  backdrop-filter: blur(32px);
-//  mask: linear-gradient(rgba(0, 0, 0, 0) 60%, rgba(0, 0, 0, 1) 80%);
-//}
-//
-//.progressive-blur-container > .blur-filter:nth-child(7) {
-//  z-index: 10;
-//  backdrop-filter: blur(64px);
-//  mask: linear-gradient(rgba(0, 0, 0, 0) 70%, rgba(0, 0, 0, 1) 100%);
-//}
+.progressive-blur-container > .blur-filter:nth-child(2) {
+  backdrop-filter: blur(2px);
+  mask: linear-gradient(rgba(0, 0, 0, 0) 10%, rgba(0, 0, 0, 1) 20%, rgba(0, 0, 0, 1) 40%, rgba(0, 0, 0, 0) 50%);
+}
+
+.progressive-blur-container > .blur-filter:nth-child(3) {
+  backdrop-filter: blur(4px);
+  mask: linear-gradient(rgba(0, 0, 0, 0) 15%, rgba(0, 0, 0, 1) 30%, rgba(0, 0, 0, 1) 50%, rgba(0, 0, 0, 0) 60%);
+}
+
+.progressive-blur-container > .blur-filter:nth-child(4) {
+  backdrop-filter: blur(8px);
+  mask: linear-gradient(rgba(0, 0, 0, 0) 20%, rgba(0, 0, 0, 1) 40%, rgba(0, 0, 0, 1) 60%, rgba(0, 0, 0, 0) 70%);
+}
+
+.progressive-blur-container > .blur-filter:nth-child(5) {
+  backdrop-filter: blur(16px);
+  mask: linear-gradient(rgba(0, 0, 0, 0) 40%, rgba(0, 0, 0, 1) 60%, rgba(0, 0, 0, 1) 80%, rgba(0, 0, 0, 0) 90%);
+}
+
+.progressive-blur-container > .blur-filter:nth-child(6) {
+  backdrop-filter: blur(32px);
+  mask: linear-gradient(rgba(0, 0, 0, 0) 60%, rgba(0, 0, 0, 1) 80%);
+}
+
+.progressive-blur-container > .blur-filter:nth-child(7) {
+  z-index: 10;
+  backdrop-filter: blur(64px);
+  mask: linear-gradient(rgba(0, 0, 0, 0) 70%, rgba(0, 0, 0, 1) 100%);
+}
 
 .progressive-blur-container > .gradient {
   position: absolute;
@@ -607,7 +608,7 @@ $spread: 10%; // Contrôle l'espacement entre les couches
   left: 0;
   right: 0;
   bottom: 0;
-  background: linear-gradient(transparent, color-mix(in srgb, theme('colors.very-dark-grey-primary') 20%, transparent));
+  background: linear-gradient(transparent, color-mix(in srgb, theme('colors.black-primary') 25%, transparent));
   border-bottom-left-radius: var(--radius-secondary);
   border-bottom-right-radius: var(--radius-secondary);
 }
@@ -739,6 +740,15 @@ $spread: 10%; // Contrôle l'espacement entre les couches
 
   &:hover:not(:disabled) {
     box-shadow: 0 0 5px theme('colors.red-secondary'), 0 0 25px theme('colors.red-secondary'), 0 0 50px theme('colors.red-secondary');
+  }
+}
+
+.button-blue {
+  background-color: theme('colors.blue-tertiary');
+  border-color: theme('colors.blue-tertiary');
+
+  &:hover:not(:disabled) {
+    box-shadow: 0 0 5px theme('colors.blue-tertiary'), 0 0 25px theme('colors.blue-tertiary'), 0 0 50px theme('colors.blue-primary');
   }
 }
 
@@ -1044,10 +1054,22 @@ $spread: 10%; // Contrôle l'espacement entre les couches
 
   &.left {
     background-image: radial-gradient(ellipse farthest-side at 20%, #ffffff0d 0%, transparent 100%);
+
+    &.orange {
+      background-image: radial-gradient(ellipse farthest-side at 20%, rgb(255 99 0 / 5%) 0%, transparent 100%);
+    }
+
+    &.green {
+      background-image: radial-gradient(ellipse farthest-side at 20%, rgb(175 255 0 / 5%) 0%, transparent 100%);
+    }
   }
 
   &.right {
     background-image: radial-gradient(ellipse farthest-side at 80%, #ffffff0d 0%, transparent 100%);
+
+    &.gold {
+      background-image: radial-gradient(ellipse farthest-side at 80%, rgb(255 207 0 / 5%) 0%, transparent 100%);
+    }
   }
 
   &.center {
@@ -1060,6 +1082,24 @@ $spread: 10%; // Contrôle l'espacement entre les couches
     opacity: .5;
   }
 }
+
+
+.low-light-container {
+  .low-light {
+
+    &.left.purple {
+      //background-image: radial-gradient(ellipse farthest-side at 20%, #ffffff0d 0%, transparent 100%);
+      background-image: radial-gradient(ellipse farthest-side at 40%, rgb(162 0 255 / 30%) 0%, transparent 100%);
+    }
+
+    &.right.blue {
+      transform: translateY(-200px);
+      //background-image: radial-gradient(ellipse farthest-side at 60%, #ffffff0d 0%, transparent 100%);
+      background-image: radial-gradient(ellipse farthest-side at 60%, rgb(0 141 255 / 40%) 0%, transparent 100%)
+    }
+  }
+}
+
 
 .cta {
   background-image: url('/public/images/decoration/quizstack-logo-decoration.png');
