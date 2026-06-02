@@ -973,11 +973,11 @@ pre[class*="language-"] {
     background-image: radial-gradient(ellipse farthest-side at 20%, #ffffff0d 0%, transparent 100%);
 
     &.orange {
-      background-image: radial-gradient(ellipse farthest-side at 20%, rgb(255 99 0 / 5%) 0%, transparent 100%);
+      background-image: radial-gradient(ellipse farthest-side at 20%, rgb(255 99 0 / 8%) 0%, transparent 100%);
     }
 
     &.green {
-      background-image: radial-gradient(ellipse farthest-side at 20%, rgb(175 255 0 / 5%) 0%, transparent 100%);
+      background-image: radial-gradient(ellipse farthest-side at 20%, rgb(175 255 0 / 8%) 0%, transparent 100%);
     }
   }
 
@@ -985,7 +985,7 @@ pre[class*="language-"] {
     background-image: radial-gradient(ellipse farthest-side at 80%, #ffffff0d 0%, transparent 100%);
 
     &.gold {
-      background-image: radial-gradient(ellipse farthest-side at 80%, rgb(255 207 0 / 5%) 0%, transparent 100%);
+      background-image: radial-gradient(ellipse farthest-side at 80%, rgb(255 207 0 / 8%) 0%, transparent 100%);
     }
   }
 
@@ -1003,12 +1003,11 @@ pre[class*="language-"] {
 
 .low-light-container {
   .low-light {
-
-    &.left.purple {
-      background-image: radial-gradient(ellipse farthest-side at 40%, rgb(162 0 255 / 30%) 0%, transparent 100%);
+    &.left.blue {
+      background-image: radial-gradient(ellipse farthest-side at 40%, rgb(0 62 255 / 30%) 0, transparent 100%);
     }
 
-    &.right.blue {
+    &.right.cyan {
       transform: translateY(-200px);
       background-image: radial-gradient(ellipse farthest-side at 60%, rgb(0 141 255 / 40%) 0%, transparent 100%)
     }

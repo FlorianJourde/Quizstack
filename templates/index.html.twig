@@ -73,29 +73,28 @@
         {{ include('partials/filters.html.twig', _context) }}
     </div>
 
-{#    {% if articles is not empty %}#}
-{#        <div class="low-light-container">#}
-{#            <div class="low-light left purple"></div>#}
-{#            <div class="low-light right blue"></div>#}
-{#        </div>#}
+    {% if articles is not empty %}
+        <div class="low-light-container">
+            <div class="low-light left blue"></div>
+            <div class="low-light right cyan"></div>
+        </div>
 
-{#        <div class="wrapper wrapper-large pt-spacing-large-secondary">#}
-{#            <div class="page-separator-container">#}
-{#                <h2 class="title">Last articles</h2>#}
-{#            </div>#}
-{#            <div class="flex flex-col gap-spacing-primary">#}
+        <div class="wrapper wrapper-large">
+            <div class="page-separator-container pt-spacing-large-secondary">
+                <h2 class="title">Last articles</h2>
+            </div>
+        </div>
 
-{#                {{ include('partials/blog/articles.html.twig') }}#}
+        {{ include('partials/blog/articles.html.twig') }}
 
-
-{#                <div class="buttons-container">#}
-{#                    <a class="button button-tertiary fade-in-up" href="{{ path('blog') }}">#}
-{#                        See more articles#}
-{#                    </a>#}
-{#                </div>#}
-{#            </div>#}
-{#        </div>#}
-{#    {% endif %}#}
+        <div class="wrapper wrapper-large">
+            <div class="buttons-container mt-spacing-primary">
+                <a class="button button-tertiary fade-in-up" href="{{ path('blog') }}">
+                    See more articles
+                </a>
+            </div>
+        </div>
+    {% endif %}
 
     {{ include('partials/promotional/promotional-1.html.twig', _context) }}
 
