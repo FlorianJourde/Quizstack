@@ -25,30 +25,6 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 
-    // async function copyLink(button: HTMLButtonElement): Promise<void> {
-    //     const url = button.dataset.url;
-    //
-    //     if (url) {
-    //         if (button.classList.contains('copied')) return;
-    //
-    //         try {
-    //             await navigator.clipboard.writeText(url);
-    //
-    //             const tagsContainer = button.querySelector('.tags-container') as HTMLElement;
-    //
-    //             if (tagsContainer) {
-    //                 tagsContainer.classList.remove('hidden');
-    //
-    //                 setTimeout(() => {
-    //                     tagsContainer.classList.add('hidden');
-    //                 }, 2000);
-    //             }
-    //         } catch (err) {
-    //             console.error('Failed to copy link:', err);
-    //         }
-    //     }
-    // }
-
     async function copyData(button: HTMLButtonElement): Promise<void> {
         const content = button.dataset.url;
 

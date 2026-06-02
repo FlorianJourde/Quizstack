@@ -6,10 +6,7 @@
             <li class="glass min-h-[500px] p-2 alternate {{ is_granted('ROLE_EDITOR') and not article.status ? 'disable' : '' }} p-0 box glass flex flex-col items-start justify-start relative">
                 <div class="relative flex flex-col justify-end h-full w-full">
                     {% if article.image %}
-                        {#                        <div class="relative w-full"> #}
                         <img src="{{ asset('uploads/images/articles/' ~ article.image) }}" class="absolute h-52 object-cover w-full h-full rounded-radius-secondary" alt="{{ article.title }}">
-                        {#                            <div class="absolute inset-0 top-auto h-24 bg-gradient-to-t from-very-dark-grey-primary to-transparent"></div> #}
-                        {#                        </div> #}
                     {% endif %}
 
                     <article class="relative z-10 h-unset max-h-fit justify-end p-spacing-secondary flex flex-col gap-4 grow z-0">
