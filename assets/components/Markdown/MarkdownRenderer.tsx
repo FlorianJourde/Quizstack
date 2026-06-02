@@ -1,35 +1,40 @@
-import React from "react";
-import ReactMarkdown from "react-markdown";
-import {Prism as SyntaxHighlighter} from "react-syntax-highlighter";
-import {okaidia} from "react-syntax-highlighter/dist/cjs/styles/prism";
+import React, {useEffect, useRef} from 'react';
+import ReactMarkdown from 'react-markdown';
+import Prism from 'prismjs';
+import 'prismjs/themes/prism-okaidia.css';
+import 'prismjs/components/prism-markup-templating';
+import 'prismjs/components/prism-bash';
+import 'prismjs/components/prism-css';
+import 'prismjs/components/prism-javascript';
+import 'prismjs/components/prism-json';
+import 'prismjs/components/prism-jsx';
+import 'prismjs/components/prism-php';
+import 'prismjs/components/prism-scss';
+import 'prismjs/components/prism-sql';
+import 'prismjs/components/prism-typescript';
+import 'prismjs/components/prism-tsx';
+import 'prismjs/components/prism-yaml';
 
-export function MarkdownRenderer({content}: { content: string }) {
+export function MarkdownRenderer({content}: { content: string; }) {
+    const containerRef = useRef<HTMLDivElement>(null);
+
+    useEffect(() => {
+        if (!containerRef.current) {
+            return;
+        }
+
+        containerRef.current
+            .querySelectorAll('pre code')
+            .forEach((block) => {
+                Prism.highlightElement(block as HTMLElement);
+            });
+    }, [content]);
+
     return (
-        <ReactMarkdown
-            components={{
-                code({children, className, node, style, ref, ...rest}) {
-                    const match = /language-(\w+)/.exec(className || "");
-                    const codeString = Array.isArray(children) ? children.join("") : String(children);
-
-                    return match ? (
-                        <SyntaxHighlighter
-                            language={match[1]}
-                            PreTag="div"
-                            style={okaidia}
-                            className="code-wrapper"
-                            {...rest}
-                        >
-                            {codeString.replace(/\n$/, "")}
-                        </SyntaxHighlighter>
-                    ) : (
-                        <code className={className} {...rest}>
-                            {children}
-                        </code>
-                    );
-                },
-            }}
-        >
-            {content}
-        </ReactMarkdown>
+        <div ref={containerRef} className={`flex flex-col gap-spacing-secondary`}>
+            <ReactMarkdown>
+                {content}
+            </ReactMarkdown>
+        </div>
     );
 }

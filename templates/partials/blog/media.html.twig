@@ -1,0 +1,47 @@
+<div class="wrapper">
+    <div class="page-separator-container">
+        <h2 class="title">Media library</h2>
+    </div>
+</div>
+
+<div class="wrapper">
+    <div class="form-container glass box bg-dark-grey-secondary">
+
+        <form method="post" action="{{ path('article_media_upload') }}" enctype="multipart/form-data">
+            <input type="file" name="media" accept="image/*">
+            <div class="buttons-container">
+                <button type="submit" class="button button-primary">
+                    Upload
+                </button>
+            </div>
+        </form>
+
+        {% if media is not empty %}
+            <ul class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-spacing-primary">
+                {% for item in media %}
+                    <li class="w-full relative">
+                        <div class="buttons-container absolute top-[16px] right-[16px]">
+                            <form method="post" action="{{ path('article_media_delete') }}">
+                                <input type="hidden" name="filename" value="{{ item }}">
+                                <button type="submit" class="button button-action bg-very-dark-grey-primary opacity-100">
+                                    <span class="material-icons">delete</span>
+                                </button>
+                            </form>
+
+                            <button class="copy-link bg-very-dark-grey-primary opacity-100 button button-action relative" data-url="![](/uploads/images/articles/medias/{{ item }})">
+                                <span class="material-icons">content_copy</span>
+                                <span class="tags-container absolute hidden whitespace-nowrap right-0 left-auto top-full bottom-0 translate-x-0 translate-y-[calc(100%+0.5rem)]">
+                                        <span class="tag tag-small hidden">Copied !</span>
+                                    </span>
+                            </button>
+                        </div>
+
+                        <img src="{{ asset('uploads/images/articles/medias/' ~ item) }}" alt="" class="w-full rounded">
+
+                    </li>
+                {% endfor %}
+            </ul>
+
+        {% endif %}
+    </div>
+</div>

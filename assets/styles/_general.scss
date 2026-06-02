@@ -1,3 +1,5 @@
+@use "sass:math";
+
 :root {
   --radius-primary: 10px;
   --radius-secondary: 6px;
@@ -67,29 +69,15 @@ li::marker {
   color: #ffffff80;
 }
 
-.code-wrapper, code {
+pre[class*="language-"], code {
   font-family: var(--font-secondary) !important;
   font-size: .875rem !important;
 }
 
-.code-wrapper {
-  margin-top: 1rem !important;
-  margin-bottom: 1rem !important;
-  padding: var(--spacing-secondary) !important;
-}
-
-pre {
-  &:first-child {
-    .code-wrapper {
-      margin-top: unset !important;
-    }
-  }
-
-  &:last-child {
-    .code-wrapper {
-      margin-bottom: unset !important;
-    }
-  }
+pre[class*="language-"] {
+  margin-top: unset;
+  margin-bottom: unset;
+  padding: var(--spacing-secondary);
 }
 
 .flow-rounded-regular {
@@ -232,11 +220,9 @@ body .fade-in-up.show {
   }
 }
 
-div[style*="background: rgb(39, 40, 34);"] {
+pre[class*="language-"] {
   background: theme('colors.very-dark-grey-primary') !important;
-}
 
-.code-wrapper {
   > code {
     overflow-wrap: anywhere !important;
   }
@@ -246,7 +232,7 @@ div[style*="background: rgb(39, 40, 34);"] {
 #demo-container,
 #share-container {
   // https://quizstack.io/question/326
-  &.wrap .code-wrapper > code,
+  &.wrap pre[class*="language-"] > code,
   pre > code {
     white-space: break-spaces !important;
   }
@@ -261,7 +247,7 @@ div[style*="background: rgb(39, 40, 34);"] {
 
 #share-container {
   // https://quizstack.io/question/326
-  .code-wrapper > code {
+  pre[class*="language-"] > code {
     white-space: break-spaces !important;
   }
 
@@ -398,6 +384,14 @@ div[style*="background: rgb(39, 40, 34);"] {
   backdrop-filter: blur(50px);
   z-index: 1;
   box-shadow: 0 0 40px rgba(8, 7, 16, 0.6);
+
+  &.alternate {
+    box-shadow: 0 0 var(--spacing-primary) rgba(8, 7, 16, 0.6);
+  }
+
+  &.disable {
+    opacity: .25;
+  }
 }
 
 .dark-glass {
@@ -465,6 +459,83 @@ div[style*="background: rgb(39, 40, 34);"] {
       background: linear-gradient(100deg, #2a428c, #4382c7, #55b5f0);
     }
   }
+
+  &.card-orange {
+    .material-icons {
+      color: theme('colors.yellow-primary');
+    }
+
+    &::after {
+      background: linear-gradient(100deg, #ec7148, #deb368, #fcff47);
+    }
+  }
+}
+
+.progressive-blur-container {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  height: calc(100% + 100px);
+  pointer-events: none;
+}
+
+.progressive-blur-container > .blur-filter {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  border-bottom-left-radius: var(--radius-secondary);
+  border-bottom-right-radius: var(--radius-secondary);
+}
+
+.progressive-blur-container > .blur-filter:nth-child(1) {
+  backdrop-filter: blur(1px);
+  mask: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 1) 10%, rgba(0, 0, 0, 1) 30%, rgba(0, 0, 0, 0) 40%);
+}
+
+.progressive-blur-container > .blur-filter:nth-child(2) {
+  backdrop-filter: blur(2px);
+  mask: linear-gradient(rgba(0, 0, 0, 0) 10%, rgba(0, 0, 0, 1) 20%, rgba(0, 0, 0, 1) 40%, rgba(0, 0, 0, 0) 50%);
+}
+
+.progressive-blur-container > .blur-filter:nth-child(3) {
+  backdrop-filter: blur(4px);
+  mask: linear-gradient(rgba(0, 0, 0, 0) 15%, rgba(0, 0, 0, 1) 30%, rgba(0, 0, 0, 1) 50%, rgba(0, 0, 0, 0) 60%);
+}
+
+.progressive-blur-container > .blur-filter:nth-child(4) {
+  backdrop-filter: blur(8px);
+  mask: linear-gradient(rgba(0, 0, 0, 0) 20%, rgba(0, 0, 0, 1) 40%, rgba(0, 0, 0, 1) 60%, rgba(0, 0, 0, 0) 70%);
+}
+
+.progressive-blur-container > .blur-filter:nth-child(5) {
+  backdrop-filter: blur(16px);
+  mask: linear-gradient(rgba(0, 0, 0, 0) 40%, rgba(0, 0, 0, 1) 60%, rgba(0, 0, 0, 1) 80%, rgba(0, 0, 0, 0) 90%);
+}
+
+.progressive-blur-container > .blur-filter:nth-child(6) {
+  backdrop-filter: blur(32px);
+  mask: linear-gradient(rgba(0, 0, 0, 0) 60%, rgba(0, 0, 0, 1) 80%);
+}
+
+.progressive-blur-container > .blur-filter:nth-child(7) {
+  z-index: 10;
+  backdrop-filter: blur(64px);
+  mask: linear-gradient(rgba(0, 0, 0, 0) 70%, rgba(0, 0, 0, 1) 100%);
+}
+
+.progressive-blur-container > .gradient {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(transparent, color-mix(in srgb, theme('colors.black-primary') 25%, transparent));
+  border-bottom-left-radius: var(--radius-secondary);
+  border-bottom-right-radius: var(--radius-secondary);
 }
 
 .error-message,
@@ -477,6 +548,7 @@ div[style*="background: rgb(39, 40, 34);"] {
   display: block;
 }
 
+#article-container,
 .question-bottom-container,
 .question-content-container {
   ol, ul {
@@ -593,6 +665,15 @@ div[style*="background: rgb(39, 40, 34);"] {
 
   &:hover:not(:disabled) {
     box-shadow: 0 0 5px theme('colors.red-secondary'), 0 0 25px theme('colors.red-secondary'), 0 0 50px theme('colors.red-secondary');
+  }
+}
+
+.button-blue {
+  background-color: theme('colors.blue-tertiary');
+  border-color: theme('colors.blue-tertiary');
+
+  &:hover:not(:disabled) {
+    box-shadow: 0 0 5px theme('colors.blue-tertiary'), 0 0 25px theme('colors.blue-tertiary'), 0 0 50px theme('colors.blue-primary');
   }
 }
 
@@ -824,6 +905,18 @@ div[style*="background: rgb(39, 40, 34);"] {
 
     textarea {
       min-height: 150px;
+
+      &[id*="article_"][id*="_content"],
+      {
+        min-height: 450px;
+      }
+    }
+  }
+
+  .buttons-container {
+    form {
+      width: unset;
+
     }
   }
 }
@@ -878,10 +971,22 @@ div[style*="background: rgb(39, 40, 34);"] {
 
   &.left {
     background-image: radial-gradient(ellipse farthest-side at 20%, #ffffff0d 0%, transparent 100%);
+
+    &.orange {
+      background-image: radial-gradient(ellipse farthest-side at 20%, rgb(255 99 0 / 5%) 0%, transparent 100%);
+    }
+
+    &.green {
+      background-image: radial-gradient(ellipse farthest-side at 20%, rgb(175 255 0 / 5%) 0%, transparent 100%);
+    }
   }
 
   &.right {
     background-image: radial-gradient(ellipse farthest-side at 80%, #ffffff0d 0%, transparent 100%);
+
+    &.gold {
+      background-image: radial-gradient(ellipse farthest-side at 80%, rgb(255 207 0 / 5%) 0%, transparent 100%);
+    }
   }
 
   &.center {
@@ -894,6 +999,22 @@ div[style*="background: rgb(39, 40, 34);"] {
     opacity: .5;
   }
 }
+
+
+.low-light-container {
+  .low-light {
+
+    &.left.purple {
+      background-image: radial-gradient(ellipse farthest-side at 40%, rgb(162 0 255 / 30%) 0%, transparent 100%);
+    }
+
+    &.right.blue {
+      transform: translateY(-200px);
+      background-image: radial-gradient(ellipse farthest-side at 60%, rgb(0 141 255 / 40%) 0%, transparent 100%)
+    }
+  }
+}
+
 
 .cta {
   background-image: url('/public/images/decoration/quizstack-logo-decoration.png');

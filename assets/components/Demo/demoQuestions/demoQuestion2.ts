@@ -10,11 +10,11 @@ export const demoQuestion2 =
         "choices": [
             {
                 "id": 177,
-                "content": "```css\r\np {\r text-style: bold; \r}\r```"
+                "content": "```css\np { text-style: bold; }\n```"
             },
             {
                 "id": 178,
-                "content": "```css\r\np {\r font-weight: bold; \r}\r```"
+                "content": "```css\np { font-weight: bold; }\n```"
             },
         ],
         "comments": [],

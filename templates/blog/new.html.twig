@@ -1,0 +1,65 @@
+{% extends 'layout.html.twig' %}
+
+{% set title = 'New article' %}
+
+{% block body %}
+
+    {{ include('partials/banner.html.twig') }}
+
+    <div class="wrapper">
+        <div class="page-header-container">
+            <h1 class="big-title grow">
+                New article
+            </h1>
+
+            <div class="buttons-container">
+                <a class="button button-action" href="javascript:history.back()">
+                    <span class="material-icons">arrow_back</span>
+                </a>
+
+                {% if article.id %}
+                    <a class="button button-action" href="{{ path('article', { slug: article.slug }) }}">
+                        <span class="material-icons">visibility</span>
+                    </a>
+                {% endif %}
+
+                <a class="button button-action"
+                   href="{{ path('blog') }}">
+                    <span class="material-icons">newspaper</span>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="wrapper">
+        <div class="form-container glass box bg-dark-grey-secondary">
+
+            {{ include('partials/form/errors.html.twig') }}
+
+            {{ form_start(form) }}
+
+            {{ include('partials/blog/title.html.twig') }}
+            {{ include('partials/blog/slug.html.twig') }}
+            {{ include('partials/blog/excerpt.html.twig') }}
+            {{ include('partials/blog/content.html.twig') }}
+            {{ include('partials/form/image.html.twig', _context) }}
+            {{ include('partials/blog/status.html.twig') }}
+
+            <div class="buttons-container">
+                <a href="{{ path('blog') }}" class="button button-tertiary">
+                    Cancel
+                </a>
+
+                <button class="button button-primary" type="submit">
+                    Update
+                </button>
+            </div>
+
+            {{ form_end(form) }}
+
+        </div>
+    </div>
+
+    {{ include('partials/blog/media.html.twig') }}
+
+{% endblock %}

@@ -65,8 +65,15 @@ Load sample datas :
 php bin/console --env=dev doctrine:fixtures:load
 ```
 
+Run assets :
+
+```bash
+npm run watch
+npm run build
+```
+
 Visit `http://localhost:8000` in your browser to access the application.
- 
+
 ## Contributing
 
 We welcome contributions from the community ! Please check out our [contribution guidelines](https://quizstack.io) for

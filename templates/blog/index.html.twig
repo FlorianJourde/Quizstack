@@ -1,0 +1,31 @@
+{% extends 'layout.html.twig' %}
+
+{% set title = 'Blog' %}
+
+{% block meta_description %}Meta description{% endblock %}
+
+{% block body %}
+
+    {{ include('partials/banner.html.twig', {'color': 'blue', 'animate' : 'animate'}) }}
+
+    <div class="wrapper">
+        <div class="page-header-container">
+            <h1 class="big-title grow">Blog</h1>
+
+            {% if is_granted('ROLE_EDITOR') %}
+            <div class="buttons-container">
+                <a class="button button-action" href="{{ path('article_new') }}">
+                    <span class="material-icons">add</span>
+                </a>
+            </div>
+            {% endif %}
+
+        </div>
+    </div>
+
+    <div class="wrapper wrapper-large">
+        {{ include('partials/blog/articles.html.twig') }}
+        {{ include('partials/pagination.html.twig', {'page': 'blog', 'pagination': articles}) }}
+    </div>
+
+{% endblock %}

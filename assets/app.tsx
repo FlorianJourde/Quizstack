@@ -15,6 +15,7 @@ import './scripts/accordion'
 import './scripts/helper/copy-content'
 import './scripts/textarea'
 import './scripts/appear-on-scroll'
+import {enhanceMarkdown} from "./types/enhanceMarkdown";
 
 document.addEventListener('DOMContentLoaded', () => {
     const questionContainer = document.querySelector('#quiz-container') as HTMLElement;
@@ -65,5 +66,10 @@ document.addEventListener('DOMContentLoaded', () => {
         root.render(
             <StacksSlider/>
         );
+    }
+
+    const articleContainer = document.querySelector('#article-container');
+    if (articleContainer) {
+        enhanceMarkdown();
     }
 });

@@ -22,7 +22,7 @@ class Question1
         $question->setUpdateDate($date);
         $question->setDifficulty(2);
         $question->setStatus(true);
-        $question->setImage('bug-691215c2b332e.jpg');
+        $question->setImage('bug-691226583edd9.webp');
         $question->setExplanation(
             <<<'EOT'
             Using PDO is a secure and flexible way to interact with databases. It supports prepared statements, which help prevent SQL injection.

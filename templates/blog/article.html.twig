@@ -1,0 +1,70 @@
+{% extends 'layout.html.twig' %}
+
+{% set title = article.title %}
+
+{% block meta_description %}{{ article.excerpt }}{% endblock %}
+
+{% block body %}
+
+    {% if article.status %}
+        {{ include('partials/banner.html.twig', {'color': 'blue', 'animate' : 'animate'}) }}
+    {% else %}
+        {{ include('partials/banner.html.twig', {'animate' : 'animate'}) }}
+    {% endif %}
+
+    <div class="wrapper">
+        <div class="flex flex-col relative">
+            <div class="glass box">
+                <div id="article-container">
+                    <h1>{{ article.title }}</h1>
+                    <div class="date-container flex gap-4 items-center">
+                        <p class="flex items-center muted">
+                            <span class="material-icons mr-2 md-14 text-white">calendar_today</span>
+                            <span>{{ article.creationDate|date('d/m/Y') }}</span>
+                        </p>
+                    </div>
+                    {% if article.image %}
+                        <img alt="{{ article.title }}" class="h-96 object-cover w-full rounded-radius-secondary" src="{{ asset('uploads/images/articles/' ~ article.image) }}">
+                    {% endif %}
+                    {{ article.content|markdown_to_html }}
+                </div>
+            </div>
+            <div class="xl:sticky top-spacing-primary z-10 -order-1">
+                <aside class="absolute glass box bg-dark-grey-secondary bottom-0 xl:bottom-auto xl:mt-0 xl:-left-spacing-primary xl:-translate-x-full -translate-y-[12px] translate-y-1/2 right-spacing-primary xl:right-auto xl:translate-y-0 p-2 z-10">
+                    <div class="buttons-container xl:flex-col gap-2">
+                        <button class="button button-action relative copy-link" data-url={{ url('article', { slug: article.slug }) }}>
+                            <span class="material-icons">share</span>
+                            <div class="tags-container hidden absolute whitespace-nowrap top-0 left-1/2 -translate-x-1/2 -translate-y-full lg:top-1/2 lg:left-auto lg:right-0 lg:translate-x-full lg:-translate-y-1/2 z-10">
+                                <span class="tag tag-small hidden">Copied !</span>
+                            </div>
+                        </button>
+                        <a href="{{ path('blog') }}" class="button button-action">
+                            <span class="material-icons">newspaper</span>
+                        </a>
+                        {% if is_granted('ROLE_ADMIN') %}
+                            <a href="{{ path('article_edit', { slug: article.slug }) }}"
+                               class="button button-action bg-very-dark-grey-primary">
+                                <span class="material-icons">edit</span>
+                            </a>
+                        {% endif %}
+                    </div>
+                </aside>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="wrapper wrapper-large">
+        <div class="page-separator-container">
+            <h2 class="title">Last articles</h2>
+        </div>
+        {{ include('partials/blog/articles.html.twig') }}
+    </div>
+
+
+    <section class="rays bottom turquoise">
+        <div class="glow"></div>
+        <div class="hero animate"></div>
+    </section>
+
+{% endblock %}

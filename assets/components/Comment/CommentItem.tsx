@@ -81,7 +81,7 @@ function CommentItem(
 
                             <div className={`flex flex-col gap-2`}>
                                 <p>{getDisplayName(comment.author)}</p>
-                                <div className="date-container flex gap-4  items-center">
+                                <div className="date-container flex gap-4 items-center">
                                     <p className={'flex items-center muted'}><span
                                         className="material-icons mr-2 md-14">calendar_today</span><span>{formattedDate}</span>
                                     </p>

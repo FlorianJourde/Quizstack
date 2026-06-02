@@ -96,7 +96,6 @@ class QuestionFormType extends AbstractType
             ]);
         }
 
-
         if ($options['is_editor']) {
             $builder->add('status', CheckboxType::class, [
                 'label' => 'online',
