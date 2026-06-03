@@ -13,19 +13,16 @@
             <h1 class="big-title grow">Blog</h1>
 
             {% if is_granted('ROLE_EDITOR') %}
-            <div class="buttons-container">
-                <a class="button button-action" href="{{ path('article_new') }}">
-                    <span class="material-icons">add</span>
-                </a>
-            </div>
+                <div class="buttons-container">
+                    <a class="button button-action" href="{{ path('blog') }}">
+                        <span class="material-icons">add</span>
+                    </a>
+                </div>
             {% endif %}
 
         </div>
     </div>
 
-    <div class="wrapper wrapper-large">
-        {{ include('partials/blog/articles.html.twig') }}
-        {{ include('partials/pagination.html.twig', {'page': 'blog', 'pagination': articles}) }}
-    </div>
+    {{ include('partials/blog/articles.html.twig') }}
 
 {% endblock %}

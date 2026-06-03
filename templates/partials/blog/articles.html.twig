@@ -41,6 +41,9 @@
             {% endfor %}
 
         </ul>
+
+        {{ include('partials/pagination.html.twig', {'page': 'blog', 'pagination': articles}) }}
+
     </div>
 {% else %}
     <div class="wrapper">
