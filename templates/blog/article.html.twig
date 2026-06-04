@@ -2,7 +2,53 @@
 
 {% set title = article.title %}
 
-{% block meta_description %}{{ article.excerpt }}{% endblock %}
+{% block meta_description %}{{ article.excerpt|slice(0, 155) }}{% endblock %}
+
+{% block og_title %}{{ article.title }}{% endblock %}
+
+{% block og_description %}{{ article.excerpt|slice(0, 155) }}{% endblock %}
+
+{% block og_image %}
+    {%- if article.image -%}
+        {{ absolute_url(asset(article.image)) }}
+    {%- else -%}
+        {{ absolute_url(asset('images/decoration/quizstack-social.jpg')) }}
+    {%- endif -%}
+{% endblock %}
+
+{% block page_schema %}
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "BlogPosting",
+            "headline": "{{ article.title|e('js') }}",
+            "description": "{{ article.excerpt|slice(0, 155)|e('js') }}",
+            "url": "https://quizstack.io/blog/{{ article.slug }}",
+            {% if article.image %}
+            "image": "{{ absolute_url(asset(article.image)) }}",
+            {% endif %}
+            "datePublished": "{{ article.creationDate|date('c') }}",
+            "dateModified": "{{ (article.updateDate ?? article.creationDate)|date('c') }}",
+            "author": {
+                "@type": "Organization",
+                "name": "Quizstack",
+                "@id": "https://quizstack.io/#organization"
+            },
+            "publisher": {
+                "@type": "Organization",
+                "name": "Quizstack",
+                "logo": {
+                    "@type": "ImageObject",
+                    "url": "https://quizstack.io/favicon.png"
+                }
+            },
+            "mainEntityOfPage": {
+                "@type": "WebPage",
+                "@id": "https://quizstack.io/blog/{{ article.slug }}"
+            }
+        }
+    </script>
+{% endblock %}
 
 {% block body %}
 

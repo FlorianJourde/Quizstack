@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset
+        xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+            http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+
+    <url>
+        <loc>https://quizstack.io/</loc>
+        <lastmod>2025-04-26</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>1.00</priority>
+    </url>
+    <url>
+        <loc>https://quizstack.io/web-development-quiz</loc>
+        <lastmod>2025-05-24</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.90</priority>
+    </url>
+    <url>
+        <loc>https://quizstack.io/blog</loc>
+        <lastmod>{{ date()|date('Y-m-d') }}</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.85</priority>
+    </url>
+    {% for article in articles %}
+        <url>
+            <loc>https://quizstack.io/blog/{{ article.slug }}</loc>
+            <lastmod>{{ (article.updateDate ?? article.creationDate)|date('Y-m-d') }}</lastmod>
+            <changefreq>weekly</changefreq>
+            <priority>0.80</priority>
+        </url>
+    {% endfor %}
+    <url>
+        <loc>https://quizstack.io/filters</loc>
+        <lastmod>2025-04-26</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.70</priority>
+    </url>
+    <url>
+        <loc>https://quizstack.io/hall-of-fame</loc>
+        <lastmod>2025-05-24</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.65</priority>
+    </url>
+    <url>
+        <loc>https://quizstack.io/discussions</loc>
+        <lastmod>2025-04-26</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.50</priority>
+    </url>
+    <url>
+        <loc>https://quizstack.io/contact</loc>
+        <lastmod>2025-04-26</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.40</priority>
+    </url>
+    <url>
+        <loc>https://quizstack.io/cookie-policy</loc>
+        <lastmod>2025-04-26</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.20</priority>
+    </url>
+    <url>
+        <loc>https://quizstack.io/privacy-policy</loc>
+        <lastmod>2025-04-26</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.20</priority>
+    </url>
+    <url>
+        <loc>https://quizstack.io/terms-of-service</loc>
+        <lastmod>2025-04-26</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.20</priority>
+    </url>
+
+</urlset>
