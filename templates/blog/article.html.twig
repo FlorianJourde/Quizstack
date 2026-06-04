@@ -10,9 +10,9 @@
 
 {% block og_image %}
     {%- if article.image -%}
-        {{ absolute_url(asset(article.image)) }}
+        {{ app.request.schemeAndHttpHost }}/uploads/images/articles/{{ article.image }}
     {%- else -%}
-        {{ absolute_url(asset('images/decoration/quizstack-social.jpg')) }}
+        {{ app.request.schemeAndHttpHost }}/images/decoration/quizstack-social.jpg
     {%- endif -%}
 {% endblock %}
 
@@ -25,7 +25,7 @@
             "description": "{{ article.excerpt|slice(0, 155)|e('js') }}",
             "url": "https://quizstack.io/blog/{{ article.slug }}",
             {% if article.image %}
-            "image": "{{ absolute_url(asset(article.image)) }}",
+            "image": "{{ app.request.schemeAndHttpHost }}/uploads/images/articles/{{ article.image }}",
             {% endif %}
             "datePublished": "{{ article.creationDate|date('c') }}",
             "dateModified": "{{ (article.updateDate ?? article.creationDate)|date('c') }}",
