@@ -70,14 +70,15 @@ li::marker {
 }
 
 pre[class*="language-"], code {
-  font-family: var(--font-secondary) !important;
-  font-size: .875rem !important;
+  font-family: var(--font-secondary);
+  font-size: .875rem;
 }
 
 pre[class*="language-"] {
   margin-top: unset;
   margin-bottom: unset;
   padding: var(--spacing-secondary);
+  border-radius: var(--radius-secondary);
 }
 
 .flow-rounded-regular {
@@ -221,20 +222,20 @@ body .fade-in-up.show {
 }
 
 pre[class*="language-"] {
-  background: theme('colors.very-dark-grey-primary') !important;
+  background: theme('colors.very-dark-grey-primary');
 
   > code {
-    overflow-wrap: anywhere !important;
+    overflow-wrap: anywhere;
   }
 }
 
 #quiz-container,
 #demo-container,
-#share-container {
+#share-container,
+#article-container {
   // https://quizstack.io/question/326
-  &.wrap pre[class*="language-"] > code,
-  pre > code {
-    white-space: break-spaces !important;
+  &.wrap pre[class*="language-"] > code {
+    white-space: break-spaces;
   }
 
 
@@ -248,7 +249,7 @@ pre[class*="language-"] {
 #share-container {
   // https://quizstack.io/question/326
   pre[class*="language-"] > code {
-    white-space: break-spaces !important;
+    white-space: break-spaces;
   }
 
   .glass {

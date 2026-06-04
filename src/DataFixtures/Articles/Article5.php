@@ -21,56 +21,138 @@ class Article5
 
         $article->setContent(
             <<<'MARKDOWN'
-            JavaScript continues to evolve with **powerful** features that simplify *everyday* tasks.
+            JavaScript has evolved dramatically over the past decade. What was once considered standard practice is now often outdated or harmful to your codebase. Yet many developers continue to use patterns that belong in the past.
+
+            This article explores the most persistent bad habits in JavaScript and their modern alternatives.
             
-            ## Optional Chaining
+            ## Forget `var`: Use `let` and `const`
             
-            Safely access deeply nested properties without checking each level.
+            The `var` keyword uses function scoping, which leads to unexpected behavior:
             
-            Example:
-            
-            ```javascript
-            const city = user?.address?.city ?? 'Unknown';
+            ```js
+            if (true) {
+              var message = "Hello";
+            }
+            console.log(message); // "Hello" — var ignores block scope
             ```
             
-            ## Array Methods
+            Variables declared with `var` are also hoisted, which can mask bugs:
             
-            Modern array methods like **at()** and **findLast()** improve readability.
-            
-            Example:
-            
-            ```javascript
-            const numbers = [1, 2, 3, 4, 5];
-            const last = numbers.at(-1); // 5
-            const lastEven = numbers.findLast(n => n % 2 === 0); // 4
+            ```js
+            console.log(name); // undefined, not an error
+            var name = "Alice";
             ```
             
-            ## Structured Clone
+            **The fix:** Use `const` by default, and `let` only when reassignment is needed. Both respect block scope and behave predictably.
             
-            Deep cloning objects is now native and handles complex data types.
+            ## Use `querySelector` Over Older DOM Methods
             
-            Example:
+            Methods like `getElementById` and `getElementsByClassName` have inconsistencies. The latter returns live HTMLCollections that don't support array methods:
             
-            ```javascript
-            const original = { date: new Date(), items: [1, 2, 3] };
-            const clone = structuredClone(original);
+            ```js
+            const items = document.getElementsByClassName("item");
+            items.forEach(item => console.log(item)); // TypeError
             ```
             
-            ## Top-level Await
+            **The fix:** Use `querySelector` and `querySelectorAll`. They accept any CSS selector and return consistent, iterable results:
             
-            **Async** operations can now be awaited at the module level.
-            
-            Example:
-            
-            ```javascript
-            const response = await fetch('/api/data');
-            const data = await response.json();
-            export default data;
+            ```js
+            const items = document.querySelectorAll(".item");
+            items.forEach(item => console.log(item)); // Works perfectly
             ```
+            
+            ## Template Literals Over String Concatenation
+            
+            Building strings with `+` is verbose and error-prone:
+            
+            ```js
+            const greeting = "Hello, " + name + ". You are " + age + " years old.";
+            ```
+            
+            **The fix:** Template literals are cleaner and support multiline strings:
+            
+            ```js
+            const greeting = `Hello, ${name}. You are ${age} years old.`;
+            ```
+            
+            ## Async/Await Over Callback Hell
+            
+            Nested callbacks create unreadable code:
+            
+            ```js
+            getUser(id, function(user) {
+              getOrders(user.id, function(orders) {
+                getDetails(orders[0].id, function(details) {
+                  console.log(details);
+                });
+              });
+            });
+            ```
+            
+            **The fix:** `async/await` flattens the structure and centralizes error handling:
+            
+            ```js
+            async function getOrderDetails(id) {
+              try {
+                const user = await getUser(id);
+                const orders = await getOrders(user.id);
+                const details = await getDetails(orders[0].id);
+                console.log(details);
+              } catch (error) {
+                console.error(error);
+              }
+            }
+            ```
+            
+            ## Strict Equality Over Loose Equality
+            
+            The `==` operator performs type coercion with confusing results:
+            
+            ```js
+            console.log(0 == "0");  // true
+            console.log(0 == []);   // true
+            ```
+            
+            **The fix:** Always use `===` and `!==` to compare both value and type.
+            
+            ## Default Parameters Over Logical OR
+            
+            The old pattern fails with valid falsy values:
+            
+            ```js
+            function greet(name) {
+              name = name || "Guest";
+            }
+            greet(""); // Uses "Guest" instead of empty string
+            ```
+            
+            **The fix:** Use default parameters or nullish coalescing:
+            
+            ```js
+            function greet(name = "Guest") { }
+            
+            const value = input ?? "default"; // Only defaults for null/undefined
+            ```
+            
+            ## Immutable Array Operations
+            
+            Methods like `push`, `sort`, and `splice` mutate the original array, causing bugs in frameworks like React.
+            
+            **The fix:** Create new arrays instead:
+            
+            ```js
+            const sorted = [...numbers].sort();
+            const withNewItem = [...numbers, 4];
+            const filtered = numbers.filter(n => n !== 2);
+            ```
+            
+            ES2023 also introduced `toSorted()`, `toReversed()`, and `toSpliced()` as non-mutating alternatives.
             
             ## Conclusion
             
-            Staying updated with modern JavaScript features leads to cleaner and more maintainable code.
+            Modern JavaScript is more readable and predictable. By adopting these patterns—`const`/`let`, template literals, `async/await`, strict equality, and immutable operations—you'll write code that's easier to understand and maintain.
+            
+            Take a look at your current projects. How many of these old habits can you spot?
             MARKDOWN);
 
         $manager->persist($article);

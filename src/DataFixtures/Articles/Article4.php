@@ -14,7 +14,7 @@ class Article4
         $article->setTitle('HTML Semantics: Building Accessible and Meaningful Web Pages');
         $article->setSlug('html-semantics-accessibility');
         $article->setExcerpt('Semantic HTML improves accessibility, SEO, and code maintainability by giving meaning to your markup.');
-        $article->setImage('computer.jpg');
+        $article->setImage('megaphone.jpg');
         $article->setStatus(true);
         $article->setCreationDate($date);
         $article->setUpdateDate($date);

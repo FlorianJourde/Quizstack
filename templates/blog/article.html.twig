@@ -14,8 +14,8 @@
 
     <div class="wrapper">
         <div class="flex flex-col relative">
-            <div class="glass box">
-                <div id="article-container">
+            <div class="glass box -mx-spacing-primary sm:mx-0 border-x-0 sm:border-x-[2px] pb-[calc(2*var(--spacing-primary))] xl:pb-spacing-primary">
+                <div id="article-container" class="wrap">
                     <h1>{{ article.title }}</h1>
                     <div class="date-container flex gap-4 items-center">
                         <p class="flex items-center muted">
@@ -24,7 +24,7 @@
                         </p>
                     </div>
                     {% if article.image %}
-                        <img alt="{{ article.title }}" class="h-96 object-cover w-full rounded-radius-secondary" src="{{ asset('uploads/images/articles/' ~ article.image) }}">
+                        <img alt="{{ article.title }}" class="max-h-[300px] xs:max-h-[400px] sm:max-h-[500px] md:max-h-[600px] lg:max-h-[700px] xl:max-h-[800px] object-cover w-full rounded-radius-secondary" src="{{ asset('uploads/images/articles/' ~ article.image) }}">
                     {% endif %}
                     {{ article.content|markdown_to_html }}
                 </div>
