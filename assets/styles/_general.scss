@@ -47,6 +47,10 @@ html {
       display: flex;
       caret-color: theme('colors.green-primary');
 
+      &[type="datetime-local"]::-webkit-calendar-picker-indicator {
+        filter: invert(1) brightness(0.5);
+      }
+
       &[type="checkbox"], &[type="radio"] {
         width: unset;
       }

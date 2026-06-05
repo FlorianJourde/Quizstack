@@ -67,15 +67,10 @@ final class BlogController extends AbstractController
                 && $form->get('deleteImage')->getData() === true
             ) {
                 if ($article->getImage()) {
-                    $fileUploader->delete(
-                        $article->getImage(),
-                        'articles'
-                    );
-
+                    $fileUploader->delete($article->getImage(), 'articles');
                     $article->setImage(null);
                 }
             } else {
-
                 $image = $form->get('image')->getData();
 
                 if ($image) {
@@ -89,33 +84,17 @@ final class BlogController extends AbstractController
                 }
             }
 
-            $article->setUpdateDate(
-                new DateTimeImmutable()
-            );
-
             $entityManager->flush();
 
-            $this->addFlash(
-                'success',
-                'Article updated.'
-            );
+            $this->addFlash('success', 'Article updated.');
 
-            return $this->redirectToRoute(
-                'article',
-                ['slug' => $article->getSlug()]
-            );
+            return $this->redirectToRoute('article', ['slug' => $article->getSlug()]);
         }
 
         $mediaDirectory = $fileUploader->getTargetDirectory('medias');
-
         $media = glob($mediaDirectory . '/*');
-
         $media = array_filter($media, 'is_file');
-
-        usort($media, function ($a, $b) {
-            return filemtime($b) <=> filemtime($a);
-        });
-
+        usort($media, fn($a, $b) => filemtime($b) <=> filemtime($a));
         $media = array_map('basename', $media);
 
         return $this->render('blog/edit.html.twig', [
@@ -136,15 +115,11 @@ final class BlogController extends AbstractController
         $article = new Article();
 
         $date = new DateTimeImmutable();
-
         $article->setCreationDate($date);
         $article->setUpdateDate($date);
         $article->setStatus(false);
 
-        $form = $this->createForm(
-            ArticleFormType::class,
-            $article
-        );
+        $form = $this->createForm(ArticleFormType::class, $article);
 
         $form->handleRequest($request);
 
@@ -153,42 +128,22 @@ final class BlogController extends AbstractController
             $image = $form->get('image')->getData();
 
             if ($image) {
-                $imageName = $fileUploader->upload(
-                    $image,
-                    'articles'
-                );
-
+                $imageName = $fileUploader->upload($image, 'articles');
                 $article->setImage($imageName);
             }
-
-            $article->setUpdateDate(
-                new DateTimeImmutable()
-            );
 
             $entityManager->persist($article);
             $entityManager->flush();
 
-            $this->addFlash(
-                'success',
-                'Article created.'
-            );
+            $this->addFlash('success', 'Article created.');
 
-            return $this->redirectToRoute(
-                'article',
-                ['slug' => $article->getSlug()]
-            );
+            return $this->redirectToRoute('article', ['slug' => $article->getSlug()]);
         }
 
         $mediaDirectory = $fileUploader->getTargetDirectory('medias');
-
         $media = glob($mediaDirectory . '/*');
-
         $media = array_filter($media, 'is_file');
-
-        usort($media, function ($a, $b) {
-            return filemtime($b) <=> filemtime($a);
-        });
-
+        usort($media, fn($a, $b) => filemtime($b) <=> filemtime($a));
         $media = array_map('basename', $media);
 
         return $this->render('blog/new.html.twig', [
@@ -225,7 +180,7 @@ final class BlogController extends AbstractController
         methods: ['POST']
     )]
     public function deleteMedia(
-        Request $request,
+        Request             $request,
         FileUploaderService $fileUploader
     ): Response
     {

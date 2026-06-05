@@ -23,7 +23,7 @@
                         <div class="buttons-container absolute top-[16px] right-[16px]">
                             <form method="post" action="{{ path('article_media_delete') }}">
                                 <input type="hidden" name="filename" value="{{ item }}">
-                                <button type="submit" class="button button-action bg-very-dark-grey-primary opacity-100">
+                                <button type="submit" class="button button-action bg-very-dark-grey-primary opacity-100" onclick="return confirm('Are you sure you want to delete this media ?')">
                                     <span class="material-icons">delete</span>
                                 </button>
                             </form>
@@ -36,7 +36,7 @@
                             </button>
                         </div>
 
-                        <img src="{{ asset('uploads/images/articles/medias/' ~ item) }}" alt="" class="w-full rounded">
+                        <img src="{{ asset('uploads/images/articles/medias/' ~ item) }}" alt="" class="w-full h-full object-cover rounded">
 
                     </li>
                 {% endfor %}

@@ -70,7 +70,7 @@
                         </p>
                     </div>
                     {% if article.image %}
-                        <img alt="{{ article.title }}" class="max-h-[300px] xs:max-h-[400px] sm:max-h-[500px] md:max-h-[600px] lg:max-h-[700px] xl:max-h-[800px] object-cover w-full rounded-radius-secondary" src="{{ asset('uploads/images/articles/' ~ article.image) }}">
+                        <img alt="{{ article.title }}" class="max-h-[400px] sm:max-h-[500px] md:max-h-[600px] lg:max-h-[700px] xl:max-h-[800px] object-cover w-full rounded-radius-secondary" src="{{ asset('uploads/images/articles/' ~ article.image) }}">
                     {% endif %}
                     {{ article.content|markdown_to_html }}
                 </div>

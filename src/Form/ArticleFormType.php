@@ -5,6 +5,7 @@ namespace App\Form;
 use App\Entity\Article;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
+use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
@@ -48,6 +49,16 @@ class ArticleFormType extends AbstractType
                         'mimeTypesMessage' => 'Please upload a valid image.',
                     ])
                 ],
+            ])
+            ->add('creationDate', DateTimeType::class, [
+                'label' => 'Creation date',
+                'widget' => 'single_text',
+                'input' => 'datetime_immutable',
+            ])
+            ->add('updateDate', DateTimeType::class, [
+                'label' => 'Update date',
+                'widget' => 'single_text',
+                'input' => 'datetime_immutable',
             ])
             ->add('status', CheckboxType::class, [
                 'label' => 'online',
