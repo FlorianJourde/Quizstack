@@ -31,19 +31,10 @@
 
   p {
     color: color-mix(in srgb, theme('colors.white-primary') 75%, transparent);
-    line-height: 1.5rem;
+    line-height: 1.75rem;
 
     > * {
       color: theme('colors.white-primary');
-    }
-
-    > code {
-      background-color: theme('colors.very-dark-grey-primary');
-      padding: 3px 6px;
-      margin-left: 3px;
-      margin-right: 3px;
-      border-radius: 3px;
-      font-size: 0.875rem;
     }
   }
 

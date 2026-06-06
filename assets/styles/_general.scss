@@ -233,6 +233,15 @@ pre[class*="language-"] {
   }
 }
 
+p > code {
+  font-size: 0.875rem;
+  border-radius: 0.125rem;
+  padding: 0.25rem 0.5rem;
+  margin-right: .25rem;
+  margin-left: .25rem;
+  background-color: color-mix(in srgb, theme('colors.black-primary') 50%, transparent);
+}
+
 #quiz-container,
 #demo-container,
 #share-container,
@@ -806,7 +815,7 @@ pre[class*="language-"] {
     display: flex;
     border-radius: 0.125rem;
     padding: 0.25rem 0.5rem;
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: color-mix(in srgb, theme('colors.black-primary') 50%, transparent);
     gap: 0.5rem;
 
     &.active {

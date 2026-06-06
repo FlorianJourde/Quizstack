@@ -1,7 +1,10 @@
 <div>
-    <h2 class="small-title">
-        <span class="material-icons">title</span>
-        {{ form.title.vars.label }}
+    <h2 class="small-title items-center justify-between">
+        <div class="flex items-center">
+            <span class="material-icons">title</span>
+            {{ form.title.vars.label }}
+        </div>
+        {{ include('partials/markdown-infos.html.twig') }}
     </h2>
     {{ form_widget(form.title) }}
 </div>
