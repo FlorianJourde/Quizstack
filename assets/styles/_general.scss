@@ -251,7 +251,7 @@ p > code {
   &.wrap pre[class*="language-"] > code {
     white-space: break-spaces;
   }
-  
+
   // https://quizstack.io/question/410
   p > code,
   p {
@@ -260,6 +260,11 @@ p > code {
 
   p > code {
     line-height: 1.75rem;
+
+    &:only-child {
+      margin-left: unset;
+      margin-right: unset;
+    }
   }
 }
 
