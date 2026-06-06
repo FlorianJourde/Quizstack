@@ -3,6 +3,7 @@
 :root {
   --radius-primary: 10px;
   --radius-secondary: 6px;
+  --radius-tertiary: 3px;
   --font-primary: 'Manrope', sans-serif;
   --font-secondary: "Spline Sans Mono", monospace;
   --spacing-primary: 1.5rem;
@@ -235,7 +236,7 @@ pre[class*="language-"] {
 
 p > code {
   font-size: 0.875rem;
-  border-radius: 0.125rem;
+  border-radius: var(--radius-tertiary);
   padding: 0.25rem 0.5rem;
   margin-right: .25rem;
   margin-left: .25rem;
@@ -250,12 +251,21 @@ p > code {
   &.wrap pre[class*="language-"] > code {
     white-space: break-spaces;
   }
-
-
+  
   // https://quizstack.io/question/410
   p > code,
   p {
     word-wrap: break-word;
+  }
+
+  p > code {
+    line-height: 1.75rem;
+  }
+}
+
+#article-container {
+  p {
+    line-height: 1.75rem;
   }
 }
 
@@ -813,7 +823,7 @@ p > code {
 
   .tag {
     display: flex;
-    border-radius: 0.125rem;
+    border-radius: var(--radius-tertiary);
     padding: 0.25rem 0.5rem;
     background-color: color-mix(in srgb, theme('colors.black-primary') 50%, transparent);
     gap: 0.5rem;

@@ -50,6 +50,7 @@ module.exports = {
             borderRadius: {
                 'radius-primary': 'var(--radius-primary)',
                 'radius-secondary': 'var(--radius-secondary)',
+                'radius-tertiary': 'var(--radius-tertiary)',
             },
             fontFamily: {
                 'primary': 'var(--font-primary)',

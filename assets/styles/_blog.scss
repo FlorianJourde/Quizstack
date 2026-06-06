@@ -31,7 +31,6 @@
 
   p {
     color: color-mix(in srgb, theme('colors.white-primary') 75%, transparent);
-    line-height: 1.75rem;
 
     > * {
       color: theme('colors.white-primary');

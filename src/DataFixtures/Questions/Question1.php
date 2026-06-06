@@ -15,7 +15,7 @@ class Question1
         $question = new Question();
         $question->setContent(
             <<<'EOT'
-            What is the correct way to connect to a MySQL database using PDO in PHP ?
+            What is the fundamental difference between `localStorage` and `sessionStorage`?
             EOT
         );
         $question->setCreationDate($date);
@@ -59,16 +59,25 @@ class Question1
         $choice2->setCorrect(false);
         $manager->persist($choice2);
 
-
-        $choice2 = new Choice();
-        $choice2->setQuestion($question);
-        $choice2->setContent(
+        $choice3 = new Choice();
+        $choice3->setQuestion($question);
+        $choice3->setContent(
             <<<'EOT'
             `$pdo = new MySQLi('localhost', 'user', 'password', 'test');`
             EOT
         );
-        $choice2->setCorrect(false);
-        $manager->persist($choice2);
+        $choice3->setCorrect(false);
+        $manager->persist($choice3);
+
+        $choice4 = new Choice();
+        $choice4->setQuestion($question);
+        $choice4->setContent(
+            <<<'EOT'
+            `localStorage` is synchronous, while `sessionStorage` is asynchronous.
+            EOT
+        );
+        $choice4->setCorrect(false);
+        $manager->persist($choice4);
 
         $manager->flush();
     }
