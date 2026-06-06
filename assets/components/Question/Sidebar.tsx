@@ -34,9 +34,9 @@ function Sidebar(
 
                     <button className="button button-action" onClick={onWrap}>
                         {wrap ? (
-                            <span className="material-icons">keyboard_return</span>
+                            <span className="material-icons">wrap_text</span>
                         ) : (
-                            <span className="material-icons">start</span>
+                            <span className="material-icons">notes</span>
                         )}
                     </button>
 
