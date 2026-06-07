@@ -75,7 +75,7 @@
                     {{ article.content|markdown_to_html }}
                 </div>
             </div>
-            <div class="xl:sticky top-spacing-primary z-10 -order-1">
+            <div class="xl:sticky top-spacing-primary z-10 -order-1 transition-all">
                 <aside class="absolute glass box bg-dark-grey-secondary bottom-0 xl:bottom-auto xl:mt-0 xl:-left-spacing-primary xl:-translate-x-full -translate-y-[12px] translate-y-1/2 right-spacing-primary xl:right-auto xl:translate-y-0 p-2 z-10">
                     <div class="buttons-container xl:flex-col gap-2">
                         <button class="button button-action relative copy-link" data-url={{ url('article', { slug: article.slug }) }}>

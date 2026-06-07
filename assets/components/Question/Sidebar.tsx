@@ -20,7 +20,7 @@ function Sidebar(
     const {isAdmin} = useAuth();
 
     return (
-        <div className={`xl:sticky top-spacing-primary z-10 -order-1`}>
+        <div className={`xl:sticky top-spacing-primary z-10 -order-1 transition-all`}>
             <aside
                 className={`absolute glass box bg-dark-grey-secondary bottom-0 xl:bottom-auto xl:mt-0 xl:-left-spacing-primary xl:-translate-x-full -translate-y-[12px] sm:-translate-y-[30px] xl:translate-y-0 p-2 z-10`}>
                 <div className="buttons-container xl:flex-col gap-2">

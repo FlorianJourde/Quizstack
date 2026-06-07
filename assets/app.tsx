@@ -15,7 +15,8 @@ import './scripts/accordion'
 import './scripts/helper/copy-content'
 import './scripts/textarea'
 import './scripts/appear-on-scroll'
-import {enhanceMarkdown} from "./types/enhanceMarkdown";
+import {enhanceMarkdown} from "./scripts/enhance-markdown";
+import {sidebarVisibility} from "./scripts/sidebar-visibility";
 
 document.addEventListener('DOMContentLoaded', () => {
     const questionContainer = document.querySelector('#quiz-container') as HTMLElement;
@@ -72,4 +73,6 @@ document.addEventListener('DOMContentLoaded', () => {
     if (articleContainer) {
         enhanceMarkdown();
     }
+
+    sidebarVisibility();
 });
