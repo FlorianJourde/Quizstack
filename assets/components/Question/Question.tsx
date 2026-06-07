@@ -11,7 +11,6 @@ import QuestionNotFound from "../Sections/QuestionNotFound";
 import QuestionContent from "./QuestionContent";
 import {motion, AnimatePresence} from "motion/react"
 import {item} from "../../motion/animations";
-import {sidebarVisibility} from "../../scripts/sidebar-visibility";
 
 function Question({mode, questionId, showComments}: { mode: string, questionId: number, showComments: boolean }) {
     const [loading, setLoading] = useState<boolean>(true);
@@ -36,11 +35,6 @@ function Question({mode, questionId, showComments}: { mode: string, questionId: 
             }
         }
     }, [wrap]);
-
-
-    useEffect(() => {
-        sidebarVisibility();
-    }, []);
 
     async function loadQuestion() {
         setLoading(true);
