@@ -260,11 +260,6 @@ p > code {
 
   p > code {
     line-height: 1.75rem;
-
-    &:only-child {
-      margin-left: unset;
-      margin-right: unset;
-    }
   }
 }
 
