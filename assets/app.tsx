@@ -15,6 +15,7 @@ import './scripts/accordion'
 import './scripts/helper/copy-content'
 import './scripts/textarea'
 import './scripts/appear-on-scroll'
+import './scripts/parallax'
 import {enhanceMarkdown} from "./scripts/enhance-markdown";
 import {sidebarVisibility} from "./scripts/sidebar-visibility";
 

@@ -987,6 +987,38 @@ p > code {
   font-weight: normal;
 }
 
+.lens-flare-container {
+  width: 100%;
+  position: absolute;
+  overflow-x: hidden;
+  margin-top: -450px;
+
+  .lens-flare {
+    width: 100%;
+    min-width: 1200px;
+    height: 1200px;
+    right: 300px;
+    position: relative;
+    background-image: url('/public/images/background/flare.jpg');
+    background-size: contain;
+    background-position: center;
+    mix-blend-mode: screen;
+    background-repeat: no-repeat;
+
+    @media (min-width: 30rem) {
+      right: 180px;
+    }
+
+    @media (min-width: 40rem) {
+      right: 0;
+    }
+
+    @media (min-width: 48rem) {
+      right: -120px;
+    }
+  }
+}
+
 .low-light {
   width: 100%;
   height: 800px;
