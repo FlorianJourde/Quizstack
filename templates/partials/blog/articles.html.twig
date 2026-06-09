@@ -6,6 +6,13 @@
 
                 <li class="glass min-h-[500px] p-2 alternate {{ is_granted('ROLE_EDITOR') and not article.status ? 'disable' : '' }} p-0 box glass flex flex-col items-start justify-start relative">
                     <div class="relative flex flex-col justify-end h-full w-full">
+
+                        <div class="tags-container absolute top-spacing-secondary right-spacing-secondary z-10">
+                            <p class="tag tag-small items-center">
+                                <span>{{ article.creationDate|date('d/m/Y') }}</span>
+                            </p>
+                        </div>
+
                         {% if article.image %}
                             <img src="{{ asset('uploads/images/articles/' ~ article.image) }}" class="absolute h-52 object-cover w-full h-full rounded-radius-secondary" alt="{{ article.title }}">
                         {% endif %}
@@ -17,12 +24,6 @@
                                 </a>
                             </h3>
                             <p>{{ article.excerpt }}</p>
-                            <div class="date-container flex gap-4 items-center">
-                                <p class="flex items-center muted">
-                                    <span class="material-icons mr-2 md-14 text-white">calendar_today</span>
-                                    <span>{{ article.creationDate|date('d/m/Y') }}</span>
-                                </p>
-                            </div>
 
                             <div class="progressive-blur-container -z-10">
                                 <div class="blur-filter"></div>
