@@ -992,6 +992,7 @@ p > code {
   position: absolute;
   overflow-x: hidden;
   margin-top: -450px;
+  pointer-events: none;
 
   .lens-flare {
     width: 100%;
