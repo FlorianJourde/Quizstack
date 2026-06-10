@@ -2,7 +2,7 @@ const element = document.querySelector<HTMLElement>('.lens-flare-container');
 
 if (element) {
     const startMargin = -200;
-    const endMargin = -450;
+    const endMargin = -500;
     const entryOffset = startMargin;
     const speedFactor = 2;
 
