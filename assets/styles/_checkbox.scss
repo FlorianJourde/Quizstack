@@ -20,7 +20,7 @@
   }
 
   .checkbox-tile {
-    cursor: unset
+    cursor: initial;
   }
 }
 
@@ -49,7 +49,6 @@
   justify-content: center;
   margin-left: auto;
   margin-right: auto;
-  user-select: none;
   position: relative;
   min-width: unset;
 
