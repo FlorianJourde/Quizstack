@@ -24,7 +24,7 @@ provides a comprehensive learning resource for beginners and experienced develop
   explanations.
 - Open Contribution: Anyone can propose new questions, helping our platform grow with diverse, up-to-date content.
 
-[![Website](https://img.shields.io/badge/Website-b7cf3e?style=for-the-badge)](https://quizstack.io/) [![Website](https://img.shields.io/badge/--000000?style=for-the-badge&logo=x&logoColor=white/)](https://x.com/quizstackapp)
+[![Website](https://img.shields.io/badge/Website-b7cf3e?style=for-the-badge)](https://quizstack.io/) [![Website](https://img.shields.io/badge/--000000?style=for-the-badge&logo=x&logoColor=white/)](https://x.com/quizstackio)
 
 ## Getting Started
 
