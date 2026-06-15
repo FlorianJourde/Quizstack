@@ -36,7 +36,7 @@ export function Demo({mode}) {
             <div className={`buttons-container z-10 absolute right-0 -mt-[calc(var(--spacing-primary)+2px)] translate-x-1/2 -translate-y-full -mb-0.5 transition-all duration-300`} style={{top: buttonTop}}>
                 <button
                     onClick={() => swiperRef.current?.slideNext()}
-                    className={`button button-action bg-very-dark-grey-primary opacity-100 fade-in-up`}
+                    className={`button button-action bg-very-dark-grey-primary hover:bg-very-dark-grey-primary focus:bg-very-dark-grey-primary opacity-100 fade-in-up`}
                 >
                     <span className="material-icons text-[14px] sm:text-[24px]">arrow_forward</span>
                 </button>
