@@ -1,5 +1,6 @@
 .testimonial {
-  background-color: theme('colors.dark-grey-secondary');
+  //background-color: theme('colors.dark-grey-secondary');
+  background-color: unset;
   break-inside: avoid;
   page-break-inside: avoid;
   border-radius: var(--radius-secondary);
