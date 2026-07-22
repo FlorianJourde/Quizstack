@@ -4,7 +4,7 @@
 
 {% block body %}
 
-    {{ include('partials/banner.html.twig', {'color': 'green', 'animate' : 'animate'}) }}
+    {{ include('partials/banner-motion.html.twig', {'color': 'green'}) }}
 
     <div class="wrapper wrapper-large pt-spacing-large-secondary pb-spacing-large-secondary">
 
@@ -107,7 +107,7 @@
     {{ include('partials/promotional/promotional-2.html.twig', _context) }}
     {{ include('partials/testimonials.html.twig') }}
     {{ include('partials/faq.html.twig') }}
-    {{ include('partials/banner-bottom.html.twig', {'color': 'yellowgreen', 'animate' : 'animate'}) }}
+    {{ include('partials/banner-bottom.html.twig', {'color': 'green'}) }}
     {{ include('partials/cta.html.twig') }}
 
 {% endblock %}

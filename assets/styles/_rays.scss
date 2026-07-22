@@ -204,4 +204,104 @@
   }
 }
 
+.motion-banner {
+  --motion-color: hsl(0 0% 40% / 1);
 
+  position: absolute;
+  top: 0;
+  z-index: -1;
+  width: 100%;
+  height: 1200px;
+  overflow: hidden;
+  pointer-events: none;
+  opacity: 0.75;
+  transition: opacity 1s;
+  will-change: opacity;
+  isolation: isolate;
+
+  @media (min-width: 40rem) {
+    height: 1400px;
+  }
+
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+    background-color: var(--motion-color);
+    mix-blend-mode: overlay;
+    opacity: 0;
+    transition: .5s;
+  }
+
+  &.ready::before {
+    opacity: 1;
+  }
+
+  &::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 50%;
+    z-index: 2;
+    pointer-events: none;
+    background: linear-gradient(
+                    to bottom,
+                    transparent 0%,
+                    theme('colors.very-dark-grey-primary') 100%
+    );
+  }
+
+  &.red {
+    --motion-color: hsl(0 100% 55% / 1);
+  }
+
+  &.green {
+    --motion-color: hsl(90 100% 45% / 1);
+  }
+
+  &.yellowgreen {
+    --motion-color: hsl(85 100% 50% / 1);
+  }
+
+  &.gold {
+    --motion-color: hsl(45 100% 55% / 1);
+  }
+
+  &.blue {
+    --motion-color: hsl(210 100% 60% / 1);
+  }
+
+  &.turquoise {
+    --motion-color: hsl(175 100% 50% / 1);
+  }
+
+  &.purple {
+    --motion-color: hsl(270 100% 65% / 1);
+  }
+
+  &.pink {
+    --motion-color: hsl(325 100% 65% / 1);
+  }
+
+  &.white {
+    --motion-color: hsl(0 0% 100% / 1);
+  }
+
+  &.hide {
+    opacity: 0;
+  }
+}
+
+.motion-video {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: scaleX(-1);
+}

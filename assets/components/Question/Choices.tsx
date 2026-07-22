@@ -1,6 +1,6 @@
 import React, {useEffect, useRef, useState} from 'react';
 import {MarkdownRenderer} from "../Markdown/MarkdownRenderer";
-import useRaysAnimation from "../../hook/RaysAnimation";
+import useMotionBannerAnimation from "../../hook/RaysMotionAnimation";
 import {container, item} from "../../motion/animations";
 import {motion} from "motion/react";
 import {QuestionInterface} from "../../types";
@@ -22,7 +22,7 @@ function Choices({mode, question, answers, setAnswers, onAutoSubmit}: {
     const hasOneAnswer = answers.length === 1;
     const canAutoSubmit = isSingleChoice && hasOneAnswer && !isAnswered;
 
-    useRaysAnimation(question, mode);
+    useMotionBannerAnimation(question, mode);
 
     useEffect(() => {
         if (!canAutoSubmit) return;

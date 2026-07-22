@@ -1,0 +1,43 @@
+<section class="motion-banner {{ color|default('') }}">
+    <video
+            class="motion-video"
+            autoplay
+            muted
+            loop
+            playsinline
+            preload="metadata"
+            aria-hidden="true"
+    >
+        <source src="{{ asset('videos/god-rays.mp4') }}" type="video/mp4">
+    </video>
+</section>
+
+<div class="particles">
+    {% for i in 1..50 %}
+        <div class="circle-container">
+            <div class="circle"></div>
+        </div>
+    {% endfor %}
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const banners = document.querySelectorAll('.motion-banner');
+
+        banners.forEach((banner) => {
+            const video = banner.querySelector('.motion-video');
+
+            if (video) {
+                video.playbackRate = 0.5;
+
+                video.addEventListener('canplaythrough', () => {
+                    banner.classList.add('ready');
+                }, { once: true });
+
+                if (video.readyState >= 4) {
+                    banner.classList.add('ready');
+                }
+            }
+        });
+    });
+</script>

@@ -53,9 +53,9 @@
 {% block body %}
 
     {% if article.status %}
-        {{ include('partials/banner.html.twig', {'color': 'blue', 'animate' : 'animate'}) }}
+        {{ include('partials/banner-motion.html.twig', {'color': 'blue'}) }}
     {% else %}
-        {{ include('partials/banner.html.twig', {'animate' : 'animate'}) }}
+        {{ include('partials/banner-motion.html.twig') }}
     {% endif %}
 
     <div class="wrapper">
@@ -107,7 +107,7 @@
     </div>
 
     {{ include('partials/blog/articles.html.twig') }}
-    {{ include('partials/banner-bottom.html.twig', {'color': 'turquoise', 'animate' : 'animate'}) }}
+    {{ include('partials/banner-bottom.html.twig', {'color': 'turquoise'}) }}
     {{ include('partials/cta.html.twig', {'color': 'blue'}) }}
 
 {% endblock %}
