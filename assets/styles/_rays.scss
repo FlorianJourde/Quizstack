@@ -214,10 +214,14 @@
   height: 1200px;
   overflow: hidden;
   pointer-events: none;
-  opacity: 0.75;
   transition: opacity 1s;
   will-change: opacity;
   isolation: isolate;
+  opacity: 0;
+
+  &.ready {
+    opacity: 1;
+  }
 
   @media (min-width: 40rem) {
     height: 1400px;
@@ -231,12 +235,8 @@
     pointer-events: none;
     background-color: var(--motion-color);
     mix-blend-mode: overlay;
-    opacity: 0;
-    transition: .5s;
-  }
-
-  &.ready::before {
     opacity: 1;
+    transition: 1s;
   }
 
   &::after {
@@ -304,4 +304,5 @@
   height: 100%;
   object-fit: cover;
   transform: scaleX(-1);
+  user-select: none;
 }

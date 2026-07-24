@@ -231,6 +231,15 @@ body .fade-in-up.show {
   }
 }
 
+body > * {
+  transition: opacity .4s;
+}
+
+body > .hide {
+  opacity: 0 !important;
+  filter: blur(5px) !important;
+}
+
 pre[class*="language-"] {
   background: theme('colors.very-dark-grey-primary');
 

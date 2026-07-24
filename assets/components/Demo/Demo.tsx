@@ -1,4 +1,4 @@
-import React, {useRef, useState} from 'react';
+import React, {useRef, useState, useEffect} from 'react';
 import type {Swiper as SwiperType} from 'swiper';
 import QuestionContent from "../Question/QuestionContent";
 import Choices from "../Question/Choices";
@@ -31,6 +31,24 @@ export function Demo({mode}) {
         }
     };
 
+    const updateMotionBannerColor = (swiper: SwiperType) => {
+        const motionBanner = document.querySelector('.motion-banner');
+        if (!motionBanner) return;
+
+        const activeSlide = swiper.slides[swiper.activeIndex];
+        if (!activeSlide) return;
+
+        const hasIncorrect = activeSlide.querySelector('.checkbox-input.incorrect');
+
+        motionBanner.classList.remove('red', 'green');
+
+        if (hasIncorrect) {
+            motionBanner.classList.add('red');
+        } else {
+            motionBanner.classList.add('green');
+        }
+    };
+
     return (
         <>
             <div className={`buttons-container z-10 absolute right-0 -mt-[calc(var(--spacing-primary)+2px)] translate-x-1/2 -translate-y-full -mb-0.5 transition-all duration-300`} style={{top: buttonTop}}>
@@ -46,8 +64,12 @@ export function Demo({mode}) {
                 onSwiper={(swiper) => {
                     swiperRef.current = swiper;
                     updateButtonPosition(swiper);
+                    updateMotionBannerColor(swiper);
                 }}
-                onSlideChange={updateButtonPosition}
+                onSlideChange={(swiper) => {
+                    updateButtonPosition(swiper);
+                    updateMotionBannerColor(swiper);
+                }}
                 speed={1000}
                 slidesPerView={1}
                 loop={true}

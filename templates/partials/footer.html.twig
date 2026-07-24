@@ -3,7 +3,7 @@
         <div class="footer-container gap-spacing-large-secondary flex flex-col w-full">
             <div class="footer-top-container flex flex-col sm:flex-row items-stretch gap-spacing-large-secondary justify-between w-full">
                 <div class="flex flex-row sm:flex-col items-center sm:items-start gap-spacing-primary">
-                    <div class="site-identity-container grow">
+                    <div class="fade-in-up site-identity-container grow">
                         <a href="{{ path('app_home') }}" class="flex gap-4 items-center">
                             <img src="{{ asset(logo) }}" alt="Quizstack logo"
                                  class="h-10 object-contain">
@@ -15,7 +15,7 @@
                             </div>
                         </a>
                     </div>
-                    <div class="networks-container flex gap-spacing-primary">
+                    <div class="networks-container fade-in-up flex gap-spacing-primary">
                         <a href="https://x.com/quizstackio" target="_blank">
                             <img src="{{ asset('images/logos/x-logo.png') }}" alt="X logo"
                                  class="h-5 button object-contain button-tertiary rounded-none">
@@ -26,7 +26,7 @@
                         </a>
                     </div>
                 </div>
-                <nav class=" grid grid-cols-2 gap-spacing-primary">
+                <nav class="fade-in-up grid grid-cols-2 gap-spacing-primary">
                     <div class="links-container flex flex-col gap-spacing-secondary">
                         <h2 class="text-sm">Pages</h2>
                         <ul class="flex flex-col gap-spacing-secondary">
@@ -63,7 +63,7 @@
                     </div>
                 </nav>
             </div>
-            <div class="footer-bottom-container flex justify-center">
+            <div class="fade-in-up footer-bottom-container flex justify-center">
                 <p class="muted">© {{ "now"|date("Y") }} Quizstack</p>
             </div>
         </div>
