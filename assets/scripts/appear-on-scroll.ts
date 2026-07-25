@@ -15,7 +15,7 @@ function appearOnScroll(): void {
 }
 
 function showItems(counter: number): void {
-    let hiddenItems: NodeListOf<Element> = document.querySelectorAll('.fade-in-up:not(.show)');
+    let hiddenItems: NodeListOf<Element> = document.querySelectorAll('.fade-in:not(.show), .fade-in-up:not(.show)');
 
     hiddenItems.forEach(function(item: Element) {
         if (checkVisible(item)) {

@@ -2,11 +2,11 @@
     <div class="wrapper">
         <div class="header-container flex flex-col w-full">
             <div class="header-top-container flex items-center justify-between w-full">
-                <a href="{{ path('app_home') }}" class="fade-in-up flex gap-4 items-center font-bold text-xl">
+                <a href="{{ path('app_home') }}" class="fade-in flex gap-4 items-center font-bold text-xl">
                     <img src="{{ asset(logo) }}" alt="Quizstack logo" class="h-8">
                     Quizstack
                 </a>
-                <div class="fade-in-up buttons-container gap-2 sm:gap-4">
+                <div class="fade-in buttons-container gap-2 sm:gap-4">
                     <ul class="hidden sm:flex header-main-container buttons-container gap-2 sm:gap-4">
 
                         {% if is_granted('ROLE_USER') %}

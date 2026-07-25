@@ -214,20 +214,29 @@ button, input, optgroup, select, textarea {
   outline: none;
 }
 
-body .fade-in-up {
-  transform: translateY(var(--spacing-secondary));
-  filter: blur(5px);
-  opacity: 0;
-  transition: 1s;
-}
+body {
+  .fade-in,
+  .fade-in-up {
+    filter: blur(5px);
+    opacity: 0;
+    transition: 1s;
 
-body .fade-in-up.show {
-  opacity: 1;
-  transform: translateY(0);
-  filter: unset;
+    &.show {
+      opacity: 1;
+      filter: unset;
 
-  &.opacity-75 {
-    opacity: .75;
+      &.opacity-75 {
+        opacity: .75;
+      }
+    }
+  }
+
+  .fade-in-up {
+    transform: translateY(var(--spacing-secondary));
+
+    &.show {
+      transform: translateY(0);
+    }
   }
 }
 
@@ -255,6 +264,14 @@ p > code {
   margin-right: .25rem;
   margin-left: .25rem;
   background-color: color-mix(in srgb, theme('colors.black-primary') 50%, transparent);
+}
+
+#quiz-container {
+  min-height: 70vh;
+
+  @media (min-width: 40rem) {
+    min-height: 80vh;
+  }
 }
 
 #quiz-container,
