@@ -3,7 +3,7 @@
         <div class="filters-container flex flex-col gap-spacing-primary">
             <ul class="categories-container w-full grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-spacing-primary">
                 {% for category in categories %}
-                    <li class="fade-in-up choice-option glass font-bold {{ category.color }}">
+                    <li class="choice-option glass font-bold {{ category.color }}">
                         <fieldset class="checkbox-group z-20">
                             <label for="category-{{ category.name }}">
                                 <input type="checkbox"
