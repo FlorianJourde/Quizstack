@@ -267,10 +267,10 @@ p > code {
 }
 
 #quiz-container {
-  min-height: 70vh;
+  min-height: 80dvh;
 
   @media (min-width: 40rem) {
-    min-height: 80vh;
+    min-height: 70dvh;
   }
 }
 
