@@ -3,10 +3,13 @@ function pageTransition(): void {
 
     links.forEach((link) => {
         link.addEventListener('click', function(event: Event) {
+            const mouseEvent = event as MouseEvent;
             const anchor = event.currentTarget as HTMLAnchorElement;
             const href = anchor.getAttribute('href');
 
             if (!href || href === window.location.pathname) return;
+
+            if (mouseEvent.ctrlKey || mouseEvent.metaKey || mouseEvent.shiftKey || mouseEvent.button === 1) return;
 
             event.preventDefault();
             hidePageElements();
@@ -15,6 +18,12 @@ function pageTransition(): void {
                 window.location.href = href;
             }, 600);
         });
+    });
+
+    window.addEventListener('pageshow', function(event: PageTransitionEvent) {
+        if (event.persisted) {
+            showPageElements();
+        }
     });
 }
 
@@ -44,6 +53,19 @@ function hidePageElements(): void {
         if (!motionBanner.classList.contains('black')) {
             motionBanner.classList.add('black');
         }
+    }
+}
+
+function showPageElements(): void {
+    const bodyChildren = document.body.children;
+
+    Array.from(bodyChildren).forEach((element) => {
+        element.classList.remove('hide');
+    });
+
+    const motionBanner = document.querySelector('.motion-banner');
+    if (motionBanner) {
+        motionBanner.classList.add('ready');
     }
 }
 
