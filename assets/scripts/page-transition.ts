@@ -16,7 +16,7 @@ function pageTransition(): void {
 
             setTimeout(() => {
                 window.location.href = href;
-            }, 600);
+            }, 500);
         });
     });
 

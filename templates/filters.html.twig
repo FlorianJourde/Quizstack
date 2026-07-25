@@ -6,15 +6,16 @@
 
 {% block body %}
 
-    {{ include('partials/banner-motion.html.twig') }}
+    {{ include('partials/banner-motion.html.twig', {'color': 'purple'}) }}
 
     <div class="wrapper">
-        <div id="filters-section" class="page-header-container subtitle">
+        <div id="filters-section" class="fade-in-up page-header-container subtitle">
             <h1 class="big-title grow">Filters</h1>
-            <h2 class="fade-in-up md:text-lg opacity-75" style="transition-delay: 0.2s;">
+            <h2 class="md:text-lg opacity-75" style="transition-delay: 0.2s;">
                 Refine your quiz journey : choose filters to match your goals and level
             </h2>
         </div>
+
 
         {{ include('partials/filters.html.twig', _context) }}
 

@@ -9,6 +9,9 @@
                 our integrated comment system.</p>
             <p class="fade-in-up md:text-lg opacity-75">With full Markdown support, you can easily format code snippets, share
                 resources, and engage in meaningful discussions about each quiz question.</p>
+            <div class="fade-in-up buttons-container grow md:text-lg">
+                <a href="{{ path('app_register') }}" class="button button-primary border-none button-red">Register</a>
+            </div>
         </div>
         <img src="{{ asset('images/decoration/comments-decoration.png') }}" alt="Community comments"
              class="w-[600px] max-w-full lg:max-w-[50%] object-contain ml-auto mr-auto -md:mr-16">
@@ -24,12 +27,15 @@
             <h2 class="fade-in-up text-3xl font-bold">
                 Climb the leaderboard
             </h2>
-            <p class="fade-in-up md:text-lg opacity-75">Compete with the best developers in our Hall of Fame ! Every correct answer
+            <p class="fade-in-up md:text-lg opacity-75">Compete with the best developers in our hall of fame ! Every correct answer
                 earns you points based on difficulty, speed, and accuracy. Build streaks for multipliers and unlock
                 special badges by mastering entire topics.</p>
             <p class="fade-in-up md:text-lg opacity-75">Weekly leaderboards showcase top performers while monthly championships offer
                 exclusive recognition. Form teams with friends to compete for group glory or challenge yourself to reach
                 prestigious ranking tiers from Code Apprentice to Development Legend.</p>
+            <div class="fade-in-up buttons-container grow md:text-lg md:justify-start">
+                <a href="{{ path('scores') }}" class="button button-primary border-none button-gold">Hall of fame</a>
+            </div>
         </div>
 
     </div>
@@ -48,6 +54,9 @@
                 platform.</p>
             <p class="fade-in-up md:text-lg opacity-75">Share your expertise, help fellow developers learn, and earn recognition in
                 our community.</p>
+            <div class="fade-in-up buttons-container grow md:text-lg">
+                <a href="{{ path('question_new') }}" class="button button-primary">Propose a question</a>
+            </div>
         </div>
         <img src="{{ asset('images/decoration/question-decoration.png') }}" alt="Community comments"
              class="w-[600px] max-w-full lg:max-w-[50%] object-contain ml-auto mr-auto -md:ml-16">

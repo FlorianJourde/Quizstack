@@ -1,6 +1,6 @@
 {% block body %}
     <form action="{{ path('quiz') }}" method="GET" id="questionForm">
-        <div class="filters-container flex flex-col gap-spacing-primary">
+        <div class="fade-in filters-container flex flex-col gap-spacing-primary">
             <ul class="categories-container w-full grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-spacing-primary">
                 {% for category in categories %}
                     <li class="choice-option glass font-bold {{ category.color }}">

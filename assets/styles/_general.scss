@@ -241,12 +241,13 @@ body {
 }
 
 body > * {
-  transition: opacity .4s;
+  transition: opacity .4s, filter .4s;
 }
 
 body > .hide {
   opacity: 0 !important;
   filter: blur(5px) !important;
+  will-change: opacity, filter;
 }
 
 pre[class*="language-"] {
