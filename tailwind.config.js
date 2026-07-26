@@ -34,6 +34,7 @@ module.exports = {
                 'pink-secondary': '#ff74a6',
                 'red-primary': '#c7403e',
                 'red-secondary': '#9b2f2d',
+                'red-tertiary': '#ff8080',
                 'white-primary': '#ffffff',
                 'white-secondary': '#eeeeee',
                 'black-primary': '#000000',

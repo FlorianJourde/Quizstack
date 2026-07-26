@@ -37,6 +37,17 @@ html {
     line-height: initial;
     font-family: var(--font-primary);
 
+
+    &:has(.motion-banner.green) {
+      --background-accent-color: theme('colors.green-secondary');
+      --text-accent-color: theme('colors.green-tertiary');
+    }
+
+    &:has(.motion-banner.red) {
+      --background-accent-color: theme('colors.red-secondary');
+      --text-accent-color: theme('colors.red-tertiary');
+    }
+
     textarea, input {
       width: 100%;
       background-color: theme('colors.grey-secondary');
@@ -687,6 +698,11 @@ p > code {
   }
 }
 
+.text-accent {
+  color: var(--text-accent-color);
+  transition: color .4s;
+}
+
 .button-action {
   padding: .5rem;
   opacity: .75;
@@ -712,6 +728,15 @@ p > code {
 
   &.button-large {
     padding: .8rem 1.6rem;
+  }
+}
+
+.button-dynamic {
+  background-color: var(--background-accent-color);
+  border: var(--background-accent-color);
+
+  &:hover:not(:disabled) {
+    box-shadow: 0 0 5px var(--background-accent-color), 0 0 25px var(--background-accent-color), 0 0 50px var(--background-accent-color);
   }
 }
 
