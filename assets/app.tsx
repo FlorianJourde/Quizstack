@@ -19,6 +19,7 @@ import './scripts/page-transition'
 import './scripts/parallax'
 import {enhanceMarkdown} from "./scripts/enhance-markdown";
 import {sidebarVisibility} from "./scripts/sidebar-visibility";
+import { readingMode } from "./scripts/reading-mode";
 
 document.addEventListener('DOMContentLoaded', () => {
     const questionContainer = document.querySelector('#quiz-container') as HTMLElement;
@@ -74,6 +75,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const articleContainer = document.querySelector('#article-container');
     if (articleContainer) {
         enhanceMarkdown();
+        readingMode();
     }
 
     sidebarVisibility();
