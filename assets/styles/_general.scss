@@ -78,6 +78,30 @@ html {
       background-color: rgba(255, 255, 255, 0.1);
       height: 2px;
     }
+
+    &.reading {
+      .particles,
+      .motion-banner {
+        opacity: 0;
+      }
+
+      .glass.box:has(#article-container) {
+        background-color: transparent;
+        border-color: transparent;
+        backdrop-filter: unset;
+        box-shadow: unset;
+
+        #article-container {
+          pre[class*="language-"] {
+            background-color: theme('colors.dark-grey-secondary');
+          }
+
+          p > code {
+            background-color: theme('colors.dark-grey-secondary / 50%');
+          }
+        }
+      }
+    }
   }
 }
 
@@ -458,23 +482,6 @@ p > code {
 
   &.disable {
     opacity: .25;
-  }
-}
-
-.reading {
-  background-color: transparent;
-  border-color: transparent;
-  backdrop-filter: unset;
-  box-shadow: unset;
-
-  #article-container {
-    pre[class*="language-"] {
-      background-color: theme('colors.dark-grey-secondary');
-    }
-
-    p > code {
-      background-color: theme('colors.dark-grey-secondary / 50%');
-    }
   }
 }
 
