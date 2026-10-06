@@ -101,7 +101,7 @@ pre[class*="language-"] {
   padding: var(--spacing-secondary);
   border-radius: var(--radius-secondary);
   background: theme('colors.very-dark-grey-primary');
-  transition: .4s;
+  transition: background-color .4s;
 
   > code {
     overflow-wrap: anywhere;
@@ -450,7 +450,7 @@ p > code {
   backdrop-filter: blur(50px);
   z-index: 1;
   box-shadow: 0 0 40px rgba(8, 7, 16, 0.6);
-  transition: 1s;
+  transition: background-color 1s, border-color 1s, backdrop-filter 1s, box-shadow 1s;
 
   &.alternate {
     box-shadow: 0 0 var(--spacing-primary) rgba(8, 7, 16, 0.6);
